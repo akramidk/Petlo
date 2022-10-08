@@ -6,7 +6,7 @@ class CreateCustomers < ActiveRecord::Migration[7.0]
       t.string :country
       t.string :phone_number
       t.integer :phone_verification_status
-      t.string :password
+      t.string :password_digest
       t.integer :verification_code
       t.integer :verification_code_permission
       t.datetime :verification_code_created_at

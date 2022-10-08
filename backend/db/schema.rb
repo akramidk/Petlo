@@ -17,7 +17,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_07_201421) do
     t.string "country"
     t.string "phone_number"
     t.integer "phone_verification_status"
-    t.string "password"
+    t.string "password_digest"
     t.integer "verification_code"
     t.integer "verification_code_permission"
     t.datetime "verification_code_created_at"
