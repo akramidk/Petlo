@@ -1,10 +1,10 @@
 class Customer < ApplicationRecord
   include PublicIdGenerator
 
-  has_secure_password
-
   before_create :set_phone_verification_status
 
+  has_secure_password
+  
   COUNTRIES = [
     "JO"
   ].freeze
@@ -18,7 +18,7 @@ class Customer < ApplicationRecord
   validates :name, presence: true
   validates :country, presence: true, inclusion: { in: COUNTRIES }
   validates :phone_number, presence: true, uniqueness: true
-  validates :password, presence: true, length: { minimum: 8 }
+  validates :password_digest, presence: true, length: { minimum: 8 }
 
   private
   def set_phone_verification_status
