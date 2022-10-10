@@ -87,4 +87,15 @@ RSpec.describe Customer, type: :model do
       )
     }.to raise_error(ActiveRecord::RecordInvalid)
   end
+  
+  it "is not valid, password is too short" do
+    expect{
+      Customer.create!(
+        name: "Akram",
+        country: "JO",
+        phone_number: "+962790119951",
+        password: "1234567"
+      )
+    }.to raise_error(ActiveRecord::RecordInvalid)
+  end
 end
