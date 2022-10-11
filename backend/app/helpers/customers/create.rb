@@ -1,11 +1,17 @@
 module CustomersHelper
-  def self.create(name, country, phone_number, password)
+  def self.create(name, country, phone_number, password, language)
     begin
       customer = Customer.create!(
         name: name,
         country: country,
         phone_number: phone_number,
         password: password
+      )
+
+      Customer::VerificationJob.perform_async(
+        customer.public_id,
+        "customer_verification",
+        language
       )
       
       {

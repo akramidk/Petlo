@@ -9,5 +9,7 @@ module Customer::Verification
       verification_code_permission: permission,
       verification_code_created_at: Time.now
     )
+
+    code
   end
 end

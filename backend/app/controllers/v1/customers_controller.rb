@@ -7,8 +7,9 @@ module V1
       country = params[:country]
       phone_number = params[:phone_number]
       password = params[:password]
+      language = params[:language]
 
-      response = CustomersHelper.create(name, country, phone_number, password)
+      response = CustomersHelper.create(name, country, phone_number, password, language)
 
       render :json => response[:body], :status => response[:status]
     end
