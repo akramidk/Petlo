@@ -8,6 +8,13 @@ module CustomersHelper
         password: password
       )
 
+      session_token = SessionToken.generate(
+        public_id: customer.public_id,
+        phone_number: customer.phone_number,
+        limited: true,
+        limited_for: "customer_verification"
+      )
+
       Customer::VerificationJob.perform_async(
         customer.public_id,
         "customer_verification",
@@ -16,7 +23,8 @@ module CustomersHelper
       
       {
         body: {
-          status: "succeeded"
+          status: "succeeded",
+          session_token: session_token
         },
         status: 200
       }
