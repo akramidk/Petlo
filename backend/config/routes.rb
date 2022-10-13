@@ -10,5 +10,8 @@ Rails.application.routes.draw do
     
     #customers
     post "customers", to: "customers#create"
+
+    #sessions
+    get "sessions", to: "sessions#index"
   end
 end
