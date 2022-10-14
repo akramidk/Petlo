@@ -12,7 +12,7 @@ RSpec.describe "Apps", type: :request do
         "phone_os": "android"
       }
 
-      expect(JSON.parse(response.body)["status"]).to equal(false)
+      expect(JSON.parse(response.body)["status"]).to eq(false)
     end
     
     it "is return false with ios" do
@@ -21,7 +21,7 @@ RSpec.describe "Apps", type: :request do
         "phone_os": "ios"
       }
 
-      expect(JSON.parse(response.body)["status"]).to equal(false)
+      expect(JSON.parse(response.body)["status"]).to eq(false)
     end
 
     it "is return false with android & old data" do
@@ -30,7 +30,7 @@ RSpec.describe "Apps", type: :request do
         "phone_os": "android"
       }
 
-      expect(JSON.parse(response.body)["status"]).to equal(false)
+      expect(JSON.parse(response.body)["status"]).to eq(false)
     
     end
     
@@ -40,7 +40,7 @@ RSpec.describe "Apps", type: :request do
         "phone_os": "ios"
       }
 
-      expect(JSON.parse(response.body)["status"]).to equal(false)
+      expect(JSON.parse(response.body)["status"]).to eq(false)
     end
     
     it "is return true with android" do
@@ -49,7 +49,7 @@ RSpec.describe "Apps", type: :request do
         "phone_os": "android"
       }
 
-      expect(JSON.parse(response.body)["status"]).to equal(true)
+      expect(JSON.parse(response.body)["status"]).to eq(true)
     end
     
     it "is return true with ios" do
@@ -58,7 +58,7 @@ RSpec.describe "Apps", type: :request do
         "phone_os": "ios"
       }
 
-      expect(JSON.parse(response.body)["status"]).to equal(true)
+      expect(JSON.parse(response.body)["status"]).to eq(true)
     end
   end
 end
