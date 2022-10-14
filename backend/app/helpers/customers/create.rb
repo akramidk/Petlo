@@ -15,11 +15,11 @@ module CustomersHelper
         limited_for: "customer_verification"
       )
 
-      Customer::VerificationJob.perform_async(
-        customer.public_id,
-        "customer_verification",
-        language
-      )
+      # Customer::VerificationJob.perform_async(
+      #   customer.public_id,
+      #   "customer_verification",
+      #   language
+      # )
       
       {
         body: {
