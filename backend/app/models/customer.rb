@@ -15,7 +15,7 @@ class Customer < ApplicationRecord
     unverified: 0,
     verified: 1
   }, _prefix: :phone
-
+  
   enum verification_code_permission: {
     "customer_verification": 0
   }, _prefix: :verification_code_permission
@@ -25,8 +25,7 @@ class Customer < ApplicationRecord
   validates :country, presence: true, inclusion: { in: COUNTRIES }
   validates :phone_number, presence: true, uniqueness: true
   validates :password, presence: true, length: { minimum: 8 }, on: :create
-  validates :verification_code_permission, inclusion: { in: Customer.verification_code_permissions  }, allow_nil: true
-
+    
   private
   def set_phone_verification_status
     self.phone_verification_status = 0
