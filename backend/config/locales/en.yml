@@ -4,6 +4,9 @@ en:
       models:
         customer:
           attributes:
+            public_id:
+              blank: "public_id_required"
+              taken: "public_id_used_before"
             name:
               blank: "name_required"
             country:

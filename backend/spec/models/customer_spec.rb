@@ -13,91 +13,137 @@ RSpec.describe Customer, type: :model do
       expect(valid_customer).to be_valid
     end
   
-    it "is not valid, public_id not unique" do
-      expect{
-        Customer.create!(
-          public_id: valid_customer.public_id,
-          name: "Akram",
-          country: "JO",
-          phone_number: "+962790119951",
-          password: "12345678" 
-        )
-      }.to raise_error(ActiveRecord::RecordInvalid)
+    it "is not valid, public_id is empty" do
+      def customer
+        begin
+          Customer.create!(
+            public_id: "",
+            name: "Akram",
+            country: "JO",
+            phone_number: "+962790119951",
+            password: "12345678" 
+          )
+        rescue ActiveRecord::RecordInvalid => invalid
+          ActiveRecordError.extract(object: invalid)
+        end
+      end
+      
+      expect(customer).to eq("public_id_required")
     end
     
     it "is not valid, name is empty" do
-      expect{
-        Customer.create!(
-          country: "JO",
-          phone_number: "+962790119951",
-          password: "12345678" 
-        )
-      }.to raise_error(ActiveRecord::RecordInvalid)
+      def customer
+        begin
+          Customer.create!(
+            country: "JO",
+            phone_number: "+962790119951",
+            password: "12345678" 
+          )
+        rescue ActiveRecord::RecordInvalid => invalid
+          ActiveRecordError.extract(object: invalid)
+        end
+      end
+
+      expect(customer).to eq("name_required")
     end
   
     it "is not valid, country is empty" do
-      expect{
-        Customer.create!(
-          name: "Akram",
-          phone_number: "+962790119951",
-          password: "12345678" 
-        )
-      }.to raise_error(ActiveRecord::RecordInvalid)
+      def customer
+        begin
+          Customer.create!(
+            name: "Akram",
+            phone_number: "+962790119951",
+            password: "12345678" 
+          )
+        rescue ActiveRecord::RecordInvalid => invalid
+          ActiveRecordError.extract(object: invalid)
+        end
+      end
+    
+      expect(customer).to eq("country_required")  
     end
-  
   
     it "is not valid, country is invalid" do
-      expect{
-        Customer.create!(
-          name: "Akram",
-          country: "XX",
-          phone_number: "+962790119951",
-          password: "12345678" 
-        )
-      }.to raise_error(ActiveRecord::RecordInvalid)
+      def customer
+        begin
+          Customer.create!(
+            name: "Akram",
+            country: "XX",
+            phone_number: "+962790119951",
+            password: "12345678" 
+          )
+        rescue ActiveRecord::RecordInvalid => invalid
+          ActiveRecordError.extract(object: invalid)
+        end
+      end
+     
+      expect(customer).to eq("invalid_country")
     end
   
-  
     it "is not valid, phone_number is empty" do
-      expect{
-        Customer.create!(
-          name: "Akram",
-          country: "JO",
-          password: "12345678" 
-        )
-      }.to raise_error(ActiveRecord::RecordInvalid)
+      def customer
+        begin
+          Customer.create!(
+            name: "Akram",
+            country: "JO",
+            password: "12345678" 
+          )
+        rescue ActiveRecord::RecordInvalid => invalid
+          ActiveRecordError.extract(object: invalid)
+        end
+      end
+    
+      expect(customer).to eq("phone_number_required")  
     end
   
     it "is not valid, phone_number is not unique" do
-      expect{
-        Customer.create!(
-          name: "Akram",
-          country: "JO",
-          phone_number: "+962790119952",
-          password: "12345678" 
-        )
-      }.to raise_error(ActiveRecord::RecordInvalid)
+      def customer
+        begin
+          Customer.create!(
+            name: "Akram",
+            country: "JO",
+            phone_number: "+962790119952",
+            password: "12345678" 
+          )
+        rescue ActiveRecord::RecordInvalid => invalid
+          ActiveRecordError.extract(object: invalid)
+        end
+      end
+    
+      expect(customer).to eq("phone_number_used_before")
     end
   
     it "is not valid, password is empty" do
-      expect{
-        Customer.create!(
-          name: "Akram",
-          country: "JO",
-          phone_number: "+962790119951"
-        )
-      }.to raise_error(ActiveRecord::RecordInvalid)
+      def customer
+        begin
+          Customer.create!(
+            name: "Akram",
+            country: "JO",
+            phone_number: "+962790119951"
+          )
+        rescue ActiveRecord::RecordInvalid => invalid
+          ActiveRecordError.extract(object: invalid)
+        end
+      end
+    
+      expect(customer).to eq("password_required")  
     end
     
     it "is not valid, password is too short" do
-      expect{
-        Customer.create!(
-          name: "Akram",
-          country: "JO",
-          phone_number: "+962790119951",
-          password: "1234567"
-        )
-      }.to raise_error(ActiveRecord::RecordInvalid)
+      def customer
+        begin
+          Customer.create!(
+            name: "Akram",
+            country: "JO",
+            phone_number: "+962790119951",
+            password: "1234567"
+          )
+        rescue ActiveRecord::RecordInvalid => invalid
+          ActiveRecordError.extract(object: invalid)
+        end
+      end
+    
+      expect(customer).to eq("password_too_short")  
     end
   end
 
