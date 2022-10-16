@@ -3,7 +3,7 @@ class Customer::VerificationJob
 
   DEFAULT_LANGUAGE = "ar"
   MESSAGES = {
-    "customer_verification" => {
+    ENUM::SESSION_TOKEN_PERMISSIONS[:CUSTOMER_VERIFICATION] => {
       "ar" => "رمز التحقق الخاص بك هو",
       "en" => "Your verification code is"
     }
@@ -14,6 +14,6 @@ class Customer::VerificationJob
     code = customer.generate_verification_code(permission: permission)
     message_content = "#{MESSAGES[permission][language]} #{code}"
 
-    SMSMessage.send(to: customer.phone_number, content: message_content)
+    # SMSMessage.send(to: customer.phone_number, content: message_content)
   end
 end

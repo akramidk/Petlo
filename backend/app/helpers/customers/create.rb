@@ -13,14 +13,14 @@ module CustomersHelper
           public_id: customer.public_id,
           phone_number: customer.phone_number,
           limited: true,
-          limited_for: "customer_verification"
+          limited_for: ENUM::SESSION_TOKEN_PERMISSIONS[:CUSTOMER_VERIFICATION]
         )
 
-        # Customer::VerificationJob.perform_async(
-        #   customer.public_id,
-        #   "customer_verification",
-        #   language
-        # )
+        Customer::VerificationJob.perform_async(
+          customer.public_id,
+          ENUM::SESSION_TOKEN_PERMISSIONS[:CUSTOMER_VERIFICATION],
+          language
+        )
         
         {
           body: {

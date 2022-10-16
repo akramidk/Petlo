@@ -148,11 +148,15 @@ RSpec.describe Customer, type: :model do
   end
 
   describe "generate verification code" do
-    code = valid_customer.generate_verification_code(permission: "customer_verification")
+    code = valid_customer.generate_verification_code(
+      permission: ENUM::SESSION_TOKEN_PERMISSIONS[:CUSTOMER_VERIFICATION]
+    )
     
     it "is valid with customer_verification permission" do
       expect(valid_customer.verification_code).to eq(code)
-      expect(valid_customer.verification_code_permission).to eq("customer_verification")
+      expect(valid_customer.verification_code_permission).to eq(
+        ENUM::SESSION_TOKEN_PERMISSIONS[:CUSTOMER_VERIFICATION]
+      )
       expect(valid_customer.verification_code_created_at <= Time.now).to eq(true)
     end
   end
