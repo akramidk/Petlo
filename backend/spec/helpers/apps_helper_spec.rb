@@ -5,32 +5,32 @@ RSpec.describe AppsHelper, type: :helper do
   ios_app_version = AppsHelper::APP_VERSION["ios"]
   
   it "is return false with android" do
-    response = AppsHelper.version(andorid_app_version, "android")
-    expect(response[:body][:status]).to eq(false)
+    response = AppsHelper.version(app_version: andorid_app_version, phone_os: "android")
+    expect(response[:status]).to eq(false)
   end
 
   it "is return false with ios" do
-    response = AppsHelper.version(ios_app_version, "ios")
-    expect(response[:body][:status]).to eq(false)
+    response = AppsHelper.version(app_version: ios_app_version, phone_os: "ios")
+    expect(response[:status]).to eq(false)
   end
 
   it "is return false with android & old data" do
-    response = AppsHelper.version(andorid_app_version + 1, "android")
-    expect(response[:body][:status]).to eq(false)
+    response = AppsHelper.version(app_version: andorid_app_version + 1, phone_os: "android")
+    expect(response[:status]).to eq(false)
   end
   
   it "is return false with ios & old data" do
-    response = AppsHelper.version(andorid_app_version + 1, "ios")
-    expect(response[:body][:status]).to eq(false)
+    response = AppsHelper.version(app_version: andorid_app_version + 1, phone_os: "ios")
+    expect(response[:status]).to eq(false)
   end 
 
   it "is return true with android" do
-    response = AppsHelper.version(andorid_app_version - 1, "android")
-    expect(response[:body][:status]).to eq(true)
+    response = AppsHelper.version(app_version: andorid_app_version - 1, phone_os: "android")
+    expect(response[:status]).to eq(true)
   end
   
   it "is return true with ios" do
-    response = AppsHelper.version(andorid_app_version - 1, "ios")
-    expect(response[:body][:status]).to eq(true)
+    response = AppsHelper.version(app_version: andorid_app_version - 1, phone_os: "ios")
+    expect(response[:status]).to eq(true)
   end  
 end

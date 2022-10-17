@@ -1,6 +1,6 @@
 module CustomersHelper
   def self.verification(customer:, verification_code:)
-    return { body: { status: "failed", message: "customer_verified_before" }, status: 400 } if customer.phone_verified?
+    raise("customer_verified_before") if customer.phone_verified?
 
     checking = customer.verify_verification_code(
       code: verification_code,
@@ -9,9 +9,8 @@ module CustomersHelper
 
     if checking[:valid]
       customer.phone_verified!
-      { body: { status: "succeeded"  }, status: 200  }
     else
-      { body: { status: "failed", message: checking[:message]  }, status: 400  }
+      raise(checking[:message])
     end
   end
 end

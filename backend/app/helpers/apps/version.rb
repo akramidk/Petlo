@@ -4,11 +4,11 @@ module AppsHelper
     "android" => 1.0
   }
   
-  def self.version(app_version, phone_os)
+  def self.version(app_version:, phone_os:)
     if app_version.to_f < APP_VERSION[phone_os]
-      { body: { status: true }, status: 200  }
+      { status: true }
     else
-      { body: { status: false }, status: 200  }
+      { status: false }
     end
   end
 end

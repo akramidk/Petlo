@@ -14,20 +14,34 @@ module V1
       password = params[:password]
       language = params[:language]
 
-      response = CustomersHelper.create(name, country, phone_number, password, language)
+      begin
+        response = CustomersHelper.create(
+          name: name,
+          country: country,
+          phone_number: phone_number,
+          password: password,
+          language: language
+        )
 
-      render :json => response[:body], :status => response[:status]
+        render json: { status: "succeeded", session_token: response[:session_token] }, status: 200
+      rescue RuntimeError => message
+        render json: { status: "failed", message: message }, status: 400
+      end
     end
 
     def verification
       verification_code = params[:verification_code]
 
-      response = CustomersHelper.verification(
-        customer: @customer,
-        verification_code: verification_code
-      )
-
-      render :json => response[:body], :status => response[:status]
+      begin
+        response = CustomersHelper.verification(
+          customer: @customer,
+          verification_code: verification_code
+        )
+        
+        render json: { status: "succeeded" }, status: 200
+      rescue RuntimeError => message
+        render json: { status: "failed", message: message }, status: 400
+      end
     end
   end
 end

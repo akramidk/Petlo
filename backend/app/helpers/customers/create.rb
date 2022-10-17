@@ -1,6 +1,6 @@
 module CustomersHelper
   class << self
-    def create(name, country, phone_number, password, language)
+    def create(name:, country:, phone_number:, password:, language:)
       begin
         customer = Customer.create!(
           name: name,
@@ -22,21 +22,9 @@ module CustomersHelper
           language
         )
         
-        {
-          body: {
-            status: "succeeded",
-            session_token: session_token
-          },
-          status: 200
-        }
+        { session_token: session_token }
       rescue ActiveRecord::RecordInvalid => invalid
-        {
-          body: {
-            status: "failed",
-            message: ActiveRecordError.extract(object: invalid)
-          },
-          status: 400
-        }
+        raise(ActiveRecordError.extract(object: invalid))
       end
     end
   end

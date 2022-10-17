@@ -6,9 +6,12 @@ module V1
       app_version = params[:app_version]
       phone_os = params[:phone_os]
 
-      response = AppsHelper.version(app_version, phone_os)
+      response = AppsHelper.version(
+        app_version: app_version,
+        phone_os: phone_os
+      )
 
-      render :json => response[:body], :status => response[:status]
+      render json: response, status: 200 
     end
   end
 end
