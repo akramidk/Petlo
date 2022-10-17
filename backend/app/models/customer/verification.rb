@@ -22,6 +22,16 @@ module Customer::Verification
       return { valid: false, message: "verification_code_expired" }
     end
 
-    { valid: true }
+    reset_verification
+    { valid: true  }
+  end
+
+  private
+  def reset_verification
+    self.update(
+      verification_code: nil,
+      verification_code_permission: nil,
+      verification_code_created_at: nil
+    )
   end
 end

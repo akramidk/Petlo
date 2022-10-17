@@ -4,7 +4,7 @@ module V1
 
     before_action -> { current_customer(
       permission: ENUM::SESSION_TOKEN_PERMISSIONS[:CUSTOMER_VERIFICATION],
-      verified: false
+      verified: false 
     )}, only: [:verification]
 
     def create
@@ -20,6 +20,14 @@ module V1
     end
 
     def verification
+      verification_code = params[:verification_code]
+
+      response = CustomersHelper.verification(
+        customer: @customer,
+        verification_code: verification_code
+      )
+
+      render :json => response[:body], :status => response[:status]
     end
   end
 end
