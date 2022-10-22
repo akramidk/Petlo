@@ -24,7 +24,6 @@ module CustomersHelper
         
         { session_token: session_token }
       rescue ActiveRecord::RecordInvalid => invalid
-        customer.destroy
         raise(ActiveRecordError.extract(object: invalid))
       end
     end

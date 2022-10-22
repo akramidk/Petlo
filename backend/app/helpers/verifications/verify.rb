@@ -1,5 +1,5 @@
-module CustomersHelper
-  def self.verification(customer:, verification_code:)
+module VerificationsHelper
+  def self.verify(customer:, verification_code:)
     raise("customer_verified_before") if customer.phone_verified?
 
     checking = customer.verify_verification_code(
@@ -9,6 +9,12 @@ module CustomersHelper
 
     if checking[:valid]
       customer.phone_verified!
+      session_token = SessionToken.generate(
+        public_id: customer.public_id,
+        phone_number: customer.phone_number
+      )
+
+      { customer: { name: customer.name  }, session_token: session_token }
     else
       raise(checking[:message])
     end

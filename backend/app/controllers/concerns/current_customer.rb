@@ -9,7 +9,7 @@ module CurrentCustomer
      @@payload = SessionToken.decode(token: @@session_token)
 
      if !@@payload || @@payload["limited_for"] != permission || !retrieve_the_customer(verified: verified)
-       render json: { status: "failed", message: "invalid_session_token" }
+       render json: { status: "failed", message: "invalid_session_token" }, status: 401
      end
    end
 

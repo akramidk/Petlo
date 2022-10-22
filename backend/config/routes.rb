@@ -10,7 +10,9 @@ Rails.application.routes.draw do
     
     #customers
     post "customers", to: "customers#create"
-    post "customers/verification", to: "customers#verification"
+
+    #verifications
+    post "customers/verification", to: "verifications#verify"
 
     #sessions
     get "sessions", to: "sessions#index"
