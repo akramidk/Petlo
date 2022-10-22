@@ -13,6 +13,8 @@ Rails.application.routes.draw do
 
     #verifications
     post "customers/verification", to: "verifications#verify"
+    post "customers/verification/resend-code", to: "verifications#resend_code"
+    post "customers/verification/change-phone-number", to: "verifications#change_phone_number"
 
     #sessions
     get "sessions", to: "sessions#index"

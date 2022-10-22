@@ -25,5 +25,37 @@ module V1
         render json: { status: "failed", message: message }, status: 400
       end
     end
+
+    def resend_code
+      language = params[:language]
+
+      begin
+        response = VerificationsHelper.resend_code(
+          customer: @customer,
+          language: language
+        )
+
+        render json: { status: "succeeded", session_token: response[:session_token] }, status: 200
+      rescue RuntimeError => message
+        render json: { status: "failed", message: message }, status: 400
+      end
+    end
+
+    def change_phone_number
+      phone_number = params[:phone_number]
+      language = params[:language]
+
+      begin
+        response = VerificationsHelper.change_phone_number(
+          customer: @customer,
+          phone_number: phone_number,
+          language: language
+        )
+
+        render json: { status: "succeeded", session_token: response[:session_token] }, status: 200
+      rescue RuntimeError => message
+        render json: { status: "failed", message: message }, status: 400
+      end
+    end
   end
 end
