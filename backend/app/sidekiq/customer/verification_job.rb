@@ -6,6 +6,11 @@ class Customer::VerificationJob
     ENUM::SESSION_TOKEN_PERMISSIONS[:CUSTOMER_VERIFICATION] => {
       "ar" => "رمز التحقق الخاص بك هو",
       "en" => "Your verification code is"
+    },
+
+    ENUM::SESSION_TOKEN_PERMISSIONS[:SESSION_VERIFICATION] => {
+      "ar" => "رمز التحقق الخاص بك هو",
+      "en" => "Your verification code is"
     }
   }
 

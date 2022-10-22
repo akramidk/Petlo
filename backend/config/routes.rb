@@ -18,5 +18,8 @@ Rails.application.routes.draw do
 
     #sessions
     get "sessions", to: "sessions#index"
+    post "sessions", to: "sessions#create"
+    post "sessions/verification", to: "sessions#verification"
+    post "sessions/verification/resend-code", to: "sessions#resend_verification_code"
   end
 end
