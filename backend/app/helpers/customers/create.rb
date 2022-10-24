@@ -22,7 +22,7 @@ module CustomersHelper
           language
         )
         
-        { session_token: session_token }
+        { customer: { session_token: session_token } }
       rescue ActiveRecord::RecordInvalid => invalid
         raise(ActiveRecordError.extract(object: invalid))
       end

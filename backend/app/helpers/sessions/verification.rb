@@ -11,7 +11,7 @@ module SessionsHelper
         phone_number: customer.phone_number
       )
 
-      { customer: { name: customer.name  }, session_token: session_token }
+      { customer: { name: customer.name, session_token: session_token  } }
     else
       raise(checking[:message])
     end

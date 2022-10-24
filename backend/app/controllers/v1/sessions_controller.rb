@@ -28,7 +28,7 @@ module V1
           language: language
         )
 
-        render json: { status: "succeeded", verified: response[:verified], session_token: response[:session_token] }, status: 200
+        render json: { status: "succeeded", customer: response[:customer] }, status: 200
       rescue RuntimeError => message
         render json: { status: "failed", message: message  }, status: 400
       end
@@ -43,7 +43,7 @@ module V1
           verification_code: verification_code
         )
 
-        render json: { status: "succeeded", customer: response[:customer], session_token: response[:session_token] }, status: 200
+        render json: { status: "succeeded", customer: response[:customer] }, status: 200
       rescue RuntimeError => message
         render json: { status: "failed", message: message  }, status: 400
       end
@@ -57,7 +57,7 @@ module V1
         language: language
       )
 
-      render json: { status: "succeeded", session_token: response[:session_token ]}
+      render json: { status: "succeeded", customer: response[:customer]}
     end
   end
 end

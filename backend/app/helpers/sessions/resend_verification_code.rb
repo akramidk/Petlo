@@ -13,6 +13,6 @@ module SessionsHelper
       language
     )
 
-    { session_token: session_token  }
+    { customer: { session_token: session_token } }
   end
 end
