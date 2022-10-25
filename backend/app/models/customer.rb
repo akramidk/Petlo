@@ -7,10 +7,6 @@ class Customer < ApplicationRecord
   encrypts :phone_number, deterministic: true
   has_secure_password
   
-  COUNTRIES = [
-    "JO"
-  ].freeze
-
   enum phone_verification_status: {
     unverified: 0,
     verified: 1
@@ -23,7 +19,7 @@ class Customer < ApplicationRecord
 
   validates :public_id, presence: true, uniqueness: true
   validates :name, presence: true
-  validates :country, presence: true, inclusion: { in: COUNTRIES }
+  validates :country, presence: true, inclusion: { in: CONSTANTS::COUNTRIES }
   validates :phone_number, presence: true, uniqueness: true
   validates :password, presence: true, length: { minimum: 8 }, on: :create
     
