@@ -4,7 +4,14 @@ module CONSTANTS
   ]
 
   LANGUAGES = [
-    "AR",
-    "EN"
+    "ar",
+    "en"
   ]
+
+  OPTION_UNITS = {
+    "kg" => {
+      "ar" => "كيلو جرام",
+       "en" => "KG"
+    }
+  }
 end

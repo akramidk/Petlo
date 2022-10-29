@@ -3,5 +3,5 @@ class ItemAvailability < ApplicationRecord
 
   validates :item_id, presence: true, uniqueness: { scope: :country  }
   validates :country, presence: true, inclusion: { in: CONSTANTS::COUNTRIES }
-  validates :value, presence: true
+  validates :value, inclusion: [true, false]
 end
