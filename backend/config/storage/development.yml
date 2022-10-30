@@ -1,7 +1,7 @@
 digitalocean:
   service: S3
-  endpoint: https://cdn.dev.petlo.co
+  endpoint: https://fra1.digitaloceanspaces.com
   access_key_id: <%= Rails.application.credentials[:digitalocean][:development][:space][:access_key] %>
-  secret_access_key: <%= Rails.application.credentials[:digitalocean][:development][:space][:secret__key] %>
+  secret_access_key: <%= Rails.application.credentials[:digitalocean][:development][:space][:secret_key] %>
   bucket: petlo-development
   region: unused
