@@ -1,6 +1,8 @@
 class Item < ApplicationRecord
   include PublicIdGenerator
 
+  has_one_attached :image
+
   has_many :details, class_name: "ItemDetail"
   has_many :availabilities, class_name: "ItemAvailability"
 
