@@ -166,7 +166,8 @@ item_1_variant_1_options = VariantOption.create!([
     option_number: 1
   }
 ])
-VariantAvailability.create!(variant_id: item_1_variant_1.id, country: "JO", value: 1000)
+VariantAvailability.create!(variant_id: item_1_variant_1.id, country: "JO", value: true)
+VariantPrice.create!(variant_id: item_1_variant_1.id, country: "JO", value: 1000)
 
 item_1_variant_2 = Variant.create!(item_id: item_1.id)
 item_1_variant_2_options = VariantOption.create!([
@@ -181,7 +182,8 @@ item_1_variant_2_options = VariantOption.create!([
     option_number: 2
   }
 ])
-VariantAvailability.create!(variant_id: item_1_variant_2.id, country: "JO", value: 2000)
+VariantAvailability.create!(variant_id: item_1_variant_2.id, country: "JO", value: true)
+VariantPrice.create!(variant_id: item_1_variant_2.id, country: "JO", value: 2000)
 
 item_1_variant_3 = Variant.create!(item_id: item_1.id)
 item_1_variant_3_options = VariantOption.create!([
@@ -196,7 +198,8 @@ item_1_variant_3_options = VariantOption.create!([
     option_number: 1
   }
 ])
-VariantAvailability.create!(variant_id: item_1_variant_3.id, country: "JO", value: 3000)
+VariantAvailability.create!(variant_id: item_1_variant_3.id, country: "JO", value: false)
+VariantPrice.create!(variant_id: item_1_variant_3.id, country: "JO", value: 3000)
 
 item_1_variant_4 = Variant.create!(item_id: item_1.id)
 item_1_variant_4_options = VariantOption.create!([
@@ -211,8 +214,8 @@ item_1_variant_4_options = VariantOption.create!([
     option_number: 2
   }
 ])
-VariantAvailability.create!(variant_id: item_1_variant_4.id, country: "JO", value: 4000)
-
+VariantAvailability.create!(variant_id: item_1_variant_4.id, country: "JO", value: true)
+VariantPrice.create!(variant_id: item_1_variant_4.id, country: "JO", value: 4000)
 
 item_2 = Item.create!(brand_id: brand_2.id)
 ItemDetail.create!([

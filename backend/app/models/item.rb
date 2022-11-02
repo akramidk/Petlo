@@ -12,6 +12,8 @@ class Item < ApplicationRecord
   has_many :relations 
   has_many :categories, through: :relations
 
+  belongs_to :brand
+
   validates :public_id, presence: true, uniqueness: true
   validates :brand_id, presence: true
 end

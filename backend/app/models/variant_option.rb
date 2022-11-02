@@ -1,6 +1,4 @@
-class VariantOption < ApplicationRecord
-  has_many :values, class_name: "OptionValue", foreign_key: [:option_id, :option_number]
-  
+class VariantOption < ApplicationRecord  
   belongs_to :variant
 
   validates :variant_id, presence: true, uniqueness: { scope: [:option_id, :option_number] }
