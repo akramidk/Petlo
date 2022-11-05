@@ -1,0 +1,14 @@
+module V1
+  class SectionsController < ApplicationController
+    before_action -> { current_customer(verified: true) }
+
+    include SectionsHelper
+
+    def index
+      language = params[:language]
+      response = SectionsHelper.all(customer: @customer, language: language)
+
+      render json: { data: response }, status: 200
+    end
+  end
+end 

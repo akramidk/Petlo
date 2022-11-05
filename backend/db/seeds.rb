@@ -217,6 +217,7 @@ item_1_variant_4_options = VariantOption.create!([
 VariantAvailability.create!(variant_id: item_1_variant_4.id, country: "JO", value: true)
 VariantPrice.create!(variant_id: item_1_variant_4.id, country: "JO", value: 4000)
 
+####
 item_2 = Item.create!(brand_id: brand_2.id)
 ItemDetail.create!([
   {
@@ -236,3 +237,83 @@ ItemAvailability.create!(
   value: false
 )
 item_2.image.attach(io: File.open("../images/item-2.png"), filename: "item-2")
+
+
+item_2_option_1 = Option.create!(
+  item_id: item_2.id,
+  weighted: true,
+  unit: "kg"
+)
+OptionName.create!([
+  {
+    option_id: item_2_option_1.id,
+    language: "en",
+    value: "Size"
+  },
+  {
+    option_id: item_2_option_1.id,
+    language: "ar",
+    value: "الحجم"
+  }
+])
+OptionValue.create!([
+  {
+    option_id: item_2_option_1.id,
+    number: 1,
+    language: "en",
+    value: 2
+  },
+  {
+    option_id: item_2_option_1.id,
+    number: 1,
+    language: "ar",
+    value: 2
+  },
+])
+
+item_2_variant_1 = Variant.create!(item_id: item_2.id)
+item_2_variant_1_options = VariantOption.create!([
+  {
+    variant_id: item_2_variant_1.id,
+    option_id: item_2_option_1.id,
+    option_number: 1
+  }
+])
+VariantAvailability.create!(variant_id: item_2_variant_1.id, country: "JO", value: true)
+VariantPrice.create!(variant_id: item_2_variant_1.id, country: "JO", value: 8000)
+
+#categories
+dogs_category = Category.create!(name: "dogs")
+cats_category = Category.create!(name: "cats")
+dogs_food_category = Category.create!(name: "food", parent_id: dogs_category.id)
+cats_food_category = Category.create!(name: "food", parent_id: cats_category.id)
+dogs_dry_food_category = Category.create!(name: "dry", parent_id: dogs_food_category.id)
+cats_dry_food_category = Category.create!(name: "dry", parent_id: cats_food_category.id)
+
+#relations
+Relation.create!([
+  {
+    item_id: item_1.id,
+    category_id: dogs_category.id
+  },
+  {
+    item_id: item_1.id,
+    category_id: dogs_food_category.id
+  },
+  {
+    item_id: item_1.id,
+    category_id: dogs_dry_food_category.id
+  },
+  {
+    item_id: item_2.id,
+    category_id: cats_category.id
+  },
+  {
+    item_id: item_2.id,
+    category_id: cats_food_category.id
+  },
+  {
+    item_id: item_2.id,
+    category_id: cats_dry_food_category.id
+  }
+])

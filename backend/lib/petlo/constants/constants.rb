@@ -3,6 +3,13 @@ module CONSTANTS
     "JO"
   ]
 
+  COUNTRIES_CURRENCIES = {
+    "JO" => {
+      "ar" => "دينار",
+      "en" => "JOD"
+    }
+  }
+
   LANGUAGES = [
     "ar",
     "en"

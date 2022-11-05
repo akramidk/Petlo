@@ -3,7 +3,7 @@ class Variant < ApplicationRecord
 
   has_many :options, class_name: "VariantOption"
   has_many :availabilities, class_name: "VariantAvailability"
-  has_many :preices, class_name: "VariantPrice"
+  has_many :prices, class_name: "VariantPrice"
 
   belongs_to :item
 
