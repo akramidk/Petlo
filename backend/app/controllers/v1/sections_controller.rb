@@ -8,7 +8,7 @@ module V1
       language = params[:language]
       response = SectionsHelper.all(customer: @customer, language: language)
 
-      render json: { data: response }, status: 200
+      render json: { data: response[:data] }, status: 200
     end
   end
 end 

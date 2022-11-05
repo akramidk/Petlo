@@ -23,6 +23,9 @@ Rails.application.routes.draw do
     post "sessions/verification/resend-code", to: "sessions#resend_verification_code"
 
     #sections
-    get "sections", to: "sections#index" 
+    get "sections", to: "sections#index"
+
+    #categories
+    get "categories/:category/items", to: "categories#category_items"
   end
 end

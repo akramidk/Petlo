@@ -17,7 +17,7 @@ module SectionsHelper::All
   ]
   
   def all(customer:, language:)
-    response = []
+    sections = []
   
     begin
       SECTIONS.each do |section|
@@ -38,7 +38,7 @@ module SectionsHelper::All
         }
       end
 
-      response
+      { data: sections }
     end  
   end
 end
