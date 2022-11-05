@@ -18,7 +18,10 @@ module Category::Items
 
     items = {
       has_more: @@limit || @@offset ? retrieve_items(limit: 1, offset: @@offset.to_i + @@limit.to_i).exists? : false,
-      data: retrieve_items(limit: @@limit, offset: @@offset).map{ |item| item_information(item) }
+      data: retrieve_items(limit: @@limit, offset: @@offset).map{ |item| item.short_information(
+        country: country,
+        language: language
+      )}
     }
   end
 
@@ -43,31 +46,5 @@ module Category::Items
         value: @@with_unavailable_items ? [true, false] : true
       }
     ).limit(limit).offset(offset)
-  end
-
-  def item_information(item)
-    variants = item.variants.joins(:availabilities).where(availabilities: { country: @@country })
-    number_of_variants = variants.count
-    
-    variants_prices = variants.map{ |variant| variant.prices.find_by(country: @@country).value}.sort
-    prices = {
-      min: variants_prices[0],
-      max: variants_prices[number_of_variants - 1]
-    }
-
-    {
-      public_id: item.public_id,
-      name: item.details.find_by(language: @@language).title,
-      brand: item.brand.names.find_by(language: @@language).value,
-      image: item.image.url,
-      variants: {
-        number: number_of_variants,
-        prices: {
-          min: prices[:min],
-          max: prices[:max],
-          currency: CONSTANTS::COUNTRIES_CURRENCIES[@@country][@@language]
-        }
-      }
-    }
   end
 end
