@@ -1,4 +1,6 @@
 class VariantOption < ApplicationRecord  
+  include OptionMethods
+
   belongs_to :variant
 
   validates :variant_id, presence: true, uniqueness: { scope: [:option_id, :option_number] }

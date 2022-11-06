@@ -1,6 +1,7 @@
 class Item < ApplicationRecord
   include PublicIdGenerator
   include ShortInformation
+  include LongInformation
 
   has_one_attached :image
 
