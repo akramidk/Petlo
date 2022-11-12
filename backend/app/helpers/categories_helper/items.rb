@@ -4,7 +4,8 @@ module CategoriesHelper::Items
   def items(category:, country:, language:, page:)
     offset = (LIMIT * page) - LIMIT
 
-    items = Category.items(
+    begin
+      items = Category.items(
       category: category,
       country: country,
       language: language,
@@ -13,5 +14,8 @@ module CategoriesHelper::Items
     )
 
     { has_more: items[:has_more], data: items[:data] }
+    rescue RuntimeError => error
+      raise(error)
+    end
   end
 end

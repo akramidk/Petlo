@@ -28,7 +28,7 @@ module SectionsHelper::All
           limit: (8)
         )
 
-        response << {
+        sections << {
           name: section[:name][language],
           category: section[:category],
           items: {

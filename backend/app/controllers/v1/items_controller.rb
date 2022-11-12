@@ -27,7 +27,7 @@ module V1
           currency: response[:currency]
         }, status: 200
       rescue RuntimeError => error
-        render json: { status: "failed", message: error.message }, status: 404 if error.message == "not_found"
+        render json: { status: "failed", message: error.message }, status: 404 if error.message == "item_not_found"
       end
     end
   end

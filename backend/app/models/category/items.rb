@@ -33,7 +33,7 @@ module Category::Items
       params = subcategory.nil? ? { name: name } : { name: name, parent_id: subcategory.id }
       subcategory = Category.find_by(params)
       
-      raise("wrong_category") unless subcategory
+      raise("category_not_found") unless subcategory
     end
 
     subcategory
