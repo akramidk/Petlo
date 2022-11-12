@@ -9,22 +9,26 @@ module V1
       country = @customer.country
       language = params[:language]
 
-      response = ItemsHelper.index(
-        public_id: public_id,
-        country: country,
-        language: language
-      )
-
-      render json: {
-        public_id: response[:public_id],
-        name: response[:name],
-        available: response[:available],
-        brand: response[:brand],
-        image: response[:image],
-        options: response[:options],
-        variants: response[:variants],
-        currency: response[:currency]
-      }, status: 200
+      begin
+        response = ItemsHelper.index(
+          public_id: public_id,
+          country: country,
+          language: language
+        )
+  
+        render json: {
+          public_id: response[:public_id],
+          name: response[:name],
+          available: response[:available],
+          brand: response[:brand],
+          image: response[:image],
+          options: response[:options],
+          variants: response[:variants],
+          currency: response[:currency]
+        }, status: 200
+      rescue RuntimeError => message
+        render json: { status: "failed", message: message }, status: 404 if message == "not_found"
+      end
     end
   end
 end
