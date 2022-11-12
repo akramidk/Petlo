@@ -3,5 +3,5 @@ class ItemDetail < ApplicationRecord
 
   validates :item_id, presence: true, uniqueness: { scope: :language }
   validates :language, presence: true, inclusion: { in: CONSTANTS::LANGUAGES }
-  validates :title, presence: true
+  validates :name, presence: true
 end

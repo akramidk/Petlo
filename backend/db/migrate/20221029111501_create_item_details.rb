@@ -3,7 +3,7 @@ class CreateItemDetails < ActiveRecord::Migration[7.0]
     create_table :item_details do |t|
       t.bigint :item_id, null: false
       t.string :language
-      t.string :title
+      t.string :name
 
       t.timestamps
     end

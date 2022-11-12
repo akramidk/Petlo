@@ -29,7 +29,7 @@ module Item::LongInformation
 
     {
       public_id: self.public_id,
-      name: self.details.find_by(language: language).title,
+      name: self.details.find_by(language: language).name,
       available: available,
       brand: self.brand.names.find_by(language: language).value,
       image: self.image.url,

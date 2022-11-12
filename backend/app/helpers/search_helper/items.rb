@@ -15,7 +15,7 @@ module SearchHelper::Items
         language: language
       }
     ).where(
-      "details.title LIKE ?", "%#{value}%"
+      "details.name LIKE ?", "%#{value}%"
     ).limit(LIMIT)
 
     items = {

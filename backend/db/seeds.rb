@@ -51,12 +51,12 @@ ItemDetail.create!([
   {
     item_id: item_1.id,
     language: "en",
-    title: "Roasted Chicken, Rice & Vegetable Flavor"
+    name: "Roasted Chicken, Rice & Vegetable Flavor"
   },
   {
     item_id: item_1.id,
     language: "ar",
-    title: "دجاج مشوي، أرز ونكهة نباتية"
+    name: "دجاج مشوي، أرز ونكهة نباتية"
   }
 ])
 ItemAvailability.create!(
@@ -223,12 +223,12 @@ ItemDetail.create!([
   {
     item_id: item_2.id,
     language: "en",
-    title: "Indoor Adult Dry Cat Food"
+    name: "Indoor Adult Dry Cat Food"
   },
   {
     item_id: item_2.id,
     language: "ar",
-    title: "طعام داخلي جاف للقطط البالغة"
+    name: "طعام داخلي جاف للقطط البالغة"
   }
 ])
 ItemAvailability.create!(
