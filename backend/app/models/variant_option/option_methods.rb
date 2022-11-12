@@ -4,6 +4,6 @@ module VariantOption::OptionMethods
   end
 
   def values
-    OptionValue.where(option_id: self.option_id, number: self.option_number)
+    OptionValue.where(option_id: self.option_id, number: self.option_value_number)
   end
 end

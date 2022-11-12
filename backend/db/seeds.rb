@@ -158,12 +158,12 @@ item_1_variant_1_options = VariantOption.create!([
   {
     variant_id: item_1_variant_1.id,
     option_id: item_1_option_1.id,
-    option_number: 1
+    option_value_number: 1
   },
   {
     variant_id: item_1_variant_1.id,
     option_id: item_1_option_2.id,
-    option_number: 1
+    option_value_number: 1
   }
 ])
 VariantAvailability.create!(variant_id: item_1_variant_1.id, country: "JO", value: true)
@@ -174,12 +174,12 @@ item_1_variant_2_options = VariantOption.create!([
   {
     variant_id: item_1_variant_2.id,
     option_id: item_1_option_1.id,
-    option_number: 1
+    option_value_number: 1
   },
   {
     variant_id: item_1_variant_2.id,
     option_id: item_1_option_2.id,
-    option_number: 2
+    option_value_number: 2
   }
 ])
 VariantAvailability.create!(variant_id: item_1_variant_2.id, country: "JO", value: true)
@@ -190,12 +190,12 @@ item_1_variant_3_options = VariantOption.create!([
   {
     variant_id: item_1_variant_3.id,
     option_id: item_1_option_1.id,
-    option_number: 2
+    option_value_number: 2
   },
   {
     variant_id: item_1_variant_3.id,
     option_id: item_1_option_2.id,
-    option_number: 1
+    option_value_number: 1
   }
 ])
 VariantAvailability.create!(variant_id: item_1_variant_3.id, country: "JO", value: false)
@@ -206,12 +206,12 @@ item_1_variant_4_options = VariantOption.create!([
   {
     variant_id: item_1_variant_4.id,
     option_id: item_1_option_1.id,
-    option_number: 2
+    option_value_number: 2
   },
   {
     variant_id: item_1_variant_4.id,
     option_id: item_1_option_2.id,
-    option_number: 2
+    option_value_number: 2
   }
 ])
 VariantAvailability.create!(variant_id: item_1_variant_4.id, country: "JO", value: true)
@@ -276,7 +276,7 @@ item_2_variant_1_options = VariantOption.create!([
   {
     variant_id: item_2_variant_1.id,
     option_id: item_2_option_1.id,
-    option_number: 1
+    option_value_number: 1
   }
 ])
 VariantAvailability.create!(variant_id: item_2_variant_1.id, country: "JO", value: true)
