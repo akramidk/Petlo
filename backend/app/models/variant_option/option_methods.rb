@@ -1,4 +1,8 @@
 module VariantOption::OptionMethods
+  def retrieve
+    Option.find_by(id: self.option_id)
+  end
+
   def names
     OptionName.where(option_id: self.option_id)
   end

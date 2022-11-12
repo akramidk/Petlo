@@ -4,6 +4,7 @@ module Item::LongInformation
 
     options = self.options.map{ |option|
       {
+        public_id: option.public_id,
         name: option.names.find_by(language: language).value,
         values: option.values.where(language: language).map{|option_value|
           option_value.value
@@ -18,6 +19,7 @@ module Item::LongInformation
         available: variant.availabilities.find_by(country: country).value,
         options: variant.options.map{|option|
           {
+            public_id: option.retrieve.public_id,
             name: option.names.find_by(language: language).value,
             value: option.values.find_by(language: language).value
           }

@@ -29,8 +29,8 @@ module V1
         )
 
         render json: { status: "succeeded", customer: response[:customer] }, status: 200
-      rescue RuntimeError => message
-        render json: { status: "failed", message: message  }, status: 400
+      rescue RuntimeError => error
+        render json: { status: "failed", message: error.message  }, status: 400
       end
     end
 
@@ -44,8 +44,8 @@ module V1
         )
 
         render json: { status: "succeeded", customer: response[:customer] }, status: 200
-      rescue RuntimeError => message
-        render json: { status: "failed", message: message  }, status: 400
+      rescue RuntimeError => error
+        render json: { status: "failed", message: error.message  }, status: 400
       end
     end
 

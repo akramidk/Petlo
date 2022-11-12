@@ -26,8 +26,8 @@ module V1
           variants: response[:variants],
           currency: response[:currency]
         }, status: 200
-      rescue RuntimeError => message
-        render json: { status: "failed", message: message }, status: 404 if message == "not_found"
+      rescue RuntimeError => error
+        render json: { status: "failed", message: error.message }, status: 404 if error.message == "not_found"
       end
     end
   end
