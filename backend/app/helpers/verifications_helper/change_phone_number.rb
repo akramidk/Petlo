@@ -1,5 +1,5 @@
-module VerificationsHelper
-  def self.change_phone_number(customer:, phone_number:, language:)
+module VerificationsHelper::ChangePhoneNumber
+  def change_phone_number(customer:, phone_number:, language:)
     raise("customer_verified_before") if customer.phone_verified?
 
     begin

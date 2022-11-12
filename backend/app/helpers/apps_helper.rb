@@ -1,3 +1,3 @@
 module AppsHelper
-  require "apps/version"
+  extend Version
 end

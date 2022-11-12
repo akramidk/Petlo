@@ -1,14 +1,11 @@
-module VerificationsHelper
-  def self.verify(customer:, verification_code:)
-    raise("customer_verified_before") if customer.phone_verified?
-
+module SessionsHelper::Verification
+  def verification(customer:, verification_code:)
     checking = customer.verify_verification_code(
       code: verification_code,
-      permission: "customer_verification" 
+      permission: ENUM::SESSION_TOKEN_PERMISSIONS[:SESSION_VERIFICATION]
     )
 
     if checking[:valid]
-      customer.phone_verified!
       session_token = SessionToken.generate(
         public_id: customer.public_id,
         phone_number: customer.phone_number

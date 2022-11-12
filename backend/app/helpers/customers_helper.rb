@@ -1,3 +1,3 @@
 module CustomersHelper
-  require "customers/create"
+  extend Create
 end

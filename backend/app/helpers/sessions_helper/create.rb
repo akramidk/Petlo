@@ -1,5 +1,5 @@
-module SessionsHelper
-  def self.create(phone_number:, password:, language:)
+module SessionsHelper::Create
+  def create(phone_number:, password:, language:)
     customer = Customer.find_by(phone_number: phone_number)
 
     if customer && customer.try(:authenticate, password)

@@ -1,17 +1,15 @@
-module VerificationsHelper
-  def self.resend_code(customer:, language:)
-    raise("customer_verified_before") if customer.phone_verified?
-
+module SessionsHelper::ResendVerificationCode
+  def resend_verification_code(customer:, language:)
     session_token = SessionToken.generate(
       public_id: customer.public_id,
       phone_number: customer.phone_number,
       limited: true,
-      limited_for: ENUM::SESSION_TOKEN_PERMISSIONS[:CUSTOMER_VERIFICATION]
+      limited_for: ENUM::SESSION_TOKEN_PERMISSIONS[:SESSION_VERIFICATION]
     )
 
     Customer::VerificationJob.perform_async(
       customer.public_id,
-      ENUM::SESSION_TOKEN_PERMISSIONS[:CUSTOMER_VERIFICATION],
+      ENUM::SESSION_TOKEN_PERMISSIONS[:SESSION_VERIFICATION],
       language
     )
 
