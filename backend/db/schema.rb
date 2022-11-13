@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_30_101303) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_13_162004) do
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.bigint "record_id", null: false
@@ -117,6 +117,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_30_101303) do
     t.bigint "item_id", null: false
     t.boolean "weighted"
     t.string "unit"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "pets", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "public_id", null: false
+    t.bigint "customer_id", null: false
+    t.string "name"
+    t.string "kind"
+    t.string "breed"
+    t.integer "gender"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

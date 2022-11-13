@@ -2,6 +2,8 @@ class Customer < ApplicationRecord
   include Verification
   include PublicIdGenerator
 
+  has_many :pets
+
   before_create :set_phone_verification_status
  
   encrypts :phone_number, deterministic: true
