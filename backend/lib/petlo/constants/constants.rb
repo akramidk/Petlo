@@ -23,29 +23,29 @@ module CONSTANTS
   }
 
   PETS = {
-    "Dog" => {
+    "dog" => {
       name: {
         "ar" => "كلب",
         "en" => "Dog"
       },
 
       breeds: {
-        "Golden Retriever" => {
-          "ar" => "Golden Retriever",
+        "golden_retriever" => {
+          "ar" => "جولدن ريترفير",
           "en" => "Golden Retriever"
         }
       }
     },
 
-    "Cat" => {
+    "cat" => {
       name: {
         "ar" => "قطة",
         "en" => "Cat"
       },
 
       breeds: {
-        "Scottish Fold" => {
-          "ar" => "Scottish Fold",
+        "scottish_fold" => {
+          "ar" => "سكوتش فولد",
           "en" => "Scottish Fold"
         }
       }

@@ -35,6 +35,7 @@ Rails.application.routes.draw do
     get "items/:public_id", to: "items#show"
     
     #pets
+    get "pets", to: "pets#index"
     post "pets", to: "pets#create"
   end
 end

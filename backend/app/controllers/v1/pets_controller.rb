@@ -4,6 +4,20 @@ module V1
 
     include PetsHelper
 
+    def index
+      customer = @customer
+      language = params[:language]
+      page = params[:page]
+
+      response = PetsHelper.index(
+        customer: customer,
+        language: language,
+        page: page
+      )
+
+      render json: { has_more: response[:has_more], data: response[:data]}, status: 200
+    end
+
     def create
       customer = @customer
       name = params[:name]
