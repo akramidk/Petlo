@@ -39,5 +39,24 @@ module V1
         render json: { status: "failed", message: error.message }, status: 400
       end
     end
+
+    def change_name
+      customer = @customer
+      public_id = params[:public_id]
+      name = params[:name]
+
+      begin
+        PetsHelper.change_name(
+          customer: @customer,
+          public_id: public_id,
+          name: name
+        )
+        
+        render json: { status: "succeeded" }, status: 200
+      rescue RuntimeError => error
+        status_code = error.message == "pet_not_found" ? 404 : 400
+        render json: { status: "failed", message: error.message }, status: status_code
+      end
+    end
   end
 end

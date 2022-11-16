@@ -37,5 +37,6 @@ Rails.application.routes.draw do
     #pets
     get "pets", to: "pets#index"
     post "pets", to: "pets#create"
+    patch "pets/:public_id/name", to: "pets#change_name"
   end
 end
