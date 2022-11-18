@@ -58,5 +58,30 @@ module V1
         render json: { status: "failed", message: error.message }, status: status_code
       end
     end
+
+    def change_image
+      customer = @customer
+      public_id = params[:public_id]
+      image = params[:image]
+
+      begin
+        PetsHelper.change_image(
+          customer: @customer,
+          public_id: public_id,
+          image: image
+        )
+        
+        render json: { status: "succeeded" }, status: 200
+      rescue RuntimeError => error
+        status_code = error.message == "pet_not_found" ? 404 : 400
+        render json: { status: "failed", message: error.message }, status: status_code
+      end
+    end
+
+    def informations
+      language = params[:language]
+      response = PetsHelper.informations(language: language)
+      render json: { data: response[:data] }
+    end
   end
 end

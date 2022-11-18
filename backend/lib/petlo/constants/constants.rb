@@ -51,4 +51,16 @@ module CONSTANTS
       }
     }
   }
+
+  PET_TYPES = {
+    "male" => {
+      "ar" => "ذكر",
+      "en" => "Male"
+    },
+
+    "female" => {
+      "ar" => "انثى",
+      "en" => "Female"
+    }
+  }
 end
