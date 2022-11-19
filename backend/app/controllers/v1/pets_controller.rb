@@ -24,6 +24,7 @@ module V1
       kind = params[:kind]
       breed = params[:breed]
       gender = params[:gender]
+      image = params[:image]
 
       begin
         PetsHelper.create(
@@ -31,7 +32,8 @@ module V1
           name: name,
           kind: kind,
           breed: breed,
-          gender: gender
+          gender: gender,
+          image: image
         )
         
         render json: { status: "succeeded" }, status: 200
