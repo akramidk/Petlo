@@ -9,6 +9,6 @@ class Pet < ApplicationRecord
   validates :customer_id, presence: true
   validates :name, presence: true, uniqueness: true
   validates :kind, presence: true, inclusion: { in: CONSTANTS::PETS.keys }
+  validates :breed, presence: true
   validates :gender, presence: true, inclusion: { in: CONSTANTS::PET_TYPES.keys }
-  validates :image, size: { less_than: 100.megabytes }, content_type: [:png, :jpg, :jpeg, :heic]
 end

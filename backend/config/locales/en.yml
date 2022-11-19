@@ -18,3 +18,23 @@ en:
             password:
               blank: "password_required"
               too_short: "password_too_short"
+
+        pet:
+          attributes:
+            public_id:
+              blank: "public_id_required"
+              taken: "public_id_used_before"
+            customer_id:
+              blank: "customer_id_required"
+            name:
+              blank: "name_required"
+              taken: "name_used_before"
+            kind:
+              blank: "kind_required"
+              inclusion: "invalid_kind"
+            breed:
+              blank: "breed_required"
+              inclusion: "invalid_breed"
+            gender:
+              blank: "gender_required"
+              inclusion: "invalid_gender"
