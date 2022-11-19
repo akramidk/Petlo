@@ -3,7 +3,7 @@ class CreateOptions < ActiveRecord::Migration[7.0]
     create_table :options do |t|
       t.string :public_id, null: false, unique: true
       t.bigint :item_id, null: false
-      t.boolean :weighted
+      t.boolean :weighted, null: false
       t.string :unit
 
       t.timestamps

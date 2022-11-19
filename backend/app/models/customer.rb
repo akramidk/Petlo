@@ -4,8 +4,6 @@ class Customer < ApplicationRecord
 
   has_many :pets
 
-  before_create :set_phone_verification_status
- 
   encrypts :phone_number, deterministic: true
   has_secure_password
   
@@ -24,9 +22,4 @@ class Customer < ApplicationRecord
   validates :country, presence: true, inclusion: { in: CONSTANTS::COUNTRIES }
   validates :phone_number, presence: true, uniqueness: true
   validates :password, presence: true, length: { minimum: 8 }, on: :create
-    
-  private
-  def set_phone_verification_status
-    self.phone_verification_status = 0
-  end
 end

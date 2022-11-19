@@ -37,8 +37,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_13_162004) do
 
   create_table "brand_names", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "brand_id", null: false
-    t.string "language"
-    t.string "value"
+    t.string "language", null: false
+    t.string "value", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -51,7 +51,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_13_162004) do
 
   create_table "categories", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "public_id", null: false
-    t.string "name"
+    t.string "name", null: false
     t.bigint "parent_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -59,11 +59,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_13_162004) do
 
   create_table "customers", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "public_id", null: false
-    t.string "name"
-    t.string "country"
-    t.string "phone_number"
-    t.integer "phone_verification_status"
-    t.string "password_digest"
+    t.string "name", null: false
+    t.string "country", null: false
+    t.string "phone_number", null: false
+    t.integer "phone_verification_status", default: 0, null: false
+    t.string "password_digest", null: false
     t.integer "verification_code"
     t.integer "verification_code_permission"
     t.datetime "verification_code_created_at"
@@ -74,16 +74,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_13_162004) do
 
   create_table "item_availabilities", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "item_id", null: false
-    t.string "country"
-    t.boolean "value"
+    t.string "country", null: false
+    t.boolean "value", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "item_details", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "item_id", null: false
-    t.string "language"
-    t.string "name"
+    t.string "language", null: false
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -97,8 +97,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_13_162004) do
 
   create_table "option_names", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "option_id", null: false
-    t.string "language"
-    t.string "value"
+    t.string "language", null: false
+    t.string "value", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -106,8 +106,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_13_162004) do
   create_table "option_values", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "option_id", null: false
     t.integer "number", null: false
-    t.string "language"
-    t.string "value"
+    t.string "language", null: false
+    t.string "value", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -115,7 +115,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_13_162004) do
   create_table "options", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "public_id", null: false
     t.bigint "item_id", null: false
-    t.boolean "weighted"
+    t.boolean "weighted", null: false
     t.string "unit"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -124,10 +124,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_13_162004) do
   create_table "pets", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "public_id", null: false
     t.bigint "customer_id", null: false
-    t.string "name"
-    t.string "kind"
-    t.string "breed"
-    t.string "gender"
+    t.string "name", null: false
+    t.string "kind", null: false
+    t.string "breed", null: false
+    t.string "gender", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -141,8 +141,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_13_162004) do
 
   create_table "variant_availabilities", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "variant_id", null: false
-    t.string "country"
-    t.boolean "value"
+    t.string "country", null: false
+    t.boolean "value", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -157,8 +157,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_13_162004) do
 
   create_table "variant_prices", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "variant_id", null: false
-    t.string "country"
-    t.integer "value"
+    t.string "country", null: false
+    t.integer "value", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
