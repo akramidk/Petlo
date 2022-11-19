@@ -1,5 +1,5 @@
-module PetsHelper::Informations
-  def informations(language:)
+module PetsHelper::Information
+  def information(language:)
     data = CONSTANTS::PETS.keys.map{|pet|
       breeds = CONSTANTS::PETS[pet][:breeds].keys.map{|breed|
         {

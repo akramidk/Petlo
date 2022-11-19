@@ -3,5 +3,5 @@ module PetsHelper
   extend Create
   extend ChangeName
   extend ChangeImage
-  extend Informations
+  extend Information
 end

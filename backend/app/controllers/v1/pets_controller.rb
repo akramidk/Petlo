@@ -80,9 +80,9 @@ module V1
       end
     end
 
-    def informations
+    def information
       language = params[:language]
-      response = PetsHelper.informations(language: language)
+      response = PetsHelper.information(language: language)
       render json: { data: response[:data] }
     end
   end
