@@ -40,5 +40,8 @@ Rails.application.routes.draw do
     patch "pets/:public_id/name", to: "pets#change_name"
     patch "pets/:public_id/image", to: "pets#change_image"
     get "pets/information", to: "pets#information"
+
+    #cards
+    post "cards", to: "cards#create"
   end
 end
