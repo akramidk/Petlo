@@ -8,4 +8,6 @@ console:
 	cd backend && rails c
 sidekiq:
 	cd backend && bundle exec sidekiq
+credentials:
+	cd backend && EDITOR=vim rails credentials:edit
 
