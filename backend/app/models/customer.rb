@@ -3,6 +3,7 @@ class Customer < ApplicationRecord
   include PublicIdGenerator
 
   has_many :pets
+  has_many :cards
 
   encrypts :phone_number, deterministic: true
   has_secure_password

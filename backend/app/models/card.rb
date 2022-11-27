@@ -1,6 +1,8 @@
 class Card < ApplicationRecord
   include PublicIdGenerator
 
+  belongs_to :customer
+
   validates :public_id, presence: true, uniqueness: true
   validates :customer_id, presence: true
   validates :processor, presence: true
