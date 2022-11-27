@@ -4,6 +4,7 @@ class CreateCards < ActiveRecord::Migration[7.0]
       t.string :public_id, null: false, unique: true
       t.bigint :customer_id, null: false
       t.string :processor, null: false
+      t.string :processor_card_id, null: false
       t.string :brand, null: false
       t.string :last4, null: false
       t.integer :exp_month, null: false
