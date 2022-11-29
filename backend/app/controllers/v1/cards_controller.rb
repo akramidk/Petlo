@@ -4,6 +4,15 @@ module V1
 
     include CardsHelper
 
+    def index
+      response = CardsHelper.index(
+        customer: @customer,
+        page: params[:page]
+      )
+
+      render json: { has_more: response[:has_more], data: response[:data] }, status: 200
+    end
+
     def create
       begin
         response = CardsHelper.create(

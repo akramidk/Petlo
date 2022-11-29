@@ -42,6 +42,7 @@ Rails.application.routes.draw do
     get "pets/information", to: "pets#information"
 
     #cards
+    get "cards", to: "cards#index"
     post "cards", to: "cards#create"
   end
 end
