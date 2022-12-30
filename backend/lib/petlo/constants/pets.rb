@@ -1,27 +1,4 @@
 module CONSTANTS
-  COUNTRIES = [
-    "JO"
-  ]
-
-  COUNTRIES_CURRENCIES = {
-    "JO" => {
-      "ar" => "دينار",
-      "en" => "JOD"
-    }
-  }
-
-  LANGUAGES = [
-    "ar",
-    "en"
-  ]
-
-  OPTION_UNITS = {
-    "kg" => {
-      "ar" => "كيلو جرام",
-      "en" => "KG"
-    }
-  }
-
   PETS = {
     "dog" => {
       name: {
@@ -49,18 +26,6 @@ module CONSTANTS
           "en" => "Scottish Fold"
         }
       }
-    }
-  }
-
-  PET_GENDERS = {
-    "male" => {
-      "ar" => "ذكر",
-      "en" => "Male"
-    },
-
-    "female" => {
-      "ar" => "انثى",
-      "en" => "Female"
     }
   }
 end
