@@ -5,8 +5,8 @@ class Customer < ApplicationRecord
   has_many :pets
   has_many :cards
 
-  encrypts :phone_number, deterministic: true
   has_secure_password
+  encrypts :phone_number, deterministic: true
   
   enum phone_verification_status: {
     unverified: 0,

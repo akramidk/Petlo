@@ -15,7 +15,7 @@ module V1
         page: page
       )
 
-      render json: { has_more: response[:has_more], data: response[:data]}, status: 200
+      render json: { has_more: response[:has_more], data: response[:data] }, status: 200
     end
 
     def create

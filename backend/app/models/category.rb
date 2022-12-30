@@ -1,6 +1,6 @@
 class Category < ApplicationRecord
   include PublicIdGenerator
-  extend Items 
+  extend Items
 
   has_many :relations 
   has_many :items, through: :relations
