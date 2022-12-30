@@ -52,7 +52,7 @@ module CONSTANTS
     }
   }
 
-  PET_TYPES = {
+  PET_GENDERS = {
     "male" => {
       "ar" => "ذكر",
       "en" => "Male"

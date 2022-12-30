@@ -8,7 +8,7 @@ module PetsHelper::Index
       name: pet.name,
       kind: CONSTANTS::PETS[pet.kind][:name][language],
       breed: CONSTANTS::PETS[pet.kind][:breeds][pet.breed][language],
-      gender: CONSTANTS::PET_TYPES[pet.gender][language],
+      gender: CONSTANTS::PET_GENDERS[pet.gender][language],
       image: pet.image.url
     }}
 
