@@ -38,3 +38,27 @@ en:
             gender:
               blank: "gender_required"
               inclusion: "invalid_gender"
+
+        card:
+          attributes:
+            public_id:
+              blank: "public_id_required"
+              taken: "public_id_used_before"
+            customer_id:
+              blank: "customer_id_required"
+            processor:
+              blank: "processor_required"
+            processor_card_id:
+              blank: "processor_card_id_required"
+            brand:
+              blank: "brand_required"
+            last4:
+              blank: "last4_required"
+            exp_month:
+              blank: "exp_month_required"
+              in: "invalid_exp_month"
+            exp_year:
+              blank: "exp_year_required"
+            fingerprint:
+              blank: "fingerprint_required"
+              taken: "card_used_before"
