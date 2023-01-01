@@ -1,6 +1,6 @@
 class SessionToken
   class << self
-    SECRET_KEY = Rails.application.credentials[:jwt][Rails.env.to_sym][:secret_key]
+    SECRET_KEY = ENV["JWT_SECRET_KEY"]
     ALGORITHM = "HS256" 
 
     @@public_id = nil

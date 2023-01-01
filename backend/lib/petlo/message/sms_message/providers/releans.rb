@@ -1,5 +1,5 @@
 class Releans
-  SECRET_KEY = Rails.application.credentials[:releans][:secret_key]
+  SECRET_KEY = ENV["RELEANS_SECRET_KEY"]
   SENDER_NAME = "Petlo"
 
   @@to = nil

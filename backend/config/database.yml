@@ -1,23 +1,17 @@
 default: &default
   adapter: mysql2
-  database: petlo
+  database: <%= ENV["DATABASE_NAME"] %>
   ssl_mode: verify_identity
   sslca: "/etc/ssl/certs/ca-certificates.crt"
 
 production:
   <<: *default
-  username: <%= Rails.application.credentials[:database][:production][:username] %>
-  host: <%= Rails.application.credentials[:database][:production][:host] %>
-  password: <%= Rails.application.credentials[:database][:production][:password] %>
-
-test:
-  <<: *default
-  username: <%= Rails.application.credentials[:database][:development][:username] %>
-  host: <%= Rails.application.credentials[:database][:development][:host] %>
-  password: <%= Rails.application.credentials[:database][:development][:password] %>
+  host: <%= ENV["DATABASE_HOST"] %>
+  username: <%= ENV["DATABASE_USERNAME"] %>
+  password: <%= ENV["DATABASE_PASSWORD"] %>
 
 development:
   <<: *default
-  username: <%= Rails.application.credentials[:database][:development][:username] %>
-  host: <%= Rails.application.credentials[:database][:development][:host] %>
-  password: <%= Rails.application.credentials[:database][:development][:password] %>
+  host: <%= ENV["DATABASE_HOST"] %>
+  username: <%= ENV["DATABASE_USERNAME"] %>
+  password: <%= ENV["DATABASE_PASSWORD"] %>

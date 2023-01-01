@@ -1,7 +1,7 @@
 class CheckoutLib
   class << self
-    API_URL = Rails.application.credentials[:checkout][Rails.env.to_sym][:api_url]
-    SECRET_KEY = Rails.application.credentials[:checkout][Rails.env.to_sym][:secret_key]
+    API_URL = ENV["CHECKOUT_API_URL"]
+    SECRET_KEY = ENV["CHECKOUT_SECRET_KEY"]
 
     def create_a_card(data:)
       response = HTTParty.post(
