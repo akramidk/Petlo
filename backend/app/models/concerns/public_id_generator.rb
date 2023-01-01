@@ -4,7 +4,7 @@ module PublicIdGenerator
   extend ActiveSupport::Concern
 
   included do
-      before_validation :set_public_id, if: -> { self.public_id == nil }
+    before_validation :set_public_id, if: -> { self.public_id == nil }
   end
 
   PUBLIC_ID_ALPHABET = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
