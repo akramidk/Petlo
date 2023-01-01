@@ -1,0 +1,64 @@
+ar:
+  #The first number define the error type (common: 1, models: 2, helpers: 3, controllers: 4)
+  #The next 3 numbers define the class (common errors always 000)
+  #The next 3 number define the error number
+  errors:
+    #common
+    1000000: "خطأ غير معروف، يرجى المحاولة مرة آخرى."
+    1000001: "Invalid session token."
+
+    #customer model: 000
+    2000000: "Customer public id is required."
+    2000001: "Customer public id is used before."
+    2000002: "Customer name is required."
+    2000003: "Customer country is required."
+    2000004: "Customer country is invalid."
+    2000005: "Customer phone number is required."
+    2000006: "Customer phone number is used before."
+    2000007: "Customer password is required"
+    2000008: "Customer password is too short"
+    2000009: "Invalid verification code."
+    2000010: "Invalid permission."
+    2000011: "Verification code expired."
+
+    #pet model: 001
+    2001000: "Pet public id is required."
+    2001001: "Pet public id is used before."
+    2001002: "Pet customer id is required."
+    2001003: "Pet name is required."
+    2001004: "Pet name is used before."
+    2001005: "Pet kind is required."
+    2001006: "Pet kind is invalid."
+    2001007: "Pet breed is required."
+    2001008: "Pet breed is invalid."
+    2001009: "Pet gender is required."
+    2001010: "Pet gender is invalid."
+
+    #card model: 002
+    2002000: "Card public id is required."
+    2002001: "Card public id is used before."
+    2002002: "Card customer id is required."
+    2002003: "Card processor is required."
+    2002004: "Card processor card id is required."
+    2002005: "Card brand is required."
+    2002006: "Card last4 is required."
+    2002007: "Card exp month is required."
+    2002008: "Card exp month is invalid."
+    2002009: "Card exp year is required."
+    2002010: "Card fingerprint is required."
+    2002011: "Card fingerprint is useed before."
+
+    #category model: 003
+    2003000: "القسم غير موجود."
+
+    #items helper: 000
+    3000000: "Item not found."
+
+    #pets helper: 001
+    3001000: "Pet not found."
+
+    #sessions helper: 002
+    3002000: "Invalid credentials."
+
+    #verifications controller: 000
+    4000000: "Customer verified before."

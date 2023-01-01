@@ -8,7 +8,7 @@ module V1
       response = CategoriesHelper.items(
         category: params[:category],
         country: @customer.country,
-        language: params[:language],
+        language: params[:locale],
         page: params[:page]
       )
 

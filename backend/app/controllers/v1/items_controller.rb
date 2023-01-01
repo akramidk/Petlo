@@ -8,7 +8,7 @@ module V1
       response = ItemsHelper.index(
         public_id: params[:public_id],
         country: @customer.country,
-        language: params[:language]
+        language: params[:locale]
       )
 
       render json: {

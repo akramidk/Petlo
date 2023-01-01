@@ -7,7 +7,7 @@ module V1
     def index
       response = SearchHelper.items(
         country: @customer.country,
-        language: params[:language],
+        language: params[:locale],
         value: params[:value]
       )
 

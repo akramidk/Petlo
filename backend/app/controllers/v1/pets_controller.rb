@@ -7,7 +7,7 @@ module V1
     def index
       response = PetsHelper.index(
         customer: @customer,
-        language: params[:language],
+        language: params[:locale],
         page: params[:page]
       )
 
@@ -48,7 +48,7 @@ module V1
     end
 
     def information
-      response = PetsHelper.information(language: params[:language])
+      response = PetsHelper.information(language: params[:locale])
       render json: { data: response[:data] }, status: 200
     end
   end

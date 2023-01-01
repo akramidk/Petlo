@@ -20,7 +20,7 @@ module V1
       response = SessionsHelper.create(
         phone_number: params[:phone_number],
         password: params[:password],
-        language: params[:language]
+        language: params[:locale]
       )
 
       render json: { status: "succeeded", customer: response[:customer] }, status: 200
@@ -38,7 +38,7 @@ module V1
     def resend_verification_code
       response = SessionsHelper.resend_verification_code(
         customer: @customer,
-        language: params[:language]
+        language: params[:locale]
       )
 
       render json: { status: "succeeded", customer: response[:customer]}

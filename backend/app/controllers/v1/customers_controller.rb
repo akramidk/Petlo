@@ -8,7 +8,7 @@ module V1
         country: params[:country],
         phone_number: params[:phone_number],
         password: params[:password],
-        language: params[:language]
+        language: params[:locale]
       )
 
       render json: { status: "succeeded", customer: response[:customer] }, status: 200

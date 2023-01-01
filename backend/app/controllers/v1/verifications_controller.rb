@@ -23,7 +23,7 @@ module V1
     def resend_code
       response = VerificationsHelper.resend_code(
         customer: @customer,
-        language: params[:language]
+        language: params[:locale]
       )
 
       render json: { status: "succeeded", customer: response[:customer] }, status: 200
@@ -33,7 +33,7 @@ module V1
       response = VerificationsHelper.change_phone_number(
         customer: @customer,
         phone_number: params[:phone_number],
-        language: params[:language]
+        language: params[:locale]
       )
 
       render json: { status: "succeeded", customer: response[:customer] }, status: 200
