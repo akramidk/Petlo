@@ -56,5 +56,8 @@ en:
     #pets helper: 001
     3001000: "Pet not found."
 
+    #sessions helper: 002
+    3002000: "Invalid credentials."
+
     #verifications controller: 000
     4000000: "Customer verified before."

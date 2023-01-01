@@ -17,44 +17,28 @@ module V1
     end
 
     def create
-      phone_number = params[:phone_number]
-      password = params[:password]
-      language = params[:language]
+      response = SessionsHelper.create(
+        phone_number: params[:phone_number],
+        password: params[:password],
+        language: params[:language]
+      )
 
-      begin
-        response = SessionsHelper.create(
-          phone_number: phone_number,
-          password: password,
-          language: language
-        )
-
-        render json: { status: "succeeded", customer: response[:customer] }, status: 200
-      rescue RuntimeError => error
-        render json: { status: "failed", message: error.message  }, status: 400
-      end
+      render json: { status: "succeeded", customer: response[:customer] }, status: 200
     end
 
     def verification
-      verification_code = params[:verification_code]
+      response = SessionsHelper.verification(
+        customer: @customer,
+        verification_code: params[:verification_code]
+      )
 
-      begin
-        response = SessionsHelper.verification(
-          customer: @customer,
-          verification_code: verification_code
-        )
-
-        render json: { status: "succeeded", customer: response[:customer] }, status: 200
-      rescue RuntimeError => error
-        render json: { status: "failed", message: error.message  }, status: 400
-      end
+      render json: { status: "succeeded", customer: response[:customer] }, status: 200
     end
 
     def resend_verification_code
-      language = params[:language]
-
       response = SessionsHelper.resend_verification_code(
         customer: @customer,
-        language: language
+        language: params[:language]
       )
 
       render json: { status: "succeeded", customer: response[:customer]}

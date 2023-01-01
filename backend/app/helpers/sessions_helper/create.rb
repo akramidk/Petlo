@@ -21,7 +21,7 @@ module SessionsHelper::Create
 
       { customer: { verified: customer_verified, session_token: session_token }  }
     else
-      raise("invalid_credentials")
+      raise(RuntimeError, 3002000)
     end
   end
 end 
