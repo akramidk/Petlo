@@ -14,16 +14,12 @@ module V1
     end
 
     def create
-      begin
-        response = CardsHelper.create(
-          customer: @customer,
-          token: params[:token]
-        )
+      response = CardsHelper.create(
+        customer: @customer,
+        token: params[:token]
+      )
 
-        render json: { status: "succeeded" }, status: 200
-      rescue RuntimeError => error
-        render json: { status: "failed", message: error.message }, status: 400
-      end
+      render json: { status: "succeeded" }, status: 200
     end
   end
 end

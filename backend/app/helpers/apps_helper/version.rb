@@ -6,9 +6,9 @@ module AppsHelper::Version
   
   def version(app_version:, phone_os:)
     if app_version.to_f < APP_VERSION[phone_os]
-      { status: true }
+      true
     else
-      { status: false }
+      false
     end
   end
 end

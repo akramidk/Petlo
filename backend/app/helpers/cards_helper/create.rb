@@ -23,12 +23,8 @@ module CardsHelper::Create
           fingerprint: response[:data][:fingerprint]
         )
       else
-        raise("unkown_error")
+        raise(RuntimeError)
       end
-    rescue ActiveRecord::RecordInvalid => invalid
-      raise(ActiveRecordError.extract(object: invalid))
-    rescue
-      raise("unkown_error")
     end
   end
 end
