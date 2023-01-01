@@ -5,30 +5,22 @@ module V1
     include ItemsHelper
 
     def show
-      public_id = params[:public_id]
-      country = @customer.country
-      language = params[:language]
+      response = ItemsHelper.index(
+        public_id: params[:public_id],
+        country: @customer.country,
+        language: params[:language]
+      )
 
-      begin
-        response = ItemsHelper.index(
-          public_id: public_id,
-          country: country,
-          language: language
-        )
-  
-        render json: {
-          public_id: response[:public_id],
-          name: response[:name],
-          available: response[:available],
-          brand: response[:brand],
-          image: response[:image],
-          options: response[:options],
-          variants: response[:variants],
-          currency: response[:currency]
-        }, status: 200
-      rescue RuntimeError => error
-        render json: { status: "failed", message: error.message }, status: 404 if error.message == "item_not_found"
-      end
+      render json: {
+        public_id: response[:public_id],
+        name: response[:name],
+        available: response[:available],
+        brand: response[:brand],
+        image: response[:image],
+        options: response[:options],
+        variants: response[:variants],
+        currency: response[:currency]
+      }, status: 200
     end
   end
 end
