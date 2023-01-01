@@ -5,11 +5,11 @@ class Pet < ApplicationRecord
   
   belongs_to :customer
 
-  validates :public_id, presence: true, uniqueness: true
-  validates :customer_id, presence: true
-  validates :name, presence: true, uniqueness: { scope: [:kind, :breed, :gender] }
-  validates :kind, presence: true, inclusion: { in: CONSTANTS::PETS.keys }
-  validates :breed, presence: true, inclusion: { in: CONSTANTS::PETS["dog"][:breeds].keys }, if: -> { kind == "dog" }
-  validates :breed, presence: true, inclusion: { in: CONSTANTS::PETS["cat"][:breeds].keys }, if: -> { kind == "cat" }
-  validates :gender, presence: true, inclusion: { in: CONSTANTS::PET_GENDERS.keys }
+  validates :public_id, presence: { message: 2001000 }, uniqueness: { message: 2001001 }
+  validates :customer_id, presence: { message: 2001002 }
+  validates :name, presence: { message: 2001003 }, uniqueness: { scope: [:kind, :breed, :gender], message: 2001004 }
+  validates :kind, presence: { message: 2001005 }, inclusion: { in: CONSTANTS::PETS.keys, message: 2001006 }
+  validates :breed, presence: { message: 2001007 }, inclusion: { in: CONSTANTS::PETS["dog"][:breeds].keys, message: 2001008 }, if: -> { kind == "dog" }
+  validates :breed, presence: { message: 2001007 }, inclusion: { in: CONSTANTS::PETS["cat"][:breeds].keys, message: 2001008 }, if: -> { kind == "cat" }
+  validates :gender, presence: { message: 2001009 }, inclusion: { in: CONSTANTS::PET_GENDERS.keys, message: 2001010 }
 end

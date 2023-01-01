@@ -3,13 +3,13 @@ class Card < ApplicationRecord
 
   belongs_to :customer
 
-  validates :public_id, presence: true, uniqueness: true
-  validates :customer_id, presence: true
-  validates :processor, presence: true
-  validates :processor_card_id, presence: true
-  validates :brand, presence: true
-  validates :last4, presence: true
-  validates :exp_month, presence: true, numericality: { in: 1..12 }
-  validates :exp_year, presence: true
-  validates :fingerprint, presence: true, uniqueness: { scope: [:customer_id, :processor] }
+  validates :public_id, presence: { message: 2002000 }, uniqueness: { message: 2002001 }
+  validates :customer_id, presence: { message: 2002002 }
+  validates :processor, presence: { message: 2002003 }
+  validates :processor_card_id, presence: { message: 2002004 }
+  validates :brand, presence: { message: 2002005 }
+  validates :last4, presence: { message: 2002006 }
+  validates :exp_month, presence: { message: 2002007 }, numericality: { in: 1..12, message: 2002008 }
+  validates :exp_year, presence: { message: 2002009 }
+  validates :fingerprint, presence: { message: 2002010 }, uniqueness: { scope: [:customer_id, :processor], message: 2002011 }
 end

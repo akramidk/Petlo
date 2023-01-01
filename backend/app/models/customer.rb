@@ -18,9 +18,9 @@ class Customer < ApplicationRecord
     "#{ENUM::SESSION_TOKEN_PERMISSIONS[:SESSION_VERIFICATION]}": 1
   }, _prefix: :verification_code_permission
 
-  validates :public_id, presence: true, uniqueness: true
-  validates :name, presence: true
-  validates :country, presence: true, inclusion: { in: CONSTANTS::COUNTRIES }
-  validates :phone_number, presence: true, uniqueness: true
-  validates :password, presence: true, length: { minimum: 8 }, on: :create
+  validates :public_id, presence: { message: 2000000 }, uniqueness: { message: 2000001 }
+  validates :name, presence: { message: 2000002 }
+  validates :country, presence: { message: 2000003 }, inclusion: { in: CONSTANTS::COUNTRIES, message: 2000004 }
+  validates :phone_number, presence: { message: 2000005 }, uniqueness: { message: 2000006 }
+  validates :password, presence: { message: 2000007 }, length: { minimum: 8, message: 2000008 }, on: :create
 end

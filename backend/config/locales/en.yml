@@ -1,64 +1,45 @@
 en:
-  activerecord:
-    errors:
-      models:
-        customer:
-          attributes:
-            public_id:
-              blank: "public_id_required"
-              taken: "public_id_used_before"
-            name:
-              blank: "name_required"
-            country:
-              blank: "country_required"
-              inclusion: "invalid_country"
-            phone_number:
-              blank: "phone_number_required"
-              taken: "phone_number_used_before"
-            password:
-              blank: "password_required"
-              too_short: "password_too_short"
+  #The first number define the error type (common: 1, models: 2, helpers: 3, controllers: 4)
+  #The next 3 numbers define the class (common errors always 000)
+  #The next 3 number define the error number
+  errors:
+    #common
+    1000000: "Unknown error, please try again."
 
-        pet:
-          attributes:
-            public_id:
-              blank: "public_id_required"
-              taken: "public_id_used_before"
-            customer_id:
-              blank: "customer_id_required"
-            name:
-              blank: "name_required"
-              taken: "name_used_before"
-            kind:
-              blank: "kind_required"
-              inclusion: "invalid_kind"
-            breed:
-              blank: "breed_required"
-              inclusion: "invalid_breed"
-            gender:
-              blank: "gender_required"
-              inclusion: "invalid_gender"
+    #customer model: 000
+    2000000: "Customer public id is required."
+    2000001: "Customer public id is used before."
+    2000002: "Customer name is required."
+    2000003: "Customer country is required."
+    2000004: "Customer country is invalid."
+    2000005: "Customer phone number is required."
+    2000006: "Customer phone number is used before."
+    2000007: "Customer password is required"
+    2000008: "Customer password is too short"
 
-        card:
-          attributes:
-            public_id:
-              blank: "public_id_required"
-              taken: "public_id_used_before"
-            customer_id:
-              blank: "customer_id_required"
-            processor:
-              blank: "processor_required"
-            processor_card_id:
-              blank: "processor_card_id_required"
-            brand:
-              blank: "brand_required"
-            last4:
-              blank: "last4_required"
-            exp_month:
-              blank: "exp_month_required"
-              in: "invalid_exp_month"
-            exp_year:
-              blank: "exp_year_required"
-            fingerprint:
-              blank: "fingerprint_required"
-              taken: "card_used_before"
+    #pet model: 001
+    2001000: "Pet public id is required."
+    2001001: "Pet public id is used before."
+    2001002: "Pet customer id is required."
+    2001003: "Pet name is required."
+    2001004: "Pet name is used before."
+    2001005: "Pet kind is required."
+    2001006: "Pet kind is invalid."
+    2001007: "Pet breed is required."
+    2001008: "Pet breed is invalid."
+    2001009: "Pet gender is required."
+    2001010: "Pet gender is invalid."
+
+    #card model: 002
+    2002000: "Card public id is required."
+    2002001: "Card public id is used before."
+    2002002: "Card customer id is required."
+    2002003: "Card processor is required."
+    2002004: "Card processor card id is required."
+    2002005: "Card brand is required."
+    2002006: "Card last4 is required."
+    2002007: "Card exp month is required."
+    2002008: "Card exp month is invalid."
+    2002009: "Card exp year is required."
+    2002010: "Card fingerprint is required."
+    2002011: "Card fingerprint is useed before."
