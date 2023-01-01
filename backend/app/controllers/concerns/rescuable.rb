@@ -23,15 +23,9 @@ module Rescuable
     private
     def get_the_error
         begin
-            {
-                code: @@code.to_i,
-                message: I18n.t!("errors.#{@@code}")
-            }
+            { code: @@code.to_i, message: I18n.t!("errors.#{@@code}") }
         rescue
-            {
-                code: UNKNOWN_ERROR_CODE,
-                message: I18n.t!("errors.#{UNKNOWN_ERROR_CODE}")
-            }
+            { code: UNKNOWN_ERROR_CODE, message: I18n.t!("errors.#{UNKNOWN_ERROR_CODE}") }
         end
     end
 

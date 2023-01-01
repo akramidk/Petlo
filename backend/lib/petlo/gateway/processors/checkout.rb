@@ -29,9 +29,7 @@ class CheckoutLib
           }
         }
       else
-        {
-          status: "failed"
-        }
+        { status: "failed" }
       end
     end
   end

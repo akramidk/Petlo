@@ -43,3 +43,6 @@ en:
     2002009: "Card exp year is required."
     2002010: "Card fingerprint is required."
     2002011: "Card fingerprint is useed before."
+
+    #category model: 003
+    2003000: "Category not found."
