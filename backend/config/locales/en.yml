@@ -5,6 +5,7 @@ en:
   errors:
     #common
     1000000: "Unknown error, please try again."
+    1000001: "Invalid session token."
 
     #customer model: 000
     2000000: "Customer public id is required."
