@@ -30,6 +30,6 @@ module Rescuable
     end
 
     def render_the_response
-        render json: { status: "failed", error: @@error_object }, status: 400
+        render json: { status: "failed", error: @@error_object }, status: CONSTANTS::ERRORS_STATUS_CODE[@@error_object[:code]]
     end
 end
