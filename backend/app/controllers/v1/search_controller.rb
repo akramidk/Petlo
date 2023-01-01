@@ -5,14 +5,10 @@ module V1
     include SearchHelper
 
     def index
-      country = @customer.country
-      language = params[:language]
-      value = params[:value]
-
       response = SearchHelper.items(
-        country: country,
-        language: language,
-        value: value
+        country: @customer.country,
+        language: params[:language],
+        value: params[:value]
       )
 
       render json: { has_more: response[:has_more], data: response[:data]}, status: 200
