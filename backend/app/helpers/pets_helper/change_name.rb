@@ -3,13 +3,9 @@ module PetsHelper::ChangeName
     pet = customer.pets.find_by(public_id: public_id)
 
     if pet
-      begin
-        pet.update(name: name)
-      rescue ActiveRecord::RecordInvalid => invalid
-        raise(ActiveRecordError.extract(object: invalid))
-      end
+      pet.update!(name: name)
     else
-      raise("pet_not_found")
+      raise(RuntimeError, 3001000)
     end
   end
 end  

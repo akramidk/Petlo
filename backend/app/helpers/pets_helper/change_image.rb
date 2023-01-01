@@ -3,13 +3,9 @@ module PetsHelper::ChangeImage
     pet = customer.pets.find_by(public_id: public_id)
 
     if pet
-      begin
-        pet.image.attach(image)
-      rescue ActiveRecord::RecordInvalid => invalid
-        raise(ActiveRecordError.extract(object: invalid))
-      end
+      pet.image.attach!(image)
     else
-      raise("pet_not_found")
+      raise(RuntimeError, 3001000)
     end
   end
 end  

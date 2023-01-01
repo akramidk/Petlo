@@ -53,5 +53,8 @@ en:
     #items helper: 000
     3000000: "Item not found."
 
+    #pets helper: 001
+    3001000: "Pet not found."
+
     #verifications controller: 000
     4000000: "Customer verified before."
