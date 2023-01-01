@@ -1,7 +1,5 @@
 module VerificationsHelper::Verify
   def verify(customer:, verification_code:)
-    raise("customer_verified_before") if customer.phone_verified?
-
     checking = customer.verify_verification_code(
       code: verification_code,
       permission: "customer_verification" 
@@ -15,8 +13,6 @@ module VerificationsHelper::Verify
       )
 
       { customer: { name: customer.name, session_token: session_token  } }
-    else
-      raise(checking[:message])
     end
   end
 end

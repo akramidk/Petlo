@@ -1,7 +1,5 @@
 module VerificationsHelper::ResendCode
   def resend_code(customer:, language:)
-    raise("customer_verified_before") if customer.phone_verified?
-
     session_token = SessionToken.generate(
       public_id: customer.public_id,
       phone_number: customer.phone_number,

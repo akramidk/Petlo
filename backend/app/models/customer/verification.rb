@@ -15,11 +15,11 @@ module Customer::Verification
 
   def verify_verification_code(code:, permission:)
     if code != self.verification_code
-      return { valid: false, message: "invalid_verification_code" }
+      raise(RuntimeError, 2000009)
     elsif permission != self.verification_code_permission
-      return { valid: false, message: "invalid_permission" }
+      raise(RuntimeError, 2000010)
     elsif Time.now > (self.verification_code_created_at + 15.minutes)
-      return { valid: false, message: "verification_code_expired" }
+      raise(RuntimeError, 2000011)
     end
 
     reset_verification

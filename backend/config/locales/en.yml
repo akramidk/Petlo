@@ -16,6 +16,9 @@ en:
     2000006: "Customer phone number is used before."
     2000007: "Customer password is required"
     2000008: "Customer password is too short"
+    2000009: "Invalid verification code."
+    2000010: "Invalid permission."
+    2000011: "Verification code expired."
 
     #pet model: 001
     2001000: "Pet public id is required."
@@ -46,3 +49,6 @@ en:
 
     #category model: 003
     2003000: "Category not found."
+
+    #verifications controller: 000
+    4000000: "Customer verified before."

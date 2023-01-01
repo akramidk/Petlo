@@ -3,25 +3,15 @@ module V1
     include CustomersHelper
 
     def create
-      name = params[:name]
-      country = params[:country]
-      phone_number = params[:phone_number]
-      password = params[:password]
-      language = params[:language]
+      response = CustomersHelper.create(
+        name: params[:name],
+        country: params[:country],
+        phone_number: params[:phone_number],
+        password: params[:password],
+        language: params[:language]
+      )
 
-      begin
-        response = CustomersHelper.create(
-          name: name,
-          country: country,
-          phone_number: phone_number,
-          password: password,
-          language: language
-        )
-
-        render json: { status: "succeeded", customer: response[:customer] }, status: 200
-      rescue RuntimeError => error
-        render json: { status: "failed", message: error.message }, status: 400
-      end
+      render json: { status: "succeeded", customer: response[:customer] }, status: 200
     end
   end
 end
