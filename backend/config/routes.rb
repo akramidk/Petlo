@@ -45,6 +45,10 @@ Rails.application.routes.draw do
       #cards
       get "cards", to: "cards#index"
       post "cards", to: "cards#create"
+
+      #addresses
+      get "addresses", to: "addresses#index"
+      post "addresses", to: "addresses#create"    
     end
   end
 end
