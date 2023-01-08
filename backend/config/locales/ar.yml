@@ -1,10 +1,10 @@
-ar:
+en:
   #The first number define the error type (common: 1, models: 2, helpers: 3, controllers: 4)
   #The next 3 numbers define the class (common errors always 000)
   #The next 3 number define the error number
   errors:
     #common
-    1000000: "خطأ غير معروف، يرجى المحاولة مرة آخرى."
+    1000000: "Unknown error, please try again."
     1000001: "Invalid session token."
 
     #customer model: 000
@@ -48,8 +48,18 @@ ar:
     2002010: "Card fingerprint is required."
     2002011: "Card fingerprint is useed before."
 
+    #address model: 003
+    2003000: "Address public id is required."
+    2003001: "Address public id is used before."
+    2003002: "Customer id is required."
+    2003003: "Address is used before."
+    2003004: "Address name is required."
+    2003005: "Address name is used before."
+    2003006: "Address longitude is required."
+    2003007: "Address latitude is required."
+
     #category model: 003
-    2003000: "القسم غير موجود."
+    2003000: "Category not found."
 
     #items helper: 000
     3000000: "Item not found."
