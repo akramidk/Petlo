@@ -3,4 +3,5 @@ module CustomersHelper
   extend RequestPermission
   extend Delete
   extend RequestResetPassword
+  extend VerifyResetPasswordRequest
 end

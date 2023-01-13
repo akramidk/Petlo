@@ -20,7 +20,8 @@ Rails.application.routes.draw do
       delete "customers", to: "customers#delete"
 
       post "customers/request-reset-password", to: "customers#request_reset_password"
-
+      post "customers/verify-reset-password-request", to: "customers#verify_reset_password_request"
+      
       #sessions
       get "sessions", to: "sessions#index"
       post "sessions", to: "sessions#create"

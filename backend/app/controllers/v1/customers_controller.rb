@@ -54,6 +54,12 @@ module V1
     end
 
     def verify_reset_password_request
+      response = CustomersHelper.verify_reset_password_request(
+        customer: @customer,
+        verification_code: params[:verification_code]
+      )
+
+      render json: { status: "succeeded", customer: response[:customer] }, status: 200
     end
 
     def reset_password
