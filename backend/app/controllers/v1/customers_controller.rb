@@ -12,6 +12,11 @@ module V1
       verified: [true, false] 
     )}, only: [:verify_reset_password_request]
 
+    before_action -> { current_customer(
+      permission: ENUM::PERMISSIONS[:RESET_PASSWORD],
+      verified: [true, false] 
+    )}, only: [:reset_password]
+
     def create
       response = CustomersHelper.create(
         name: params[:name],
@@ -63,6 +68,12 @@ module V1
     end
 
     def reset_password
+      response = CustomersHelper.reset_password(
+        customer: @customer,
+        new_password: params[:new_password]
+      )
+
+      render json: { status: "succeeded" }, status: 200
     end
   end
 end

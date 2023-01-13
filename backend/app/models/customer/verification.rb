@@ -4,7 +4,7 @@ module Customer::Verification
   def generate_verification_code(permission:)
     code = SecureRandom.random_number(100000..999999)
 
-    self.update(
+    self.update!(
       verification_code: code,
       verification_code_permission: permission,
       verification_code_created_at: Time.now
@@ -28,7 +28,7 @@ module Customer::Verification
 
   private
   def reset_verification
-    self.update(
+    self.update!(
       verification_code: nil,
       verification_code_permission: nil,
       verification_code_created_at: nil

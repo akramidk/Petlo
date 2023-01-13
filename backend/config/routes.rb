@@ -21,6 +21,7 @@ Rails.application.routes.draw do
 
       post "customers/request-reset-password", to: "customers#request_reset_password"
       post "customers/verify-reset-password-request", to: "customers#verify_reset_password_request"
+      post "customers/reset-password", to: "customers#reset_password"
       
       #sessions
       get "sessions", to: "sessions#index"

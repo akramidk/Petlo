@@ -5,6 +5,6 @@ module CustomersHelper::Delete
             permission: ENUM::PERMISSIONS[:DELETE_CUSTOMER]
         )
         
-        customer.update(deleted: true) if checking_permission[:valid]
+        customer.update!(deleted: true) if checking_permission[:valid]
     end
 end

@@ -25,5 +25,5 @@ class Customer < ApplicationRecord
   validates :name, presence: { message: 2000002 }
   validates :country, presence: { message: 2000003 }, inclusion: { in: CONSTANTS::COUNTRIES, message: 2000004 }
   validates :phone_number, presence: { message: 2000005 }, uniqueness: { message: 2000006 }
-  validates :password, presence: { message: 2000007 }, length: { minimum: 8, message: 2000008 }, on: :create
+  #validates :password, presence: { message: 2000007 }, length: { minimum: 8, message: 2000008 }
 end
