@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       post "customers/verification/change-phone-number", to: "verifications#change_phone_number"
 
       post "customers/request-permission", to: "customers#request_permission"
+      delete "customers", to: "customers#delete"
 
       #sessions
       get "sessions", to: "sessions#index"

@@ -2,7 +2,10 @@ module V1
   class CustomersController < ApplicationController
     include CustomersHelper
 
-    before_action -> { current_customer(verified: true) }, only: [:request_permission]
+    before_action -> { current_customer(verified: true) }, only: [
+      :request_permission,
+      :delete
+    ]
 
     def create
       response = CustomersHelper.create(
@@ -21,6 +24,15 @@ module V1
         customer: @customer,
         permission: params[:permission],
         language: params[:locale]
+      )
+
+      render json: { status: "succeeded" }, status: 200
+    end
+
+    def delete
+      response = CustomersHelper.delete(
+        customer: @customer,
+        verification_code: params[:verification_code]
       )
 
       render json: { status: "succeeded" }, status: 200
