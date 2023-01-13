@@ -2,7 +2,7 @@ module CustomersHelper::Delete
     def delete(customer:, verification_code:)
         checking_permission = customer.verify_verification_code(
             code: verification_code,
-            permission: ENUM::VERIFICATION_CODE_PERMISSIONS[:DELETE_CUSTOMER]
+            permission: ENUM::PERMISSIONS[:DELETE_CUSTOMER]
         )
         
         customer.update(deleted: true) if checking_permission[:valid]

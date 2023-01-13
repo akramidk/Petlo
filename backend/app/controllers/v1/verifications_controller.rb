@@ -3,7 +3,7 @@ module V1
     include VerificationsHelper
 
     before_action -> { current_customer(
-      permission: ENUM::VERIFICATION_CODE_PERMISSIONS[:CUSTOMER_VERIFICATION],
+      permission: ENUM::PERMISSIONS[:CUSTOMER_VERIFICATION],
       verified: false
     )}
 

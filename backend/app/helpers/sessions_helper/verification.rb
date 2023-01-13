@@ -2,7 +2,7 @@ module SessionsHelper::Verification
   def verification(customer:, verification_code:)
     checking = customer.verify_verification_code(
       code: verification_code,
-      permission: ENUM::VERIFICATION_CODE_PERMISSIONS[:SESSION_VERIFICATION]
+      permission: ENUM::PERMISSIONS[:SESSION_VERIFICATION]
     )
 
     if checking[:valid]

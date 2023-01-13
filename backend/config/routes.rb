@@ -19,6 +19,8 @@ Rails.application.routes.draw do
       post "customers/request-permission", to: "customers#request_permission"
       delete "customers", to: "customers#delete"
 
+      post "customers/request-reset-password", to: "customers#request_reset_password"
+
       #sessions
       get "sessions", to: "sessions#index"
       post "sessions", to: "sessions#create"

@@ -8,12 +8,12 @@ module VerificationsHelper::ChangePhoneNumber
       public_id: customer.public_id,
       phone_number: customer.phone_number,
       limited: true,
-      limited_for: ENUM::VERIFICATION_CODE_PERMISSIONS[:CUSTOMER_VERIFICATION]
+      limited_for: ENUM::PERMISSIONS[:CUSTOMER_VERIFICATION]
     )
 
     Customer::VerificationJob.perform_async(
       customer.public_id,
-      ENUM::VERIFICATION_CODE_PERMISSIONS[:CUSTOMER_VERIFICATION],
+      ENUM::PERMISSIONS[:CUSTOMER_VERIFICATION],
       language
     )
     

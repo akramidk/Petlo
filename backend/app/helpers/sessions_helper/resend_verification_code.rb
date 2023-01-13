@@ -4,12 +4,12 @@ module SessionsHelper::ResendVerificationCode
       public_id: customer.public_id,
       phone_number: customer.phone_number,
       limited: true,
-      limited_for: ENUM::VERIFICATION_CODE_PERMISSIONS[:SESSION_VERIFICATION]
+      limited_for: ENUM::PERMISSIONS[:SESSION_VERIFICATION]
     )
 
     Customer::VerificationJob.perform_async(
       customer.public_id,
-      ENUM::VERIFICATION_CODE_PERMISSIONS[:SESSION_VERIFICATION],
+      ENUM::PERMISSIONS[:SESSION_VERIFICATION],
       language
     )
 

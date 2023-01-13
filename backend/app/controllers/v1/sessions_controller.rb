@@ -4,8 +4,8 @@ module V1
 
     before_action -> { current_customer(verified: true) }, only: [:index]
     before_action -> { current_customer(
-      permission: ENUM::VERIFICATION_CODE_PERMISSIONS[:SESSION_VERIFICATION],
-      verified: true 
+      permission: ENUM::PERMISSIONS[:SESSION_VERIFICATION],
+      verified: false 
     )}, only: [:verification, :resend_verification_code]
 
     def index

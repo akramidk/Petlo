@@ -1,6 +1,6 @@
 module CustomersHelper::RequestPermission
     PERMISSIONS = [
-        ENUM::VERIFICATION_CODE_PERMISSIONS[:DELETE_CUSTOMER]
+        ENUM::PERMISSIONS[:DELETE_CUSTOMER]
     ]
 
     def request_permission(customer:, permission:, language:)

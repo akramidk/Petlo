@@ -3,9 +3,14 @@ module V1
     include CustomersHelper
 
     before_action -> { current_customer(verified: true) }, only: [
-      :request_permission,
-      :delete
+      :delete,
+      :request_permission
     ]
+
+    before_action -> { current_customer(
+      permission: ENUM::PERMISSIONS[:VERIFY_RESET_PASSWORD_REQUEST],
+      verified: [true, false] 
+    )}, only: [:verify_reset_password_request]
 
     def create
       response = CustomersHelper.create(
@@ -19,6 +24,15 @@ module V1
       render json: { status: "succeeded", customer: response[:customer] }, status: 200
     end
 
+    def delete
+      response = CustomersHelper.delete(
+        customer: @customer,
+        verification_code: params[:verification_code]
+      )
+
+      render json: { status: "succeeded" }, status: 200
+    end
+
     def request_permission
       response = CustomersHelper.request_permission(
         customer: @customer,
@@ -29,13 +43,20 @@ module V1
       render json: { status: "succeeded" }, status: 200
     end
 
-    def delete
-      response = CustomersHelper.delete(
-        customer: @customer,
-        verification_code: params[:verification_code]
+    #reset password process
+    def request_reset_password
+      response = CustomersHelper.request_reset_password(
+        phone_number: params[:phone_number],
+        language: params[:locale]
       )
 
-      render json: { status: "succeeded" }, status: 200
+      render json: { status: "succeeded", customer: response[:customer] }, status: 200
+    end
+
+    def verify_reset_password_request
+    end
+
+    def reset_password
     end
   end
 end

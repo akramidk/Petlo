@@ -70,5 +70,9 @@ en:
     #sessions helper: 002
     3002000: "Invalid credentials."
 
+    #customers helper: 003
+    3003000: "Invalid permission."
+    3003001: "Wrong phone number."
+
     #verifications controller: 000
     4000000: "Customer verified before."
