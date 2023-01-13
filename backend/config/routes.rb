@@ -12,10 +12,11 @@ Rails.application.routes.draw do
       #customers
       post "customers", to: "customers#create"
 
-      #verifications
       post "customers/verification", to: "verifications#verify"
       post "customers/verification/resend-code", to: "verifications#resend_code"
       post "customers/verification/change-phone-number", to: "verifications#change_phone_number"
+
+      post "customers/request-permission", to: "customers#request_permission"
 
       #sessions
       get "sessions", to: "sessions#index"

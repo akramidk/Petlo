@@ -15,8 +15,9 @@ class Customer < ApplicationRecord
   }, _prefix: :phone
   
   enum verification_code_permission: {
-    "#{ENUM::SESSION_TOKEN_PERMISSIONS[:CUSTOMER_VERIFICATION]}": 0,
-    "#{ENUM::SESSION_TOKEN_PERMISSIONS[:SESSION_VERIFICATION]}": 1
+    "#{ENUM::VERIFICATION_CODE_PERMISSIONS[:CUSTOMER_VERIFICATION]}": 0,
+    "#{ENUM::VERIFICATION_CODE_PERMISSIONS[:SESSION_VERIFICATION]}": 1,
+    "#{ENUM::VERIFICATION_CODE_PERMISSIONS[:DELETE_CUSTOMER]}": 2
   }, _prefix: :verification_code_permission
 
   validates :public_id, presence: { message: 2000000 }, uniqueness: { message: 2000001 }

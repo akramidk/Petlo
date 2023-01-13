@@ -3,7 +3,7 @@ module V1
     include VerificationsHelper
 
     before_action -> { current_customer(
-      permission: ENUM::SESSION_TOKEN_PERMISSIONS[:CUSTOMER_VERIFICATION],
+      permission: ENUM::VERIFICATION_CODE_PERMISSIONS[:CUSTOMER_VERIFICATION],
       verified: false
     )}
 

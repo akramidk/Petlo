@@ -4,7 +4,7 @@ module SessionsHelper::Create
 
     if customer && customer.try(:authenticate, password)
       customer_verified = customer.phone_verified?
-      permission = customer_verified ? ENUM::SESSION_TOKEN_PERMISSIONS[:SESSION_VERIFICATION] : ENUM::SESSION_TOKEN_PERMISSIONS[:CUSTOMER_VERIFICATION]
+      permission = customer_verified ? ENUM::VERIFICATION_CODE_PERMISSIONS[:SESSION_VERIFICATION] : ENUM::VERIFICATION_CODE_PERMISSIONS[:CUSTOMER_VERIFICATION]
 
       session_token = SessionToken.generate(
         public_id: customer.public_id,

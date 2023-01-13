@@ -4,7 +4,7 @@ module V1
 
     before_action -> { current_customer(verified: true) }, only: [:index]
     before_action -> { current_customer(
-      permission: ENUM::SESSION_TOKEN_PERMISSIONS[:SESSION_VERIFICATION],
+      permission: ENUM::VERIFICATION_CODE_PERMISSIONS[:SESSION_VERIFICATION],
       verified: true 
     )}, only: [:verification, :resend_verification_code]
 

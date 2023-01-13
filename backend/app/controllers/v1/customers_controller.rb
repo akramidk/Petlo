@@ -2,6 +2,8 @@ module V1
   class CustomersController < ApplicationController
     include CustomersHelper
 
+    before_action -> { current_customer(verified: true) }, only: [:request_permission]
+
     def create
       response = CustomersHelper.create(
         name: params[:name],
@@ -12,6 +14,16 @@ module V1
       )
 
       render json: { status: "succeeded", customer: response[:customer] }, status: 200
+    end
+
+    def request_permission
+      response = CustomersHelper.request_permission(
+        customer: @customer,
+        permission: params[:permission],
+        language: params[:locale]
+      )
+
+      render json: { status: "succeeded" }, status: 200
     end
   end
 end

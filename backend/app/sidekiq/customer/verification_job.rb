@@ -3,14 +3,19 @@ class Customer::VerificationJob
 
   DEFAULT_LANGUAGE = "ar"
   MESSAGES = {
-    ENUM::SESSION_TOKEN_PERMISSIONS[:CUSTOMER_VERIFICATION] => {
+    ENUM::VERIFICATION_CODE_PERMISSIONS[:CUSTOMER_VERIFICATION] => {
       "ar" => "رمز التحقق الخاص بك هو",
       "en" => "Your verification code is"
     },
 
-    ENUM::SESSION_TOKEN_PERMISSIONS[:SESSION_VERIFICATION] => {
+    ENUM::VERIFICATION_CODE_PERMISSIONS[:SESSION_VERIFICATION] => {
       "ar" => "رمز التحقق الخاص بك هو",
       "en" => "Your verification code is"
+    },
+
+    ENUM::VERIFICATION_CODE_PERMISSIONS[:DELETE_CUSTOMER] => {
+      "ar" => "رمز التحقق الخاص بك ﻹكمال حذف حسابك",
+      "en" => "Your verification code to complete deleting your account is"
     }
   }
 
