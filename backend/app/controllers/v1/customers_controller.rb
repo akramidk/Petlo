@@ -73,7 +73,7 @@ module V1
         new_password: params[:new_password]
       )
 
-      render json: { status: "succeeded" }, status: 200
+      render json: { status: "succeeded", customer: response[:customer] }, status: 200
     end
   end
 end

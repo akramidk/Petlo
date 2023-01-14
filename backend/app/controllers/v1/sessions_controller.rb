@@ -13,7 +13,7 @@ module V1
         customer: @customer
       )
 
-      render json: { valid: true, customer: response[:customer] }, status: 200
+      render json: { customer: response[:customer] }, status: 200
     end
 
     def create
