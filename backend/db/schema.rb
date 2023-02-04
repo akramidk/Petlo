@@ -91,6 +91,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_08_202831) do
     t.integer "verification_code"
     t.integer "verification_code_permission"
     t.datetime "verification_code_created_at"
+    t.string "stripe_id"
     t.boolean "deleted"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -10,6 +10,7 @@ class CreateCustomers < ActiveRecord::Migration[7.0]
       t.integer :verification_code
       t.integer :verification_code_permission
       t.datetime :verification_code_created_at
+      t.string :stripe_id
       t.boolean :deleted
 
       t.timestamps
