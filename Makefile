@@ -8,5 +8,5 @@ console:
 	cd backend && rails c
 sidekiq:
 	cd backend && bundle exec sidekiq
-docker-development:
+docker:
 	sudo docker compose -f backend-development-docker-compose.yml up
