@@ -1,5 +1,7 @@
 module CustomersHelper::Create
   def create(name:, country:, phone_number:, password:, language:)
+    Customer.validates_password(password: password)
+
     customer = Customer.create!(
       name: name,
       country: country,

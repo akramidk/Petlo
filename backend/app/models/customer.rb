@@ -1,12 +1,11 @@
 class Customer < ApplicationRecord
   include Verification
   include PublicIdGenerator
+  extend ValidatesPassword
 
   has_many :pets
   has_many :cards
   has_many :addresses
-
-  before_validation :validates_password
 
   has_secure_password
   encrypts :phone_number, deterministic: true
@@ -27,16 +26,4 @@ class Customer < ApplicationRecord
   validates :name, presence: { message: 2000002 }
   validates :country, presence: { message: 2000003 }, inclusion: { in: CONSTANTS::COUNTRIES, message: 2000004 }
   validates :phone_number, presence: { message: 2000005 }, uniqueness: { message: 2000006 }
-
-  private
-  def validates_password
-    minimum_password_length = 8
-    password = self.password || self.password_digest
-
-    if password == nil
-      raise(RuntimeError, 2000007)
-    elsif password.strip.length < minimum_password_length
-      raise(RuntimeError, 2000008)
-    end
-  end
 end
