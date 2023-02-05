@@ -4,6 +4,7 @@ module V1
 
     before_action -> { current_customer(verified: true) }, only: [
       :index,
+      :change_name,
       :delete,
       :request_permission
     ]
@@ -37,6 +38,15 @@ module V1
       )
 
       render json: { status: "succeeded", customer: response[:customer] }, status: 200
+    end
+
+    def change_name
+      response = CustomersHelper.change_name(
+        customer: @customer,
+        name: params[:name]
+      )
+
+      render json: { status: "succeeded" }, status: 200
     end
 
     def delete

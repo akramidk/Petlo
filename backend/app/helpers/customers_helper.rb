@@ -6,4 +6,5 @@ module CustomersHelper
   extend RequestResetPassword
   extend VerifyResetPasswordRequest
   extend ResetPassword
+  extend ChangeName
 end

@@ -12,13 +12,14 @@ Rails.application.routes.draw do
       #customers
       get "customers", to: "customers#index"
       post "customers", to: "customers#create"
+      patch "customers/name", to: "customers#change_name"
+      delete "customers", to: "customers#delete"
 
       post "customers/verification", to: "verifications#verify"
       post "customers/verification/resend-code", to: "verifications#resend_code"
       post "customers/verification/change-phone-number", to: "verifications#change_phone_number"
 
       post "customers/request-permission", to: "customers#request_permission"
-      delete "customers", to: "customers#delete"
 
       post "customers/request-reset-password", to: "customers#request_reset_password"
       post "customers/verify-reset-password-request", to: "customers#verify_reset_password_request"
