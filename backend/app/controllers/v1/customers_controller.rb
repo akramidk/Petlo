@@ -20,6 +20,11 @@ module V1
       verified: [true, false] 
     )}, only: [:reset_password]
 
+    before_action -> { current_customer(
+      permission: ENUM::PERMISSIONS[:CHANGE_CUSTOMER_PHONE_NUMBER],
+      verified: true
+    )}, only: [:change_phone_number]
+
     def index
       response = CustomersHelper.index(
         customer: @customer,
@@ -50,6 +55,16 @@ module V1
       render json: { status: "succeeded" }, status: 200
     end
 
+    def change_phone_number
+      response = CustomersHelper.change_phone_number(
+        customer: @customer,
+        phone_number: params[:phone_number],
+        language: params[:locale]
+      )
+
+      render json: { status: "succeeded", customer: { session_token: response } }, status: 200
+    end
+
     def delete
       response = CustomersHelper.delete(
         customer: @customer,
@@ -76,7 +91,7 @@ module V1
         password: params[:password]
       )
 
-      render json: { session_token: response }, status: 200
+      render json: { customer: { session_token: response } }, status: 200
     end
 
     #reset password process without sign in

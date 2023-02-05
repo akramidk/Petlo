@@ -74,6 +74,7 @@ en:
     3003000: "Invalid permission."
     3003001: "Wrong phone number."
     3003002: "Wrong password."
+    3003003: "The Phone number is the same as yours."
 
     #verifications controller: 000
     4000000: "Customer verified before."

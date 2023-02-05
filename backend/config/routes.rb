@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       get "customers", to: "customers#index"
       post "customers", to: "customers#create"
       patch "customers/name", to: "customers#change_name"
+      patch "customers/phone-number", to: "customers#change_phone_number"
       delete "customers", to: "customers#delete"
 
       post "customers/verification", to: "verifications#verify"

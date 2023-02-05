@@ -8,4 +8,5 @@ module CustomersHelper
   extend ResetPassword
   extend ChangeName
   extend RequestPermissionWithPassword
+  extend ChangePhoneNumber
 end
