@@ -6,7 +6,8 @@ module V1
       :index,
       :change_name,
       :delete,
-      :request_permission_with_otp
+      :request_permission_with_otp,
+      :request_permission_with_password
     ]
 
     before_action -> { current_customer(
@@ -66,6 +67,16 @@ module V1
       )
 
       render json: { status: "succeeded" }, status: 200
+    end
+
+    def request_permission_with_password
+      response = CustomersHelper.request_permission_with_password(
+        customer: @customer,
+        permission: params[:permission],
+        password: params[:password]
+      )
+
+      render json: { session_token: response }, status: 200
     end
 
     #reset password process without sign in

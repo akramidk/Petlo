@@ -73,6 +73,7 @@ en:
     #customers helper: 003
     3003000: "Invalid permission."
     3003001: "Wrong phone number."
+    3003002: "Wrong password."
 
     #verifications controller: 000
     4000000: "Customer verified before."

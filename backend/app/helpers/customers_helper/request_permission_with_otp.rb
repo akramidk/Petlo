@@ -1,4 +1,4 @@
-module CustomersHelper::RequestPermissionWithOTP
+module CustomersHelper::RequestPermissionWithOtp
     PERMISSIONS = [
         ENUM::PERMISSIONS[:DELETE_CUSTOMER]
     ]
