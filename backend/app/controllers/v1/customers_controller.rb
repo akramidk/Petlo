@@ -26,6 +26,11 @@ module V1
       verified: true
     )}, only: [:change_phone_number]
 
+    before_action -> { current_customer(
+      permission: ENUM::PERMISSIONS[:CHANGE_CUSTOMER_PASSWORD],
+      verified: true
+    )}, only: [:change_password]
+
     def index
       response = CustomersHelper.index(
         customer: @customer,
@@ -64,6 +69,15 @@ module V1
       )
 
       render json: { status: "succeeded", customer: { session_token: response } }, status: 200
+    end
+
+    def change_password
+      response = CustomersHelper.change_password(
+        customer: @customer,
+        password: params[:password]
+      )
+
+      render json: { status: "succeeded" }, status: 200
     end
 
     def delete

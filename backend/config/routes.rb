@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       post "customers", to: "customers#create"
       patch "customers/name", to: "customers#change_name"
       patch "customers/phone-number", to: "customers#change_phone_number"
+      patch "customers/password", to: "customers#change_password"
       delete "customers", to: "customers#delete"
 
       post "customers/verification", to: "verifications#verify"
