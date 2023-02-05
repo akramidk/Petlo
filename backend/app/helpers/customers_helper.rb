@@ -1,4 +1,5 @@
 module CustomersHelper
+  extend Index
   extend Create
   extend RequestPermission
   extend Delete

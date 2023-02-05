@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       get "apps/new-version-available", to: "apps#version"
       
       #customers
+      get "customers", to: "customers#index"
       post "customers", to: "customers#create"
 
       post "customers/verification", to: "verifications#verify"

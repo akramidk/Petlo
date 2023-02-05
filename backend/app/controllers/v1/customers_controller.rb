@@ -3,6 +3,7 @@ module V1
     include CustomersHelper
 
     before_action -> { current_customer(verified: true) }, only: [
+      :index,
       :delete,
       :request_permission
     ]
@@ -16,6 +17,15 @@ module V1
       permission: ENUM::PERMISSIONS[:RESET_PASSWORD],
       verified: [true, false] 
     )}, only: [:reset_password]
+
+    def index
+      response = CustomersHelper.index(
+        customer: @customer,
+        language: params[:locale]
+      )
+
+      render json: response, status: 200
+    end
 
     def create
       response = CustomersHelper.create(
@@ -48,7 +58,7 @@ module V1
       render json: { status: "succeeded" }, status: 200
     end
 
-    #reset password process
+    #reset password process without sign in
     def request_reset_password
       response = CustomersHelper.request_reset_password(
         phone_number: params[:phone_number],

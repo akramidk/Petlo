@@ -74,8 +74,5 @@ en:
     3003000: "Invalid permission."
     3003001: "Wrong phone number."
 
-    #address helper: 004
-    3004000: "Address not found."
-
     #verifications controller: 000
     4000000: "Customer verified before."

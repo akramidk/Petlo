@@ -1,5 +1,8 @@
 module CONSTANTS
-  COUNTRIES = [
-    "JO"
-  ]
+  COUNTRIES = {
+    "JO" => {
+      "ar" => "اﻷردن",
+      "en" => "Jordan"
+    }
+  }
 end
