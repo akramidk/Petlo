@@ -38,6 +38,6 @@ module CardsHelper::Create
       }
     )
 
-    @@customer.update(stripe_id: stripe_id)
+    @@customer.update!(stripe_id: stripe_id)
   end
 end
