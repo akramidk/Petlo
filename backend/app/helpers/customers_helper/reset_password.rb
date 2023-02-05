@@ -1,8 +1,8 @@
 module CustomersHelper::ResetPassword
-    def reset_password(customer:, new_password:)
-        Customer.validates_password(password: new_password)
+    def reset_password(customer:, password:)
+        Customer.validates_password(password: password)
 
-        customer.update!(password: new_password)
+        customer.update!(password: password)
 
         session_token = SessionToken.generate(
             public_id: customer.public_id,

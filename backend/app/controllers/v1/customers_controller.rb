@@ -80,7 +80,7 @@ module V1
     def reset_password
       response = CustomersHelper.reset_password(
         customer: @customer,
-        new_password: params[:new_password]
+        password: params[:password]
       )
 
       render json: { status: "succeeded", customer: response[:customer] }, status: 200
