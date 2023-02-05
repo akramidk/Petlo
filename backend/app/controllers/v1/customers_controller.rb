@@ -7,6 +7,7 @@ module V1
       :change_name,
       :delete,
       :request_permission_with_otp,
+      :verify_requested_permission_with_otp,
       :request_permission_with_password
     ]
 
@@ -82,6 +83,16 @@ module V1
       )
 
       render json: { status: "succeeded" }, status: 200
+    end
+
+    def verify_requested_permission_with_otp
+      response = CustomersHelper.verify_requested_permission_with_otp(
+        customer: @customer,
+        verification_code: params[:verification_code],
+        permission: params[:permission]
+      )
+
+      render json: { status: "succeeded", customer: { session_token: response } }, status: 200
     end
 
     def request_permission_with_password

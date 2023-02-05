@@ -21,6 +21,7 @@ Rails.application.routes.draw do
       post "customers/verification/change-phone-number", to: "verifications#change_phone_number"
 
       post "customers/request-permission-with-otp", to: "customers#request_permission_with_otp"
+      post "customers/verify-requested-permission-with-otp", to: "customers#verify_requested_permission_with_otp"
       get "customers/request-permission-with-password", to: "customers#request_permission_with_password"
 
       post "customers/request-reset-password", to: "customers#request_reset_password"

@@ -21,6 +21,11 @@ class Customer::VerificationJob
     ENUM::PERMISSIONS[:VERIFY_RESET_PASSWORD_REQUEST] => {
       "ar" => "رمز التحقق الخاص بك لتعيين كلمة المرور",
       "en" => "Your verification code to reset your password is"
+    },
+
+    ENUM::PERMISSIONS[:CHANGE_CUSTOMER_PASSWORD] => {
+      "ar" => "رمز التحقق الخاص بك لتغيير كلمة المرور",
+      "en" => "Your verification code to chnage your password is"
     }
   }
 

@@ -9,4 +9,5 @@ module CustomersHelper
   extend ChangeName
   extend RequestPermissionWithPassword
   extend ChangePhoneNumber
+  extend VerifyRequestedPermissionWithOtp
 end

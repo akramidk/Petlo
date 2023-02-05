@@ -1,6 +1,7 @@
 module CustomersHelper::RequestPermissionWithOtp
     PERMISSIONS = [
-        ENUM::PERMISSIONS[:DELETE_CUSTOMER]
+        ENUM::PERMISSIONS[:DELETE_CUSTOMER],
+        ENUM::PERMISSIONS[:CHANGE_CUSTOMER_PASSWORD]
     ]
 
     def request_permission_with_otp(customer:, permission:, language:)
