@@ -6,7 +6,7 @@ module V1
       :index,
       :change_name,
       :delete,
-      :request_permission
+      :request_permission_with_otp
     ]
 
     before_action -> { current_customer(
@@ -58,8 +58,8 @@ module V1
       render json: { status: "succeeded" }, status: 200
     end
 
-    def request_permission
-      response = CustomersHelper.request_permission(
+    def request_permission_with_otp
+      response = CustomersHelper.request_permission_with_otp(
         customer: @customer,
         permission: params[:permission],
         language: params[:locale]

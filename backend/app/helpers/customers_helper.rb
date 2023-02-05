@@ -1,7 +1,7 @@
 module CustomersHelper
   extend Index
   extend Create
-  extend RequestPermission
+  extend RequestPermissionWithOTP
   extend Delete
   extend RequestResetPassword
   extend VerifyResetPasswordRequest

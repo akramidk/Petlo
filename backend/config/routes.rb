@@ -19,7 +19,7 @@ Rails.application.routes.draw do
       post "customers/verification/resend-code", to: "verifications#resend_code"
       post "customers/verification/change-phone-number", to: "verifications#change_phone_number"
 
-      post "customers/request-permission", to: "customers#request_permission"
+      post "customers/request-permission-with-otp", to: "customers#request_permission_with_otp"
 
       post "customers/request-reset-password", to: "customers#request_reset_password"
       post "customers/verify-reset-password-request", to: "customers#verify_reset_password_request"
