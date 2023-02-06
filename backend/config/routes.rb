@@ -62,6 +62,9 @@ Rails.application.routes.draw do
       get "addresses", to: "addresses#index"
       post "addresses", to: "addresses#create"
       patch "addresses/:public_id/name", to: "addresses#change_name"
+
+      #carts
+      post "carts", to: "carts#create"
     end
   end
 end

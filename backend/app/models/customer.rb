@@ -6,6 +6,7 @@ class Customer < ApplicationRecord
   has_many :pets
   has_many :cards
   has_many :addresses
+  has_many :carts
 
   has_secure_password
   encrypts :phone_number, deterministic: true
