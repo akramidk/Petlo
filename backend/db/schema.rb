@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_08_202831) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_06_180808) do
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.bigint "record_id", null: false
@@ -69,6 +69,22 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_08_202831) do
     t.integer "exp_month", null: false
     t.integer "exp_year", null: false
     t.string "fingerprint", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "cart_items", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "cart_id", null: false
+    t.bigint "item_id", null: false
+    t.bigint "variant_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "carts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "public_id", null: false
+    t.bigint "customer_id", null: false
+    t.integer "used", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
