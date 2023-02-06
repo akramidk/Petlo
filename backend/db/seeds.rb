@@ -1,19 +1,4 @@
 #Customers
-Customer.create!([
-  {
-    name: "Akram",
-    country: "JO",
-    phone_number: "+962790119952",
-    password: "12345678"
-  },
-  {
-    name: "Hala",
-    country: "JO",
-    phone_number: "+962790119951",
-    password: "12345678"
-  }
-])
-
 #Brands
 brand_1 = Brand.create!()
 BrandName.create!([

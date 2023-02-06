@@ -39,7 +39,8 @@ module CONSTANTS
             2002011,
             3002000,
             3003000,
-            4000000
+            4000000,
+            3004003
         ],
 
         401 => [
@@ -49,7 +50,10 @@ module CONSTANTS
         404 => [
             2004000,
             3000000,
-            3001000
+            3001000,
+            3004000,
+            3004002,
+            3004003
         ]
     }.each_with_object({}) { |(status_code, errors), new_hash| errors.each { |error| new_hash[error] = status_code } }
 end

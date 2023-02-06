@@ -68,7 +68,7 @@ en:
 
     #cart item model: 006
     2006000: "Cart id is required."
-    2006001: "Item  id is required."
+    2006001: "Item id is required."
     2006002: "Variant id is required."
 
     #items helper: 000
@@ -85,6 +85,12 @@ en:
     3003001: "Wrong phone number."
     3003002: "Wrong password."
     3003003: "The Phone number is the same as yours."
+
+    #carts helper: 004
+    3004000: "Cart not found."
+    3004001: "Cart expired."
+    3004002: "Item not found."
+    3004003: "Variant not found."
 
     #verifications controller: 000
     4000000: "Customer verified before."

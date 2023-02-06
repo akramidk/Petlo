@@ -65,6 +65,7 @@ Rails.application.routes.draw do
 
       #carts
       post "carts", to: "carts#create"
+      post "carts/:public_id", to: "carts#add_item"
     end
   end
 end
