@@ -58,8 +58,8 @@ en:
     2003006: "Address longitude is required."
     2003007: "Address latitude is required."
 
-    #category model: 003
-    2003000: "Category not found."
+    #category model: 004
+    2004000: "Category not found."
 
     #items helper: 000
     3000000: "Item not found."

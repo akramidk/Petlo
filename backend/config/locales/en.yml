@@ -58,8 +58,18 @@ en:
     2003006: "Address longitude is required."
     2003007: "Address latitude is required."
 
-    #category model: 003
-    2003000: "Category not found."
+    #category model: 004
+    2004000: "Category not found."
+
+    #cart model: 005
+    2005000: "Cart public id is required."
+    2005001: "Cart public id is used before."
+    2005002: "Customer id is required."
+
+    #cart item model: 006
+    2006000: "Cart id is required."
+    2006001: "Item  id is required."
+    2006002: "Variant id is required."
 
     #items helper: 000
     3000000: "Item not found."

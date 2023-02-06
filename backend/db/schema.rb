@@ -84,7 +84,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_06_180808) do
   create_table "carts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "public_id", null: false
     t.bigint "customer_id", null: false
-    t.integer "used", default: 0, null: false
+    t.integer "status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

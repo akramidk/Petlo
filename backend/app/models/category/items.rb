@@ -33,7 +33,7 @@ module Category::Items
       params = subcategory.nil? ? { name: name } : { name: name, parent_id: subcategory.id }
       subcategory = Category.find_by(params)
       
-      raise(RuntimeError, 2003000) unless subcategory
+      raise(RuntimeError, 2004000) unless subcategory
     end
 
     subcategory
