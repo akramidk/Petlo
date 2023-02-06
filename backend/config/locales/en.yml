@@ -91,6 +91,7 @@ en:
     3004001: "Cart expired."
     3004002: "Item not found."
     3004003: "Variant not found."
+    3004004: "No item to remove."
 
     #verifications controller: 000
     4000000: "Customer verified before."

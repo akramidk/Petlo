@@ -22,5 +22,16 @@ module V1
   
         render json: { status: "succeeded" }, status: 200
       end
+
+      def remove_item
+        response = CartsHelper.remove_item(
+          customer: @customer,
+          cart_id: params[:public_id],
+          item_id: params[:item_id],
+          variant_id: params[:variant_id]
+        )
+  
+        render json: { status: "succeeded" }, status: 200
+      end
     end
 end
