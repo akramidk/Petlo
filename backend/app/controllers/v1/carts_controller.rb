@@ -12,6 +12,16 @@ module V1
         render json: { status: "succeeded", cart: response }, status: 200
       end
 
+      def summary
+        response = CartsHelper.summary(
+          customer: @customer,
+          cart_id: params[:public_id],
+          language: params[:locale]
+        )
+  
+        render json: response, status: 200
+      end
+
       def add_item
         response = CartsHelper.add_item(
           customer: @customer,
