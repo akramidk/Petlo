@@ -7,6 +7,7 @@ module V1
       def create
         response = CartsHelper.create(
           customer: @customer,
+          language: params[:locale]
         )
   
         render json: { status: "succeeded", cart: response }, status: 200
@@ -27,10 +28,11 @@ module V1
           customer: @customer,
           cart_id: params[:public_id],
           item_id: params[:item_id],
-          variant_id: params[:variant_id]
+          variant_id: params[:variant_id],
+          language: params[:locale]
         )
   
-        render json: { status: "succeeded" }, status: 200
+        render json: { status: "succeeded", cart: response }, status: 200
       end
 
       def remove_item
@@ -38,10 +40,11 @@ module V1
           customer: @customer,
           cart_id: params[:public_id],
           item_id: params[:item_id],
-          variant_id: params[:variant_id]
+          variant_id: params[:variant_id],
+          language: params[:locale]
         )
   
-        render json: { status: "succeeded" }, status: 200
+        render json: { status: "succeeded", cart: response }, status: 200
       end
     end
 end

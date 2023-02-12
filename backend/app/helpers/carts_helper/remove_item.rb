@@ -1,5 +1,5 @@
 module CartsHelper::RemoveItem
-    def remove_item(customer:, cart_id:, item_id:, variant_id:)
+    def remove_item(customer:, cart_id:, item_id:, variant_id:, language:)
         cart = customer.carts.find_by(public_id: cart_id)
         raise(RuntimeError, 3004000) if !cart
         raise(RuntimeError, 3004001) if cart.created_at + 24.hours < Time.now
@@ -14,5 +14,6 @@ module CartsHelper::RemoveItem
         raise(RuntimeError, 3004004) if !cart_item
 
         cart_item.destroy!
+        cart.summary(country: customer.country, language: language)
     end
 end

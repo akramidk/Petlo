@@ -1,10 +1,6 @@
 module CartsHelper::Create
-    def create(customer:)
+    def create(customer:, language:)
         cart = Cart.create!(customer_id: customer.id)
-
-        {
-            public_id: cart.public_id,
-            exp_at: cart.created_at + 24.hours
-        }
+        cart.summary(country: customer.country, language: language)
     end
 end
