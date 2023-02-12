@@ -25,7 +25,9 @@ module Cart::Summary
                 options = []
 
                 variant.options.each do |option|
-                    options.push(option.values.find_by(language: language).value)
+                    value = option.values.find_by(language: language).value
+                    unit = CONSTANTS::OPTION_UNITS.dig(option.unit, language)
+                    options.push((value + " " + unit.to_s).strip)
                 end
 
                 variants.push({

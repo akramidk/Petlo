@@ -10,4 +10,8 @@ module VariantOption::OptionMethods
   def values
     OptionValue.where(option_id: self.option_id, number: self.option_value_number)
   end
+
+  def unit
+    self.retrieve.unit
+  end
 end
