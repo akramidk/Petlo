@@ -1,6 +1,7 @@
 class Cart < ApplicationRecord
     include PublicIdGenerator
     include Summary
+    include Total
 
     belongs_to :customer
 

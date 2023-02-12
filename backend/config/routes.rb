@@ -69,6 +69,8 @@ Rails.application.routes.draw do
       get "carts/:public_id/number-of-items", to: "carts#number_of_items"
       post "carts/:public_id", to: "carts#add_item"
       delete "carts/:public_id", to: "carts#remove_item"
+
+      get "checkout", to: "checkout#index"
     end
   end
 end
