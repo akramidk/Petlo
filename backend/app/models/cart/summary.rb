@@ -47,6 +47,7 @@ module Cart::Summary
 
         {
             public_id: public_id,
+            exp_at: self.created_at + 24.hours,
             number_of_items: number_of_items,
             amount: amount,
             currency: currency,
