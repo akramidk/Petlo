@@ -6,6 +6,8 @@ class Checkout < ApplicationRecord
     belongs_to :cart
     belongs_to :address
 
+    before_validation :calculate_the_amount
+
     enum status: {
         unused: 0,
         used: 1
@@ -19,4 +21,9 @@ class Checkout < ApplicationRecord
     validates :delivery_amount, presence: { message: 2007007 }
     validates :amount, presence: { message: 2007008 }
     validates :currency, presence: { message: 2007009 }, inclusion: { in: CONSTANTS::CURRENCIES.keys, message: 2007010 }
+
+    private
+    def calculate_the_amount
+        self.amount = self.cart_amount.to_i + self.delivery_amount.to_i
+    end
 end

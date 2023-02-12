@@ -111,6 +111,9 @@ en:
     3005001: "Cart used before."
     3005002: "Cart expired."
     3005003: "Address not found."
+    3005004: "Checkout not found."
+    3005005: "Checkout used before."
+    3005006: "Checkout expired."
 
     #verifications controller: 000
     4000000: "Customer verified before."
