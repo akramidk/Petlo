@@ -23,6 +23,15 @@ module V1
         render json: response, status: 200
       end
 
+      def number_of_items
+        response = CartsHelper.number_of_items(
+          customer: @customer,
+          cart_id: params[:public_id]
+        )
+  
+        render json: { value: response }, status: 200
+      end
+
       def add_item
         response = CartsHelper.add_item(
           customer: @customer,

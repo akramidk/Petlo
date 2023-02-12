@@ -66,6 +66,7 @@ Rails.application.routes.draw do
       #carts
       post "carts", to: "carts#create"
       get "carts/:public_id", to: "carts#summary"
+      get "carts/:public_id/number-of-items", to: "carts#number_of_items"
       post "carts/:public_id", to: "carts#add_item"
       delete "carts/:public_id", to: "carts#remove_item"
     end
