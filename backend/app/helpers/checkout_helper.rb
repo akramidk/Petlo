@@ -1,3 +1,3 @@
 module CheckoutHelper
-    extend Index
+    extend Create
 end

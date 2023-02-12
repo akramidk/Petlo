@@ -1,0 +1,5 @@
+module CONSTANTS
+  CURRENCIES_SMALLEST_UNIT_MULTIPLIER = {
+    "JOD" => 1000
+  }
+end
