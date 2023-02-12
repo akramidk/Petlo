@@ -1,5 +1,8 @@
 module CONSTANTS
-  CURRENCIES = [
-    "JOD"
-  ]
+  CURRENCIES = {
+    "JOD" => {
+      "ar" => "دينار",
+      "en" => "JOD"
+    }
+  }
 end

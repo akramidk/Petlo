@@ -8,11 +8,10 @@ module CheckoutHelper::Create
         address = customer.addresses.find_by(public_id: address_id)
         raise(RuntimeError, 3005003) if !address
 
-        currency = CONSTANTS::COUNTRIES_CURRENCIES[customer.country]
-        currency_code = currency["en"]
-        cart_amount = cart.total(country: customer.country) / CONSTANTS::CURRENCIES_SMALLEST_UNIT_MULTIPLIER[currency_code]
-        delivery_amount = 2 #not ready yet
-        total_amount = cart_amount + delivery_amount
+        cart_amount = cart.total(country: customer.country)
+        delivery_amount = 2000 #not ready yet
+        amount = cart_amount + delivery_amount
+        currency = CONSTANTS::COUNTRIES_CURRENCIES[customer.country]["en"]
 
         checkout = Checkout.create!(
             customer_id: customer.id,
@@ -20,16 +19,11 @@ module CheckoutHelper::Create
             address_id: address.id,
             cart_amount: cart_amount,
             delivery_amount: delivery_amount,
-            amount: total_amount,
-            currency: currency_code
+            amount: amount,
+            currency: currency
         )
+        cart.used!
 
-        {
-            public_id: checkout.public_id,
-            cart_amount: checkout.cart_amount,
-            delivery_amount: checkout.delivery_amount,
-            amount: checkout.amount,
-            currency: currency[language]
-        }
+        checkout.summary(language: language)
     end
 end
