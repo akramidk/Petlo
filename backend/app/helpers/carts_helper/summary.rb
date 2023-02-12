@@ -3,7 +3,7 @@ module CartsHelper::Summary
         cart = customer.carts.find_by(public_id: cart_id)
         raise(RuntimeError, 3004000) if !cart
         raise(RuntimeError, 3004005) if cart.used?
-        raise(RuntimeError, 3004001) if cart.created_at + 24.hours < Time.now
+        raise(RuntimeError, 3004001) if cart.created_at + CONSTANTS::TIMES[:CART_EXP_AFTER] < Time.now
 
         cart.summary(country: customer.country, language: language)
     end

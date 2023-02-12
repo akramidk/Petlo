@@ -18,7 +18,7 @@ module Customer::Verification
       raise(RuntimeError, 2000009)
     elsif permission != self.verification_code_permission
       raise(RuntimeError, 2000010)
-    elsif Time.now > (self.verification_code_created_at + 15.minutes)
+    elsif Time.now > (self.verification_code_created_at + CONSTANTS::TIMES[:VERIFICATION_CODE_EXP_AFTER])
       raise(RuntimeError, 2000011)
     end
 

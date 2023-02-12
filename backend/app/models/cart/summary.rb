@@ -49,7 +49,7 @@ module Cart::Summary
 
         {
             public_id: public_id,
-            exp_at: self.created_at + 24.hours,
+            exp_at: self.created_at + CONSTANTS::TIMES[:CART_EXP_AFTER],
             number_of_items: number_of_items,
             amount: amount,
             currency: currency,

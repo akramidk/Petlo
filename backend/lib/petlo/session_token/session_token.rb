@@ -14,7 +14,7 @@ class SessionToken
       @@phone_number = phone_number
       @@limited = limited
       @@limited_for = limited_for
-      @@expire_at = (Time.now + 15.minutes).to_i if limited
+      @@expire_at = (Time.now + CONSTANTS::TIMES[:LIMITED_SESSION_TOKEN_EXP_AFTER]).to_i if limited
     
       JWT.encode payload, SECRET_KEY, ALGORITHM
     end

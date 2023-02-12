@@ -1,0 +1,8 @@
+module CONSTANTS
+  TIMES = {
+    CART_EXP_AFTER: 24.hours,
+    CHECKOUT_EXP_AFTER: 3.hours,
+    LIMITED_SESSION_TOKEN_EXP_AFTER: 15.minutes,
+    VERIFICATION_CODE_EXP_AFTER: 15.minutes   
+  }
+end
