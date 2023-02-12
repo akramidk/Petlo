@@ -105,6 +105,7 @@ en:
     3004002: "Item not found."
     3004003: "Variant not found."
     3004004: "No item to remove."
+    3004005: "Cart used before."
 
     #checkout helper: 005
     3005000: "Cart not found."
