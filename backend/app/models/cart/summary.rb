@@ -10,6 +10,7 @@ module Cart::Summary
             id = cart_item.item_id
             item = Item.find_by(id: id)
             item_public_id = item.public_id
+            item_available = item.availabilities.find_by(country: country).value
             name = item.details.find_by(language: language).name
             image = item.image.url
             variants = []
@@ -18,7 +19,9 @@ module Cart::Summary
                 variant = Variant.find_by(id: id)
                 variant_public_id = variant.public_id
                 variant_amount = variant.prices.find_by(country: country).value * quantity
-                amount += variant_amount
+                variant_available = variant.availabilities.find_by(country: country).value
+                available = variant_available && item_available
+                amount += variant_amount if available
                 options = []
 
                 variant.options.each do |option|
@@ -27,6 +30,7 @@ module Cart::Summary
 
                 variants.push({
                     public_id: variant_public_id,
+                    available: available,
                     options: options,
                     quantity: quantity,
                     amount: variant_amount
