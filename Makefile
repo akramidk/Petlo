@@ -9,4 +9,4 @@ console:
 sidekiq:
 	cd backend && bundle exec sidekiq
 docker:
-	sudo docker compose -f backend-development-docker-compose.yml up
+	sudo docker compose -f backend-docker-compose.yml up

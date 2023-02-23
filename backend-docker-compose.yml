@@ -2,12 +2,12 @@ version: "3.8"
 services:
   redis:
     image: redis
-    container_name: petlo-redis-development
+    container_name: petlo-redis
     restart: "unless-stopped"
 
   backend:
     build: ./backend
-    container_name: petlo-backend-development
+    container_name: petlo-backend
     ports:
       - "3000:3000"
     volumes:
@@ -17,11 +17,11 @@ services:
     env_file:
       - ./backend.env
     restart: "unless-stopped"
-    command: rails s -p 3000 -b '0.0.0.0' -e development
+    command: rails s -p 3000 -b '0.0.0.0'
 
   sidekiq:
     build: ./backend
-    container_name: petlo-sidekiq-development
+    container_name: petlo-sidekiq
     volumes:
       - ./backend:/backend
     depends_on:
