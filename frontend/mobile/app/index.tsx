@@ -1,10 +1,11 @@
 import { Text, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const App = () => {
   return (
-    <View>
-      <Text>hey akram</Text>
-    </View>
+    <SafeAreaView>
+      <Text className="text-[100px] font-bold text-[#db3d3d]">Hey Akram</Text>
+    </SafeAreaView>
   );
 };
 
