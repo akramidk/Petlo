@@ -1,10 +1,9 @@
 {
   "expo": {
-    "scheme": "acme",
+    "name": "Petlo",
+    "slug": "Petlo",
     "web": {
       "bundler": "metro"
-    },
-    "name": "Petlo",
-    "slug": "Petlo"
+    }
   }
 }
