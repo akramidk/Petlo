@@ -1,11 +1,9 @@
-import { Text, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { Text } from "react-native";
+import clsx from "clsx";
 
 const App = () => {
   return (
-    <SafeAreaView>
-      <Text className="text-[100px] font-bold text-[#db3d3d]">Hey Akram</Text>
-    </SafeAreaView>
+    <Text className={clsx("text-[36px] text-[#db3d3d]")}>App Language</Text>
   );
 };
 

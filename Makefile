@@ -8,5 +8,7 @@ console:
 	cd backend && rails c
 sidekiq:
 	cd backend && bundle exec sidekiq
+mobile:
+	cd frontend/mobile && yarn expo start
 docker:
 	sudo docker compose -f backend-docker-compose.yml up

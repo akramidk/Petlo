@@ -6,10 +6,14 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@expo-google-fonts/ibm-plex-sans-arabic": "^0.2.3",
+    "@expo-google-fonts/manrope": "^0.2.3",
     "@types/react": "^18.0.28",
     "@types/react-native": "^0.71.3",
+    "clsx": "^1.2.1",
     "expo": "~48.0.4",
     "expo-constants": "~14.2.1",
+    "expo-font": "~11.1.1",
     "expo-linking": "~4.0.1",
     "expo-router": "^1.0.0-rc1",
     "expo-splash-screen": "~0.18.1",

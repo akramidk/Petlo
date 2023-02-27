@@ -2,6 +2,7 @@
   "expo": {
     "name": "Petlo",
     "slug": "Petlo",
+    "scheme": "acme",
     "web": {
       "bundler": "metro"
     }
