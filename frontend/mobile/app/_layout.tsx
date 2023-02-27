@@ -1,5 +1,3 @@
-import { SafeAreaView } from "react-native-safe-area-context";
-import { Slot } from "expo-router";
 import {
   useFonts,
   Manrope_200ExtraLight,
@@ -19,7 +17,10 @@ import {
   IBMPlexSansArabic_600SemiBold,
   IBMPlexSansArabic_700Bold,
 } from "@expo-google-fonts/ibm-plex-sans-arabic";
-import { Text } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { Slot } from "expo-router";
+import { Logo } from "../src/components/atoms";
+import { View } from "react-native";
 
 const Layout = () => {
   const [fontsLoaded] = useFonts({
@@ -41,9 +42,9 @@ const Layout = () => {
 
   if (!fontsLoaded) {
     return (
-      <SafeAreaView>
-        <Text>Loading</Text>
-      </SafeAreaView>
+      <View className="flex-1 items-center justify-center">
+        <Logo width="123" height="48" color="#0E333C" />
+      </View>
     );
   }
 
