@@ -1,11 +1,11 @@
 module AppsHelper::Version
   APP_VERSION = {
-    "ios" => 1.0,
-    "android" => 1.0
+    "ios" => "1.0.0",
+    "android" => "1.0.0"
   }
   
   def version(app_version:, phone_os:)
-    if app_version.to_f < APP_VERSION[phone_os]
+    if app_version < APP_VERSION[phone_os]
       true
     else
       false

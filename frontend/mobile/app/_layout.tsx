@@ -20,9 +20,32 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Slot } from "expo-router";
 import { Logo } from "../src/components/atoms";
-import { View } from "react-native";
+import { View, Alert } from "react-native";
+import { useAPIFetching } from "../src/hooks";
+import * as Device from "expo-device";
+import * as Application from "expo-application";
+import {
+  NewVersionAvailableRequest,
+  NewVersionAvailableResponse,
+} from "../src/interfaces";
 
 const Layout = () => {
+  //todo: handled if no network
+
+  //check if there's an update
+  const appVersion = Application.nativeApplicationVersion;
+  const phoneOS = Device.osName.toLowerCase();
+  const {
+    response: newVersionAvailableResponse,
+    status: newVersionAvailableStatus,
+  } = useAPIFetching<NewVersionAvailableRequest, NewVersionAvailableResponse>({
+    endpoint: "/apps/new-version-available",
+    body: {
+      app_version: "0.0.0",
+      phone_os: phoneOS,
+    } as NewVersionAvailableRequest,
+  });
+
   const [fontsLoaded] = useFonts({
     IBMPlexSansArabic_100Thin,
     IBMPlexSansArabic_200ExtraLight,
@@ -40,7 +63,21 @@ const Layout = () => {
     Manrope_800ExtraBold,
   });
 
-  if (!fontsLoaded) {
+  if (
+    !fontsLoaded ||
+    (!newVersionAvailableResponse && newVersionAvailableStatus === "loading") ||
+    newVersionAvailableResponse.value
+  ) {
+    //todo: new design for this insted of an Alert
+    if (newVersionAvailableResponse?.value) {
+      Alert.alert(
+        "New Update Available",
+        "The app must be updated first to be use.",
+        [],
+        { cancelable: false }
+      );
+    }
+
     return (
       <View className="flex-1 items-center justify-center">
         <Logo width="123" height="48" color="#0E333C" />
