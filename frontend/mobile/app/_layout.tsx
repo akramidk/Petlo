@@ -28,6 +28,8 @@ import {
   NewVersionAvailableRequest,
   NewVersionAvailableResponse,
 } from "../src/interfaces";
+import { TranslationsContext } from "../src/contexts";
+import { useTranslations } from "../src/hooks";
 
 const Layout = () => {
   //todo: handled if no network
@@ -46,6 +48,7 @@ const Layout = () => {
     } as NewVersionAvailableRequest,
   });
 
+  //load fonts
   const [fontsLoaded] = useFonts({
     IBMPlexSansArabic_100Thin,
     IBMPlexSansArabic_200ExtraLight,
@@ -63,10 +66,15 @@ const Layout = () => {
     Manrope_800ExtraBold,
   });
 
+  //translations setup
+  const t = useTranslations({
+    locale: "en",
+  });
+
   if (
     !fontsLoaded ||
     (!newVersionAvailableResponse && newVersionAvailableStatus === "loading") ||
-    newVersionAvailableResponse.value
+    newVersionAvailableResponse?.value
   ) {
     //todo: new design for this insted of an Alert
     if (newVersionAvailableResponse?.value) {
@@ -86,12 +94,14 @@ const Layout = () => {
   }
 
   return (
-    <SafeAreaView
-      style={{ flexDirection: "row-reverse" }}
-      className="px-[28px]"
-    >
-      <Slot />
-    </SafeAreaView>
+    <TranslationsContext.Provider value={t}>
+      <SafeAreaView
+        style={{ flexDirection: "row-reverse" }}
+        className="px-[28px]"
+      >
+        <Slot />
+      </SafeAreaView>
+    </TranslationsContext.Provider>
   );
 };
 
