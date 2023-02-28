@@ -1,8 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import useSWR from "swr";
+import Constants from "expo-constants";
 
-const backendURL = "https://api.dev.petlo.co/en/v1";
+const backendURL = Constants.expoConfig.extra.API_URL + "/en";
 
 interface useAPIFetchingProps<Request> {
   endpoint: string | null;
