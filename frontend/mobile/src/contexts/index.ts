@@ -1,3 +1,4 @@
 import TranslationsContext from "./TranslationsContext";
+import SettingsContext from "./SettingsContext";
 
-export { TranslationsContext };
+export { TranslationsContext, SettingsContext };

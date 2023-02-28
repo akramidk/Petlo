@@ -21,14 +21,14 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { Slot } from "expo-router";
 import { Logo } from "../src/components/atoms";
 import { View, Alert } from "react-native";
-import { useAPIFetching } from "../src/hooks";
+import { useAPIFetching, useSettings } from "../src/hooks";
 import * as Device from "expo-device";
 import * as Application from "expo-application";
 import {
   NewVersionAvailableRequest,
   NewVersionAvailableResponse,
 } from "../src/interfaces";
-import { TranslationsContext } from "../src/contexts";
+import { SettingsContext, TranslationsContext } from "../src/contexts";
 import { useTranslations } from "../src/hooks";
 
 const Layout = () => {
@@ -66,9 +66,9 @@ const Layout = () => {
     Manrope_800ExtraBold,
   });
 
-  //translations setup
-  const t = useTranslations({
-    locale: "en",
+  const { language, setLanguage, direction } = useSettings();
+  const { t } = useTranslations({
+    language: language,
   });
 
   if (
@@ -94,14 +94,16 @@ const Layout = () => {
   }
 
   return (
-    <TranslationsContext.Provider value={t}>
-      <SafeAreaView
-        style={{ flexDirection: "row-reverse" }}
-        className="px-[28px]"
-      >
-        <Slot />
-      </SafeAreaView>
-    </TranslationsContext.Provider>
+    <SettingsContext.Provider value={{ language, setLanguage, direction }}>
+      <TranslationsContext.Provider value={t}>
+        <SafeAreaView
+          style={{ flexDirection: direction === "ltr" ? "row" : "row-reverse" }}
+          className="px-[28px]"
+        >
+          <Slot />
+        </SafeAreaView>
+      </TranslationsContext.Provider>
+    </SettingsContext.Provider>
   );
 };
 

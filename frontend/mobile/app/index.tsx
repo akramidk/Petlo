@@ -1,15 +1,22 @@
-import { Text } from "react-native";
+import { View, Text, Button } from "react-native";
 import clsx from "clsx";
 import { useContext } from "react";
-import { TranslationsContext } from "../src/contexts";
+import { SettingsContext, TranslationsContext } from "../src/contexts";
 
 const App = () => {
   const t = useContext(TranslationsContext);
+  const { setLanguage } = useContext(SettingsContext);
 
   return (
-    <Text className={clsx("text-[36px] text-[#db3d3d]")}>
-      {t("APP_LANGUAGE_TITLE")}
-    </Text>
+    <View>
+      <Text className={clsx("text-[36px] text-[#db3d3d]")}>
+        {t("APP_LANGUAGE_TITLE")}
+      </Text>
+
+      <Button title="en" onPress={() => setLanguage("en")} />
+      <Button title="arMasculine" onPress={() => setLanguage("arMasculine")} />
+      <Button title="arFeminine" onPress={() => setLanguage("arFeminine")} />
+    </View>
   );
 };
 
