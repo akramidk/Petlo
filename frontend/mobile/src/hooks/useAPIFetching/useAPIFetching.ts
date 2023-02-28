@@ -7,11 +7,10 @@ import { Endpoints } from "../../enums";
 const backendURL = Constants.expoConfig.extra.API_URL + "/en";
 
 interface useAPIFetchingProps<Request> {
-  endpoint: string | null;
+  endpoint: Endpoints;
   body: Request;
 }
 
-//todo: add types
 const useAPIFetching = <Request, Response>({
   endpoint,
   body,
@@ -20,7 +19,7 @@ const useAPIFetching = <Request, Response>({
   const [status, setStatus] = useState<undefined | "loading">();
 
   const fetcher = (endpoint: string): Response => {
-    let fullEndpoint = backendURL + Endpoints[endpoint];
+    let fullEndpoint = backendURL + endpoint;
     const params = new URLSearchParams(body as {}).toString();
     if (params.length > 0) fullEndpoint += `?${params}`;
 

@@ -30,6 +30,7 @@ import {
 } from "../src/interfaces";
 import { SettingsContext, TranslationsContext } from "../src/contexts";
 import { useTranslations } from "../src/hooks";
+import { Endpoints } from "../src/enums";
 
 const Layout = () => {
   //todo: handled if no network
@@ -41,7 +42,7 @@ const Layout = () => {
     response: newVersionAvailableResponse,
     status: newVersionAvailableStatus,
   } = useAPIFetching<NewVersionAvailableRequest, NewVersionAvailableResponse>({
-    endpoint: "NewVersionAvailable",
+    endpoint: Endpoints.NewVersionAvailable,
     body: {
       app_version: appVersion,
       phone_os: phoneOS,
