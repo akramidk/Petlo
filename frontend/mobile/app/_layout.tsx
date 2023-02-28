@@ -39,7 +39,7 @@ const Layout = () => {
     response: newVersionAvailableResponse,
     status: newVersionAvailableStatus,
   } = useAPIFetching<NewVersionAvailableRequest, NewVersionAvailableResponse>({
-    endpoint: "/v1/apps/new-version-available",
+    endpoint: "NewVersionAvailable",
     body: {
       app_version: appVersion,
       phone_os: phoneOS,

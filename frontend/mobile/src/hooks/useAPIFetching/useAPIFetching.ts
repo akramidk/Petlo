@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import useSWR from "swr";
 import Constants from "expo-constants";
+import { Endpoints } from "../../enums";
 
 const backendURL = Constants.expoConfig.extra.API_URL + "/en";
 
@@ -18,12 +19,12 @@ const useAPIFetching = <Request, Response>({
   const [response, setResponse] = useState<Response>();
   const [status, setStatus] = useState<undefined | "loading">();
 
-  const fetcher = (endpoint: string) => {
-    let fullEndpoint = backendURL + endpoint;
+  const fetcher = (endpoint: string): Response => {
+    let fullEndpoint = backendURL + Endpoints[endpoint];
     const params = new URLSearchParams(body as {}).toString();
     if (params.length > 0) fullEndpoint += `?${params}`;
 
-    return axios.get(fullEndpoint).then((res) => res.data);
+    return axios.get(fullEndpoint).then((res) => res.data) as Response;
   };
 
   const { data, error, mutate, isLoading, isValidating } = useSWR(
