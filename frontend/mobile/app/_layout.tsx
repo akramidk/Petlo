@@ -37,7 +37,6 @@ const Layout = () => {
 
   //check if there's an update
   const appVersion = Application.nativeApplicationVersion;
-
   // we're using Device.brand insted of Device.osName becuse Device.osName not correct sometimes
   const phoneOS = Device.brand.toLowerCase() === "apple" ? "ios" : "android";
   const {
