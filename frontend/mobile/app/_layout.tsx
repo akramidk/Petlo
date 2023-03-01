@@ -80,8 +80,8 @@ const Layout = () => {
     //todo: new design for this insted of an Alert
     if (newVersionAvailableResponse?.value) {
       Alert.alert(
-        "New Update Available",
-        "The app must be updated first to be use.",
+        t("ROOT_LAYOUT_NEW_UPDATE_AVAILABLE_TITLE"),
+        t("ROOT_LAYOUT_NEW_UPDATE_AVAILABLE_MESSAGE"),
         [],
         { cancelable: false }
       );
