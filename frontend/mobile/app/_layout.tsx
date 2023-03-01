@@ -37,7 +37,9 @@ const Layout = () => {
 
   //check if there's an update
   const appVersion = Application.nativeApplicationVersion;
-  const phoneOS = Device.osName.toLowerCase();
+
+  // we're using Device.brand insted of Device.osName becuse Device.osName not correct always
+  const phoneOS = Device.brand.toLowerCase() === "apple" ? "ios" : "android";
   const {
     response: newVersionAvailableResponse,
     status: newVersionAvailableStatus,
@@ -46,7 +48,7 @@ const Layout = () => {
     body: {
       app_version: appVersion,
       phone_os: phoneOS,
-    } as NewVersionAvailableRequest,
+    },
   });
 
   //load fonts
