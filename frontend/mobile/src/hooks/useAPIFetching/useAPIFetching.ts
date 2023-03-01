@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useMemo, useState } from "react";
 import useSWR from "swr";
 import Constants from "expo-constants";
 import { Endpoints } from "../../enums";
@@ -26,14 +26,10 @@ const useAPIFetching = <Request, Response>({
     return axios.get(fullEndpoint).then((res) => res.data) as Response;
   };
 
-  const { data, error, mutate, isLoading, isValidating } = useSWR(
-    endpoint,
-    fetcher
-  );
+  const { data, error, isLoading, isValidating } = useSWR(endpoint, fetcher);
 
-  useEffect(() => {
+  useMemo(() => {
     if ((data || error) && !(isValidating || isLoading)) {
-      mutate(undefined, { revalidate: false });
       setStatus(undefined);
       setResponse(data ?? undefined);
     }
@@ -41,7 +37,7 @@ const useAPIFetching = <Request, Response>({
     if (isValidating || isLoading) {
       setStatus("loading");
     }
-  }, [data, error, isValidating, isLoading, mutate]);
+  }, [data, error, isValidating, isLoading]);
 
   return { response, status };
 };
