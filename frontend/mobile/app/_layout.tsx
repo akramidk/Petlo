@@ -69,7 +69,7 @@ const Layout = () => {
     Manrope_800ExtraBold,
   });
 
-  const { language, changeLanguage, direction } = useSettings();
+  const { language, changeLanguage, storedLanguage, direction } = useSettings();
   const { t } = useTranslations({
     language: language,
   });
@@ -77,7 +77,8 @@ const Layout = () => {
   if (
     !fontsLoaded ||
     (!newVersionAvailableResponse && newVersionAvailableStatus === "loading") ||
-    newVersionAvailableResponse?.value
+    newVersionAvailableResponse?.value ||
+    storedLanguage === undefined
   ) {
     //todo: new design for this insted of an Alert
     if (newVersionAvailableResponse?.value) {
@@ -96,8 +97,10 @@ const Layout = () => {
     );
   }
 
+  console.log("storedLanguage", storedLanguage);
+
   return (
-    <LanguageRestrictor>
+    <LanguageRestrictor storedLanguage={storedLanguage}>
       <SettingsContext.Provider value={{ language, changeLanguage, direction }}>
         <TranslationsContext.Provider value={t}>
           <SafeAreaView

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { languages } from "../types";
 import { I18nManager } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -15,18 +15,38 @@ const useSettings = () => {
   I18nManager.allowRTL(false);
   I18nManager.forceRTL(false);
 
-  const [language, setLanguage] = useState<languages>("en");
-  const [direction, setDirection] = useState<direction>("ltr");
+  const [storedLanguage, setStoredLanguage] = useState<
+    undefined | null | languages
+  >();
+  const setStoredLanguageFromAsyncStorage = async () => {
+    // await AsyncStorage.removeItem("PETLO_APP_LANGUAGE");
+
+    const value = (await AsyncStorage.getItem(
+      "PETLO_APP_LANGUAGE"
+    )) as languages;
+
+    setStoredLanguage(value);
+  };
+
+  useEffect(() => {
+    setStoredLanguageFromAsyncStorage();
+  }, []);
+
+  const [language, setLanguage] = useState<languages>(storedLanguage ?? "en");
+  const [direction, setDirection] = useState<direction>(
+    languagesDirection[storedLanguage ?? "en"]
+  );
 
   const changeLanguage = async (language: languages) => {
     const direction = languagesDirection[language];
 
     await AsyncStorage.setItem("PETLO_APP_LANGUAGE", language);
+    setStoredLanguage(language);
     setLanguage(language);
     setDirection(direction);
   };
 
-  return { language, changeLanguage, direction };
+  return { language, changeLanguage, storedLanguage, direction };
 };
 
 export default useSettings;
