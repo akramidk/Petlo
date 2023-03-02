@@ -97,8 +97,6 @@ const Layout = () => {
     );
   }
 
-  console.log("storedLanguage", storedLanguage);
-
   return (
     <LanguageRestrictor storedLanguage={storedLanguage}>
       <SettingsContext.Provider value={{ language, changeLanguage, direction }}>
