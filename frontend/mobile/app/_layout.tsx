@@ -69,7 +69,7 @@ const Layout = () => {
     Manrope_800ExtraBold,
   });
 
-  const { language, setLanguage, direction } = useSettings();
+  const { language, changeLanguage, direction } = useSettings();
   const { t } = useTranslations({
     language: language,
   });
@@ -98,7 +98,7 @@ const Layout = () => {
 
   return (
     <LanguageRestrictor>
-      <SettingsContext.Provider value={{ language, setLanguage, direction }}>
+      <SettingsContext.Provider value={{ language, changeLanguage, direction }}>
         <TranslationsContext.Provider value={t}>
           <SafeAreaView
             style={{

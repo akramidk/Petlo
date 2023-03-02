@@ -5,7 +5,7 @@ import { SettingsContext, TranslationsContext } from "../src/contexts";
 
 const SelectLanguage = () => {
   const t = useContext(TranslationsContext);
-  const { setLanguage } = useContext(SettingsContext);
+  const { changeLanguage } = useContext(SettingsContext);
 
   return (
     <View>
@@ -13,9 +13,12 @@ const SelectLanguage = () => {
         {t("APP_LANGUAGE_TITLE")}
       </Text>
 
-      <Button title="en" onPress={() => setLanguage("en")} />
-      <Button title="arMasculine" onPress={() => setLanguage("arMasculine")} />
-      <Button title="arFeminine" onPress={() => setLanguage("arFeminine")} />
+      <Button title="en" onPress={() => changeLanguage("en")} />
+      <Button
+        title="arMasculine"
+        onPress={() => changeLanguage("arMasculine")}
+      />
+      <Button title="arFeminine" onPress={() => changeLanguage("arFeminine")} />
     </View>
   );
 };
