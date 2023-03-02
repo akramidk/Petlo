@@ -9,9 +9,7 @@ const App = () => {
 
   return (
     <View>
-      <Text className={clsx("text-[36px] text-[#db3d3d]")}>
-        {t("APP_LANGUAGE_TITLE")}
-      </Text>
+      <Text className={clsx("text-[36px] text-[#db3d3d]")}>Home</Text>
 
       <Button title="en" onPress={() => setLanguage("en")} />
       <Button title="arMasculine" onPress={() => setLanguage("arMasculine")} />
