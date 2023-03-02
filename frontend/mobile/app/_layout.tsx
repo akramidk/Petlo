@@ -31,6 +31,7 @@ import {
 import { SettingsContext, TranslationsContext } from "../src/contexts";
 import { useTranslations } from "../src/hooks";
 import { Endpoints } from "../src/enums";
+import LanguageRestrictor from "./_LanguageRestrictor";
 
 const Layout = () => {
   //todo: handled if no network
@@ -96,16 +97,20 @@ const Layout = () => {
   }
 
   return (
-    <SettingsContext.Provider value={{ language, setLanguage, direction }}>
-      <TranslationsContext.Provider value={t}>
-        <SafeAreaView
-          style={{ flexDirection: direction === "ltr" ? "row" : "row-reverse" }}
-          className="px-[28px]"
-        >
-          <Slot />
-        </SafeAreaView>
-      </TranslationsContext.Provider>
-    </SettingsContext.Provider>
+    <LanguageRestrictor>
+      <SettingsContext.Provider value={{ language, setLanguage, direction }}>
+        <TranslationsContext.Provider value={t}>
+          <SafeAreaView
+            style={{
+              flexDirection: direction === "ltr" ? "row" : "row-reverse",
+            }}
+            className="px-[28px]"
+          >
+            <Slot />
+          </SafeAreaView>
+        </TranslationsContext.Provider>
+      </SettingsContext.Provider>
+    </LanguageRestrictor>
   );
 };
 
