@@ -2,12 +2,18 @@ import { useEffect, useState } from "react";
 import { languages } from "../types";
 import { I18nManager } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { getLocales } from "expo-localization";
 
 type direction = "ltr" | "rtl";
 enum languagesDirection {
   "en" = "ltr",
   "arMasculine" = "rtl",
   "arFeminine" = "rtl",
+}
+
+enum defaultGenderedLanguage {
+  "en" = "en",
+  "ar" = "arMasculine",
 }
 
 const useSettings = () => {
@@ -32,9 +38,11 @@ const useSettings = () => {
     setStoredLanguageFromAsyncStorage();
   }, []);
 
-  const [language, setLanguage] = useState<languages>(storedLanguage ?? "en");
+  const deviceLanguage = defaultGenderedLanguage[getLocales()[0].languageCode];
+  const finalLanguage = storedLanguage ?? deviceLanguage ?? "en";
+  const [language, setLanguage] = useState<languages>(finalLanguage);
   const [direction, setDirection] = useState<direction>(
-    languagesDirection[storedLanguage ?? "en"]
+    languagesDirection[finalLanguage]
   );
 
   const changeLanguage = async (language: languages) => {
