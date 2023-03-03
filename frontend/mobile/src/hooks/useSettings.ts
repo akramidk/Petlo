@@ -19,7 +19,7 @@ const useSettings = () => {
     undefined | null | languages
   >();
   const setStoredLanguageFromAsyncStorage = async () => {
-    // await AsyncStorage.removeItem("PETLO_APP_LANGUAGE");
+    await AsyncStorage.removeItem("PETLO_APP_LANGUAGE");
 
     const value = (await AsyncStorage.getItem(
       "PETLO_APP_LANGUAGE"

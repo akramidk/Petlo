@@ -100,13 +100,8 @@ const Layout = () => {
   return (
     <LanguageRestrictor storedLanguage={storedLanguage}>
       <SettingsContext.Provider value={{ language, changeLanguage, direction }}>
-        <TranslationsContext.Provider value={t}>
-          <SafeAreaView
-            style={{
-              flexDirection: direction === "ltr" ? "row" : "row-reverse",
-            }}
-            className="px-[28px]"
-          >
+        <TranslationsContext.Provider value={{ t }}>
+          <SafeAreaView className="px-[28px] py-[12px]">
             <Slot />
           </SafeAreaView>
         </TranslationsContext.Provider>

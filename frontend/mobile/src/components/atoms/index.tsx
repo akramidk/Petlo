@@ -1,2 +1,4 @@
 import Logo from "./Logo/Logo";
-export { Logo };
+import Text from "./Text";
+
+export { Logo, Text };

@@ -1,24 +1,32 @@
-import { View, Text, Button } from "react-native";
+import { View } from "react-native";
 import clsx from "clsx";
-import { useContext } from "react";
-import { SettingsContext, TranslationsContext } from "../src/contexts";
+import { useTranslationsContext } from "../src/hooks";
+import { Text } from "../src/components/atoms";
 
 const SelectLanguage = () => {
-  const t = useContext(TranslationsContext);
-  const { changeLanguage } = useContext(SettingsContext);
+  const { t } = useTranslationsContext();
 
   return (
     <View>
-      <Text className={clsx("text-[36px] text-[#db3d3d]")}>
-        {t("APP_LANGUAGE_TITLE")}
-      </Text>
+      <View className="space-y-[28px]">
+        <View>
+          <Text className={clsx("font-e800 text-[32px] text-[#0E333C]")}>
+            {t("SELECT_LANGUAGE_TITLE")}
+          </Text>
 
-      <Button title="en" onPress={() => changeLanguage("en")} />
-      <Button
-        title="arMasculine"
-        onPress={() => changeLanguage("arMasculine")}
-      />
-      <Button title="arFeminine" onPress={() => changeLanguage("arFeminine")} />
+          <Text
+            className={clsx(
+              "font-e500 text-[17px] text-[#888] leading-[28px] mt-[12px]"
+            )}
+          >
+            {t("SELECT_LANGUAGE_HELPER_TEXT")}
+          </Text>
+        </View>
+
+        <View>
+          <Text className="">Text</Text>
+        </View>
+      </View>
     </View>
   );
 };
