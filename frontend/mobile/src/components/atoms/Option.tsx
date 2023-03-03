@@ -1,19 +1,24 @@
 import { Pressable, View } from "react-native";
 import Text from "./Text";
 import { CheckCircleIcon } from "react-native-heroicons/solid";
+import clsx from "clsx";
 
 interface OptionProps {
-  id: number;
   value: string;
   onPress: () => void;
   selected?: boolean;
+  className?: string;
 }
 
-const Option = ({ id, onPress, value, selected = false }: OptionProps) => {
+const Option = ({
+  onPress,
+  value,
+  selected = false,
+  className,
+}: OptionProps) => {
   return (
     <Pressable
-      key={id}
-      className="flex-row justify-between bg-[#fff] pb-[16px] h-[72px]"
+      className={clsx("flex-row justify-between pb-[16px]", className)}
       onPress={onPress}
     >
       <Text className="font-e700 text-[16px] text-[#163E48]">{value}</Text>
