@@ -2,5 +2,9 @@
   "ROOT_LAYOUT_NEW_UPDATE_AVAILABLE_TITLE": "New Update Available",
   "ROOT_LAYOUT_NEW_UPDATE_AVAILABLE_MESSAGE": "The app must be updated first to be use.",
   "SELECT_LANGUAGE_TITLE": "App Language",
-  "SELECT_LANGUAGE_HELPER_TEXT": "Select the language that you need to see the app with."
+  "SELECT_LANGUAGE_HELPER_TEXT": "Select the language that you need to see the app with.",
+  "SELECT_LANGUAGE_LANGUAGES": [
+    { "id": "ar", "value": "Arabic" },
+    { "id": "en", "value": "English" }
+  ]
 }

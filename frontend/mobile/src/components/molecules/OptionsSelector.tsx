@@ -9,8 +9,8 @@ interface OptionsSelector {
   }[];
   className?: string;
   signalSelect?: {
-    selectedOption: number;
-    setSelectedOption: (id: number) => void;
+    selectedOption: number | string;
+    setSelectedOption: (id: number | string) => void;
   };
 }
 

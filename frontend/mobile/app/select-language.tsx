@@ -4,12 +4,11 @@ import { useTranslationsContext } from "../src/hooks";
 import Text from "../src/components/atoms/Text";
 import { OptionsSelector } from "../src/components/molecules";
 import { useState } from "react";
-import { languages } from "../src/types";
 
 const SelectLanguage = () => {
   const { t } = useTranslationsContext();
   const [selectedLanguage, setSelectedLanguage] = useState<
-    undefined | number
+    undefined | number | string
   >();
 
   return (
@@ -28,16 +27,7 @@ const SelectLanguage = () => {
         </View>
 
         <OptionsSelector
-          options={[
-            {
-              id: 1,
-              value: "Arabic",
-            },
-            {
-              id: 2,
-              value: "English",
-            },
-          ]}
+          options={t("SELECT_LANGUAGE_LANGUAGES")}
           className="mt-[28px]"
           signalSelect={{
             selectedOption: selectedLanguage,
