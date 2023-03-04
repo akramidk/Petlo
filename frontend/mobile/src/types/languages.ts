@@ -1,1 +1,1 @@
-export type languages = "en" | "arMasculine" | "arFeminine";
+export type languages = "en" | "ar_masculine" | "ar_feminine";

@@ -7,13 +7,13 @@ import { getLocales } from "expo-localization";
 type direction = "ltr" | "rtl";
 enum languagesDirection {
   "en" = "ltr",
-  "arMasculine" = "rtl",
-  "arFeminine" = "rtl",
+  "ar_masculine" = "rtl",
+  "ar_feminine" = "rtl",
 }
 
 enum defaultGenderedLanguage {
   "en" = "en",
-  "ar" = "arMasculine",
+  "ar" = "ar_masculine",
 }
 
 const useSettings = () => {
