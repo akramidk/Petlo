@@ -1,10 +1,10 @@
 {
+  "COMMON_ARABIC": "عربي",
+  "COMMON_ENGLISH": "انجليزي",
   "ROOT_LAYOUT_NEW_UPDATE_AVAILABLE_TITLE": "تحديث جديد متوفر",
   "ROOT_LAYOUT_NEW_UPDATE_AVAILABLE_MESSAGE": "يجب تحديث التطبيق للتمكن من إستخدامه.",
   "SELECT_LANGUAGE_TITLE": "لغة التطبيق",
   "SELECT_LANGUAGE_HELPER_TEXT": "يرجى تحديد اللغة المراد استخدام البرنامج بها.",
-  "SELECT_LANGUAGE_LANGUAGES": [
-    { "id": "ar", "value": "عربي" },
-    { "id": "en", "value": "انجليزي" }
-  ]
+  "SELECT_LANGUAGE_SAVE_BUTTON": "حفظ",
+  "SELECT_LANGUAGE_CONTINUE_BUTTON": "الاكمال"
 }

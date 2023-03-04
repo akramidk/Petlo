@@ -54,7 +54,7 @@ const useSettings = () => {
     setDirection(direction);
   };
 
-  return { language, changeLanguage, storedLanguage, direction };
+  return { language, changeLanguage, storedLanguage, direction, setLanguage };
 };
 
 export default useSettings;

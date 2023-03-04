@@ -1,27 +1,34 @@
 import clsx from "clsx";
 import { View } from "react-native";
+import { useTranslationsContext } from "../../hooks";
 import Option from "../atoms/Option";
 
-interface OptionsSelector {
-  options: {
-    id: number;
-    value: string;
-  }[];
+interface OptionBase {
+  id: number | string;
+  value: string;
+}
+
+interface OptionsSelector<T> {
+  options: T[];
   className?: string;
+  translate?: boolean;
   signalSelect?: {
-    selectedOption: number | string;
-    setSelectedOption: (id: number | string) => void;
+    selectedOption: T;
+    setSelectedOption: (option: T) => void;
   };
 }
 
-const OptionsSelector = ({
+const OptionsSelector = <T extends OptionBase>({
   options,
   className,
+  translate = false,
   signalSelect,
-}: OptionsSelector) => {
-  const onSelectOption = (id: number) => {
+}: OptionsSelector<T>) => {
+  const { t } = useTranslationsContext();
+
+  const onSelectOption = (option: T) => {
     if (signalSelect) {
-      signalSelect.setSelectedOption(id);
+      signalSelect.setSelectedOption(option);
     }
   };
 
@@ -30,7 +37,7 @@ const OptionsSelector = ({
       {options.map((option, index) => {
         let isSelected: boolean;
         if (signalSelect) {
-          isSelected = signalSelect.selectedOption === option.id;
+          isSelected = signalSelect.selectedOption?.id === option.id;
         }
 
         const padding: string = index === 0 ? "pb-[16px]" : "py-[16px]";
@@ -40,8 +47,8 @@ const OptionsSelector = ({
             <Option
               cn={padding}
               selected={isSelected}
-              onPress={() => onSelectOption(option.id)}
-              value={option.value}
+              onPress={() => onSelectOption(option)}
+              value={translate ? t(option.value) : option.value}
             />
           </View>
         );

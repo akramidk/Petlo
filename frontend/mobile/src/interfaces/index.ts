@@ -3,4 +3,12 @@ import {
   NewVersionAvailableResponse,
 } from "./NewVersionAvailable";
 
-export { NewVersionAvailableRequest, NewVersionAvailableResponse };
+import { ButtonProps } from "./ButtonProps";
+import { LanguageOption } from "./LanguageOption";
+
+export {
+  NewVersionAvailableRequest,
+  NewVersionAvailableResponse,
+  ButtonProps,
+  LanguageOption,
+};
