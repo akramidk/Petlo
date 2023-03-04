@@ -4,6 +4,7 @@ import { useTranslationsContext } from "../src/hooks";
 import Text from "../src/components/atoms/Text";
 import { OptionsSelector } from "../src/components/molecules";
 import { useState } from "react";
+import { Form } from "../src/components/organisms";
 
 const SelectLanguage = () => {
   const { t } = useTranslationsContext();
@@ -12,30 +13,18 @@ const SelectLanguage = () => {
   >();
 
   return (
-    <View>
-      <View>
-        <View className="space-y-[12px]">
-          <Text className={clsx("font-e800 text-[32px] text-[#0E333C]")}>
-            {t("SELECT_LANGUAGE_TITLE")}
-          </Text>
-
-          <Text
-            className={clsx("font-e500 text-[17px] text-[#888] leading-[28px]")}
-          >
-            {t("SELECT_LANGUAGE_HELPER_TEXT")}
-          </Text>
-        </View>
-
-        <OptionsSelector
-          options={t("SELECT_LANGUAGE_LANGUAGES")}
-          className="mt-[28px]"
-          signalSelect={{
-            selectedOption: selectedLanguage,
-            setSelectedOption: setSelectedLanguage,
-          }}
-        />
-      </View>
-    </View>
+    <Form
+      title={t("SELECT_LANGUAGE_TITLE")}
+      helperText={t("SELECT_LANGUAGE_HELPER_TEXT")}
+    >
+      <OptionsSelector
+        options={t("SELECT_LANGUAGE_LANGUAGES")}
+        signalSelect={{
+          selectedOption: selectedLanguage,
+          setSelectedOption: setSelectedLanguage,
+        }}
+      />
+    </Form>
   );
 };
 
