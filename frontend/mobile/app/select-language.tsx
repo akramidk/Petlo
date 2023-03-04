@@ -1,4 +1,4 @@
-import { useSettings, useTranslationsContext } from "../src/hooks";
+import { useSettingsContext, useTranslationsContext } from "../src/hooks";
 import { OptionsSelector } from "../src/components/molecules";
 import { useEffect, useState } from "react";
 import { Form } from "../src/components/organisms";
@@ -10,16 +10,15 @@ import { useRouter } from "expo-router";
 const SelectLanguage = () => {
   const router = useRouter();
   const { t } = useTranslationsContext();
-  const { changeLanguage } = useSettings();
+  const { changeLanguage } = useSettingsContext();
   const [selectedLanguage, setSelectedLanguage] = useState<LanguageOption>();
   const [step, setStep] = useState(1);
 
   const firstStepHandler = () => {
     if (selectedLanguage.gendered) {
-      changeLanguage(`${selectedLanguage.id}_masculine` as languages);
+      changeLanguage(`${selectedLanguage.id}_masculine` as languages, false);
     } else {
-      changeLanguage(selectedLanguage.id as languages);
-      router.replace("/");
+      changeLanguage(selectedLanguage.id as languages, true);
     }
   };
 

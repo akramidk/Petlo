@@ -45,16 +45,19 @@ const useSettings = () => {
     languagesDirection[finalLanguage]
   );
 
-  const changeLanguage = async (language: languages) => {
+  const changeLanguage = async (language: languages, force: boolean) => {
     const direction = languagesDirection[language];
 
-    await AsyncStorage.setItem("PETLO_APP_LANGUAGE", language);
-    setStoredLanguage(language);
+    if (force) {
+      await AsyncStorage.setItem("PETLO_APP_LANGUAGE", language);
+      setStoredLanguage(language);
+    }
+
     setLanguage(language);
     setDirection(direction);
   };
 
-  return { language, changeLanguage, storedLanguage, direction, setLanguage };
+  return { language, changeLanguage, storedLanguage, direction };
 };
 
 export default useSettings;
