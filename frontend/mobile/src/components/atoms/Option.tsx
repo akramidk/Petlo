@@ -2,6 +2,7 @@ import { Pressable, View } from "react-native";
 import Text from "./Text";
 import { CheckCircleIcon } from "react-native-heroicons/solid";
 import clsx from "clsx";
+import { useSettingsContext } from "../../hooks";
 
 interface OptionProps {
   value: string;
@@ -11,9 +12,15 @@ interface OptionProps {
 }
 
 const Option = ({ onPress, value, selected = false, cn }: OptionProps) => {
+  const { direction } = useSettingsContext();
+
   return (
     <Pressable
-      className={clsx("flex-row justify-between", cn)}
+      className={clsx(
+        "justify-between",
+        direction === "ltr" ? "flex-row" : "flex-row-reverse",
+        cn
+      )}
       onPress={onPress}
     >
       <Text className="font-e700 text-[16px] text-[#163E48]">{value}</Text>

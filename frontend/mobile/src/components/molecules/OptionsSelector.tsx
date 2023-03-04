@@ -19,7 +19,7 @@ const OptionsSelector = ({
   className,
   signalSelect,
 }: OptionsSelector) => {
-  const onSelectOption = (id: number, isSelected: boolean) => {
+  const onSelectOption = (id: number) => {
     if (signalSelect) {
       signalSelect.setSelectedOption(id);
     }
@@ -40,7 +40,7 @@ const OptionsSelector = ({
             <Option
               cn={padding}
               selected={isSelected}
-              onPress={() => onSelectOption(option.id, isSelected)}
+              onPress={() => onSelectOption(option.id)}
               value={option.value}
             />
           </View>
