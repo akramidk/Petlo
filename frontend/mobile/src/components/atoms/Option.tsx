@@ -7,18 +7,13 @@ interface OptionProps {
   value: string;
   onPress: () => void;
   selected?: boolean;
-  className?: string;
+  cn?: string;
 }
 
-const Option = ({
-  onPress,
-  value,
-  selected = false,
-  className,
-}: OptionProps) => {
+const Option = ({ onPress, value, selected = false, cn }: OptionProps) => {
   return (
     <Pressable
-      className={clsx("flex-row justify-between pb-[16px]", className)}
+      className={clsx("flex-row justify-between", cn)}
       onPress={onPress}
     >
       <Text className="font-e700 text-[16px] text-[#163E48]">{value}</Text>

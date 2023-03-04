@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { View } from "react-native";
 import Option from "../atoms/Option";
 
@@ -25,20 +26,22 @@ const OptionsSelector = ({
   };
 
   return (
-    <View className={className}>
-      {options.map((option) => {
+    <View className={clsx("divide-y divide-[#f6f6f6]", className)}>
+      {options.map((option, index) => {
         let isSelected: boolean;
-
         if (signalSelect) {
           isSelected = signalSelect.selectedOption === option.id;
         }
 
+        const padding: string = index === 0 ? "pb-[16px]" : "py-[16px]";
+
         return (
           <View key={option.id}>
             <Option
-              {...option}
+              cn={padding}
               selected={isSelected}
               onPress={() => onSelectOption(option.id, isSelected)}
+              value={option.value}
             />
           </View>
         );
