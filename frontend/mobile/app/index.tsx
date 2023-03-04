@@ -1,6 +1,6 @@
-import { View, Text, Button } from "react-native";
+import { View, Text } from "react-native";
 import clsx from "clsx";
-import { useSettings, useTranslationsContext } from "../src/hooks";
+import { useTranslationsContext } from "../src/hooks";
 
 const App = () => {
   const { t } = useTranslationsContext();

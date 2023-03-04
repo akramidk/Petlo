@@ -15,8 +15,16 @@ const Form = ({ title, helperText, children, button }: FormProps) => {
     <View className="h-full justify-between">
       <View>
         <View className="space-y-[12px] mb-[28px]">
-          <Text className="font-e800 text-[32px] text-[#0E333C]">{title}</Text>
-          <Text className="font-e500 text-[17px] text-[#888] leading-[28px]">
+          <Text
+            className="text-[32px] text-[#0E333C]"
+            font={["font-e800", "font-a700"]}
+          >
+            {title}
+          </Text>
+          <Text
+            className="text-[17px] text-[#888] leading-[28px]"
+            font={["font-e500", "font-a400"]}
+          >
             {helperText}
           </Text>
         </View>
