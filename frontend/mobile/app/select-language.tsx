@@ -5,10 +5,8 @@ import { Form } from "../src/components/organisms";
 import { languagesOptions } from "../src/constants";
 import { LanguageOption } from "../src/interfaces";
 import { languages } from "../src/types";
-import { useRouter } from "expo-router";
 
 const SelectLanguage = () => {
-  const router = useRouter();
   const { t } = useTranslationsContext();
   const { changeLanguage } = useSettingsContext();
   const [selectedLanguage, setSelectedLanguage] = useState<LanguageOption>();

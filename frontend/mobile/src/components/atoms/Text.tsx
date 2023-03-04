@@ -4,9 +4,13 @@ import { useSettingsContext } from "../../hooks";
 
 const Text = (props: TextProps) => {
   const { direction } = useSettingsContext();
-  const textAlign = direction === "ltr" ? "left" : "right";
 
-  return <ReactText style={{ textAlign: textAlign }} {...props} />;
+  return (
+    <ReactText
+      className={direction === "ltr" ? "self-start" : "self-end"}
+      {...props}
+    />
+  );
 };
 
 export default Text;
