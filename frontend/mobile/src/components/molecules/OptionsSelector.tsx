@@ -6,7 +6,7 @@ import Option from "../atoms/Option";
 
 interface OptionsSelector<T> {
   options: T[];
-  className?: string;
+  cn?: string;
   translate?: boolean;
   signalSelect?: {
     selectedOption: T;
@@ -16,7 +16,7 @@ interface OptionsSelector<T> {
 
 const OptionsSelector = <T extends OptionBase>({
   options,
-  className,
+  cn,
   translate = false,
   signalSelect,
 }: OptionsSelector<T>) => {
@@ -29,7 +29,7 @@ const OptionsSelector = <T extends OptionBase>({
   };
 
   return (
-    <View className={clsx("divide-y divide-[#f6f6f6]", className)}>
+    <View className={clsx("divide-y divide-[#f6f6f6]", cn)}>
       {options.map((option, index) => {
         let isSelected: boolean;
         if (signalSelect) {
