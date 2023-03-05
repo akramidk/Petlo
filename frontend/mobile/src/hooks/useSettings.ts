@@ -3,6 +3,7 @@ import { language } from "../types";
 import { I18nManager } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { getLocales } from "expo-localization";
+import { StorageKeys } from "../enums";
 
 type direction = "ltr" | "rtl";
 enum languagesDirection {
@@ -25,10 +26,10 @@ const useSettings = () => {
     undefined | null | language
   >();
   const setStoredLanguageFromAsyncStorage = async () => {
-    await AsyncStorage.removeItem("PETLO_APP_LANGUAGE");
+    await AsyncStorage.removeItem(StorageKeys.LANGUAGE);
 
     const value = (await AsyncStorage.getItem(
-      "PETLO_APP_LANGUAGE"
+      StorageKeys.LANGUAGE
     )) as language;
 
     setStoredLanguage(value);
@@ -49,7 +50,7 @@ const useSettings = () => {
     const direction = languagesDirection[language];
 
     if (force) {
-      await AsyncStorage.setItem("PETLO_APP_LANGUAGE", language);
+      await AsyncStorage.setItem(StorageKeys.LANGUAGE, language);
       setStoredLanguage(language);
     }
 

@@ -1,3 +1,4 @@
 import { Endpoints } from "./Endpoints";
+import { StorageKeys } from "./StorageKeys";
 
-export { Endpoints };
+export { Endpoints, StorageKeys };
