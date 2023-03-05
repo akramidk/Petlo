@@ -98,7 +98,9 @@ const Layout = () => {
   }
 
   return (
-    <SettingsContext.Provider value={{ language, changeLanguage, direction }}>
+    <SettingsContext.Provider
+      value={{ language, changeLanguage, direction, storedLanguage }}
+    >
       <TranslationsContext.Provider value={{ t }}>
         <LanguageRestrictor>
           <SafeAreaView className="px-[28px] py-[12px]">
