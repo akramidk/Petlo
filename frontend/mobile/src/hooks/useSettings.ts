@@ -39,7 +39,7 @@ const useSettings = () => {
   }, []);
 
   const deviceLanguage = defaultGenderedLanguage[getLocales()[0].languageCode];
-  const finalLanguage = storedLanguage ?? deviceLanguage ?? "en";
+  const finalLanguage = storedLanguage ?? "en";
   const [language, setLanguage] = useState<languages>(finalLanguage);
   const [direction, setDirection] = useState<direction>(
     languagesDirection[finalLanguage]

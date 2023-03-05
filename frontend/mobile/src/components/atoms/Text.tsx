@@ -13,7 +13,7 @@ const Text = (props: TextProps) => {
   return (
     <ReactText
       className={clsx(
-        direction === "ltr" ? "self-start" : "self-end",
+        direction === "ltr" ? "text-left" : "text-right",
         language === "en" ? props.font[0] : props.font[1]
       )}
       {...props}

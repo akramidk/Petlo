@@ -1,12 +1,8 @@
 import clsx from "clsx";
 import { View } from "react-native";
 import { useTranslationsContext } from "../../hooks";
+import { OptionBase } from "../../interfaces";
 import Option from "../atoms/Option";
-
-interface OptionBase {
-  id: number | string;
-  value: string;
-}
 
 interface OptionsSelector<T> {
   options: T[];

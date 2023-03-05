@@ -1,3 +1,4 @@
 import { languagesOptions } from "./languagesOptions";
+import { languageAdjectivesOptions } from "./languageAdjectivesOptions";
 
-export { languagesOptions };
+export { languagesOptions, languageAdjectivesOptions };

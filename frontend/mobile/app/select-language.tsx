@@ -2,22 +2,31 @@ import { useSettingsContext, useTranslationsContext } from "../src/hooks";
 import { OptionsSelector } from "../src/components/molecules";
 import { useEffect, useState } from "react";
 import { Form } from "../src/components/organisms";
-import { languagesOptions } from "../src/constants";
-import { LanguageOption } from "../src/interfaces";
+import { languageAdjectivesOptions, languagesOptions } from "../src/constants";
+import { LanguageOption, OptionBase } from "../src/interfaces";
 import { languages } from "../src/types";
 
 const SelectLanguage = () => {
   const { t } = useTranslationsContext();
   const { changeLanguage } = useSettingsContext();
   const [selectedLanguage, setSelectedLanguage] = useState<LanguageOption>();
+  const [selectedAdjective, setSlectedAdjective] = useState<OptionBase>();
   const [step, setStep] = useState(1);
 
-  const firstStepHandler = () => {
+  const languageHandler = () => {
     if (selectedLanguage.gendered) {
+      setStep(2);
       changeLanguage(`${selectedLanguage.id}_masculine` as languages, false);
     } else {
       changeLanguage(selectedLanguage.id as languages, true);
     }
+  };
+
+  const adjectiveHandler = () => {
+    changeLanguage(
+      `${selectedLanguage.id}_${selectedAdjective.id}` as languages,
+      true
+    );
   };
 
   if (step === 1) {
@@ -33,7 +42,7 @@ const SelectLanguage = () => {
                     ? "SELECT_LANGUAGE_CONTINUE_BUTTON"
                     : "SELECT_LANGUAGE_SAVE_BUTTON"
                 ),
-                onClick: firstStepHandler,
+                onClick: languageHandler,
               }
             : undefined
         }
@@ -53,26 +62,18 @@ const SelectLanguage = () => {
   if (step === 2) {
     return (
       <Form
-        title="hellllllllllllllllo"
-        helperText={t("SELECT_LANGUAGE_HELPER_TEXT")}
-        button={
-          selectedLanguage
-            ? {
-                value: t(
-                  selectedLanguage?.gendered
-                    ? "SELECT_LANGUAGE_CONTINUE_BUTTON"
-                    : "SELECT_LANGUAGE_SAVE_BUTTON"
-                ),
-                onClick: firstStepHandler,
-              }
-            : undefined
-        }
+        title={t("SELECT_LANGUAGE_PRONOUN_TITLE")}
+        helperText={t("SELECT_LANGUAGE_PRONOUN_HELPER_TEXT")}
+        button={{
+          value: t("SELECT_LANGUAGE_SAVE_BUTTON"),
+          onClick: adjectiveHandler,
+        }}
       >
-        <OptionsSelector<LanguageOption>
-          options={languagesOptions}
+        <OptionsSelector
+          options={languageAdjectivesOptions}
           signalSelect={{
-            selectedOption: selectedLanguage,
-            setSelectedOption: setSelectedLanguage,
+            selectedOption: selectedAdjective,
+            setSelectedOption: setSlectedAdjective,
           }}
           translate
         />
