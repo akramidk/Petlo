@@ -1,3 +1,3 @@
-import { language } from "./language";
+import { language } from "./Language";
 
 export { language };

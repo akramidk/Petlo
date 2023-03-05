@@ -2,7 +2,7 @@ import axios from "axios";
 import { useMemo, useState } from "react";
 import useSWR from "swr";
 import Constants from "expo-constants";
-import { Endpoints } from "../../enums";
+import { Endpoints } from "../enums";
 
 const backendURL = Constants.expoConfig.extra.API_URL + "/en";
 

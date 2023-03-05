@@ -1,7 +1,5 @@
-import { useRouter, useSegments } from "expo-router";
+import { useRouter } from "expo-router";
 import React, { useEffect } from "react";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { language } from "../src/types";
 import { useSettingsContext } from "../src/hooks";
 
 interface LanguageRestrictorProps {
