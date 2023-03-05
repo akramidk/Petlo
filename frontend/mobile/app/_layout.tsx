@@ -98,15 +98,15 @@ const Layout = () => {
   }
 
   return (
-    <LanguageRestrictor storedLanguage={storedLanguage}>
-      <SettingsContext.Provider value={{ language, changeLanguage, direction }}>
-        <TranslationsContext.Provider value={{ t }}>
+    <SettingsContext.Provider value={{ language, changeLanguage, direction }}>
+      <TranslationsContext.Provider value={{ t }}>
+        <LanguageRestrictor>
           <SafeAreaView className="px-[28px] py-[12px]">
             <Slot />
           </SafeAreaView>
-        </TranslationsContext.Provider>
-      </SettingsContext.Provider>
-    </LanguageRestrictor>
+        </LanguageRestrictor>
+      </TranslationsContext.Provider>
+    </SettingsContext.Provider>
   );
 };
 

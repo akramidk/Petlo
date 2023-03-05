@@ -2,17 +2,15 @@ import { useRouter, useSegments } from "expo-router";
 import React, { useEffect } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { language } from "../src/types";
+import { useSettingsContext } from "../src/hooks";
 
 interface LanguageRestrictorProps {
   children: React.ReactNode;
-  storedLanguage: language | null;
 }
 
-const LanguageRestrictor = ({
-  children,
-  storedLanguage,
-}: LanguageRestrictorProps) => {
+const LanguageRestrictor = ({ children }: LanguageRestrictorProps) => {
   const router = useRouter();
+  const { storedLanguage } = useSettingsContext();
 
   useEffect(() => {
     if (storedLanguage === null) {
