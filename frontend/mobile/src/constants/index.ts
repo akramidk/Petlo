@@ -1,4 +1,4 @@
-import { languagesOptions } from "./languagesOptions";
-import { languageAdjectivesOptions } from "./languageAdjectivesOptions";
+import { LANGUAGES_OPTIONS } from "./LANGUAGES_OPTIONS";
+import { LANGUAGE_ADJECTIVES_OPTIONS } from "./LANGUAGE_ADJECTIVES_OPTIONS";
 
-export { languagesOptions, languageAdjectivesOptions };
+export { LANGUAGES_OPTIONS, LANGUAGE_ADJECTIVES_OPTIONS };

@@ -1,3 +1,3 @@
-import { Endpoints } from "./endpoints";
+import { Endpoints } from "./Endpoints";
 
 export { Endpoints };

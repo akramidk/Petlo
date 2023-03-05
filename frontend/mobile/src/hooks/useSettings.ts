@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { languages } from "../types";
+import { language } from "../types";
 import { I18nManager } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { getLocales } from "expo-localization";
@@ -22,14 +22,14 @@ const useSettings = () => {
   I18nManager.forceRTL(false);
 
   const [storedLanguage, setStoredLanguage] = useState<
-    undefined | null | languages
+    undefined | null | language
   >();
   const setStoredLanguageFromAsyncStorage = async () => {
     await AsyncStorage.removeItem("PETLO_APP_LANGUAGE");
 
     const value = (await AsyncStorage.getItem(
       "PETLO_APP_LANGUAGE"
-    )) as languages;
+    )) as language;
 
     setStoredLanguage(value);
   };
@@ -40,12 +40,12 @@ const useSettings = () => {
 
   const deviceLanguage = defaultGenderedLanguage[getLocales()[0].languageCode];
   const finalLanguage = storedLanguage ?? "en";
-  const [language, setLanguage] = useState<languages>(finalLanguage);
+  const [language, setLanguage] = useState<language>(finalLanguage);
   const [direction, setDirection] = useState<direction>(
     languagesDirection[finalLanguage]
   );
 
-  const changeLanguage = async (language: languages, force: boolean) => {
+  const changeLanguage = async (language: language, force: boolean) => {
     const direction = languagesDirection[language];
 
     if (force) {

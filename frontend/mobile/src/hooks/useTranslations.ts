@@ -2,10 +2,10 @@ import { I18n, Scope, TranslateOptions } from "i18n-js";
 import en from "../locales/en.json";
 import ar_masculine from "../locales/ar_masculine.json";
 import ar_feminine from "../locales/ar_feminine.json";
-import { languages } from "../types";
+import { language } from "../types";
 
 interface useTranslationsProps {
-  language: languages;
+  language: language;
 }
 
 const useTranslations = ({ language }: useTranslationsProps) => {

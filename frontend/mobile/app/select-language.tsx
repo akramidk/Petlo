@@ -1,10 +1,13 @@
 import { useSettingsContext, useTranslationsContext } from "../src/hooks";
 import { OptionsSelector } from "../src/components/molecules";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Form } from "../src/components/organisms";
-import { languageAdjectivesOptions, languagesOptions } from "../src/constants";
+import {
+  LANGUAGE_ADJECTIVES_OPTIONS,
+  LANGUAGES_OPTIONS,
+} from "../src/constants";
 import { LanguageOption, OptionBase } from "../src/interfaces";
-import { languages } from "../src/types";
+import { language } from "../src/types";
 
 const SelectLanguage = () => {
   const { t } = useTranslationsContext();
@@ -16,15 +19,15 @@ const SelectLanguage = () => {
   const languageHandler = () => {
     if (selectedLanguage.gendered) {
       setStep(2);
-      changeLanguage(`${selectedLanguage.id}_masculine` as languages, false);
+      changeLanguage(`${selectedLanguage.id}_masculine` as language, false);
     } else {
-      changeLanguage(selectedLanguage.id as languages, true);
+      changeLanguage(selectedLanguage.id as language, true);
     }
   };
 
   const adjectiveHandler = () => {
     changeLanguage(
-      `${selectedLanguage.id}_${selectedAdjective.id}` as languages,
+      `${selectedLanguage.id}_${selectedAdjective.id}` as language,
       true
     );
   };
@@ -48,7 +51,7 @@ const SelectLanguage = () => {
         }
       >
         <OptionsSelector<LanguageOption>
-          options={languagesOptions}
+          options={LANGUAGES_OPTIONS}
           signalSelect={{
             selectedOption: selectedLanguage,
             setSelectedOption: setSelectedLanguage,
@@ -70,7 +73,7 @@ const SelectLanguage = () => {
         }}
       >
         <OptionsSelector
-          options={languageAdjectivesOptions}
+          options={LANGUAGE_ADJECTIVES_OPTIONS}
           signalSelect={{
             selectedOption: selectedAdjective,
             setSelectedOption: setSlectedAdjective,
