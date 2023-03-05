@@ -23,10 +23,7 @@ const Option = ({ onPress, value, selected = false, cn }: OptionProps) => {
       )}
       onPress={onPress}
     >
-      <Text
-        className="text-[16px] text-[#163E48]"
-        font={["font-e700", "font-a600"]}
-      >
+      <Text cn="text-[16px] text-[#163E48]" font={["font-e700", "font-a600"]}>
         {value}
       </Text>
 

@@ -1,7 +1,7 @@
 import { View } from "react-native";
 import clsx from "clsx";
 import { useTranslationsContext } from "../src/hooks";
-import Text from "../src/components/atoms/Text";
+import { Text } from "../src/components/atoms";
 
 const App = () => {
   const { t } = useTranslationsContext();
@@ -9,7 +9,7 @@ const App = () => {
   return (
     <View>
       <Text
-        className={clsx("text-[36px] text-[#db3d3d]")}
+        cn={clsx("text-[36px] text-[#444]")}
         font={["font-e800", "font-a700"]}
       >
         {t("SELECT_LANGUAGE_TITLE")}

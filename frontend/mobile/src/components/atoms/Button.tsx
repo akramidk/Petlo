@@ -9,7 +9,7 @@ const Button = ({ value, onClick }: ButtonProps) => {
       onPress={onClick}
     >
       <Text
-        className="text-[#0E333C] text-[15px] self-center"
+        cn="text-[#0E333C] text-[15px] self-center"
         font={["font-e800", "font-a700"]}
       >
         {value}
