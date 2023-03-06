@@ -1,8 +1,20 @@
 import { useEffect, useState } from "react";
-import { StorageKeys } from "../enums";
+import { Endpoints, StorageKeys } from "../enums";
 import * as SecureStore from "expo-secure-store";
+import useAPIFetching from "./useAPIFetching";
+import { CheckASessionResponse } from "../interfaces";
 
 const useUser = () => {
+  const { response, trigger } = useAPIFetching<
+    undefined,
+    CheckASessionResponse
+  >({
+    endpoint: null,
+    options: {
+      shouldRetryOnError: false,
+    },
+  });
+
   const [sessionToken, setSessionToken] = useState<undefined | string>();
   const [user, setUser] = useState<any>();
 
@@ -17,8 +29,14 @@ const useUser = () => {
   useEffect(() => {
     if (sessionToken === null) {
       setUser(null);
+    } else {
+      trigger(Endpoints.CheckASession);
     }
   }, [sessionToken]);
+
+  useEffect(() => {
+    console.log("response", response);
+  }, [response]);
 
   return { user };
 };
