@@ -6,5 +6,7 @@
   "SELECT_LANGUAGE_TITLE": "App Language",
   "SELECT_LANGUAGE_HELPER_TEXT": "Select the language that you need to see the app with.",
   "SELECT_LANGUAGE_SAVE_BUTTON": "Save",
-  "SELECT_LANGUAGE_CONTINUE_BUTTON": "Continue"
+  "SELECT_LANGUAGE_CONTINUE_BUTTON": "Continue",
+  "SIGN_UP_TITLE": "Sign Up",
+  "SIGN_UP_BUTTON": "Continue"
 }

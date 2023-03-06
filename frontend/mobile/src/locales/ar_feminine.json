@@ -10,5 +10,7 @@
   "SELECT_LANGUAGE_SAVE_BUTTON": "حفظ",
   "SELECT_LANGUAGE_CONTINUE_BUTTON": "الاكمال",
   "SELECT_LANGUAGE_PRONOUN_TITLE": "صفة العرض",
-  "SELECT_LANGUAGE_PRONOUN_HELPER_TEXT": "يرجى تحديد طريقة عرض اللغة العربية بصفة مذكرة ام مؤنثة."
+  "SELECT_LANGUAGE_PRONOUN_HELPER_TEXT": "يرجى تحديد طريقة عرض اللغة العربية بصفة مذكرة ام مؤنثة.",
+  "SIGN_UP_TITLE": "انشئ حساب",
+  "SIGN_UP_BUTTON": "أكملي"
 }
