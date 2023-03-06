@@ -4,7 +4,7 @@ import * as SecureStore from "expo-secure-store";
 import useAPIFetching from "./useAPIFetching";
 import { CheckASessionResponse } from "../interfaces";
 
-const useUser = () => {
+const useCustomer = () => {
   const { response, trigger } = useAPIFetching<
     undefined,
     CheckASessionResponse
@@ -16,7 +16,7 @@ const useUser = () => {
   });
 
   const [sessionToken, setSessionToken] = useState<undefined | string>();
-  const [user, setUser] = useState<any>();
+  const [customer, setCustomer] = useState<any>();
 
   useEffect(() => {
     (async () => {
@@ -28,7 +28,7 @@ const useUser = () => {
 
   useEffect(() => {
     if (sessionToken === null) {
-      setUser(null);
+      setCustomer(null);
     } else {
       trigger(Endpoints.CheckASession);
     }
@@ -38,7 +38,7 @@ const useUser = () => {
     console.log("response", response);
   }, [response]);
 
-  return { user };
+  return { customer };
 };
 
-export default useUser;
+export default useCustomer;

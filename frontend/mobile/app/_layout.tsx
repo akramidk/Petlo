@@ -32,7 +32,7 @@ import { SettingsContext, TranslationsContext } from "../src/contexts";
 import { useTranslations } from "../src/hooks";
 import { Endpoints } from "../src/enums";
 import RoutesRestrictor from "./_RoutesRestrictor";
-import useUser from "../src/hooks/useUser";
+import { useCustomer } from "../src/hooks";
 
 const Layout = () => {
   //todo: handled if no network
@@ -70,7 +70,7 @@ const Layout = () => {
     Manrope_800ExtraBold,
   });
 
-  const { user } = useUser();
+  const { customer } = useCustomer();
   const { language, changeLanguage, storedLanguage, direction } = useSettings();
   const { t } = useTranslations({
     language: language,
@@ -81,7 +81,7 @@ const Layout = () => {
     (!newVersionAvailableResponse && newVersionAvailableStatus === "loading") ||
     newVersionAvailableResponse?.value ||
     storedLanguage === undefined ||
-    user === undefined
+    customer === undefined
   ) {
     //todo: new design for this insted of an Alert
     if (newVersionAvailableResponse?.value) {
@@ -105,7 +105,7 @@ const Layout = () => {
       value={{ language, changeLanguage, direction, storedLanguage }}
     >
       <TranslationsContext.Provider value={{ t }}>
-        <RoutesRestrictor user={user}>
+        <RoutesRestrictor customer={customer}>
           <SafeAreaView className="px-[28px] py-[12px]">
             <Slot />
           </SafeAreaView>

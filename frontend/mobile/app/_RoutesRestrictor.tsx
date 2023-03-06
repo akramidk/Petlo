@@ -4,10 +4,10 @@ import { useSettingsContext } from "../src/hooks";
 
 interface RoutesRestrictorProps {
   children: React.ReactNode;
-  user: undefined | null;
+  customer: undefined | null;
 }
 
-const RoutesRestrictor = ({ children, user }: RoutesRestrictorProps) => {
+const RoutesRestrictor = ({ children, customer }: RoutesRestrictorProps) => {
   const router = useRouter();
   const { storedLanguage } = useSettingsContext();
 
@@ -15,13 +15,13 @@ const RoutesRestrictor = ({ children, user }: RoutesRestrictorProps) => {
     if (storedLanguage === null) {
       router.replace("/select-language");
     } else {
-      if (user === null) {
+      if (customer === null) {
         router.replace("/welcome");
       } else {
         router.replace("/");
       }
     }
-  }, [storedLanguage, user]);
+  }, [storedLanguage, customer]);
 
   return <>{children}</>;
 };
