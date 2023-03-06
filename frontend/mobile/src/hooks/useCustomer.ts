@@ -35,7 +35,11 @@ const useCustomer = () => {
   }, [sessionToken]);
 
   useEffect(() => {
-    console.log("response", response);
+    if (response?.statusCode === 200) {
+      setCustomer(response.body);
+    } else {
+      setCustomer(null);
+    }
   }, [response]);
 
   return { customer };
