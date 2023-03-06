@@ -44,6 +44,7 @@ const useAPIFetching = <Request, Response>({
   useMemo(() => {
     if ((data || error) && !(isValidating || isLoading)) {
       setResponse({
+        statusCode: data ? 200 : error.response.status,
         body: data ?? error.response.data,
       });
     }
