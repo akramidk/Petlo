@@ -70,6 +70,7 @@ const SelectLanguage = () => {
         button={{
           value: t("SELECT_LANGUAGE_SAVE_BUTTON"),
           onClick: adjectiveHandler,
+          status: selectedAdjective ? "active" : "inactive",
         }}
       >
         <OptionsSelector

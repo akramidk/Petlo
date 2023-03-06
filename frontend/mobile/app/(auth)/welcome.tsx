@@ -1,9 +1,24 @@
+import { useRouter } from "expo-router";
 import { View, Text } from "react-native";
+import { Button } from "../../src/components/atoms";
 
 const Welcome = () => {
+  const router = useRouter();
   return (
     <View>
-      <Text>Welcome</Text>
+      <Button
+        value="Sign Up"
+        onClick={() => {
+          router.push("/sign-up");
+        }}
+      />
+
+      <Button
+        value="Sign In"
+        onClick={() => {
+          router.push("/sign-in");
+        }}
+      />
     </View>
   );
 };
