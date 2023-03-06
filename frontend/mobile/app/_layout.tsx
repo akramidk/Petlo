@@ -41,10 +41,10 @@ const Layout = () => {
   const appVersion = Application.nativeApplicationVersion;
   // we're using Device.brand insted of Device.osName becuse Device.osName not correct sometimes
   const phoneOS = Device.brand.toLowerCase() === "apple" ? "ios" : "android";
-  const {
-    response: newVersionAvailableResponse,
-    status: newVersionAvailableStatus,
-  } = useAPIFetching<NewVersionAvailableRequest, NewVersionAvailableResponse>({
+  const { response: newVersionAvailableResponse } = useAPIFetching<
+    NewVersionAvailableRequest,
+    NewVersionAvailableResponse
+  >({
     endpoint: Endpoints.NewVersionAvailable,
     body: {
       app_version: appVersion,
@@ -78,13 +78,14 @@ const Layout = () => {
 
   if (
     !fontsLoaded ||
-    (!newVersionAvailableResponse && newVersionAvailableStatus === "loading") ||
-    newVersionAvailableResponse?.value ||
+    (!newVersionAvailableResponse &&
+      newVersionAvailableResponse.status === "loading") ||
+    newVersionAvailableResponse?.body?.value ||
     storedLanguage === undefined ||
     customer === undefined
   ) {
     //todo: new design for this insted of an Alert
-    if (newVersionAvailableResponse?.value) {
+    if (newVersionAvailableResponse?.body?.value) {
       Alert.alert(
         t("ROOT_LAYOUT_NEW_UPDATE_AVAILABLE_TITLE"),
         t("ROOT_LAYOUT_NEW_UPDATE_AVAILABLE_MESSAGE"),

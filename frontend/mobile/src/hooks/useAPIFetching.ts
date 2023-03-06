@@ -13,14 +13,19 @@ interface useAPIFetchingProps<Request> {
   options?: SWRConfiguration;
 }
 
+interface useAPIFetchingResponse<Response> {
+  status?: "loading";
+  statusCode?: number;
+  body?: Response;
+}
+
 const useAPIFetching = <Request, Response>({
   endpoint,
   body,
   options,
 }: useAPIFetchingProps<Request>) => {
+  const [response, setResponse] = useState<useAPIFetchingResponse<Response>>();
   const [triggeredValue, trigger] = useState<null | Endpoints>(null);
-  const [response, setResponse] = useState<Response>();
-  const [status, setStatus] = useState<undefined | "loading">();
 
   const fetcher = (endpoint: string): Response => {
     let fullEndpoint = backendURL + endpoint;
@@ -38,16 +43,19 @@ const useAPIFetching = <Request, Response>({
 
   useMemo(() => {
     if ((data || error) && !(isValidating || isLoading)) {
-      setStatus(undefined);
-      setResponse(data ?? error.response.data);
+      setResponse({
+        body: data ?? error.response.data,
+      });
     }
 
     if (isValidating || isLoading) {
-      setStatus("loading");
+      setResponse({
+        status: "loading",
+      });
     }
   }, [data, error, isValidating, isLoading]);
 
-  return { trigger, response, status };
+  return { trigger, response };
 };
 
 export default useAPIFetching;
