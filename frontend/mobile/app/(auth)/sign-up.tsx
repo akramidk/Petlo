@@ -1,4 +1,5 @@
-import { Text, View } from "react-native";
+import { Text, TextInput, View } from "react-native";
+import { Filed } from "../../src/components/atoms";
 import { Form } from "../../src/components/organisms";
 import { useTranslationsContext } from "../../src/hooks";
 
@@ -13,7 +14,13 @@ const SignUp = () => {
         onClick: () => {},
       }}
     >
-      <Text>ddd</Text>
+      <Filed
+        label={{ name: "Name", require: true }}
+        placeholder="enter your name"
+        onChange={(value) => {
+          console.log(value);
+        }}
+      />
     </Form>
   );
 };
