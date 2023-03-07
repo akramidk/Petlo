@@ -8,5 +8,7 @@
   "SELECT_LANGUAGE_SAVE_BUTTON": "Save",
   "SELECT_LANGUAGE_CONTINUE_BUTTON": "Continue",
   "SIGN_UP_TITLE": "Sign Up",
-  "SIGN_UP_BUTTON": "Continue"
+  "SIGN_UP_BUTTON": "Continue",
+  "SIGN_UP_NAME_FILED_LABEL": "Name",
+  "SIGN_UP_NAME_FILED_PLACEHOLDER": "enter your name"
 }

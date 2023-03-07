@@ -1,22 +1,56 @@
-import { View } from "react-native";
-import Text from "./Text";
+import { View, Text } from "react-native";
 import { LabelProps } from "../../interfaces";
+import { useSettingsContext } from "../../hooks";
+import clsx from "clsx";
 
 const Label = ({ name, helperText, require }: LabelProps) => {
+  const { language, direction } = useSettingsContext();
+
+  const fonts = {
+    en: {
+      name: "font-e700",
+      require: "font-e700",
+      helperText: "font-e700",
+    },
+    ar_masculine: {
+      name: "font-a600",
+      require: "font-a600",
+      helperText: "font-a600",
+    },
+    ar_feminine: {
+      name: "font-a600",
+      require: "font-a600",
+      helperText: "font-a600",
+    },
+  };
+
   return (
-    <View className="flex-row space-x-[2px]">
-      <Text cn="text-[14px] text-[#0E333C]" font={["font-e700", "font-a600"]}>
+    <View
+      className={clsx(
+        "flex-row",
+        direction === "ltr" ? "flex-row" : "flex-row-reverse"
+      )}
+    >
+      <Text
+        className={clsx("text-[14px] text-[#0E333C]", fonts[language].name)}
+      >
         {name}
       </Text>
       {require && (
-        <Text cn="text-[14px] text-[#0E333C]" font={["font-e700", "font-a600"]}>
-          *
-        </Text>
+        <>
+          {
+            //rtl
+          }
+          <Text className="w-[2px]" />
+          <Text
+            className={clsx("text-[14px] text-[#0E333C]", fonts[language].name)}
+          >
+            *
+          </Text>
+        </>
       )}
       {helperText && (
-        <Text cn="text-[14px] text-[#0E333C]" font={["font-e700", "font-a600"]}>
-          {helperText}
-        </Text>
+        <Text className="text-[14px] text-[#0E333C]">{helperText}</Text>
       )}
     </View>
   );

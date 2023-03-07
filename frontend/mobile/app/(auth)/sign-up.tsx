@@ -15,8 +15,8 @@ const SignUp = () => {
       }}
     >
       <Filed
-        label={{ name: "Name", require: true }}
-        placeholder="enter your name"
+        label={{ name: t("SIGN_UP_NAME_FILED_LABEL"), require: true }}
+        placeholder={t("SIGN_UP_NAME_FILED_PLACEHOLDER")}
         onChange={(value) => {
           console.log(value);
         }}
