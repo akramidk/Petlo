@@ -34,7 +34,7 @@ const Selector = <T extends OptionBase>({
   const [isOptionsOpen, setIsOptionsOpen] = useState(false);
 
   const onCancel = () => {
-    if (selectedOption && !value) setSelectedOption(undefined);
+    if (selectedOption && value !== selectedOption) setSelectedOption(value);
     setIsOptionsOpen(false);
   };
 
