@@ -1,5 +1,5 @@
 import { Text, TextInput, View } from "react-native";
-import { Filed } from "../../src/components/atoms";
+import { Filed, Selector } from "../../src/components/atoms";
 import { Form } from "../../src/components/organisms";
 import { useTranslationsContext } from "../../src/hooks";
 
@@ -21,6 +21,10 @@ const SignUp = () => {
           console.log(value);
         }}
       />
+
+      <View className="h-[12px]"></View>
+
+      <Selector />
     </Form>
   );
 };
