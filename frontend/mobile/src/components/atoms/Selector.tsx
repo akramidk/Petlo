@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { View, Pressable, Modal, SafeAreaView } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
 import { OptionsSelector } from "../molecules";
@@ -29,6 +29,7 @@ const Selector = <T extends OptionBase>({
   const { t } = useTranslationsContext();
   const { language, direction } = useSettingsContext();
 
+  const [searchValue, setSearchValue] = useState<string>("");
   const [selectedOption, setSelectedOption] = useState<T>(value);
   const [isOptionsOpen, setIsOptionsOpen] = useState(false);
 
@@ -42,6 +43,10 @@ const Selector = <T extends OptionBase>({
     setIsOptionsOpen(false);
   };
 
+  const optionsAfterSearch = useMemo(() => {
+    return options.filter((option) => option.value.includes(searchValue));
+  }, [searchValue]);
+
   return (
     <View>
       <Modal visible={isOptionsOpen} animationType="slide">
@@ -53,6 +58,7 @@ const Selector = <T extends OptionBase>({
                   placeholder={t("SELECTOR_COMP_SEARCH")}
                   placeholderTextColor="#aaa"
                   className="h-full flex-1"
+                  onChangeText={setSearchValue}
                 />
                 <Pressable onPress={onCancel} className="h-full justify-center">
                   <Text
@@ -67,7 +73,7 @@ const Selector = <T extends OptionBase>({
               <OptionsSelector<T>
                 cn="py-[28px]"
                 optionCN="px-[28px]"
-                options={options}
+                options={optionsAfterSearch}
                 signalSelect={{
                   selectedOption: selectedOption,
                   setSelectedOption: setSelectedOption,
