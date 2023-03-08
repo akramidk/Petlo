@@ -53,16 +53,28 @@ const Selector = <T extends OptionBase>({
         <SafeAreaView>
           <View className="h-full justify-between">
             <View>
-              <View className="flex-row border-b-[1px] border-b-[#f6f6f6] h-[56px] px-[28px] justify-between items-center">
+              <View
+                className={clsx(
+                  "border-b-[1px] border-b-[#f6f6f6] h-[56px] px-[28px] justify-between items-center",
+                  direction === "ltr" ? "flex-row" : "flex-row-reverse"
+                )}
+              >
                 <TextInput
                   placeholder={t("SELECTOR_COMP_SEARCH")}
                   placeholderTextColor="#aaa"
-                  className="h-full flex-1"
+                  className={clsx(
+                    "h-full flex-1",
+                    direction === "ltr" ? "text-left" : "text-right",
+                    language === "en" ? "font-e500" : "font-a400"
+                  )}
                   onChangeText={setSearchValue}
                 />
                 <Pressable onPress={onCancel} className="h-full justify-center">
                   <Text
-                    className="text-[#E64848] text-[14px] tracking-[1px]"
+                    className={clsx(
+                      "text-[#E64848] text-[14px]",
+                      language === "en" && "tracking-[1px]"
+                    )}
                     font={["font-e700", "font-a600"]}
                   >
                     {t("SELECTOR_COMP_CANCEL")}
@@ -85,7 +97,7 @@ const Selector = <T extends OptionBase>({
               <View className="py-[16px] px-[28px]">
                 <Button
                   status={selectedOption ? "active" : "inactive"}
-                  value="Select"
+                  value={t("SELECTOR_COMP_SELECT")}
                   onClick={onSelect}
                 />
               </View>
@@ -96,13 +108,18 @@ const Selector = <T extends OptionBase>({
 
       <View className={clsx("space-y-[6px]")}>
         {label && <Label {...label} />}
-        <View className="flex-row  bg-[#F6F6F6] h-[60px] rounded-[4px] justify-between items-center">
+        <View
+          className={clsx(
+            "bg-[#F6F6F6] h-[60px] rounded-[4px] justify-between items-center",
+            direction === "ltr" ? "flex-row" : "flex-row-reverse"
+          )}
+        >
           <Text
             className={clsx(
               "p-[20px]",
               language === "en" ? "font-e500" : "font-a400",
               direction === "ltr" ? "text-left" : "text-right",
-              placeholder ? "text-[#aaa]" : "text-[#444]"
+              value?.value ? "text-[#444]" : "text-[#aaa]"
             )}
             font={["font-e800", "font-a700"]}
           >
@@ -114,7 +131,10 @@ const Selector = <T extends OptionBase>({
             onPress={() => setIsOptionsOpen(true)}
           >
             <Text
-              className="text-[#0E333C] text-[14px] tracking-[1px]"
+              className={clsx(
+                "text-[#0E333C] text-[14px]",
+                language === "en" && "tracking-[1px]"
+              )}
               font={["font-e700", "font-a600"]}
             >
               {t("SELECTOR_COMP_SELECT")}
