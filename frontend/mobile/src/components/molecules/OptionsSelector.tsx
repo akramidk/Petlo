@@ -1,25 +1,16 @@
 import clsx from "clsx";
 import { View } from "react-native";
 import { useTranslationsContext } from "../../hooks";
-import { OptionBase } from "../../interfaces";
+import { OptionBase, OptionsSelectorProps } from "../../interfaces";
 import Option from "../atoms/Option";
-
-interface OptionsSelector<T> {
-  options: T[];
-  cn?: string;
-  translate?: boolean;
-  signalSelect?: {
-    selectedOption: T;
-    setSelectedOption: (option: T) => void;
-  };
-}
 
 const OptionsSelector = <T extends OptionBase>({
   options,
   cn,
+  optionCN,
   translate = false,
   signalSelect,
-}: OptionsSelector<T>) => {
+}: OptionsSelectorProps<T>) => {
   const { t } = useTranslationsContext();
 
   const onSelectOption = (option: T) => {
@@ -41,7 +32,7 @@ const OptionsSelector = <T extends OptionBase>({
         return (
           <View key={option.id}>
             <Option
-              cn={padding}
+              cn={clsx(padding, optionCN)}
               selected={isSelected}
               onPress={() => onSelectOption(option)}
               value={translate ? t(option.value) : option.value}

@@ -4,13 +4,17 @@ import { TextInput } from "react-native-gesture-handler";
 import { OptionsSelector } from "../molecules";
 import Filed from "./Filed";
 import Text from "./Text";
+import { OptionBase, OptionsSelectorProps } from "../../interfaces";
 
-interface SelectorProps {
-  value?: string;
+interface SelectorProps<T> {
   placeholder?: string;
+  config: OptionsSelectorProps<T>;
 }
 
-const Selector = ({ placeholder }: SelectorProps) => {
+const Selector = <T extends OptionBase>({
+  placeholder,
+  config,
+}: SelectorProps<T>) => {
   const [isOptionsOpen, setIsOptionsOpen] = useState(false);
 
   if (isOptionsOpen) {
@@ -23,7 +27,6 @@ const Selector = ({ placeholder }: SelectorProps) => {
               placeholderTextColor="#aaa"
               className="h-full flex-1"
             />
-
             <Pressable
               onPress={() => setIsOptionsOpen(false)}
               className="h-full justify-center"
@@ -37,13 +40,7 @@ const Selector = ({ placeholder }: SelectorProps) => {
             </Pressable>
           </View>
 
-          <OptionsSelector
-            cn="p-[28px]"
-            options={[
-              { id: 0, value: "Jordan" },
-              { id: 1, value: "SA" },
-            ]}
-          />
+          <OptionsSelector<T> cn="py-[28px]" optionCN="px-[28px]" {...config} />
         </SafeAreaView>
       </Modal>
     );
