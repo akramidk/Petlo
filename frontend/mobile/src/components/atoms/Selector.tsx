@@ -17,6 +17,7 @@ interface SelectorProps<T> {
   options: T[];
   value: T | undefined;
   setValue: (value: T) => void;
+  translate?: boolean;
 }
 
 const Selector = <T extends OptionBase>({
@@ -25,6 +26,7 @@ const Selector = <T extends OptionBase>({
   options,
   value,
   setValue,
+  translate = false,
 }: SelectorProps<T>) => {
   const { t } = useTranslationsContext();
   const { language, direction } = useSettingsContext();
@@ -92,6 +94,7 @@ const Selector = <T extends OptionBase>({
                   selectedOption: selectedOption,
                   setSelectedOption: setSelectedOption,
                 }}
+                translate={translate}
               />
             </View>
 
@@ -125,7 +128,8 @@ const Selector = <T extends OptionBase>({
             )}
             font={["font-e800", "font-a700"]}
           >
-            {value?.value ?? placeholder}
+            {(translate && value ? t(value?.value) : value?.value) ??
+              placeholder}
           </Text>
 
           <Pressable

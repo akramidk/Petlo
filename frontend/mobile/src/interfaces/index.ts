@@ -10,6 +10,7 @@ import { LanguageOption } from "./LanguageOption";
 import { OptionBase } from "./OptionBase";
 import { LabelProps } from "./LabelProps";
 import { OptionsSelectorProps } from "./OptionsSelectorProps";
+import { CountryOption } from "./CountryOption";
 
 export {
   NewVersionAvailableRequest,
@@ -20,4 +21,5 @@ export {
   OptionBase,
   LabelProps,
   OptionsSelectorProps,
+  CountryOption,
 };

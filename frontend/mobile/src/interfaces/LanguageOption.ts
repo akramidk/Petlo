@@ -1,5 +1,5 @@
-export interface LanguageOption {
-  id: string;
-  value: string;
+import { OptionBase } from "./OptionBase";
+
+export interface LanguageOption extends OptionBase {
   gendered?: boolean;
 }
