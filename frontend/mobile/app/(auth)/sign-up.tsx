@@ -7,7 +7,7 @@ import { OptionBase } from "../../src/interfaces";
 
 const SignUp = () => {
   const { t } = useTranslationsContext();
-  const [selectedOption, setSelectedOption] = useState<OptionBase>();
+  const [country, setCountry] = useState<OptionBase>();
 
   return (
     <Form
@@ -27,18 +27,14 @@ const SignUp = () => {
 
       <View className="h-[12px]"></View>
 
-      <Selector<OptionBase>
-        config={{
-          options: [
-            { id: 0, value: "+962" },
-            { id: 1, value: "+966" },
-            { id: 2, value: "+968" },
-          ],
-          signalSelect: {
-            selectedOption: selectedOption,
-            setSelectedOption: setSelectedOption,
-          },
-        }}
+      <Selector
+        options={[
+          { id: 0, value: "+962" },
+          { id: 1, value: "+966" },
+          { id: 2, value: "+968" },
+        ]}
+        value={country}
+        setValue={setCountry}
       />
     </Form>
   );
