@@ -35,11 +35,13 @@ const Selector = <T extends OptionBase>({
 
   const onCancel = () => {
     if (selectedOption && value !== selectedOption) setSelectedOption(value);
+    setSearchValue("");
     setIsOptionsOpen(false);
   };
 
   const onSelect = () => {
     if (selectedOption && value !== selectedOption) setValue(selectedOption);
+    setSearchValue("");
     setIsOptionsOpen(false);
   };
 
