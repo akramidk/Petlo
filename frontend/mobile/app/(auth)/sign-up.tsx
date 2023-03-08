@@ -26,7 +26,7 @@ const SignUp = () => {
       />
 
       {
-        //todo: should be from the backend
+        // TODO should be from the backend
       }
       <Selector
         label={{

@@ -10,7 +10,7 @@ import clsx from "clsx";
 import { LabelProps } from "../../interfaces";
 import Label from "./Label";
 
-//todo: need refactoring
+// TODO needs refactoring
 interface SelectorProps<T> {
   placeholder?: string;
   label?: LabelProps;

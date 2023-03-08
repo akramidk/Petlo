@@ -35,7 +35,7 @@ import RoutesRestrictor from "./_RoutesRestrictor";
 import { useCustomer } from "../src/hooks";
 
 const Layout = () => {
-  //todo: handled if no network
+  // TODO handled if no network
 
   //check if there's an update
   const appVersion = Application.nativeApplicationVersion;
@@ -84,7 +84,7 @@ const Layout = () => {
     storedLanguage === undefined ||
     customer === undefined
   ) {
-    //todo: new design for this insted of an Alert
+    // TODO new design for this insted of an Alert
     if (newVersionAvailableResponse?.body?.value) {
       Alert.alert(
         t("ROOT_LAYOUT_NEW_UPDATE_AVAILABLE_TITLE"),
