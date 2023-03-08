@@ -25,9 +25,11 @@ const SignUp = () => {
         }}
       />
 
-      <View className="h-[12px]"></View>
-
       <Selector
+        label={{
+          name: "Country",
+          require: true,
+        }}
         options={[
           { id: 0, value: "+962" },
           { id: 1, value: "+966" },

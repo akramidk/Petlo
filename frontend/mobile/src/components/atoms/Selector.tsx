@@ -5,10 +5,15 @@ import { OptionsSelector } from "../molecules";
 import Text from "./Text";
 import { OptionBase } from "../../interfaces";
 import Button from "./Button";
+import { useSettingsContext } from "../../hooks";
+import clsx from "clsx";
+import { LabelProps } from "../../interfaces";
+import Label from "./Label";
 
 //need refactoring
 interface SelectorProps<T> {
   placeholder?: string;
+  label?: LabelProps;
   options: T[];
   value: T | undefined;
   setValue: (value: T) => void;
@@ -16,10 +21,13 @@ interface SelectorProps<T> {
 
 const Selector = <T extends OptionBase>({
   placeholder,
+  label,
   options,
   value,
   setValue,
 }: SelectorProps<T>) => {
+  const { language, direction } = useSettingsContext();
+
   const [selectedOption, setSelectedOption] = useState<T>(value);
   const [isOptionsOpen, setIsOptionsOpen] = useState(false);
 
@@ -35,7 +43,7 @@ const Selector = <T extends OptionBase>({
 
   if (isOptionsOpen) {
     return (
-      <Modal>
+      <Modal visible={isOptionsOpen} animationType="slide">
         <SafeAreaView>
           <View className="h-full justify-between">
             <View>
@@ -48,7 +56,7 @@ const Selector = <T extends OptionBase>({
                 <Pressable onPress={onCancel} className="h-full justify-center">
                   <Text
                     className="text-[#E64848] text-[14px] tracking-[1px]"
-                    font={["font-e800", "font-a700"]}
+                    font={["font-e700", "font-a600"]}
                   >
                     CANCEL
                   </Text>
@@ -82,22 +90,33 @@ const Selector = <T extends OptionBase>({
   }
 
   return (
-    <View className="flex-row  bg-[#F6F6F6] h-[60px] rounded-[4px] px-[20px] justify-between items-center">
-      <Text
-        className="text-[#E64848] text-[14px] tracking-[1px]"
-        font={["font-e800", "font-a700"]}
-      >
-        {value?.value ?? placeholder}
-      </Text>
-
-      <Pressable onPress={() => setIsOptionsOpen(true)}>
+    <View className={clsx("space-y-[6px]")}>
+      {label && <Label {...label} />}
+      <View className="flex-row  bg-[#F6F6F6] h-[60px] rounded-[4px] justify-between items-center">
         <Text
-          className="text-[#E64848] text-[14px] tracking-[1px]"
+          className={clsx(
+            "p-[20px]",
+            language === "en" ? "font-e500" : "font-a400",
+            direction === "ltr" ? "text-left" : "text-right",
+            placeholder ? "text-[#aaa]" : "text-[#444]"
+          )}
           font={["font-e800", "font-a700"]}
         >
-          select
+          {value?.value ?? placeholder}
         </Text>
-      </Pressable>
+
+        <Pressable
+          className="h-full justify-center p-[20px]"
+          onPress={() => setIsOptionsOpen(true)}
+        >
+          <Text
+            className="text-[#0E333C] text-[14px] tracking-[1px]"
+            font={["font-e700", "font-a600"]}
+          >
+            SELECT
+          </Text>
+        </Pressable>
+      </View>
     </View>
   );
 };
