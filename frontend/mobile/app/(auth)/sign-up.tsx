@@ -25,11 +25,15 @@ const SignUp = () => {
         }}
       />
 
+      {
+        //todo: should be from the backend
+      }
       <Selector
         label={{
-          name: "Country",
+          name: t("SIGN_UP_COUNTRY_FILED_LABEL"),
           require: true,
         }}
+        placeholder={t("SIGN_UP_COUNTRY_FILED_PLACEHOLDER")}
         options={[
           { id: 0, value: "+962" },
           { id: 1, value: "+966" },

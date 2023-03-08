@@ -5,12 +5,12 @@ import { OptionsSelector } from "../molecules";
 import Text from "./Text";
 import { OptionBase } from "../../interfaces";
 import Button from "./Button";
-import { useSettingsContext } from "../../hooks";
+import { useSettingsContext, useTranslationsContext } from "../../hooks";
 import clsx from "clsx";
 import { LabelProps } from "../../interfaces";
 import Label from "./Label";
 
-//need refactoring
+//todo: need refactoring
 interface SelectorProps<T> {
   placeholder?: string;
   label?: LabelProps;
@@ -26,6 +26,7 @@ const Selector = <T extends OptionBase>({
   value,
   setValue,
 }: SelectorProps<T>) => {
+  const { t } = useTranslationsContext();
   const { language, direction } = useSettingsContext();
 
   const [selectedOption, setSelectedOption] = useState<T>(value);
@@ -41,15 +42,15 @@ const Selector = <T extends OptionBase>({
     setIsOptionsOpen(false);
   };
 
-  if (isOptionsOpen) {
-    return (
+  return (
+    <View>
       <Modal visible={isOptionsOpen} animationType="slide">
         <SafeAreaView>
           <View className="h-full justify-between">
             <View>
               <View className="flex-row border-b-[1px] border-b-[#f6f6f6] h-[56px] px-[28px] justify-between items-center">
                 <TextInput
-                  placeholder="type anything to search"
+                  placeholder={t("SELECTOR_COMP_SEARCH")}
                   placeholderTextColor="#aaa"
                   className="h-full flex-1"
                 />
@@ -58,7 +59,7 @@ const Selector = <T extends OptionBase>({
                     className="text-[#E64848] text-[14px] tracking-[1px]"
                     font={["font-e700", "font-a600"]}
                   >
-                    CANCEL
+                    {t("SELECTOR_COMP_CANCEL")}
                   </Text>
                 </Pressable>
               </View>
@@ -86,36 +87,34 @@ const Selector = <T extends OptionBase>({
           </View>
         </SafeAreaView>
       </Modal>
-    );
-  }
 
-  return (
-    <View className={clsx("space-y-[6px]")}>
-      {label && <Label {...label} />}
-      <View className="flex-row  bg-[#F6F6F6] h-[60px] rounded-[4px] justify-between items-center">
-        <Text
-          className={clsx(
-            "p-[20px]",
-            language === "en" ? "font-e500" : "font-a400",
-            direction === "ltr" ? "text-left" : "text-right",
-            placeholder ? "text-[#aaa]" : "text-[#444]"
-          )}
-          font={["font-e800", "font-a700"]}
-        >
-          {value?.value ?? placeholder}
-        </Text>
-
-        <Pressable
-          className="h-full justify-center p-[20px]"
-          onPress={() => setIsOptionsOpen(true)}
-        >
+      <View className={clsx("space-y-[6px]")}>
+        {label && <Label {...label} />}
+        <View className="flex-row  bg-[#F6F6F6] h-[60px] rounded-[4px] justify-between items-center">
           <Text
-            className="text-[#0E333C] text-[14px] tracking-[1px]"
-            font={["font-e700", "font-a600"]}
+            className={clsx(
+              "p-[20px]",
+              language === "en" ? "font-e500" : "font-a400",
+              direction === "ltr" ? "text-left" : "text-right",
+              placeholder ? "text-[#aaa]" : "text-[#444]"
+            )}
+            font={["font-e800", "font-a700"]}
           >
-            SELECT
+            {value?.value ?? placeholder}
           </Text>
-        </Pressable>
+
+          <Pressable
+            className="h-full justify-center p-[20px]"
+            onPress={() => setIsOptionsOpen(true)}
+          >
+            <Text
+              className="text-[#0E333C] text-[14px] tracking-[1px]"
+              font={["font-e700", "font-a600"]}
+            >
+              {t("SELECTOR_COMP_SELECT")}
+            </Text>
+          </Pressable>
+        </View>
       </View>
     </View>
   );

@@ -14,5 +14,10 @@
   "SIGN_UP_TITLE": "انشئ حساب",
   "SIGN_UP_BUTTON": "أكمل",
   "SIGN_UP_NAME_FILED_LABEL": "الاسم",
-  "SIGN_UP_NAME_FILED_PLACEHOLDER": "أدخل اسمك"
+  "SIGN_UP_NAME_FILED_PLACEHOLDER": "أدخل اسمك",
+  "SIGN_UP_COUNTRY_FILED_LABEL": "الدولة",
+  "SIGN_UP_COUNTRY_FILED_PLACEHOLDER": "اختر دولتك",
+  "SELECTOR_COMP_SELECT": "اختر",
+  "SELECTOR_COMP_CANCEL": "الغاء",
+  "SELECTOR_COMP_SEARCH": "قم بالكتابة للبحث"
 }
