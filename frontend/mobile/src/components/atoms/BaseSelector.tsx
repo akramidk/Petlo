@@ -31,8 +31,10 @@ const BaseSelector = <T extends OptionBase>({
       )}
     >
       <Text
+        numberOfLines={1}
+        ellipsizeMode="tail"
         className={clsx(
-          "p-[20px]",
+          "px-[20px]",
           language === "en" ? "font-e500" : "font-a400",
           direction === "ltr" ? "text-left" : "text-right",
           value?.value ? "text-[#444]" : "text-[#aaa]"
@@ -43,7 +45,7 @@ const BaseSelector = <T extends OptionBase>({
       </Text>
 
       <Pressable
-        className="h-full justify-center p-[20px]"
+        className="justify-center p-[20px]"
         onPress={() => setOptionsModalVisible(true)}
       >
         <Text

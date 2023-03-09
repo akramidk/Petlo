@@ -4,13 +4,13 @@ import { Filed, Selector, FiledWithSelector } from "../../src/components/atoms";
 import { Form } from "../../src/components/organisms";
 import { COUNTRIES_OPTIONS } from "../../src/constants";
 import { useTranslationsContext } from "../../src/hooks";
-import { CountryOption } from "../../src/interfaces";
+import { CountryOption, OptionBase } from "../../src/interfaces";
 
 const SignUp = () => {
   const { t } = useTranslationsContext();
   const [name, setName] = useState<string>();
   const [country, setCountry] = useState<CountryOption>();
-  const [phoneNumber, setPhoneNumber] = useState<string>();
+  const [phoneNumber, setPhoneNumber] = useState<OptionBase>();
 
   return (
     <Form
@@ -41,7 +41,19 @@ const SignUp = () => {
         translate
       />
 
-      <FiledWithSelector />
+      <FiledWithSelector
+        options={[
+          {
+            id: 0,
+            value: "+962",
+          },
+        ]}
+        value={{
+          id: 0,
+          value: "+962",
+        }}
+        setValue={setPhoneNumber}
+      />
     </Form>
   );
 };
