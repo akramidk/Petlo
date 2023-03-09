@@ -8,9 +8,8 @@ import { CountryOption } from "../../src/interfaces";
 
 const SignUp = () => {
   const { t } = useTranslationsContext();
+  const [name, setName] = useState<string>();
   const [country, setCountry] = useState<CountryOption>();
-
-  console.log("t(country?.value)", t(country?.value));
 
   return (
     <Form
@@ -23,9 +22,8 @@ const SignUp = () => {
       <Filed
         label={{ name: t("SIGN_UP_NAME_FILED_LABEL"), require: true }}
         placeholder={t("SIGN_UP_NAME_FILED_PLACEHOLDER")}
-        onChange={(value) => {
-          console.log(value);
-        }}
+        onChange={setName}
+        value={name}
       />
 
       <Selector<CountryOption>

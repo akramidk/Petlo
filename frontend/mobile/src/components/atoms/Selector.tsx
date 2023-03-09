@@ -101,7 +101,11 @@ const Selector = <T extends OptionBase>({
             <View className="border-t-[1px] border-[#f6f6f6]">
               <View className="py-[16px] px-[28px]">
                 <Button
-                  status={selectedOption ? "active" : "inactive"}
+                  status={
+                    selectedOption && selectedOption.value !== value?.value
+                      ? "active"
+                      : "inactive"
+                  }
                   value={t("SELECTOR_COMP_SELECT")}
                   onClick={onSelect}
                 />
@@ -143,7 +147,7 @@ const Selector = <T extends OptionBase>({
               )}
               font={["font-e700", "font-a600"]}
             >
-              {t("SELECTOR_COMP_SELECT")}
+              {value ? t("SELECTOR_COMP_CHANGE") : t("SELECTOR_COMP_SELECT")}
             </Text>
           </Pressable>
         </View>
