@@ -3,6 +3,7 @@ import Text from "./Text";
 import { OptionBase } from "../../interfaces";
 import { useSettingsContext, useTranslationsContext } from "../../hooks";
 import clsx from "clsx";
+import { ChevronDownIcon } from "react-native-heroicons/outline";
 
 interface BaseSelectorProps<T> {
   placeholder?: string;
@@ -10,6 +11,7 @@ interface BaseSelectorProps<T> {
   translate?: boolean;
   cn?: string;
   setOptionsModalVisible: (visible: boolean) => void;
+  showDropdownIcon?: boolean;
 }
 
 const BaseSelector = <T extends OptionBase>({
@@ -18,23 +20,24 @@ const BaseSelector = <T extends OptionBase>({
   translate = false,
   cn,
   setOptionsModalVisible,
+  showDropdownIcon = false,
 }: BaseSelectorProps<T>) => {
   const { t } = useTranslationsContext();
   const { language, direction } = useSettingsContext();
 
   return (
-    <View
+    <Pressable
       className={clsx(
-        "bg-[#F6F6F6] h-[60px] rounded-[4px] justify-between items-center",
+        "bg-[#F6F6F6] h-[60px] rounded-[4px] justify-between items-center px-[20px] space-x-[12px]",
         direction === "ltr" ? "flex-row" : "flex-row-reverse",
         cn
       )}
+      onPress={() => setOptionsModalVisible(true)}
     >
       <Text
         numberOfLines={1}
         ellipsizeMode="tail"
         className={clsx(
-          "px-[20px]",
           language === "en" ? "font-e500" : "font-a400",
           direction === "ltr" ? "text-left" : "text-right",
           value?.value ? "text-[#444]" : "text-[#aaa]"
@@ -44,10 +47,9 @@ const BaseSelector = <T extends OptionBase>({
         {(translate && value ? t(value?.value) : value?.value) ?? placeholder}
       </Text>
 
-      <Pressable
-        className="justify-center p-[20px]"
-        onPress={() => setOptionsModalVisible(true)}
-      >
+      {showDropdownIcon ? (
+        <ChevronDownIcon />
+      ) : (
         <Text
           className={clsx(
             "text-[#0E333C] text-[14px]",
@@ -57,8 +59,8 @@ const BaseSelector = <T extends OptionBase>({
         >
           {value ? t("SELECTOR_COMP_CHANGE") : t("SELECTOR_COMP_SELECT")}
         </Text>
-      </Pressable>
-    </View>
+      )}
+    </Pressable>
   );
 };
 

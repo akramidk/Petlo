@@ -31,11 +31,13 @@ const FiledWithSelector = <T extends OptionBase>({
         translate={translate}
       />
       <BaseSelector
+        cn="rounded-r-[0px] mr-[1px]"
         value={value}
         setOptionsModalVisible={setOptionsModalVisible}
         translate={translate}
+        showDropdownIcon
       />
-      <Filed cn="flex-1" onChange={() => {}} />
+      <Filed cn="flex-1 rounded-l-[0px]" onChange={() => {}} />
     </View>
   );
 };
