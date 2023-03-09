@@ -134,7 +134,8 @@ const Selector = <T extends OptionBase>({
             )}
             font={["font-e800", "font-a700"]}
           >
-            kjhDJLLJHDASLJKHDjhDJHDASjDSAJKDASHJj
+            {(translate && value ? t(value?.value) : value?.value) ??
+              placeholder}
           </Text>
 
           <Pressable
