@@ -4,40 +4,57 @@ import { OptionBase } from "../../interfaces";
 import BaseFiled from "./BaseFiled";
 import BaseSelector from "./BaseSelector";
 import OptionsModal from "./OptionsModal";
+import { LabelProps } from "../../interfaces";
+import Label from "./Label";
 
 interface FiledWithSelectorProps<T> {
   options: T[];
-  value: T | undefined;
-  setValue: (value: T) => void;
+  optionValue: T | undefined;
+  setOptionValue: (value: T) => void;
+  filedValue: string;
+  onChangeFiledValue: (value: string) => void;
+  label?: LabelProps;
   translate?: boolean;
+  cn?: string;
 }
 
 const FiledWithSelector = <T extends OptionBase>({
   options,
-  value,
-  setValue,
+  optionValue,
+  setOptionValue,
+  filedValue,
+  onChangeFiledValue,
   translate = false,
+  label,
+  cn,
 }: FiledWithSelectorProps<T>) => {
   const [optionsModalVisible, setOptionsModalVisible] = useState(false);
 
   return (
-    <View className="flex-row">
-      <OptionsModal
-        visible={optionsModalVisible}
-        setVisibility={setOptionsModalVisible}
-        options={options}
-        value={value}
-        setValue={setValue}
-        translate={translate}
-      />
-      <BaseSelector
-        cn="rounded-r-[0px] mr-[1px]"
-        value={value}
-        setOptionsModalVisible={setOptionsModalVisible}
-        translate={translate}
-        showDropdownIcon
-      />
-      <BaseFiled cn="flex-1 rounded-l-[0px]" onChange={() => {}} />
+    <View className={cn}>
+      {label && <Label {...label} />}
+      <View className="flex-row">
+        <OptionsModal
+          visible={optionsModalVisible}
+          setVisibility={setOptionsModalVisible}
+          options={options}
+          value={optionValue}
+          setValue={setOptionValue}
+          translate={translate}
+        />
+        <BaseSelector
+          cn="rounded-r-[0px] mr-[1px]"
+          value={optionValue}
+          setOptionsModalVisible={setOptionsModalVisible}
+          translate={translate}
+          showDropdownIcon
+        />
+        <BaseFiled
+          cn="flex-1 rounded-l-[0px]"
+          onChange={onChangeFiledValue}
+          value={filedValue}
+        />
+      </View>
     </View>
   );
 };

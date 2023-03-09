@@ -10,7 +10,8 @@ const SignUp = () => {
   const { t } = useTranslationsContext();
   const [name, setName] = useState<string>();
   const [country, setCountry] = useState<CountryOption>();
-  const [phoneNumber, setPhoneNumber] = useState<OptionBase>();
+  const [countryCode, setCountryCode] = useState<OptionBase>();
+  const [phoneNumber, setPhoneNumber] = useState<string>();
 
   return (
     <Form
@@ -48,11 +49,10 @@ const SignUp = () => {
             value: "+962",
           },
         ]}
-        value={{
-          id: 0,
-          value: "+962",
-        }}
-        setValue={setPhoneNumber}
+        optionValue={countryCode}
+        setOptionValue={setCountryCode}
+        filedValue={phoneNumber}
+        onChangeFiledValue={setPhoneNumber}
       />
     </Form>
   );
