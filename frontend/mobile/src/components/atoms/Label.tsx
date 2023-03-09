@@ -3,7 +3,7 @@ import { LabelProps } from "../../interfaces";
 import { useSettingsContext } from "../../hooks";
 import clsx from "clsx";
 
-const Label = ({ name, helperText, require }: LabelProps) => {
+const Label = ({ name, helperText, require, cn }: LabelProps) => {
   const { language, direction } = useSettingsContext();
 
   const fonts = {
@@ -28,7 +28,8 @@ const Label = ({ name, helperText, require }: LabelProps) => {
     <View
       className={clsx(
         "flex-row",
-        direction === "ltr" ? "flex-row" : "flex-row-reverse"
+        direction === "ltr" ? "flex-row" : "flex-row-reverse",
+        cn
       )}
     >
       <Text
