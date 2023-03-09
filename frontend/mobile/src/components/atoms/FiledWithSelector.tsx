@@ -6,6 +6,7 @@ import BaseSelector from "./BaseSelector";
 import OptionsModal from "./OptionsModal";
 import { LabelProps } from "../../interfaces";
 import Label from "./Label";
+import clsx from "clsx";
 
 interface FiledWithSelectorProps<T> {
   options: T[];
@@ -31,7 +32,7 @@ const FiledWithSelector = <T extends OptionBase>({
   const [optionsModalVisible, setOptionsModalVisible] = useState(false);
 
   return (
-    <View className={cn}>
+    <View className={clsx("space-y-[6px]", cn)}>
       {label && <Label {...label} />}
       <View className="flex-row">
         <OptionsModal

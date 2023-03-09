@@ -43,6 +43,10 @@ const SignUp = () => {
       />
 
       <FiledWithSelector
+        label={{
+          name: "Phone Number",
+          require: true,
+        }}
         options={[
           {
             id: 0,
