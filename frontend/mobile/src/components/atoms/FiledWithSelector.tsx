@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { View } from "react-native";
 import { OptionBase } from "../../interfaces";
+import BaseFiled from "./BaseFiled";
 import BaseSelector from "./BaseSelector";
-import Filed from "./Filed";
 import OptionsModal from "./OptionsModal";
 
 interface FiledWithSelectorProps<T> {
@@ -37,7 +37,7 @@ const FiledWithSelector = <T extends OptionBase>({
         translate={translate}
         showDropdownIcon
       />
-      <Filed cn="flex-1 rounded-l-[0px]" onChange={() => {}} />
+      <BaseFiled cn="flex-1 rounded-l-[0px]" onChange={() => {}} />
     </View>
   );
 };
