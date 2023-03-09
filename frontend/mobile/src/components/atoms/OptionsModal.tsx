@@ -58,7 +58,7 @@ const OptionsModal = <T extends OptionBase>({
               )}
             >
               <TextInput
-                placeholder={t("SELECTOR_COMP_SEARCH")}
+                placeholder={t("OPTIONS_MODAL_COMP_SEARCH")}
                 placeholderTextColor="#aaa"
                 className={clsx(
                   "h-full flex-1",
@@ -75,7 +75,7 @@ const OptionsModal = <T extends OptionBase>({
                   )}
                   font={["font-e700", "font-a600"]}
                 >
-                  {t("SELECTOR_COMP_CANCEL")}
+                  {t("OPTIONS_MODAL_COMP_CANCEL")}
                 </Text>
               </Pressable>
             </View>
@@ -100,7 +100,7 @@ const OptionsModal = <T extends OptionBase>({
                     ? "active"
                     : "inactive"
                 }
-                value={t("SELECTOR_COMP_SELECT")}
+                value={t("OPTIONS_MODAL_COMP_SELECT")}
                 onClick={onSelect}
               />
             </View>

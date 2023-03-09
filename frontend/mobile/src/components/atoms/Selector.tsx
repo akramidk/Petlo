@@ -1,12 +1,6 @@
-import { useMemo, useState } from "react";
-import { View, Pressable, Modal, SafeAreaView } from "react-native";
-import { TextInput } from "react-native-gesture-handler";
-import { OptionsSelector } from "../molecules";
-import Text from "./Text";
+import { useState } from "react";
+import { View } from "react-native";
 import { OptionBase } from "../../interfaces";
-import Button from "./Button";
-import { useSettingsContext, useTranslationsContext } from "../../hooks";
-import clsx from "clsx";
 import { LabelProps } from "../../interfaces";
 import Label from "./Label";
 import BaseSelector from "./BaseSelector";
@@ -31,11 +25,6 @@ const Selector = <T extends OptionBase>({
   translate = false,
   cn,
 }: SelectorProps<T>) => {
-  const { t } = useTranslationsContext();
-  const { language, direction } = useSettingsContext();
-
-  const [searchValue, setSearchValue] = useState<string>("");
-  const [selectedOption, setSelectedOption] = useState<T>(value);
   const [optionsModalVisible, setOptionsModalVisible] = useState(false);
 
   return (
