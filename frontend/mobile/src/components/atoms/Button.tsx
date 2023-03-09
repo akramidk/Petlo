@@ -11,6 +11,7 @@ const Button = ({ value, status = "active", onClick }: ButtonProps) => {
         status === "active" ? "bg-[#76C7C9]" : "bg-[#f6f6f6]"
       )}
       onPress={onClick}
+      disabled={status === "inactive"}
     >
       <Text
         cn={clsx(
