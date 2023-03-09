@@ -18,6 +18,7 @@ interface SelectorProps<T> {
   value: T | undefined;
   setValue: (value: T) => void;
   translate?: boolean;
+  cn?: string;
 }
 
 const Selector = <T extends OptionBase>({
@@ -27,6 +28,7 @@ const Selector = <T extends OptionBase>({
   value,
   setValue,
   translate = false,
+  cn,
 }: SelectorProps<T>) => {
   const { t } = useTranslationsContext();
   const { language, direction } = useSettingsContext();
@@ -115,7 +117,7 @@ const Selector = <T extends OptionBase>({
         </SafeAreaView>
       </Modal>
 
-      <View className={clsx("space-y-[6px]")}>
+      <View className={clsx("space-y-[6px]", cn)}>
         {label && <Label {...label} />}
         <View
           className={clsx(
@@ -132,8 +134,7 @@ const Selector = <T extends OptionBase>({
             )}
             font={["font-e800", "font-a700"]}
           >
-            {(translate && value ? t(value?.value) : value?.value) ??
-              placeholder}
+            kjhDJLLJHDASLJKHDjhDJHDASjDSAJKDASHJj
           </Text>
 
           <Pressable

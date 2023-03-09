@@ -9,13 +9,14 @@ interface FiledProps {
   onChange: (value: string) => void;
   placeholder?: string;
   label?: LabelProps;
+  cn?: string;
 }
 
-const Filed = ({ value, onChange, placeholder, label }: FiledProps) => {
+const Filed = ({ value, onChange, placeholder, label, cn }: FiledProps) => {
   const { language, direction } = useSettingsContext();
 
   return (
-    <View className={clsx("space-y-[6px]")}>
+    <View className={clsx("space-y-[6px]", cn)}>
       {label && <Label {...label} />}
       <TextInput
         className={clsx(
