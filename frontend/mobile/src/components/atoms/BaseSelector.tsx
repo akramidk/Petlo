@@ -48,7 +48,7 @@ const BaseSelector = <T extends OptionBase>({
       </Text>
 
       {showDropdownIcon ? (
-        <ChevronDownIcon />
+        <ChevronDownIcon color="#0E333C" size={20} strokeWidth={2} />
       ) : (
         <Text
           className={clsx(
