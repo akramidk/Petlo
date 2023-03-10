@@ -14,8 +14,8 @@ interface FiledProps {
 
 const Filed = ({ value, onChange, placeholder, label, cn }: FiledProps) => {
   return (
-    <View className={clsx("space-y-[6px]", cn)}>
-      {label && <Label {...label} />}
+    <View className={clsx(cn)}>
+      {label && <Label cn="mb-[6px]" {...label} />}
       <BaseFiled value={value} onChange={onChange} placeholder={placeholder} />
     </View>
   );

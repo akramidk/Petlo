@@ -11,7 +11,9 @@ import { CountryOption, OptionBase } from "../../src/interfaces";
 const SignUp = () => {
   const { t } = useTranslationsContext();
   const [name, setName] = useState<string>();
-  const [country, setCountry] = useState<CountryOption>();
+  const [country, setCountry] = useState<CountryOption>(
+    COUNTRIES_OPTIONS.find((country) => country.key === "JO")
+  );
   const [countryCode, setCountryCode] = useState<OptionBase>(
     COUNTIES_PHONE_CODE_OPTIONS.find((code) => code.value === "+962")
   );
