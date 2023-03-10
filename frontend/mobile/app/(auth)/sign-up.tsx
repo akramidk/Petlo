@@ -1,8 +1,10 @@
 import { useState } from "react";
-import { Text, TextInput, View } from "react-native";
 import { Filed, Selector, FiledWithSelector } from "../../src/components/atoms";
 import { Form } from "../../src/components/organisms";
-import { COUNTRIES_OPTIONS } from "../../src/constants";
+import {
+  COUNTRIES_OPTIONS,
+  COUNTIES_PHONE_CODE_OPTIONS,
+} from "../../src/constants";
 import { useTranslationsContext } from "../../src/hooks";
 import { CountryOption, OptionBase } from "../../src/interfaces";
 
@@ -10,7 +12,9 @@ const SignUp = () => {
   const { t } = useTranslationsContext();
   const [name, setName] = useState<string>();
   const [country, setCountry] = useState<CountryOption>();
-  const [countryCode, setCountryCode] = useState<OptionBase>();
+  const [countryCode, setCountryCode] = useState<OptionBase>(
+    COUNTIES_PHONE_CODE_OPTIONS.find((code) => code.value === "+962")
+  );
   const [phoneNumber, setPhoneNumber] = useState<string>();
 
   return (
@@ -47,12 +51,7 @@ const SignUp = () => {
           name: "Phone Number",
           require: true,
         }}
-        options={[
-          {
-            id: 0,
-            value: "+962",
-          },
-        ]}
+        options={COUNTIES_PHONE_CODE_OPTIONS}
         optionValue={countryCode}
         setOptionValue={setCountryCode}
         filedValue={phoneNumber}
