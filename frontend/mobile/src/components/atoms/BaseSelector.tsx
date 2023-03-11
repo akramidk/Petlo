@@ -12,6 +12,7 @@ interface BaseSelectorProps<T> {
   cn?: string;
   setOptionsModalVisible: (visible: boolean) => void;
   showDropdownIcon?: boolean;
+  preventRTL?: boolean;
 }
 
 const BaseSelector = <T extends OptionBase>({
@@ -21,6 +22,7 @@ const BaseSelector = <T extends OptionBase>({
   cn,
   setOptionsModalVisible,
   showDropdownIcon = false,
+  preventRTL = false,
 }: BaseSelectorProps<T>) => {
   const { t } = useTranslationsContext();
   const { language, direction } = useSettingsContext();
@@ -29,7 +31,7 @@ const BaseSelector = <T extends OptionBase>({
     <Pressable
       className={clsx(
         "bg-[#F6F6F6] h-[60px] rounded-[4px] justify-between items-center px-[20px] space-x-[12px]",
-        direction === "ltr" ? "flex-row" : "flex-row-reverse",
+        direction === "ltr" || preventRTL ? "flex-row" : "flex-row-reverse",
         cn
       )}
       onPress={() => setOptionsModalVisible(true)}

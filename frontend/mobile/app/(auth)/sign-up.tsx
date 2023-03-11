@@ -50,9 +50,10 @@ const SignUp = () => {
 
       <FiledWithSelector
         label={{
-          name: "Phone Number",
+          name: t("SIGN_UP_PHONE_NUMBER_FILED_LABEL"),
           require: true,
         }}
+        placeholder={t("SIGN_UP_PHONE_NUMBER_FILED_PLACEHOLDER")}
         options={COUNTIES_PHONE_CODE_OPTIONS}
         optionValue={countryCode}
         setOptionValue={setCountryCode}

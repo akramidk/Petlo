@@ -17,6 +17,7 @@ interface FiledWithSelectorProps<T> {
   label?: LabelProps;
   translate?: boolean;
   cn?: string;
+  placeholder?: string;
 }
 
 const FiledWithSelector = <T extends OptionBase>({
@@ -28,6 +29,7 @@ const FiledWithSelector = <T extends OptionBase>({
   translate = false,
   label,
   cn,
+  placeholder,
 }: FiledWithSelectorProps<T>) => {
   const [optionsModalVisible, setOptionsModalVisible] = useState(false);
 
@@ -49,11 +51,13 @@ const FiledWithSelector = <T extends OptionBase>({
           setOptionsModalVisible={setOptionsModalVisible}
           translate={translate}
           showDropdownIcon
+          preventRTL
         />
         <BaseFiled
           cn="flex-1 rounded-l-[0px]"
           onChange={onChangeFiledValue}
           value={filedValue}
+          placeholder={placeholder}
         />
       </View>
     </View>
