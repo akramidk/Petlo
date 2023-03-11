@@ -4,5 +4,6 @@ import Button from "./Button";
 import Filed from "./Filed";
 import Selector from "./Selector";
 import FiledWithSelector from "./FiledWithSelector";
+import BackButton from "./BackButton";
 
-export { Logo, Text, Button, Filed, Selector, FiledWithSelector };
+export { Logo, Text, Button, Filed, Selector, FiledWithSelector, BackButton };

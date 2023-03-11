@@ -1,21 +1,27 @@
 import { View } from "react-native";
 import { ButtonProps } from "../../interfaces";
-import { Button } from "../atoms";
-import { Text } from "../atoms";
+import { Button, BackButton, Text } from "../atoms";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-import { ScrollView } from "react-native-gesture-handler";
 
 interface FormProps {
   title?: string;
   helperText?: string;
   children?: React.ReactNode;
   button?: ButtonProps;
+  backButton?: () => void;
 }
 
-const Form = ({ title, helperText, children, button }: FormProps) => {
+const Form = ({
+  title,
+  helperText,
+  children,
+  button,
+  backButton,
+}: FormProps) => {
   return (
     <View className="h-full justify-between">
       <View className="space-y-[12px] mb-[28px]">
+        {backButton && <BackButton onClick={backButton} />}
         {title && (
           <Text
             cn="text-[32px] text-[#0E333C]"
@@ -34,7 +40,9 @@ const Form = ({ title, helperText, children, button }: FormProps) => {
         )}
       </View>
 
-      <KeyboardAwareScrollView>{children}</KeyboardAwareScrollView>
+      <KeyboardAwareScrollView className="mb-[28px]">
+        {children}
+      </KeyboardAwareScrollView>
 
       {button && <Button {...button} />}
     </View>

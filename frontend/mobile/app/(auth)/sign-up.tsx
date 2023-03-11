@@ -1,3 +1,4 @@
+import { useRouter } from "expo-router";
 import { useMemo, useState } from "react";
 import { Filed, Selector, FiledWithSelector } from "../../src/components/atoms";
 import { Form } from "../../src/components/organisms";
@@ -9,7 +10,9 @@ import { useTranslationsContext } from "../../src/hooks";
 import { CountryOption, OptionBase } from "../../src/interfaces";
 
 const SignUp = () => {
+  const router = useRouter();
   const { t } = useTranslationsContext();
+
   const [name, setName] = useState<string>("");
   const [country, setCountry] = useState<CountryOption>(
     COUNTRIES_OPTIONS.find((country) => country.key === "JO")
@@ -37,6 +40,7 @@ const SignUp = () => {
   return (
     <Form
       title={t("SIGN_UP_TITLE")}
+      backButton={() => router.back()}
       button={{
         value: t("SIGN_UP_BUTTON"),
         onClick: () => {},
