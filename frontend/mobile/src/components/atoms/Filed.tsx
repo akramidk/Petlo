@@ -3,6 +3,7 @@ import Label from "./Label";
 import { LabelProps } from "../../interfaces";
 import clsx from "clsx";
 import BaseFiled from "./BaseFiled";
+import { KeyboardType } from "react-native";
 
 interface FiledProps {
   value?: string;
@@ -11,6 +12,7 @@ interface FiledProps {
   label?: LabelProps;
   cn?: string;
   secureTextEntry?: boolean;
+  keyboardType?: KeyboardType;
 }
 
 const Filed = ({
@@ -20,6 +22,7 @@ const Filed = ({
   label,
   cn,
   secureTextEntry,
+  keyboardType,
 }: FiledProps) => {
   return (
     <View className={clsx(cn)}>
@@ -28,6 +31,7 @@ const Filed = ({
         value={value}
         onChange={onChange}
         placeholder={placeholder}
+        keyboardType={keyboardType}
         secureTextEntry={secureTextEntry}
       />
     </View>

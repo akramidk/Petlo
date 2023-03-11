@@ -32,7 +32,7 @@ const Form = ({
         )}
         {helperText && (
           <Text
-            cn="text-[17px] text-[#888] leading-[28px]"
+            cn="text-[16px] text-[#888] leading-[28px]"
             font={["font-e500", "font-a400"]}
           >
             {helperText}
