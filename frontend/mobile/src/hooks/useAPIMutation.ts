@@ -57,7 +57,6 @@ const useAPIMutation = <Request, Response>({
         statusCode: error.response.status,
         body: error.response.data,
       });
-      console.log("error", error.response.data);
     }
 
     if (isMutating) {
@@ -65,6 +64,19 @@ const useAPIMutation = <Request, Response>({
         status: "loading",
       });
     }
+
+    //reset SWR things & the status
+    const timeout = setTimeout(() => {
+      reset();
+      setResponse({
+        ...response,
+        status: undefined,
+      });
+    }, 1000);
+
+    return () => {
+      clearTimeout(timeout);
+    };
   }, [isMutating]);
 
   return { trigger, response };
