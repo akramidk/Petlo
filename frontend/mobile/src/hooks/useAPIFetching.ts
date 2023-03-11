@@ -45,7 +45,7 @@ const useAPIFetching = <Request, Response>({
     if ((data || error) && !(isValidating || isLoading)) {
       setResponse({
         statusCode: data ? 200 : error.response.status,
-        body: data ?? error.response.data,
+        body: data,
       });
     }
 

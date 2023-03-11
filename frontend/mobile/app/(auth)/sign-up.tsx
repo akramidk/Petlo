@@ -1,12 +1,13 @@
 import { useRouter } from "expo-router";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Filed, Selector, FiledWithSelector } from "../../src/components/atoms";
 import { Form } from "../../src/components/organisms";
 import {
   COUNTRIES_OPTIONS,
   COUNTIES_PHONE_CODE_OPTIONS,
 } from "../../src/constants";
-import { useTranslationsContext } from "../../src/hooks";
+import { Endpoints } from "../../src/enums";
+import { useTranslationsContext, useAPIMutation } from "../../src/hooks";
 import { CountryOption, OptionBase } from "../../src/interfaces";
 
 const SignUp = () => {
@@ -37,14 +38,29 @@ const SignUp = () => {
     return "inactive";
   }, [name, country, countryCode, phoneNumber, password]);
 
+  const { response, trigger } = useAPIMutation({
+    endpoint: Endpoints.CreateNewCustomer,
+    method: "POST",
+  });
+
+  useEffect(() => {
+    console.log("response", response);
+  }, [response]);
+
   return (
     <Form
       title={t("SIGN_UP_TITLE")}
       backButton={() => router.back()}
       button={{
         value: t("SIGN_UP_BUTTON"),
-        onClick: () => {},
-        status: buttonStatus,
+        onClick: () =>
+          trigger({
+            name: name,
+            country: country.key,
+            phone_number: countryCode.value + phoneNumber,
+            password: password,
+          }),
+        status: response?.status ?? buttonStatus,
       }}
     >
       <Filed
