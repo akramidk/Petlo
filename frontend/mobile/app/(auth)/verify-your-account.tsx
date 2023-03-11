@@ -7,18 +7,15 @@ import { useAPIMutation } from "../../src/hooks";
 
 const VerifyYourAccount = () => {
   const router = useRouter();
+
   const { phoneNumber, sessionToken } = useSearchParams();
   const [verificationCode, setVerificationCode] = useState<string>();
-  const { response, trigger } = useAPIMutation<unknown, unknown>({
+  const { trigger } = useAPIMutation<unknown, unknown>({
     endpoint: Endpoints.VerifyCustomerAccount,
     method: "POST",
     onSucceeded: () => router.replace("/"),
     sessionToken: sessionToken,
   });
-
-  useEffect(() => {
-    console.log("response", response);
-  }, [response]);
 
   return (
     <Form
