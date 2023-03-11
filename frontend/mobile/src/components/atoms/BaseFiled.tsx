@@ -1,4 +1,4 @@
-import { TextInput } from "react-native";
+import { TextInput, KeyboardType } from "react-native";
 import clsx from "clsx";
 import { useSettingsContext } from "../../hooks";
 
@@ -7,9 +7,16 @@ interface BaseFiled {
   onChange: (value: string) => void;
   placeholder?: string;
   cn?: string;
+  keyboardType?: KeyboardType;
 }
 
-const BaseFiled = ({ value, onChange, placeholder, cn }: BaseFiled) => {
+const BaseFiled = ({
+  value,
+  onChange,
+  placeholder,
+  cn,
+  keyboardType,
+}: BaseFiled) => {
   const { language, direction } = useSettingsContext();
 
   return (
@@ -24,6 +31,7 @@ const BaseFiled = ({ value, onChange, placeholder, cn }: BaseFiled) => {
       onChangeText={onChange}
       placeholder={placeholder}
       placeholderTextColor="#aaa"
+      keyboardType={keyboardType}
     />
   );
 };

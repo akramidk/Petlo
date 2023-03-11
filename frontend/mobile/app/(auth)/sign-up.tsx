@@ -59,6 +59,7 @@ const SignUp = () => {
         setOptionValue={setCountryCode}
         filedValue={phoneNumber}
         onChangeFiledValue={setPhoneNumber}
+        keyboardType="number-pad"
       />
     </Form>
   );

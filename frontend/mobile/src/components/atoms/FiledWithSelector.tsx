@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { View } from "react-native";
+import { View, KeyboardType } from "react-native";
 import { OptionBase } from "../../interfaces";
 import BaseFiled from "./BaseFiled";
 import BaseSelector from "./BaseSelector";
@@ -18,6 +18,7 @@ interface FiledWithSelectorProps<T> {
   translate?: boolean;
   cn?: string;
   placeholder?: string;
+  keyboardType?: KeyboardType;
 }
 
 const FiledWithSelector = <T extends OptionBase>({
@@ -30,6 +31,7 @@ const FiledWithSelector = <T extends OptionBase>({
   label,
   cn,
   placeholder,
+  keyboardType,
 }: FiledWithSelectorProps<T>) => {
   const [optionsModalVisible, setOptionsModalVisible] = useState(false);
 
@@ -58,6 +60,7 @@ const FiledWithSelector = <T extends OptionBase>({
           onChange={onChangeFiledValue}
           value={filedValue}
           placeholder={placeholder}
+          keyboardType={keyboardType}
         />
       </View>
     </View>

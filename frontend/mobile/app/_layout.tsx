@@ -20,7 +20,7 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Slot } from "expo-router";
 import { Logo } from "../src/components/atoms";
-import { View, Alert } from "react-native";
+import { View, Alert, TouchableWithoutFeedback, Keyboard } from "react-native";
 import { useAPIFetching, useSettings } from "../src/hooks";
 import * as Device from "expo-device";
 import * as Application from "expo-application";
@@ -107,9 +107,13 @@ const Layout = () => {
     >
       <TranslationsContext.Provider value={{ t }}>
         <RoutesRestrictor customer={customer}>
-          <SafeAreaView className="px-[28px] py-[12px]">
-            <Slot />
-          </SafeAreaView>
+          <TouchableWithoutFeedback
+            onPress={() => Keyboard.isVisible() && Keyboard.dismiss()}
+          >
+            <SafeAreaView className="px-[28px] py-[12px]">
+              <Slot />
+            </SafeAreaView>
+          </TouchableWithoutFeedback>
         </RoutesRestrictor>
       </TranslationsContext.Provider>
     </SettingsContext.Provider>
