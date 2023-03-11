@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Filed, Selector, FiledWithSelector } from "../../src/components/atoms";
 import { Form } from "../../src/components/organisms";
 import {
@@ -10,15 +10,29 @@ import { CountryOption, OptionBase } from "../../src/interfaces";
 
 const SignUp = () => {
   const { t } = useTranslationsContext();
-  const [name, setName] = useState<string>();
+  const [name, setName] = useState<string>("");
   const [country, setCountry] = useState<CountryOption>(
     COUNTRIES_OPTIONS.find((country) => country.key === "JO")
   );
   const [countryCode, setCountryCode] = useState<OptionBase>(
     COUNTIES_PHONE_CODE_OPTIONS.find((code) => code.value === "+962")
   ); // TODO Pagination to improve performance
-  const [phoneNumber, setPhoneNumber] = useState<string>();
-  const [password, setPassword] = useState<string>();
+  const [phoneNumber, setPhoneNumber] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+
+  const buttonStatus: "active" | "inactive" = useMemo(() => {
+    if (
+      name.trim().length > 0 &&
+      country &&
+      countryCode &&
+      phoneNumber.trim().length > 0 &&
+      password.trim().length >= 8
+    ) {
+      return "active";
+    }
+
+    return "inactive";
+  }, [name, country, countryCode, phoneNumber, password]);
 
   return (
     <Form
@@ -26,6 +40,7 @@ const SignUp = () => {
       button={{
         value: t("SIGN_UP_BUTTON"),
         onClick: () => {},
+        status: buttonStatus,
       }}
     >
       <Filed
@@ -65,7 +80,11 @@ const SignUp = () => {
       />
 
       <Filed
-        label={{ name: t("SIGN_UP_PASSWORD_FILED_LABEL"), require: true }}
+        label={{
+          name: t("SIGN_UP_PASSWORD_FILED_LABEL"),
+          helperText: t("SIGN_UP_PASSWORD_FILED_HELPER_TEXT"),
+          require: true,
+        }}
         placeholder={t("SIGN_UP_PASSWORD_FILED_PLACEHOLDER")}
         onChange={setPassword}
         value={password}

@@ -6,21 +6,21 @@ import clsx from "clsx";
 const Label = ({ name, helperText, require, cn }: LabelProps) => {
   const { language, direction } = useSettingsContext();
 
-  const fonts = {
+  const className = {
     en: {
       name: "font-e700",
-      require: "font-e700",
-      helperText: "font-e700",
+      require: "font-e700 ml-[2px]",
+      helperText: "font-e500 ml-[4px]",
     },
     ar_masculine: {
       name: "font-a600",
-      require: "font-a600",
-      helperText: "font-a600",
+      require: "font-a600 mr-[2px]",
+      helperText: "font-a400 mr-[4px]",
     },
     ar_feminine: {
       name: "font-a600",
-      require: "font-a600",
-      helperText: "font-a600",
+      require: "font-a600 mr-[2px]",
+      helperText: "font-a400 mr-[4px]",
     },
   };
 
@@ -33,25 +33,29 @@ const Label = ({ name, helperText, require, cn }: LabelProps) => {
       )}
     >
       <Text
-        className={clsx("text-[14px] text-[#0E333C]", fonts[language].name)}
+        className={clsx("text-[14px] text-[#0E333C]", className[language].name)}
       >
         {name}
       </Text>
       {require && (
-        <>
-          {
-            //rtl
-          }
-          <Text className="w-[2px]" />
-          <Text
-            className={clsx("text-[14px] text-[#0E333C]", fonts[language].name)}
-          >
-            *
-          </Text>
-        </>
+        <Text
+          className={clsx(
+            "text-[14px] text-[#0E333C]",
+            className[language].require
+          )}
+        >
+          *
+        </Text>
       )}
       {helperText && (
-        <Text className="text-[14px] text-[#0E333C]">{helperText}</Text>
+        <Text
+          className={clsx(
+            "text-[14px] text-[#888]",
+            className[language].helperText
+          )}
+        >
+          ({helperText})
+        </Text>
       )}
     </View>
   );

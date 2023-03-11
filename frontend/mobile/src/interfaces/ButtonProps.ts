@@ -1,5 +1,7 @@
+type buttonStatus = "active" | "inactive";
+
 export interface ButtonProps {
   value: string;
-  status?: "active" | "inactive";
+  status?: buttonStatus;
   onClick: () => void;
 }

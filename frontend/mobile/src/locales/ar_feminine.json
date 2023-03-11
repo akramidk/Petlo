@@ -21,6 +21,7 @@
   "SIGN_UP_PHONE_NUMBER_FILED_LABEL": "رقم هاتفك",
   "SIGN_UP_PHONE_NUMBER_FILED_PLACEHOLDER": "ادخل رقم هاتفك",
   "SIGN_UP_PASSWORD_FILED_LABEL": "كلمة السر",
+  "SIGN_UP_PASSWORD_FILED_HELPER_TEXT": "8 خانات او اكثر",
   "SIGN_UP_PASSWORD_FILED_PLACEHOLDER": "ادخل كلمة سر",
   "SELECTOR_COMP_SELECT": "اختاري",
   "SELECTOR_COMP_CHANGE": "تغيير ",
