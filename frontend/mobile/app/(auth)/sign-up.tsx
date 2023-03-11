@@ -69,6 +69,7 @@ const SignUp = () => {
         placeholder={t("SIGN_UP_PASSWORD_FILED_PLACEHOLDER")}
         onChange={setPassword}
         value={password}
+        secureTextEntry={true}
       />
     </Form>
   );

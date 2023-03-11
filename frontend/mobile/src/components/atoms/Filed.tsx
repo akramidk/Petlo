@@ -10,13 +10,26 @@ interface FiledProps {
   placeholder?: string;
   label?: LabelProps;
   cn?: string;
+  secureTextEntry?: boolean;
 }
 
-const Filed = ({ value, onChange, placeholder, label, cn }: FiledProps) => {
+const Filed = ({
+  value,
+  onChange,
+  placeholder,
+  label,
+  cn,
+  secureTextEntry,
+}: FiledProps) => {
   return (
     <View className={clsx(cn)}>
       {label && <Label cn="mb-[6px]" {...label} />}
-      <BaseFiled value={value} onChange={onChange} placeholder={placeholder} />
+      <BaseFiled
+        value={value}
+        onChange={onChange}
+        placeholder={placeholder}
+        secureTextEntry={secureTextEntry}
+      />
     </View>
   );
 };

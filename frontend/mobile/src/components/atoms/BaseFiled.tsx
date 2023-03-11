@@ -8,6 +8,7 @@ interface BaseFiled {
   placeholder?: string;
   cn?: string;
   keyboardType?: KeyboardType;
+  secureTextEntry?: boolean;
 }
 
 const BaseFiled = ({
@@ -16,6 +17,7 @@ const BaseFiled = ({
   placeholder,
   cn,
   keyboardType,
+  secureTextEntry,
 }: BaseFiled) => {
   const { language, direction } = useSettingsContext();
 
@@ -32,6 +34,7 @@ const BaseFiled = ({
       placeholder={placeholder}
       placeholderTextColor="#aaa"
       keyboardType={keyboardType}
+      secureTextEntry={secureTextEntry}
     />
   );
 };
