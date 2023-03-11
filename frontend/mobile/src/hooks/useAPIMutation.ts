@@ -7,10 +7,10 @@ import useAlertContext from "./useAlertContext";
 
 const backendURL = Constants.expoConfig.extra.API_URL + "/en";
 
-interface useAPIMutationProps<Request> {
+interface useAPIMutationProps<Response> {
   endpoint: Endpoints;
   method: "POST";
-  body?: Request;
+  onSucceeded?: (data: Response) => void;
 }
 
 interface useAPIMutationResponse<Response> {
@@ -22,7 +22,8 @@ interface useAPIMutationResponse<Response> {
 const useAPIMutation = <Request, Response>({
   endpoint,
   method,
-}: useAPIMutationProps<Request>) => {
+  onSucceeded,
+}: useAPIMutationProps<Response>) => {
   const setAlert = useAlertContext();
 
   const [response, setResponse] = useState<useAPIMutationResponse<Response>>();
@@ -52,6 +53,8 @@ const useAPIMutation = <Request, Response>({
         statusCode: 200,
         body: data,
       });
+
+      onSucceeded && onSucceeded(data);
     }
 
     if (error && !isMutating) {

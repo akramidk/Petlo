@@ -38,10 +38,23 @@ const SignUp = () => {
     return "inactive";
   }, [name, country, countryCode, phoneNumber, password]);
 
-  const { response, trigger } = useAPIMutation({
+  const { response, trigger } = useAPIMutation<
+    unknown,
+    { customer: { session_token: string } }
+  >({
     endpoint: Endpoints.CreateNewCustomer,
     method: "POST",
+    onSucceeded: (data) =>
+      router.replace(
+        `/verify-your-account?phone_number=${
+          countryCode.value + phoneNumber
+        }&session_token=${data.customer.session_token}`
+      ),
   });
+
+  useEffect(() => {
+    console.log("response", response);
+  }, [response]);
 
   return (
     <Form
