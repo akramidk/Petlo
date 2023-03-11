@@ -16,8 +16,6 @@ const AlertContextProvider = ({ children }: { children: React.ReactNode }) => {
     succeeded: "bg-[#444]",
   };
 
-  console.log("alert", alert);
-
   return (
     <AlertContext.Provider value={setAlert}>
       <Modal visible={!!alert} transparent={true} animationType="fade">

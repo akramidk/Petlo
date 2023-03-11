@@ -12,7 +12,7 @@ const App = () => {
         cn={clsx("text-[36px] text-[#444]")}
         font={["font-e800", "font-a700"]}
       >
-        {t("SELECT_LANGUAGE_TITLE")}
+        home page baby
       </Text>
     </View>
   );
