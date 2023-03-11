@@ -43,10 +43,6 @@ const SignUp = () => {
     method: "POST",
   });
 
-  useEffect(() => {
-    console.log("response", response);
-  }, [response]);
-
   return (
     <Form
       title={t("SIGN_UP_TITLE")}

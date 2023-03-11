@@ -33,6 +33,7 @@ import { useTranslations } from "../src/hooks";
 import { Endpoints } from "../src/enums";
 import RoutesRestrictor from "./_RoutesRestrictor";
 import { useCustomer } from "../src/hooks";
+import { AlertContextProvider } from "../src/providers";
 
 const Layout = () => {
   // TODO handled if no network
@@ -111,7 +112,9 @@ const Layout = () => {
             onPress={() => Keyboard.isVisible() && Keyboard.dismiss()}
           >
             <SafeAreaView className="px-[28px] py-[12px]">
-              <Slot />
+              <AlertContextProvider>
+                <Slot />
+              </AlertContextProvider>
             </SafeAreaView>
           </TouchableWithoutFeedback>
         </RoutesRestrictor>

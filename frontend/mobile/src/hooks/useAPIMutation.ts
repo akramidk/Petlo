@@ -3,6 +3,7 @@ import Constants from "expo-constants";
 import { useEffect, useState } from "react";
 import { Endpoints } from "../enums";
 import useSWRMutation from "swr/mutation";
+import useAlertContext from "./useAlertContext";
 
 const backendURL = Constants.expoConfig.extra.API_URL + "/en";
 
@@ -22,6 +23,8 @@ const useAPIMutation = <Request, Response>({
   endpoint,
   method,
 }: useAPIMutationProps<Request>) => {
+  const setAlert = useAlertContext();
+
   const [response, setResponse] = useState<useAPIMutationResponse<Response>>();
 
   const fetcher = async (endpoint: string, { arg }: { arg: Request }) => {
@@ -57,6 +60,11 @@ const useAPIMutation = <Request, Response>({
         statusCode: error.response.status,
         body: error.response.data,
       });
+
+      setAlert({
+        variant: "failed",
+        value: error.response.data.error.message,
+      });
     }
 
     if (isMutating) {
@@ -67,12 +75,13 @@ const useAPIMutation = <Request, Response>({
 
     //reset SWR things & the status
     const timeout = setTimeout(() => {
+      setAlert(undefined);
       reset();
       setResponse({
         ...response,
         status: undefined,
       });
-    }, 1000);
+    }, 2000);
 
     return () => {
       clearTimeout(timeout);
