@@ -46,9 +46,9 @@ const SignUp = () => {
     method: "POST",
     onSucceeded: (data) =>
       router.replace(
-        `/verify-your-account?phone_number=${
+        `/verify-your-account?phoneNumber=${
           countryCode.value + phoneNumber
-        }&session_token=${data.customer.session_token}`
+        }&sessionToken=${data.customer.session_token}`
       ),
   });
 

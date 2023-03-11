@@ -11,6 +11,7 @@ interface useAPIMutationProps<Response> {
   endpoint: Endpoints;
   method: "POST";
   onSucceeded?: (data: Response) => void;
+  sessionToken?: string;
 }
 
 interface useAPIMutationResponse<Response> {
@@ -23,6 +24,7 @@ const useAPIMutation = <Request, Response>({
   endpoint,
   method,
   onSucceeded,
+  sessionToken,
 }: useAPIMutationProps<Response>) => {
   const setAlert = useAlertContext();
 
@@ -35,6 +37,9 @@ const useAPIMutation = <Request, Response>({
       method: method,
       url: fullEndpoint,
       data: arg,
+      headers: {
+        Authorization: `Bearer ${sessionToken}`,
+      },
     }).then((res) => res.data);
   };
 
