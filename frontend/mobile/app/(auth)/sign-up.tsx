@@ -16,8 +16,9 @@ const SignUp = () => {
   );
   const [countryCode, setCountryCode] = useState<OptionBase>(
     COUNTIES_PHONE_CODE_OPTIONS.find((code) => code.value === "+962")
-  );
+  ); // TODO Pagination to improve performance
   const [phoneNumber, setPhoneNumber] = useState<string>();
+  const [password, setPassword] = useState<string>();
 
   return (
     <Form
@@ -49,6 +50,7 @@ const SignUp = () => {
       />
 
       <FiledWithSelector
+        cn="mb-[16px]"
         label={{
           name: t("SIGN_UP_PHONE_NUMBER_FILED_LABEL"),
           require: true,
@@ -60,6 +62,13 @@ const SignUp = () => {
         filedValue={phoneNumber}
         onChangeFiledValue={setPhoneNumber}
         keyboardType="number-pad"
+      />
+
+      <Filed
+        label={{ name: t("SIGN_UP_PASSWORD_FILED_LABEL"), require: true }}
+        placeholder={t("SIGN_UP_PASSWORD_FILED_PLACEHOLDER")}
+        onChange={setPassword}
+        value={password}
       />
     </Form>
   );
