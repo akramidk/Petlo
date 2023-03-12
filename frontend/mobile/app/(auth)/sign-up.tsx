@@ -38,10 +38,6 @@ const SignUp = () => {
     return "inactive";
   }, [name, country, countryCode, phoneNumber, password]);
 
-  useEffect(() => {
-    console.log("phone", countryCode.value + phoneNumber);
-  }, [countryCode, phoneNumber]);
-
   const { response, trigger } = useAPIMutation<
     unknown,
     { customer: { session_token: string } }
