@@ -1,4 +1,4 @@
-export interface OptionsSelectorProps<T> {
+export interface OptionsProps<T> {
   options: T[];
   cn?: string;
   optionCN?: string;

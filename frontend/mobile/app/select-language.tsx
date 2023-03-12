@@ -1,5 +1,5 @@
 import { useSettingsContext, useTranslationsContext } from "../src/hooks";
-import { OptionsSelector } from "../src/components/atoms";
+import { Options } from "../src/components/atoms";
 import { useState } from "react";
 import { Form } from "../src/components/organisms";
 import {
@@ -50,7 +50,7 @@ const SelectLanguage = () => {
             : undefined
         }
       >
-        <OptionsSelector<LanguageOption>
+        <Options<LanguageOption>
           options={LANGUAGES_OPTIONS}
           signalSelect={{
             selectedOption: selectedLanguage,
@@ -73,7 +73,7 @@ const SelectLanguage = () => {
           status: selectedAdjective ? "active" : "inactive",
         }}
       >
-        <OptionsSelector
+        <Options
           options={LANGUAGE_ADJECTIVES_OPTIONS}
           signalSelect={{
             selectedOption: selectedAdjective,

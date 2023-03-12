@@ -9,27 +9,26 @@ import {
   ScrollView,
 } from "react-native";
 import { useSettingsContext, useTranslationsContext } from "../../hooks";
-import { BaseOption, OptionsSelectorProps } from "../../interfaces";
-import Text from "./Text";
-import Button from "./Button";
-import OptionsSelector from "./OptionsSelector";
+import { BaseOption, OptionsProps } from "../../interfaces";
+import Text from "../atoms/Text";
+import Button from "../atoms/Button";
+import Options from "../atoms/Options";
 
-interface OptionsModalProps<T> {
+interface SelectorModalProps<T> {
   visible?: boolean;
   setVisibility?: (visible: boolean) => void;
   value: T | undefined;
   setValue: (value: T) => void;
 }
 
-const OptionsModal = <T extends BaseOption>({
+const SelectorModal = <T extends BaseOption>({
   visible,
   setVisibility,
   options,
   value,
   setValue,
   translate = false,
-}: OptionsModalProps<T> &
-  Pick<OptionsSelectorProps<T>, "options" | "translate">) => {
+}: SelectorModalProps<T> & Pick<OptionsProps<T>, "options" | "translate">) => {
   const { t } = useTranslationsContext();
   const { language, direction } = useSettingsContext();
 
@@ -85,7 +84,7 @@ const OptionsModal = <T extends BaseOption>({
         </View>
 
         <ScrollView className="grow">
-          <OptionsSelector<T>
+          <Options<T>
             cn="py-[28px]"
             optionCN="px-[28px]"
             options={optionsAfterSearch}
@@ -113,4 +112,4 @@ const OptionsModal = <T extends BaseOption>({
   );
 };
 
-export default OptionsModal;
+export default SelectorModal;

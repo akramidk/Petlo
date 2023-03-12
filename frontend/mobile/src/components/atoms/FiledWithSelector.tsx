@@ -1,14 +1,8 @@
 import { useState } from "react";
 import { View } from "react-native";
-import {
-  BaseFiledProps,
-  BaseOption,
-  OptionsSelectorProps,
-} from "../../interfaces";
-import { BaseFiled, BaseSelector } from "../bases";
-import OptionsModal from "./OptionsModal";
+import { BaseFiledProps, BaseOption, OptionsProps } from "../../interfaces";
+import { BaseFiled, BaseSelector, SelectorModal, BaseLabel } from "../bases";
 import { BaseLabelProps } from "../../interfaces";
-import { BaseLabel } from "../bases";
 import clsx from "clsx";
 
 interface FiledWithSelectorProps {
@@ -30,7 +24,7 @@ const FiledWithSelector = <T extends BaseOption>({
 }: FiledWithSelectorProps &
   BaseFiledProps &
   Pick<BaseLabelProps, "name" | "helperText" | "require"> &
-  Pick<OptionsSelectorProps<T>, "options" | "translate" | "signalSelect">) => {
+  Pick<OptionsProps<T>, "options" | "translate" | "signalSelect">) => {
   const [optionsModalVisible, setOptionsModalVisible] = useState(false);
 
   return (
@@ -39,7 +33,7 @@ const FiledWithSelector = <T extends BaseOption>({
         <BaseLabel name={name} helperText={helperText} require={require} />
       )}
       <View className="flex-row">
-        <OptionsModal
+        <SelectorModal
           visible={optionsModalVisible}
           setVisibility={setOptionsModalVisible}
           options={options}

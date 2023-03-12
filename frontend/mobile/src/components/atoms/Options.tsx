@@ -1,19 +1,16 @@
 import clsx from "clsx";
 import { View } from "react-native";
 import { useTranslationsContext } from "../../hooks";
-import {
-  BaseOption as BaseOptionProps,
-  OptionsSelectorProps,
-} from "../../interfaces";
+import { BaseOption as BaseOptionProps, OptionsProps } from "../../interfaces";
 import { BaseOption } from "../bases";
 
-const OptionsSelector = <T extends BaseOptionProps>({
+const Options = <T extends BaseOptionProps>({
   options,
   cn,
   optionCN,
   translate = false,
   signalSelect,
-}: OptionsSelectorProps<T>) => {
+}: OptionsProps<T>) => {
   const { t } = useTranslationsContext();
 
   const onSelectOption = (option: T) => {
@@ -47,4 +44,4 @@ const OptionsSelector = <T extends BaseOptionProps>({
   );
 };
 
-export default OptionsSelector;
+export default Options;

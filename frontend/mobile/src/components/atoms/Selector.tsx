@@ -2,9 +2,7 @@ import { useState } from "react";
 import { View } from "react-native";
 import { BaseOption } from "../../interfaces";
 import { BaseLabelProps } from "../../interfaces";
-import { BaseLabel } from "../bases";
-import { BaseSelector } from "../bases";
-import OptionsModal from "./OptionsModal";
+import { BaseSelector, SelectorModal, BaseLabel } from "../bases";
 
 interface SelectorProps<T> {
   placeholder?: string;
@@ -31,7 +29,7 @@ const Selector = <T extends BaseOption>({
 
   return (
     <>
-      <OptionsModal
+      <SelectorModal
         visible={optionsModalVisible}
         setVisibility={setOptionsModalVisible}
         options={options}
