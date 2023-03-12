@@ -1,5 +1,5 @@
 import { useSettingsContext, useTranslationsContext } from "../src/hooks";
-import { OptionsSelector } from "../src/components/molecules";
+import { OptionsSelector } from "../src/components/atoms";
 import { useState } from "react";
 import { Form } from "../src/components/organisms";
 import {

@@ -1,17 +1,22 @@
 import { Pressable, View } from "react-native";
-import Text from "./Text";
+import { Text } from "../atoms";
 import { CheckCircleIcon } from "react-native-heroicons/solid";
 import clsx from "clsx";
 import { useSettingsContext } from "../../hooks";
 
-interface OptionProps {
+interface BaseOptionProps {
   value: string;
   onPress: () => void;
   selected?: boolean;
   cn?: string;
 }
 
-const Option = ({ onPress, value, selected = false, cn }: OptionProps) => {
+const BaseOption = ({
+  onPress,
+  value,
+  selected = false,
+  cn,
+}: BaseOptionProps) => {
   const { direction } = useSettingsContext();
 
   return (
@@ -32,4 +37,4 @@ const Option = ({ onPress, value, selected = false, cn }: OptionProps) => {
   );
 };
 
-export default Option;
+export default BaseOption;

@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { View, KeyboardType } from "react-native";
 import { OptionBase } from "../../interfaces";
-import BaseFiled from "./BaseFiled";
-import BaseSelector from "./BaseSelector";
+import { BaseFiled, BaseSelector } from "../bases";
 import OptionsModal from "./OptionsModal";
 import { LabelProps } from "../../interfaces";
 import Label from "./Label";

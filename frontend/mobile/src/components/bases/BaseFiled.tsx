@@ -2,7 +2,7 @@ import { TextInput, KeyboardType } from "react-native";
 import clsx from "clsx";
 import { useSettingsContext } from "../../hooks";
 
-interface BaseFiled {
+interface BaseFiledProps {
   value?: string;
   onChange: (value: string) => void;
   placeholder?: string;
@@ -18,7 +18,7 @@ const BaseFiled = ({
   cn,
   keyboardType,
   secureTextEntry,
-}: BaseFiled) => {
+}: BaseFiledProps) => {
   const { language, direction } = useSettingsContext();
 
   return (

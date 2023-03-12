@@ -2,7 +2,7 @@ import { View } from "react-native";
 import Label from "./Label";
 import { LabelProps } from "../../interfaces";
 import clsx from "clsx";
-import BaseFiled from "./BaseFiled";
+import { BaseFiled } from "../bases";
 import { KeyboardType } from "react-native";
 
 interface FiledProps {

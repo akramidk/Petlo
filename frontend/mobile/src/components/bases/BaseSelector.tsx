@@ -1,5 +1,5 @@
-import { View, Pressable } from "react-native";
-import Text from "./Text";
+import { Pressable } from "react-native";
+import { Text } from "../atoms";
 import { OptionBase } from "../../interfaces";
 import { useSettingsContext, useTranslationsContext } from "../../hooks";
 import clsx from "clsx";

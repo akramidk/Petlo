@@ -12,9 +12,9 @@ import { useSettingsContext, useTranslationsContext } from "../../hooks";
 import { OptionBase } from "../../interfaces";
 import Text from "./Text";
 import Button from "./Button";
-import { OptionsSelector } from "../molecules";
+import OptionsSelector from "./OptionsSelector";
 
-interface OptionsModal<T> {
+interface OptionsModalProps<T> {
   visible?: boolean;
   setVisibility?: (visible: boolean) => void;
   options: T[];
@@ -30,7 +30,7 @@ const OptionsModal = <T extends OptionBase>({
   value,
   setValue,
   translate = false,
-}: OptionsModal<T>) => {
+}: OptionsModalProps<T>) => {
   const { t } = useTranslationsContext();
   const { language, direction } = useSettingsContext();
 

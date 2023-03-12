@@ -2,7 +2,7 @@ import clsx from "clsx";
 import { View } from "react-native";
 import { useTranslationsContext } from "../../hooks";
 import { OptionBase, OptionsSelectorProps } from "../../interfaces";
-import Option from "../atoms/Option";
+import { BaseOption } from "../bases";
 
 const OptionsSelector = <T extends OptionBase>({
   options,
@@ -31,7 +31,7 @@ const OptionsSelector = <T extends OptionBase>({
 
         return (
           <View key={option.id}>
-            <Option
+            <BaseOption
               cn={clsx(padding, optionCN)}
               selected={isSelected}
               onPress={() => onSelectOption(option)}

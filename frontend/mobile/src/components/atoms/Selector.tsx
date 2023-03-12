@@ -3,7 +3,7 @@ import { View } from "react-native";
 import { OptionBase } from "../../interfaces";
 import { LabelProps } from "../../interfaces";
 import Label from "./Label";
-import BaseSelector from "./BaseSelector";
+import { BaseSelector } from "../bases";
 import OptionsModal from "./OptionsModal";
 
 interface SelectorProps<T> {
