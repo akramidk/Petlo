@@ -8,7 +8,7 @@ import {
 } from "../../src/constants";
 import { Endpoints } from "../../src/enums";
 import { useTranslationsContext, useAPIMutation } from "../../src/hooks";
-import { CountryOption, OptionBase } from "../../src/interfaces";
+import { CountryOption, BaseOption } from "../../src/interfaces";
 
 const SignUp = () => {
   const router = useRouter();
@@ -18,7 +18,7 @@ const SignUp = () => {
   const [country, setCountry] = useState<CountryOption>(
     COUNTRIES_OPTIONS.find((country) => country.key === "JO")
   );
-  const [countryCode, setCountryCode] = useState<OptionBase>(
+  const [countryCode, setCountryCode] = useState<BaseOption>(
     COUNTIES_PHONE_CODE_OPTIONS.find((code) => code.value === "+962")
   ); // TODO Pagination to improve performance
   const [phoneNumber, setPhoneNumber] = useState<string>("");

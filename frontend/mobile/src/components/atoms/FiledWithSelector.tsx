@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { View, KeyboardType } from "react-native";
-import { OptionBase } from "../../interfaces";
+import { BaseOption } from "../../interfaces";
 import { BaseFiled, BaseSelector } from "../bases";
 import OptionsModal from "./OptionsModal";
 import { LabelProps } from "../../interfaces";
@@ -20,7 +20,7 @@ interface FiledWithSelectorProps<T> {
   keyboardType?: KeyboardType;
 }
 
-const FiledWithSelector = <T extends OptionBase>({
+const FiledWithSelector = <T extends BaseOption>({
   options,
   optionValue,
   setOptionValue,

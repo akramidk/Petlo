@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { View } from "react-native";
-import { OptionBase } from "../../interfaces";
+import { BaseOption } from "../../interfaces";
 import { LabelProps } from "../../interfaces";
 import Label from "./Label";
 import { BaseSelector } from "../bases";
@@ -16,7 +16,7 @@ interface SelectorProps<T> {
   cn?: string;
 }
 
-const Selector = <T extends OptionBase>({
+const Selector = <T extends BaseOption>({
   placeholder,
   label,
   options,

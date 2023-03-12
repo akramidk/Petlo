@@ -1,10 +1,13 @@
 import clsx from "clsx";
 import { View } from "react-native";
 import { useTranslationsContext } from "../../hooks";
-import { OptionBase, OptionsSelectorProps } from "../../interfaces";
+import {
+  BaseOption as BaseOptionProps,
+  OptionsSelectorProps,
+} from "../../interfaces";
 import { BaseOption } from "../bases";
 
-const OptionsSelector = <T extends OptionBase>({
+const OptionsSelector = <T extends BaseOptionProps>({
   options,
   cn,
   optionCN,

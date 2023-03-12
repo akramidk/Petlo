@@ -1,7 +1,7 @@
-import { OptionBase } from "../interfaces";
+import { BaseOption } from "../interfaces";
 
 // TODO sorting, and add them again
-export const COUNTIES_PHONE_CODE_OPTIONS: OptionBase[] = [
+export const COUNTIES_PHONE_CODE_OPTIONS: BaseOption[] = [
   {
     id: 1,
     value: "+345",

@@ -1,4 +1,4 @@
-export interface OptionBase {
+export interface BaseOption {
   id: number | string;
   value: string;
 }

@@ -1,6 +1,6 @@
 import { Pressable } from "react-native";
 import { Text } from "../atoms";
-import { OptionBase } from "../../interfaces";
+import { BaseOption } from "../../interfaces";
 import { useSettingsContext, useTranslationsContext } from "../../hooks";
 import clsx from "clsx";
 import { ChevronDownIcon } from "react-native-heroicons/outline";
@@ -15,7 +15,7 @@ interface BaseSelectorProps<T> {
   preventRTL?: boolean;
 }
 
-const BaseSelector = <T extends OptionBase>({
+const BaseSelector = <T extends BaseOption>({
   placeholder,
   value,
   translate = false,

@@ -6,14 +6,14 @@ import {
   LANGUAGE_ADJECTIVES_OPTIONS,
   LANGUAGES_OPTIONS,
 } from "../src/constants";
-import { LanguageOption, OptionBase } from "../src/interfaces";
+import { LanguageOption, BaseOption } from "../src/interfaces";
 import { language } from "../src/types";
 
 const SelectLanguage = () => {
   const { t } = useTranslationsContext();
   const { changeLanguage } = useSettingsContext();
   const [selectedLanguage, setSelectedLanguage] = useState<LanguageOption>();
-  const [selectedAdjective, setSlectedAdjective] = useState<OptionBase>();
+  const [selectedAdjective, setSlectedAdjective] = useState<BaseOption>();
   const [step, setStep] = useState(1);
 
   const languageHandler = () => {

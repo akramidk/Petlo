@@ -7,7 +7,7 @@ import { CheckASessionResponse } from "./CheckASession";
 
 import { ButtonProps } from "./ButtonProps";
 import { LanguageOption } from "./LanguageOption";
-import { OptionBase } from "./OptionBase";
+import { BaseOption } from "./BaseOption";
 import { LabelProps } from "./LabelProps";
 import { OptionsSelectorProps } from "./OptionsSelectorProps";
 import { CountryOption } from "./CountryOption";
@@ -18,7 +18,7 @@ export {
   CheckASessionResponse,
   ButtonProps,
   LanguageOption,
-  OptionBase,
+  BaseOption,
   LabelProps,
   OptionsSelectorProps,
   CountryOption,

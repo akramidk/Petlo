@@ -9,7 +9,7 @@ import {
   ScrollView,
 } from "react-native";
 import { useSettingsContext, useTranslationsContext } from "../../hooks";
-import { OptionBase } from "../../interfaces";
+import { BaseOption } from "../../interfaces";
 import Text from "./Text";
 import Button from "./Button";
 import OptionsSelector from "./OptionsSelector";
@@ -23,7 +23,7 @@ interface OptionsModalProps<T> {
   translate?: boolean;
 }
 
-const OptionsModal = <T extends OptionBase>({
+const OptionsModal = <T extends BaseOption>({
   visible,
   setVisibility,
   options,

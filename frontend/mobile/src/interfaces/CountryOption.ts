@@ -1,5 +1,5 @@
-import { OptionBase } from "./OptionBase";
+import { BaseOption } from "./BaseOption";
 
-export interface CountryOption extends OptionBase {
+export interface CountryOption extends BaseOption {
   key: string;
 }
