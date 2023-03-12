@@ -24,6 +24,7 @@ const BackButton = ({
     <BaseButton
       cn={clsx(
         "space-x-[4px] p-[10px] rounded-[8px] bg-[#f6f6f6] items-center",
+        direction === "ltr" ? "self-start" : "self-end",
         cn
       )}
       onClick={onClick}
