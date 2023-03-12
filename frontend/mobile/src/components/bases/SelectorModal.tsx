@@ -13,6 +13,7 @@ import { BaseOption, OptionsProps } from "../../interfaces";
 import Text from "../atoms/Text";
 import Button from "../atoms/Button";
 import Options from "../atoms/Options";
+import BaseButton from "./BaseButton";
 
 interface SelectorModalProps<T> {
   visible?: boolean;
@@ -75,7 +76,7 @@ const SelectorModal = <T extends BaseOption>({
             )}
             onChangeText={setSearchValue}
           />
-          <Pressable onPress={onCancel} className="h-full justify-center">
+          <BaseButton onClick={onCancel} cn="h-full justify-center">
             <Text
               className={clsx(
                 "text-[#E64848] text-[14px]",
@@ -85,7 +86,7 @@ const SelectorModal = <T extends BaseOption>({
             >
               {t("OPTIONS_MODAL_COMP_CANCEL")}
             </Text>
-          </Pressable>
+          </BaseButton>
         </View>
 
         <ScrollView className="grow">

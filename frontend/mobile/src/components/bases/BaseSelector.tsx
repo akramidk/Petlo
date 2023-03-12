@@ -1,9 +1,9 @@
-import { Pressable } from "react-native";
 import Text from "../atoms/Text";
 import { BaseOption, BaseSelectorProps } from "../../interfaces";
 import { useSettingsContext, useTranslationsContext } from "../../hooks";
 import clsx from "clsx";
 import { ChevronDownIcon } from "react-native-heroicons/outline";
+import BaseButton from "./BaseButton";
 
 const BaseSelector = <T extends BaseOption>({
   placeholder,
@@ -18,14 +18,14 @@ const BaseSelector = <T extends BaseOption>({
   const { language, direction } = useSettingsContext();
 
   return (
-    <Pressable
-      className={clsx(
+    <BaseButton
+      cn={clsx(
         "bg-[#F6F6F6] h-[60px] rounded-[4px] justify-between items-center px-[20px]",
-        direction === "ltr" || preventRTL ? "flex-row" : "flex-row-reverse",
         showDropdownIcon && "space-x-[12px]",
         cn
       )}
-      onPress={() => setOptionsModalVisible(true)}
+      onClick={() => setOptionsModalVisible(true)}
+      preventRTL={preventRTL}
     >
       <Text
         numberOfLines={1}
@@ -53,7 +53,7 @@ const BaseSelector = <T extends BaseOption>({
           {value ? t("SELECTOR_COMP_CHANGE") : t("SELECTOR_COMP_SELECT")}
         </Text>
       )}
-    </Pressable>
+    </BaseButton>
   );
 };
 

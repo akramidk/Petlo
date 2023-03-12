@@ -5,13 +5,13 @@ import {
   ArrowSmallRightIcon,
 } from "react-native-heroicons/outline";
 import { useSettingsContext } from "../../hooks";
+import BaseButton from "../bases/BaseButton";
+import { BaseButtonProps } from "../../interfaces";
 
-interface BackButtonProps {
-  onClick: () => void;
-  cn?: string;
-}
-
-const BackButton = ({ onClick, cn }: BackButtonProps) => {
+const BackButton = ({
+  onClick,
+  cn,
+}: Pick<BaseButtonProps, "onClick" | "cn">) => {
   const { direction } = useSettingsContext();
 
   const arrowStyles = {
@@ -21,20 +21,19 @@ const BackButton = ({ onClick, cn }: BackButtonProps) => {
   };
 
   return (
-    <Pressable
-      className={clsx(
+    <BaseButton
+      cn={clsx(
         "space-x-[4px] p-[10px] rounded-[8px] bg-[#f6f6f6] items-center",
-        direction === "ltr" ? "self-start" : "self-end",
         cn
       )}
-      onPress={onClick}
+      onClick={onClick}
     >
       {direction === "ltr" ? (
         <ArrowSmallLeftIcon {...arrowStyles} />
       ) : (
         <ArrowSmallRightIcon {...arrowStyles} />
       )}
-    </Pressable>
+    </BaseButton>
   );
 };
 

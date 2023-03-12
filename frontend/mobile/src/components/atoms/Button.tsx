@@ -1,10 +1,10 @@
 import clsx from "clsx";
 import React from "react";
-import { Pressable } from "react-native";
 import { ButtonProps } from "../../interfaces";
 import Text from "./Text";
 import { ActivityIndicator } from "react-native-paper";
 import { CheckIcon, XMarkIcon } from "react-native-heroicons/outline";
+import BaseButton from "../bases/BaseButton";
 
 const Button = ({ value, status = "active", onClick }: ButtonProps) => {
   const TextChild = () => {
@@ -48,16 +48,16 @@ const Button = ({ value, status = "active", onClick }: ButtonProps) => {
   };
 
   return (
-    <Pressable
-      className={clsx(
+    <BaseButton
+      cn={clsx(
         "h-[60px] rounded-[4px] justify-center items-center",
         statuses[status].className
       )}
-      onPress={onClick}
-      disabled={status === "inactive"}
+      onClick={onClick}
+      disabled={status !== "active"}
     >
       {statuses[status].child}
-    </Pressable>
+    </BaseButton>
   );
 };
 
