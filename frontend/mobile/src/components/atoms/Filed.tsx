@@ -1,6 +1,6 @@
 import { View } from "react-native";
-import Label from "./Label";
-import { LabelProps } from "../../interfaces";
+import { BaseLabel } from "../bases";
+import { BaseLabelProps } from "../../interfaces";
 import clsx from "clsx";
 import { BaseFiled } from "../bases";
 import { KeyboardType } from "react-native";
@@ -9,7 +9,7 @@ interface FiledProps {
   value?: string;
   onChange: (value: string) => void;
   placeholder?: string;
-  label?: LabelProps;
+  label?: BaseLabelProps;
   cn?: string;
   secureTextEntry?: boolean;
   keyboardType?: KeyboardType;
@@ -26,7 +26,7 @@ const Filed = ({
 }: FiledProps) => {
   return (
     <View className={clsx(cn)}>
-      {label && <Label cn="mb-[6px]" {...label} />}
+      {label && <BaseLabel cn="mb-[6px]" {...label} />}
       <BaseFiled
         value={value}
         onChange={onChange}

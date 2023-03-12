@@ -1,9 +1,9 @@
 import { View, Text } from "react-native";
-import { LabelProps } from "../../interfaces";
+import { BaseLabelProps } from "../../interfaces";
 import { useSettingsContext } from "../../hooks";
 import clsx from "clsx";
 
-const Label = ({ name, helperText, require, cn }: LabelProps) => {
+const BaseLabel = ({ name, helperText, require, cn }: BaseLabelProps) => {
   const { language, direction } = useSettingsContext();
 
   const className = {
@@ -61,4 +61,4 @@ const Label = ({ name, helperText, require, cn }: LabelProps) => {
   );
 };
 
-export default Label;
+export default BaseLabel;

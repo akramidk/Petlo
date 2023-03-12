@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { View } from "react-native";
 import { BaseOption } from "../../interfaces";
-import { LabelProps } from "../../interfaces";
-import Label from "./Label";
+import { BaseLabelProps } from "../../interfaces";
+import { BaseLabel } from "../bases";
 import { BaseSelector } from "../bases";
 import OptionsModal from "./OptionsModal";
 
 interface SelectorProps<T> {
   placeholder?: string;
-  label?: LabelProps;
+  label?: BaseLabelProps;
   options: T[];
   value: T | undefined;
   setValue: (value: T) => void;
@@ -39,7 +39,7 @@ const Selector = <T extends BaseOption>({
       />
 
       <View className={cn}>
-        {label && <Label cn="mb-[6px]" {...label} />}
+        {label && <BaseLabel cn="mb-[6px]" {...label} />}
         <BaseSelector
           placeholder={placeholder}
           value={value}

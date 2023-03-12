@@ -3,8 +3,8 @@ import { View, KeyboardType } from "react-native";
 import { BaseOption } from "../../interfaces";
 import { BaseFiled, BaseSelector } from "../bases";
 import OptionsModal from "./OptionsModal";
-import { LabelProps } from "../../interfaces";
-import Label from "./Label";
+import { BaseLabelProps } from "../../interfaces";
+import { BaseLabel } from "../bases";
 import clsx from "clsx";
 
 interface FiledWithSelectorProps<T> {
@@ -13,7 +13,7 @@ interface FiledWithSelectorProps<T> {
   setOptionValue: (value: T) => void;
   filedValue: string;
   onChangeFiledValue: (value: string) => void;
-  label?: LabelProps;
+  label?: BaseLabelProps;
   translate?: boolean;
   cn?: string;
   placeholder?: string;
@@ -36,7 +36,7 @@ const FiledWithSelector = <T extends BaseOption>({
 
   return (
     <View className={clsx("space-y-[6px]", cn)}>
-      {label && <Label {...label} />}
+      {label && <BaseLabel {...label} />}
       <View className="flex-row">
         <OptionsModal
           visible={optionsModalVisible}
