@@ -1,5 +1,5 @@
 import { Pressable, View } from "react-native";
-import { Text } from "../atoms";
+import Text from "../atoms/Text";
 import { CheckCircleIcon } from "react-native-heroicons/solid";
 import clsx from "clsx";
 import { useSettingsContext } from "../../hooks";
