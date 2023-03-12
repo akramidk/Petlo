@@ -39,9 +39,16 @@ const useSettings = () => {
     setStoredLanguageFromAsyncStorage();
   }, []);
 
-  const deviceLanguage = defaultGenderedLanguage[getLocales()[0].languageCode];
+  const removeGender = (language: language) => {
+    return language.split("_")[0] as "ar" | "en";
+  };
+
+  const deviceLanguage = defaultGenderedLanguage[getLocales()[0].languageCode]; // TODO check if en or ar first
   const finalLanguage = storedLanguage ?? "en";
   const [language, setLanguage] = useState<language>(finalLanguage);
+  const [languageWithoutGender, setLanguageWithoutGender] = useState<
+    "en" | "ar"
+  >(removeGender(finalLanguage));
   const [direction, setDirection] = useState<direction>(
     languagesDirection[finalLanguage]
   );
@@ -55,10 +62,17 @@ const useSettings = () => {
     }
 
     setLanguage(language);
+    setLanguageWithoutGender(removeGender(language));
     setDirection(direction);
   };
 
-  return { language, changeLanguage, storedLanguage, direction };
+  return {
+    language,
+    changeLanguage,
+    storedLanguage,
+    direction,
+    languageWithoutGender,
+  };
 };
 
 export default useSettings;

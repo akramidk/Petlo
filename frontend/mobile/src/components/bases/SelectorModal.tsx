@@ -81,7 +81,7 @@ const SelectorModal = <T extends BaseOption>({
                 "text-[#E64848] text-[14px]",
                 language === "en" && "tracking-[1px]"
               )}
-              font={["font-e700", "font-a600"]}
+              font="bold"
             >
               {t("OPTIONS_MODAL_COMP_CANCEL")}
             </Text>

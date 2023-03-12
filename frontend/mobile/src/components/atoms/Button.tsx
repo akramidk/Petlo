@@ -14,7 +14,7 @@ const Button = ({ value, status = "active", onClick }: ButtonProps) => {
           "text-[15px]",
           status === "active" ? "text-[#fff]" : "text-[#888888]"
         )}
-        font={["font-e800", "font-a700"]}
+        font="extraBold"
       >
         {value}
       </Text>

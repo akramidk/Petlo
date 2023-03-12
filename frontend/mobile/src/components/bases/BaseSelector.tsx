@@ -34,7 +34,7 @@ const BaseSelector = <T extends BaseOption>({
           direction === "ltr" ? "text-left" : "text-right",
           value ? "text-[#444]" : "text-[#aaa]"
         )}
-        font={["font-e800", "font-a700"]}
+        font="extraBold"
       >
         {(translate && value ? t(value) : value) ?? placeholder}
       </Text>
@@ -47,7 +47,7 @@ const BaseSelector = <T extends BaseOption>({
             "text-[#0E333C] text-[14px]",
             language === "en" && "tracking-[1px]"
           )}
-          font={["font-e700", "font-a600"]}
+          font="bold"
         >
           {value ? t("SELECTOR_COMP_CHANGE") : t("SELECTOR_COMP_SELECT")}
         </Text>

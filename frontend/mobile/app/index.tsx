@@ -8,10 +8,7 @@ const App = () => {
 
   return (
     <View>
-      <Text
-        cn={clsx("text-[36px] text-[#444]")}
-        font={["font-e800", "font-a700"]}
-      >
+      <Text cn={clsx("text-[36px] text-[#444]")} font="extraBold">
         home page baby
       </Text>
     </View>

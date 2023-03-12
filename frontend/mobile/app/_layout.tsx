@@ -72,7 +72,13 @@ const Layout = () => {
   });
 
   const { customer } = useCustomer();
-  const { language, changeLanguage, storedLanguage, direction } = useSettings();
+  const {
+    language,
+    changeLanguage,
+    storedLanguage,
+    direction,
+    languageWithoutGender,
+  } = useSettings();
   const { t } = useTranslations({
     language: language,
   });
@@ -104,7 +110,13 @@ const Layout = () => {
 
   return (
     <SettingsContext.Provider
-      value={{ language, changeLanguage, direction, storedLanguage }}
+      value={{
+        language,
+        changeLanguage,
+        direction,
+        storedLanguage,
+        languageWithoutGender,
+      }}
     >
       <TranslationsContext.Provider value={{ t }}>
         <RoutesRestrictor customer={customer}>

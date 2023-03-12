@@ -23,18 +23,12 @@ const Form = ({
       <View className="space-y-[12px] mb-[28px]">
         {backButton && <BackButton onClick={backButton} />}
         {title && (
-          <Text
-            cn="text-[32px] text-[#0E333C]"
-            font={["font-e800", "font-a700"]}
-          >
+          <Text cn="text-[32px] text-[#0E333C]" font="extraBold">
             {title}
           </Text>
         )}
         {helperText && (
-          <Text
-            cn="text-[16px] text-[#888] leading-[28px]"
-            font={["font-e500", "font-a400"]}
-          >
+          <Text cn="text-[16px] text-[#888] leading-[28px]" font="medium">
             {helperText}
           </Text>
         )}
