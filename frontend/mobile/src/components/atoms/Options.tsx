@@ -34,7 +34,7 @@ const Options = <T extends BaseOptionProps>({
             <BaseOption
               cn={clsx(padding, optionCN)}
               selected={isSelected}
-              onPress={() => onSelectOption(option)}
+              onSelect={() => onSelectOption(option)}
               value={translate ? t(option.value) : option.value}
             />
           </View>
