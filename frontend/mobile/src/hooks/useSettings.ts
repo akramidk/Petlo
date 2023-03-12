@@ -17,6 +17,8 @@ enum defaultGenderedLanguage {
   "ar" = "ar_masculine",
 }
 
+const DEFAULT_APP_LANGUAGE = "ar_masculine";
+
 const useSettings = () => {
   //we are handling ltr and rtl on our own
   I18nManager.allowRTL(false);
@@ -25,34 +27,22 @@ const useSettings = () => {
   const [storedLanguage, setStoredLanguage] = useState<
     undefined | null | language
   >();
-  const setStoredLanguageFromAsyncStorage = async () => {
-    await AsyncStorage.removeItem(StorageKeys.LANGUAGE);
 
-    const value = (await AsyncStorage.getItem(
-      StorageKeys.LANGUAGE
-    )) as language;
-
-    setStoredLanguage(value);
-  };
-
-  useEffect(() => {
-    setStoredLanguageFromAsyncStorage();
-  }, []);
-
+  //removeGender from gendered languages
   const removeGender = (language: language) => {
     return language.split("_")[0] as "ar" | "en";
   };
 
-  const deviceLanguage = defaultGenderedLanguage[getLocales()[0].languageCode]; // TODO check if en or ar first
-  const finalLanguage = storedLanguage ?? "en";
-  const [language, setLanguage] = useState<language>(finalLanguage);
+  //set thing temporarily
+  const [language, setLanguage] = useState<language>(DEFAULT_APP_LANGUAGE);
   const [languageWithoutGender, setLanguageWithoutGender] = useState<
     "en" | "ar"
-  >(removeGender(finalLanguage));
+  >(removeGender(DEFAULT_APP_LANGUAGE));
   const [direction, setDirection] = useState<direction>(
-    languagesDirection[finalLanguage]
+    languagesDirection[DEFAULT_APP_LANGUAGE]
   );
 
+  //changeLanguage temporarily(force = false) or permanently(force = true, this's change the storedLanguage)
   const changeLanguage = async (language: language, force: boolean) => {
     const direction = languagesDirection[language];
 
@@ -65,6 +55,34 @@ const useSettings = () => {
     setLanguageWithoutGender(removeGender(language));
     setDirection(direction);
   };
+
+  useEffect(() => {
+    //if there's a storedLanguage use it permanently
+    (async () => {
+      await AsyncStorage.removeItem(StorageKeys.LANGUAGE);
+
+      const value = (await AsyncStorage.getItem(
+        StorageKeys.LANGUAGE
+      )) as language;
+
+      setStoredLanguage(value);
+    })();
+
+    if (storedLanguage && storedLanguage !== language) {
+      changeLanguage(storedLanguage, false);
+      return;
+    }
+
+    //if no storedLanguage & the deviceLanguage is one of our languages
+    //use it temporarily until the customer select a language as permanently
+    const deviceLanguage = getLocales()[0].languageCode;
+    const deviceGenderedLanguage = defaultGenderedLanguage[deviceLanguage];
+
+    if (deviceGenderedLanguage && deviceGenderedLanguage !== language) {
+      changeLanguage(deviceGenderedLanguage, false);
+      return;
+    }
+  }, []);
 
   return {
     language,
