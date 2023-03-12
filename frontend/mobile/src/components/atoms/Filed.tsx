@@ -4,6 +4,10 @@ import clsx from "clsx";
 import BaseLabel from "../bases/BaseLabel";
 import BaseFiled from "../bases/BaseFiled";
 
+interface FiledProps {
+  cn?: string;
+}
+
 const Filed = ({
   value,
   onChange,
@@ -14,8 +18,7 @@ const Filed = ({
   name,
   helperText,
   require,
-}: BaseFiledProps &
-  Pick<BaseLabelProps, "name" | "helperText" | "require">) => {
+}: FiledProps & BaseFiledProps & Partial<BaseLabelProps>) => {
   return (
     <View className={clsx(cn)}>
       {name && (
