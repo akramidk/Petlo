@@ -13,7 +13,6 @@ interface FiledWithSelectorProps<T> {
   setOptionValue: (value: T) => void;
   filedValue: string;
   onChangeFiledValue: (value: string) => void;
-  label?: BaseLabelProps;
   translate?: boolean;
   cn?: string;
   placeholder?: string;
@@ -27,16 +26,21 @@ const FiledWithSelector = <T extends BaseOption>({
   filedValue,
   onChangeFiledValue,
   translate = false,
-  label,
   cn,
   placeholder,
   keyboardType,
-}: FiledWithSelectorProps<T>) => {
+  name,
+  helperText,
+  require,
+}: FiledWithSelectorProps<T> &
+  Pick<BaseLabelProps, "name" | "helperText" | "require">) => {
   const [optionsModalVisible, setOptionsModalVisible] = useState(false);
 
   return (
     <View className={clsx("space-y-[6px]", cn)}>
-      {label && <BaseLabel {...label} />}
+      {name && (
+        <BaseLabel name={name} helperText={helperText} require={require} />
+      )}
       <View className="flex-row">
         <OptionsModal
           visible={optionsModalVisible}

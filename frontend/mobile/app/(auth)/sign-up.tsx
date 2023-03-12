@@ -70,7 +70,8 @@ const SignUp = () => {
     >
       <Filed
         cn="mb-[16px]"
-        label={{ name: t("SIGN_UP_NAME_FILED_LABEL"), require: true }}
+        name={t("SIGN_UP_NAME_FILED_LABEL")}
+        require={true}
         placeholder={t("SIGN_UP_NAME_FILED_PLACEHOLDER")}
         onChange={setName}
         value={name}
@@ -78,10 +79,8 @@ const SignUp = () => {
 
       <Selector<CountryOption>
         cn="mb-[16px]"
-        label={{
-          name: t("SIGN_UP_COUNTRY_FILED_LABEL"),
-          require: true,
-        }}
+        name={t("SIGN_UP_COUNTRY_FILED_LABEL")}
+        require={true}
         placeholder={t("SIGN_UP_COUNTRY_FILED_PLACEHOLDER")}
         options={COUNTRIES_OPTIONS} // TODO should be from the backend
         value={country}
@@ -91,10 +90,8 @@ const SignUp = () => {
 
       <FiledWithSelector
         cn="mb-[16px]"
-        label={{
-          name: t("SIGN_UP_PHONE_NUMBER_FILED_LABEL"),
-          require: true,
-        }}
+        name={t("SIGN_UP_PHONE_NUMBER_FILED_LABEL")}
+        require={true}
         placeholder={t("SIGN_UP_PHONE_NUMBER_FILED_PLACEHOLDER")}
         options={COUNTIES_PHONE_CODE_OPTIONS}
         optionValue={countryCode}
@@ -105,11 +102,9 @@ const SignUp = () => {
       />
 
       <Filed
-        label={{
-          name: t("SIGN_UP_PASSWORD_FILED_LABEL"),
-          helperText: t("SIGN_UP_PASSWORD_FILED_HELPER_TEXT"),
-          require: true,
-        }}
+        name={t("SIGN_UP_PASSWORD_FILED_LABEL")}
+        helperText={t("SIGN_UP_PASSWORD_FILED_HELPER_TEXT")}
+        require={true}
         placeholder={t("SIGN_UP_PASSWORD_FILED_PLACEHOLDER")}
         onChange={setPassword}
         value={password}

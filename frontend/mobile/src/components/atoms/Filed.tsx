@@ -9,7 +9,6 @@ interface FiledProps {
   value?: string;
   onChange: (value: string) => void;
   placeholder?: string;
-  label?: BaseLabelProps;
   cn?: string;
   secureTextEntry?: boolean;
   keyboardType?: KeyboardType;
@@ -19,14 +18,23 @@ const Filed = ({
   value,
   onChange,
   placeholder,
-  label,
   cn,
   secureTextEntry,
   keyboardType,
-}: FiledProps) => {
+  name,
+  helperText,
+  require,
+}: FiledProps & Pick<BaseLabelProps, "name" | "helperText" | "require">) => {
   return (
     <View className={clsx(cn)}>
-      {label && <BaseLabel cn="mb-[6px]" {...label} />}
+      {name && (
+        <BaseLabel
+          cn="mb-[6px]"
+          name={name}
+          helperText={helperText}
+          require={require}
+        />
+      )}
       <BaseFiled
         value={value}
         onChange={onChange}

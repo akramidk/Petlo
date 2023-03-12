@@ -8,7 +8,6 @@ import OptionsModal from "./OptionsModal";
 
 interface SelectorProps<T> {
   placeholder?: string;
-  label?: BaseLabelProps;
   options: T[];
   value: T | undefined;
   setValue: (value: T) => void;
@@ -18,13 +17,16 @@ interface SelectorProps<T> {
 
 const Selector = <T extends BaseOption>({
   placeholder,
-  label,
   options,
   value,
   setValue,
   translate = false,
   cn,
-}: SelectorProps<T>) => {
+  name,
+  helperText,
+  require,
+}: SelectorProps<T> &
+  Pick<BaseLabelProps, "name" | "helperText" | "require">) => {
   const [optionsModalVisible, setOptionsModalVisible] = useState(false);
 
   return (
@@ -39,7 +41,14 @@ const Selector = <T extends BaseOption>({
       />
 
       <View className={cn}>
-        {label && <BaseLabel cn="mb-[6px]" {...label} />}
+        {name && (
+          <BaseLabel
+            cn="mb-[6px]"
+            name={name}
+            helperText={helperText}
+            require={require}
+          />
+        )}
         <BaseSelector
           placeholder={placeholder}
           value={value}
