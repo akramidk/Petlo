@@ -9,7 +9,7 @@ import {
   ScrollView,
 } from "react-native";
 import { useSettingsContext, useTranslationsContext } from "../../hooks";
-import { BaseOption } from "../../interfaces";
+import { BaseOption, OptionsSelectorProps } from "../../interfaces";
 import Text from "./Text";
 import Button from "./Button";
 import OptionsSelector from "./OptionsSelector";
@@ -17,10 +17,8 @@ import OptionsSelector from "./OptionsSelector";
 interface OptionsModalProps<T> {
   visible?: boolean;
   setVisibility?: (visible: boolean) => void;
-  options: T[];
   value: T | undefined;
   setValue: (value: T) => void;
-  translate?: boolean;
 }
 
 const OptionsModal = <T extends BaseOption>({
@@ -30,7 +28,8 @@ const OptionsModal = <T extends BaseOption>({
   value,
   setValue,
   translate = false,
-}: OptionsModalProps<T>) => {
+}: OptionsModalProps<T> &
+  Pick<OptionsSelectorProps<T>, "options" | "translate">) => {
   const { t } = useTranslationsContext();
   const { language, direction } = useSettingsContext();
 

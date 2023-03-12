@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { View, KeyboardType } from "react-native";
-import { BaseOption } from "../../interfaces";
+import { BaseOption, OptionsSelectorProps } from "../../interfaces";
 import { BaseFiled, BaseSelector } from "../bases";
 import OptionsModal from "./OptionsModal";
 import { BaseLabelProps } from "../../interfaces";
@@ -8,12 +8,10 @@ import { BaseLabel } from "../bases";
 import clsx from "clsx";
 
 interface FiledWithSelectorProps<T> {
-  options: T[];
   optionValue: T | undefined;
   setOptionValue: (value: T) => void;
   filedValue: string;
   onChangeFiledValue: (value: string) => void;
-  translate?: boolean;
   cn?: string;
   placeholder?: string;
   keyboardType?: KeyboardType;
@@ -33,7 +31,8 @@ const FiledWithSelector = <T extends BaseOption>({
   helperText,
   require,
 }: FiledWithSelectorProps<T> &
-  Pick<BaseLabelProps, "name" | "helperText" | "require">) => {
+  Pick<BaseLabelProps, "name" | "helperText" | "require"> &
+  Pick<OptionsSelectorProps<T>, "options" | "translate">) => {
   const [optionsModalVisible, setOptionsModalVisible] = useState(false);
 
   return (
