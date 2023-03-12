@@ -1,13 +1,6 @@
 import clsx from "clsx";
 import { useState, useMemo } from "react";
-import {
-  View,
-  Modal,
-  SafeAreaView,
-  TextInput,
-  Pressable,
-  ScrollView,
-} from "react-native";
+import { View, Modal, SafeAreaView, TextInput, ScrollView } from "react-native";
 import { useSettingsContext, useTranslationsContext } from "../../hooks";
 import { BaseOption, OptionsProps } from "../../interfaces";
 import Text from "../atoms/Text";
@@ -78,11 +71,14 @@ const SelectorModal = <T extends BaseOption>({
           />
           <BaseButton onClick={onCancel} cn="h-full justify-center">
             <Text
-              className={clsx(
-                "text-[#E64848] text-[14px]",
-                language === "en" && "tracking-[1px]"
-              )}
+              cn={"text-[#E64848] text-[14px]"}
               font="bold"
+              specificCN={{
+                languages: {
+                  en: "tracking-[1px]",
+                  ar: "",
+                },
+              }}
             >
               {t("OPTIONS_MODAL_COMP_CANCEL")}
             </Text>

@@ -1,6 +1,6 @@
 import Text from "../atoms/Text";
 import { BaseOption, BaseSelectorProps } from "../../interfaces";
-import { useSettingsContext, useTranslationsContext } from "../../hooks";
+import { useTranslationsContext } from "../../hooks";
 import clsx from "clsx";
 import { ChevronDownIcon } from "react-native-heroicons/outline";
 import BaseButton from "./BaseButton";
@@ -15,7 +15,6 @@ const BaseSelector = <T extends BaseOption>({
   preventRTL = false,
 }: BaseSelectorProps<T>) => {
   const { t } = useTranslationsContext();
-  const { language, direction } = useSettingsContext();
 
   return (
     <BaseButton
@@ -30,12 +29,8 @@ const BaseSelector = <T extends BaseOption>({
       <Text
         numberOfLines={1}
         ellipsizeMode="tail"
-        className={clsx(
-          language === "en" ? "font-e500" : "font-a400",
-          direction === "ltr" ? "text-left" : "text-right",
-          value ? "text-[#444]" : "text-[#aaa]"
-        )}
-        font="extraBold"
+        cn={value ? "text-[#444]" : "text-[#aaa]"}
+        font="medium"
       >
         {(translate && value ? t(value) : value) ?? placeholder}
       </Text>
@@ -44,11 +39,14 @@ const BaseSelector = <T extends BaseOption>({
         <ChevronDownIcon color="#0E333C" size={20} strokeWidth={2} />
       ) : (
         <Text
-          className={clsx(
-            "text-[#0E333C] text-[14px]",
-            language === "en" && "tracking-[1px]"
-          )}
+          cn={"text-[#0E333C] text-[14px]"}
           font="bold"
+          specificCN={{
+            languages: {
+              en: "tracking-[1px]",
+              ar: "",
+            },
+          }}
         >
           {value ? t("SELECTOR_COMP_CHANGE") : t("SELECTOR_COMP_SELECT")}
         </Text>

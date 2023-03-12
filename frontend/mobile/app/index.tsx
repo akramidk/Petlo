@@ -1,5 +1,4 @@
 import { View } from "react-native";
-import clsx from "clsx";
 import { useTranslationsContext } from "../src/hooks";
 import { Text } from "../src/components/atoms";
 
@@ -8,7 +7,7 @@ const App = () => {
 
   return (
     <View>
-      <Text cn={clsx("text-[36px] text-[#444]")} font="extraBold">
+      <Text cn={"text-[36px] text-[#444]"} font="extraBold">
         home page baby
       </Text>
     </View>

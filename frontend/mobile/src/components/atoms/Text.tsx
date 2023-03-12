@@ -13,6 +13,10 @@ interface TextProps extends ReactTextProps {
     | "bold"
     | "extraBold";
   cn?: string;
+  specificCN?: {
+    languages?: Record<"en" | "ar", string>;
+    directions?: Record<"ltr" | "rtl", string>;
+  };
 }
 
 const Text = (props: TextProps) => {
@@ -39,11 +43,18 @@ const Text = (props: TextProps) => {
     },
   };
 
+  const directions = {
+    ltr: "text-left",
+    rtl: "text-right",
+  };
+
   return (
     <ReactText
       className={clsx(
-        direction === "ltr" ? "text-left" : "text-right",
+        directions[direction],
         fonts[languageWithoutGender][props.font],
+        props?.specificCN?.directions?.[direction],
+        props?.specificCN?.languages?.[languageWithoutGender],
         props?.cn
       )}
       {...props}
