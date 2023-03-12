@@ -32,11 +32,11 @@ const BaseSelector = <T extends BaseOption>({
         className={clsx(
           language === "en" ? "font-e500" : "font-a400",
           direction === "ltr" ? "text-left" : "text-right",
-          value?.value ? "text-[#444]" : "text-[#aaa]"
+          value ? "text-[#444]" : "text-[#aaa]"
         )}
         font={["font-e800", "font-a700"]}
       >
-        {(translate && value ? t(value?.value) : value?.value) ?? placeholder}
+        {(translate && value ? t(value) : value) ?? placeholder}
       </Text>
 
       {showDropdownIcon ? (

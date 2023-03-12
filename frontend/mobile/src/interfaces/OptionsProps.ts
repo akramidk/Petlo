@@ -3,7 +3,7 @@ export interface OptionsProps<T> {
   cn?: string;
   optionCN?: string;
   translate?: boolean;
-  signalSelect?: {
+  signalSelect: {
     selectedOption: T;
     setSelectedOption: (option: T) => void;
   };

@@ -45,7 +45,7 @@ const Selector = <T extends BaseOption>({
         )}
         <BaseSelector
           placeholder={placeholder}
-          value={signalSelect.selectedOption}
+          value={signalSelect.selectedOption?.value}
           setOptionsModalVisible={setOptionsModalVisible}
           translate={translate}
         />
