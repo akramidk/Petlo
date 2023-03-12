@@ -94,10 +94,12 @@ const SignUp = () => {
         require={true}
         placeholder={t("SIGN_UP_PHONE_NUMBER_FILED_PLACEHOLDER")}
         options={COUNTIES_PHONE_CODE_OPTIONS}
-        optionValue={countryCode}
-        setOptionValue={setCountryCode}
-        filedValue={phoneNumber}
-        onChangeFiledValue={setPhoneNumber}
+        signalSelect={{
+          selectedOption: countryCode,
+          setSelectedOption: setCountryCode,
+        }}
+        value={phoneNumber}
+        onChange={setPhoneNumber}
         keyboardType="number-pad"
       />
 

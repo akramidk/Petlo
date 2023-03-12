@@ -1,15 +1,7 @@
-import { TextInput, KeyboardType } from "react-native";
+import { TextInput } from "react-native";
 import clsx from "clsx";
 import { useSettingsContext } from "../../hooks";
-
-interface BaseFiledProps {
-  value?: string;
-  onChange: (value: string) => void;
-  placeholder?: string;
-  cn?: string;
-  keyboardType?: KeyboardType;
-  secureTextEntry?: boolean;
-}
+import { BaseFiledProps } from "../../interfaces";
 
 const BaseFiled = ({
   value,
