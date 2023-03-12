@@ -83,8 +83,10 @@ const SignUp = () => {
         require={true}
         placeholder={t("SIGN_UP_COUNTRY_FILED_PLACEHOLDER")}
         options={COUNTRIES_OPTIONS} // TODO should be from the backend
-        value={country}
-        setValue={setCountry}
+        signalSelect={{
+          selectedOption: country,
+          setSelectedOption: setCountry,
+        }}
         translate
       />
 

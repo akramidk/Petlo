@@ -12,6 +12,7 @@ import { BaseLabelProps } from "./BaseLabelProps";
 import { OptionsProps } from "./OptionsProps";
 import { CountryOption } from "./CountryOption";
 import { BaseFiledProps } from "./BaseFiledProps";
+import { BaseSelectorProps } from "./BaseSelectorProps";
 
 export {
   NewVersionAvailableRequest,
@@ -24,4 +25,5 @@ export {
   OptionsProps,
   CountryOption,
   BaseFiledProps,
+  BaseSelectorProps,
 };

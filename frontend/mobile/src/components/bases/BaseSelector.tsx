@@ -1,19 +1,9 @@
 import { Pressable } from "react-native";
 import Text from "../atoms/Text";
-import { BaseOption } from "../../interfaces";
+import { BaseOption, BaseSelectorProps } from "../../interfaces";
 import { useSettingsContext, useTranslationsContext } from "../../hooks";
 import clsx from "clsx";
 import { ChevronDownIcon } from "react-native-heroicons/outline";
-
-interface BaseSelectorProps<T> {
-  placeholder?: string;
-  value: T | undefined;
-  translate?: boolean;
-  cn?: string;
-  setOptionsModalVisible: (visible: boolean) => void;
-  showDropdownIcon?: boolean;
-  preventRTL?: boolean;
-}
 
 const BaseSelector = <T extends BaseOption>({
   placeholder,

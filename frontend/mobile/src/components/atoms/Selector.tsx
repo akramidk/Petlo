@@ -1,30 +1,26 @@
 import { useState } from "react";
 import { View } from "react-native";
-import { BaseOption } from "../../interfaces";
+import { BaseOption, BaseSelectorProps, OptionsProps } from "../../interfaces";
 import { BaseLabelProps } from "../../interfaces";
 import { BaseSelector, SelectorModal, BaseLabel } from "../bases";
 
 interface SelectorProps<T> {
-  placeholder?: string;
-  options: T[];
-  value: T | undefined;
-  setValue: (value: T) => void;
-  translate?: boolean;
   cn?: string;
 }
 
 const Selector = <T extends BaseOption>({
   placeholder,
   options,
-  value,
-  setValue,
+  signalSelect,
   translate = false,
   cn,
   name,
   helperText,
   require,
 }: SelectorProps<T> &
-  Pick<BaseLabelProps, "name" | "helperText" | "require">) => {
+  Pick<BaseLabelProps, "name" | "helperText" | "require"> &
+  Pick<OptionsProps<T>, "options" | "signalSelect" | "translate"> &
+  Pick<BaseSelectorProps<T>, "placeholder">) => {
   const [optionsModalVisible, setOptionsModalVisible] = useState(false);
 
   return (
@@ -33,8 +29,8 @@ const Selector = <T extends BaseOption>({
         visible={optionsModalVisible}
         setVisibility={setOptionsModalVisible}
         options={options}
-        value={value}
-        setValue={setValue}
+        value={signalSelect.selectedOption}
+        setValue={signalSelect.setSelectedOption}
         translate={translate}
       />
 
@@ -49,7 +45,7 @@ const Selector = <T extends BaseOption>({
         )}
         <BaseSelector
           placeholder={placeholder}
-          value={value}
+          value={signalSelect.selectedOption}
           setOptionsModalVisible={setOptionsModalVisible}
           translate={translate}
         />
