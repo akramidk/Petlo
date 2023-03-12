@@ -20,8 +20,9 @@ const BaseSelector = <T extends BaseOption>({
   return (
     <Pressable
       className={clsx(
-        "bg-[#F6F6F6] h-[60px] rounded-[4px] justify-between items-center px-[20px] space-x-[12px]",
+        "bg-[#F6F6F6] h-[60px] rounded-[4px] justify-between items-center px-[20px]",
         direction === "ltr" || preventRTL ? "flex-row" : "flex-row-reverse",
+        showDropdownIcon && "space-x-[12px]",
         cn
       )}
       onPress={() => setOptionsModalVisible(true)}
