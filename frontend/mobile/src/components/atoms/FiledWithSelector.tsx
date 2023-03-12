@@ -1,9 +1,12 @@
 import { useState } from "react";
 import { View } from "react-native";
 import { BaseFiledProps, BaseOption, OptionsProps } from "../../interfaces";
-import { BaseFiled, BaseSelector, SelectorModal, BaseLabel } from "../bases";
 import { BaseLabelProps } from "../../interfaces";
 import clsx from "clsx";
+import BaseLabel from "../bases/BaseLabel";
+import BaseFiled from "../bases/BaseFiled";
+import BaseSelector from "../bases/BaseSelector";
+import SelectorModal from "../bases/SelectorModal";
 
 interface FiledWithSelectorProps {
   cn?: string;
@@ -37,13 +40,12 @@ const FiledWithSelector = <T extends BaseOption>({
           visible={optionsModalVisible}
           setVisibility={setOptionsModalVisible}
           options={options}
-          value={signalSelect.selectedOption}
-          setValue={signalSelect.setSelectedOption}
+          signalSelect={signalSelect}
           translate={translate}
         />
         <BaseSelector
           cn="rounded-r-[0px] mr-[1px]"
-          value={signalSelect.selectedOption}
+          value={signalSelect.selectedOption?.value}
           setOptionsModalVisible={setOptionsModalVisible}
           translate={translate}
           showDropdownIcon

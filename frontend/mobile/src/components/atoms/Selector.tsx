@@ -2,8 +2,9 @@ import { useState } from "react";
 import { View } from "react-native";
 import { BaseOption, BaseSelectorProps, OptionsProps } from "../../interfaces";
 import { BaseLabelProps } from "../../interfaces";
-import { BaseSelector, SelectorModal, BaseLabel } from "../bases";
-
+import BaseLabel from "../bases/BaseLabel";
+import BaseSelector from "../bases/BaseSelector";
+import SelectorModal from "../bases/SelectorModal";
 interface SelectorProps<T> {
   cn?: string;
 }

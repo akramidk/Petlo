@@ -1,8 +1,8 @@
 import { View } from "react-native";
-import { BaseLabel } from "../bases";
 import { BaseFiledProps, BaseLabelProps } from "../../interfaces";
 import clsx from "clsx";
-import { BaseFiled } from "../bases";
+import BaseLabel from "../bases/BaseLabel";
+import BaseFiled from "../bases/BaseFiled";
 
 const Filed = ({
   value,
