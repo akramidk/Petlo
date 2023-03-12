@@ -69,9 +69,9 @@ const SelectorModal = <T extends BaseOption>({
             )}
             onChangeText={setSearchValue}
           />
-          <BaseButton onClick={onCancel} cn="h-full justify-center">
+          <BaseButton onClick={onCancel} cn="h-full justify-center-center">
             <Text
-              cn={"text-[#E64848] text-[14px]"}
+              cn={"text-[#E64848] text-[14px] self-center"}
               font="bold"
               specificCN={{
                 languages: {
