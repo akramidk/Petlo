@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { View, KeyboardType } from "react-native";
+import { View } from "react-native";
 import {
   BaseFiledProps,
   BaseOption,

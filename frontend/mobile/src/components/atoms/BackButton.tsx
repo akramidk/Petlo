@@ -1,10 +1,10 @@
-import { View, Pressable, Text } from "react-native";
+import { Pressable } from "react-native";
 import clsx from "clsx";
 import {
   ArrowSmallLeftIcon,
   ArrowSmallRightIcon,
 } from "react-native-heroicons/outline";
-import { useSettings, useSettingsContext } from "../../hooks";
+import { useSettingsContext } from "../../hooks";
 
 interface BackButtonProps {
   onClick: () => void;
