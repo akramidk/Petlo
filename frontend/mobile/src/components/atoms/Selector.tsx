@@ -29,8 +29,7 @@ const Selector = <T extends BaseOption>({
         visible={optionsModalVisible}
         setVisibility={setOptionsModalVisible}
         options={options}
-        value={signalSelect.selectedOption}
-        setValue={signalSelect.setSelectedOption}
+        signalSelect={signalSelect}
         translate={translate}
       />
 

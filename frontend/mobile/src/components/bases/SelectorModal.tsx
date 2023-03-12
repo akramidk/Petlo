@@ -17,32 +17,37 @@ import Options from "../atoms/Options";
 interface SelectorModalProps<T> {
   visible?: boolean;
   setVisibility?: (visible: boolean) => void;
-  value: T | undefined;
-  setValue: (value: T) => void;
 }
 
 const SelectorModal = <T extends BaseOption>({
   visible,
   setVisibility,
   options,
-  value,
-  setValue,
+  signalSelect,
   translate = false,
-}: SelectorModalProps<T> & Pick<OptionsProps<T>, "options" | "translate">) => {
+}: SelectorModalProps<T> &
+  Pick<OptionsProps<T>, "options" | "translate" | "signalSelect">) => {
   const { t } = useTranslationsContext();
   const { language, direction } = useSettingsContext();
+  const pastSelectedOption = useMemo(() => {
+    return signalSelect.selectedOption;
+  }, [signalSelect.selectedOption]);
 
   const [searchValue, setSearchValue] = useState<string>("");
-  const [selectedOption, setSelectedOption] = useState<T>(value);
+  const [selectedOption, setSelectedOption] = useState<T>(pastSelectedOption);
 
   const onCancel = () => {
-    if (selectedOption && value !== selectedOption) setSelectedOption(value);
+    if (pastSelectedOption?.id !== selectedOption?.id) {
+      setSelectedOption(pastSelectedOption);
+    }
     setSearchValue("");
     setVisibility(false);
   };
 
   const onSelect = () => {
-    if (selectedOption && value !== selectedOption) setValue(selectedOption);
+    if (pastSelectedOption?.id !== selectedOption?.id) {
+      signalSelect.setSelectedOption(selectedOption);
+    }
     setSearchValue("");
     setVisibility(false);
   };
@@ -99,7 +104,7 @@ const SelectorModal = <T extends BaseOption>({
         <View className="fixed border-t-[1px] border-[#f6f6f6] py-[16px] px-[28px]">
           <Button
             status={
-              selectedOption && selectedOption.value !== value?.value
+              selectedOption?.id !== pastSelectedOption?.id
                 ? "active"
                 : "inactive"
             }
