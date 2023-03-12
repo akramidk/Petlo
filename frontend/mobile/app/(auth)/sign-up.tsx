@@ -1,4 +1,4 @@
-import { useRouter } from "expo-router";
+import { useRouter, useSearchParams } from "expo-router";
 import { useEffect, useMemo, useState } from "react";
 import { Filed, Selector, FiledWithSelector } from "../../src/components/atoms";
 import { Form } from "../../src/components/organisms";
@@ -38,6 +38,10 @@ const SignUp = () => {
     return "inactive";
   }, [name, country, countryCode, phoneNumber, password]);
 
+  useEffect(() => {
+    console.log("phone", countryCode.value + phoneNumber);
+  }, [countryCode, phoneNumber]);
+
   const { response, trigger } = useAPIMutation<
     unknown,
     { customer: { session_token: string } }
@@ -46,9 +50,10 @@ const SignUp = () => {
     method: "POST",
     onSucceeded: (data) =>
       router.replace(
-        `/verify-your-account?phoneNumber=${
-          countryCode.value + phoneNumber
-        }&sessionToken=${data.customer.session_token}`
+        `/verify-your-account?${new URLSearchParams({
+          phoneNumber: countryCode.value + phoneNumber,
+          sessionToken: data.customer.session_token,
+        }).toString()}`
       ),
   });
 
