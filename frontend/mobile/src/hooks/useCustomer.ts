@@ -1,17 +1,20 @@
 import { useEffect, useState } from "react";
 import { Endpoints, StorageKeys } from "../enums";
 import * as SecureStore from "expo-secure-store";
-import useAPIFetching from "./useAPIFetching";
+import useAPIFetching from "./useAPIFetching/useAPIFetching";
 import { CheckASessionResponse } from "../interfaces";
 
 const useCustomer = () => {
-  const { response, trigger } = useAPIFetching<
+  const { response, setWait } = useAPIFetching<
     undefined,
     CheckASessionResponse
   >({
-    endpoint: null,
-    options: {
+    endpoint: Endpoints.CheckASession,
+    SWROptions: {
       shouldRetryOnError: false,
+    },
+    options: {
+      wait: true,
     },
   });
 
@@ -30,7 +33,7 @@ const useCustomer = () => {
     if (sessionToken === null) {
       setCustomer(null);
     } else {
-      trigger(Endpoints.CheckASession);
+      setWait(false);
     }
   }, [sessionToken]);
 

@@ -85,8 +85,7 @@ const Layout = () => {
 
   if (
     !fontsLoaded ||
-    (!newVersionAvailableResponse &&
-      newVersionAvailableResponse.status === "loading") ||
+    (!newVersionAvailableResponse && newVersionAvailableResponse.isFetching) ||
     newVersionAvailableResponse?.body?.value ||
     storedLanguage === undefined ||
     customer === undefined
