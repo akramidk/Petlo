@@ -42,7 +42,7 @@ const SignUp = () => {
     unknown,
     { customer: { session_token: string } }
   >({
-    endpoint: Endpoints.CreateNewCustomer,
+    endpoint: Endpoints.CREATE_NEW_CUSTOMER,
     method: "POST",
     onSucceeded: (data) =>
       router.replace(

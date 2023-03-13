@@ -1,7 +1,6 @@
 import { useMemo, useState } from "react";
 import useSWR from "swr";
 import { useAPIFetchingProps, useAPIFetchingResponse } from "./interfaces";
-import Constants from "expo-constants";
 import axios from "axios";
 import useSettingsContext from "../useSettingsContext";
 import { requestURIBuilder } from "../../utils";

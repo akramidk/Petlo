@@ -11,7 +11,7 @@ const VerifyYourAccount = () => {
   const { phoneNumber, sessionToken } = useSearchParams();
   const [verificationCode, setVerificationCode] = useState<string>();
   const { trigger } = useAPIMutation<unknown, unknown>({
-    endpoint: Endpoints.VerifyCustomerAccount,
+    endpoint: Endpoints.VERIFY_CUSTOMER_ACCOUNT,
     method: "POST",
     onSucceeded: () => router.replace("/"),
     sessionToken: sessionToken,

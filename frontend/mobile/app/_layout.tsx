@@ -46,7 +46,7 @@ const Layout = () => {
     NewVersionAvailableRequest,
     NewVersionAvailableResponse
   >({
-    endpoint: Endpoints.NewVersionAvailable,
+    endpoint: Endpoints.NEW_VERSION_AVAILABLE,
     body: {
       app_version: appVersion,
       phone_os: phoneOS,

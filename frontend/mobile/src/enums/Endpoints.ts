@@ -1,6 +1,6 @@
 export enum Endpoints {
-  NewVersionAvailable = "/v1/apps/new-version-available",
-  CheckASession = "/v1/sessions",
-  CreateNewCustomer = "/v1/customers",
-  VerifyCustomerAccount = "/v1/customers/verification",
+  NEW_VERSION_AVAILABLE = "/v1/apps/new-version-available",
+  CHECK_SESSION = "/v1/sessions",
+  CREATE_NEW_CUSTOMER = "/v1/customers",
+  VERIFY_CUSTOMER_ACCOUNT = "/v1/customers/verification",
 }

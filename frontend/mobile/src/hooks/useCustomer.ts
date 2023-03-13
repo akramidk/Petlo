@@ -9,7 +9,7 @@ const useCustomer = () => {
     undefined,
     CheckASessionResponse
   >({
-    endpoint: Endpoints.CheckASession,
+    endpoint: Endpoints.CHECK_SESSION,
     SWROptions: {
       shouldRetryOnError: false,
     },
