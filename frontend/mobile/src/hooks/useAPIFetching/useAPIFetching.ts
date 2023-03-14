@@ -28,12 +28,14 @@ const useAPIFetching = <Request, Response>({
   }, [endpoint, wait]);
 
   const fetcher = <Response>(endpoint: string): Response => {
-    const { URI } = requestBuilder(
-      endpoint,
-      settingsContext?.languageWithoutGender
-    );
+    const { URI } = requestBuilder({
+      endpoint: endpoint,
+      locale: settingsContext?.languageWithoutGender,
+    });
 
-    return axios.get(URI).then((res) => res.data) as Response;
+    return axios
+      .get(URI, { headers: { Authorization: "" } })
+      .then((res) => res.data) as Response;
   };
 
   const { data, error, isLoading, isValidating } = useSWR(
