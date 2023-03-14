@@ -1,7 +1,6 @@
-import axios from "axios";
 import Constants from "expo-constants";
 import * as SecureStore from "expo-secure-store";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { StorageKeys } from "../enums";
 import useSettingsContext from "./useSettingsContext";
 

@@ -1,5 +1,4 @@
 import axios from "axios";
-import Constants from "expo-constants";
 import { useEffect, useMemo, useState } from "react";
 import { Endpoints } from "../enums";
 import useSWRMutation from "swr/mutation";
