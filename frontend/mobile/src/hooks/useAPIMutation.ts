@@ -38,8 +38,8 @@ const useAPIMutation = <Request, Response>({
 
   const { URI, sessionToken } = useRequestBuilder({
     endpoint: endpoint,
-    //withoutAuthorization: options.withoutAuthorization,
-    //overwriteSessionToken: options?.overwriteSessionToken
+    withoutAuthorization: withoutAuthorization,
+    overwriteSessionToken: overwriteSessionToken,
   });
 
   const fetcher = async (endpoint: string, { arg }: { arg: Request }) => {

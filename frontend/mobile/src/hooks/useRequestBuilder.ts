@@ -1,6 +1,6 @@
 import Constants from "expo-constants";
 import * as SecureStore from "expo-secure-store";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { StorageKeys } from "../enums";
 import useSettingsContext from "./useSettingsContext";
 
@@ -23,14 +23,16 @@ const useRequestBuilder = ({
   const finalLocale = settingsContext?.languageWithoutGender ?? "en"; // TODO use the defult
   const URI = `${API_URL}/${finalLocale}/${endpoint}`;
 
-  if (!withoutAuthorization) {
-    (async () => {
-      setSessionToken(
-        overwriteSessionToken ??
-          (await SecureStore.getItemAsync(StorageKeys.SESSION_TOKEN))
-      );
-    })();
-  }
+  useEffect(() => {
+    if (!withoutAuthorization) {
+      (async () => {
+        setSessionToken(
+          overwriteSessionToken ??
+            (await SecureStore.getItemAsync(StorageKeys.SESSION_TOKEN))
+        );
+      })();
+    }
+  }, [withoutAuthorization, overwriteSessionToken]);
 
   return { URI, sessionToken };
 };
