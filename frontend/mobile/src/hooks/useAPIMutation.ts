@@ -26,10 +26,12 @@ interface useAPIMutationResponse<Response> {
 const useAPIMutation = <Request, Response>({
   endpoint,
   method,
-  options = {
-    withoutAuthorization: false,
-    showFailedAlert: true,
-    hideFailedAlertAfter: 2000,
+  options: {
+    onSucceeded,
+    withoutAuthorization = false,
+    overwriteSessionToken,
+    showFailedAlert = true,
+    hideFailedAlertAfter = 2000,
   },
 }: useAPIMutationProps<Response>) => {
   const setAlert = useAlertContext();
@@ -81,19 +83,19 @@ const useAPIMutation = <Request, Response>({
     }
   }, [isMutating]);
 
-  const onFailed = () => {
-    if (options.showFailedAlert) {
+  const onFailedStatus = () => {
+    if (showFailedAlert) {
       setAlert({
         variant: "failed",
         value: error.response.data.error.message,
-        hideAfter: options.hideFailedAlertAfter,
+        hideAfter: hideFailedAlertAfter,
       });
     }
   };
 
-  const onSucceeded = () => {
-    if (options?.onSucceeded) {
-      options.onSucceeded();
+  const onSucceededStatus = () => {
+    if (onSucceeded) {
+      onSucceeded();
     }
   };
 
@@ -101,12 +103,12 @@ const useAPIMutation = <Request, Response>({
     if (!response?.status || response.status === "loading") return;
 
     if (response.status === "failed") {
-      onFailed();
+      onFailedStatus();
       return;
     }
 
     if (response.status === "succeeded") {
-      onSucceeded();
+      onSucceededStatus();
       return;
     }
   }, [response]);
