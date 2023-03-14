@@ -15,7 +15,7 @@ import { BaseFiledProps } from "./BaseFiledProps";
 import { BaseSelectorProps } from "./BaseSelectorProps";
 import { BaseButtonProps } from "./BaseButtonProps";
 
-import { BaseEndpoint } from "./Endpoints/BaseEndpoint";
+import { ErrorResponse } from "./Endpoints/ErrorResponse";
 
 export {
   NewVersionAvailableRequest,
@@ -30,5 +30,5 @@ export {
   BaseFiledProps,
   BaseSelectorProps,
   BaseButtonProps,
-  BaseEndpoint,
+  ErrorResponse,
 };

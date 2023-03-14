@@ -4,8 +4,9 @@ import { Endpoints } from "../enums";
 import useSWRMutation from "swr/mutation";
 import useAlertContext from "./useAlertContext";
 import useRequestBuilder from "./useRequestBuilder";
+import { ErrorResponse } from "../interfaces";
 
-interface useAPIMutationProps<Response> {
+interface useAPIMutationProps {
   endpoint: Endpoints;
   method: "POST";
   options?: {
@@ -21,6 +22,7 @@ interface useAPIMutationResponse<Response> {
   status?: "loading" | "succeeded" | "failed";
   statusCode?: number;
   body?: Response;
+  error?: ErrorResponse;
 }
 
 const useAPIMutation = <Request, Response>({
@@ -33,7 +35,7 @@ const useAPIMutation = <Request, Response>({
     showFailedAlert = true,
     hideFailedAlertAfter = 2000,
   },
-}: useAPIMutationProps<Response>) => {
+}: useAPIMutationProps) => {
   const setAlert = useAlertContext();
 
   const { URI, sessionToken } = useRequestBuilder({
@@ -78,16 +80,17 @@ const useAPIMutation = <Request, Response>({
       return {
         status: "failed",
         statusCode: error.response.status,
-        body: error.response.data,
+        error: error.response.data.error,
       };
     }
   }, [isMutating]);
 
   const onFailedStatus = () => {
+    console.log("response", response);
     if (showFailedAlert) {
       setAlert({
         variant: "failed",
-        value: error.response.data.error.message,
+        value: response.error.message,
         hideAfter: hideFailedAlertAfter,
       });
     }
