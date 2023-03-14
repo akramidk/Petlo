@@ -13,8 +13,10 @@ const VerifyYourAccount = () => {
   const { trigger } = useAPIMutation<unknown, unknown>({
     endpoint: Endpoints.VERIFY_CUSTOMER_ACCOUNT,
     method: "POST",
-    onSucceeded: () => router.replace("/"),
-    sessionToken: sessionToken,
+    options: {
+      onSucceeded: () => router.replace("/"),
+      overwriteSessionToken: sessionToken,
+    },
   });
 
   return (

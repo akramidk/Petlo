@@ -6,7 +6,7 @@ import useSWRMutation from "swr/mutation";
 import useAlertContext from "./useAlertContext";
 import useRequestBuilder from "./useRequestBuilder";
 
-interface useAPIMutationProps<Request, Response> {
+interface useAPIMutationProps<Response> {
   endpoint: Endpoints;
   method: "POST";
   options?: {
@@ -26,7 +26,7 @@ const useAPIMutation = <Request, Response>({
   endpoint,
   method,
   options,
-}: useAPIMutationProps<Request, Response>) => {
+}: useAPIMutationProps<Response>) => {
   const setAlert = useAlertContext();
 
   const { URI, sessionToken } = useRequestBuilder({
