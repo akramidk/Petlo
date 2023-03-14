@@ -1,7 +1,6 @@
 import { useMemo, useState } from "react";
 import useSWR from "swr";
 import axios from "axios";
-import useSettingsContext from "./useSettingsContext";
 import useRequestBuilder from "./useRequestBuilder";
 import { SWRConfiguration } from "swr";
 import { Endpoints } from "../enums";
