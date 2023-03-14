@@ -9,9 +9,11 @@ interface useAPIMutationProps<Response> {
   endpoint: Endpoints;
   method: "POST";
   options?: {
-    onSucceeded?: (data: Response) => void;
+    onSucceeded?: () => void;
     withoutAuthorization?: boolean;
     overwriteSessionToken?: string;
+    showFailedAlert?: boolean;
+    hideFailedAlertAfter?: number;
   };
 }
 
@@ -24,12 +26,18 @@ interface useAPIMutationResponse<Response> {
 const useAPIMutation = <Request, Response>({
   endpoint,
   method,
-  options,
+  options = {
+    withoutAuthorization: false,
+    showFailedAlert: true,
+    hideFailedAlertAfter: 2000,
+  },
 }: useAPIMutationProps<Response>) => {
   const setAlert = useAlertContext();
 
   const { URI, sessionToken } = useRequestBuilder({
     endpoint: endpoint,
+    //withoutAuthorization: options.withoutAuthorization,
+    //overwriteSessionToken: options?.overwriteSessionToken
   });
 
   const fetcher = async (endpoint: string, { arg }: { arg: Request }) => {
@@ -74,14 +82,19 @@ const useAPIMutation = <Request, Response>({
   }, [isMutating]);
 
   const onFailed = () => {
-    setAlert({
-      variant: "failed",
-      value: error.response.data.error.message,
-    });
+    if (options.showFailedAlert) {
+      setAlert({
+        variant: "failed",
+        value: error.response.data.error.message,
+        hideAfter: options.hideFailedAlertAfter,
+      });
+    }
   };
 
   const onSucceeded = () => {
-    options?.onSucceeded && options?.onSucceeded(data);
+    if (options?.onSucceeded) {
+      options.onSucceeded();
+    }
   };
 
   useEffect(() => {
