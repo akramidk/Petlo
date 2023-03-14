@@ -9,14 +9,12 @@ const API_URL = Constants.expoConfig.extra.API_URL;
 
 interface useRequestBuilderProps {
   endpoint: string;
-  method: "GET" | "POST";
   withoutAuthorization?: boolean;
   overwriteSessionToken?: string;
 }
 
 const useRequestBuilder = ({
   endpoint,
-  method,
   withoutAuthorization,
   overwriteSessionToken,
 }: useRequestBuilderProps) => {

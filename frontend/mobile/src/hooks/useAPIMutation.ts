@@ -31,7 +31,6 @@ const useAPIMutation = <Request, Response>({
 
   const { URI, sessionToken } = useRequestBuilder({
     endpoint: endpoint,
-    method: method,
   });
 
   const fetcher = async (endpoint: string, { arg }: { arg: Request }) => {

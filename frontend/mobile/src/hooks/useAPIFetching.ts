@@ -43,7 +43,6 @@ const useAPIFetching = <Request, Response>({
 
   const { URI, sessionToken } = useRequestBuilder({
     endpoint: SWREndpoint,
-    method: "GET",
   });
 
   const fetcher = async () => {
