@@ -13,7 +13,6 @@ import { CountryOption, BaseOption } from "../../src/interfaces";
 const SignUp = () => {
   const router = useRouter();
   const { t } = useTranslationsContext();
-  const [redirect, setRedirect] = useState(false);
 
   const [name, setName] = useState<string>("");
   const [country, setCountry] = useState<CountryOption>(
@@ -46,20 +45,16 @@ const SignUp = () => {
     endpoint: Endpoints.CREATE_NEW_CUSTOMER,
     method: "POST",
     options: {
-      onSucceeded: () => setRedirect(true),
+      onSucceeded: () => {
+        router.replace(
+          `/verify-your-account?${new URLSearchParams({
+            phoneNumber: countryCode.value + phoneNumber,
+            sessionToken: "",
+          }).toString()}`
+        );
+      },
     },
   });
-
-  useEffect(() => {
-    if (redirect) {
-      router.replace(
-        `/verify-your-account?${new URLSearchParams({
-          phoneNumber: countryCode.value + phoneNumber,
-          sessionToken: "",
-        }).toString()}`
-      );
-    }
-  }, [redirect]);
 
   return (
     <Form

@@ -58,13 +58,7 @@ const useAPIMutation = <Request, Response>({
       return { status: "loading" };
     }
 
-    if (!data && !error) {
-      return null;
-    }
-
     if (data) {
-      options?.onSucceeded && options?.onSucceeded(data);
-
       return {
         status: "succeeded",
         statusCode: 200,
@@ -73,28 +67,37 @@ const useAPIMutation = <Request, Response>({
     }
 
     if (error) {
-      setAlert({
-        variant: "failed",
-        value: error.response.data.error.message,
-      });
-
       return {
         status: "failed",
         statusCode: error.response.status,
         body: error.response.data,
       };
     }
-  }, [isMutating, data, error]);
+  }, [isMutating]);
+
+  const onFailed = () => {
+    setAlert({
+      variant: "failed",
+      value: error.response.data.error.message,
+    });
+  };
+
+  const onSucceeded = () => {
+    options?.onSucceeded && options?.onSucceeded(data);
+  };
 
   useEffect(() => {
-    const timeout = setTimeout(() => {
-      setAlert(undefined);
-      reset();
-    }, 2000);
+    if (!response?.status || response.status === "loading") return;
 
-    return () => {
-      clearTimeout(timeout);
-    };
+    if (response.status === "failed") {
+      onFailed();
+      return;
+    }
+
+    if (response.status === "succeeded") {
+      onSucceeded();
+      return;
+    }
   }, [response]);
 
   return { trigger, response };
