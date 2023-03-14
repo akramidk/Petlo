@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Endpoints, StorageKeys } from "../enums";
 import * as SecureStore from "expo-secure-store";
-import useAPIFetching from "./useAPIFetching/useAPIFetching";
+import useAPIFetching from "./useAPIFetching";
 import { CheckASessionResponse } from "../interfaces";
 
 const useCustomer = () => {

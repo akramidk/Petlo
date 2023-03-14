@@ -1,9 +1,25 @@
 import { useMemo, useState } from "react";
 import useSWR from "swr";
-import { useAPIFetchingProps, useAPIFetchingResponse } from "./interfaces";
 import axios from "axios";
-import useSettingsContext from "../useSettingsContext";
-import useRequestBuilder from "../useRequestBuilder";
+import useSettingsContext from "./useSettingsContext";
+import useRequestBuilder from "./useRequestBuilder";
+import { SWRConfiguration } from "swr";
+import { Endpoints } from "../enums";
+
+interface useAPIFetchingProps<Request> {
+  endpoint: Endpoints | null;
+  body?: Request;
+  SWROptions?: SWRConfiguration;
+  options?: {
+    wait?: boolean;
+  };
+}
+
+interface useAPIFetchingResponse<Response> {
+  isFetching?: boolean;
+  statusCode?: number;
+  body?: Response;
+}
 
 const useAPIFetching = <Request, Response>({
   endpoint,
@@ -11,7 +27,6 @@ const useAPIFetching = <Request, Response>({
   SWROptions,
   options,
 }: useAPIFetchingProps<Request>) => {
-  const settingsContext = useSettingsContext();
   const [wait, setWait] = useState<boolean>(options?.wait);
 
   const SWREndpoint = useMemo(() => {
@@ -29,7 +44,6 @@ const useAPIFetching = <Request, Response>({
 
   const { URI, sessionToken } = useRequestBuilder({
     endpoint: SWREndpoint,
-    locale: settingsContext?.languageWithoutGender,
   });
 
   const fetcher = (): Response => {
