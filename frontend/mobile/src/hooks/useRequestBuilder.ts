@@ -1,3 +1,4 @@
+import axios from "axios";
 import Constants from "expo-constants";
 import * as SecureStore from "expo-secure-store";
 import { useMemo, useState } from "react";
@@ -8,13 +9,16 @@ const API_URL = Constants.expoConfig.extra.API_URL;
 
 interface useRequestBuilderProps {
   endpoint: string;
-  locale?: "en" | "ar";
+  method: "GET" | "POST";
+  requestBody?: unknown;
   withoutAuthorization?: boolean;
   overwriteSessionToken?: string;
 }
 
 const useRequestBuilder = ({
   endpoint,
+  method,
+  requestBody,
   withoutAuthorization,
   overwriteSessionToken,
 }: useRequestBuilderProps) => {
@@ -33,7 +37,18 @@ const useRequestBuilder = ({
     })();
   }
 
-  return { URI, sessionToken };
+  const fetcher = async () => {
+    return await axios({
+      method: method,
+      url: URI,
+      data: requestBody,
+      headers: {
+        Authorization: sessionToken,
+      },
+    }).then((res) => res.data);
+  };
+
+  return { URI, sessionToken, fetcher };
 };
 
 export default useRequestBuilder;

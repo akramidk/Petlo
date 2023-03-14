@@ -42,15 +42,10 @@ const useAPIFetching = <Request, Response>({
     return `${endpoint}?${params}`;
   }, [endpoint, wait]);
 
-  const { URI, sessionToken } = useRequestBuilder({
+  const { fetcher } = useRequestBuilder({
     endpoint: SWREndpoint,
+    method: "GET",
   });
-
-  const fetcher = (): Response => {
-    return axios
-      .get(URI, { headers: { Authorization: sessionToken } })
-      .then((res) => res.data) as Response;
-  };
 
   const { data, error, isLoading, isValidating } = useSWR(
     SWREndpoint,
