@@ -1,3 +1,3 @@
-import requestURIBuilder from "./requestURIBuilder";
+import requestBuilder from "./requestBuilder";
 
-export { requestURIBuilder };
+export { requestBuilder };

@@ -3,7 +3,7 @@ import useSWR from "swr";
 import { useAPIFetchingProps, useAPIFetchingResponse } from "./interfaces";
 import axios from "axios";
 import useSettingsContext from "../useSettingsContext";
-import { requestURIBuilder } from "../../utils";
+import { requestBuilder } from "../../utils";
 
 const useAPIFetching = <Request, Response>({
   endpoint,
@@ -28,12 +28,12 @@ const useAPIFetching = <Request, Response>({
   }, [endpoint, wait]);
 
   const fetcher = <Response>(endpoint: string): Response => {
-    const requestURI = requestURIBuilder(
+    const { URI } = requestBuilder(
       endpoint,
       settingsContext?.languageWithoutGender
     );
 
-    return axios.get(requestURI).then((res) => res.data) as Response;
+    return axios.get(URI).then((res) => res.data) as Response;
   };
 
   const { data, error, isLoading, isValidating } = useSWR(
