@@ -1,20 +1,17 @@
 import axios from "axios";
 import Constants from "expo-constants";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { Endpoints } from "../enums";
 import useSWRMutation from "swr/mutation";
 import useAlertContext from "./useAlertContext";
-import useRequestBuilder from "./useRequestBuilder";
 
-interface useAPIMutationProps<Request, Response> {
+const backendURL = Constants.expoConfig.extra.API_URL + "/en";
+
+interface useAPIMutationProps<Response> {
   endpoint: Endpoints;
   method: "POST";
-  requestBody?: Request;
-  options?: {
-    onSucceeded?: (data: Response) => void;
-    withoutAuthorization?: boolean;
-    overwriteSessionToken?: string;
-  };
+  onSucceeded?: (data: Response) => void;
+  sessionToken?: string;
 }
 
 interface useAPIMutationResponse<Response> {
@@ -26,16 +23,25 @@ interface useAPIMutationResponse<Response> {
 const useAPIMutation = <Request, Response>({
   endpoint,
   method,
-  requestBody,
-  options,
-}: useAPIMutationProps<Request, Response>) => {
+  onSucceeded,
+  sessionToken,
+}: useAPIMutationProps<Response>) => {
   const setAlert = useAlertContext();
 
-  const { fetcher } = useRequestBuilder({
-    endpoint: endpoint,
-    method: method,
-    requestBody: requestBody,
-  });
+  const [response, setResponse] = useState<useAPIMutationResponse<Response>>();
+
+  const fetcher = async (endpoint: string, { arg }: { arg: Request }) => {
+    const fullEndpoint = backendURL + endpoint;
+
+    return await axios({
+      method: method,
+      url: fullEndpoint,
+      data: arg,
+      headers: {
+        Authorization: `Bearer ${sessionToken}`,
+      },
+    }).then((res) => res.data);
+  };
 
   const { trigger, data, error, isMutating, reset } = useSWRMutation(
     endpoint,
@@ -45,47 +51,50 @@ const useAPIMutation = <Request, Response>({
     }
   );
 
-  const response: useAPIMutationResponse<Response> = useMemo(() => {
-    if (isMutating) {
-      return { status: "loading" };
-    }
-
-    if (!data && !error) {
-      return null;
-    }
-
-    if (data) {
-      return {
+  useEffect(() => {
+    if (data && !isMutating) {
+      setResponse({
         status: "succeeded",
         statusCode: 200,
         body: data,
-      };
+      });
+
+      onSucceeded && onSucceeded(data);
     }
 
-    if (error) {
+    if (error && !isMutating) {
+      setResponse({
+        status: "failed",
+        statusCode: error.response.status,
+        body: error.response.data,
+      });
+
       setAlert({
         variant: "failed",
         value: error.response.data.error.message,
       });
-
-      return {
-        status: "failed",
-        statusCode: error.response.status,
-        body: error.response.data,
-      };
     }
-  }, [isMutating, data, error]);
 
-  useEffect(() => {
+    if (isMutating) {
+      setResponse({
+        status: "loading",
+      });
+    }
+
+    //reset SWR things & the status
     const timeout = setTimeout(() => {
       setAlert(undefined);
       reset();
+      setResponse({
+        ...response,
+        status: undefined,
+      });
     }, 2000);
 
     return () => {
       clearTimeout(timeout);
     };
-  }, [response]);
+  }, [isMutating]);
 
   return { trigger, response };
 };

@@ -39,18 +39,20 @@ const SignUp = () => {
   }, [name, country, countryCode, phoneNumber, password]);
 
   const { response, trigger } = useAPIMutation<
-    unknown,
+    { name: string; country: string; phone_number: string; password: string },
     { customer: { session_token: string } }
   >({
     endpoint: Endpoints.CREATE_NEW_CUSTOMER,
     method: "POST",
-    onSucceeded: (data) =>
-      router.replace(
-        `/verify-your-account?${new URLSearchParams({
-          phoneNumber: countryCode.value + phoneNumber,
-          sessionToken: data.customer.session_token,
-        }).toString()}`
-      ),
+    options: {
+      onSucceeded: (data) =>
+        router.replace(
+          `/verify-your-account?${new URLSearchParams({
+            phoneNumber: countryCode.value + phoneNumber,
+            sessionToken: data.customer.session_token,
+          }).toString()}`
+        ),
+    },
   });
 
   return (

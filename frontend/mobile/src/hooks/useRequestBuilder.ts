@@ -10,7 +10,6 @@ const API_URL = Constants.expoConfig.extra.API_URL;
 interface useRequestBuilderProps {
   endpoint: string;
   method: "GET" | "POST";
-  requestBody?: unknown;
   withoutAuthorization?: boolean;
   overwriteSessionToken?: string;
 }
@@ -18,7 +17,6 @@ interface useRequestBuilderProps {
 const useRequestBuilder = ({
   endpoint,
   method,
-  requestBody,
   withoutAuthorization,
   overwriteSessionToken,
 }: useRequestBuilderProps) => {
@@ -37,18 +35,7 @@ const useRequestBuilder = ({
     })();
   }
 
-  const fetcher = async () => {
-    return await axios({
-      method: method,
-      url: URI,
-      data: requestBody,
-      headers: {
-        Authorization: sessionToken,
-      },
-    }).then((res) => res.data);
-  };
-
-  return { URI, sessionToken, fetcher };
+  return { URI, sessionToken };
 };
 
 export default useRequestBuilder;
