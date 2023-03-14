@@ -53,7 +53,7 @@ const useAPIMutation = <Request, Response>({
     }).then((res) => res.data);
   };
 
-  const { trigger, data, error, isMutating, reset } = useSWRMutation(
+  const { trigger, data, error, isMutating } = useSWRMutation(
     endpoint,
     fetcher,
     {
