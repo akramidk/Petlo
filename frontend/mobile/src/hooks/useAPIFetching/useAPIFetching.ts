@@ -3,7 +3,7 @@ import useSWR from "swr";
 import { useAPIFetchingProps, useAPIFetchingResponse } from "./interfaces";
 import axios from "axios";
 import useSettingsContext from "../useSettingsContext";
-import { requestBuilder } from "../../utils";
+import useRequestBuilder from "../useRequestBuilder";
 
 const useAPIFetching = <Request, Response>({
   endpoint,
@@ -27,14 +27,14 @@ const useAPIFetching = <Request, Response>({
     return `${endpoint}?${params}`;
   }, [endpoint, wait]);
 
-  const fetcher = <Response>(endpoint: string): Response => {
-    const { URI } = requestBuilder({
-      endpoint: endpoint,
-      locale: settingsContext?.languageWithoutGender,
-    });
+  const { URI, sessionToken } = useRequestBuilder({
+    endpoint: SWREndpoint,
+    locale: settingsContext?.languageWithoutGender,
+  });
 
+  const fetcher = (): Response => {
     return axios
-      .get(URI, { headers: { Authorization: "" } })
+      .get(URI, { headers: { Authorization: sessionToken } })
       .then((res) => res.data) as Response;
   };
 
