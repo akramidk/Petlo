@@ -10,6 +10,7 @@ const BaseFiled = ({
   cn,
   keyboardType,
   secureTextEntry,
+  maxLength,
 }: BaseFiledProps) => {
   const { language, direction } = useSettingsContext();
 
@@ -27,6 +28,7 @@ const BaseFiled = ({
       placeholderTextColor="#aaa"
       keyboardType={keyboardType}
       secureTextEntry={secureTextEntry}
+      maxLength={maxLength}
     />
   );
 };

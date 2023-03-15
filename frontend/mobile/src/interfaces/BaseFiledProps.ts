@@ -7,4 +7,5 @@ export interface BaseFiledProps {
   cn?: string;
   keyboardType?: KeyboardType;
   secureTextEntry?: boolean;
+  maxLength?: number;
 }

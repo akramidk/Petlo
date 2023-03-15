@@ -18,6 +18,7 @@ const Filed = ({
   name,
   helperText,
   require,
+  maxLength,
 }: FiledProps & BaseFiledProps & Partial<BaseLabelProps>) => {
   return (
     <View className={clsx(cn)}>
@@ -35,6 +36,7 @@ const Filed = ({
         placeholder={placeholder}
         keyboardType={keyboardType}
         secureTextEntry={secureTextEntry}
+        maxLength={maxLength}
       />
     </View>
   );
