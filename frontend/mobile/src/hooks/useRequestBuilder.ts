@@ -22,9 +22,10 @@ const useRequestBuilder = ({
   const [sessionToken, setSessionToken] = useState("");
 
   const locale =
-    settingsContext?.languageWithoutGender ?? DEFAULT_APP_LANGUAGE.withGender;
+    settingsContext?.languageWithoutGender ??
+    DEFAULT_APP_LANGUAGE.withoutGender;
 
-  const URI = `${API_URL}/${locale}/${endpoint}`;
+  const URI = `${API_URL}/${locale}${endpoint}`;
 
   useEffect(() => {
     if (!withoutAuthorization) {
