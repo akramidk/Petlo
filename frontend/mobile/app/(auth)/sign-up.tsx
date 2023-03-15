@@ -38,7 +38,7 @@ const SignUp = () => {
     return "inactive";
   }, [name, country, countryCode, phoneNumber, password]);
 
-  const { response, trigger } = useAPIMutation<
+  const { response, trigger, status } = useAPIMutation<
     { name: string; country: string; phone_number: string; password: string },
     { customer: { session_token: string } }
   >({
@@ -69,7 +69,7 @@ const SignUp = () => {
             phone_number: countryCode.value + phoneNumber,
             password: password,
           }),
-        status: response?.status ?? buttonStatus,
+        status: status ?? buttonStatus,
       }}
     >
       <Filed

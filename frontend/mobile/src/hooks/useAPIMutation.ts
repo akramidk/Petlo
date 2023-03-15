@@ -15,11 +15,13 @@ interface useAPIMutationProps {
     overwriteSessionToken?: string;
     showFailedAlert?: boolean;
     hideFailedAlertAfter?: number;
+    resetFailedStatusAfter?: number;
   };
 }
 
+type status = "loading" | "succeeded" | "failed";
 interface useAPIMutationResponse<Response> {
-  status?: "loading" | "succeeded" | "failed";
+  status?: status;
   statusCode?: number;
   body?: Response;
   error?: ErrorResponse;
@@ -34,8 +36,10 @@ const useAPIMutation = <Request, Response>({
     overwriteSessionToken,
     showFailedAlert = true,
     hideFailedAlertAfter = 2000,
+    resetFailedStatusAfter = 2000,
   },
 }: useAPIMutationProps) => {
+  const [status, setStatus] = useState<status>();
   const setAlert = useAlertContext();
 
   const { URI, sessionToken } = useRequestBuilder({
@@ -86,7 +90,6 @@ const useAPIMutation = <Request, Response>({
   }, [isMutating]);
 
   const onFailedStatus = () => {
-    console.log("response", response);
     if (showFailedAlert) {
       setAlert({
         variant: "failed",
@@ -94,6 +97,10 @@ const useAPIMutation = <Request, Response>({
         hideAfter: hideFailedAlertAfter,
       });
     }
+
+    setTimeout(() => {
+      setStatus(undefined);
+    }, resetFailedStatusAfter);
   };
 
   const onSucceededStatus = () => {
@@ -103,6 +110,9 @@ const useAPIMutation = <Request, Response>({
   };
 
   useEffect(() => {
+    console.log("hey", response?.status);
+    setStatus(response?.status);
+
     if (!response?.status || response.status === "loading") return;
 
     if (response.status === "failed") {
@@ -116,7 +126,7 @@ const useAPIMutation = <Request, Response>({
     }
   }, [response]);
 
-  return { trigger, response };
+  return { trigger, response, status };
 };
 
 export default useAPIMutation;
