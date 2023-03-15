@@ -112,7 +112,7 @@ const useAPIMutation = <Request, Response>({
   useEffect(() => {
     if (!response?.status) return;
 
-    setStatus(response?.status);
+    setStatus(response.status);
 
     if (response.status === "loading") return;
 
