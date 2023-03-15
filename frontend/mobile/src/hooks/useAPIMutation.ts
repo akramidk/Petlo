@@ -11,6 +11,7 @@ interface useAPIMutationProps {
   method: "POST";
   options?: {
     onSucceeded?: () => void;
+    fireOnSucceededAfter?: number;
     withoutAuthorization?: boolean;
     overwriteSessionToken?: string;
     showFailedAlert?: boolean;
@@ -33,6 +34,7 @@ const useAPIMutation = <Request, Response>({
   method,
   options: {
     onSucceeded,
+    fireOnSucceededAfter = 0,
     withoutAuthorization = false,
     overwriteSessionToken,
     showFailedAlert = true,
@@ -107,7 +109,9 @@ const useAPIMutation = <Request, Response>({
 
   const onSucceededStatus = () => {
     if (onSucceeded) {
-      onSucceeded();
+      setTimeout(() => {
+        onSucceeded();
+      }, fireOnSucceededAfter);
     }
 
     setTimeout(() => {

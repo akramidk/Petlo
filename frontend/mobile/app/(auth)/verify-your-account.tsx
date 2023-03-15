@@ -31,6 +31,7 @@ const VerifyYourAccount = () => {
     method: "POST",
     options: {
       onSucceeded: () => router.replace("/"),
+      fireOnSucceededAfter: 1000,
       overwriteSessionToken: sessionToken,
     },
   });
