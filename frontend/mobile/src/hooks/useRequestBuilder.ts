@@ -1,6 +1,7 @@
 import Constants from "expo-constants";
 import * as SecureStore from "expo-secure-store";
 import { useEffect, useState } from "react";
+import { DEFAULT_APP_LANGUAGE } from "../constants";
 import { StorageKeys } from "../enums";
 import useSettingsContext from "./useSettingsContext";
 
@@ -20,8 +21,10 @@ const useRequestBuilder = ({
   const settingsContext = useSettingsContext();
   const [sessionToken, setSessionToken] = useState("");
 
-  const finalLocale = settingsContext?.languageWithoutGender ?? "en"; // TODO use the defult
-  const URI = `${API_URL}/${finalLocale}/${endpoint}`;
+  const locale =
+    settingsContext?.languageWithoutGender ?? DEFAULT_APP_LANGUAGE.withGender;
+
+  const URI = `${API_URL}/${locale}/${endpoint}`;
 
   useEffect(() => {
     if (!withoutAuthorization) {

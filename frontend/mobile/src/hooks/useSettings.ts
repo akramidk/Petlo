@@ -4,6 +4,7 @@ import { I18nManager } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { getLocales } from "expo-localization";
 import { StorageKeys } from "../enums";
+import { DEFAULT_APP_LANGUAGE } from "../constants";
 
 type direction = "ltr" | "rtl";
 enum languagesDirection {
@@ -16,8 +17,6 @@ enum defaultGenderedLanguage {
   "en" = "en",
   "ar" = "ar_masculine",
 }
-
-const DEFAULT_APP_LANGUAGE = "ar_masculine";
 
 const useSettings = () => {
   //we are handling ltr and rtl on our own
@@ -34,12 +33,13 @@ const useSettings = () => {
   };
 
   //set thing temporarily
-  const [language, setLanguage] = useState<language>(DEFAULT_APP_LANGUAGE);
+  const appLanguage = DEFAULT_APP_LANGUAGE.withGender as language;
+  const [language, setLanguage] = useState<language>(appLanguage);
   const [languageWithoutGender, setLanguageWithoutGender] = useState<
     "en" | "ar"
-  >(removeGender(DEFAULT_APP_LANGUAGE));
+  >(removeGender(appLanguage));
   const [direction, setDirection] = useState<direction>(
-    languagesDirection[DEFAULT_APP_LANGUAGE]
+    languagesDirection[appLanguage]
   );
 
   //changeLanguage temporarily(force = false) or permanently(force = true, this's change the storedLanguage)
