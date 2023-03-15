@@ -29,6 +29,8 @@
   "OPTIONS_MODAL_COMP_SEARCH": "قم بالكتابة للبحث",
   "OPTIONS_MODAL_COMP_SELECT": "اختر",
   "VERIFY_YOUR_ACCOUNT_TITLE": "التأكد من رقم الهاتف",
-  "VERIFY_YOUR_ACCOUNT_HELPER_TEXT": "[U+200F] يجب تأكيد رقم هاتفك حتى تتمكن من إستخدام حسابك.\nلقد قمنا بإرسال رسالة نصية تحتوي على رمز من %{verificationCodeLength} أرقام إلى رقم هاتفك %{phoneNumber}, قم بإدخاله بالأسفل لتأكيد رقمك.",
-  "VERIFY_YOUR_ACCOUNT_VERIFY_BUTTON": "تأكيد"
+  "VERIFY_YOUR_ACCOUNT_HELPER_TEXT": "يجب تأكيد رقم هاتفك حتى تتمكن من إستخدام حسابك.\nلقد قمنا بإرسال رسالة نصية تحتوي على رمز من %{verificationCodeLength} أرقام إلى رقم هاتفك %{phoneNumber}, قم بإدخاله بالأسفل لتأكيد رقمك.",
+  "VERIFY_YOUR_ACCOUNT_VERIFY_BUTTON": "تأكيد",
+  "VERIFY_YOUR_ACCOUNT_EDIT_PHONE_NUMBER_LINK": "تعديل رقم الهاتف",
+  "VERIFY_YOUR_ACCOUNT_RESEND_CODE_LINK": "اعادة ارسال الرمز"
 }

@@ -26,5 +26,7 @@
   "OPTIONS_MODAL_COMP_SELECT": "Select",
   "VERIFY_YOUR_ACCOUNT_TITLE": "Verify Your Phone Number",
   "VERIFY_YOUR_ACCOUNT_HELPER_TEXT": "You should verify your phone number to use your account.\nWe sent a sms with %{verificationCodeLength} digit code to your phone number %{phoneNumber}, type it below to verify it.",
-  "VERIFY_YOUR_ACCOUNT_VERIFY_BUTTON": "Verify"
+  "VERIFY_YOUR_ACCOUNT_VERIFY_BUTTON": "Verify",
+  "VERIFY_YOUR_ACCOUNT_EDIT_PHONE_NUMBER_LINK": "Edit Phone Number",
+  "VERIFY_YOUR_ACCOUNT_RESEND_CODE_LINK": "Resend Code"
 }

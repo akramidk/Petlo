@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { useRouter, useSearchParams } from "expo-router";
 import { useState } from "react";
 import { Text } from "react-native";
@@ -5,12 +6,17 @@ import { View } from "react-native";
 import { Filed, Link } from "../../src/components/atoms";
 import { Form } from "../../src/components/organisms";
 import { Endpoints } from "../../src/enums";
-import { useAPIMutation, useTranslationsContext } from "../../src/hooks";
+import {
+  useAPIMutation,
+  useSettingsContext,
+  useTranslationsContext,
+} from "../../src/hooks";
 import { ResendVerificationCodeResponse } from "../../src/interfaces";
 
 const VERIFICATION_CODE_LENGTH = 6;
 
 const VerifyYourAccount = () => {
+  const { direction } = useSettingsContext();
   const { t } = useTranslationsContext();
   const router = useRouter();
 
@@ -75,15 +81,20 @@ const VerifyYourAccount = () => {
         maxLength={VERIFICATION_CODE_LENGTH}
       />
 
-      <View className="mt-[16px] flex-row justify-between">
+      <View
+        className={clsx(
+          "mt-[16px] justify-between",
+          direction === "ltr" ? "flex-row" : "flex-row-reverse"
+        )}
+      >
         <Link
           onClick={() => console.log("Edit Phone Number")}
-          value="Edit Phone Number"
+          value={t("VERIFY_YOUR_ACCOUNT_EDIT_PHONE_NUMBER_LINK")}
         />
 
         <Link
           onClick={() => resendCodeTrigger(undefined)} // TODO handle this shit
-          value="Resend Code"
+          value={t("VERIFY_YOUR_ACCOUNT_RESEND_CODE_LINK")}
           status={resendCodeStatus}
         />
       </View>
