@@ -3,11 +3,12 @@ import { useState } from "react";
 import { Filed } from "../../src/components/atoms";
 import { Form } from "../../src/components/organisms";
 import { Endpoints } from "../../src/enums";
-import { useAPIMutation } from "../../src/hooks";
+import { useAPIMutation, useTranslationsContext } from "../../src/hooks";
 
 const VERIFICATION_CODE_LENGTH = 6;
 
 const VerifyYourAccount = () => {
+  const { t } = useTranslationsContext();
   const router = useRouter();
 
   const { phoneNumber, sessionToken } = useSearchParams();
@@ -23,10 +24,13 @@ const VerifyYourAccount = () => {
 
   return (
     <Form
-      title="Verify Your Phone Number"
-      helperText={`You should verify your phone number to use your account.${"\n"}We sent a sms with ${VERIFICATION_CODE_LENGTH} digit code to your phone number ${phoneNumber}, type it below to verify it.`}
+      title={t("VERIFY_YOUR_ACCOUNT_TITLE")}
+      helperText={t("VERIFY_YOUR_ACCOUNT_HELPER_TEXT", {
+        verificationCodeLength: VERIFICATION_CODE_LENGTH,
+        phoneNumber: phoneNumber,
+      })}
       button={{
-        value: "Verify",
+        value: t("VERIFY_YOUR_ACCOUNT_VERIFY_BUTTON"),
         onClick: () =>
           trigger({
             verification_code: Number(verificationCode),

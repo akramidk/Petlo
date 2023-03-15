@@ -23,5 +23,8 @@
   "SELECTOR_COMP_CHANGE": "CHANGE",
   "OPTIONS_MODAL_COMP_CANCEL": "CANCEL",
   "OPTIONS_MODAL_COMP_SEARCH": "type anything to search",
-  "OPTIONS_MODAL_COMP_SELECT": "Select"
+  "OPTIONS_MODAL_COMP_SELECT": "Select",
+  "VERIFY_YOUR_ACCOUNT_TITLE": "Verify Your Phone Number",
+  "VERIFY_YOUR_ACCOUNT_HELPER_TEXT": "You should verify your phone number to use your account.\nWe sent a sms with %{verificationCodeLength} digit code to your phone number %{phoneNumber}, type it below to verify it.",
+  "VERIFY_YOUR_ACCOUNT_VERIFY_BUTTON": "Verify"
 }
