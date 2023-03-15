@@ -110,10 +110,11 @@ const useAPIMutation = <Request, Response>({
   };
 
   useEffect(() => {
-    console.log("hey", response?.status);
+    if (!response?.status) return;
+
     setStatus(response?.status);
 
-    if (!response?.status || response.status === "loading") return;
+    if (response.status === "loading") return;
 
     if (response.status === "failed") {
       onFailedStatus();
