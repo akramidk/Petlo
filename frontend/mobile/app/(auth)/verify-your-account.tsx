@@ -10,7 +10,7 @@ const VerifyYourAccount = () => {
 
   const { phoneNumber, sessionToken } = useSearchParams();
   const [verificationCode, setVerificationCode] = useState<string>();
-  const { trigger } = useAPIMutation<unknown, unknown>({
+  const { response, trigger, status } = useAPIMutation<unknown, unknown>({
     endpoint: Endpoints.VERIFY_CUSTOMER_ACCOUNT,
     method: "POST",
     options: {
@@ -29,7 +29,9 @@ const VerifyYourAccount = () => {
           trigger({
             verification_code: Number(verificationCode),
           }),
-        status: verificationCode?.trim()?.length === 6 ? "active" : "inactive",
+        status:
+          status ??
+          (verificationCode?.trim()?.length === 6 ? "active" : "inactive"),
       }}
     >
       <Filed
