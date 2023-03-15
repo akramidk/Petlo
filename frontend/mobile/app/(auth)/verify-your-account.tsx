@@ -1,7 +1,6 @@
 import clsx from "clsx";
 import { useRouter, useSearchParams } from "expo-router";
 import { useState } from "react";
-import { Text } from "react-native";
 import { View } from "react-native";
 import { Filed, Link } from "../../src/components/atoms";
 import { Form } from "../../src/components/organisms";
@@ -88,7 +87,9 @@ const VerifyYourAccount = () => {
         )}
       >
         <Link
-          onClick={() => console.log("Edit Phone Number")}
+          onClick={() =>
+            router.replace(`/edit-phone-number?sessionToken=${sessionToken}`)
+          }
           value={t("VERIFY_YOUR_ACCOUNT_EDIT_PHONE_NUMBER_LINK")}
         />
 
