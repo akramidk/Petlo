@@ -54,7 +54,7 @@ const SignUp = () => {
         router.replace(
           `/verify-your-account?${new URLSearchParams({
             phoneNumber: countryCode.value + phoneNumber,
-            sessionToken: "",
+            sessionToken: response.body.customer.session_token,
           }).toString()}`
         );
       },
