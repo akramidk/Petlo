@@ -4,6 +4,7 @@ import axios from "axios";
 import useRequestBuilder from "./useRequestBuilder";
 import { SWRConfiguration } from "swr";
 import { Endpoints } from "../enums";
+import { ErrorResponse } from "../interfaces";
 
 interface useAPIFetchingProps<Request> {
   endpoint: Endpoints | null;
@@ -18,6 +19,7 @@ interface useAPIFetchingResponse<Response> {
   isFetching?: boolean;
   statusCode?: number;
   body?: Response;
+  error?: ErrorResponse;
 }
 
 const useAPIFetching = <Request, Response>({
@@ -66,11 +68,19 @@ const useAPIFetching = <Request, Response>({
       return { isFetching: true };
     }
 
-    if (data || error) {
+    if (data) {
       return {
         isFetching: false,
-        statusCode: data ? 200 : error.response.status,
-        body: data as Response,
+        statusCode: data,
+        body: data,
+      };
+    }
+
+    if (error) {
+      return {
+        isFetching: false,
+        statusCode: error.response.status,
+        error: error.response.data.error,
       };
     }
   }, [isLoading, isValidating, data, error]);
