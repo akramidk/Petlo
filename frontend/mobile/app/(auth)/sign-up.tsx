@@ -8,7 +8,12 @@ import {
 } from "../../src/constants";
 import { Endpoints } from "../../src/enums";
 import { useTranslationsContext, useAPIMutation } from "../../src/hooks";
-import { CountryOption, BaseOption } from "../../src/interfaces";
+import {
+  CountryOption,
+  BaseOption,
+  CreateNewCustomerRequest,
+  CreateNewCustomerResponse,
+} from "../../src/interfaces";
 
 const SignUp = () => {
   const router = useRouter();
@@ -39,8 +44,8 @@ const SignUp = () => {
   }, [name, country, countryCode, phoneNumber, password]);
 
   const { response, trigger, status } = useAPIMutation<
-    { name: string; country: string; phone_number: string; password: string },
-    { customer: { session_token: string } }
+    CreateNewCustomerRequest,
+    CreateNewCustomerResponse
   >({
     endpoint: Endpoints.CREATE_NEW_CUSTOMER,
     method: "POST",

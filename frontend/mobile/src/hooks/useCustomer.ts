@@ -5,6 +5,9 @@ import useAPIFetching from "./useAPIFetching";
 import { CheckASessionResponse } from "../interfaces";
 
 const useCustomer = () => {
+  const [sessionToken, setSessionToken] = useState<undefined | string>();
+  const [customer, setCustomer] = useState<any>();
+
   const { response, setWait } = useAPIFetching<
     undefined,
     CheckASessionResponse
@@ -17,9 +20,6 @@ const useCustomer = () => {
       wait: true,
     },
   });
-
-  const [sessionToken, setSessionToken] = useState<undefined | string>();
-  const [customer, setCustomer] = useState<any>();
 
   useEffect(() => {
     (async () => {
