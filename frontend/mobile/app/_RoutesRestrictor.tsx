@@ -1,10 +1,10 @@
 import { useRouter } from "expo-router";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useSettingsContext } from "../src/hooks";
 
 interface RoutesRestrictorProps {
   children: React.ReactNode;
-  customer: undefined | null;
+  customer: undefined | null | unknown;
 }
 
 const RoutesRestrictor = ({ children, customer }: RoutesRestrictorProps) => {

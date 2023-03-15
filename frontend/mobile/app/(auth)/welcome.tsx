@@ -1,5 +1,5 @@
 import { useRouter } from "expo-router";
-import { View, Text } from "react-native";
+import { View } from "react-native";
 import { Button } from "../../src/components/atoms";
 
 const Welcome = () => {

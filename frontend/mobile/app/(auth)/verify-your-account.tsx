@@ -1,5 +1,5 @@
 import { useRouter, useSearchParams } from "expo-router";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Filed } from "../../src/components/atoms";
 import { Form } from "../../src/components/organisms";
 import { Endpoints } from "../../src/enums";

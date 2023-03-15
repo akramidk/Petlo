@@ -1,4 +1,3 @@
-import { Pressable } from "react-native";
 import clsx from "clsx";
 import {
   ArrowSmallLeftIcon,
