@@ -16,6 +16,7 @@ interface useAPIMutationProps {
     showFailedAlert?: boolean;
     hideFailedAlertAfter?: number;
     resetFailedStatusAfter?: number;
+    resetSucceededStatusAfter?: number;
   };
 }
 
@@ -37,6 +38,7 @@ const useAPIMutation = <Request, Response>({
     showFailedAlert = true,
     hideFailedAlertAfter = 2000,
     resetFailedStatusAfter = 2000,
+    resetSucceededStatusAfter = 2000,
   },
 }: useAPIMutationProps) => {
   const [status, setStatus] = useState<status>();
@@ -107,6 +109,10 @@ const useAPIMutation = <Request, Response>({
     if (onSucceeded) {
       onSucceeded();
     }
+
+    setTimeout(() => {
+      setStatus(undefined);
+    }, resetSucceededStatusAfter);
   };
 
   useEffect(() => {

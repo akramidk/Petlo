@@ -1,9 +1,12 @@
 import { useRouter, useSearchParams } from "expo-router";
 import { useState } from "react";
-import { Filed } from "../../src/components/atoms";
+import { Text } from "react-native";
+import { View } from "react-native";
+import { Filed, Link } from "../../src/components/atoms";
 import { Form } from "../../src/components/organisms";
 import { Endpoints } from "../../src/enums";
 import { useAPIMutation, useTranslationsContext } from "../../src/hooks";
+import { ResendVerificationCodeResponse } from "../../src/interfaces";
 
 const VERIFICATION_CODE_LENGTH = 6;
 
@@ -11,14 +14,34 @@ const VerifyYourAccount = () => {
   const { t } = useTranslationsContext();
   const router = useRouter();
 
-  const { phoneNumber, sessionToken } = useSearchParams();
+  const { phoneNumber, sessionToken: sessionTokenParam } = useSearchParams();
+  const [sessionToken, setSessionToken] = useState(sessionTokenParam);
+
   const [verificationCode, setVerificationCode] = useState<string>();
-  const { trigger, status } = useAPIMutation<unknown, unknown>({
+  const { trigger: verifyTrigger, status: verifyStatus } = useAPIMutation<
+    unknown,
+    unknown
+  >({
     endpoint: Endpoints.VERIFY_CUSTOMER_ACCOUNT,
     method: "POST",
     options: {
       onSucceeded: () => router.replace("/"),
       overwriteSessionToken: sessionToken,
+    },
+  });
+
+  const {
+    response: resendCodeResponse,
+    trigger: resendCodeTrigger,
+    status: resendCodeStatus,
+  } = useAPIMutation<undefined, ResendVerificationCodeResponse>({
+    endpoint: Endpoints.RESEND_VERIFICATION_CODE,
+    method: "POST",
+    options: {
+      onSucceeded: () =>
+        setSessionToken(resendCodeResponse.body.customer.session_token),
+      overwriteSessionToken: sessionToken,
+      resetSucceededStatusAfter: 1000,
     },
   });
 
@@ -32,11 +55,11 @@ const VerifyYourAccount = () => {
       button={{
         value: t("VERIFY_YOUR_ACCOUNT_VERIFY_BUTTON"),
         onClick: () =>
-          trigger({
+          verifyTrigger({
             verification_code: Number(verificationCode),
           }),
         status:
-          status ??
+          verifyStatus ??
           (verificationCode?.trim()?.length === VERIFICATION_CODE_LENGTH
             ? "active"
             : "inactive"),
@@ -51,6 +74,19 @@ const VerifyYourAccount = () => {
         keyboardType="number-pad"
         maxLength={VERIFICATION_CODE_LENGTH}
       />
+
+      <View className="mt-[16px] flex-row justify-between">
+        <Link
+          onClick={() => console.log("Edit Phone Number")}
+          value="Edit Phone Number"
+        />
+
+        <Link
+          onClick={() => resendCodeTrigger(undefined)} // TODO handle this shit
+          value="Resend Code"
+          status={resendCodeStatus}
+        />
+      </View>
     </Form>
   );
 };

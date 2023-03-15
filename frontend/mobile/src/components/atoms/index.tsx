@@ -6,6 +6,7 @@ import Selector from "./Selector";
 import FiledWithSelector from "./FiledWithSelector";
 import BackButton from "./BackButton";
 import Options from "./Options";
+import Link from "./Link";
 
 export {
   Logo,
@@ -16,4 +17,5 @@ export {
   FiledWithSelector,
   BackButton,
   Options,
+  Link,
 };

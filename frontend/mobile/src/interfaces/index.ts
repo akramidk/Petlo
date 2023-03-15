@@ -19,6 +19,7 @@ import {
   CreateNewCustomerRequest,
   CreateNewCustomerResponse,
 } from "./Endpoints/CreateNewCustomer";
+import { ResendVerificationCodeResponse } from "./Endpoints/ResendVerificationCode";
 
 export {
   NewVersionAvailableRequest,
@@ -36,4 +37,5 @@ export {
   ErrorResponse,
   CreateNewCustomerRequest,
   CreateNewCustomerResponse,
+  ResendVerificationCodeResponse,
 };
