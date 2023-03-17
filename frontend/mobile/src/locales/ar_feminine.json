@@ -50,5 +50,8 @@
   "RESET_PASSWORD_STEP_1_TITLE": "تغيير كلمة المرور",
   "RESET_PASSWORD_STEP_1_BUTTON": "اكمل",
   "RESET_PASSWORD_PHONE_NUMBER_LABEL": "رقم الهاتف",
-  "RESET_PASSWORD_PHONE_NUMBER_PLACEHOLDER": "ادخل رقم الهاتف"
+  "RESET_PASSWORD_PHONE_NUMBER_PLACEHOLDER": "ادخل رقم الهاتف",
+  "RESET_PASSWORD_STEP_2_TITLE": "خطوة تحقق",
+  "RESET_PASSWORD_STEP_2_HELPER_TEXT": "لقد ارسلنا رسالة نصية تحتوي على رمز من %{verificationCodeLength} أرقام الى رقم هاتفك %{phoneNumber}, قم بادخاله بالاسفل لاكمال عملية تغيير كلمة المرور.",
+  "RESET_PASSWORD_STEP_2_BUTTON": "تحقق"
 }

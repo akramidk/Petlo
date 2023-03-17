@@ -9,4 +9,5 @@ export enum Endpoints {
   VERIFY_SIGN_IN = "/v1/sessions/verification",
   RESEND_VERIFICATION_CODE_ON_VERIFY_SIGN_IN = "/v1/sessions/verification/resend-code",
   REQUEST_RESET_PASSWORD = "/v1/customers/request-reset-password",
+  REQUEST_RESET_PASSWORD_VERIFICATION = "/v1/customers/verify-reset-password-request",
 }

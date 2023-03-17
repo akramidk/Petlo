@@ -41,6 +41,10 @@ import {
   RequestResetPasswordRequest,
   RequestResetPasswordResponse,
 } from "./Endpoints/RequestResetPassword";
+import {
+  RequestResetPasswordVerificationRequest,
+  RequestResetPasswordVerificationResponse,
+} from "./Endpoints/RequestResetPasswordVerification";
 
 export {
   NewVersionAvailableRequest,
@@ -70,4 +74,6 @@ export {
   VerifySignInResponse,
   RequestResetPasswordRequest,
   RequestResetPasswordResponse,
+  RequestResetPasswordVerificationRequest,
+  RequestResetPasswordVerificationResponse,
 };
