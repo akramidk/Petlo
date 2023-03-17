@@ -1,7 +1,11 @@
 import { useRouter } from "expo-router";
 import { Form } from "../../src/components/organisms";
-import { useAPIMutation, useTranslationsContext } from "../../src/hooks";
-import { FiledWithSelector, Filed } from "../../src/components/atoms";
+import {
+  useAPIMutation,
+  useSettingsContext,
+  useTranslationsContext,
+} from "../../src/hooks";
+import { FiledWithSelector, Filed, Link } from "../../src/components/atoms";
 import { useMemo, useState } from "react";
 import { COUNTIES_PHONE_CODE_OPTIONS } from "../../src/constants";
 import {
@@ -10,10 +14,13 @@ import {
   CreateSessionResponse,
 } from "../../src/interfaces";
 import { Endpoints } from "../../src/enums";
+import { View } from "react-native";
+import clsx from "clsx";
 
 const SignIn = () => {
-  const { t } = useTranslationsContext();
   const router = useRouter();
+  const { t } = useTranslationsContext();
+  const { direction } = useSettingsContext();
 
   const [countryCode, setCountryCode] = useState<BaseOption>(
     COUNTIES_PHONE_CODE_OPTIONS.find((code) => code.value === "+962")
@@ -86,6 +93,18 @@ const SignIn = () => {
         value={password}
         secureTextEntry={true}
       />
+
+      <View
+        className={clsx(
+          "mt-[16px] justify-between",
+          direction === "ltr" ? "flex-row" : "flex-row-reverse"
+        )}
+      >
+        <Link
+          onClick={() => router.push("/reset-password")}
+          value={t("VERIFY_SIGN_IN_REQUEST_FORGOT_PASSWORD")}
+        />
+      </View>
     </Form>
   );
 };

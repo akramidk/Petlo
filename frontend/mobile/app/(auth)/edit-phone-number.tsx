@@ -59,7 +59,6 @@ const EditPhoneNumber = () => {
       backButton={() => router.back()}
     >
       <FiledWithSelector
-        cn="mb-[16px]"
         name={t("EDIT_PHONE_NUMBER_NEW_PHONE_NUMBER_FILED_LABEL")}
         require={true}
         placeholder={t("EDIT_PHONE_NUMBER_NEW_PHONE_NUMBER_PLACEHOLDER")}

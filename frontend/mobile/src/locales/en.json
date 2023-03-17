@@ -41,5 +41,10 @@
   "SIGN_IN_PASSWORD_FILED_PLACEHOLDER": "enter your password",
   "VERIFY_SIGN_IN_REQUEST_TITLE": "Verification Step",
   "VERIFY_SIGN_IN_REQUEST_PLACEHOLDER": "We sent an sms with %{verificationCodeLength} digit code to your phone number %{phoneNumber}, type it below to complete your sign in.",
-  "VERIFY_SIGN_IN_REQUEST_BUTTON": "Verify"
+  "VERIFY_SIGN_IN_REQUEST_FORGOT_PASSWORD": "Forgot Password?",
+  "VERIFY_SIGN_IN_REQUEST_BUTTON": "Verify",
+  "RESET_PASSWORD_STEP_1_TITLE": "Reset Password",
+  "RESET_PASSWORD_STEP_1_BUTTON": "Continue",
+  "RESET_PASSWORD_PHONE_NUMBER_LABEL": "Phone Number",
+  "RESET_PASSWORD_PHONE_NUMBER_PLACEHOLDER": "enter your phone number"
 }
