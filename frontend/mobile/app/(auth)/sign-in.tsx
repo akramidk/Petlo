@@ -44,8 +44,12 @@ const SignIn = () => {
     method: "POST",
     options: {
       onSucceeded: () => {
+        const page = response.body.customer.verified
+          ? "verify-sign-in"
+          : "verify-your-account";
+
         router.replace(
-          `/verify-sign-in?${new URLSearchParams({
+          `/${page}?${new URLSearchParams({
             phoneNumber: countryCode.value + phoneNumber,
             sessionToken: response.body.customer.session_token,
           }).toString()}`
