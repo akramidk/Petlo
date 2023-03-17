@@ -52,7 +52,7 @@ const useAPIFetching = <Request, Response>({
       method: "GET",
       url: URI,
       headers: {
-        Authorization: sessionToken,
+        Authorization: `bearer ${sessionToken}`,
       },
     }).then((res) => res.data);
   };
