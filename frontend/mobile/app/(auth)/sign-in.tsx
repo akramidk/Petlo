@@ -38,7 +38,7 @@ const SignIn = () => {
     options: {
       onSucceeded: () => {
         router.replace(
-          `/verify-sign-in-request?${new URLSearchParams({
+          `/verify-sign-in?${new URLSearchParams({
             phoneNumber: countryCode.value + phoneNumber,
             sessionToken: response.body.customer.session_token,
           }).toString()}`

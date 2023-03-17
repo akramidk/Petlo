@@ -28,6 +28,7 @@ import {
   CreateSessionRequest,
   CreateSessionResponse,
 } from "./Endpoints/CreateSession";
+import { ResendVerificationCodeOnVerifySignInResponse } from "./Endpoints/ResendVerificationCodeOnVerifySignIn";
 
 export {
   NewVersionAvailableRequest,
@@ -50,4 +51,5 @@ export {
   EditPhoneNumberOnVerificationResponse,
   CreateSessionRequest,
   CreateSessionResponse,
+  ResendVerificationCodeOnVerifySignInResponse,
 };

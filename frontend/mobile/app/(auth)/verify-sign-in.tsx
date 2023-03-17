@@ -11,6 +11,7 @@ import { VERIFICATION_CODE_LENGTH } from "../../src/constants";
 import { Filed, Link } from "../../src/components/atoms";
 import { Endpoints } from "../../src/enums";
 import clsx from "clsx";
+import { ResendVerificationCodeOnVerifySignInResponse } from "../../src/interfaces";
 
 const VerifySignInRequest = () => {
   const router = useRouter();
@@ -23,7 +24,7 @@ const VerifySignInRequest = () => {
   const [verificationCode, setVerificationCode] = useState<string>("");
 
   const { trigger, status } = useAPIMutation<unknown, unknown>({
-    endpoint: Endpoints.VERIFY_SIGN_IN_REQUEST,
+    endpoint: Endpoints.VERIFY_SIGN_IN,
     method: "POST",
     options: {
       onSucceeded: () => router.replace("/"),
@@ -36,11 +37,12 @@ const VerifySignInRequest = () => {
     response: resendCodeResponse,
     trigger: resendCodeTrigger,
     status: resendCodeStatus,
-  } = useAPIMutation<unknown, unknown>({
-    endpoint: Endpoints.RESEND_VERIFICATION_CODE_ON_VERIFY_SIGN_IN_REQUEST,
+  } = useAPIMutation<null, ResendVerificationCodeOnVerifySignInResponse>({
+    endpoint: Endpoints.RESEND_VERIFICATION_CODE_ON_VERIFY_SIGN_IN,
     method: "POST",
     options: {
-      onSucceeded: () => setSessionToken(""),
+      onSucceeded: () =>
+        setSessionToken(resendCodeResponse.body.customer.session_token),
       overwriteSessionToken: sessionToken,
     },
   });
