@@ -81,9 +81,11 @@ const ResetPassword = () => {
   }
 
   if (step === 2) {
-    <View>
-      <Text>{sessionToken}</Text>
-    </View>;
+    return (
+      <View>
+        <Text>bla</Text>
+      </View>
+    );
   }
 };
 

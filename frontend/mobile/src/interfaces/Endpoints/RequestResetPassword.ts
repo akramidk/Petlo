@@ -4,7 +4,6 @@ export interface RequestResetPasswordRequest {
 
 export interface RequestResetPasswordResponse {
   customer: {
-    name: string;
     session_token: string;
   };
 }
