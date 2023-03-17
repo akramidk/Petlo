@@ -89,7 +89,7 @@ const VerifyYourAccount = () => {
       >
         <Link
           onClick={() =>
-            router.replace(`/edit-phone-number?sessionToken=${sessionToken}`)
+            router.push(`/edit-phone-number?sessionToken=${sessionToken}`)
           }
           value={t("VERIFY_YOUR_ACCOUNT_EDIT_PHONE_NUMBER_LINK")}
         />

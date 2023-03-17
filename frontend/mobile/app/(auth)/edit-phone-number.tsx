@@ -56,6 +56,7 @@ const EditPhoneNumber = () => {
             ? "active"
             : "inactive"),
       }}
+      backButton={() => router.back()}
     >
       <FiledWithSelector
         cn="mb-[16px]"
