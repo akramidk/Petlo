@@ -36,5 +36,11 @@
   "EDIT_PHONE_NUMBER_TITLE": "تعديل رقم الهاتف",
   "EDIT_PHONE_NUMBER_NEW_PHONE_NUMBER_FILED_LABEL": "رقم الهاتف الجديد",
   "EDIT_PHONE_NUMBER_NEW_PHONE_NUMBER_PLACEHOLDER": "ادخل رقم الهاتف الجديد",
-  "EDIT_PHONE_NUMBER_EDIT_BUTTON": "تعديل"
+  "EDIT_PHONE_NUMBER_EDIT_BUTTON": "تعديل",
+  "SIGN_IN_TITLE": "تسجيل الدخول",
+  "SIGN_IN_BUTTON": "تسجيل الدخول",
+  "SIGN_IN_PHONE_NUMBER_LABEL": "رقم الهاتف",
+  "SIGN_IN_PHONE_NUMBER_PLACEHOLDER": "ادخل رقم هاتفك",
+  "SIGN_IN_PASSWORD_FILED_LABEL": "كلمة المرور",
+  "SIGN_IN_PASSWORD_FILED_PLACEHOLDER": "ادخل كلمة المرور"
 }

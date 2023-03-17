@@ -24,6 +24,10 @@ import {
   EditPhoneNumberOnVerificationRequest,
   EditPhoneNumberOnVerificationResponse,
 } from "./Endpoints/EditPhoneNumberOnVerification";
+import {
+  CreateSessionRequest,
+  CreateSessionResponse,
+} from "./Endpoints/CreateSession";
 
 export {
   NewVersionAvailableRequest,
@@ -44,4 +48,6 @@ export {
   ResendVerificationCodeResponse,
   EditPhoneNumberOnVerificationRequest,
   EditPhoneNumberOnVerificationResponse,
+  CreateSessionRequest,
+  CreateSessionResponse,
 };

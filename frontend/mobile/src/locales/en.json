@@ -32,5 +32,11 @@
   "EDIT_PHONE_NUMBER_TITLE": "Edit The Phone Number",
   "EDIT_PHONE_NUMBER_NEW_PHONE_NUMBER_FILED_LABEL": "The New Phone Number",
   "EDIT_PHONE_NUMBER_NEW_PHONE_NUMBER_PLACEHOLDER": "enter the new phone number",
-  "EDIT_PHONE_NUMBER_EDIT_BUTTON": "Edit"
+  "EDIT_PHONE_NUMBER_EDIT_BUTTON": "Edit",
+  "SIGN_IN_TITLE": "Sign In",
+  "SIGN_IN_BUTTON": "Sign In",
+  "SIGN_IN_PHONE_NUMBER_LABEL": "Phone Number",
+  "SIGN_IN_PHONE_NUMBER_PLACEHOLDER": "enter your phone number",
+  "SIGN_IN_PASSWORD_FILED_LABEL": "Password",
+  "SIGN_IN_PASSWORD_FILED_PLACEHOLDER": "enter your password"
 }
