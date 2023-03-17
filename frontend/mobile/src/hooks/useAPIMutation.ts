@@ -58,7 +58,7 @@ const useAPIMutation = <Request, Response>({
       url: URI,
       data: arg,
       headers: {
-        Authorization: sessionToken,
+        Authorization: `bearer ${sessionToken}`,
       },
     }).then((res) => res.data);
   };

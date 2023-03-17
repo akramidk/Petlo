@@ -42,5 +42,8 @@
   "SIGN_IN_PHONE_NUMBER_LABEL": "رقم الهاتف",
   "SIGN_IN_PHONE_NUMBER_PLACEHOLDER": "ادخل رقم هاتفك",
   "SIGN_IN_PASSWORD_FILED_LABEL": "كلمة المرور",
-  "SIGN_IN_PASSWORD_FILED_PLACEHOLDER": "ادخل كلمة المرور"
+  "SIGN_IN_PASSWORD_FILED_PLACEHOLDER": "ادخل كلمة المرور",
+  "VERIFY_SIGN_IN_REQUEST_TITLE": "خطوة تحقق",
+  "VERIFY_SIGN_IN_REQUEST_PLACEHOLDER": "لقد ارسلنا رسالة نصية تحتوي على رمز من %{verificationCodeLength} أرقام الى رقم هاتفك %{phoneNumber}, قم بادخاله بالاسفل لاكمال عملية تسجيل الدخول.",
+  "VERIFY_SIGN_IN_REQUEST_BUTTON": "تأكيد"
 }

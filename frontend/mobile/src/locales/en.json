@@ -38,5 +38,8 @@
   "SIGN_IN_PHONE_NUMBER_LABEL": "Phone Number",
   "SIGN_IN_PHONE_NUMBER_PLACEHOLDER": "enter your phone number",
   "SIGN_IN_PASSWORD_FILED_LABEL": "Password",
-  "SIGN_IN_PASSWORD_FILED_PLACEHOLDER": "enter your password"
+  "SIGN_IN_PASSWORD_FILED_PLACEHOLDER": "enter your password",
+  "VERIFY_SIGN_IN_REQUEST_TITLE": "Verification Step",
+  "VERIFY_SIGN_IN_REQUEST_PLACEHOLDER": "We sent an sms with %{verificationCodeLength} digit code to your phone number %{phoneNumber}, type it below to complete your sign in.",
+  "VERIFY_SIGN_IN_REQUEST_BUTTON": "Verify"
 }

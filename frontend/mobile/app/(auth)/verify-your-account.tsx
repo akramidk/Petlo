@@ -11,8 +11,7 @@ import {
   useTranslationsContext,
 } from "../../src/hooks";
 import { ResendVerificationCodeResponse } from "../../src/interfaces";
-
-const VERIFICATION_CODE_LENGTH = 6;
+import { VERIFICATION_CODE_LENGTH } from "../../src/constants";
 
 const VerifyYourAccount = () => {
   const { direction } = useSettingsContext();
