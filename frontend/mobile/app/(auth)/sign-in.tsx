@@ -35,7 +35,17 @@ const SignIn = () => {
   >({
     endpoint: Endpoints.CREATE_SESSION,
     method: "POST",
-    options: {},
+    options: {
+      onSucceeded: () => {
+        router.replace(
+          `/verify-sign-in-request?${new URLSearchParams({
+            phoneNumber: countryCode.value + phoneNumber,
+            sessionToken: response.body.customer.session_token,
+          }).toString()}`
+        );
+      },
+      fireOnSucceededAfter: 1000,
+    },
   });
 
   return (

@@ -58,6 +58,7 @@ const SignUp = () => {
           }).toString()}`
         );
       },
+      fireOnSucceededAfter: 1000,
     },
   });
 
