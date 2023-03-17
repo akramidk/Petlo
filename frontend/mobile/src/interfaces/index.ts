@@ -29,6 +29,14 @@ import {
   CreateSessionResponse,
 } from "./Endpoints/CreateSession";
 import { ResendVerificationCodeOnVerifySignInResponse } from "./Endpoints/ResendVerificationCodeOnVerifySignIn";
+import {
+  VerifyCustomerAccountRequest,
+  VerifyCustomerAccountResponse,
+} from "./Endpoints/VerifyCustomerAccount";
+import {
+  VerifySignInRequest,
+  VerifySignInResponse,
+} from "./Endpoints/VerifySignIn";
 
 export {
   NewVersionAvailableRequest,
@@ -52,4 +60,8 @@ export {
   CreateSessionRequest,
   CreateSessionResponse,
   ResendVerificationCodeOnVerifySignInResponse,
+  VerifyCustomerAccountRequest,
+  VerifyCustomerAccountResponse,
+  VerifySignInRequest,
+  VerifySignInResponse,
 };

@@ -11,7 +11,11 @@ import { VERIFICATION_CODE_LENGTH } from "../../src/constants";
 import { Filed, Link } from "../../src/components/atoms";
 import { Endpoints } from "../../src/enums";
 import clsx from "clsx";
-import { ResendVerificationCodeOnVerifySignInResponse } from "../../src/interfaces";
+import {
+  ResendVerificationCodeOnVerifySignInResponse,
+  VerifySignInRequest,
+  VerifySignInResponse,
+} from "../../src/interfaces";
 
 const VerifySignInRequest = () => {
   const router = useRouter();
@@ -23,7 +27,10 @@ const VerifySignInRequest = () => {
 
   const [verificationCode, setVerificationCode] = useState<string>("");
 
-  const { trigger, status } = useAPIMutation<unknown, unknown>({
+  const { trigger, status } = useAPIMutation<
+    VerifySignInRequest,
+    VerifySignInResponse
+  >({
     endpoint: Endpoints.VERIFY_SIGN_IN,
     method: "POST",
     options: {

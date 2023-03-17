@@ -10,7 +10,11 @@ import {
   useSettingsContext,
   useTranslationsContext,
 } from "../../src/hooks";
-import { ResendVerificationCodeResponse } from "../../src/interfaces";
+import {
+  ResendVerificationCodeResponse,
+  VerifyCustomerAccountRequest,
+  VerifyCustomerAccountResponse,
+} from "../../src/interfaces";
 import { VERIFICATION_CODE_LENGTH } from "../../src/constants";
 
 const VerifyYourAccount = () => {
@@ -23,8 +27,8 @@ const VerifyYourAccount = () => {
 
   const [verificationCode, setVerificationCode] = useState<string>();
   const { trigger: verifyTrigger, status: verifyStatus } = useAPIMutation<
-    unknown,
-    unknown
+    VerifyCustomerAccountRequest,
+    VerifyCustomerAccountResponse
   >({
     endpoint: Endpoints.VERIFY_CUSTOMER_ACCOUNT,
     method: "POST",
