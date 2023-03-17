@@ -18,7 +18,7 @@ const EditPhoneNumber = () => {
 
   const [countryCode, setCountryCode] = useState<BaseOption>(
     COUNTIES_PHONE_CODE_OPTIONS.find((code) => code.value === "+962")
-  ); // TODO Pagination to improve performance
+  );
   const [phoneNumber, setPhoneNumber] = useState<string>("");
 
   const { response, trigger, status } = useAPIMutation<
