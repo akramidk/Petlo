@@ -83,7 +83,7 @@ const ResetPassword = () => {
   if (step === 2) {
     return (
       <View>
-        <Text>bla</Text>
+        <Text>{sessionToken}</Text>
       </View>
     );
   }
