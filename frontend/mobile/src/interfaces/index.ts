@@ -20,6 +20,10 @@ import {
   CreateNewCustomerResponse,
 } from "./Endpoints/CreateNewCustomer";
 import { ResendVerificationCodeResponse } from "./Endpoints/ResendVerificationCode";
+import {
+  EditPhoneNumberOnVerificationRequest,
+  EditPhoneNumberOnVerificationResponse,
+} from "./Endpoints/EditPhoneNumberOnVerification";
 
 export {
   NewVersionAvailableRequest,
@@ -38,4 +42,6 @@ export {
   CreateNewCustomerRequest,
   CreateNewCustomerResponse,
   ResendVerificationCodeResponse,
+  EditPhoneNumberOnVerificationRequest,
+  EditPhoneNumberOnVerificationResponse,
 };
