@@ -17,7 +17,7 @@ import {
   VerifySignInResponse,
 } from "../../src/interfaces";
 
-const VerifySignInRequest = () => {
+const VerifySignIn = () => {
   const router = useRouter();
   const { direction } = useSettingsContext();
   const { t } = useTranslationsContext();
@@ -98,4 +98,4 @@ const VerifySignInRequest = () => {
   );
 };
 
-export default VerifySignInRequest;
+export default VerifySignIn;
