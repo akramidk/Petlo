@@ -45,6 +45,7 @@ const ResetPassword = () => {
           );
           setStep(2);
         },
+        preventSucceededStatus: true,
       },
     }
   );

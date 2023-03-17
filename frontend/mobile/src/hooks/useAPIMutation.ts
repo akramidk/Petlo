@@ -18,6 +18,7 @@ interface useAPIMutationProps {
     hideFailedAlertAfter?: number;
     resetFailedStatusAfter?: number;
     resetSucceededStatusAfter?: number;
+    preventSucceededStatus?: boolean;
   };
 }
 
@@ -41,6 +42,7 @@ const useAPIMutation = <Request, Response>({
     hideFailedAlertAfter = 2000,
     resetFailedStatusAfter = 2000,
     resetSucceededStatusAfter = 2000,
+    preventSucceededStatus = false,
   },
 }: useAPIMutationProps) => {
   const [status, setStatus] = useState<status>();
@@ -93,7 +95,13 @@ const useAPIMutation = <Request, Response>({
     }
   }, [isMutating]);
 
+  const onLoadingStatus = () => {
+    setStatus("loading");
+  };
+
   const onFailedStatus = () => {
+    setStatus("failed");
+
     if (showFailedAlert) {
       setAlert({
         variant: "failed",
@@ -108,6 +116,10 @@ const useAPIMutation = <Request, Response>({
   };
 
   const onSucceededStatus = () => {
+    if (!preventSucceededStatus) {
+      setStatus("succeeded");
+    }
+
     if (onSucceeded) {
       setTimeout(() => {
         onSucceeded();
@@ -122,9 +134,10 @@ const useAPIMutation = <Request, Response>({
   useEffect(() => {
     if (!response?.status) return;
 
-    setStatus(response.status);
-
-    if (response.status === "loading") return;
+    if (response.status === "loading") {
+      onLoadingStatus();
+      return;
+    }
 
     if (response.status === "failed") {
       onFailedStatus();
