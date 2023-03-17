@@ -8,12 +8,13 @@ import {
   RequestResetPasswordResponse,
   RequestResetPasswordVerificationRequest,
   RequestResetPasswordVerificationResponse,
+  ResetPasswordRequest,
+  ResetPasswordResponse,
 } from "../../src/interfaces";
 import { useState } from "react";
 import { COUNTIES_PHONE_CODE_OPTIONS } from "../../src/constants";
 import { Endpoints } from "../../src/enums";
 import { VERIFICATION_CODE_LENGTH } from "../../src/constants";
-import { Text, View } from "react-native";
 
 const ResetPassword = () => {
   const router = useRouter();
@@ -26,8 +27,8 @@ const ResetPassword = () => {
     COUNTIES_PHONE_CODE_OPTIONS.find((code) => code.value === "+962")
   );
   const [phoneNumber, setPhoneNumber] = useState<string>("");
-
   const [verificationCode, setVerificationCode] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
 
   const {
     response: requestResetPasswordResponse,
@@ -64,6 +65,22 @@ const ResetPassword = () => {
           requestResetPasswordVerificationResponse.body.customer.session_token
         );
         setStep(3);
+      },
+      fireOnSucceededAfter: 1000,
+      overwriteSessionToken: sessionToken,
+    },
+  });
+
+  const {
+    response: resetPasswordResponse,
+    trigger: resetPasswordTrigger,
+    status: resetPasswordStatus,
+  } = useAPIMutation<ResetPasswordRequest, ResetPasswordResponse>({
+    endpoint: Endpoints.RESET_PASSWORD,
+    method: "POST",
+    options: {
+      onSucceeded: () => {
+        router.replace("/");
       },
       fireOnSucceededAfter: 1000,
       overwriteSessionToken: sessionToken,
@@ -140,10 +157,30 @@ const ResetPassword = () => {
 
   if (step === 3) {
     return (
-      <View>
-        <Text>33333333333333333333333333333333333</Text>
-        <Text>{sessionToken}</Text>
-      </View>
+      <Form
+        title={t("RESET_PASSWORD_STEP_3_TITLE")}
+        button={{
+          value: t("RESET_PASSWORD_STEP_3_BUTTON"),
+          onClick: () => {
+            resetPasswordTrigger({
+              password: password,
+            });
+          },
+          status:
+            resetPasswordStatus ??
+            (password.trim().length >= 8 ? "active" : "inactive"),
+        }}
+      >
+        <Filed
+          name={t("RESET_PASSWORD_PASSWORD_LABEL")}
+          helperText={t("RESET_PASSWORD_PASSWORD_HELPER_TEXT")}
+          require={true}
+          placeholder={t("RESET_PASSWORD_PASSWORD_PLACEHOLDER")}
+          onChange={setPassword}
+          value={password}
+          secureTextEntry={true}
+        />
+      </Form>
     );
   }
 };

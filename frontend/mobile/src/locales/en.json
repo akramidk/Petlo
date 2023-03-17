@@ -49,5 +49,10 @@
   "RESET_PASSWORD_PHONE_NUMBER_PLACEHOLDER": "enter your phone number",
   "RESET_PASSWORD_STEP_2_TITLE": "Verification Step",
   "RESET_PASSWORD_STEP_2_HELPER_TEXT": "We sent an sms with %{verificationCodeLength} digit code to your phone number %{phoneNumber}, type it below to complete resetting tour password.",
-  "RESET_PASSWORD_STEP_2_BUTTON": "Verify"
+  "RESET_PASSWORD_STEP_2_BUTTON": "Verify",
+  "RESET_PASSWORD_STEP_3_TITLE": "Reset Password",
+  "RESET_PASSWORD_PASSWORD_LABEL": "New Password",
+  "RESET_PASSWORD_PASSWORD_HELPER_TEXT": "8 characters or more",
+  "RESET_PASSWORD_PASSWORD_PLACEHOLDER": "enter a new password",
+  "RESET_PASSWORD_STEP_3_BUTTON": "Reset"
 }
