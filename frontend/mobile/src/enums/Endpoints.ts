@@ -7,4 +7,5 @@ export enum Endpoints {
   EDIT_PHONE_NUMBER_ON_VERIFICATION = "/v1/customers/verification/change-phone-number",
   CREATE_SESSION = "/v1/sessions",
   VERIFY_SIGN_IN_REQUEST = "/v1/sessions/verification",
+  RESEND_VERIFICATION_CODE_ON_VERIFY_SIGN_IN_REQUEST = "/v1/sessions/verification/resend-code",
 }

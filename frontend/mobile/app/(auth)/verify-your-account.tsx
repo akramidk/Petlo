@@ -46,7 +46,6 @@ const VerifyYourAccount = () => {
       onSucceeded: () =>
         setSessionToken(resendCodeResponse.body.customer.session_token),
       overwriteSessionToken: sessionToken,
-      fireOnSucceededAfter: 1000,
     },
   });
 
