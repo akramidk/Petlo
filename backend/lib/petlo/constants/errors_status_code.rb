@@ -53,7 +53,8 @@ module CONSTANTS
             3001000,
             3004000,
             3004002,
-            3004003
+            3004003,
+            3003001
         ]
     }.each_with_object({}) { |(status_code, errors), new_hash| errors.each { |error| new_hash[error] = status_code } }
 end
