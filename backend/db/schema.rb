@@ -118,7 +118,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_12_125933) do
     t.string "phone_number", null: false
     t.integer "phone_verification_status", default: 0, null: false
     t.string "password_digest", null: false
-    t.integer "verification_code"
+    t.string "verification_code"
     t.integer "verification_code_permission"
     t.datetime "verification_code_created_at"
     t.string "stripe_id"

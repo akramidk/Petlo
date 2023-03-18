@@ -2,7 +2,7 @@ module Customer::Verification
   require 'securerandom'
 
   def generate_verification_code(permission:)
-    code = SecureRandom.random_number(100000..999999)
+    code = SecureRandom.random_number(100000..999999).to_s
 
     self.update!(
       verification_code: code,
@@ -14,7 +14,7 @@ module Customer::Verification
   end
 
   def verify_verification_code(code:, permission:)
-    if code != self.verification_code
+    if code != self.verification_code.to_i
       raise(RuntimeError, 2000009)
     elsif permission != self.verification_code_permission
       raise(RuntimeError, 2000010)
