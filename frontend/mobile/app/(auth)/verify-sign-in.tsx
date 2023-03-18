@@ -1,6 +1,6 @@
-import { useRouter, useSearchParams } from "expo-router";
+import { useSearchParams } from "expo-router";
 import { useState } from "react";
-import { Text, View } from "react-native";
+import { View } from "react-native";
 import { Form } from "../../src/components/organisms";
 import {
   useAPIMutation,
@@ -18,23 +18,26 @@ import {
 } from "../../src/interfaces";
 
 const VerifySignIn = () => {
-  const router = useRouter();
-  const { direction } = useSettingsContext();
   const { t } = useTranslationsContext();
+  const { direction, setCustomerWithSessionToken } = useSettingsContext();
 
   const { phoneNumber, sessionToken: sessionTokenParam } = useSearchParams();
   const [sessionToken, setSessionToken] = useState(sessionTokenParam);
 
   const [verificationCode, setVerificationCode] = useState<string>("");
 
-  const { trigger, status } = useAPIMutation<
+  const { response, trigger, status } = useAPIMutation<
     VerifySignInRequest,
     VerifySignInResponse
   >({
     endpoint: Endpoints.VERIFY_SIGN_IN,
     method: "POST",
     options: {
-      onSucceeded: () => router.replace("/"),
+      onSucceeded: () =>
+        setCustomerWithSessionToken({
+          name: response.body.customer.name,
+          sessionToken: response.body.customer.session_token,
+        }),
       fireOnSucceededAfter: 1000,
       overwriteSessionToken: sessionToken,
     },

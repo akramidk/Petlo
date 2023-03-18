@@ -71,7 +71,7 @@ const Layout = () => {
     Manrope_800ExtraBold,
   });
 
-  const { customer } = useCustomer();
+  const { customer, setCustomer, setCustomerWithSessionToken } = useCustomer();
   const {
     language,
     changeLanguage,
@@ -115,6 +115,8 @@ const Layout = () => {
         direction,
         storedLanguage,
         languageWithoutGender,
+        setCustomer,
+        setCustomerWithSessionToken,
       }}
     >
       <TranslationsContext.Provider value={{ t }}>

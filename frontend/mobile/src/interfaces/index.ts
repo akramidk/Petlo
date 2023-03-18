@@ -51,6 +51,9 @@ import {
 } from "./Endpoints/ResetPassword";
 import { ResendResetPasswordCodeResponse } from "./Endpoints/ResendResetPasswordCode";
 
+//entities interfaces
+import { Customer } from "./Entities/Customer";
+
 export {
   NewVersionAvailableRequest,
   NewVersionAvailableResponse,
@@ -84,4 +87,5 @@ export {
   ResetPasswordRequest,
   ResetPasswordResponse,
   ResendResetPasswordCodeResponse,
+  Customer,
 };

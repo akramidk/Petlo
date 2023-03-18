@@ -12,6 +12,7 @@ interface useAPIFetchingProps<Request> {
   SWROptions?: SWRConfiguration;
   options?: {
     wait?: boolean;
+    overwriteSessionToken?: string;
   };
 }
 
@@ -45,6 +46,7 @@ const useAPIFetching = <Request, Response>({
 
   const { URI, sessionToken } = useRequestBuilder({
     endpoint: SWREndpoint,
+    overwriteSessionToken: options?.overwriteSessionToken,
   });
 
   const fetcher = async () => {
@@ -54,7 +56,7 @@ const useAPIFetching = <Request, Response>({
       headers: {
         Authorization: `bearer ${sessionToken}`,
       },
-    }).then((res) => res.data);
+    }).then((res) => res);
   };
 
   const { data, error, isLoading, isValidating } = useSWR(
@@ -71,8 +73,8 @@ const useAPIFetching = <Request, Response>({
     if (data) {
       return {
         isFetching: false,
-        statusCode: data,
-        body: data,
+        statusCode: data.status,
+        body: data.data,
       };
     }
 
