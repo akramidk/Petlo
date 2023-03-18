@@ -35,15 +35,15 @@ const SelectLanguage = () => {
   if (step === 1) {
     return (
       <Form
-        title={t("SELECT_LANGUAGE_TITLE")}
-        helperText={t("SELECT_LANGUAGE_HELPER_TEXT")}
+        title={t("SELECT_LANGUAGE__TITLE")}
+        helperText={t("SELECT_LANGUAGE__HELPER_TEXT")}
         button={
           selectedLanguage
             ? {
                 value: t(
                   selectedLanguage?.gendered
-                    ? "SELECT_LANGUAGE_CONTINUE_BUTTON"
-                    : "SELECT_LANGUAGE_SAVE_BUTTON"
+                    ? "SELECT_LANGUAGE__CONTINUE_BUTTON"
+                    : "SELECT_LANGUAGE__SAVE_BUTTON"
                 ),
                 onClick: languageHandler,
               }
@@ -68,7 +68,7 @@ const SelectLanguage = () => {
         title={t("SELECT_LANGUAGE_PRONOUN_TITLE")}
         helperText={t("SELECT_LANGUAGE_PRONOUN_HELPER_TEXT")}
         button={{
-          value: t("SELECT_LANGUAGE_SAVE_BUTTON"),
+          value: t("SELECT_LANGUAGE__SAVE_BUTTON"),
           onClick: adjectiveHandler,
           status: selectedAdjective ? "active" : "inactive",
         }}

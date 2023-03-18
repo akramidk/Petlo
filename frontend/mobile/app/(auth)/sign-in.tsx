@@ -61,10 +61,10 @@ const SignIn = () => {
 
   return (
     <Form
-      title={t("SIGN_IN_TITLE")}
+      title={t("SIGN_IN__TITLE")}
       backButton={() => router.back()}
       button={{
-        value: t("SIGN_UP_BUTTON"),
+        value: t("SIGN_UP__BUTTON"),
         onClick: () => {
           trigger({
             phone_number: countryCode.value + phoneNumber,
@@ -76,9 +76,9 @@ const SignIn = () => {
     >
       <FiledWithSelector
         cn="mb-[16px]"
-        name={t("SIGN_IN_PHONE_NUMBER_LABEL")}
+        name={t("SIGN_IN__PHONE_NUMBER_LABEL")}
         require={true}
-        placeholder={t("SIGN_IN_PHONE_NUMBER_PLACEHOLDER")}
+        placeholder={t("SIGN_IN__PHONE_NUMBER_PLACEHOLDER")}
         options={COUNTIES_PHONE_CODE_OPTIONS}
         signalSelect={{
           selectedOption: countryCode,
@@ -90,9 +90,9 @@ const SignIn = () => {
       />
 
       <Filed
-        name={t("SIGN_IN_PASSWORD_FILED_LABEL")}
+        name={t("SIGN_IN__PASSWORD_FILED_LABEL")}
         require={true}
-        placeholder={t("SIGN_IN_PASSWORD_FILED_PLACEHOLDER")}
+        placeholder={t("SIGN_IN__PASSWORD_FILED_PLACEHOLDER")}
         onChange={setPassword}
         value={password}
         secureTextEntry={true}
@@ -106,7 +106,7 @@ const SignIn = () => {
       >
         <Link
           onClick={() => router.push("/reset-password")}
-          value={t("VERIFY_SIGN_IN_REQUEST_FORGOT_PASSWORD")}
+          value={t("VERIFY_SIGN_IN__FORGOT_PASSWORD")}
         />
       </View>
     </Form>

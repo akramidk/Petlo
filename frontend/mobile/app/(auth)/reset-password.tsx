@@ -115,10 +115,10 @@ const ResetPassword = () => {
   if (step === 1) {
     return (
       <Form
-        title={t("RESET_PASSWORD_STEP_1_TITLE")}
+        title={t("RESET_PASSWORD__STEP_1_TITLE")}
         backButton={() => router.back()}
         button={{
-          value: t("RESET_PASSWORD_STEP_1_BUTTON"),
+          value: t("RESET_PASSWORD__STEP_1_BUTTON"),
           onClick: () => {
             requestResetPasswordTrigger({
               phone_number: countryCode.value + phoneNumber,
@@ -132,9 +132,9 @@ const ResetPassword = () => {
         }}
       >
         <FiledWithSelector
-          name={t("RESET_PASSWORD_PHONE_NUMBER_LABEL")}
+          name={t("RESET_PASSWORD__PHONE_NUMBER_LABEL")}
           require={true}
-          placeholder={t("RESET_PASSWORD_PHONE_NUMBER_PLACEHOLDER")}
+          placeholder={t("RESET_PASSWORD__PHONE_NUMBER_PLACEHOLDER")}
           options={COUNTIES_PHONE_CODE_OPTIONS}
           signalSelect={{
             selectedOption: countryCode,
@@ -151,13 +151,13 @@ const ResetPassword = () => {
   if (step === 2) {
     return (
       <Form
-        title={t("RESET_PASSWORD_STEP_2_TITLE")}
-        helperText={t("RESET_PASSWORD_STEP_2_HELPER_TEXT", {
+        title={t("RESET_PASSWORD__STEP_2_TITLE")}
+        helperText={t("RESET_PASSWORD__STEP_2_HELPER_TEXT", {
           verificationCodeLength: VERIFICATION_CODE_LENGTH,
           phoneNumber: (countryCode.value + phoneNumber).replace("+", ""),
         })}
         button={{
-          value: t("RESET_PASSWORD_STEP_2_BUTTON"),
+          value: t("RESET_PASSWORD__STEP_2_BUTTON"),
           onClick: () => {
             requestResetPasswordVerificationTrigger({
               verification_code: Number(verificationCode),
@@ -185,7 +185,7 @@ const ResetPassword = () => {
         >
           <Link
             onClick={() => resendResetPasswordCodeTrigger(undefined)}
-            value={t("RESET_PASSWORD_RESEND_CODE_LINK")}
+            value={t("RESET_PASSWORD__RESEND_CODE_LINK")}
             status={resendResetPasswordCodeStatus}
           />
         </View>
@@ -196,9 +196,9 @@ const ResetPassword = () => {
   if (step === 3) {
     return (
       <Form
-        title={t("RESET_PASSWORD_STEP_3_TITLE")}
+        title={t("RESET_PASSWORD__STEP_3_TITLE")}
         button={{
-          value: t("RESET_PASSWORD_STEP_3_BUTTON"),
+          value: t("RESET_PASSWORD__STEP_3_BUTTON"),
           onClick: () => {
             resetPasswordTrigger({
               password: password,
@@ -210,10 +210,10 @@ const ResetPassword = () => {
         }}
       >
         <Filed
-          name={t("RESET_PASSWORD_PASSWORD_LABEL")}
-          helperText={t("RESET_PASSWORD_PASSWORD_HELPER_TEXT")}
+          name={t("RESET_PASSWORD__PASSWORD_LABEL")}
+          helperText={t("RESET_PASSWORD__PASSWORD_HELPER_TEXT")}
           require={true}
-          placeholder={t("RESET_PASSWORD_PASSWORD_PLACEHOLDER")}
+          placeholder={t("RESET_PASSWORD__PASSWORD_PLACEHOLDER")}
           onChange={setPassword}
           value={password}
           secureTextEntry={true}

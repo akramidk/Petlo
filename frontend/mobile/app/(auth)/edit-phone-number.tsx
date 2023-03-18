@@ -43,9 +43,9 @@ const EditPhoneNumber = () => {
 
   return (
     <Form
-      title={t("EDIT_PHONE_NUMBER_TITLE")}
+      title={t("EDIT_PHONE_NUMBER__TITLE")}
       button={{
-        value: t("EDIT_PHONE_NUMBER_EDIT_BUTTON"),
+        value: t("EDIT_PHONE_NUMBER__EDIT_BUTTON"),
         onClick: () =>
           trigger({
             phone_number: countryCode.value + phoneNumber,
@@ -59,9 +59,9 @@ const EditPhoneNumber = () => {
       backButton={() => router.back()}
     >
       <FiledWithSelector
-        name={t("EDIT_PHONE_NUMBER_NEW_PHONE_NUMBER_FILED_LABEL")}
+        name={t("EDIT_PHONE_NUMBER__NEW_PHONE_NUMBER_FILED_LABEL")}
         require={true}
-        placeholder={t("EDIT_PHONE_NUMBER_NEW_PHONE_NUMBER_PLACEHOLDER")}
+        placeholder={t("EDIT_PHONE_NUMBER__NEW_PHONE_NUMBER_PLACEHOLDER")}
         options={COUNTIES_PHONE_CODE_OPTIONS}
         signalSelect={{
           selectedOption: countryCode,

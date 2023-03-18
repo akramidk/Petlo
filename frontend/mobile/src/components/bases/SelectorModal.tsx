@@ -60,7 +60,7 @@ const SelectorModal = <T extends BaseOption>({
           )}
         >
           <TextInput
-            placeholder={t("OPTIONS_MODAL_COMP_SEARCH")}
+            placeholder={t("OPTIONS_MODAL_COMP__SEARCH")}
             placeholderTextColor="#aaa"
             className={clsx(
               "h-full flex-1",
@@ -80,7 +80,7 @@ const SelectorModal = <T extends BaseOption>({
                 },
               }}
             >
-              {t("OPTIONS_MODAL_COMP_CANCEL")}
+              {t("OPTIONS_MODAL_COMP__CANCEL")}
             </Text>
           </BaseButton>
         </View>
@@ -105,7 +105,7 @@ const SelectorModal = <T extends BaseOption>({
                 ? "active"
                 : "inactive"
             }
-            value={t("OPTIONS_MODAL_COMP_SELECT")}
+            value={t("OPTIONS_MODAL_COMP__SELECT")}
             onClick={onSelect}
           />
         </View>

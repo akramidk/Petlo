@@ -93,8 +93,8 @@ const Layout = () => {
     // TODO new design for this insted of an Alert
     if (newVersionAvailableResponse?.body?.value) {
       Alert.alert(
-        t("ROOT_LAYOUT_NEW_UPDATE_AVAILABLE_TITLE"),
-        t("ROOT_LAYOUT_NEW_UPDATE_AVAILABLE_MESSAGE"),
+        t("ROOT_LAYOUT__NEW_UPDATE_AVAILABLE_TITLE"),
+        t("ROOT_LAYOUT__NEW_UPDATE_AVAILABLE_MESSAGE"),
         [],
         { cancelable: false }
       );

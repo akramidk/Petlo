@@ -56,13 +56,13 @@ const VerifySignIn = () => {
 
   return (
     <Form
-      title={t("VERIFY_SIGN_IN_REQUEST_TITLE")}
-      helperText={t("VERIFY_SIGN_IN_REQUEST_PLACEHOLDER", {
+      title={t("VERIFY_SIGN_IN__TITLE")}
+      helperText={t("VERIFY_SIGN_IN__PLACEHOLDER", {
         verificationCodeLength: VERIFICATION_CODE_LENGTH,
         phoneNumber: phoneNumber.replace("+", ""),
       })}
       button={{
-        value: t("VERIFY_SIGN_IN_REQUEST_BUTTON"),
+        value: t("VERIFY_SIGN_IN__BUTTON"),
         onClick: () => {
           trigger({
             verification_code: Number(verificationCode),
@@ -90,7 +90,7 @@ const VerifySignIn = () => {
       >
         <Link
           onClick={() => resendCodeTrigger(undefined)} // TODO handle this shit
-          value={t("VERIFY_YOUR_ACCOUNT_RESEND_CODE_LINK")}
+          value={t("VERIFY_YOUR_ACCOUNT__RESEND_CODE_LINK")}
           status={resendCodeStatus}
         />
       </View>

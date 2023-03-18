@@ -64,10 +64,10 @@ const SignUp = () => {
 
   return (
     <Form
-      title={t("SIGN_UP_TITLE")}
+      title={t("SIGN_UP__TITLE")}
       backButton={() => router.back()}
       button={{
-        value: t("SIGN_UP_BUTTON"),
+        value: t("SIGN_UP__BUTTON"),
         onClick: () =>
           trigger({
             name: name,
@@ -80,18 +80,18 @@ const SignUp = () => {
     >
       <Filed
         cn="mb-[16px]"
-        name={t("SIGN_UP_NAME_FILED_LABEL")}
+        name={t("SIGN_UP__NAME_FILED_LABEL")}
         require={true}
-        placeholder={t("SIGN_UP_NAME_FILED_PLACEHOLDER")}
+        placeholder={t("SIGN_UP__NAME_FILED_PLACEHOLDER")}
         onChange={setName}
         value={name}
       />
 
       <Selector<CountryOption>
         cn="mb-[16px]"
-        name={t("SIGN_UP_COUNTRY_FILED_LABEL")}
+        name={t("SIGN_UP__COUNTRY_FILED_LABEL")}
         require={true}
-        placeholder={t("SIGN_UP_COUNTRY_FILED_PLACEHOLDER")}
+        placeholder={t("SIGN_UP__COUNTRY_FILED_PLACEHOLDER")}
         options={COUNTRIES_OPTIONS} // TODO should be from the backend
         signalSelect={{
           selectedOption: country,
@@ -102,9 +102,9 @@ const SignUp = () => {
 
       <FiledWithSelector
         cn="mb-[16px]"
-        name={t("SIGN_UP_PHONE_NUMBER_FILED_LABEL")}
+        name={t("SIGN_UP__PHONE_NUMBER_FILED_LABEL")}
         require={true}
-        placeholder={t("SIGN_UP_PHONE_NUMBER_FILED_PLACEHOLDER")}
+        placeholder={t("SIGN_UP__PHONE_NUMBER_FILED_PLACEHOLDER")}
         options={COUNTIES_PHONE_CODE_OPTIONS}
         signalSelect={{
           selectedOption: countryCode,
@@ -116,10 +116,10 @@ const SignUp = () => {
       />
 
       <Filed
-        name={t("SIGN_UP_PASSWORD_FILED_LABEL")}
-        helperText={t("SIGN_UP_PASSWORD_FILED_HELPER_TEXT")}
+        name={t("SIGN_UP__PASSWORD_FILED_LABEL")}
+        helperText={t("SIGN_UP__PASSWORD_FILED_HELPER_TEXT")}
         require={true}
-        placeholder={t("SIGN_UP_PASSWORD_FILED_PLACEHOLDER")}
+        placeholder={t("SIGN_UP__PASSWORD_FILED_PLACEHOLDER")}
         onChange={setPassword}
         value={password}
         secureTextEntry={true}

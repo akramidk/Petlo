@@ -48,7 +48,7 @@ const BaseSelector = <T extends BaseOption>({
             },
           }}
         >
-          {value ? t("SELECTOR_COMP_CHANGE") : t("SELECTOR_COMP_SELECT")}
+          {value ? t("SELECTOR_COMP__CHANGE") : t("SELECTOR_COMP__SELECT")}
         </Text>
       )}
     </BaseButton>

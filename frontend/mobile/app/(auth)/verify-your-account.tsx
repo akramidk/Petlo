@@ -55,13 +55,13 @@ const VerifyYourAccount = () => {
 
   return (
     <Form
-      title={t("VERIFY_YOUR_ACCOUNT_TITLE")}
-      helperText={t("VERIFY_YOUR_ACCOUNT_HELPER_TEXT", {
+      title={t("VERIFY_YOUR_ACCOUNT__TITLE")}
+      helperText={t("VERIFY_YOUR_ACCOUNT__HELPER_TEXT", {
         verificationCodeLength: VERIFICATION_CODE_LENGTH,
         phoneNumber: phoneNumber.replace("+", ""),
       })}
       button={{
-        value: t("VERIFY_YOUR_ACCOUNT_VERIFY_BUTTON"),
+        value: t("VERIFY_YOUR_ACCOUNT__VERIFY_BUTTON"),
         onClick: () =>
           verifyTrigger({
             verification_code: Number(verificationCode),
@@ -93,12 +93,12 @@ const VerifyYourAccount = () => {
           onClick={() =>
             router.push(`/edit-phone-number?sessionToken=${sessionToken}`)
           }
-          value={t("VERIFY_YOUR_ACCOUNT_EDIT_PHONE_NUMBER_LINK")}
+          value={t("VERIFY_YOUR_ACCOUNT__EDIT_PHONE_NUMBER_LINK")}
         />
 
         <Link
           onClick={() => resendCodeTrigger(undefined)} // TODO handle this shit
-          value={t("VERIFY_YOUR_ACCOUNT_RESEND_CODE_LINK")}
+          value={t("VERIFY_YOUR_ACCOUNT__RESEND_CODE_LINK")}
           status={resendCodeStatus}
         />
       </View>
