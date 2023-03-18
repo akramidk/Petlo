@@ -26,7 +26,7 @@ const EditPhoneNumber = () => {
     EditPhoneNumberOnVerificationResponse
   >({
     endpoint: Endpoints.EDIT_PHONE_NUMBER_ON_VERIFICATION,
-    method: "POST",
+    method: "PATCH",
     options: {
       onSucceeded: () => {
         router.replace(
