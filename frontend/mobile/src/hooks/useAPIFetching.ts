@@ -77,6 +77,7 @@ const useAPIFetching = <Request, Response>({
     }
 
     if (error) {
+      console.log("error.response.data.error", error.response.data.error);
       return {
         isFetching: false,
         statusCode: error.response.status,

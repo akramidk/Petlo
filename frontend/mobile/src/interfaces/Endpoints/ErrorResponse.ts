@@ -1,4 +1,7 @@
 export interface ErrorResponse {
   status: "failed";
-  message: string;
+  error: {
+    code: number;
+    message: string;
+  };
 }

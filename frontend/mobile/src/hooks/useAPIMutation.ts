@@ -90,7 +90,7 @@ const useAPIMutation = <Request, Response>({
       return {
         status: "failed",
         statusCode: error.response.status,
-        error: error.response.data.error,
+        error: error.response.data,
       };
     }
   }, [isMutating]);
@@ -105,7 +105,7 @@ const useAPIMutation = <Request, Response>({
     if (showFailedAlert) {
       setAlert({
         variant: "failed",
-        value: response.error.message,
+        value: response.error.error.message,
         hideAfter: hideFailedAlertAfter,
       });
     }
