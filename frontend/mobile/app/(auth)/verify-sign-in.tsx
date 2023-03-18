@@ -4,6 +4,7 @@ import { View } from "react-native";
 import { Form } from "../../src/components/organisms";
 import {
   useAPIMutation,
+  useCustomerContext,
   useSettingsContext,
   useTranslationsContext,
 } from "../../src/hooks";
@@ -19,7 +20,8 @@ import {
 
 const VerifySignIn = () => {
   const { t } = useTranslationsContext();
-  const { direction, setCustomerWithSessionToken } = useSettingsContext();
+  const { direction } = useSettingsContext();
+  const { setCustomerWithSessionToken } = useCustomerContext();
 
   const { phoneNumber, sessionToken: sessionTokenParam } = useSearchParams();
   const [sessionToken, setSessionToken] = useState(sessionTokenParam);

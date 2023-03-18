@@ -7,6 +7,7 @@ import { Form } from "../../src/components/organisms";
 import { Endpoints } from "../../src/enums";
 import {
   useAPIMutation,
+  useCustomerContext,
   useSettingsContext,
   useTranslationsContext,
 } from "../../src/hooks";
@@ -20,7 +21,8 @@ import { VERIFICATION_CODE_LENGTH } from "../../src/constants";
 const VerifyYourAccount = () => {
   const router = useRouter();
   const { t } = useTranslationsContext();
-  const { direction, setCustomerWithSessionToken } = useSettingsContext();
+  const { direction } = useSettingsContext();
+  const { setCustomerWithSessionToken } = useCustomerContext();
 
   const { phoneNumber, sessionToken: sessionTokenParam } = useSearchParams();
   const [sessionToken, setSessionToken] = useState(sessionTokenParam);

@@ -2,6 +2,7 @@ import { useRouter } from "expo-router";
 import { Form } from "../../src/components/organisms";
 import {
   useAPIMutation,
+  useCustomerContext,
   useSettingsContext,
   useTranslationsContext,
 } from "../../src/hooks";
@@ -28,7 +29,8 @@ import { View } from "react-native";
 const ResetPassword = () => {
   const router = useRouter();
   const { t } = useTranslationsContext();
-  const { direction, setCustomerWithSessionToken } = useSettingsContext();
+  const { direction } = useSettingsContext();
+  const { setCustomerWithSessionToken } = useCustomerContext();
 
   const [sessionToken, setSessionToken] = useState("");
   const [step, setStep] = useState(1);

@@ -28,7 +28,11 @@ import {
   NewVersionAvailableRequest,
   NewVersionAvailableResponse,
 } from "../src/interfaces";
-import { SettingsContext, TranslationsContext } from "../src/contexts";
+import {
+  CustomerContext,
+  SettingsContext,
+  TranslationsContext,
+} from "../src/contexts";
 import { useTranslations } from "../src/hooks";
 import { Endpoints } from "../src/enums";
 import RoutesRestrictor from "./_RoutesRestrictor";
@@ -108,35 +112,36 @@ const Layout = () => {
   }
 
   return (
-    <SettingsContext.Provider
-      value={{
-        language,
-        changeLanguage,
-        direction,
-        storedLanguage,
-        languageWithoutGender,
-        customer,
-        setCustomer,
-        setCustomerWithSessionToken,
-      }}
+    <CustomerContext.Provider
+      value={{ customer, setCustomer, setCustomerWithSessionToken }}
     >
-      <TranslationsContext.Provider value={{ t }}>
-        <RoutesRestrictor>
-          <TouchableWithoutFeedback
-            onPress={() => Keyboard.isVisible() && Keyboard.dismiss()}
-          >
-            <SafeAreaView className="px-[28px] py-[12px]">
-              {
-                // AlertContextProvider should always be above the Slot
-              }
-              <AlertContextProvider>
-                <Slot />
-              </AlertContextProvider>
-            </SafeAreaView>
-          </TouchableWithoutFeedback>
-        </RoutesRestrictor>
-      </TranslationsContext.Provider>
-    </SettingsContext.Provider>
+      <SettingsContext.Provider
+        value={{
+          language,
+          changeLanguage,
+          direction,
+          storedLanguage,
+          languageWithoutGender,
+        }}
+      >
+        <TranslationsContext.Provider value={{ t }}>
+          <RoutesRestrictor>
+            <TouchableWithoutFeedback
+              onPress={() => Keyboard.isVisible() && Keyboard.dismiss()}
+            >
+              <SafeAreaView className="px-[28px] py-[12px]">
+                {
+                  // AlertContextProvider should always be above the Slot
+                }
+                <AlertContextProvider>
+                  <Slot />
+                </AlertContextProvider>
+              </SafeAreaView>
+            </TouchableWithoutFeedback>
+          </RoutesRestrictor>
+        </TranslationsContext.Provider>
+      </SettingsContext.Provider>
+    </CustomerContext.Provider>
   );
 };
 

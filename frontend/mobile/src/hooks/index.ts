@@ -5,6 +5,7 @@ import useTranslationsContext from "./useTranslationsContext";
 import useSettingsContext from "./useSettingsContext";
 import useCustomer from "./useCustomer";
 import useAPIMutation from "./useAPIMutation";
+import useCustomerContext from "./useCustomerContext";
 
 export {
   useAPIFetching,
@@ -14,4 +15,5 @@ export {
   useSettingsContext,
   useCustomer,
   useAPIMutation,
+  useCustomerContext,
 };
