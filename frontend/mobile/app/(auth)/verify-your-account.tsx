@@ -8,7 +8,7 @@ import { Endpoints } from "../../src/enums";
 import {
   useAPIMutation,
   useCustomerContext,
-  useSettingsContext,
+  useInternationalizationContext,
   useTranslationsContext,
 } from "../../src/hooks";
 import {
@@ -21,7 +21,7 @@ import { VERIFICATION_CODE_LENGTH } from "../../src/constants";
 const VerifyYourAccount = () => {
   const router = useRouter();
   const { t } = useTranslationsContext();
-  const { direction } = useSettingsContext();
+  const { direction } = useInternationalizationContext();
   const { setCustomerWithSessionToken } = useCustomerContext();
 
   const { phoneNumber, sessionToken: sessionTokenParam } = useSearchParams();

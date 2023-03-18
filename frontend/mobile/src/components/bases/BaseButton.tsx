@@ -1,10 +1,10 @@
 import { Pressable } from "react-native";
 import { BaseButtonProps } from "../../interfaces";
-import { useSettingsContext } from "../../hooks";
+import { useInternationalizationContext } from "../../hooks";
 import clsx from "clsx";
 
 const BaseButton = (props: BaseButtonProps) => {
-  const { direction } = useSettingsContext();
+  const { direction } = useInternationalizationContext();
 
   return (
     <Pressable

@@ -2,7 +2,7 @@ import { useRouter } from "expo-router";
 import { Form } from "../../src/components/organisms";
 import {
   useAPIMutation,
-  useSettingsContext,
+  useInternationalizationContext,
   useTranslationsContext,
 } from "../../src/hooks";
 import { FiledWithSelector, Filed, Link } from "../../src/components/atoms";
@@ -20,7 +20,7 @@ import clsx from "clsx";
 const SignIn = () => {
   const router = useRouter();
   const { t } = useTranslationsContext();
-  const { direction } = useSettingsContext();
+  const { direction } = useInternationalizationContext();
 
   const [countryCode, setCountryCode] = useState<BaseOption>(
     COUNTIES_PHONE_CODE_OPTIONS.find((code) => code.value === "+962")

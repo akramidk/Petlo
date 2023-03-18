@@ -2,7 +2,7 @@ import Constants from "expo-constants";
 import { useEffect, useState } from "react";
 import { DEFAULT_APP_LANGUAGE } from "../constants";
 import useCustomerContext from "./useCustomerContext";
-import useSettingsContext from "./useSettingsContext";
+import useInternationalizationContext from "./useInternationalizationContext";
 
 const API_URL = Constants.expoConfig.extra.API_URL;
 
@@ -17,7 +17,7 @@ const useRequestBuilder = ({
   withoutAuthorization,
   overwriteSessionToken,
 }: useRequestBuilderProps) => {
-  const settingsContext = useSettingsContext();
+  const settingsContext = useInternationalizationContext();
   const customerContext = useCustomerContext();
   const [sessionToken, setSessionToken] = useState("");
 

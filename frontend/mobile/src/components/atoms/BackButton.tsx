@@ -3,7 +3,7 @@ import {
   ArrowSmallLeftIcon,
   ArrowSmallRightIcon,
 } from "react-native-heroicons/outline";
-import { useSettingsContext } from "../../hooks";
+import { useInternationalizationContext } from "../../hooks";
 import BaseButton from "../bases/BaseButton";
 import { BaseButtonProps } from "../../interfaces";
 
@@ -11,7 +11,7 @@ const BackButton = ({
   onClick,
   cn,
 }: Pick<BaseButtonProps, "onClick" | "cn">) => {
-  const { direction } = useSettingsContext();
+  const { direction } = useInternationalizationContext();
 
   const arrowStyles = {
     color: "#666",

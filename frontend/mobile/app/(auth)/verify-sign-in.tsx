@@ -5,7 +5,7 @@ import { Form } from "../../src/components/organisms";
 import {
   useAPIMutation,
   useCustomerContext,
-  useSettingsContext,
+  useInternationalizationContext,
   useTranslationsContext,
 } from "../../src/hooks";
 import { VERIFICATION_CODE_LENGTH } from "../../src/constants";
@@ -20,7 +20,7 @@ import {
 
 const VerifySignIn = () => {
   const { t } = useTranslationsContext();
-  const { direction } = useSettingsContext();
+  const { direction } = useInternationalizationContext();
   const { setCustomerWithSessionToken } = useCustomerContext();
 
   const { phoneNumber, sessionToken: sessionTokenParam } = useSearchParams();

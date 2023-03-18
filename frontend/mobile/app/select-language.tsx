@@ -1,4 +1,7 @@
-import { useSettingsContext, useTranslationsContext } from "../src/hooks";
+import {
+  useInternationalizationContext,
+  useTranslationsContext,
+} from "../src/hooks";
 import { Options } from "../src/components/atoms";
 import { useState } from "react";
 import { Form } from "../src/components/organisms";
@@ -11,7 +14,7 @@ import { language } from "../src/types";
 
 const SelectLanguage = () => {
   const { t } = useTranslationsContext();
-  const { changeLanguage } = useSettingsContext();
+  const { changeLanguage } = useInternationalizationContext();
   const [selectedLanguage, setSelectedLanguage] = useState<LanguageOption>();
   const [selectedAdjective, setSlectedAdjective] = useState<BaseOption>();
   const [step, setStep] = useState(1);

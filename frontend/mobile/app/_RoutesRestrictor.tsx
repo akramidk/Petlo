@@ -1,6 +1,9 @@
 import { useRouter } from "expo-router";
 import React, { useEffect } from "react";
-import { useSettingsContext, useCustomerContext } from "../src/hooks";
+import {
+  useInternationalizationContext,
+  useCustomerContext,
+} from "../src/hooks";
 
 interface RoutesRestrictorProps {
   children: React.ReactNode;
@@ -9,7 +12,7 @@ interface RoutesRestrictorProps {
 const RoutesRestrictor = ({ children }: RoutesRestrictorProps) => {
   const router = useRouter();
   const { customer } = useCustomerContext();
-  const { storedLanguage } = useSettingsContext();
+  const { storedLanguage } = useInternationalizationContext();
 
   useEffect(() => {
     if (storedLanguage === null) {

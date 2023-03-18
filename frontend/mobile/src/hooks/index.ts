@@ -2,7 +2,7 @@ import useAPIFetching from "./useAPIFetching";
 import useTranslations from "./useTranslations";
 import useInternationalization from "./useInternationalization";
 import useTranslationsContext from "./useTranslationsContext";
-import useSettingsContext from "./useSettingsContext";
+import useInternationalizationContext from "./useInternationalizationContext";
 import useCustomer from "./useCustomer";
 import useAPIMutation from "./useAPIMutation";
 import useCustomerContext from "./useCustomerContext";
@@ -12,7 +12,7 @@ export {
   useTranslations,
   useInternationalization,
   useTranslationsContext,
-  useSettingsContext,
+  useInternationalizationContext,
   useCustomer,
   useAPIMutation,
   useCustomerContext,

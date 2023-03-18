@@ -3,7 +3,7 @@ import { Form } from "../../src/components/organisms";
 import {
   useAPIMutation,
   useCustomerContext,
-  useSettingsContext,
+  useInternationalizationContext,
   useTranslationsContext,
 } from "../../src/hooks";
 import { FiledWithSelector, Filed, Link } from "../../src/components/atoms";
@@ -29,7 +29,7 @@ import { View } from "react-native";
 const ResetPassword = () => {
   const router = useRouter();
   const { t } = useTranslationsContext();
-  const { direction } = useSettingsContext();
+  const { direction } = useInternationalizationContext();
   const { setCustomerWithSessionToken } = useCustomerContext();
 
   const [sessionToken, setSessionToken] = useState("");

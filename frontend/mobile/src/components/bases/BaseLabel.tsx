@@ -1,10 +1,10 @@
 import { View, Text } from "react-native";
 import { BaseLabelProps } from "../../interfaces";
-import { useSettingsContext } from "../../hooks";
+import { useInternationalizationContext } from "../../hooks";
 import clsx from "clsx";
 
 const BaseLabel = ({ name, helperText, require, cn }: BaseLabelProps) => {
-  const { language, direction } = useSettingsContext();
+  const { language, direction } = useInternationalizationContext();
 
   const className = {
     en: {

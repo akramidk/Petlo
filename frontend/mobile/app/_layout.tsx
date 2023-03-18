@@ -30,7 +30,7 @@ import {
 } from "../src/interfaces";
 import {
   CustomerContext,
-  SettingsContext,
+  InternationalizationContext,
   TranslationsContext,
 } from "../src/contexts";
 import { useTranslations } from "../src/hooks";
@@ -115,7 +115,7 @@ const Layout = () => {
     <CustomerContext.Provider
       value={{ customer, setCustomer, setCustomerWithSessionToken }}
     >
-      <SettingsContext.Provider
+      <InternationalizationContext.Provider
         value={{
           language,
           changeLanguage,
@@ -140,7 +140,7 @@ const Layout = () => {
             </TouchableWithoutFeedback>
           </RoutesRestrictor>
         </TranslationsContext.Provider>
-      </SettingsContext.Provider>
+      </InternationalizationContext.Provider>
     </CustomerContext.Provider>
   );
 };

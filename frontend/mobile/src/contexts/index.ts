@@ -1,6 +1,11 @@
 import TranslationsContext from "./TranslationsContext";
-import SettingsContext from "./SettingsContext";
+import InternationalizationContext from "./InternationalizationContext";
 import AlertContext from "./AlertContext";
 import CustomerContext from "./CustomerContext";
 
-export { TranslationsContext, SettingsContext, AlertContext, CustomerContext };
+export {
+  TranslationsContext,
+  InternationalizationContext,
+  AlertContext,
+  CustomerContext,
+};

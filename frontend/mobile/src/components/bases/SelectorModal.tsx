@@ -1,7 +1,10 @@
 import clsx from "clsx";
 import { useState, useMemo } from "react";
 import { View, Modal, SafeAreaView, TextInput, ScrollView } from "react-native";
-import { useSettingsContext, useTranslationsContext } from "../../hooks";
+import {
+  useInternationalizationContext,
+  useTranslationsContext,
+} from "../../hooks";
 import { BaseOption, OptionsProps } from "../../interfaces";
 import Text from "../atoms/Text";
 import Button from "../atoms/Button";
@@ -22,7 +25,7 @@ const SelectorModal = <T extends BaseOption>({
 }: SelectorModalProps<T> &
   Pick<OptionsProps<T>, "options" | "translate" | "signalSelect">) => {
   const { t } = useTranslationsContext();
-  const { language, direction } = useSettingsContext();
+  const { language, direction } = useInternationalizationContext();
   const pastSelectedOption = useMemo(() => {
     return signalSelect.selectedOption;
   }, [signalSelect.selectedOption]);

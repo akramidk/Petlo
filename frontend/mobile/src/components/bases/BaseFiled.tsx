@@ -1,6 +1,6 @@
 import { TextInput } from "react-native";
 import clsx from "clsx";
-import { useSettingsContext } from "../../hooks";
+import { useInternationalizationContext } from "../../hooks";
 import { BaseFiledProps } from "../../interfaces";
 
 const BaseFiled = ({
@@ -12,7 +12,7 @@ const BaseFiled = ({
   secureTextEntry,
   maxLength,
 }: BaseFiledProps) => {
-  const { language, direction } = useSettingsContext();
+  const { language, direction } = useInternationalizationContext();
 
   return (
     <TextInput

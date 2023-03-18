@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import React from "react";
 import { Text as ReactText, TextProps as ReactTextProps } from "react-native";
-import { useSettingsContext } from "../../hooks";
+import { useInternationalizationContext } from "../../hooks";
 
 interface TextProps extends ReactTextProps {
   font:
@@ -20,7 +20,7 @@ interface TextProps extends ReactTextProps {
 }
 
 const Text = (props: TextProps) => {
-  const { languageWithoutGender, direction } = useSettingsContext();
+  const { languageWithoutGender, direction } = useInternationalizationContext();
 
   const fonts = {
     ar: {

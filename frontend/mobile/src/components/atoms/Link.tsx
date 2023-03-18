@@ -3,7 +3,7 @@ import BaseButton from "../bases/BaseButton";
 import Text from "./Text";
 import { ActivityIndicator } from "react-native-paper";
 import { CheckIcon, XMarkIcon } from "react-native-heroicons/outline";
-import { useSettingsContext } from "../../hooks";
+import { useInternationalizationContext } from "../../hooks";
 import { View } from "react-native";
 
 interface LinkProps {
@@ -13,7 +13,7 @@ interface LinkProps {
 }
 
 const Link = ({ onClick, status = "active", value }: LinkProps) => {
-  const { direction } = useSettingsContext();
+  const { direction } = useInternationalizationContext();
 
   const icons = {
     loading: <ActivityIndicator animating={true} color="#0E333C" size={14} />,
