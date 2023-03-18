@@ -1,8 +1,6 @@
 import Constants from "expo-constants";
-import * as SecureStore from "expo-secure-store";
 import { useEffect, useState } from "react";
 import { DEFAULT_APP_LANGUAGE } from "../constants";
-import { StorageKeys } from "../enums";
 import useSettingsContext from "./useSettingsContext";
 
 const API_URL = Constants.expoConfig.extra.API_URL;
@@ -29,12 +27,9 @@ const useRequestBuilder = ({
 
   useEffect(() => {
     if (!withoutAuthorization) {
-      (async () => {
-        setSessionToken(
-          overwriteSessionToken ??
-            (await SecureStore.getItemAsync(StorageKeys.SESSION_TOKEN))
-        );
-      })();
+      setSessionToken(
+        overwriteSessionToken ?? settingsContext?.customer?.sessionToken ?? ""
+      );
     }
   }, [withoutAuthorization, overwriteSessionToken]);
 
