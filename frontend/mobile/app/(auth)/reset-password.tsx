@@ -1,24 +1,34 @@
 import { useRouter } from "expo-router";
 import { Form } from "../../src/components/organisms";
-import { useAPIMutation, useTranslationsContext } from "../../src/hooks";
-import { FiledWithSelector, Filed } from "../../src/components/atoms";
+import {
+  useAPIMutation,
+  useSettingsContext,
+  useTranslationsContext,
+} from "../../src/hooks";
+import { FiledWithSelector, Filed, Link } from "../../src/components/atoms";
 import {
   BaseOption,
   RequestResetPasswordRequest,
   RequestResetPasswordResponse,
   RequestResetPasswordVerificationRequest,
   RequestResetPasswordVerificationResponse,
+  ResendResetPasswordCodeResponse,
   ResetPasswordRequest,
   ResetPasswordResponse,
 } from "../../src/interfaces";
 import { useState } from "react";
-import { COUNTIES_PHONE_CODE_OPTIONS } from "../../src/constants";
+import {
+  COUNTIES_PHONE_CODE_OPTIONS,
+  VERIFICATION_CODE_LENGTH,
+} from "../../src/constants";
 import { Endpoints } from "../../src/enums";
-import { VERIFICATION_CODE_LENGTH } from "../../src/constants";
+import clsx from "clsx";
+import { View } from "react-native";
 
 const ResetPassword = () => {
   const router = useRouter();
   const { t } = useTranslationsContext();
+  const { direction } = useSettingsContext();
 
   const [sessionToken, setSessionToken] = useState("");
   const [step, setStep] = useState(1);
@@ -51,6 +61,23 @@ const ResetPassword = () => {
   );
 
   const {
+    response: resendResetPasswordCodeResponse,
+    trigger: resendResetPasswordCodeTrigger,
+    status: resendResetPasswordCodeStatus,
+  } = useAPIMutation<null, ResendResetPasswordCodeResponse>({
+    endpoint: Endpoints.RESEND_RESET_PASSWORD_CODE,
+    method: "POST",
+    options: {
+      onSucceeded: () => {
+        setSessionToken(
+          resendResetPasswordCodeResponse.body.customer.session_token
+        );
+      },
+      overwriteSessionToken: sessionToken,
+    },
+  });
+
+  const {
     response: requestResetPasswordVerificationResponse,
     trigger: requestResetPasswordVerificationTrigger,
     status: requestResetPasswordVerificationStatus,
@@ -72,21 +99,18 @@ const ResetPassword = () => {
     },
   });
 
-  const {
-    response: resetPasswordResponse,
-    trigger: resetPasswordTrigger,
-    status: resetPasswordStatus,
-  } = useAPIMutation<ResetPasswordRequest, ResetPasswordResponse>({
-    endpoint: Endpoints.RESET_PASSWORD,
-    method: "POST",
-    options: {
-      onSucceeded: () => {
-        router.replace("/");
+  const { trigger: resetPasswordTrigger, status: resetPasswordStatus } =
+    useAPIMutation<ResetPasswordRequest, ResetPasswordResponse>({
+      endpoint: Endpoints.RESET_PASSWORD,
+      method: "PATCH",
+      options: {
+        onSucceeded: () => {
+          router.replace("/");
+        },
+        fireOnSucceededAfter: 1000,
+        overwriteSessionToken: sessionToken,
       },
-      fireOnSucceededAfter: 1000,
-      overwriteSessionToken: sessionToken,
-    },
-  });
+    });
 
   if (step === 1) {
     return (
@@ -152,6 +176,19 @@ const ResetPassword = () => {
           keyboardType="number-pad"
           maxLength={VERIFICATION_CODE_LENGTH}
         />
+
+        <View
+          className={clsx(
+            "mt-[16px] justify-between",
+            direction === "ltr" ? "flex-row" : "flex-row-reverse"
+          )}
+        >
+          <Link
+            onClick={() => resendResetPasswordCodeTrigger(undefined)}
+            value={t("RESET_PASSWORD_RESEND_CODE_LINK")}
+            status={resendResetPasswordCodeStatus}
+          />
+        </View>
       </Form>
     );
   }

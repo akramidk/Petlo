@@ -49,6 +49,7 @@ import {
   ResetPasswordRequest,
   ResetPasswordResponse,
 } from "./Endpoints/ResetPassword";
+import { ResendResetPasswordCodeResponse } from "./Endpoints/ResendResetPasswordCode";
 
 export {
   NewVersionAvailableRequest,
@@ -82,4 +83,5 @@ export {
   RequestResetPasswordVerificationResponse,
   ResetPasswordRequest,
   ResetPasswordResponse,
+  ResendResetPasswordCodeResponse,
 };
