@@ -18,7 +18,7 @@ enum defaultGenderedLanguage {
   "ar" = "ar_masculine",
 }
 
-const useSettings = () => {
+const useInternationalization = () => {
   //we are handling ltr and rtl on our own
   I18nManager.allowRTL(false);
   I18nManager.forceRTL(false);
@@ -94,4 +94,4 @@ const useSettings = () => {
   };
 };
 
-export default useSettings;
+export default useInternationalization;

@@ -21,7 +21,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { Slot } from "expo-router";
 import { Logo } from "../src/components/atoms";
 import { View, Alert, TouchableWithoutFeedback, Keyboard } from "react-native";
-import { useAPIFetching, useSettings } from "../src/hooks";
+import { useAPIFetching, useInternationalization } from "../src/hooks";
 import * as Device from "expo-device";
 import * as Application from "expo-application";
 import {
@@ -82,7 +82,7 @@ const Layout = () => {
     storedLanguage,
     direction,
     languageWithoutGender,
-  } = useSettings();
+  } = useInternationalization();
   const { t } = useTranslations({
     language: language,
   });
