@@ -59,7 +59,7 @@ const VerifySignIn = () => {
       title={t("VERIFY_SIGN_IN_REQUEST_TITLE")}
       helperText={t("VERIFY_SIGN_IN_REQUEST_PLACEHOLDER", {
         verificationCodeLength: VERIFICATION_CODE_LENGTH,
-        phoneNumber: phoneNumber,
+        phoneNumber: phoneNumber.replace("+", ""),
       })}
       button={{
         value: t("VERIFY_SIGN_IN_REQUEST_BUTTON"),

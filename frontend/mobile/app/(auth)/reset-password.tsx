@@ -154,7 +154,7 @@ const ResetPassword = () => {
         title={t("RESET_PASSWORD_STEP_2_TITLE")}
         helperText={t("RESET_PASSWORD_STEP_2_HELPER_TEXT", {
           verificationCodeLength: VERIFICATION_CODE_LENGTH,
-          phoneNumber: countryCode.value + phoneNumber,
+          phoneNumber: (countryCode.value + phoneNumber).replace("+", ""),
         })}
         button={{
           value: t("RESET_PASSWORD_STEP_2_BUTTON"),

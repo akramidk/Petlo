@@ -58,7 +58,7 @@ const VerifyYourAccount = () => {
       title={t("VERIFY_YOUR_ACCOUNT_TITLE")}
       helperText={t("VERIFY_YOUR_ACCOUNT_HELPER_TEXT", {
         verificationCodeLength: VERIFICATION_CODE_LENGTH,
-        phoneNumber: phoneNumber,
+        phoneNumber: phoneNumber.replace("+", ""),
       })}
       button={{
         value: t("VERIFY_YOUR_ACCOUNT_VERIFY_BUTTON"),
