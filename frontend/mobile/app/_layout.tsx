@@ -123,6 +123,9 @@ const Layout = () => {
             onPress={() => Keyboard.isVisible() && Keyboard.dismiss()}
           >
             <SafeAreaView className="px-[28px] py-[12px]">
+              {
+                // AlertContextProvider should always be above the Slot
+              }
               <AlertContextProvider>
                 <Slot />
               </AlertContextProvider>

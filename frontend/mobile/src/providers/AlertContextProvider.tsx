@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import React, { useEffect, useState } from "react";
-import { Modal, SafeAreaView, Text, View } from "react-native";
+import { Text, View } from "react-native";
+import Toast from "react-native-toast-message";
 import { AlertContext } from "../contexts";
 
 type variant = "succeeded" | "failed";
@@ -18,32 +19,35 @@ const AlertContextProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   useEffect(() => {
-    if (!alert) return;
+    if (alert === undefined) return;
 
-    const timeout = setTimeout(() => {
-      setAlert(undefined);
-    }, alert.hideAfter);
-
-    return () => {
-      clearTimeout(timeout);
-    };
+    Toast.show({
+      type: "custom",
+      props: { variant: alert.variant, value: alert.value },
+    });
   }, [alert]);
+
+  const toastConfig = {
+    custom: ({ props }) => (
+      <View
+        className={clsx(
+          "self-center rounded-[4px] p-[16px] mx-[28px] shadow-lg",
+          variantColors[props.variant]
+        )}
+      >
+        <Text className="text-[#fff] text-center">{props.value}</Text>
+      </View>
+    ),
+  };
 
   return (
     <AlertContext.Provider value={setAlert}>
-      <Modal visible={!!alert} transparent={true} animationType="fade">
-        <SafeAreaView>
-          <View
-            className={clsx(
-              "self-center rounded-[4px] p-[16px] mx-[28px] shadow-lg",
-              variantColors[alert?.variant]
-            )}
-          >
-            <Text className="text-[#fff] text-center">{alert?.value}</Text>
-          </View>
-        </SafeAreaView>
-      </Modal>
       {children}
+      <Toast
+        config={toastConfig}
+        visibilityTime={alert?.hideAfter ?? 0}
+        position="top"
+      />
     </AlertContext.Provider>
   );
 };
