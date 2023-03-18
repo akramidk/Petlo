@@ -28,7 +28,7 @@ import { View } from "react-native";
 const ResetPassword = () => {
   const router = useRouter();
   const { t } = useTranslationsContext();
-  const { direction } = useSettingsContext();
+  const { direction, setCustomerWithSessionToken } = useSettingsContext();
 
   const [sessionToken, setSessionToken] = useState("");
   const [step, setStep] = useState(1);
@@ -99,18 +99,24 @@ const ResetPassword = () => {
     },
   });
 
-  const { trigger: resetPasswordTrigger, status: resetPasswordStatus } =
-    useAPIMutation<ResetPasswordRequest, ResetPasswordResponse>({
-      endpoint: Endpoints.RESET_PASSWORD,
-      method: "PATCH",
-      options: {
-        onSucceeded: () => {
-          router.replace("/");
-        },
-        fireOnSucceededAfter: 1000,
-        overwriteSessionToken: sessionToken,
+  const {
+    response: resetPasswordResponse,
+    trigger: resetPasswordTrigger,
+    status: resetPasswordStatus,
+  } = useAPIMutation<ResetPasswordRequest, ResetPasswordResponse>({
+    endpoint: Endpoints.RESET_PASSWORD,
+    method: "PATCH",
+    options: {
+      onSucceeded: () => {
+        setCustomerWithSessionToken({
+          name: resetPasswordResponse.body.customer.name,
+          sessionToken: resetPasswordResponse.body.customer.session_token,
+        });
       },
-    });
+      fireOnSucceededAfter: 1000,
+      overwriteSessionToken: sessionToken,
+    },
+  });
 
   if (step === 1) {
     return (

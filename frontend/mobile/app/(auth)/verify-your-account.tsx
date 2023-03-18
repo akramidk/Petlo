@@ -18,22 +18,31 @@ import {
 import { VERIFICATION_CODE_LENGTH } from "../../src/constants";
 
 const VerifyYourAccount = () => {
-  const { direction } = useSettingsContext();
-  const { t } = useTranslationsContext();
   const router = useRouter();
+  const { t } = useTranslationsContext();
+  const { direction, setCustomerWithSessionToken } = useSettingsContext();
 
   const { phoneNumber, sessionToken: sessionTokenParam } = useSearchParams();
   const [sessionToken, setSessionToken] = useState(sessionTokenParam);
 
   const [verificationCode, setVerificationCode] = useState<string>();
-  const { trigger: verifyTrigger, status: verifyStatus } = useAPIMutation<
+  const {
+    response: verifyResponse,
+    trigger: verifyTrigger,
+    status: verifyStatus,
+  } = useAPIMutation<
     VerifyCustomerAccountRequest,
     VerifyCustomerAccountResponse
   >({
     endpoint: Endpoints.VERIFY_CUSTOMER_ACCOUNT,
     method: "POST",
     options: {
-      onSucceeded: () => router.replace("/"),
+      onSucceeded: () => {
+        setCustomerWithSessionToken({
+          name: verifyResponse.body.customer.name,
+          sessionToken: verifyResponse.body.customer.session_token,
+        });
+      },
       fireOnSucceededAfter: 1000,
       overwriteSessionToken: sessionToken,
     },
