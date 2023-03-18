@@ -61,6 +61,29 @@ en:
     #category model: 004
     2004000: "Category not found."
 
+    #cart model: 005
+    2005000: "Cart public id is required."
+    2005001: "Cart public id is used before."
+    2005002: "Customer id is required."
+
+    #cart item model: 006
+    2006000: "Cart id is required."
+    2006001: "Item id is required."
+    2006002: "Variant id is required."
+
+    #checkout model: 007
+    2007000: "Checkout public id is required."
+    2007001: "Checkout public id is used before."
+    2007002: "Checkout customer id is required"
+    2007003: "Checkout cart id is required"
+    2007004: "Checkout cart is used before."
+    2007005: "Checkout address id is required"
+    2007006: "Checkout cart amount is required"
+    2007007: "Checkout delivery amount is required"
+    2007008: "Checkout amount is required"
+    2007009: "Checkout currency is required"
+    2007010: "Checkout currency is invalid"
+
     #items helper: 000
     3000000: "Item not found."
 
@@ -73,6 +96,25 @@ en:
     #customers helper: 003
     3003000: "Invalid permission."
     3003001: "Wrong phone number."
+    3003002: "Wrong password."
+    3003003: "The Phone number is the same as yours."
+
+    #carts helper: 004
+    3004000: "Cart not found."
+    3004001: "Cart expired."
+    3004002: "Item not found."
+    3004003: "Variant not found."
+    3004004: "No item to remove."
+    3004005: "Cart used before."
+
+    #checkout helper: 005
+    3005000: "Cart not found."
+    3005001: "Cart used before."
+    3005002: "Cart expired."
+    3005003: "Address not found."
+    3005004: "Checkout not found."
+    3005005: "Checkout used before."
+    3005006: "Checkout expired."
 
     #verifications controller: 000
     4000000: "Customer verified before."

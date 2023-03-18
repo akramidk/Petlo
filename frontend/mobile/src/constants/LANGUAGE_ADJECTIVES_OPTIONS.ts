@@ -1,10 +1,10 @@
 export const LANGUAGE_ADJECTIVES_OPTIONS = [
   {
     id: "masculine",
-    value: "COMMON_MASCULINE",
+    value: "COMMON__MASCULINE",
   },
   {
     id: "feminine",
-    value: "COMMON_FEMININE",
+    value: "COMMON__FEMININE",
   },
 ];
