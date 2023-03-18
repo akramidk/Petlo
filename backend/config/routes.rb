@@ -19,15 +19,16 @@ Rails.application.routes.draw do
 
       post "customers/verification", to: "verifications#verify"
       post "customers/verification/resend-code", to: "verifications#resend_code"
-      post "customers/verification/change-phone-number", to: "verifications#change_phone_number"
+      patch "customers/verification/change-phone-number", to: "verifications#change_phone_number"
 
       post "customers/request-permission-with-otp", to: "customers#request_permission_with_otp"
       post "customers/verify-requested-permission-with-otp", to: "customers#verify_requested_permission_with_otp"
       get "customers/request-permission-with-password", to: "customers#request_permission_with_password"
 
       post "customers/request-reset-password", to: "customers#request_reset_password"
+      post "customers/resend-reset-password-code", to: "customers#resend_reset_password_code"
       post "customers/verify-reset-password-request", to: "customers#verify_reset_password_request"
-      post "customers/reset-password", to: "customers#reset_password"
+      patch "customers/reset-password", to: "customers#reset_password"
       
       #sessions
       get "sessions", to: "sessions#index"

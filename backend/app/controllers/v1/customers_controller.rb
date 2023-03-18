@@ -14,7 +14,7 @@ module V1
     before_action -> { current_customer(
       permission: ENUM::PERMISSIONS[:VERIFY_RESET_PASSWORD_REQUEST],
       verified: [true, false] 
-    )}, only: [:verify_reset_password_request]
+    )}, only: [:verify_reset_password_request, :resend_reset_password_code]
 
     before_action -> { current_customer(
       permission: ENUM::PERMISSIONS[:RESET_PASSWORD],
@@ -133,6 +133,15 @@ module V1
       response = CustomersHelper.verify_reset_password_request(
         customer: @customer,
         verification_code: params[:verification_code]
+      )
+
+      render json: { status: "succeeded", customer: response[:customer] }, status: 200
+    end
+
+    def resend_reset_password_code
+      response = CustomersHelper.resend_reset_password_code(
+        customer: @customer,
+        language: params[:locale]
       )
 
       render json: { status: "succeeded", customer: response[:customer] }, status: 200

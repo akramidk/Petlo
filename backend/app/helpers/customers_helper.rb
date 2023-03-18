@@ -11,4 +11,5 @@ module CustomersHelper
   extend ChangePhoneNumber
   extend VerifyRequestedPermissionWithOtp
   extend ChangePassword
+  extend ResendResetPasswordCode
 end
