@@ -115,12 +115,13 @@ const Layout = () => {
         direction,
         storedLanguage,
         languageWithoutGender,
+        customer,
         setCustomer,
         setCustomerWithSessionToken,
       }}
     >
       <TranslationsContext.Provider value={{ t }}>
-        <RoutesRestrictor customer={customer}>
+        <RoutesRestrictor>
           <TouchableWithoutFeedback
             onPress={() => Keyboard.isVisible() && Keyboard.dismiss()}
           >

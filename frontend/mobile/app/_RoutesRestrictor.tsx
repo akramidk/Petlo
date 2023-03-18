@@ -4,12 +4,11 @@ import { useSettingsContext } from "../src/hooks";
 
 interface RoutesRestrictorProps {
   children: React.ReactNode;
-  customer: undefined | null | unknown;
 }
 
-const RoutesRestrictor = ({ children, customer }: RoutesRestrictorProps) => {
+const RoutesRestrictor = ({ children }: RoutesRestrictorProps) => {
   const router = useRouter();
-  const { storedLanguage } = useSettingsContext();
+  const { storedLanguage, customer } = useSettingsContext();
 
   useEffect(() => {
     if (storedLanguage === null) {

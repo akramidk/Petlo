@@ -20,6 +20,7 @@ const useCustomer = () => {
     },
     options: {
       wait: true,
+      overwriteSessionToken: sessionToken,
     },
   });
 
