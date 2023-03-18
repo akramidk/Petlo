@@ -1,5 +1,6 @@
-export interface ResendResetPasswordCodeResponse {
-  status: string; // TODO should be a type
+import { BaseResponse } from "./Base";
+
+export interface ResendResetPasswordCodeResponse extends BaseResponse {
   customer: {
     session_token: string;
   };

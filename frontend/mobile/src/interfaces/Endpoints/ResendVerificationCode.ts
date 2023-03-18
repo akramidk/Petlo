@@ -1,5 +1,6 @@
-export interface ResendVerificationCodeResponse {
-  status: string; // TODO should be a type
+import { BaseResponse } from "./Base";
+
+export interface ResendVerificationCodeResponse extends BaseResponse {
   customer: {
     session_token: string;
   };

@@ -1,3 +1,5 @@
+import { BaseResponse } from "./Base";
+
 export interface CreateNewCustomerRequest {
   name: string;
   country: string;
@@ -5,8 +7,7 @@ export interface CreateNewCustomerRequest {
   password: string;
 }
 
-export interface CreateNewCustomerResponse {
-  status: string;
+export interface CreateNewCustomerResponse extends BaseResponse {
   customer: {
     session_token: string;
   };
