@@ -16,10 +16,10 @@ const Menu = ({ activePath }: MenuProps) => {
     <View className="h-[64px] flex-row justify-between items-end px-[4px] border-t-[1px] border-t-[#f6f6f6] bg-[#fff]">
       {MENU_TABS.map((tap) => (
         <MenuTabButton
-          value={t(tap.value)}
           icon={tap.id}
-          onClick={() => router.replace(tap.path)}
+          value={t(tap.value)}
           selected={activePath === tap.path}
+          onClick={() => router.replace(tap.path)}
         />
       ))}
     </View>
