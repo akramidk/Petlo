@@ -7,22 +7,22 @@ export const MENU_TABS: {
 }[] = [
   {
     id: "HOME",
-    value: "HOME",
+    value: "COMMON__HOME",
     path: "/",
   },
   {
     id: "ORDERS",
-    value: "ORDERS",
+    value: "COMMON__ORDERS",
     path: "/orders",
   },
   {
     id: "AUTOSHIP",
-    value: "AUTOSHIP",
+    value: "COMMON__AUTOSHIP",
     path: "/autoship",
   },
   {
     id: "MORE",
-    value: "MORE",
+    value: "COMMON__MORE",
     path: "/more",
   },
 ];
