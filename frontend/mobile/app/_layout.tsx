@@ -17,7 +17,6 @@ import {
   IBMPlexSansArabic_600SemiBold,
   IBMPlexSansArabic_700Bold,
 } from "@expo-google-fonts/ibm-plex-sans-arabic";
-import { SafeAreaView } from "react-native-safe-area-context";
 import { Slot } from "expo-router";
 import { Logo } from "../src/components/atoms";
 import { View, Alert, TouchableWithoutFeedback, Keyboard } from "react-native";
@@ -38,6 +37,7 @@ import { Endpoints } from "../src/enums";
 import RoutesRestrictor from "./_RoutesRestrictor";
 import { useCustomer } from "../src/hooks";
 import { AlertContextProvider } from "../src/providers";
+import Viewer from "./_Viewer";
 
 const Layout = () => {
   // TODO handled if no network
@@ -129,14 +129,17 @@ const Layout = () => {
             <TouchableWithoutFeedback
               onPress={() => Keyboard.isVisible() && Keyboard.dismiss()}
             >
-              <SafeAreaView className="px-[28px] py-[12px]">
+              {
+                // AlertContextProvider should be here
+              }
+              <AlertContextProvider>
                 {
-                  // AlertContextProvider should always be above the Slot
+                  // Viewer should be here
                 }
-                <AlertContextProvider>
+                <Viewer>
                   <Slot />
-                </AlertContextProvider>
-              </SafeAreaView>
+                </Viewer>
+              </AlertContextProvider>
             </TouchableWithoutFeedback>
           </RoutesRestrictor>
         </TranslationsContext.Provider>
