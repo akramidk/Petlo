@@ -6,6 +6,7 @@ import { DEFAULT_APP_LANGUAGE } from "./DEFAULT_APP_LANGUAGE";
 import { VERIFICATION_CODE_LENGTH } from "./VERIFICATION_CODE_LENGTH";
 import { MENU_PATHS } from "./MENU_PATHS";
 import { HEDER_PATHS } from "./HEDER_PATHS";
+import { MENU_TABS } from "./MENU_TABS";
 
 export {
   LANGUAGES_OPTIONS,
@@ -16,4 +17,5 @@ export {
   VERIFICATION_CODE_LENGTH,
   MENU_PATHS,
   HEDER_PATHS,
+  MENU_TABS,
 };
