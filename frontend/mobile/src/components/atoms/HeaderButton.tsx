@@ -16,7 +16,7 @@ interface HeaderButtonProps {
 
 const HeaderButton = ({ icon, selected, onClick }: HeaderButtonProps) => {
   return (
-    <BaseButton cn="ml-[12px]" onClick={onClick}>
+    <BaseButton onClick={onClick}>
       <Icon icon={icon} selected={selected} />
     </BaseButton>
   );

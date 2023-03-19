@@ -1,4 +1,5 @@
 import { useRouter } from "expo-router";
+import { Fragment } from "react";
 import { Text, View } from "react-native";
 import { HEDER_ICONS } from "../../constants";
 import { HeaderButton } from "../atoms";
@@ -17,13 +18,15 @@ const Header = ({ activePath }: HeaderProps) => {
       </Text>
 
       <View className="flex-row">
-        {HEDER_ICONS.map((icon) => {
+        {HEDER_ICONS.map((icon, i) => {
           return (
-            <HeaderButton
-              icon={icon.id}
-              selected={icon.path === activePath}
-              onClick={() => router.replace(icon.path)}
-            />
+            <View key={i} className="ml-[16px]">
+              <HeaderButton
+                icon={icon.id}
+                selected={icon.path === activePath}
+                onClick={() => router.replace(icon.path)}
+              />
+            </View>
           );
         })}
       </View>

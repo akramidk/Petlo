@@ -7,4 +7,5 @@ export const HEDER_PATHS = [
   "/verify-sign-in",
   "/verify-your-account",
   "/welcome",
+  "/search",
 ];
