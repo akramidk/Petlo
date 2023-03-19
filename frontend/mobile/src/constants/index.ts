@@ -7,6 +7,7 @@ import { VERIFICATION_CODE_LENGTH } from "./VERIFICATION_CODE_LENGTH";
 import { MENU_PATHS } from "./MENU_PATHS";
 import { HEDER_PATHS } from "./HEDER_PATHS";
 import { MENU_TABS } from "./MENU_TABS";
+import { HEDER_ICONS } from "./HEDER_ICONS";
 
 export {
   LANGUAGES_OPTIONS,
@@ -18,4 +19,5 @@ export {
   MENU_PATHS,
   HEDER_PATHS,
   MENU_TABS,
+  HEDER_ICONS,
 };

@@ -8,6 +8,7 @@ import BackButton from "./BackButton";
 import Options from "./Options";
 import Link from "./Link";
 import MenuTabButton from "./MenuTabButton";
+import HeaderButton from "./HeaderButton";
 
 export {
   Logo,
@@ -20,4 +21,5 @@ export {
   Options,
   Link,
   MenuTabButton,
+  HeaderButton,
 };

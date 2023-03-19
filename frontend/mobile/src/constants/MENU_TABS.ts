@@ -1,9 +1,7 @@
-import { MENU_PATHS } from "./MENU_PATHS";
-
 export const MENU_TABS: {
   id: string;
   value: string;
-  path: typeof MENU_PATHS[number];
+  path: string;
 }[] = [
   {
     id: "HOME",
