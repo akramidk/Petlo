@@ -1,16 +1,16 @@
 import {
   useInternationalizationContext,
   useTranslationsContext,
-} from "../src/hooks";
-import { Options } from "../src/components/atoms";
+} from "../../src/hooks";
+import { Options } from "../../src/components/atoms";
 import { useState } from "react";
-import { Form } from "../src/components/organisms";
+import { Form } from "../../src/components/organisms";
 import {
   LANGUAGE_ADJECTIVES_OPTIONS,
   LANGUAGES_OPTIONS,
-} from "../src/constants";
-import { LanguageOption, BaseOption } from "../src/interfaces";
-import { language } from "../src/types";
+} from "../../src/constants";
+import { LanguageOption, BaseOption } from "../../src/interfaces";
+import { language } from "../../src/types";
 
 const SelectLanguage = () => {
   const { t } = useTranslationsContext();
