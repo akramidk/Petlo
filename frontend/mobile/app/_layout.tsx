@@ -59,6 +59,7 @@ const Layout = () => {
 
   //load fonts
   const [fontsLoaded] = useFonts({
+    ChillaxBold: require("../src/assets/fonts/Chillax-Bold.otf"),
     IBMPlexSansArabic_100Thin,
     IBMPlexSansArabic_200ExtraLight,
     IBMPlexSansArabic_300Light,

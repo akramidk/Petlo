@@ -8,6 +8,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
+        "chillax-bold": "ChillaxBold",
         a100: ["IBMPlexSansArabic_100Thin"],
         a200: ["IBMPlexSansArabic_200ExtraLight"],
         a300: ["IBMPlexSansArabic_300Light"],
