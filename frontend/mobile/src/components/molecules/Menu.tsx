@@ -1,12 +1,12 @@
-import { Text, View } from "react-native";
-import { MENU_PATHS, MENU_TABS } from "../../constants";
+import { View } from "react-native";
+import { MENU_TABS } from "../../constants";
 import { MenuTabButton } from "../atoms";
 import { useTranslationsContext } from "../../hooks";
 import { useRouter } from "expo-router";
 import { Fragment } from "react";
 
 interface MenuProps {
-  activePath: typeof MENU_PATHS[number];
+  activePath: string;
 }
 
 const Menu = ({ activePath }: MenuProps) => {
