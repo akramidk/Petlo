@@ -16,6 +16,7 @@ interface IconProps {
   solid?: boolean;
   color?: string;
   size?: number;
+  cn?: string;
 }
 
 const Icon = ({
@@ -23,10 +24,12 @@ const Icon = ({
   solid = true,
   color = "#0E333C",
   size = 16,
+  cn,
 }: IconProps) => {
   const props = {
     color,
     size,
+    className: cn,
   };
 
   const icons = {
