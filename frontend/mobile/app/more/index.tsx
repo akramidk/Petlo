@@ -1,3 +1,5 @@
+import { useRouter } from "expo-router";
+import { Fragment } from "react";
 import { View } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { Icon, Text } from "../../src/components/atoms";
@@ -6,6 +8,7 @@ import { MORE_PAGE_SECTIONS } from "../../src/constants";
 import { useTranslationsContext } from "../../src/hooks";
 
 const More = () => {
+  const router = useRouter();
   const { t } = useTranslationsContext();
 
   return (
@@ -18,17 +21,19 @@ const More = () => {
             </Text>
 
             <View>
-              {section.options.map((option, index) => {
+              {section.options.map((option, i) => {
                 return (
-                  <BaseButton
-                    onClick={() => console.log(option.name)}
-                    cn="border-b-[1px] border-b-[#f6f6f6] py-[18px] space-x-[10px] items-center"
-                  >
-                    <Icon name={option.icon} size={18} color="#777" />
-                    <Text font="medium" cn="text-[14px] text-[#777]">
-                      {t(option.name)}
-                    </Text>
-                  </BaseButton>
+                  <Fragment key={i}>
+                    <BaseButton
+                      onClick={() => router.push(option.path)}
+                      cn="border-b-[1px] border-b-[#f6f6f6] py-[18px] space-x-[10px] items-center"
+                    >
+                      <Icon name={option.icon} size={18} color="#777" />
+                      <Text font="medium" cn="text-[14px] text-[#777]">
+                        {t(option.name)}
+                      </Text>
+                    </BaseButton>
+                  </Fragment>
                 );
               })}
             </View>
