@@ -38,6 +38,7 @@ import RoutesRestrictor from "./_RoutesRestrictor";
 import { useCustomer } from "../src/hooks";
 import { AlertContextProvider } from "../src/providers";
 import Viewer from "./_Viewer";
+import { StatusBar } from "expo-status-bar";
 
 const Layout = () => {
   // TODO handled if no network
@@ -138,6 +139,7 @@ const Layout = () => {
                   // Viewer should be here
                 }
                 <Viewer>
+                  <StatusBar style="dark" />
                   <Slot />
                 </Viewer>
               </AlertContextProvider>

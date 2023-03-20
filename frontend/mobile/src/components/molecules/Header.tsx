@@ -11,7 +11,7 @@ const Header = ({ activePath }: HeaderProps) => {
   const router = useRouter();
 
   return (
-    <View className="flex-row h-[42px] px-[28px] bg-[#fff] border-b-[1px] border-b-[#f6f6f6] justify-between items-start">
+    <View className="flex-row h-[48px] px-[28px] bg-[#fff] border-b-[1px] border-b-[#f6f6f6] justify-between items-start pt-[6px]">
       <Logo cn="text-[22px]" />
 
       <View className="flex-row">
