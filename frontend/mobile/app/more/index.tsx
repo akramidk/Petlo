@@ -1,8 +1,6 @@
-import clsx from "clsx";
-import { Fragment } from "react";
 import { View } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
-import { Text } from "../../src/components/atoms";
+import { Icon, Text } from "../../src/components/atoms";
 import { BaseButton } from "../../src/components/bases";
 import { MORE_PAGE_SECTIONS } from "../../src/constants";
 import { useTranslationsContext } from "../../src/hooks";
@@ -24,8 +22,9 @@ const More = () => {
                 return (
                   <BaseButton
                     onClick={() => console.log(option.name)}
-                    cn="border-b-[1px] border-b-[#f6f6f6] py-[16px]"
+                    cn="border-b-[1px] border-b-[#f6f6f6] py-[18px] space-x-[10px] items-center"
                   >
+                    <Icon name={option.icon} size={18} color="#777" />
                     <Text font="medium" cn="text-[14px] text-[#777]">
                       {t(option.name)}
                     </Text>
