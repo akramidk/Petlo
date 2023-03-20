@@ -22,7 +22,7 @@ const Viewer = ({ children }: ViewerProps) => {
   return (
     <SafeAreaView className="h-full flex flex-col">
       {!hideHeder && <Header activePath={pathname} />}
-      <View className="grow p-[28px]">{children}</View>
+      <View className="grow px-[28px]">{children}</View>
       {showMenu && <Menu activePath={pathname} />}
     </SafeAreaView>
   );
