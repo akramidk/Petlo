@@ -18,7 +18,7 @@ import {
   IBMPlexSansArabic_700Bold,
 } from "@expo-google-fonts/ibm-plex-sans-arabic";
 import { Slot } from "expo-router";
-import { Logo } from "../src/components/atoms";
+import { SVGLogo } from "../src/components/atoms";
 import { View, Alert, TouchableWithoutFeedback, Keyboard } from "react-native";
 import { useAPIFetching, useInternationalization } from "../src/hooks";
 import * as Device from "expo-device";
@@ -107,7 +107,7 @@ const Layout = () => {
 
     return (
       <View className="flex-1 items-center justify-center">
-        <Logo width="123" height="48" color="#0E333C" />
+        <SVGLogo width="123" height="48" color="#0E333C" />
       </View>
     );
   }

@@ -1,12 +1,12 @@
 import Svg, { Path } from "react-native-svg";
 
-interface LogoProps {
+interface SVGLogoProps {
   width: string;
   height: string;
   color: string;
 }
 
-const Logo = ({ width, height, color }: LogoProps) => {
+const SVGLogo = ({ width, height, color }: SVGLogoProps) => {
   return (
     <Svg width={width} height={height} viewBox={`0 0 ${width} ${height}`}>
       <Path
@@ -17,4 +17,4 @@ const Logo = ({ width, height, color }: LogoProps) => {
   );
 };
 
-export default Logo;
+export default SVGLogo;

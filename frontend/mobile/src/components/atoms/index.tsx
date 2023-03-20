@@ -1,4 +1,4 @@
-import Logo from "./Logo";
+import SVGLogo from "./SVGLogo";
 import Text from "./Text";
 import Button from "./Button";
 import Filed from "./Filed";
@@ -11,7 +11,7 @@ import MenuTabButton from "./MenuTabButton";
 import HeaderButton from "./HeaderButton";
 
 export {
-  Logo,
+  SVGLogo,
   Text,
   Button,
   Filed,
