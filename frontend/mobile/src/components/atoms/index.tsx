@@ -9,6 +9,7 @@ import Options from "./Options";
 import Link from "./Link";
 import MenuTabButton from "./MenuTabButton";
 import HeaderButton from "./HeaderButton";
+import Logo from "./Logo";
 
 export {
   SVGLogo,
@@ -22,4 +23,5 @@ export {
   Link,
   MenuTabButton,
   HeaderButton,
+  Logo,
 };
