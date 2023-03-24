@@ -26,19 +26,31 @@ const Informations = () => {
   }
 
   return (
-    <PageStructure
-      title="Informations"
-      backButton={router.back}
-      button={{
-        value: "dddf",
-        onClick: () => {},
-      }}
-    >
+    <PageStructure title="Informations" backButton={router.back}>
       <View className="space-y-[8px]">
         {cardKeys.map((key, i) => {
           return (
             <View key={i}>
-              <DataCard primaryText={key} secondaryText={response.body[key]} />
+              <DataCard
+                primaryText={key}
+                secondaryText={response.body[key]}
+                actions={
+                  key !== "country"
+                    ? [
+                        {
+                          name: "Change",
+                          onClick: () =>
+                            router.push(
+                              `/account/informations/chnage-${key.replaceAll(
+                                "_",
+                                "-"
+                              )}`
+                            ),
+                        },
+                      ]
+                    : undefined
+                }
+              />
             </View>
           );
         })}
