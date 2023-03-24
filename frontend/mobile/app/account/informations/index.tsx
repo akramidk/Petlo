@@ -44,7 +44,7 @@ const Informations = () => {
                           name: t("INFORMATIONS_CHANGE_BUTTON"),
                           onClick: () =>
                             router.push(
-                              `/account/informations/chnage-${key.replaceAll(
+                              `/account/informations/change-${key.replaceAll(
                                 "_",
                                 "-"
                               )}`
