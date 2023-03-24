@@ -12,4 +12,5 @@ export enum Endpoints {
   RESEND_RESET_PASSWORD_CODE = "/v1/customers/resend-reset-password-code",
   REQUEST_RESET_PASSWORD_VERIFICATION = "/v1/customers/verify-reset-password-request",
   RESET_PASSWORD = "/v1/customers/reset-password",
+  CUSTOMER_INFORMATIONS = "/v1/customers",
 }

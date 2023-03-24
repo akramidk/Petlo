@@ -50,6 +50,7 @@ import {
   ResetPasswordResponse,
 } from "./Endpoints/ResetPassword";
 import { ResendResetPasswordCodeResponse } from "./Endpoints/ResendResetPasswordCode";
+import { CustomerInformationsResponse } from "./Endpoints/CustomerInformations";
 
 //entities interfaces
 import { Customer } from "./Entities/Customer";
@@ -87,5 +88,6 @@ export {
   ResetPasswordRequest,
   ResetPasswordResponse,
   ResendResetPasswordCodeResponse,
+  CustomerInformationsResponse,
   Customer,
 };
