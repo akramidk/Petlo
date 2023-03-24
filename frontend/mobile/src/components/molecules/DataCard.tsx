@@ -1,17 +1,9 @@
 import { View } from "react-native";
-import { BaseButtonProps } from "../../interfaces";
+import { DataCardProps } from "../../interfaces";
 import { Text } from "../atoms";
 import { BaseButton } from "../bases";
 
-interface DataCard {
-  primaryText: string;
-  secondaryText?: string;
-  actions?: ({
-    name: string;
-  } & Pick<BaseButtonProps, "onClick">)[];
-}
-
-const DataCard = ({ primaryText, secondaryText, actions }: DataCard) => {
+const DataCard = ({ primaryText, secondaryText, actions }: DataCardProps) => {
   return (
     <View className="w-full border-[1px] border-[#f6f6f6] rounded-[4px] px-[20px] py-[14px]">
       <View className="space-y-[8px]">

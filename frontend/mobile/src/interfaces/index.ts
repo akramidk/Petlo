@@ -7,6 +7,7 @@ import { CountryOption } from "./CountryOption";
 import { BaseFiledProps } from "./BaseFiledProps";
 import { BaseSelectorProps } from "./BaseSelectorProps";
 import { BaseButtonProps } from "./BaseButtonProps";
+import { DataCardProps } from "./DataCardProps";
 
 //endpoinds interfaces
 import {
@@ -90,4 +91,5 @@ export {
   ResendResetPasswordCodeResponse,
   CustomerInformationsResponse,
   Customer,
+  DataCardProps,
 };

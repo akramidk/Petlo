@@ -2,10 +2,13 @@ import { useRouter } from "expo-router";
 import { Fragment, useMemo } from "react";
 import { Text, View } from "react-native";
 import { DataCard } from "../../../src/components/molecules";
-import { PageStructure } from "../../../src/components/organisms";
+import { DataCards, PageStructure } from "../../../src/components/organisms";
 import { Endpoints } from "../../../src/enums";
 import { useAPIFetching, useTranslationsContext } from "../../../src/hooks";
-import { CustomerInformationsResponse } from "../../../src/interfaces";
+import {
+  CustomerInformationsResponse,
+  DataCardProps,
+} from "../../../src/interfaces";
 
 const Informations = () => {
   const router = useRouter();
@@ -14,12 +17,30 @@ const Informations = () => {
     endpoint: Endpoints.CUSTOMER_INFORMATIONS,
   });
 
-  const cardKeys = useMemo(() => {
+  const data: DataCardProps[] = useMemo(() => {
     if (!response?.body) {
       return;
     }
 
-    return [...Object.keys(response.body), "password"];
+    const keys = [...Object.keys(response.body), "password"];
+    return keys.map((key) => {
+      return {
+        primaryText: t(`INFORMATIONS_${key.toUpperCase()}_CARD_PRIMARY_TEXT`),
+        secondaryText: response.body[key],
+        actions:
+          key !== "country"
+            ? [
+                {
+                  name: t("INFORMATIONS_CHANGE_BUTTON"),
+                  onClick: () =>
+                    router.push(
+                      `/account/informations/change-${key.replaceAll("_", "-")}`
+                    ),
+                },
+              ]
+            : undefined,
+      };
+    });
   }, [response]);
 
   if (response.isFetching) {
@@ -28,36 +49,7 @@ const Informations = () => {
 
   return (
     <PageStructure title="Informations" backButton={router.back}>
-      <View className="space-y-[4px]">
-        {cardKeys.map((key, i) => {
-          return (
-            <View key={i}>
-              <DataCard
-                primaryText={t(
-                  `INFORMATIONS_${key.toUpperCase()}_CARD_PRIMARY_TEXT`
-                )}
-                secondaryText={response.body[key]}
-                actions={
-                  key !== "country"
-                    ? [
-                        {
-                          name: t("INFORMATIONS_CHANGE_BUTTON"),
-                          onClick: () =>
-                            router.push(
-                              `/account/informations/change-${key.replaceAll(
-                                "_",
-                                "-"
-                              )}`
-                            ),
-                        },
-                      ]
-                    : undefined
-                }
-              />
-            </View>
-          );
-        })}
-      </View>
+      <DataCards data={data} />
     </PageStructure>
   );
 };

@@ -1,3 +1,4 @@
 import PageStructure from "./PageStructure";
+import DataCards from "./DataCards";
 
-export { PageStructure };
+export { PageStructure, DataCards };
