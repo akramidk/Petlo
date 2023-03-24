@@ -19,8 +19,8 @@ const PageStructure = ({
   backButton,
 }: PageStructureProps) => {
   return (
-    <View className="h-full flex flex-col">
-      <View className="px-[28px] pb-[28px] pt-[12px] space-y-[12px]">
+    <View className="grow flex flex-col">
+      <View className="p-[28px] space-y-[12px]">
         {backButton && <BackButton onClick={backButton} />}
         {title && (
           <Text cn="text-[32px] text-[#0E333C]" font="extraBold">

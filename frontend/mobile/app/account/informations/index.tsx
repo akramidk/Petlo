@@ -1,10 +1,21 @@
-import { Text, View } from "react-native";
+import { useRouter } from "expo-router";
+import { Text, TextInputComponent, View } from "react-native";
+import { PageStructure } from "../../../src/components/organisms";
 
 const Informations = () => {
+  const router = useRouter();
+
   return (
-    <View>
-      <Text>informations</Text>
-    </View>
+    <PageStructure
+      title="Informations"
+      backButton={router.back}
+      button={{
+        value: "dddf",
+        onClick: () => {},
+      }}
+    >
+      <Text>jjjj</Text>
+    </PageStructure>
   );
 };
 

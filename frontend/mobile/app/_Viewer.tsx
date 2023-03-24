@@ -13,7 +13,7 @@ const Viewer = ({ children }: ViewerProps) => {
   const showMenu = (MENU_PATHS as ReadonlyArray<string>).includes(pathname);
 
   if (hideHeder && !showMenu) {
-    return <SafeAreaView>{children}</SafeAreaView>;
+    return <SafeAreaView className="h-full">{children}</SafeAreaView>;
   }
 
   return (
