@@ -5,11 +5,8 @@ import {
   CreditCardIcon as CardSolid,
   LanguageIcon as LanguageSolid,
   LifebuoyIcon as SupportSolid,
+  EllipsisVerticalIcon as MoreVertical,
 } from "react-native-heroicons/solid";
-import {
-  UserIcon as UserOutline,
-  HeartIcon as HeartOutline,
-} from "react-native-heroicons/outline";
 
 interface IconProps {
   name: string;
@@ -50,6 +47,9 @@ const Icon = ({
     },
     support: {
       solid: <SupportSolid {...props} />,
+    },
+    moreVertical: {
+      solid: <MoreVertical {...props} />,
     },
   };
 

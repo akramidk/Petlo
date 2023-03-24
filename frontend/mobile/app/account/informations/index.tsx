@@ -1,5 +1,5 @@
 import { useRouter } from "expo-router";
-import { Text, TextInputComponent, View } from "react-native";
+import { DataCard } from "../../../src/components/molecules";
 import { PageStructure } from "../../../src/components/organisms";
 
 const Informations = () => {
@@ -14,7 +14,16 @@ const Informations = () => {
         onClick: () => {},
       }}
     >
-      <Text>jjjj</Text>
+      <DataCard
+        primaryText="Name"
+        secondaryText="Akram Khalil"
+        actions={[
+          {
+            name: "Change",
+            onClick: () => console.log("hello"),
+          },
+        ]}
+      />
     </PageStructure>
   );
 };
