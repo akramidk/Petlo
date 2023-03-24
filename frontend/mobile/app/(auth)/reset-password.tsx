@@ -1,5 +1,5 @@
 import { useRouter } from "expo-router";
-import { Form } from "../../src/components/organisms";
+import { PageStructure } from "../../src/components/organisms";
 import {
   useAPIMutation,
   useCustomerContext,
@@ -122,7 +122,7 @@ const ResetPassword = () => {
 
   if (step === 1) {
     return (
-      <Form
+      <PageStructure
         title={t("RESET_PASSWORD__STEP_1_TITLE")}
         backButton={() => router.back()}
         button={{
@@ -152,13 +152,13 @@ const ResetPassword = () => {
           onChange={setPhoneNumber}
           keyboardType="number-pad"
         />
-      </Form>
+      </PageStructure>
     );
   }
 
   if (step === 2) {
     return (
-      <Form
+      <PageStructure
         title={t("RESET_PASSWORD__STEP_2_TITLE")}
         helperText={t("RESET_PASSWORD__STEP_2_HELPER_TEXT", {
           verificationCodeLength: VERIFICATION_CODE_LENGTH,
@@ -197,13 +197,13 @@ const ResetPassword = () => {
             status={resendResetPasswordCodeStatus}
           />
         </View>
-      </Form>
+      </PageStructure>
     );
   }
 
   if (step === 3) {
     return (
-      <Form
+      <PageStructure
         title={t("RESET_PASSWORD__STEP_3_TITLE")}
         button={{
           value: t("RESET_PASSWORD__STEP_3_BUTTON"),
@@ -226,7 +226,7 @@ const ResetPassword = () => {
           value={password}
           secureTextEntry={true}
         />
-      </Form>
+      </PageStructure>
     );
   }
 };

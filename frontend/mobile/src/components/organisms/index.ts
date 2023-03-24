@@ -1,3 +1,3 @@
-import Form from "./Form";
+import PageStructure from "./PageStructure";
 
-export { Form };
+export { PageStructure };

@@ -4,7 +4,7 @@ import {
 } from "../../src/hooks";
 import { Options } from "../../src/components/atoms";
 import { useState } from "react";
-import { Form } from "../../src/components/organisms";
+import { PageStructure } from "../../src/components/organisms";
 import {
   LANGUAGE_ADJECTIVES_OPTIONS,
   LANGUAGES_OPTIONS,
@@ -37,7 +37,7 @@ const SelectLanguage = () => {
 
   if (step === 1) {
     return (
-      <Form
+      <PageStructure
         title={t("SELECT_LANGUAGE__TITLE")}
         helperText={t("SELECT_LANGUAGE__HELPER_TEXT")}
         button={
@@ -61,13 +61,13 @@ const SelectLanguage = () => {
           }}
           translate
         />
-      </Form>
+      </PageStructure>
     );
   }
 
   if (step === 2) {
     return (
-      <Form
+      <PageStructure
         title={t("SELECT_LANGUAGE_PRONOUN_TITLE")}
         helperText={t("SELECT_LANGUAGE_PRONOUN_HELPER_TEXT")}
         button={{
@@ -84,7 +84,7 @@ const SelectLanguage = () => {
           }}
           translate
         />
-      </Form>
+      </PageStructure>
     );
   }
 };

@@ -1,5 +1,5 @@
 import { useRouter, useSearchParams } from "expo-router";
-import { Form } from "../../src/components/organisms";
+import { PageStructure } from "../../src/components/organisms";
 import { useAPIMutation, useTranslationsContext } from "../../src/hooks";
 import { FiledWithSelector } from "../../src/components/atoms";
 import { useState } from "react";
@@ -42,7 +42,7 @@ const EditPhoneNumber = () => {
   });
 
   return (
-    <Form
+    <PageStructure
       title={t("EDIT_PHONE_NUMBER__TITLE")}
       button={{
         value: t("EDIT_PHONE_NUMBER__EDIT_BUTTON"),
@@ -71,7 +71,7 @@ const EditPhoneNumber = () => {
         onChange={setPhoneNumber}
         keyboardType="number-pad"
       />
-    </Form>
+    </PageStructure>
   );
 };
 

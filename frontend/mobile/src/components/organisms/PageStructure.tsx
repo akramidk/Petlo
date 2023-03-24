@@ -3,7 +3,7 @@ import { ButtonProps } from "../../interfaces";
 import { Button, BackButton, Text } from "../atoms";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
-interface FormProps {
+interface PageStructureProps {
   title?: string;
   helperText?: string;
   children?: React.ReactNode;
@@ -11,13 +11,13 @@ interface FormProps {
   backButton?: () => void;
 }
 
-const Form = ({
+const PageStructure = ({
   title,
   helperText,
   children,
   button,
   backButton,
-}: FormProps) => {
+}: PageStructureProps) => {
   return (
     <View className="h-full justify-between">
       <View className="space-y-[12px] mb-[28px]">
@@ -43,4 +43,4 @@ const Form = ({
   );
 };
 
-export default Form;
+export default PageStructure;

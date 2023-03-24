@@ -1,5 +1,5 @@
 import { useRouter } from "expo-router";
-import { Form } from "../../src/components/organisms";
+import { PageStructure } from "../../src/components/organisms";
 import {
   useAPIMutation,
   useInternationalizationContext,
@@ -60,7 +60,7 @@ const SignIn = () => {
   });
 
   return (
-    <Form
+    <PageStructure
       title={t("SIGN_IN__TITLE")}
       backButton={() => router.back()}
       button={{
@@ -109,7 +109,7 @@ const SignIn = () => {
           value={t("VERIFY_SIGN_IN__FORGOT_PASSWORD")}
         />
       </View>
-    </Form>
+    </PageStructure>
   );
 };
 

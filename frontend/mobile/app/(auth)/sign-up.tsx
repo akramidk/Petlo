@@ -1,7 +1,7 @@
 import { useRouter, useSearchParams } from "expo-router";
 import { useMemo, useState } from "react";
 import { Filed, Selector, FiledWithSelector } from "../../src/components/atoms";
-import { Form } from "../../src/components/organisms";
+import { PageStructure } from "../../src/components/organisms";
 import {
   COUNTRIES_OPTIONS,
   COUNTIES_PHONE_CODE_OPTIONS,
@@ -63,7 +63,7 @@ const SignUp = () => {
   });
 
   return (
-    <Form
+    <PageStructure
       title={t("SIGN_UP__TITLE")}
       backButton={() => router.back()}
       button={{
@@ -124,7 +124,7 @@ const SignUp = () => {
         value={password}
         secureTextEntry={true}
       />
-    </Form>
+    </PageStructure>
   );
 };
 

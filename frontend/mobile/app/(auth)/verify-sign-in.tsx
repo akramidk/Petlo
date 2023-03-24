@@ -1,7 +1,7 @@
 import { useSearchParams } from "expo-router";
 import { useState } from "react";
 import { View } from "react-native";
-import { Form } from "../../src/components/organisms";
+import { PageStructure } from "../../src/components/organisms";
 import {
   useAPIMutation,
   useCustomerContext,
@@ -60,7 +60,7 @@ const VerifySignIn = () => {
   });
 
   return (
-    <Form
+    <PageStructure
       title={t("VERIFY_SIGN_IN__TITLE")}
       helperText={t("VERIFY_SIGN_IN__PLACEHOLDER", {
         verificationCodeLength: VERIFICATION_CODE_LENGTH,
@@ -99,7 +99,7 @@ const VerifySignIn = () => {
           status={resendCodeStatus}
         />
       </View>
-    </Form>
+    </PageStructure>
   );
 };
 

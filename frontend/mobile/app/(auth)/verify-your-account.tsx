@@ -3,7 +3,7 @@ import { useRouter, useSearchParams } from "expo-router";
 import { useState } from "react";
 import { View } from "react-native";
 import { Filed, Link } from "../../src/components/atoms";
-import { Form } from "../../src/components/organisms";
+import { PageStructure } from "../../src/components/organisms";
 import { Endpoints } from "../../src/enums";
 import {
   useAPIMutation,
@@ -65,7 +65,7 @@ const VerifyYourAccount = () => {
   });
 
   return (
-    <Form
+    <PageStructure
       title={t("VERIFY_YOUR_ACCOUNT__TITLE")}
       helperText={t("VERIFY_YOUR_ACCOUNT__HELPER_TEXT", {
         verificationCodeLength: VERIFICATION_CODE_LENGTH,
@@ -113,7 +113,7 @@ const VerifyYourAccount = () => {
           status={resendCodeStatus}
         />
       </View>
-    </Form>
+    </PageStructure>
   );
 };
 
