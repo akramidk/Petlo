@@ -1,6 +1,7 @@
 import { useRouter } from "expo-router";
 import { Fragment, useMemo } from "react";
 import { Text, View } from "react-native";
+import { SmallButton } from "../../../src/components/atoms";
 import { DataCard } from "../../../src/components/molecules";
 import { DataCards, PageStructure } from "../../../src/components/organisms";
 import { Endpoints } from "../../../src/enums";
@@ -49,7 +50,8 @@ const Informations = () => {
 
   return (
     <PageStructure title="Informations" backButton={router.back}>
-      <DataCards data={data} />
+      <DataCards cn="mb-[8px]" data={data} />
+      <SmallButton value="Delete" onClick={() => {}} valueCN="text-[#E64848]" />
     </PageStructure>
   );
 };
