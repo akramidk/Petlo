@@ -1,5 +1,5 @@
 import Constants from "expo-constants";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { DEFAULT_APP_LANGUAGE } from "../constants";
 import useCustomerContext from "./useCustomerContext";
 import useInternationalizationContext from "./useInternationalizationContext";
@@ -19,20 +19,15 @@ const useRequestBuilder = ({
 }: useRequestBuilderProps) => {
   const settingsContext = useInternationalizationContext();
   const customerContext = useCustomerContext();
-  const [sessionToken, setSessionToken] = useState("");
-
   const locale =
     settingsContext?.languageWithoutGender ??
     DEFAULT_APP_LANGUAGE.withoutGender;
 
   const URI = `${API_URL}/${locale}${endpoint}`;
-
-  useEffect(() => {
-    if (!withoutAuthorization) {
-      setSessionToken(
-        overwriteSessionToken ?? customerContext?.customer?.sessionToken ?? ""
-      );
-    }
+  const sessionToken = useMemo(() => {
+    return (
+      overwriteSessionToken ?? customerContext?.customer?.sessionToken ?? ""
+    );
   }, [withoutAuthorization, overwriteSessionToken]);
 
   return { URI, sessionToken };
