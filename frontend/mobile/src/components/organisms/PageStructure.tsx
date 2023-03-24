@@ -34,8 +34,8 @@ const PageStructure = ({
         )}
       </View>
 
-      <KeyboardAwareScrollView className="grow">
-        <View className="px-[28px] pm-[28px]">{children}</View>
+      <KeyboardAwareScrollView className="grow px-[28px] pm-[28px]">
+        {children}
       </KeyboardAwareScrollView>
 
       {button && <Button {...button} />}
