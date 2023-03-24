@@ -101,17 +101,15 @@ const SelectorModal = <T extends BaseOption>({
           />
         </ScrollView>
 
-        <View className="fixed border-t-[1px] border-[#f6f6f6] py-[16px] px-[28px]">
-          <Button
-            status={
-              selectedOption?.id !== pastSelectedOption?.id
-                ? "active"
-                : "inactive"
-            }
-            value={t("OPTIONS_MODAL_COMP__SELECT")}
-            onClick={onSelect}
-          />
-        </View>
+        <Button
+          status={
+            selectedOption?.id !== pastSelectedOption?.id
+              ? "active"
+              : "inactive"
+          }
+          value={t("OPTIONS_MODAL_COMP__SELECT")}
+          onClick={onSelect}
+        />
       </SafeAreaView>
     </Modal>
   );

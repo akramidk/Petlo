@@ -5,6 +5,7 @@ import Text from "./Text";
 import { ActivityIndicator } from "react-native-paper";
 import { CheckIcon, XMarkIcon } from "react-native-heroicons/outline";
 import BaseButton from "../bases/BaseButton";
+import { View } from "react-native";
 
 const Button = ({ value, status = "active", onClick }: ButtonProps) => {
   const TextChild = () => {
@@ -48,16 +49,18 @@ const Button = ({ value, status = "active", onClick }: ButtonProps) => {
   };
 
   return (
-    <BaseButton
-      cn={clsx(
-        "h-[60px] rounded-[4px] justify-center items-center",
-        statuses[status].className
-      )}
-      onClick={onClick}
-      disabled={status !== "active"}
-    >
-      {statuses[status].child}
-    </BaseButton>
+    <View className="fixed border-t-[1px] border-[#f6f6f6] pt-[16px] px-[28px]">
+      <BaseButton
+        cn={clsx(
+          "h-[60px] rounded-[4px] justify-center items-center",
+          statuses[status].className
+        )}
+        onClick={onClick}
+        disabled={status !== "active"}
+      >
+        {statuses[status].child}
+      </BaseButton>
+    </View>
   );
 };
 

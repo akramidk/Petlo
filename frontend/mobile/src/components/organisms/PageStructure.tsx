@@ -19,8 +19,8 @@ const PageStructure = ({
   backButton,
 }: PageStructureProps) => {
   return (
-    <View className="h-full justify-between">
-      <View className="space-y-[12px] mb-[28px]">
+    <View className="h-full flex flex-col">
+      <View className="px-[28px] pb-[28px] pt-[12px] space-y-[12px]">
         {backButton && <BackButton onClick={backButton} />}
         {title && (
           <Text cn="text-[32px] text-[#0E333C]" font="extraBold">
@@ -34,8 +34,8 @@ const PageStructure = ({
         )}
       </View>
 
-      <KeyboardAwareScrollView className="mb-[28px]">
-        {children}
+      <KeyboardAwareScrollView className="grow">
+        <View className="px-[28px] pm-[28px]">{children}</View>
       </KeyboardAwareScrollView>
 
       {button && <Button {...button} />}
