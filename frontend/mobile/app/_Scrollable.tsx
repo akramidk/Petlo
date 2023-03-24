@@ -1,6 +1,5 @@
-import clsx from "clsx";
-import { View } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
+import Viewable from "./_Viewable";
 
 interface ScrollableProps {
   children: React.ReactNode;
@@ -10,7 +9,7 @@ interface ScrollableProps {
 const Scrollable = ({ children, cn }: ScrollableProps) => {
   return (
     <ScrollView className="grow">
-      <View className={clsx("p-[28px]", cn)}>{children}</View>
+      <Viewable cn={cn}>{children}</Viewable>
     </ScrollView>
   );
 };
