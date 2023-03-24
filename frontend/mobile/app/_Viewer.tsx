@@ -1,5 +1,4 @@
 import { usePathname } from "expo-router";
-import { View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Header, Menu } from "../src/components/molecules";
 import { HEDER_PATHS, MENU_PATHS } from "../src/constants";
@@ -22,7 +21,7 @@ const Viewer = ({ children }: ViewerProps) => {
   return (
     <SafeAreaView className="h-full flex flex-col">
       {!hideHeder && <Header activePath={pathname} />}
-      <View className="grow px-[28px]">{children}</View>
+      {children}
       {showMenu && <Menu activePath={pathname} />}
     </SafeAreaView>
   );

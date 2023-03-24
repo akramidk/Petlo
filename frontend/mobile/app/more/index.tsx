@@ -2,7 +2,6 @@ import clsx from "clsx";
 import { useRouter } from "expo-router";
 import { Fragment } from "react";
 import { View } from "react-native";
-import { ScrollView } from "react-native-gesture-handler";
 import { Icon, Text } from "../../src/components/atoms";
 import { BaseButton } from "../../src/components/bases";
 import { MORE_PAGE_SECTIONS } from "../../src/constants";
@@ -10,6 +9,7 @@ import {
   useInternationalizationContext,
   useTranslationsContext,
 } from "../../src/hooks";
+import Scrollable from "../_Scrollable";
 
 const More = () => {
   const router = useRouter();
@@ -17,7 +17,7 @@ const More = () => {
   const { direction } = useInternationalizationContext();
 
   return (
-    <ScrollView className="space-y-[28px] py-[28px]">
+    <Scrollable cn="space-y-[28px]">
       {MORE_PAGE_SECTIONS.map((section, i) => {
         return (
           <View key={i}>
@@ -51,7 +51,7 @@ const More = () => {
           </View>
         );
       })}
-    </ScrollView>
+    </Scrollable>
   );
 };
 

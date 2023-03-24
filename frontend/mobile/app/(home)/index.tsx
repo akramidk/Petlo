@@ -1,10 +1,11 @@
-import { Text, View } from "react-native";
+import { Text } from "react-native";
+import Scrollable from "../_Scrollable";
 
 const Home = () => {
   return (
-    <View>
+    <Scrollable>
       <Text>Home</Text>
-    </View>
+    </Scrollable>
   );
 };
 
