@@ -19,11 +19,11 @@ const PageStructure = ({
   backButton,
 }: PageStructureProps) => {
   return (
-    <View className="grow flex flex-col">
+    <>
       <View className="p-[28px] space-y-[12px]">
         {backButton && <BackButton onClick={backButton} />}
         {title && (
-          <Text cn="text-[32px] text-[#0E333C]" font="extraBold">
+          <Text cn="text-[28px] text-[#0E333C]" font="extraBold">
             {title}
           </Text>
         )}
@@ -34,12 +34,12 @@ const PageStructure = ({
         )}
       </View>
 
-      <KeyboardAwareScrollView className="grow px-[28px] pm-[28px]">
-        {children}
+      <KeyboardAwareScrollView>
+        <View className="px-[28px] pb-[28px]">{children}</View>
       </KeyboardAwareScrollView>
 
       {button && <Button {...button} />}
-    </View>
+    </>
   );
 };
 
