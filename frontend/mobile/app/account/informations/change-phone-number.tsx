@@ -3,6 +3,7 @@ import {
   useAPIFetching,
   useTranslationsContext,
   useAlertContext,
+  useAPIMutation,
 } from "../../../src/hooks";
 import { Filed, FiledWithSelector } from "../../../src/components/atoms";
 import { COUNTIES_PHONE_CODE_OPTIONS } from "../../../src/constants";
@@ -30,52 +31,16 @@ const ChangePhoneNumber = () => {
   );
   const [phoneNumber, setPhoneNumber] = useState<string>("");
 
-  const { response, setWait } = useAPIFetching<
+  const { response, trigger } = useAPIMutation<
     RequestPasswordPermissionRequest,
     RequestPasswordPermissionResponse
   >({
     endpoint: Endpoints.REQUEST_PASSWORD_PERMISSION,
-    body: {
-      permission: APIPermissions.CHANGE_CUSTOMER_PHONE_NUMBER,
-      password: password,
-    },
-    SWROptions: {
-      shouldRetryOnError: false,
-      revalidateIfStale: true,
-    },
-    options: {
-      wait: true,
-    },
+    method: "POST",
+    options: {},
   });
 
-  // TODO should be inside useAPIFetching
-  useEffect(() => {
-    if (response?.isFetching === undefined) return;
-
-    if (response.isFetching) {
-      setContinueButtonStatus("loading");
-      return;
-    }
-
-    let timeout;
-    if (response.statusCode === 200) {
-      setContinueButtonStatus("succeeded");
-      timeout = setTimeout(() => {
-        setStep(2);
-      }, 1000);
-    } else {
-      setContinueButtonStatus("failed");
-
-      timeout = setTimeout(() => {
-        setWait(true);
-        setContinueButtonStatus(undefined);
-      }, 2000);
-    }
-
-    return () => {
-      clearTimeout(timeout);
-    };
-  }, [response]);
+  console.log("response", response);
 
   if (step === 1) {
     return (
@@ -84,7 +49,11 @@ const ChangePhoneNumber = () => {
         helperText={t("CHANGE_PHONE_NUMBER__STEP_1_HELPER_TEXT")}
         button={{
           value: t("CHANGE_PHONE_NUMBER__STEP_1_CONTINUE_BUTTON"),
-          onClick: () => setWait(false),
+          onClick: () =>
+            trigger({
+              permission: APIPermissions.CHANGE_CUSTOMER_PHONE_NUMBER,
+              password: "",
+            }),
           status: continueButtonStatus,
         }}
         link={{
