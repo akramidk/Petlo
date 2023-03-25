@@ -75,5 +75,9 @@
   "INFORMATIONS_COUNTRY_CARD_PRIMARY_TEXT": "Country",
   "INFORMATIONS_PASSWORD_CARD_PRIMARY_TEXT": "Password",
   "INFORMATIONS_CHANGE_BUTTON": "Change",
-  "INFORMATIONS_DELETE_ACCOUNT_BUTTON": "Delete Your Account"
+  "INFORMATIONS_DELETE_ACCOUNT_BUTTON": "Delete Your Account",
+  "DELETE_YOUR_ACCOUNT_STEP_1_TITLE": "Delete Your Account",
+  "DELETE_YOUR_ACCOUNT_STEP_1_HELPER_TEXT": "If you delete your account there is no going back, you can't login or use your account once you delete it, are you sure about this?",
+  "DELETE_YOUR_ACCOUNT_STEP_1_BUTTON": "Yes, Continue",
+  "DELETE_YOUR_ACCOUNT_CANCEL_BUTTON": "Cancel"
 }

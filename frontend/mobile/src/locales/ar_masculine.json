@@ -79,5 +79,9 @@
   "INFORMATIONS_COUNTRY_CARD_PRIMARY_TEXT": "الدولة",
   "INFORMATIONS_PASSWORD_CARD_PRIMARY_TEXT": "كلمة المرور",
   "INFORMATIONS_CHANGE_BUTTON": "تغيير",
-  "INFORMATIONS_DELETE_ACCOUNT_BUTTON": "احذف حسابك"
+  "INFORMATIONS_DELETE_ACCOUNT_BUTTON": "احذف حسابك",
+  "DELETE_YOUR_ACCOUNT_STEP_1_TITLE": "احذف حسابك",
+  "DELETE_YOUR_ACCOUNT_STEP_1_HELPER_TEXT": "اذا قمت بحذف حسابك، لا يمكنك التراجع عن هذه الخطوة لاحقاً، هل انت متأكد من ذلك؟",
+  "DELETE_YOUR_ACCOUNT_STEP_1_BUTTON": "نعم، أكمل",
+  "DELETE_YOUR_ACCOUNT_CANCEL_BUTTON": "الغاء"
 }
