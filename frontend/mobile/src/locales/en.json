@@ -99,5 +99,6 @@
   "CHANGE_PASSWORD__STEP_1_TITLE": "Security Check",
   "CHANGE_PASSWORD__STEP_1_HELPER_TEXT": "For security reasons we sent an sms with %{verificationCodeLength} digit code to your phone number, enter it below to continue.",
   "CHANGE_PASSWORD__STEP_1_CONTINUE_BUTTON": "Continue",
-  "CHANGE_PASSWORD__CANCEL_BUTTON": "Cancel"
+  "CHANGE_PASSWORD__CANCEL_BUTTON": "Cancel",
+  "CHANGE_PASSWORD__RESEND_CODE_LINK": "Resend Code"
 }
