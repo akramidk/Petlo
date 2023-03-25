@@ -23,7 +23,8 @@ Rails.application.routes.draw do
 
       post "customers/request-permission-with-otp", to: "customers#request_permission_with_otp"
       post "customers/verify-requested-permission-with-otp", to: "customers#verify_requested_permission_with_otp"
-      get "customers/request-permission-with-password", to: "customers#request_permission_with_password"
+      # TODO should get not post but akram used post to use useAPIMutation
+      post "customers/request-permission-with-password", to: "customers#request_permission_with_password"
 
       post "customers/request-reset-password", to: "customers#request_reset_password"
       post "customers/resend-reset-password-code", to: "customers#resend_reset_password_code"
