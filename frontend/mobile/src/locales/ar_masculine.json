@@ -91,5 +91,13 @@
   "CHANGE_NAME__TITLE": "تغيير اسمك",
   "CHANGE_NAME__CHANGE_BUTTON": "تغيير",
   "CHANGE_NAME__CANCEL_BUTTON": "الغاء",
-  "CHANGE_NAME__FILED_PLACEHOLDER": "قم بادخال اسم جديد"
+  "CHANGE_NAME__FILED_PLACEHOLDER": "قم بادخال اسم جديد",
+  "CHANGE_PHONE_NUMBER__STEP_1_TITLE": "خطوة تحقق",
+  "CHANGE_PHONE_NUMBER__STEP_1_HELPER_TEXT": "لاسباب الحفاظ على آمان حسابك، يجب ادخال كلمة المرور الخاصة بك اولاً.",
+  "CHANGE_PHONE_NUMBER__STEP_1_FILED_PLACEHOLDER": "ادخل كلمة المرور",
+  "CHANGE_PHONE_NUMBER__STEP_1_CONTINUE_BUTTON": "اكمل",
+  "CHANGE_PHONE_NUMBER__CANCEL_BUTTON": "الغاء",
+  "CHANGE_PHONE_NUMBER__STEP_2_TITLE": "تغيير رقم هاتفك",
+  "CHANGE_PHONE_NUMBER__STEP_2_FILED_PLACEHOLDER": "ادخل ارقم الجديد",
+  "CHANGE_PHONE_NUMBER__STEP_2_CHANGE_BUTTON": "تغيير"
 }
