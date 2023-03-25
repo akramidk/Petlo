@@ -53,6 +53,10 @@ import {
 } from "./Endpoints/ResetPassword";
 import { ResendResetPasswordCodeResponse } from "./Endpoints/ResendResetPasswordCode";
 import { CustomerInformationsResponse } from "./Endpoints/CustomerInformations";
+import {
+  RequestPermissionRequest,
+  RequestPermissionResponse,
+} from "./Endpoints/RequestPermission";
 
 //entities interfaces
 import { Customer } from "./Entities/Customer";
@@ -91,6 +95,8 @@ export {
   ResetPasswordResponse,
   ResendResetPasswordCodeResponse,
   CustomerInformationsResponse,
+  RequestPermissionRequest,
+  RequestPermissionResponse,
   Customer,
   DataCardProps,
   LinkProps,

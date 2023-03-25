@@ -2,12 +2,25 @@ import { useRouter } from "expo-router";
 import { useState } from "react";
 import { PageStructure } from "../../../src/components/organisms";
 import { VERIFICATION_CODE_LENGTH } from "../../../src/constants";
-import { useTranslationsContext } from "../../../src/hooks";
+import { Endpoints } from "../../../src/enums";
+import { APIPermissions } from "../../../src/enums/APIPermissions";
+import { useAPIMutation, useTranslationsContext } from "../../../src/hooks";
+import {
+  RequestPermissionRequest,
+  RequestPermissionResponse,
+} from "../../../src/interfaces";
 
 const DeleteYourAccount = () => {
   const router = useRouter();
   const [step, setStep] = useState(1);
   const { t } = useTranslationsContext();
+  const { trigger: requestPermissionTrigger } = useAPIMutation<
+    RequestPermissionRequest,
+    RequestPermissionResponse
+  >({
+    endpoint: Endpoints.REQUEST_OTP_PERMISSION,
+    method: "POST",
+  });
 
   if (step === 1) {
     return (
@@ -16,7 +29,12 @@ const DeleteYourAccount = () => {
         helperText={t("DELETE_YOUR_ACCOUNT_STEP_1_HELPER_TEXT")}
         button={{
           value: t("DELETE_YOUR_ACCOUNT_STEP_1_BUTTON"),
-          onClick: () => setStep(2),
+          onClick: () => {
+            requestPermissionTrigger({
+              permission: APIPermissions.DELETE_CUSTOMER,
+            });
+            setStep(2);
+          },
           cn: "bg-[#E64848]",
         }}
         link={{
