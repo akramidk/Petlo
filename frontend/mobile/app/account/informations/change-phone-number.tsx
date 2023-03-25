@@ -1,10 +1,5 @@
 import { PageStructure } from "../../../src/components/organisms";
-import {
-  useAPIFetching,
-  useTranslationsContext,
-  useAlertContext,
-  useAPIMutation,
-} from "../../../src/hooks";
+import { useTranslationsContext, useAPIMutation } from "../../../src/hooks";
 import { Filed, FiledWithSelector } from "../../../src/components/atoms";
 import { COUNTIES_PHONE_CODE_OPTIONS } from "../../../src/constants";
 import {
@@ -12,35 +7,36 @@ import {
   RequestPasswordPermissionRequest,
   RequestPasswordPermissionResponse,
 } from "../../../src/interfaces";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Endpoints } from "../../../src/enums";
 import { APIPermissions } from "../../../src/enums/APIPermissions";
-import { buttonStatus } from "../../../src/types";
 
 const ChangePhoneNumber = () => {
-  const setAlert = useAlertContext();
   const { t } = useTranslationsContext();
   const [step, setStep] = useState(1);
 
   const [password, setPassword] = useState<string>("");
-  const [continueButtonStatus, setContinueButtonStatus] =
-    useState<buttonStatus>();
 
   const [countryCode, setCountryCode] = useState<BaseOption>(
     COUNTIES_PHONE_CODE_OPTIONS.find((code) => code.value === "+962")
   );
   const [phoneNumber, setPhoneNumber] = useState<string>("");
 
-  const { response, trigger } = useAPIMutation<
+  const {
+    response: requestPermissionResponse,
+    trigger: requestPermissionTrigger,
+    status: requestPermissionStatus,
+  } = useAPIMutation<
     RequestPasswordPermissionRequest,
     RequestPasswordPermissionResponse
   >({
     endpoint: Endpoints.REQUEST_PASSWORD_PERMISSION,
     method: "POST",
-    options: {},
+    options: {
+      onSucceeded: () => setStep(2),
+      fireOnSucceededAfter: 1000,
+    },
   });
-
-  console.log("response", response);
 
   if (step === 1) {
     return (
@@ -50,15 +46,21 @@ const ChangePhoneNumber = () => {
         button={{
           value: t("CHANGE_PHONE_NUMBER__STEP_1_CONTINUE_BUTTON"),
           onClick: () =>
-            trigger({
+            requestPermissionTrigger({
               permission: APIPermissions.CHANGE_CUSTOMER_PHONE_NUMBER,
-              password: "",
+              password: password,
             }),
-          status: continueButtonStatus,
+          status:
+            requestPermissionStatus ??
+            (password.trim().length === 0 ? "inactive" : "active"),
         }}
         link={{
           value: t("CHANGE_PHONE_NUMBER__CANCEL_BUTTON"),
-          onClick: () => {},
+          onClick: () =>
+            requestPermissionTrigger({
+              permission: APIPermissions.CHANGE_CUSTOMER_PHONE_NUMBER,
+              password: password,
+            }),
         }}
       >
         <Filed
@@ -74,9 +76,9 @@ const ChangePhoneNumber = () => {
   if (step === 2) {
     return (
       <PageStructure
-        title={t("CHANGE_PHONE_NUMBER__STEP_1_TITLE")}
+        title={t("CHANGE_PHONE_NUMBER__STEP_2_TITLE")}
         button={{
-          value: t("CHANGE_PHONE_NUMBER__STEP_1_CHANGE_BUTTON"),
+          value: t("CHANGE_PHONE_NUMBER__STEP_2_CHANGE_BUTTON"),
           onClick: () => {},
         }}
         link={{
@@ -85,7 +87,7 @@ const ChangePhoneNumber = () => {
         }}
       >
         <FiledWithSelector
-          placeholder={t("CHANGE_PHONE_NUMBER__STEP_1_FILED_PLACEHOLDER")}
+          placeholder={t("CHANGE_PHONE_NUMBER__STEP_2_FILED_PLACEHOLDER")}
           options={COUNTIES_PHONE_CODE_OPTIONS}
           signalSelect={{
             selectedOption: countryCode,
