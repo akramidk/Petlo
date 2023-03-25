@@ -20,6 +20,7 @@ const DeleteYourAccount = () => {
   >({
     endpoint: Endpoints.REQUEST_OTP_PERMISSION,
     method: "POST",
+    options: {},
   });
 
   if (step === 1) {
