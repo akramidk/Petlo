@@ -99,5 +99,13 @@
   "CHANGE_PHONE_NUMBER__CANCEL_BUTTON": "الغاء",
   "CHANGE_PHONE_NUMBER__STEP_2_TITLE": "تغيير رقم هاتفك",
   "CHANGE_PHONE_NUMBER__STEP_2_FILED_PLACEHOLDER": "ادخل ارقم الجديد",
-  "CHANGE_PHONE_NUMBER__STEP_2_CHANGE_BUTTON": "تغيير"
+  "CHANGE_PHONE_NUMBER__STEP_2_CHANGE_BUTTON": "تغيير",
+  "CHANGE_PASSWORD__STEP_1_TITLE": "خطوة تحقق",
+  "CHANGE_PASSWORD__STEP_1_HELPER_TEXT": "لاسباب الحفاظ على آمان حسابك، لقد ارسلنا رسالة نصية تحتوي على رمز من %{verificationCodeLength} خانات الى رقم هاتفك، قم بادخاله للاكمال.",
+  "CHANGE_PASSWORD__STEP_1_CONTINUE_BUTTON": "اكمل",
+  "CHANGE_PASSWORD__CANCEL_BUTTON": "الغاء",
+  "CHANGE_PASSWORD__RESEND_CODE_LINK": "اعادة ارسال الرمز",
+  "CHANGE_PASSWORD__STEP_2_TITLE": "تغيير كلمة مرورك",
+  "CHANGE_PASSWORD__STEP_2_FILED_PLACEHOLDER": "ادخل كلمة المرور الجديدة (8 خانات أو اكثر)",
+  "CHANGE_PASSWORD__STEP_2_CHANGE_BUTTON": "تغيير"
 }

@@ -138,7 +138,7 @@ const ChangePassword = () => {
   if (step === 2) {
     return (
       <PageStructure
-        title="Change Your Password"
+        title={t("CHANGE_PASSWORD__STEP_2_TITLE")}
         button={{
           value: t("CHANGE_PASSWORD__STEP_2_CHANGE_BUTTON"),
           onClick: () =>
