@@ -16,4 +16,5 @@ export enum Endpoints {
   REQUEST_OTP_PERMISSION = "/v1/customers/request-permission-with-otp",
   DELETE_CUSTOMER = "/v1/customers",
   CHANGE_CUSTOMER_NAME = "/v1/customers/name",
+  REQUEST_PASSWORD_PERMISSION = "/v1/customers/request-permission-with-password",
 }
