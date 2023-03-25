@@ -51,7 +51,11 @@ const Informations = () => {
   return (
     <PageStructure title="Informations" backButton={router.back}>
       <DataCards cn="mb-[8px]" data={data} />
-      <SmallButton value="Delete" onClick={() => {}} valueCN="text-[#E64848]" />
+      <SmallButton
+        value="Delete"
+        onClick={() => router.push("/account/informations/delete-your-account")}
+        valueCN="text-[#E64848]"
+      />
     </PageStructure>
   );
 };

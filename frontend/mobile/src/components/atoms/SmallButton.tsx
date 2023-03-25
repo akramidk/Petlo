@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import { BaseButtonProps } from "../../interfaces";
 import BaseButton from "../bases/BaseButton";
-import { Text } from "../atoms";
+import Text from "../atoms/Text";
 
 interface SmallButtonProps extends Pick<BaseButtonProps, "onClick" | "cn"> {
   value: string;
