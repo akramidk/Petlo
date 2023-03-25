@@ -36,7 +36,7 @@ const PageStructure = ({
           </Text>
         )}
         {helperText && (
-          <Text cn="text-[15px] text-[#888] leading-[28px]" font="medium">
+          <Text cn="text-[15.5px] text-[#888] leading-[28px]" font="medium">
             {helperText}
           </Text>
         )}

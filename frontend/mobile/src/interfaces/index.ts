@@ -73,6 +73,10 @@ import {
   ChangeCustomerPhoneNumberRequest,
   ChangeCustomerPhoneNumberResponse,
 } from "./Endpoints/ChangeCustomerPhoneNumber";
+import {
+  VerifyRequestedPermissionRequest,
+  VerifyRequestedPermissionResponse,
+} from "./Endpoints/VerifyRequestedPermission";
 
 //entities interfaces
 import { Customer } from "./Entities/Customer";
@@ -121,6 +125,8 @@ export {
   RequestPasswordPermissionResponse,
   ChangeCustomerPhoneNumberRequest,
   ChangeCustomerPhoneNumberResponse,
+  VerifyRequestedPermissionRequest,
+  VerifyRequestedPermissionResponse,
   Customer,
   DataCardProps,
   LinkProps,

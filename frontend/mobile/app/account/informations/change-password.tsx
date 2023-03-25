@@ -11,12 +11,16 @@ import {
 import {
   RequestPermissionRequest,
   RequestPermissionResponse,
+  VerifyRequestedPermissionRequest,
+  VerifyRequestedPermissionResponse,
 } from "../../../src/interfaces";
 import { Filed, Link } from "../../../src/components/atoms";
 import clsx from "clsx";
 import { View } from "react-native";
+import { useRouter } from "expo-router";
 
 const ChangePassword = () => {
+  const router = useRouter();
   const { t } = useTranslationsContext();
   const { direction } = useInternationalizationContext();
 
@@ -39,13 +43,20 @@ const ChangePassword = () => {
       options: {},
     });
 
-  const { trigger, status } = useAPIMutation<
-    RequestPermissionRequest,
-    RequestPermissionResponse
+  const {
+    response: verifyRequestedPermissionResponse,
+    trigger: verifyRequestedPermissionTrigger,
+    status: verifyRequestedPermissionStatus,
+  } = useAPIMutation<
+    VerifyRequestedPermissionRequest,
+    VerifyRequestedPermissionResponse
   >({
-    endpoint: Endpoints.REQUEST_OTP_PERMISSION,
+    endpoint: Endpoints.VERIFY_REQUESTED_OTP_PERMISSION,
     method: "POST",
-    options: {},
+    options: {
+      onSucceeded: () => setStep(2),
+      fireOnSucceededAfter: 1000,
+    },
   });
 
   useEffect(() => {
@@ -63,15 +74,21 @@ const ChangePassword = () => {
         })}
         button={{
           value: t("CHANGE_PASSWORD__STEP_1_CONTINUE_BUTTON"),
-          onClick: () => {},
+          onClick: () =>
+            verifyRequestedPermissionTrigger({
+              permission: APIPermissions.CHANGE_CUSTOMER_PASSWORD,
+              verification_code: Number(verificationCode),
+            }),
           status:
-            verificationCode.trim().length === VERIFICATION_CODE_LENGTH
+            verifyRequestedPermissionStatus ??
+            (verificationCode.trim().length === VERIFICATION_CODE_LENGTH
               ? "active"
-              : "inactive",
+              : "inactive"),
         }}
         link={{
           value: t("CHANGE_PASSWORD__CANCEL_BUTTON"),
-          onClick: () => {},
+          onClick: router.back,
+          status: verifyRequestedPermissionStatus ? "inactive" : "active",
         }}
       >
         <Filed
@@ -99,6 +116,10 @@ const ChangePassword = () => {
         </View>
       </PageStructure>
     );
+  }
+
+  if (step === 2) {
+    return <PageStructure title="Change Your Password"></PageStructure>;
   }
 };
 
