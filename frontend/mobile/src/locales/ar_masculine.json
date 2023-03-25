@@ -87,5 +87,9 @@
   "DELETE_YOUR_ACCOUNT_STEP_2_TITLE": "خطوة تحقق",
   "DELETE_YOUR_ACCOUNT_STEP_2_HELPER_TEXT": "لاسباب الحفاظ على آمان حسابك، لقد ارسلنا رسالة نصية تحتوي على رمز من %{verificationCodeLength} أرقام الى رقم هاتفك، قم بادخاله بالاسفل لاكمال عملية حذف حسابك.",
   "DELETE_YOUR_ACCOUNT_STEP_2_BUTTON": "احذف حسابي",
-  "DELETE_YOUR_ACCOUNT_RESEND_CODE_LINK": "اعادة ارسال الرمز"
+  "DELETE_YOUR_ACCOUNT_RESEND_CODE_LINK": "اعادة ارسال الرمز",
+  "CHANGE_NAME__TITLE": "تغيير اسمك",
+  "CHANGE_NAME__CHANGE_BUTTON": "تغيير",
+  "CHANGE_NAME__CANCEL_BUTTON": "الغاء",
+  "CHANGE_NAME__FILED_PLACEHOLDER": "قم بادخال اسم جديد"
 }
