@@ -1,4 +1,4 @@
-import { APIPermissions } from "../../enums/APIPermissions";
+import { APIPermissions } from "../../enums";
 import { BaseResponse } from "./Base";
 
 export interface VerifyRequestedPermissionRequest {

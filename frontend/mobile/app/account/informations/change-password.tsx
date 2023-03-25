@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { PageStructure } from "../../../src/components/organisms";
 import { VERIFICATION_CODE_LENGTH } from "../../../src/constants";
 import { Endpoints } from "../../../src/enums";
-import { APIPermissions } from "../../../src/enums/APIPermissions";
+import { APIPermissions } from "../../../src/enums";
 import {
   useAPIMutation,
   useInternationalizationContext,

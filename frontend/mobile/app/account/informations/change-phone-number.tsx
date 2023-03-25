@@ -10,8 +10,7 @@ import {
   RequestPasswordPermissionResponse,
 } from "../../../src/interfaces";
 import { useState } from "react";
-import { Endpoints } from "../../../src/enums";
-import { APIPermissions } from "../../../src/enums/APIPermissions";
+import { Endpoints, APIPermissions } from "../../../src/enums";
 import { useRouter } from "expo-router";
 
 const ChangePhoneNumber = () => {

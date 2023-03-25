@@ -1,5 +1,4 @@
-import { APIPermissions } from "../../enums/APIPermissions";
-import { Customer } from "../Entities/Customer";
+import { APIPermissions } from "../../enums";
 
 export interface RequestPasswordPermissionRequest {
   permission: APIPermissions;
