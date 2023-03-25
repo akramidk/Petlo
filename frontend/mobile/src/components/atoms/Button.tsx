@@ -49,18 +49,16 @@ const Button = ({ value, status = "active", onClick }: ButtonProps) => {
   };
 
   return (
-    <View className="fixed border-t-[1px] border-[#f6f6f6] pt-[16px] px-[28px]">
-      <BaseButton
-        cn={clsx(
-          "h-[60px] rounded-[4px] justify-center items-center",
-          statuses[status].className
-        )}
-        onClick={onClick}
-        disabled={status !== "active"}
-      >
-        {statuses[status].child}
-      </BaseButton>
-    </View>
+    <BaseButton
+      cn={clsx(
+        "h-[60px] rounded-[4px] justify-center items-center",
+        statuses[status].className
+      )}
+      onClick={onClick}
+      disabled={status !== "active"}
+    >
+      {statuses[status].child}
+    </BaseButton>
   );
 };
 

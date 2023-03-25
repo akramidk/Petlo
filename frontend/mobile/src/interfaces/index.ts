@@ -8,6 +8,7 @@ import { BaseFiledProps } from "./BaseFiledProps";
 import { BaseSelectorProps } from "./BaseSelectorProps";
 import { BaseButtonProps } from "./BaseButtonProps";
 import { DataCardProps } from "./DataCardProps";
+import { LinkProps } from "./LinkProps";
 
 //endpoinds interfaces
 import {
@@ -92,4 +93,5 @@ export {
   CustomerInformationsResponse,
   Customer,
   DataCardProps,
+  LinkProps,
 };

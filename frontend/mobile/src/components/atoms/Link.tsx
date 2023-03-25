@@ -5,14 +5,15 @@ import { ActivityIndicator } from "react-native-paper";
 import { CheckIcon, XMarkIcon } from "react-native-heroicons/outline";
 import { useInternationalizationContext } from "../../hooks";
 import { View } from "react-native";
+import { LinkProps } from "../../interfaces";
 
-interface LinkProps {
-  onClick: () => void;
-  value: string;
-  status?: "active" | "inactive" | "loading" | "succeeded" | "failed";
-}
-
-const Link = ({ onClick, status = "active", value }: LinkProps) => {
+const Link = ({
+  onClick,
+  status = "active",
+  value,
+  cn,
+  valueCN,
+}: LinkProps) => {
   const { direction } = useInternationalizationContext();
 
   const icons = {
@@ -23,7 +24,7 @@ const Link = ({ onClick, status = "active", value }: LinkProps) => {
 
   return (
     <BaseButton
-      cn="items-center"
+      cn={clsx("items-center", cn)}
       onClick={onClick}
       disabled={status !== "active"}
     >
@@ -36,7 +37,8 @@ const Link = ({ onClick, status = "active", value }: LinkProps) => {
       <Text
         cn={clsx(
           "text-[14px]",
-          status === "active" ? "text-[#222]" : "text-[#888]"
+          status === "active" ? "text-[#222]" : "text-[#888]",
+          valueCN
         )}
         font="extraBold"
       >
