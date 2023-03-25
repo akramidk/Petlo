@@ -82,5 +82,6 @@
   "DELETE_YOUR_ACCOUNT_CANCEL_BUTTON": "Cancel",
   "DELETE_YOUR_ACCOUNT_STEP_2_TITLE": "Security Check",
   "DELETE_YOUR_ACCOUNT_STEP_2_HELPER_TEXT": "For security reasons we sent an sms with %{verificationCodeLength} digit code to your phone number, enter it below to confirm deleting your account.",
-  "DELETE_YOUR_ACCOUNT_STEP_2_BUTTON": "Delete My Account"
+  "DELETE_YOUR_ACCOUNT_STEP_2_BUTTON": "Delete My Account",
+  "DELETE_YOUR_ACCOUNT_RESEND_CODE_LINK": "Resend Code"
 }

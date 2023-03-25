@@ -4,16 +4,24 @@ import { PageStructure } from "../../../src/components/organisms";
 import { VERIFICATION_CODE_LENGTH } from "../../../src/constants";
 import { Endpoints } from "../../../src/enums";
 import { APIPermissions } from "../../../src/enums/APIPermissions";
-import { useAPIMutation, useTranslationsContext } from "../../../src/hooks";
+import {
+  useAPIMutation,
+  useInternationalizationContext,
+  useTranslationsContext,
+} from "../../../src/hooks";
 import {
   RequestPermissionRequest,
   RequestPermissionResponse,
 } from "../../../src/interfaces";
+import { Filed, Link } from "../../../src/components/atoms";
+import clsx from "clsx";
+import { View } from "react-native";
 
 const DeleteYourAccount = () => {
   const router = useRouter();
   const [step, setStep] = useState(1);
   const { t } = useTranslationsContext();
+  const { direction } = useInternationalizationContext();
   const { trigger: requestPermissionTrigger } = useAPIMutation<
     RequestPermissionRequest,
     RequestPermissionResponse
@@ -22,6 +30,15 @@ const DeleteYourAccount = () => {
     method: "POST",
     options: {},
   });
+
+  const { trigger: resendCodeTrigger, status: resendCodeStatus } =
+    useAPIMutation<RequestPermissionRequest, RequestPermissionResponse>({
+      endpoint: Endpoints.REQUEST_OTP_PERMISSION,
+      method: "POST",
+      options: {},
+    });
+
+  const [verificationCode, setVerificationCode] = useState<string>("");
 
   if (step === 1) {
     return (
@@ -64,7 +81,31 @@ const DeleteYourAccount = () => {
           onClick: router.back,
           valueCN: "text-[#0E333C]",
         }}
-      ></PageStructure>
+      >
+        <Filed
+          value={verificationCode}
+          onChange={setVerificationCode}
+          keyboardType="number-pad"
+          maxLength={VERIFICATION_CODE_LENGTH}
+        />
+
+        <View
+          className={clsx(
+            "mt-[16px] justify-between",
+            direction === "ltr" ? "flex-row" : "flex-row-reverse"
+          )}
+        >
+          <Link
+            onClick={() =>
+              resendCodeTrigger({
+                permission: APIPermissions.DELETE_CUSTOMER,
+              })
+            }
+            value={t("DELETE_YOUR_ACCOUNT_RESEND_CODE_LINK")}
+            status={resendCodeStatus}
+          />
+        </View>
+      </PageStructure>
     );
   }
 };
