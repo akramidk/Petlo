@@ -10,17 +10,21 @@ interface ViewerProps {
 const Viewer = ({ children }: ViewerProps) => {
   const pathname = usePathname();
   const hideHeder = HEDER_PATHS.includes(pathname);
-  const showMenu = (MENU_PATHS as ReadonlyArray<string>).includes(pathname);
+  const showMenuAndIcons = (MENU_PATHS as ReadonlyArray<string>).includes(
+    pathname
+  );
 
-  if (hideHeder && !showMenu) {
+  if (hideHeder && !showMenuAndIcons) {
     return <SafeAreaView className="h-full">{children}</SafeAreaView>;
   }
 
   return (
     <SafeAreaView className="h-full flex flex-col">
-      {!hideHeder && <Header activePath={pathname} />}
+      {!hideHeder && (
+        <Header activePath={pathname} showIcons={showMenuAndIcons} />
+      )}
       {children}
-      {showMenu && <Menu activePath={pathname} />}
+      {showMenuAndIcons && <Menu activePath={pathname} />}
     </SafeAreaView>
   );
 };
