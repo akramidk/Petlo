@@ -1,26 +1,46 @@
 import { useRouter } from "expo-router";
 import { useState } from "react";
 import { PageStructure } from "../../../src/components/organisms";
-import { useTranslationsContext } from "../../../src/hooks";
+import { useAPIMutation, useTranslationsContext } from "../../../src/hooks";
 import { Filed } from "../../../src/components/atoms";
+import { Endpoints } from "../../../src/enums";
+import {
+  ChangeCustomerNameRequest,
+  ChangeCustomerNameResponse,
+} from "../../../src/interfaces";
 
 const ChangeName = () => {
   const router = useRouter();
   const { t } = useTranslationsContext();
 
   const [name, setName] = useState("");
+  const { trigger, status } = useAPIMutation<
+    ChangeCustomerNameRequest,
+    ChangeCustomerNameResponse
+  >({
+    endpoint: Endpoints.CHANGE_CUSTOMER_NAME,
+    method: "PATCH",
+    options: {
+      onSucceeded: router.back,
+      fireOnSucceededAfter: 1000,
+    },
+  });
 
   return (
     <PageStructure
       title={t("CHANGE_NAME__TITLE")}
       button={{
         value: t("CHANGE_NAME__CHANGE_BUTTON"),
-        onClick: () => {},
-        status: name.trim().length !== 0 ? "active" : "inactive",
+        onClick: () =>
+          trigger({
+            name: name,
+          }),
+        status: status ?? (name.trim().length !== 0 ? "active" : "inactive"),
       }}
       link={{
         value: t("CHANGE_NAME__CANCEL_BUTTON"),
         onClick: router.back,
+        status: status ? "inactive" : "active",
       }}
     >
       <Filed

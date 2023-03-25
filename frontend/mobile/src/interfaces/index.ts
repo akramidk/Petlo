@@ -61,6 +61,10 @@ import {
   DeleteCustomerRequest,
   DeleteCustomerResponse,
 } from "./Endpoints/DeleteCustomer";
+import {
+  ChangeCustomerNameRequest,
+  ChangeCustomerNameResponse,
+} from "./Endpoints/ChangeCustomerName";
 
 //entities interfaces
 import { Customer } from "./Entities/Customer";
@@ -103,6 +107,8 @@ export {
   RequestPermissionResponse,
   DeleteCustomerRequest,
   DeleteCustomerResponse,
+  ChangeCustomerNameRequest,
+  ChangeCustomerNameResponse,
   Customer,
   DataCardProps,
   LinkProps,
