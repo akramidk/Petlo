@@ -10,6 +10,7 @@ import {
   CustomerInformationsResponse,
   DataCardProps,
 } from "../../../src/interfaces";
+import Loading from "../../_Loading";
 
 const Informations = () => {
   const router = useRouter();
@@ -45,7 +46,7 @@ const Informations = () => {
   }, [response]);
 
   if (response.isFetching) {
-    return <Text>Loading...</Text>;
+    return <Loading />;
   }
 
   return (

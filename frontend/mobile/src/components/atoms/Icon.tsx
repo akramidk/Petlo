@@ -8,6 +8,8 @@ import {
   EllipsisVerticalIcon as MoreVertical,
 } from "react-native-heroicons/solid";
 
+// TODO add all the icons here
+
 interface IconProps {
   name: string;
   solid?: boolean;
