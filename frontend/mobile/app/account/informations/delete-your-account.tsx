@@ -10,6 +10,8 @@ import {
   useTranslationsContext,
 } from "../../../src/hooks";
 import {
+  DeleteCustomerRequest,
+  DeleteCustomerResponse,
   RequestPermissionRequest,
   RequestPermissionResponse,
 } from "../../../src/interfaces";
@@ -22,6 +24,9 @@ const DeleteYourAccount = () => {
   const [step, setStep] = useState(1);
   const { t } = useTranslationsContext();
   const { direction } = useInternationalizationContext();
+
+  const [verificationCode, setVerificationCode] = useState<string>("");
+
   const { trigger: requestPermissionTrigger } = useAPIMutation<
     RequestPermissionRequest,
     RequestPermissionResponse
@@ -38,7 +43,18 @@ const DeleteYourAccount = () => {
       options: {},
     });
 
-  const [verificationCode, setVerificationCode] = useState<string>("");
+  const { trigger: deleteTrigger, status: deleteStatus } = useAPIMutation<
+    DeleteCustomerRequest,
+    DeleteCustomerResponse
+  >({
+    endpoint: Endpoints.DELETE_CUSTOMER,
+    method: "DELETE",
+    options: {
+      onSucceeded: () => {
+        router.push("/welcome");
+      },
+    },
+  });
 
   if (step === 1) {
     return (
@@ -73,13 +89,26 @@ const DeleteYourAccount = () => {
         })}
         button={{
           value: t("DELETE_YOUR_ACCOUNT_STEP_2_BUTTON"),
-          onClick: () => console.log("ddd"),
-          cn: "bg-[#E64848]",
+          onClick: () =>
+            deleteTrigger({
+              verification_code: Number(verificationCode),
+            }),
+          cn:
+            deleteStatus ||
+            verificationCode.trim().length !== VERIFICATION_CODE_LENGTH
+              ? undefined
+              : "bg-[#E64848]",
+          status:
+            deleteStatus ??
+            (verificationCode.trim().length === VERIFICATION_CODE_LENGTH
+              ? "active"
+              : "inactive"),
         }}
         link={{
           value: t("DELETE_YOUR_ACCOUNT_CANCEL_BUTTON"),
           onClick: router.back,
-          valueCN: "text-[#0E333C]",
+          valueCN: deleteStatus ? undefined : "text-[#0E333C]",
+          status: deleteStatus ? "inactive" : "active",
         }}
       >
         <Filed

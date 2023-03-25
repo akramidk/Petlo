@@ -57,6 +57,10 @@ import {
   RequestPermissionRequest,
   RequestPermissionResponse,
 } from "./Endpoints/RequestPermission";
+import {
+  DeleteCustomerRequest,
+  DeleteCustomerResponse,
+} from "./Endpoints/DeleteCustomer";
 
 //entities interfaces
 import { Customer } from "./Entities/Customer";
@@ -97,6 +101,8 @@ export {
   CustomerInformationsResponse,
   RequestPermissionRequest,
   RequestPermissionResponse,
+  DeleteCustomerRequest,
+  DeleteCustomerResponse,
   Customer,
   DataCardProps,
   LinkProps,
