@@ -18,6 +18,10 @@ import { Filed, Link } from "../../../src/components/atoms";
 import clsx from "clsx";
 import { View } from "react-native";
 import { useRouter } from "expo-router";
+import {
+  ChangePasswordRequest,
+  ChangePasswordResponse,
+} from "../../../src/interfaces/Endpoints/ChangePassword";
 
 const ChangePassword = () => {
   const router = useRouter();
@@ -59,6 +63,18 @@ const ChangePassword = () => {
       fireOnSucceededAfter: 1000,
     },
   });
+
+  const { trigger: changePasswordTrigger, status: changePasswordStatus } =
+    useAPIMutation<ChangePasswordRequest, ChangePasswordResponse>({
+      endpoint: Endpoints.CHANGE_CUSTOMER_PASSWORD,
+      method: "PATCH",
+      options: {
+        onSucceeded: router.back,
+        fireOnSucceededAfter: 1000,
+        overwriteSessionToken:
+          verifyRequestedPermissionResponse?.body?.customer?.session_token,
+      },
+    });
 
   useEffect(() => {
     requestPermissionTrigger({
@@ -125,13 +141,18 @@ const ChangePassword = () => {
         title="Change Your Password"
         button={{
           value: t("CHANGE_PASSWORD__STEP_2_CHANGE_BUTTON"),
-          onClick: () => {},
-          status: password.trim().length !== 0 ? "active" : "inactive",
+          onClick: () =>
+            changePasswordTrigger({
+              password: password,
+            }),
+          status:
+            changePasswordStatus ??
+            (password.trim().length >= 8 ? "active" : "inactive"),
         }}
         link={{
           value: t("CHANGE_PASSWORD__CANCEL_BUTTON"),
           onClick: router.back,
-          status: verifyRequestedPermissionStatus ? "inactive" : "active",
+          status: changePasswordStatus ? "inactive" : "active",
         }}
       >
         <Filed

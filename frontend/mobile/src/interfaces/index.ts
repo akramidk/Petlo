@@ -77,6 +77,10 @@ import {
   VerifyRequestedPermissionRequest,
   VerifyRequestedPermissionResponse,
 } from "./Endpoints/VerifyRequestedPermission";
+import {
+  ChangePasswordRequest,
+  ChangePasswordResponse,
+} from "./Endpoints/ChangePassword";
 
 //entities interfaces
 import { Customer } from "./Entities/Customer";

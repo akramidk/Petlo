@@ -8,7 +8,7 @@ import { ErrorResponse } from "../interfaces";
 
 interface useAPIMutationProps {
   endpoint: Endpoints;
-  method: "POST" | "PATCH" | "DELETE" | "GET";
+  method: "POST" | "PATCH" | "DELETE";
   options?: {
     onSucceeded?: () => void;
     fireOnSucceededAfter?: number;
