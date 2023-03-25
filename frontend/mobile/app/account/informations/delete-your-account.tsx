@@ -53,6 +53,7 @@ const DeleteYourAccount = () => {
       onSucceeded: () => {
         router.push("/welcome");
       },
+      fireOnSucceededAfter: 2000,
     },
   });
 
