@@ -5,7 +5,7 @@ const Loading = () => {
   return (
     <>
       <ActivityIndicator
-        className="mt-[28px]"
+        className="grow"
         animating={true}
         color="#0E333C"
         size={28}
