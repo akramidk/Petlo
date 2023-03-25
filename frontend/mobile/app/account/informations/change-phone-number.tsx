@@ -4,6 +4,8 @@ import { Filed, FiledWithSelector } from "../../../src/components/atoms";
 import { COUNTIES_PHONE_CODE_OPTIONS } from "../../../src/constants";
 import {
   BaseOption,
+  ChangeCustomerPhoneNumberRequest,
+  ChangeCustomerPhoneNumberResponse,
   RequestPasswordPermissionRequest,
   RequestPasswordPermissionResponse,
 } from "../../../src/interfaces";
@@ -41,25 +43,30 @@ const ChangePhoneNumber = () => {
     },
   });
 
-  const { trigger: changeNumberTrigger, status: changeNumberStatus } =
-    useAPIMutation<any, any>({
-      endpoint: Endpoints.REQUEST_PASSWORD_PERMISSION,
-      method: "POST",
-      options: {
-        onSucceeded: () => {
-          router.replace(
-            `/verify-your-account?${new URLSearchParams({
-              phoneNumber: countryCode.value + phoneNumber,
-              sessionToken:
-                requestPermissionResponse.body.customer.session_token,
-            }).toString()}`
-          );
-        },
-        fireOnSucceededAfter: 1000,
-        overwriteSessionToken:
-          requestPermissionResponse?.body?.customer?.session_token,
+  const {
+    response: changeNumberResponse,
+    trigger: changeNumberTrigger,
+    status: changeNumberStatus,
+  } = useAPIMutation<
+    ChangeCustomerPhoneNumberRequest,
+    ChangeCustomerPhoneNumberResponse
+  >({
+    endpoint: Endpoints.REQUEST_PASSWORD_PERMISSION,
+    method: "POST",
+    options: {
+      onSucceeded: () => {
+        router.replace(
+          `/verify-your-account?${new URLSearchParams({
+            phoneNumber: countryCode.value + phoneNumber,
+            sessionToken: changeNumberResponse.body.customer.session_token,
+          }).toString()}`
+        );
       },
-    });
+      fireOnSucceededAfter: 1000,
+      overwriteSessionToken:
+        requestPermissionResponse?.body?.customer?.session_token,
+    },
+  });
 
   if (step === 1) {
     return (

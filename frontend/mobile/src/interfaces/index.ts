@@ -69,6 +69,10 @@ import {
   RequestPasswordPermissionRequest,
   RequestPasswordPermissionResponse,
 } from "./Endpoints/RequestPasswordPermission";
+import {
+  ChangeCustomerPhoneNumberRequest,
+  ChangeCustomerPhoneNumberResponse,
+} from "./Endpoints/ChangeCustomerPhoneNumber";
 
 //entities interfaces
 import { Customer } from "./Entities/Customer";
@@ -115,6 +119,8 @@ export {
   ChangeCustomerNameResponse,
   RequestPasswordPermissionRequest,
   RequestPasswordPermissionResponse,
+  ChangeCustomerPhoneNumberRequest,
+  ChangeCustomerPhoneNumberResponse,
   Customer,
   DataCardProps,
   LinkProps,
