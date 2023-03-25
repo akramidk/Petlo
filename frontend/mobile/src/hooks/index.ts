@@ -6,6 +6,7 @@ import useInternationalizationContext from "./useInternationalizationContext";
 import useCustomer from "./useCustomer";
 import useAPIMutation from "./useAPIMutation";
 import useCustomerContext from "./useCustomerContext";
+import useAlertContext from "./useAlertContext";
 
 export {
   useAPIFetching,
@@ -16,4 +17,5 @@ export {
   useCustomer,
   useAPIMutation,
   useCustomerContext,
+  useAlertContext,
 };

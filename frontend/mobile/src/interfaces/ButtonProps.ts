@@ -1,7 +1,5 @@
 import { BaseButtonProps } from "./BaseButtonProps";
-
-type buttonStatus = "active" | "inactive" | "loading" | "succeeded" | "failed";
-
+import { buttonStatus } from "../types";
 export interface ButtonProps extends Pick<BaseButtonProps, "onClick" | "cn"> {
   value: string;
   status?: buttonStatus;
