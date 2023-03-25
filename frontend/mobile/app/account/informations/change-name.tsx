@@ -44,7 +44,6 @@ const ChangeName = () => {
       }}
     >
       <Filed
-        cn="mb-[16px]"
         placeholder={t("CHANGE_NAME__FILED_PLACEHOLDER")}
         onChange={setName}
         value={name}

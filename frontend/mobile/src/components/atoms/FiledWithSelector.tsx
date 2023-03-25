@@ -26,7 +26,7 @@ const FiledWithSelector = <T extends BaseOption>({
   onChange,
 }: FiledWithSelectorProps &
   BaseFiledProps &
-  Pick<BaseLabelProps, "name" | "helperText" | "require"> &
+  Partial<BaseLabelProps> &
   Pick<OptionsProps<T>, "options" | "translate" | "signalSelect">) => {
   const [optionsModalVisible, setOptionsModalVisible] = useState(false);
 
