@@ -131,6 +131,8 @@ export {
   ChangeCustomerPhoneNumberResponse,
   VerifyRequestedPermissionRequest,
   VerifyRequestedPermissionResponse,
+  ChangePasswordRequest,
+  ChangePasswordResponse,
   Customer,
   DataCardProps,
   LinkProps,

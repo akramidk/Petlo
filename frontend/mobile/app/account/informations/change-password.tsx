@@ -13,15 +13,13 @@ import {
   RequestPermissionResponse,
   VerifyRequestedPermissionRequest,
   VerifyRequestedPermissionResponse,
+  ChangePasswordRequest,
+  ChangePasswordResponse,
 } from "../../../src/interfaces";
 import { Filed, Link } from "../../../src/components/atoms";
 import clsx from "clsx";
 import { View } from "react-native";
 import { useRouter } from "expo-router";
-import {
-  ChangePasswordRequest,
-  ChangePasswordResponse,
-} from "../../../src/interfaces/Endpoints/ChangePassword";
 
 const ChangePassword = () => {
   const router = useRouter();
