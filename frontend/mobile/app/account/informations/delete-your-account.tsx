@@ -41,7 +41,7 @@ const DeleteYourAccount = () => {
           cn: "bg-[#E64848]",
         }}
         link={{
-          value: "Cancel",
+          value: t("DELETE_YOUR_ACCOUNT_CANCEL_BUTTON"),
           onClick: router.back,
           valueCN: "text-[#0E333C]",
         }}
