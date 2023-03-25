@@ -83,5 +83,8 @@
   "DELETE_YOUR_ACCOUNT_STEP_1_TITLE": "احذف حسابك",
   "DELETE_YOUR_ACCOUNT_STEP_1_HELPER_TEXT": "اذا قمت بحذف حسابك، لا يمكنك التراجع عن هذه الخطوة لاحقاً، هل انت متأكد من ذلك؟",
   "DELETE_YOUR_ACCOUNT_STEP_1_BUTTON": "نعم، أكمل",
-  "DELETE_YOUR_ACCOUNT_CANCEL_BUTTON": "الغاء"
+  "DELETE_YOUR_ACCOUNT_CANCEL_BUTTON": "الغاء",
+  "DELETE_YOUR_ACCOUNT_STEP_2_TITLE": "خطوة تحقق",
+  "DELETE_YOUR_ACCOUNT_STEP_2_HELPER_TEXT": "لاسباب الحفاظ على آمان حسابك، لقد ارسلنا رسالة نصية تحتوي على رمز من %{verificationCodeLength} أرقام الى رقم هاتفك، قم بادخاله بالاسفل لاكمال عملية حذف حسابك.",
+  "DELETE_YOUR_ACCOUNT_STEP_2_BUTTON": "احذف حسابي"
 }

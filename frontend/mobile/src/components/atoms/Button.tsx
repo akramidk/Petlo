@@ -7,7 +7,7 @@ import { CheckIcon, XMarkIcon } from "react-native-heroicons/outline";
 import BaseButton from "../bases/BaseButton";
 import { View } from "react-native";
 
-const Button = ({ value, status = "active", onClick }: ButtonProps) => {
+const Button = ({ value, status = "active", onClick, cn }: ButtonProps) => {
   const TextChild = () => {
     return (
       <Text
@@ -52,7 +52,8 @@ const Button = ({ value, status = "active", onClick }: ButtonProps) => {
     <BaseButton
       cn={clsx(
         "h-[60px] rounded-[4px] justify-center items-center",
-        statuses[status].className
+        statuses[status].className,
+        cn
       )}
       onClick={onClick}
       disabled={status !== "active"}

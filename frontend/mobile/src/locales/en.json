@@ -79,5 +79,8 @@
   "DELETE_YOUR_ACCOUNT_STEP_1_TITLE": "Delete Your Account",
   "DELETE_YOUR_ACCOUNT_STEP_1_HELPER_TEXT": "If you delete your account there is no going back, you can't login or use your account once you delete it, are you sure about this?",
   "DELETE_YOUR_ACCOUNT_STEP_1_BUTTON": "Yes, Continue",
-  "DELETE_YOUR_ACCOUNT_CANCEL_BUTTON": "Cancel"
+  "DELETE_YOUR_ACCOUNT_CANCEL_BUTTON": "Cancel",
+  "DELETE_YOUR_ACCOUNT_STEP_2_TITLE": "Security Check",
+  "DELETE_YOUR_ACCOUNT_STEP_2_HELPER_TEXT": "For security reasons we sent an sms with %{verificationCodeLength} digit code to your phone number, enter it below to confirm deleting your account.",
+  "DELETE_YOUR_ACCOUNT_STEP_2_BUTTON": "Delete My Account"
 }

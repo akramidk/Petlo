@@ -1,6 +1,7 @@
 import { useRouter } from "expo-router";
 import { useState } from "react";
 import { PageStructure } from "../../../src/components/organisms";
+import { VERIFICATION_CODE_LENGTH } from "../../../src/constants";
 import { useTranslationsContext } from "../../../src/hooks";
 
 const DeleteYourAccount = () => {
@@ -16,29 +17,33 @@ const DeleteYourAccount = () => {
         button={{
           value: t("DELETE_YOUR_ACCOUNT_STEP_1_BUTTON"),
           onClick: () => setStep(2),
+          cn: "bg-[#E64848]",
         }}
         link={{
           value: t("DELETE_YOUR_ACCOUNT_CANCEL_BUTTON"),
           onClick: router.back,
-          valueCN: "text-[#E64848]",
+          valueCN: "text-[#0E333C]",
         }}
-      ></PageStructure>
+      />
     );
   }
 
   if (step === 2) {
     return (
       <PageStructure
-        title="Delete Your Account 2"
-        helperText="If you delete your account there is no going back, you can't sign in or use your account once you delete it, are you sure about this?"
+        title={t("DELETE_YOUR_ACCOUNT_STEP_2_TITLE")}
+        helperText={t("DELETE_YOUR_ACCOUNT_STEP_2_HELPER_TEXT", {
+          verificationCodeLength: VERIFICATION_CODE_LENGTH,
+        })}
         button={{
-          value: "Yes",
+          value: t("DELETE_YOUR_ACCOUNT_STEP_2_BUTTON"),
           onClick: () => console.log("ddd"),
+          cn: "bg-[#E64848]",
         }}
         link={{
           value: "Cancel",
           onClick: router.back,
-          valueCN: "text-[#E64848]",
+          valueCN: "text-[#0E333C]",
         }}
       ></PageStructure>
     );
