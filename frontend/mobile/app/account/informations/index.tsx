@@ -49,10 +49,10 @@ const Informations = () => {
   }
 
   return (
-    <PageStructure title="Informations" backButton={router.back}>
+    <PageStructure title={t("INFORMATIONS_TITLE")} backButton={router.back}>
       <DataCards cn="mb-[8px]" data={data} />
       <SmallButton
-        value="Delete"
+        value={t("INFORMATIONS_DELETE_ACCOUNT_BUTTON")}
         onClick={() => router.push("/account/informations/delete-your-account")}
         valueCN="text-[#E64848]"
       />
