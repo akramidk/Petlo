@@ -10,9 +10,12 @@ import {
 import { useState } from "react";
 import { Endpoints } from "../../../src/enums";
 import { APIPermissions } from "../../../src/enums/APIPermissions";
+import { useRouter } from "expo-router";
 
 const ChangePhoneNumber = () => {
+  const router = useRouter();
   const { t } = useTranslationsContext();
+
   const [step, setStep] = useState(1);
 
   const [password, setPassword] = useState<string>("");
@@ -38,6 +41,26 @@ const ChangePhoneNumber = () => {
     },
   });
 
+  const { trigger: changeNumberTrigger, status: changeNumberStatus } =
+    useAPIMutation<any, any>({
+      endpoint: Endpoints.REQUEST_PASSWORD_PERMISSION,
+      method: "POST",
+      options: {
+        onSucceeded: () => {
+          router.replace(
+            `/verify-your-account?${new URLSearchParams({
+              phoneNumber: countryCode.value + phoneNumber,
+              sessionToken:
+                requestPermissionResponse.body.customer.session_token,
+            }).toString()}`
+          );
+        },
+        fireOnSucceededAfter: 1000,
+        overwriteSessionToken:
+          requestPermissionResponse?.body?.customer?.session_token,
+      },
+    });
+
   if (step === 1) {
     return (
       <PageStructure
@@ -61,6 +84,7 @@ const ChangePhoneNumber = () => {
               permission: APIPermissions.CHANGE_CUSTOMER_PHONE_NUMBER,
               password: password,
             }),
+          status: requestPermissionStatus ? "inactive" : "active",
         }}
       >
         <Filed
@@ -80,10 +104,19 @@ const ChangePhoneNumber = () => {
         button={{
           value: t("CHANGE_PHONE_NUMBER__STEP_2_CHANGE_BUTTON"),
           onClick: () => {},
+          status:
+            changeNumberStatus ??
+            (countryCode && phoneNumber.trim().length > 0
+              ? "active"
+              : "inactive"),
         }}
         link={{
           value: t("CHANGE_PHONE_NUMBER__CANCEL_BUTTON"),
-          onClick: () => {},
+          onClick: () =>
+            changeNumberTrigger({
+              phone_number: countryCode.value + phoneNumber,
+            }),
+          status: changeNumberStatus ? "inactive" : "active",
         }}
       >
         <FiledWithSelector

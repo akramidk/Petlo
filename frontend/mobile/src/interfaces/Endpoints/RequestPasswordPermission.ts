@@ -7,5 +7,7 @@ export interface RequestPasswordPermissionRequest {
 }
 
 export interface RequestPasswordPermissionResponse {
-  customer: Pick<Customer, "sessionToken">;
+  customer: {
+    session_token: string;
+  };
 }
