@@ -17,4 +17,5 @@ export enum Endpoints {
   DELETE_CUSTOMER = "/v1/customers",
   CHANGE_CUSTOMER_NAME = "/v1/customers/name",
   REQUEST_PASSWORD_PERMISSION = "/v1/customers/request-permission-with-password",
+  CHANGE_CUSTOMER_PHONE_NUMBER = "/v1/customers/phone-number",
 }

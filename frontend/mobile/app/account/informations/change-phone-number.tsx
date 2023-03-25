@@ -51,8 +51,8 @@ const ChangePhoneNumber = () => {
     ChangeCustomerPhoneNumberRequest,
     ChangeCustomerPhoneNumberResponse
   >({
-    endpoint: Endpoints.REQUEST_PASSWORD_PERMISSION,
-    method: "POST",
+    endpoint: Endpoints.CHANGE_CUSTOMER_PHONE_NUMBER,
+    method: "PATCH",
     options: {
       onSucceeded: () => {
         router.replace(
@@ -86,11 +86,7 @@ const ChangePhoneNumber = () => {
         }}
         link={{
           value: t("CHANGE_PHONE_NUMBER__CANCEL_BUTTON"),
-          onClick: () =>
-            requestPermissionTrigger({
-              permission: APIPermissions.CHANGE_CUSTOMER_PHONE_NUMBER,
-              password: password,
-            }),
+          onClick: router.back,
           status: requestPermissionStatus ? "inactive" : "active",
         }}
       >
@@ -110,7 +106,10 @@ const ChangePhoneNumber = () => {
         title={t("CHANGE_PHONE_NUMBER__STEP_2_TITLE")}
         button={{
           value: t("CHANGE_PHONE_NUMBER__STEP_2_CHANGE_BUTTON"),
-          onClick: () => {},
+          onClick: () =>
+            changeNumberTrigger({
+              phone_number: countryCode.value + phoneNumber,
+            }),
           status:
             changeNumberStatus ??
             (countryCode && phoneNumber.trim().length > 0
@@ -119,10 +118,7 @@ const ChangePhoneNumber = () => {
         }}
         link={{
           value: t("CHANGE_PHONE_NUMBER__CANCEL_BUTTON"),
-          onClick: () =>
-            changeNumberTrigger({
-              phone_number: countryCode.value + phoneNumber,
-            }),
+          onClick: router.back,
           status: changeNumberStatus ? "inactive" : "active",
         }}
       >
