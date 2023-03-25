@@ -26,6 +26,7 @@ const ChangePassword = () => {
 
   const [step, setStep] = useState(1);
   const [verificationCode, setVerificationCode] = useState<string>("");
+  const [password, setPassword] = useState("");
 
   const { trigger: requestPermissionTrigger } = useAPIMutation<
     RequestPermissionRequest,
@@ -119,7 +120,28 @@ const ChangePassword = () => {
   }
 
   if (step === 2) {
-    return <PageStructure title="Change Your Password"></PageStructure>;
+    return (
+      <PageStructure
+        title="Change Your Password"
+        button={{
+          value: t("CHANGE_PASSWORD__STEP_2_CHANGE_BUTTON"),
+          onClick: () => {},
+          status: password.trim().length !== 0 ? "active" : "inactive",
+        }}
+        link={{
+          value: t("CHANGE_PASSWORD__CANCEL_BUTTON"),
+          onClick: router.back,
+          status: verifyRequestedPermissionStatus ? "inactive" : "active",
+        }}
+      >
+        <Filed
+          placeholder={t("CHANGE_PASSWORD__STEP_2_FILED_PLACEHOLDER")}
+          onChange={setPassword}
+          value={password}
+          secureTextEntry={true}
+        />
+      </PageStructure>
+    );
   }
 };
 
