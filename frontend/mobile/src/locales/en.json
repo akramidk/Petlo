@@ -83,5 +83,9 @@
   "DELETE_YOUR_ACCOUNT_STEP_2_TITLE": "Security Check",
   "DELETE_YOUR_ACCOUNT_STEP_2_HELPER_TEXT": "For security reasons we sent an sms with %{verificationCodeLength} digit code to your phone number, enter it below to confirm deleting your account.",
   "DELETE_YOUR_ACCOUNT_STEP_2_BUTTON": "Delete My Account",
-  "DELETE_YOUR_ACCOUNT_RESEND_CODE_LINK": "Resend Code"
+  "DELETE_YOUR_ACCOUNT_RESEND_CODE_LINK": "Resend Code",
+  "CHANGE_NAME__TITLE": "Change Your Name",
+  "CHANGE_NAME__CHANGE_BUTTON": "Change",
+  "CHANGE_NAME__CANCEL_BUTTON": "Cancel",
+  "CHANGE_NAME__FILED_PLACEHOLDER": "enter a new name"
 }
