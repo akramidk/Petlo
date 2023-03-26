@@ -6467,6 +6467,11 @@ react-native-paper@^5.4.0:
     color "^3.1.2"
     use-event-callback "^0.1.0"
 
+react-native-payment-icons@^1.0.11:
+  version "1.0.11"
+  resolved "https://registry.yarnpkg.com/react-native-payment-icons/-/react-native-payment-icons-1.0.11.tgz#bffc0ec68c2af1061cd222765303c2a61955371e"
+  integrity sha512-HY/g704+J25tLtjNfsQBiYF8OLtbPSaLN4ZY3quSJahRD+Zo1d8rd1cszeXSRb7WJYBNRJ2VDhH8mk2yhVByNQ==
+
 react-native-reanimated@~2.14.4:
   version "2.14.4"
   resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-2.14.4.tgz#3fa3da4e7b99f5dfb28f86bcf24d9d1024d38836"

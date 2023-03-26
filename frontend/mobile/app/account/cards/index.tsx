@@ -1,6 +1,5 @@
 import { useRouter } from "expo-router";
 import { useMemo } from "react";
-import { Text, View } from "react-native";
 import { DataCards, PageStructure } from "../../../src/components/organisms";
 import { Endpoints } from "../../../src/enums";
 import { useAPIFetching } from "../../../src/hooks";
@@ -10,6 +9,8 @@ import {
   DataCardProps,
 } from "../../../src/interfaces";
 import Loading from "../../_Loading";
+import { PaymentIcon } from "react-native-payment-icons";
+import { View } from "react-native";
 
 const Cards = () => {
   const router = useRouter();
@@ -30,6 +31,11 @@ const Cards = () => {
       return {
         primaryText: `**** **** **** ${card.last4}`,
         secondaryText: `Expires in ${card.exp_month}/${card.exp_year}`,
+        leftChild: (
+          <View className="items-center justify-center mr-[20px]">
+            <PaymentIcon type={card.brand} width={36} />
+          </View>
+        ),
       };
     });
   }, [response]);
