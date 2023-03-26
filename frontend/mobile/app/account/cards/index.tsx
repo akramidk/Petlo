@@ -17,6 +17,15 @@ import { PaymentIcon } from "react-native-payment-icons";
 import { View } from "react-native";
 import clsx from "clsx";
 
+type brand =
+  | "american-express"
+  | "diners-club"
+  | "discover"
+  | "jcb"
+  | "mastercard"
+  | "unionpay"
+  | "visa";
+
 const Cards = () => {
   const router = useRouter();
   const { t } = useTranslationsContext();
@@ -49,7 +58,10 @@ const Cards = () => {
               direction === "ltr" ? "mr-[20px]" : "ml-[20px]"
             )}
           >
-            <PaymentIcon type={card.brand} width={36} />
+            <PaymentIcon
+              type={card.brand.replace(" ", "-") as brand}
+              width={36}
+            />
           </View>
         ),
       };

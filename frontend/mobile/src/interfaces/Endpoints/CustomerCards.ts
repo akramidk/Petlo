@@ -7,8 +7,8 @@ export interface CustomerCardsResponse {
   data: {
     public_id: string;
     brand:
-      | "amex"
-      | "diners"
+      | "american express"
+      | "diners club"
       | "discover"
       | "jcb"
       | "mastercard"
