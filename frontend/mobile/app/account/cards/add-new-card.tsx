@@ -4,16 +4,15 @@ import {
   CardField,
   StripeProvider,
 } from "@stripe/stripe-react-native";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Constants from "expo-constants";
+import { useTranslationsContext } from "../../../src/hooks";
 
 const AddNewCard = () => {
+  const { languageWithoutGender } = useTranslationsContext();
+
   const { createToken } = useStripe();
   const [token, setToken] = useState<unknown>();
-
-  useEffect(() => {
-    console.log("token", token);
-  }, [token]);
 
   return (
     <PageStructure title="Add New Card">
@@ -32,6 +31,10 @@ const AddNewCard = () => {
             fontSize: 14,
             placeholderColor: "#aaa",
             textErrorColor: "#E64848",
+            fontFamily:
+              languageWithoutGender === "en"
+                ? "Manrope_500Medium"
+                : "IBMPlexSansArabic_400Regular",
           }}
           style={{
             height: 60,

@@ -12,13 +12,13 @@ const BaseFiled = ({
   secureTextEntry,
   maxLength,
 }: BaseFiledProps) => {
-  const { language, direction } = useInternationalizationContext();
+  const { languageWithoutGender, direction } = useInternationalizationContext();
 
   return (
     <TextInput
       className={clsx(
         "bg-[#F6F6F6] h-[60px] rounded-[4px] px-[20px] border-[1px] border-[#F6F6F6] focus:border-[#eee] text-[14px] text-[#444]",
-        language === "en" ? "font-e500" : "font-a400",
+        languageWithoutGender === "en" ? "font-e500" : "font-a400",
         direction === "ltr" ? "text-left" : "text-right",
         cn
       )}
