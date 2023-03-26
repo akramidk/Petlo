@@ -1,10 +1,12 @@
 import { useRouter } from "expo-router";
-import { PageStructure } from "../../../src/components/organisms";
+import { useMemo } from "react";
+import { DataCards, PageStructure } from "../../../src/components/organisms";
 import { Endpoints } from "../../../src/enums";
 import { useAPIFetching } from "../../../src/hooks";
 import {
   CustomerCardsRequest,
   CustomerCardsResponse,
+  DataCardProps,
 } from "../../../src/interfaces";
 import Loading from "../../_Loading";
 
@@ -20,11 +22,22 @@ const Cards = () => {
     },
   });
 
-  console.log("response", response);
+  const data: DataCardProps[] = useMemo(() => {
+    if (response.isFetching) return;
+
+    return response.body.data.map((card) => {
+      return {
+        primaryText: `**** **** **** ${card.last4}`,
+        secondaryText: `Expires in ${card.exp_month}/${card.exp_year}`,
+      };
+    });
+  }, [response]);
 
   if (response.isFetching) {
-    <Loading />;
+    return <Loading />;
   }
+
+  console.log("response", response.body.data);
 
   return (
     <PageStructure
@@ -34,7 +47,9 @@ const Cards = () => {
         onClick: () => router.push("/account/cards/add-new-card"),
       }}
       backButton={router.back}
-    />
+    >
+      <DataCards data={data} />
+    </PageStructure>
   );
 };
 
