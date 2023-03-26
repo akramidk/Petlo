@@ -21,4 +21,5 @@ export enum Endpoints {
   VERIFY_REQUESTED_OTP_PERMISSION = "/v1/customers/verify-requested-permission-with-otp",
   CHANGE_CUSTOMER_PASSWORD = "/v1/customers/password",
   ADD_NEW_CARD = "/v1/cards",
+  CUSTOMER_CARDS = "/v1/cards",
 }

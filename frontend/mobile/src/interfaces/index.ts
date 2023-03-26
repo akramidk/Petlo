@@ -82,6 +82,10 @@ import {
   ChangePasswordResponse,
 } from "./Endpoints/ChangePassword";
 import { AddNewCardRequest, AddNewCardResponse } from "./Endpoints/AddNewCard";
+import {
+  CustomerCardsRequest,
+  CustomerCardsResponse,
+} from "./Endpoints/CustomerCards";
 
 //entities interfaces
 import { Customer } from "./Entities/Customer";
@@ -136,6 +140,8 @@ export {
   ChangePasswordResponse,
   AddNewCardRequest,
   AddNewCardResponse,
+  CustomerCardsRequest,
+  CustomerCardsResponse,
   Customer,
   DataCardProps,
   LinkProps,
