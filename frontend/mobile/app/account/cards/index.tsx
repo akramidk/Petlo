@@ -2,7 +2,10 @@ import { useRouter } from "expo-router";
 import { useMemo } from "react";
 import { DataCards, PageStructure } from "../../../src/components/organisms";
 import { Endpoints } from "../../../src/enums";
-import { useAPIFetching } from "../../../src/hooks";
+import {
+  useAPIFetching,
+  useInternationalizationContext,
+} from "../../../src/hooks";
 import {
   CustomerCardsRequest,
   CustomerCardsResponse,
@@ -11,9 +14,12 @@ import {
 import Loading from "../../_Loading";
 import { PaymentIcon } from "react-native-payment-icons";
 import { View } from "react-native";
+import clsx from "clsx";
 
 const Cards = () => {
   const router = useRouter();
+  const { direction } = useInternationalizationContext();
+
   const { response } = useAPIFetching<
     CustomerCardsRequest,
     CustomerCardsResponse
@@ -31,8 +37,13 @@ const Cards = () => {
       return {
         primaryText: `**** **** **** ${card.last4}`,
         secondaryText: `Expires in ${card.exp_month}/${card.exp_year}`,
-        leftChild: (
-          <View className="items-center justify-center mr-[20px]">
+        prefixChild: (
+          <View
+            className={clsx(
+              "items-center justify-center",
+              direction === "ltr" ? "mr-[20px]" : "ml-[20px]"
+            )}
+          >
             <PaymentIcon type={card.brand} width={36} />
           </View>
         ),
@@ -43,8 +54,6 @@ const Cards = () => {
   if (response.isFetching) {
     return <Loading />;
   }
-
-  console.log("response", response.body.data);
 
   return (
     <PageStructure

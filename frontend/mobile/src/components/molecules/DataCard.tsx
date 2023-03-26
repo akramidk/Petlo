@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import { useMemo } from "react";
 import { View } from "react-native";
 import { useInternationalizationContext } from "../../hooks";
 import { DataCardProps } from "../../interfaces";
@@ -9,21 +10,24 @@ const DataCard = ({
   primaryText,
   secondaryText,
   actions,
-  leftChild,
+  prefixChild,
 }: DataCardProps) => {
   const { direction } = useInternationalizationContext();
+  const flex = useMemo(() => {
+    return direction === "ltr" ? "flex-row" : "flex-row-reverse";
+  }, [direction]);
 
   return (
-    <View className="flex-row w-full border-[1px] border-[#f6f6f6] rounded-[4px] px-[20px] py-[14px]">
-      {leftChild}
+    <View
+      className={clsx(
+        "w-full border-[1px] border-[#f6f6f6] rounded-[4px] px-[20px] py-[14px]",
+        flex
+      )}
+    >
+      {prefixChild}
 
       <View className="space-y-[8px]">
-        <View
-          className={clsx(
-            "justify-between",
-            direction === "ltr" ? "flex-row" : "flex-row-reverse"
-          )}
-        >
+        <View className={clsx("justify-between", flex)}>
           <Text
             font="extraBold"
             cn="text-[14px] text-[#0E333C] w-[70%]"

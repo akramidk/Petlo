@@ -7,5 +7,5 @@ export interface DataCardProps {
   actions?: ({
     name: string;
   } & Pick<BaseButtonProps, "onClick">)[];
-  leftChild?: React.ReactNode;
+  prefixChild?: React.ReactNode;
 }
