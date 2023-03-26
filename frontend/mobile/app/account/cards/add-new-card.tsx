@@ -15,6 +15,9 @@ import { useRouter } from "expo-router";
 import { Endpoints } from "../../../src/enums";
 import { AddNewCardRequest, AddNewCardResponse } from "../../../src/interfaces";
 
+const STRIPE_PUBLISHABLE_KEY =
+  Constants.expoConfig.extra.STRIPE_PUBLISHABLE_KEY;
+
 const AddNewCard = () => {
   const router = useRouter();
   const { t } = useTranslationsContext();
@@ -51,9 +54,7 @@ const AddNewCard = () => {
         status: status ? "inactive" : "active",
       }}
     >
-      <StripeProvider
-        publishableKey={Constants.expoConfig.extra.STRIPE_PUBLISHABLE_KEY}
-      >
+      <StripeProvider publishableKey={STRIPE_PUBLISHABLE_KEY}>
         <CardField
           postalCodeEnabled={false}
           onCardChange={(card) => {
