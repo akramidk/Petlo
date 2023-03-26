@@ -5,11 +5,18 @@ import { DataCardProps } from "../../interfaces";
 import { Text } from "../atoms";
 import { BaseButton } from "../bases";
 
-const DataCard = ({ primaryText, secondaryText, actions }: DataCardProps) => {
+const DataCard = ({
+  primaryText,
+  secondaryText,
+  actions,
+  leftChild,
+}: DataCardProps) => {
   const { direction } = useInternationalizationContext();
 
   return (
-    <View className="w-full border-[1px] border-[#f6f6f6] rounded-[4px] px-[20px] py-[14px]">
+    <View className="flex-row w-full border-[1px] border-[#f6f6f6] rounded-[4px] px-[20px] py-[14px]">
+      {leftChild}
+
       <View className="space-y-[8px]">
         <View
           className={clsx(

@@ -1,3 +1,4 @@
+import React from "react";
 import { BaseButtonProps } from "./BaseButtonProps";
 
 export interface DataCardProps {
@@ -6,4 +7,5 @@ export interface DataCardProps {
   actions?: ({
     name: string;
   } & Pick<BaseButtonProps, "onClick">)[];
+  leftChild?: React.ReactNode;
 }
