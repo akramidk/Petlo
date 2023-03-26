@@ -51,7 +51,16 @@ const Informations = () => {
 
   return (
     <PageStructure title={t("INFORMATIONS_TITLE")} backButton={router.back}>
-      <DataCards cn="mb-[8px]" data={data} />
+      <View className={"space-y-[4px] mb-[8px]"}>
+        {data.map((item, i) => {
+          return (
+            <View key={i}>
+              <DataCard {...item} />
+            </View>
+          );
+        })}
+      </View>
+
       <SmallButton
         value={t("INFORMATIONS_DELETE_ACCOUNT_BUTTON")}
         onClick={() => router.push("/account/informations/delete-your-account")}

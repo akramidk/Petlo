@@ -69,7 +69,10 @@ const Cards = () => {
       }}
       backButton={router.back}
     >
-      <DataCards data={data} />
+      <DataCards
+        data={data}
+        onEndReached={() => response.body.has_more && console.log("ENNNNNNNND")}
+      />
     </PageStructure>
   );
 };
