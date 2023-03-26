@@ -7,10 +7,13 @@ import {
 import { useState } from "react";
 import Constants from "expo-constants";
 import {
+  useAPIMutation,
   useInternationalizationContext,
   useTranslationsContext,
 } from "../../../src/hooks";
 import { useRouter } from "expo-router";
+import { Endpoints } from "../../../src/enums";
+import { AddNewCardRequest, AddNewCardResponse } from "../../../src/interfaces";
 
 const AddNewCard = () => {
   const router = useRouter();
@@ -18,19 +21,34 @@ const AddNewCard = () => {
   const { languageWithoutGender } = useInternationalizationContext();
 
   const { createToken } = useStripe();
-  const [token, setToken] = useState<unknown>();
+  const [token, setToken] = useState<string>();
+  const { trigger, status } = useAPIMutation<
+    AddNewCardRequest,
+    AddNewCardResponse
+  >({
+    endpoint: Endpoints.ADD_NEW_CARD,
+    method: "POST",
+    options: {
+      onSucceeded: router.back,
+      fireOnSucceededAfter: 1000,
+    },
+  });
 
   return (
     <PageStructure
       title={t("ADD_NEW_CARD__TITLE")}
       button={{
         value: t("ADD_NEW_CARD__ADD_BUTTON"),
-        onClick: () => {},
-        status: token ? "active" : "inactive",
+        onClick: () =>
+          trigger({
+            token: token,
+          }),
+        status: status ?? (token ? "active" : "inactive"),
       }}
       link={{
         value: t("ADD_NEW_CARD__CANCEL_BUTTON"),
         onClick: router.back,
+        status: status ? "inactive" : "active",
       }}
     >
       <StripeProvider
@@ -38,10 +56,12 @@ const AddNewCard = () => {
       >
         <CardField
           postalCodeEnabled={false}
-          onCardChange={() => {
+          onCardChange={(card) => {
             createToken({
               type: "Card",
-            }).then((response) => setToken(response?.token?.id));
+            }).then((response) => {
+              setToken(response?.token?.id);
+            });
           }}
           cardStyle={{
             textColor: "#444",

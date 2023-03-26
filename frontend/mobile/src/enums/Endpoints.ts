@@ -20,4 +20,5 @@ export enum Endpoints {
   CHANGE_CUSTOMER_PHONE_NUMBER = "/v1/customers/phone-number",
   VERIFY_REQUESTED_OTP_PERMISSION = "/v1/customers/verify-requested-permission-with-otp",
   CHANGE_CUSTOMER_PASSWORD = "/v1/customers/password",
+  ADD_NEW_CARD = "/v1/cards",
 }

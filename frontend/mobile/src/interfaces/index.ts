@@ -81,6 +81,7 @@ import {
   ChangePasswordRequest,
   ChangePasswordResponse,
 } from "./Endpoints/ChangePassword";
+import { AddNewCardRequest, AddNewCardResponse } from "./Endpoints/AddNewCard";
 
 //entities interfaces
 import { Customer } from "./Entities/Customer";
@@ -133,6 +134,8 @@ export {
   VerifyRequestedPermissionResponse,
   ChangePasswordRequest,
   ChangePasswordResponse,
+  AddNewCardRequest,
+  AddNewCardResponse,
   Customer,
   DataCardProps,
   LinkProps,
