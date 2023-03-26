@@ -107,5 +107,11 @@
   "CHANGE_PASSWORD__RESEND_CODE_LINK": "اعادة ارسال الرمز",
   "CHANGE_PASSWORD__STEP_2_TITLE": "تغيير كلمة مرورك",
   "CHANGE_PASSWORD__STEP_2_FILED_PLACEHOLDER": "ادخل كلمة المرور الجديدة (8 خانات أو اكثر)",
-  "CHANGE_PASSWORD__STEP_2_CHANGE_BUTTON": "تغيير"
+  "CHANGE_PASSWORD__STEP_2_CHANGE_BUTTON": "تغيير",
+  "CARDS__TITLE": "بطاقاتك",
+  "CARDS__EXPIRES_IN": "تنتهي %{expYear}/%{expMonth}",
+  "CARDS__ADD_NEW_CARD_BUTTON": "اضف بطاقة جديدة",
+  "ADD_NEW_CARD__TITLE": "اضف بطاقة جديدة",
+  "ADD_NEW_CARD__ADD_BUTTON": "اضافة",
+  "ADD_NEW_CARD__CANCEL_BUTTON": "الغاء"
 }

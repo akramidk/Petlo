@@ -5,6 +5,7 @@ import { Endpoints } from "../../../src/enums";
 import {
   useAPIFetching,
   useInternationalizationContext,
+  useTranslationsContext,
 } from "../../../src/hooks";
 import {
   CustomerCardsRequest,
@@ -18,6 +19,7 @@ import clsx from "clsx";
 
 const Cards = () => {
   const router = useRouter();
+  const { t } = useTranslationsContext();
   const { direction } = useInternationalizationContext();
 
   const { response } = useAPIFetching<
@@ -36,7 +38,10 @@ const Cards = () => {
     return response.body.data.map((card) => {
       return {
         primaryText: `**** **** **** ${card.last4}`,
-        secondaryText: `Expires in ${card.exp_month}/${card.exp_year}`,
+        secondaryText: t("CARDS__EXPIRES_IN", {
+          expMonth: card.exp_month,
+          expYear: card.exp_year,
+        }),
         prefixChild: (
           <View
             className={clsx(
@@ -57,9 +62,9 @@ const Cards = () => {
 
   return (
     <PageStructure
-      title="Cards"
+      title={t("CARDS__TITLE")}
       button={{
-        value: "Add New Card",
+        value: t("CARDS__ADD_NEW_CARD_BUTTON"),
         onClick: () => router.push("/account/cards/add-new-card"),
       }}
       backButton={router.back}
