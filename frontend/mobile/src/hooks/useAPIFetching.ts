@@ -13,6 +13,7 @@ interface useAPIFetchingProps<Request> {
   options?: {
     wait?: boolean;
     overwriteSessionToken?: string;
+    withPagination?: boolean;
   };
 }
 
@@ -30,19 +31,25 @@ const useAPIFetching = <Request, Response>({
   options,
 }: useAPIFetchingProps<Request>) => {
   const [wait, setWait] = useState<boolean>(options?.wait);
+  const [paginationRound, setPaginationRound] = useState(1);
 
   const SWREndpoint = useMemo(() => {
     if (wait) {
       return null;
     }
 
-    if (!body) {
+    if (!body && options?.withPagination !== true) {
       return endpoint;
     }
 
-    const params = new URLSearchParams(body as {}).toString();
+    let page;
+    if (options?.withPagination) {
+      page = { page: paginationRound };
+    }
+
+    const params = new URLSearchParams({ ...body, ...page } as {}).toString();
     return `${endpoint}?${params}`;
-  }, [endpoint, wait]);
+  }, [endpoint, wait, paginationRound, options?.withPagination]);
 
   const { URI, sessionToken } = useRequestBuilder({
     endpoint: SWREndpoint,
@@ -65,6 +72,10 @@ const useAPIFetching = <Request, Response>({
     SWROptions
   );
 
+  const fetchMore = () => {
+    setPaginationRound(paginationRound + 1);
+  };
+
   const response: useAPIFetchingResponse<Response> = useMemo(() => {
     if (isLoading || isValidating) {
       return { isFetching: true };
@@ -74,7 +85,7 @@ const useAPIFetching = <Request, Response>({
       return {
         isFetching: false,
         statusCode: data.status,
-        body: data.data,
+        body: { ...response?.body, ...data.data },
       };
     }
 
@@ -87,7 +98,7 @@ const useAPIFetching = <Request, Response>({
     }
   }, [isLoading, isValidating, data, error]);
 
-  return { response, setWait };
+  return { response, setWait, fetchMore, round: paginationRound };
 };
 
 export default useAPIFetching;

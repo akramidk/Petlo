@@ -22,13 +22,13 @@ const Cards = () => {
   const { t } = useTranslationsContext();
   const { direction } = useInternationalizationContext();
 
-  const { response } = useAPIFetching<
+  const { response, fetchMore, round } = useAPIFetching<
     CustomerCardsRequest,
     CustomerCardsResponse
   >({
     endpoint: Endpoints.CUSTOMER_CARDS,
-    body: {
-      page: 1,
+    options: {
+      withPagination: true,
     },
   });
 
@@ -56,7 +56,7 @@ const Cards = () => {
     });
   }, [response]);
 
-  if (response.isFetching) {
+  if (response.isFetching && round === 1) {
     return <Loading />;
   }
 
@@ -71,7 +71,7 @@ const Cards = () => {
     >
       <DataCards
         data={data}
-        onEndReached={() => response.body.has_more && console.log("ENNNNNNNND")}
+        onEndReached={response.body.has_more ? fetchMore : undefined}
       />
     </PageStructure>
   );
