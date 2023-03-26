@@ -1,7 +1,6 @@
 import { View } from "react-native";
 import { DataCard } from "../molecules";
 import { DataCardProps } from "../../interfaces";
-import clsx from "clsx";
 import { FlashList } from "@shopify/flash-list";
 import { Dimensions } from "react-native";
 import { useMemo } from "react";
