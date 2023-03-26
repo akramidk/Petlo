@@ -13,8 +13,10 @@ interface DataCardsProps {
 
 const DataCards = ({ data, cn, onEndReached }: DataCardsProps) => {
   const height = useMemo(() => {
-    return Dimensions.get("window").height * 0.65;
+    return Dimensions.get("window").height - 350;
   }, []);
+
+  console.log("height", height);
 
   return (
     <View style={{ height: height }} className={cn}>
@@ -23,7 +25,7 @@ const DataCards = ({ data, cn, onEndReached }: DataCardsProps) => {
         renderItem={({ item }) => <DataCard {...item} />}
         ItemSeparatorComponent={() => <View className="h-[4px]" />}
         onEndReached={onEndReached}
-        estimatedItemSize={74}
+        estimatedItemSize={77}
         extraData={data}
       />
     </View>
