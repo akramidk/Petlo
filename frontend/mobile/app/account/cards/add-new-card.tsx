@@ -22,17 +22,22 @@ const AddNewCard = () => {
       >
         <CardField
           postalCodeEnabled={false}
-          onCardChange={(card) => {
+          onCardChange={() => {
             createToken({
               type: "Card",
             }).then((response) => setToken(response?.token?.id));
           }}
-          cardStyle={{ textColor: "#000" }}
+          cardStyle={{
+            textColor: "#444",
+            fontSize: 14,
+            placeholderColor: "#aaa",
+            textErrorColor: "#E64848",
+          }}
           style={{
             height: 60,
             backgroundColor: "#f6f6f6",
             borderRadius: 4,
-            padding: 20,
+            paddingRight: 50,
           }}
         />
       </StripeProvider>
