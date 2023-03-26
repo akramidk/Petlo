@@ -6,16 +6,33 @@ import {
 } from "@stripe/stripe-react-native";
 import { useState } from "react";
 import Constants from "expo-constants";
-import { useTranslationsContext } from "../../../src/hooks";
+import {
+  useInternationalizationContext,
+  useTranslationsContext,
+} from "../../../src/hooks";
+import { useRouter } from "expo-router";
 
 const AddNewCard = () => {
-  const { languageWithoutGender } = useTranslationsContext();
+  const router = useRouter();
+  const { t } = useTranslationsContext();
+  const { languageWithoutGender } = useInternationalizationContext();
 
   const { createToken } = useStripe();
   const [token, setToken] = useState<unknown>();
 
   return (
-    <PageStructure title="Add New Card">
+    <PageStructure
+      title={t("ADD_NEW_CARD__TITLE")}
+      button={{
+        value: t("ADD_NEW_CARD__ADD_BUTTON"),
+        onClick: () => {},
+        status: token ? "active" : "inactive",
+      }}
+      link={{
+        value: t("ADD_NEW_CARD__CANCEL_BUTTON"),
+        onClick: router.back,
+      }}
+    >
       <StripeProvider
         publishableKey={Constants.expoConfig.extra.STRIPE_PUBLISHABLE_KEY}
       >
