@@ -16,8 +16,6 @@ const DataCards = ({ data, cn, onEndReached }: DataCardsProps) => {
     return Dimensions.get("window").height - 350;
   }, []);
 
-  console.log("height", height);
-
   return (
     <View style={{ height: height }} className={cn}>
       <FlashList

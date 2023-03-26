@@ -19,7 +19,7 @@ const Informations = () => {
     endpoint: Endpoints.CUSTOMER_INFORMATIONS,
   });
 
-  const data: DataCardProps[] = useMemo(() => {
+  const informations: DataCardProps[] = useMemo(() => {
     if (!response?.body) {
       return;
     }
@@ -52,7 +52,7 @@ const Informations = () => {
   return (
     <PageStructure title={t("INFORMATIONS_TITLE")} backButton={router.back}>
       <View className={"space-y-[4px] mb-[8px]"}>
-        {data.map((item, i) => {
+        {informations.map((item, i) => {
           return (
             <View key={i}>
               <DataCard {...item} />

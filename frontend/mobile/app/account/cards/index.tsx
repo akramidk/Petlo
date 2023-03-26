@@ -32,7 +32,7 @@ const Cards = () => {
     },
   });
 
-  const data: DataCardProps[] = useMemo(() => {
+  const cards: DataCardProps[] = useMemo(() => {
     if (response.isFetching) return;
 
     return response.body.data.map((card) => {
@@ -70,7 +70,7 @@ const Cards = () => {
       backButton={router.back}
     >
       <DataCards
-        data={data}
+        data={cards}
         onEndReached={response.body.has_more ? fetchMore : undefined}
       />
     </PageStructure>
