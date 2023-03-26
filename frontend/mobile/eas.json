@@ -13,7 +13,8 @@
         "buildType": "apk"
       },
       "env": {
-        "API_URL": "https://api.dev.petlo.co"
+        "API_URL": "https://api.dev.petlo.co",
+        "STRIPE_PUBLISHABLE_KEY": "pk_test_51MLCpbBOEiCvkdTpNPVHQTabYpsAlE2aOm3lH4P6CgOhdYWVDBZs7bpDGHR5ewLjia5eii60w78ZkACtudbrWEun00gDTjfPaX"
       }
     },
     "preview": {
@@ -22,7 +23,8 @@
         "resourceClass": "m1-medium"
       },
       "env": {
-        "API_URL": "https://api.dev.petlo.co"
+        "API_URL": "https://api.dev.petlo.co",
+        "STRIPE_PUBLISHABLE_KEY": "pk_test_51MLCpbBOEiCvkdTpNPVHQTabYpsAlE2aOm3lH4P6CgOhdYWVDBZs7bpDGHR5ewLjia5eii60w78ZkACtudbrWEun00gDTjfPaX"
       }
     },
     "production": {
@@ -30,7 +32,8 @@
         "resourceClass": "m1-medium"
       },
       "env": {
-        "API_URL": "https://api.petlo.co"
+        "API_URL": "https://api.petlo.co",
+        "STRIPE_PUBLISHABLE_KEY": "pk_live_51MLCpbBOEiCvkdTpwSNodwH2qAXbBB26zXu7mZJFRJSKMe7NHheEDh78Mqk8YD3uJZ4r2OPtXpB4PnAdlIqLwAm700ebGaLL57"
       }
     }
   },

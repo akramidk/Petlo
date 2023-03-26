@@ -3,9 +3,9 @@ import {
   useStripe,
   CardField,
   StripeProvider,
-  CardForm,
 } from "@stripe/stripe-react-native";
 import { useEffect, useState } from "react";
+import Constants from "expo-constants";
 
 const AddNewCard = () => {
   const { createToken } = useStripe();
@@ -17,10 +17,12 @@ const AddNewCard = () => {
 
   return (
     <PageStructure title="Add New Card">
-      <StripeProvider publishableKey="pk_test_51MLCpbBOEiCvkdTpNPVHQTabYpsAlE2aOm3lH4P6CgOhdYWVDBZs7bpDGHR5ewLjia5eii60w78ZkACtudbrWEun00gDTjfPaX">
+      <StripeProvider
+        publishableKey={Constants.expoConfig.extra.STRIPE_PUBLISHABLE_KEY}
+      >
         <CardField
           postalCodeEnabled={false}
-          onCardChange={(cardDetails) => {
+          onCardChange={(card) => {
             createToken({
               type: "Card",
             }).then((response) => setToken(response?.token?.id));
