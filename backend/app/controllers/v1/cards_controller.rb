@@ -7,7 +7,7 @@ module V1
     def index
       response = CardsHelper.index(
         customer: @customer,
-        page: params[:page]
+        page: params[:page].to_i
       )
 
       render json: { has_more: response[:has_more], data: response[:data] }, status: 200

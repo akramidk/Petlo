@@ -8,7 +8,7 @@ module V1
       response = PetsHelper.index(
         customer: @customer,
         language: params[:locale],
-        page: params[:page]
+        page: params[:page].to_i
       )
 
       render json: { has_more: response[:has_more], data: response[:data] }, status: 200
