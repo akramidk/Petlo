@@ -21,7 +21,7 @@ const DataCard = ({
     <View
       className={clsx(
         "w-full border-[1px] border-[#f6f6f6] rounded-[4px] px-[20px] py-[14px]",
-        flex
+        prefixChild && flex // TODO fix this
       )}
     >
       {prefixChild}
