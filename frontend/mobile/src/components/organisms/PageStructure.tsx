@@ -52,7 +52,7 @@ const PageStructure = ({
         <View
           className={clsx(
             "fixed border-t-[1px] border-[#f6f6f6] px-[28px]",
-            isIOS ? "pt-[16px]" : "py-[16px]"
+            isIOS || link ? "pt-[16px]" : "py-[16px]"
           )}
         >
           {button && <Button {...button} />}
