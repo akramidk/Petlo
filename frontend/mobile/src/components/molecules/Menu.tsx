@@ -8,6 +8,7 @@ import {
 import { useRouter } from "expo-router";
 import { Fragment } from "react";
 import clsx from "clsx";
+import * as Device from "expo-device";
 
 interface MenuProps {
   activePath: string;
@@ -17,12 +18,14 @@ const Menu = ({ activePath }: MenuProps) => {
   const router = useRouter();
   const { t } = useTranslationsContext();
   const { direction } = useInternationalizationContext();
+  const isIOS = Device.brand.toLowerCase() === "apple";
 
   return (
     <View
       className={clsx(
-        "h-[64px] justify-between items-end px-[4px] border-t-[1px] border-t-[#f6f6f6] bg-[#fff]",
-        direction === "ltr" ? "flex-row" : "flex-row-reverse"
+        "justify-between px-[4px] border-t-[1px] border-t-[#f6f6f6] bg-[#fff]",
+        direction === "ltr" ? "flex-row" : "flex-row-reverse",
+        isIOS ? "pt-[16px]" : "py-[16px]"
       )}
     >
       {MENU_TABS.map((tap, i) => (
