@@ -46,8 +46,8 @@ export const MORE_PAGE_SECTIONS: {
     options: [
       {
         icon: "support",
-        name: "MORE__OTHERS_SUPPORT_OPTION",
-        path: "/support",
+        name: "MORE__OTHERS_SUPPORT_AND_FEEDBACK_OPTION",
+        path: "/support-and-feedbacks",
       },
     ],
   },

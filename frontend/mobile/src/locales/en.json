@@ -68,7 +68,7 @@
   "MORE__APP_SECTION_TITLE": "App",
   "MORE__APP_LANGUAGE_OPTION": "Language",
   "MORE__OTHERS_SECTION_TITLE": "Others",
-  "MORE__OTHERS_SUPPORT_OPTION": "Support",
+  "MORE__OTHERS_SUPPORT_AND_FEEDBACK_OPTION": "Support & Feedback",
   "INFORMATIONS_TITLE": "Your Informations",
   "INFORMATIONS_NAME_CARD_PRIMARY_TEXT": "Name",
   "INFORMATIONS_PHONE_NUMBER_CARD_PRIMARY_TEXT": "Phone Number",
@@ -109,5 +109,7 @@
   "CARDS__ADD_NEW_CARD_BUTTON": "Add New Card",
   "ADD_NEW_CARD__TITLE": "Add New Card",
   "ADD_NEW_CARD__ADD_BUTTON": "Add",
-  "ADD_NEW_CARD__CANCEL_BUTTON": "Cancel"
+  "ADD_NEW_CARD__CANCEL_BUTTON": "Cancel",
+  "SUPPORT_AND_FEEDBACKS__TITLE": "Support & Feedbacks",
+  "SUPPORT_AND_FEEDBACKS__HELPER_TEXT": "We'll be happy to support you or know your feedbacks by sending a message to us on Whatsapp at our phone number +962790119952."
 }

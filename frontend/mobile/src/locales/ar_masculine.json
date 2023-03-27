@@ -72,7 +72,7 @@
   "MORE__APP_SECTION_TITLE": "التطبيق",
   "MORE__APP_LANGUAGE_OPTION": "اللغة",
   "MORE__OTHERS_SECTION_TITLE": "آخرى",
-  "MORE__OTHERS_SUPPORT_OPTION": "الدعم",
+  "MORE__OTHERS_SUPPORT_AND_FEEDBACK_OPTION": "الدعم والاقتراحات",
   "INFORMATIONS_TITLE": "معلوماتك",
   "INFORMATIONS_NAME_CARD_PRIMARY_TEXT": "الاسم",
   "INFORMATIONS_PHONE_NUMBER_CARD_PRIMARY_TEXT": "رقم الهاتف",
@@ -113,5 +113,7 @@
   "CARDS__ADD_NEW_CARD_BUTTON": "اضف بطاقة جديدة",
   "ADD_NEW_CARD__TITLE": "اضف بطاقة جديدة",
   "ADD_NEW_CARD__ADD_BUTTON": "اضافة",
-  "ADD_NEW_CARD__CANCEL_BUTTON": "الغاء"
+  "ADD_NEW_CARD__CANCEL_BUTTON": "الغاء",
+  "SUPPORT_AND_FEEDBACKS__TITLE": "الدعم والاقتراحات",
+  "SUPPORT_AND_FEEDBACKS__HELPER_TEXT": "يسعدنا تقديم الدعم او معرفة اقترحاتك لنا عن طريق ارسال رسالة على واتساب الى رقم هاتفنا 962790119952+."
 }
