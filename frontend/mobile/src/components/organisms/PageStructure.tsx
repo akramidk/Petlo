@@ -3,6 +3,7 @@ import { ButtonProps, LinkProps } from "../../interfaces";
 import { Button, BackButton, Text, Link } from "../atoms";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import clsx from "clsx";
+import * as Device from "expo-device";
 
 interface PageStructureProps {
   title?: string;
@@ -21,6 +22,7 @@ const PageStructure = ({
   backButton,
   link,
 }: PageStructureProps) => {
+  const isIOS = Device.brand.toLowerCase() === "apple";
   const linkProps = {
     ...link,
     cn: clsx("py-[14px] items-center justify-center", link?.cn),
@@ -47,7 +49,12 @@ const PageStructure = ({
       </KeyboardAwareScrollView>
 
       {(button || link) && (
-        <View className="fixed border-t-[1px] border-[#f6f6f6] pt-[16px] px-[28px]">
+        <View
+          className={clsx(
+            "fixed border-t-[1px] border-[#f6f6f6] px-[28px]",
+            isIOS ? "pt-[16px]" : "py-[16px]"
+          )}
+        >
           {button && <Button {...button} />}
           {link && <Link {...linkProps} />}
         </View>
