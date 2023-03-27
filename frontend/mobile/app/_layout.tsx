@@ -19,7 +19,13 @@ import {
 } from "@expo-google-fonts/ibm-plex-sans-arabic";
 import { Slot } from "expo-router";
 import { SVGLogo } from "../src/components/atoms";
-import { View, Alert, TouchableWithoutFeedback, Keyboard } from "react-native";
+import {
+  View,
+  Alert,
+  TouchableWithoutFeedback,
+  Keyboard,
+  BackHandler,
+} from "react-native";
 import { useAPIFetching, useInternationalization } from "../src/hooks";
 import * as Device from "expo-device";
 import * as Application from "expo-application";
@@ -39,6 +45,7 @@ import { useCustomer } from "../src/hooks";
 import { AlertContextProvider } from "../src/providers";
 import Viewer from "./_Viewer";
 import { StatusBar } from "expo-status-bar";
+import { useEffect } from "react";
 
 const Layout = () => {
   // TODO handled if no network
@@ -88,6 +95,14 @@ const Layout = () => {
   const { t } = useTranslations({
     language: language,
   });
+
+  useEffect(() => {
+    const backHandler = BackHandler.addEventListener(
+      "hardwareBackPress",
+      () => true
+    );
+    return () => backHandler.remove();
+  }, []);
 
   if (
     !fontsLoaded ||
