@@ -51,15 +51,7 @@ const Informations = () => {
 
   return (
     <PageStructure title={t("INFORMATIONS_TITLE")} backButton={router.back}>
-      <View className={"space-y-[4px] mb-[8px]"}>
-        {informations.map((item, i) => {
-          return (
-            <View key={i}>
-              <DataCard {...item} />
-            </View>
-          );
-        })}
-      </View>
+      <DataCards data={informations} cn="mb-[8px]" />
 
       <SmallButton
         value={t("INFORMATIONS_DELETE_ACCOUNT_BUTTON")}

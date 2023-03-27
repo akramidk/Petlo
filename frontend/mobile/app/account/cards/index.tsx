@@ -81,10 +81,7 @@ const Cards = () => {
       }}
       backButton={router.back}
     >
-      <DataCards
-        data={cards}
-        onEndReached={response.body.has_more ? fetchMore : undefined}
-      />
+      <DataCards data={cards} />
     </PageStructure>
   );
 };

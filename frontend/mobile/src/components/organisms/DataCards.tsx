@@ -1,31 +1,24 @@
 import { View } from "react-native";
 import { DataCard } from "../molecules";
 import { DataCardProps } from "../../interfaces";
-import { FlashList } from "@shopify/flash-list";
-import { Dimensions } from "react-native";
-import { useMemo } from "react";
+
+import clsx from "clsx";
 
 interface DataCardsProps {
   data: DataCardProps[];
   cn?: string;
-  onEndReached?: () => void;
 }
 
-const DataCards = ({ data, cn, onEndReached }: DataCardsProps) => {
-  const height = useMemo(() => {
-    return Dimensions.get("window").height - 350;
-  }, []);
-
+const DataCards = ({ data, cn }: DataCardsProps) => {
   return (
-    <View style={{ height: height }} className={cn}>
-      <FlashList
-        data={data}
-        renderItem={({ item }) => <DataCard {...item} />}
-        ItemSeparatorComponent={() => <View className="h-[4px]" />}
-        onEndReached={onEndReached}
-        estimatedItemSize={77}
-        extraData={data}
-      />
+    <View className={clsx("space-y-[4px]", cn)}>
+      {data.map((item, i) => {
+        return (
+          <View key={i}>
+            <DataCard {...item} />
+          </View>
+        );
+      })}
     </View>
   );
 };
