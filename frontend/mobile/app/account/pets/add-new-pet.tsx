@@ -74,10 +74,24 @@ const AddNewPet = () => {
       {
         // TODO should be disabled if pet not selected
       }
+      {pet && (
+        <Selector
+          cn="mb-[16px]"
+          name={t("ADD_NEW_PET__PET_BREED_LABEL")}
+          placeholder={t("ADD_NEW_PET__PET_BREED_PLACEHOLDER")}
+          options={breeds}
+          signalSelect={{
+            selectedOption: breed,
+            setSelectedOption: setBreed,
+          }}
+          require
+        />
+      )}
+
       <Selector
         cn="mb-[16px]"
-        name={t("ADD_NEW_PET__PET_BREED_LABEL")}
-        placeholder={t("ADD_NEW_PET__PET_BREED_PLACEHOLDER")}
+        name={t("ADD_NEW_PET__PET_GENDER_LABEL")}
+        placeholder={t("ADD_NEW_PET__PET_GENDER_PLACEHOLDER")}
         options={breeds}
         signalSelect={{
           selectedOption: breed,

@@ -118,5 +118,7 @@
   "ADD_NEW_PET__PET_TYPE_LABEL": "Pet Type",
   "ADD_NEW_PET__PET_TYPE_PLACEHOLDER": "select your pet type",
   "ADD_NEW_PET__PET_BREED_LABEL": "Pet Breed",
-  "ADD_NEW_PET__PET_BREED_PLACEHOLDER": "select your pet breed"
+  "ADD_NEW_PET__PET_BREED_PLACEHOLDER": "select your pet breed",
+  "ADD_NEW_PET__PET_GENDER_LABEL": "Pet Gender",
+  "ADD_NEW_PET__PET_GENDER_PLACEHOLDER": "select your pet gender"
 }
