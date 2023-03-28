@@ -22,4 +22,5 @@ export enum Endpoints {
   CHANGE_CUSTOMER_PASSWORD = "/v1/customers/password",
   ADD_NEW_CARD = "/v1/cards",
   CUSTOMER_CARDS = "/v1/cards",
+  PETS_INFORMATION = "/v1/pets/information",
 }

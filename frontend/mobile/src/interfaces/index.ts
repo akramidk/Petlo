@@ -86,6 +86,7 @@ import {
   CustomerCardsRequest,
   CustomerCardsResponse,
 } from "./Endpoints/CustomerCards";
+import { PetsInformationResponse } from "./Endpoints/PetsInformation";
 
 //entities interfaces
 import { Customer } from "./Entities/Customer";
@@ -142,6 +143,7 @@ export {
   AddNewCardResponse,
   CustomerCardsRequest,
   CustomerCardsResponse,
+  PetsInformationResponse,
   Customer,
   DataCardProps,
   LinkProps,
