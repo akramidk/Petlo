@@ -51,7 +51,7 @@ const SelectorModal = <T extends BaseOption>({
 
   const optionsAfterSearch = useMemo(() => {
     return options.filter((option) => option.value.includes(searchValue));
-  }, [searchValue]);
+  }, [searchValue, options]);
 
   return (
     <Modal visible={visible} animationType="slide">

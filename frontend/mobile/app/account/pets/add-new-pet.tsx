@@ -16,6 +16,7 @@ const AddNewPet = () => {
 
   const [name, setName] = useState("");
   const [pet, setPet] = useState<BaseOption>();
+  const [breed, setBreed] = useState<BaseOption>();
 
   const pets: BaseOption[] = useMemo(() => {
     if (response.isFetching) return;
@@ -27,6 +28,21 @@ const AddNewPet = () => {
       };
     });
   }, [response]);
+
+  const breeds: BaseOption[] = useMemo(() => {
+    if (pet === undefined) return [];
+
+    return response.body.data
+      .find((p) => p.key === pet.id)
+      .breeds.map((breed) => {
+        return {
+          id: breed.key,
+          value: breed.value,
+        };
+      });
+  }, [pet]);
+
+  console.log("breeds", breeds);
 
   if (response.isFetching) {
     return <Loading />;
@@ -51,6 +67,21 @@ const AddNewPet = () => {
         signalSelect={{
           selectedOption: pet,
           setSelectedOption: setPet,
+        }}
+        require
+      />
+
+      {
+        // TODO should be disabled if pet not selected
+      }
+      <Selector
+        cn="mb-[16px]"
+        name={t("ADD_NEW_PET__PET_BREED_LABEL")}
+        placeholder={t("ADD_NEW_PET__PET_BREED_PLACEHOLDER")}
+        options={breeds}
+        signalSelect={{
+          selectedOption: breed,
+          setSelectedOption: setBreed,
         }}
         require
       />
