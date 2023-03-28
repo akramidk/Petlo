@@ -6,6 +6,8 @@
   "COMMON__ORDERS": "Orders",
   "COMMON__AUTOSHIP": "Autoship",
   "COMMON__MORE": "More",
+  "COMMON__MALE": "Male",
+  "COMMON__FEMALE": "Female",
   "ROOT_LAYOUT__NEW_UPDATE_AVAILABLE_TITLE": "New Update Available",
   "ROOT_LAYOUT__NEW_UPDATE_AVAILABLE_MESSAGE": "The app must be updated first to be use.",
   "SELECT_LANGUAGE__TITLE": "App Language",

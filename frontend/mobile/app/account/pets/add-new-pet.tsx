@@ -2,6 +2,7 @@ import { useRouter } from "expo-router";
 import { useMemo, useState } from "react";
 import { Filed, Selector } from "../../../src/components/atoms";
 import { PageStructure } from "../../../src/components/organisms";
+import { PETS_GENDERS } from "../../../src/constants";
 import { Endpoints } from "../../../src/enums";
 import { useAPIFetching, useTranslationsContext } from "../../../src/hooks";
 import { BaseOption, PetsInformationResponse } from "../../../src/interfaces";
@@ -17,6 +18,7 @@ const AddNewPet = () => {
   const [name, setName] = useState("");
   const [pet, setPet] = useState<BaseOption>();
   const [breed, setBreed] = useState<BaseOption>();
+  const [gender, setGender] = useState<BaseOption>();
 
   const pets: BaseOption[] = useMemo(() => {
     if (response.isFetching) return;
@@ -92,12 +94,13 @@ const AddNewPet = () => {
         cn="mb-[16px]"
         name={t("ADD_NEW_PET__PET_GENDER_LABEL")}
         placeholder={t("ADD_NEW_PET__PET_GENDER_PLACEHOLDER")}
-        options={breeds}
+        options={PETS_GENDERS}
         signalSelect={{
-          selectedOption: breed,
-          setSelectedOption: setBreed,
+          selectedOption: gender,
+          setSelectedOption: setGender,
         }}
         require
+        translate
       />
     </PageStructure>
   );

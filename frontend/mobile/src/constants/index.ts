@@ -9,6 +9,7 @@ import { HEDER_PATHS } from "./HEDER_PATHS";
 import { MENU_TABS } from "./MENU_TABS";
 import { HEDER_ICONS } from "./HEDER_ICONS";
 import { MORE_PAGE_SECTIONS } from "./MORE_PAGE_SECTIONS";
+import { PETS_GENDERS } from "./PETS_GENDERS";
 
 export {
   LANGUAGES_OPTIONS,
@@ -22,4 +23,5 @@ export {
   MENU_TABS,
   HEDER_ICONS,
   MORE_PAGE_SECTIONS,
+  PETS_GENDERS,
 };
