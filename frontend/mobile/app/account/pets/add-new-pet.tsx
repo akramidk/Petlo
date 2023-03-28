@@ -9,7 +9,12 @@ import {
   useAPIMutation,
   useTranslationsContext,
 } from "../../../src/hooks";
-import { BaseOption, PetsInformationResponse } from "../../../src/interfaces";
+import {
+  AddNewPetRequest,
+  AddNewPetResponse,
+  BaseOption,
+  PetsInformationResponse,
+} from "../../../src/interfaces";
 import Loading from "../../_Loading";
 
 const AddNewPet = () => {
@@ -18,7 +23,10 @@ const AddNewPet = () => {
   const { response } = useAPIFetching<undefined, PetsInformationResponse>({
     endpoint: Endpoints.PETS_INFORMATION,
   });
-  const { trigger, status } = useAPIMutation<unknown, unknown>({
+  const { trigger, status } = useAPIMutation<
+    AddNewPetRequest,
+    AddNewPetResponse
+  >({
     endpoint: Endpoints.ADD_NEW_PET,
     method: "POST",
     options: {
@@ -73,7 +81,13 @@ const AddNewPet = () => {
       title={t("ADD_NEW_PET__TITLE")}
       button={{
         value: t("ADD_NEW_PET__ADD_BUTTON"),
-        onClick: () => {},
+        onClick: () =>
+          trigger({
+            name: name,
+            kind: type.id as string,
+            breed: breed.id as string,
+            gender: gender.id as string,
+          }),
         status: buttonSattus,
       }}
       link={{
