@@ -4,7 +4,11 @@ import { Filed, Selector } from "../../../src/components/atoms";
 import { PageStructure } from "../../../src/components/organisms";
 import { PETS_GENDERS } from "../../../src/constants";
 import { Endpoints } from "../../../src/enums";
-import { useAPIFetching, useTranslationsContext } from "../../../src/hooks";
+import {
+  useAPIFetching,
+  useAPIMutation,
+  useTranslationsContext,
+} from "../../../src/hooks";
 import { BaseOption, PetsInformationResponse } from "../../../src/interfaces";
 import Loading from "../../_Loading";
 
@@ -14,13 +18,21 @@ const AddNewPet = () => {
   const { response } = useAPIFetching<undefined, PetsInformationResponse>({
     endpoint: Endpoints.PETS_INFORMATION,
   });
+  const { trigger, status } = useAPIMutation<unknown, unknown>({
+    endpoint: Endpoints.ADD_NEW_PET,
+    method: "POST",
+    options: {
+      onSucceeded: router.back,
+      fireOnSucceededAfter: 1000,
+    },
+  });
 
   const [name, setName] = useState("");
-  const [pet, setPet] = useState<BaseOption>();
+  const [type, setType] = useState<BaseOption>();
   const [breed, setBreed] = useState<BaseOption>();
   const [gender, setGender] = useState<BaseOption>();
 
-  const pets: BaseOption[] = useMemo(() => {
+  const types: BaseOption[] = useMemo(() => {
     if (response.isFetching) return;
 
     return response.body.data.map((pet) => {
@@ -32,26 +44,44 @@ const AddNewPet = () => {
   }, [response]);
 
   const breeds: BaseOption[] = useMemo(() => {
-    if (pet === undefined) return [];
+    if (type === undefined) return [];
 
     return response.body.data
-      .find((p) => p.key === pet.id)
+      .find((t) => t.key === type.id)
       .breeds.map((breed) => {
         return {
           id: breed.key,
           value: breed.value,
         };
       });
-  }, [pet]);
+  }, [type]);
 
-  console.log("breeds", breeds);
+  const buttonSattus = useMemo(() => {
+    if (status) return status;
+
+    return name.length === 0 || !type || !breed || !gender
+      ? "inactive"
+      : "active";
+  }, [status, name, type, breed, gender]);
 
   if (response.isFetching) {
     return <Loading />;
   }
 
   return (
-    <PageStructure title={t("ADD_NEW_PET__TITLE")} backButton={router.back}>
+    <PageStructure
+      title={t("ADD_NEW_PET__TITLE")}
+      button={{
+        value: t("ADD_NEW_PET__ADD_BUTTON"),
+        onClick: () => {},
+        status: buttonSattus,
+      }}
+      link={{
+        value: t("ADD_NEW_PET__CANCEL_BUTTON"),
+        onClick: router.back,
+        status: status ? "inactive" : "active",
+      }}
+    >
       <Filed
         name={t("ADD_NEW_PET__PET_NAME_LABEL")}
         placeholder={t("ADD_NEW_PET__PET_NAME_PLACEHOLDER")}
@@ -65,10 +95,10 @@ const AddNewPet = () => {
         cn="mb-[16px]"
         name={t("ADD_NEW_PET__PET_TYPE_LABEL")}
         placeholder={t("ADD_NEW_PET__PET_TYPE_PLACEHOLDER")}
-        options={pets}
+        options={types}
         signalSelect={{
-          selectedOption: pet,
-          setSelectedOption: setPet,
+          selectedOption: type,
+          setSelectedOption: setType,
         }}
         require
       />
@@ -76,7 +106,7 @@ const AddNewPet = () => {
       {
         // TODO should be disabled if pet not selected
       }
-      {pet && (
+      {type && (
         <Selector
           cn="mb-[16px]"
           name={t("ADD_NEW_PET__PET_BREED_LABEL")}
