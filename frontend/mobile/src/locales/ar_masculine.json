@@ -8,6 +8,8 @@
   "COMMON__ORDERS": "الطلبات",
   "COMMON__AUTOSHIP": "أوتوشيب",
   "COMMON__MORE": "المزيد",
+  "COMMON__MALE": "ذكر",
+  "COMMON__FEMALE": "انثى",
   "ROOT_LAYOUT__NEW_UPDATE_AVAILABLE_TITLE": "تحديث جديد متوفر",
   "ROOT_LAYOUT__NEW_UPDATE_AVAILABLE_MESSAGE": "يجب تحديث التطبيق للتمكن من إستخدامه.",
   "SELECT_LANGUAGE__TITLE": "لغة التطبيق",
@@ -115,5 +117,18 @@
   "ADD_NEW_CARD__ADD_BUTTON": "اضافة",
   "ADD_NEW_CARD__CANCEL_BUTTON": "الغاء",
   "SUPPORT_AND_FEEDBACKS__TITLE": "الدعم والاقتراحات",
-  "SUPPORT_AND_FEEDBACKS__HELPER_TEXT": "يسعدنا تقديم الدعم او معرفة اقترحاتك لنا عن طريق ارسال رسالة على واتساب الى رقم هاتفنا 962790119952+."
+  "SUPPORT_AND_FEEDBACKS__HELPER_TEXT": "يسعدنا تقديم الدعم او معرفة اقترحاتك لنا عن طريق ارسال رسالة على واتساب الى رقم هاتفنا 962790119952+.",
+  "PETS__TITLE": "حيواناتك",
+  "PETS__ADD_NEW_BUTTON": "اضف حيوان جديد",
+  "ADD_NEW_PET__TITLE": "اضف حيوان جديد",
+  "ADD_NEW_PET__PET_NAME_LABEL": "اسم الحيوان",
+  "ADD_NEW_PET__PET_NAME_PLACEHOLDER": "ادخل اسم حيوانك",
+  "ADD_NEW_PET__PET_TYPE_LABEL": "نوع الحيوان",
+  "ADD_NEW_PET__PET_TYPE_PLACEHOLDER": "اختر نوع حيوانك",
+  "ADD_NEW_PET__PET_BREED_LABEL": "فصيلة الحيوان",
+  "ADD_NEW_PET__PET_BREED_PLACEHOLDER": "اختر فصيلة حيوانك",
+  "ADD_NEW_PET__PET_GENDER_LABEL": "جنس الحيوان",
+  "ADD_NEW_PET__PET_GENDER_PLACEHOLDER": "اختر جنس حيوانك",
+  "ADD_NEW_PET__ADD_BUTTON": "اضف",
+  "ADD_NEW_PET__CANCEL_BUTTON": "الغاء"
 }
