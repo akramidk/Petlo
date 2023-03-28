@@ -1,10 +1,10 @@
 import { useRouter } from "expo-router";
-import { useState } from "react";
-import { Filed } from "../../../src/components/atoms";
+import { useMemo, useState } from "react";
+import { Filed, Selector } from "../../../src/components/atoms";
 import { PageStructure } from "../../../src/components/organisms";
 import { Endpoints } from "../../../src/enums";
 import { useAPIFetching, useTranslationsContext } from "../../../src/hooks";
-import { PetsInformationResponse } from "../../../src/interfaces";
+import { BaseOption, PetsInformationResponse } from "../../../src/interfaces";
 import Loading from "../../_Loading";
 
 const AddNewPet = () => {
@@ -15,12 +15,22 @@ const AddNewPet = () => {
   });
 
   const [name, setName] = useState("");
+  const [pet, setPet] = useState<BaseOption>();
+
+  const pets: BaseOption[] = useMemo(() => {
+    if (response.isFetching) return;
+
+    return response.body.data.map((pet) => {
+      return {
+        id: pet.key,
+        value: pet.value,
+      };
+    });
+  }, [response]);
 
   if (response.isFetching) {
     return <Loading />;
   }
-
-  console.log("response", response.body);
 
   return (
     <PageStructure title={t("ADD_NEW_PET__TITLE")} backButton={router.back}>
@@ -30,6 +40,18 @@ const AddNewPet = () => {
         onChange={setName}
         value={name}
         cn="mb-[16px]"
+        require
+      />
+
+      <Selector
+        cn="mb-[16px]"
+        name={t("ADD_NEW_PET__PET_TYPE_LABEL")}
+        placeholder={t("ADD_NEW_PET__PET_TYPE_PLACEHOLDER")}
+        options={pets}
+        signalSelect={{
+          selectedOption: pet,
+          setSelectedOption: setPet,
+        }}
         require
       />
     </PageStructure>
