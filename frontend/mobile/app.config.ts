@@ -5,6 +5,17 @@ export default {
     scheme: "acme",
     android: {
       package: "com.petlo",
+      config: {
+        googleMaps: {
+          apiKey: "AIzaSyAhFzvU4bnxroW_qaIDBDbjsVfVmx1AtrE",
+        },
+      },
+    },
+    ios: {
+      config: {
+        bundleIdentifier: "com.petlo",
+        googleMapsApiKey: "AIzaSyAhFzvU4bnxroW_qaIDBDbjsVfVmx1AtrE",
+      },
     },
     web: {
       bundler: "metro",

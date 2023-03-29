@@ -6,6 +6,7 @@ import {
   LanguageIcon as LanguageSolid,
   LifebuoyIcon as SupportSolid,
   EllipsisVerticalIcon as MoreVertical,
+  MapPinIcon as MapPin,
 } from "react-native-heroicons/solid";
 
 // TODO add all the icons here
@@ -52,6 +53,9 @@ const Icon = ({
     },
     moreVertical: {
       solid: <MoreVertical {...props} />,
+    },
+    mapPin: {
+      solid: <MapPin {...props} />,
     },
   };
 

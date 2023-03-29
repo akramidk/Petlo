@@ -8,4 +8,5 @@ export const HEDER_PATHS = [
   "/verify-your-account",
   "/welcome",
   "/search",
+  "/account/addresses/add-new-address",
 ];
