@@ -35,8 +35,6 @@ const AddNewAddress = () => {
     return <Loading />;
   }
 
-  console.log("coordinate", coordinate);
-
   if (step === 1) {
     return (
       <View className="flex-1">
@@ -45,15 +43,14 @@ const AddNewAddress = () => {
             className="w-[100%] grow"
             provider={PROVIDER_GOOGLE}
             region={{
-              latitudeDelta: 0.0922,
-              longitudeDelta: 0.0421,
+              latitudeDelta: 0.0005359853172208773,
+              longitudeDelta: 0.00038288533687591553,
               ...coordinate,
             }}
-            showsUserLocation
             onRegionChangeComplete={(e) => setCoordinate(e)}
           />
           <View className="absolute">
-            <Icon name="mapPin" size={32} />
+            <Icon name="mapPin" size={36} />
           </View>
         </View>
 
