@@ -12,17 +12,11 @@ const AddNewAddress = () => {
     <View className="flex-1">
       <MapView
         className="w-[100%] grow"
-        onRegionChangeComplete={(e) =>
-          setCoordinate({
-            latitude: e.latitude,
-            longitude: e.longitude,
-          })
-        }
+        onRegionChangeComplete={(e) => setCoordinate(e)}
         provider={PROVIDER_GOOGLE}
-        showsUserLocation
       />
       <View className="absolute top-[50%] left-[50%]">
-        <Icon name="mapPin" size={32} color="#fff" />
+        <Icon name="mapPin" size={32} />
       </View>
 
       <View
