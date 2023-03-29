@@ -27,6 +27,15 @@ export default {
       API_URL: process.env.API_URL,
       STRIPE_PUBLISHABLE_KEY: process.env.STRIPE_PUBLISHABLE_KEY,
     },
-    plugins: ["expo-localization"],
+    plugins: [
+      "expo-localization",
+      [
+        "expo-location",
+        {
+          locationAlwaysAndWhenInUsePermission:
+            "Allow $(PRODUCT_NAME) to use your location.",
+        },
+      ],
+    ],
   },
 };
