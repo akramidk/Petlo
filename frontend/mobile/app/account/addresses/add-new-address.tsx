@@ -1,17 +1,25 @@
-import { View } from "react-native";
+import { Text, View } from "react-native";
 import MapView, { PROVIDER_GOOGLE, Marker } from "react-native-maps";
 import { useEffect, useState } from "react";
 import { Icon, Button, Link } from "../../../src/components/atoms";
 import * as Location from "expo-location";
 import Loading from "../../_Loading";
+import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 
 const AddNewAddress = () => {
   const [loading, setLoading] = useState(true);
 
   const [step, setStep] = useState(1);
-  const [coordinate, setCoordinate] = useState<any>();
+  const [coordinate, setCoordinate] = useState<{
+    latitude: number;
+    longitude: number;
+    latitudeDelta?: number;
+    longitudeDelta?: number;
+  }>();
 
   useEffect(() => {
+    if (coordinate) return;
+
     (async () => {
       let { status } = await Location.requestForegroundPermissionsAsync();
       if (status !== "granted") {
@@ -37,6 +45,49 @@ const AddNewAddress = () => {
   if (step === 1) {
     return (
       <View className="flex-1">
+        <GooglePlacesAutocomplete
+          placeholder="Search"
+          fetchDetails
+          onPress={(data, details) => {
+            setCoordinate({
+              latitude: details.geometry.location.lat,
+              longitude: details.geometry.location.lng,
+              latitudeDelta: 0.0005359853172208773,
+              longitudeDelta: 0.00038288533687591553,
+            });
+          }}
+          GooglePlacesSearchQuery={{
+            rankby: "distance",
+          }}
+          query={{
+            key: "AIzaSyAhFzvU4bnxroW_qaIDBDbjsVfVmx1AtrE",
+            language: "ar",
+            components: "country:jo", // TODO should be from the API
+            location: `${coordinate.latitude}, ${coordinate.longitude}`,
+          }}
+          styles={{
+            container: {
+              flex: 0,
+              position: "absolute",
+              zIndex: 1,
+              width: "100%",
+            },
+            listView: {
+              zIndex: 1,
+              position: "absolute",
+              top: 44,
+            },
+            textInput: {
+              color: "#444",
+              height: 60,
+            },
+          }}
+          textInputProps={{
+            clearButtonMode: "never",
+            placeholderTextColor: "#444",
+          }}
+        />
+
         <View className="flex-1 justify-center items-center">
           <MapView
             className="w-[100%] grow"
