@@ -127,6 +127,8 @@
   "ADD_NEW_PET__PET_GENDER_PLACEHOLDER": "select your pet gender",
   "ADD_NEW_PET__ADD_BUTTON": "Add",
   "ADD_NEW_PET__CANCEL_BUTTON": "Cancel",
+  "ADDRESSES__TITLE": "Your Addresses",
+  "ADDRESSES__ADD_NEW_BUTTON": "Add New Address",
   "ADD_NEW_ADDRESS__STEP_1_SEARCH_FILED_PLACEHOLDER": "search for a location",
   "ADD_NEW_ADDRESS__STEP_1_CONTINUE_BUTTON": "Select & Continue",
   "ADD_NEW_ADDRESS__STEP_1_CANCEL_BUTTON": "Cancel",

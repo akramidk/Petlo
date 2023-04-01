@@ -131,6 +131,8 @@
   "ADD_NEW_PET__PET_GENDER_PLACEHOLDER": "اختر جنس حيوانك",
   "ADD_NEW_PET__ADD_BUTTON": "اضف",
   "ADD_NEW_PET__CANCEL_BUTTON": "الغاء",
+  "ADDRESSES__TITLE": "عناوينك",
+  "ADDRESSES__ADD_NEW_BUTTON": "اضف عنوان جديد",
   "ADD_NEW_ADDRESS__STEP_1_SEARCH_FILED_PLACEHOLDER": "ابحث عن موقع",
   "ADD_NEW_ADDRESS__STEP_1_CONTINUE_BUTTON": "اختر واكمل",
   "ADD_NEW_ADDRESS__STEP_1_CANCEL_BUTTON": "الغاء",

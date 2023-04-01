@@ -2,7 +2,7 @@ import { useRouter } from "expo-router";
 import { useMemo } from "react";
 import { DataCards, PageStructure } from "../../../src/components/organisms";
 import { Endpoints } from "../../../src/enums";
-import { useAPIFetching } from "../../../src/hooks";
+import { useAPIFetching, useTranslationsContext } from "../../../src/hooks";
 import {
   CustomerAddressesRequest,
   CustomerAddressesResponse,
@@ -12,6 +12,7 @@ import Loading from "../../_Loading";
 
 const Addresses = () => {
   const router = useRouter();
+  const { t } = useTranslationsContext();
   const { response } = useAPIFetching<
     CustomerAddressesRequest,
     CustomerAddressesResponse
@@ -39,9 +40,9 @@ const Addresses = () => {
 
   return (
     <PageStructure
-      title="Your Addresses"
+      title={t("ADDRESSES__TITLE")}
       button={{
-        value: "Add New",
+        value: t("ADDRESSES__ADD_NEW_BUTTON"),
         onClick: () => router.push("/account/addresses/add-new-address"),
       }}
       backButton={router.back}
