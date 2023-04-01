@@ -96,6 +96,10 @@ import {
   AddNewAddressRequest,
   AddNewAddressResponse,
 } from "./Endpoints/AddNewAddress";
+import {
+  CustomerAddressesRequest,
+  CustomerAddressesResponse,
+} from "./Endpoints/CustomerAddresses";
 
 //entities interfaces
 import { Customer } from "./Entities/Customer";
@@ -159,6 +163,8 @@ export {
   CustomerPetsResponse,
   AddNewAddressRequest,
   AddNewAddressResponse,
+  CustomerAddressesRequest,
+  CustomerAddressesResponse,
   Customer,
   DataCardProps,
   LinkProps,
