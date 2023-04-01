@@ -5,6 +5,9 @@ import { Icon, Button, Link } from "../../../src/components/atoms";
 import * as Location from "expo-location";
 import Loading from "../../_Loading";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
+import Constants from "expo-constants";
+
+const GOOGLE_MAP_KEY = Constants.expoConfig.extra.GOOGLE_MAP_KEY;
 
 const AddNewAddress = () => {
   const [loading, setLoading] = useState(true);
@@ -60,7 +63,7 @@ const AddNewAddress = () => {
             rankby: "distance",
           }}
           query={{
-            key: "AIzaSyAhFzvU4bnxroW_qaIDBDbjsVfVmx1AtrE",
+            key: GOOGLE_MAP_KEY,
             language: "ar",
             components: "country:jo", // TODO should be from the API
             location: `${coordinate.latitude}, ${coordinate.longitude}`,

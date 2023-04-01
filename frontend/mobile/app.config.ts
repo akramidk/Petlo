@@ -26,6 +26,7 @@ export default {
       },
       API_URL: process.env.API_URL,
       STRIPE_PUBLISHABLE_KEY: process.env.STRIPE_PUBLISHABLE_KEY,
+      GOOGLE_MAP_KEY: process.env.GOOGLE_MAP_KEY,
     },
     plugins: [
       "expo-localization",
