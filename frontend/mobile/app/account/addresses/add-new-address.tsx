@@ -1,7 +1,7 @@
 import { Text, View } from "react-native";
 import MapView, { PROVIDER_GOOGLE, Marker } from "react-native-maps";
 import { useEffect, useState } from "react";
-import { Icon, Button, Link } from "../../../src/components/atoms";
+import { Icon, Button, Link, Filed } from "../../../src/components/atoms";
 import * as Location from "expo-location";
 import Loading from "../../_Loading";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
@@ -28,6 +28,7 @@ const AddNewAddress = () => {
     latitudeDelta?: number;
     longitudeDelta?: number;
   }>();
+  const [name, setName] = useState("");
 
   useEffect(() => {
     if (coordinate) return;
@@ -141,7 +142,21 @@ const AddNewAddress = () => {
       <PageStructure
         title="Add a Name"
         backButton={() => setStep(1)}
-      ></PageStructure>
+        button={{
+          value: t("ADD_NEW_ADDRESS__STEP_2_ADD_BUTTON"),
+          onClick: () => {},
+        }}
+        link={{
+          value: t("ADD_NEW_ADDRESS__STEP_1_CANCEL_BUTTON"),
+          onClick: router.back,
+        }}
+      >
+        <Filed
+          placeholder={t("ADD_NEW_ADDRESS__STEP_2_NAME_FILED_PLACEHOLDER")}
+          onChange={setName}
+          value={name}
+        />
+      </PageStructure>
     );
   }
 };
