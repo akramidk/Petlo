@@ -6,11 +6,16 @@ import * as Location from "expo-location";
 import Loading from "../../_Loading";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import Constants from "expo-constants";
-import { useInternationalizationContext } from "../../../src/hooks";
+import {
+  useInternationalizationContext,
+  useTranslationsContext,
+} from "../../../src/hooks";
+import { PageStructure } from "../../../src/components/organisms";
 
 const GOOGLE_MAP_KEY = Constants.expoConfig.extra.GOOGLE_MAP_KEY;
 
 const AddNewAddress = () => {
+  const { t } = useTranslationsContext();
   const { languageWithoutGender } = useInternationalizationContext();
 
   const [loading, setLoading] = useState(true);
@@ -116,15 +121,22 @@ const AddNewAddress = () => {
             "fixed border-t-[1px] border-[#f6f6f6] px-[28px] pt-[12px]"
           }
         >
-          <Button value="d" onClick={() => {}} />
+          <Button
+            value={t("ADD_NEW_ADDRESS__STEP_1_CONTINUE_BUTTON")}
+            onClick={() => setStep(2)}
+          />
           <Link
             cn="py-[14px] items-center justify-center"
-            value="d"
+            value={t("ADD_NEW_ADDRESS__STEP_1_CANCEL_BUTTON")}
             onClick={() => {}}
           />
         </View>
       </View>
     );
+  }
+
+  if (step === 2) {
+    return <PageStructure title="Add a Name"></PageStructure>;
   }
 };
 
