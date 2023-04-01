@@ -67,7 +67,6 @@ const AddNewAddress = () => {
               latitudeDelta: 0.0005359853172208773,
               longitudeDelta: 0.00038288533687591553,
             });
-            console.log("details", details);
           }}
           GooglePlacesSearchQuery={{
             rankby: "distance",
