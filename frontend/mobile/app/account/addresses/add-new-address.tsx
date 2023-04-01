@@ -93,11 +93,16 @@ const AddNewAddress = () => {
             textInput: {
               color: "#444",
               height: 60,
+              paddingHorizontal: 20,
+            },
+            row: {
+              paddingHorizontal: 20,
             },
           }}
           textInputProps={{
             clearButtonMode: "never",
-            placeholderTextColor: "#444",
+            placeholderTextColor: "#aaa",
+            placeholder: t("ADD_NEW_ADDRESS__STEP_1_SEARCH_FILED_PLACEHOLDER"),
           }}
         />
 
