@@ -19,7 +19,8 @@ module V1
         customer: @customer,
         name: params[:name],
         longitude: params[:longitude],
-        latitude: params[:latitude]
+        latitude: params[:latitude],
+        language: params[:locale],
       )
       
       render json: { status: "succeeded" }, status: 200

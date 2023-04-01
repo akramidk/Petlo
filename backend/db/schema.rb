@@ -39,8 +39,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_12_125933) do
     t.string "public_id", null: false
     t.bigint "customer_id", null: false
     t.string "name", null: false
-    t.string "longitude", null: false
     t.string "latitude", null: false
+    t.string "longitude", null: false
+    t.string "details"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
