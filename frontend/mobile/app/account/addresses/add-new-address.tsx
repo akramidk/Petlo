@@ -7,11 +7,17 @@ import Loading from "../../_Loading";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import Constants from "expo-constants";
 import {
+  useAPIMutation,
   useInternationalizationContext,
   useTranslationsContext,
 } from "../../../src/hooks";
 import { PageStructure } from "../../../src/components/organisms";
 import { useRouter } from "expo-router";
+import { Endpoints } from "../../../src/enums";
+import {
+  AddNewAddressRequest,
+  AddNewAddressResponse,
+} from "../../../src/interfaces";
 
 const GOOGLE_MAP_KEY = Constants.expoConfig.extra.GOOGLE_MAP_KEY;
 
@@ -29,6 +35,18 @@ const AddNewAddress = () => {
     longitudeDelta?: number;
   }>();
   const [name, setName] = useState("");
+
+  const { status, trigger } = useAPIMutation<
+    AddNewAddressRequest,
+    AddNewAddressResponse
+  >({
+    endpoint: Endpoints.ADD_NEW_ADDRESS,
+    method: "POST",
+    options: {
+      onSucceeded: router.back,
+      fireOnSucceededAfter: 1000,
+    },
+  });
 
   useEffect(() => {
     if (coordinate) return;
@@ -146,14 +164,22 @@ const AddNewAddress = () => {
     return (
       <PageStructure
         title="Add a Name"
-        backButton={() => setStep(1)}
+        backButton={status ? () => setStep(1) : undefined}
         button={{
           value: t("ADD_NEW_ADDRESS__STEP_2_ADD_BUTTON"),
-          onClick: () => {},
+          onClick: () => {
+            trigger({
+              name: name,
+              latitude: coordinate.latitude.toString(),
+              longitude: coordinate.longitude.toString(),
+            });
+          },
+          status: status ?? (name.trim().length > 0 ? "active" : "inactive"),
         }}
         link={{
           value: t("ADD_NEW_ADDRESS__STEP_1_CANCEL_BUTTON"),
           onClick: router.back,
+          status: status ? "inactive" : "active",
         }}
       >
         <Filed
