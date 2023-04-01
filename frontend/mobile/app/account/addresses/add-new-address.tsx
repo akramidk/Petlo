@@ -11,10 +11,12 @@ import {
   useTranslationsContext,
 } from "../../../src/hooks";
 import { PageStructure } from "../../../src/components/organisms";
+import { useRouter } from "expo-router";
 
 const GOOGLE_MAP_KEY = Constants.expoConfig.extra.GOOGLE_MAP_KEY;
 
 const AddNewAddress = () => {
+  const router = useRouter();
   const { t } = useTranslationsContext();
   const { languageWithoutGender } = useInternationalizationContext();
 
@@ -128,7 +130,7 @@ const AddNewAddress = () => {
           <Link
             cn="py-[14px] items-center justify-center"
             value={t("ADD_NEW_ADDRESS__STEP_1_CANCEL_BUTTON")}
-            onClick={() => {}}
+            onClick={router.back}
           />
         </View>
       </View>
@@ -136,7 +138,12 @@ const AddNewAddress = () => {
   }
 
   if (step === 2) {
-    return <PageStructure title="Add a Name"></PageStructure>;
+    return (
+      <PageStructure
+        title="Add a Name"
+        backButton={() => setStep(1)}
+      ></PageStructure>
+    );
   }
 };
 
