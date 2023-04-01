@@ -163,7 +163,7 @@ const AddNewAddress = () => {
   if (step === 2) {
     return (
       <PageStructure
-        title="Add a Name"
+        title={t("ADD_NEW_ADDRESS__STEP_2_TITLE")}
         backButton={status ? () => setStep(1) : undefined}
         button={{
           value: t("ADD_NEW_ADDRESS__STEP_2_ADD_BUTTON"),
