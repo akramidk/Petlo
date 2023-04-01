@@ -6,12 +6,14 @@ import * as Location from "expo-location";
 import Loading from "../../_Loading";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import Constants from "expo-constants";
+import { useInternationalizationContext } from "../../../src/hooks";
 
 const GOOGLE_MAP_KEY = Constants.expoConfig.extra.GOOGLE_MAP_KEY;
 
 const AddNewAddress = () => {
-  const [loading, setLoading] = useState(true);
+  const { languageWithoutGender } = useInternationalizationContext();
 
+  const [loading, setLoading] = useState(true);
   const [step, setStep] = useState(1);
   const [coordinate, setCoordinate] = useState<{
     latitude: number;
@@ -58,14 +60,15 @@ const AddNewAddress = () => {
               latitudeDelta: 0.0005359853172208773,
               longitudeDelta: 0.00038288533687591553,
             });
+            console.log("details", details);
           }}
           GooglePlacesSearchQuery={{
             rankby: "distance",
           }}
           query={{
             key: GOOGLE_MAP_KEY,
-            language: "ar",
-            components: "country:jo", // TODO should be from the API
+            language: languageWithoutGender,
+            components: "country:jo", // TODO should be from the API (customer current country)
             location: `${coordinate.latitude}, ${coordinate.longitude}`,
           }}
           styles={{
@@ -101,6 +104,7 @@ const AddNewAddress = () => {
               ...coordinate,
             }}
             onRegionChangeComplete={(e) => setCoordinate(e)}
+            showsUserLocation
           />
           <View className="absolute">
             <Icon name="mapPin" size={36} />
