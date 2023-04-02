@@ -27,4 +27,5 @@ export enum Endpoints {
   CUSTOMER_PETS = "/v1/pets",
   ADD_NEW_ADDRESS = "/v1/addresses",
   CUSTOMER_ADDRESSES = "/v1/addresses",
+  SECTIONS = "/v1/sections",
 }
