@@ -1,5 +1,4 @@
-import { Fragment, useMemo } from "react";
-import { Text, View } from "react-native";
+import { View } from "react-native";
 import { Endpoints } from "../../src/enums";
 import { useAPIFetching } from "../../src/hooks";
 import { SectionsResponse } from "../../src/interfaces";
@@ -11,6 +10,9 @@ const Home = () => {
   const { response: sectionsResponse } = useAPIFetching<void, SectionsResponse>(
     {
       endpoint: Endpoints.SECTIONS,
+      SWROptions: {
+        revalidateIfStale: false,
+      },
     }
   );
 
