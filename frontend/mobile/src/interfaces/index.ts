@@ -100,9 +100,11 @@ import {
   CustomerAddressesRequest,
   CustomerAddressesResponse,
 } from "./Endpoints/CustomerAddresses";
+import { SectionsResponse } from "./Endpoints/Sections";
 
 //entities interfaces
 import { Customer } from "./Entities/Customer";
+import { Section } from "./Entities/Section";
 
 export {
   NewVersionAvailableRequest,
@@ -165,7 +167,9 @@ export {
   AddNewAddressResponse,
   CustomerAddressesRequest,
   CustomerAddressesResponse,
+  SectionsResponse,
   Customer,
   DataCardProps,
   LinkProps,
+  Section,
 };
