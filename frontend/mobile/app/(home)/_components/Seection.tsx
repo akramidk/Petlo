@@ -9,10 +9,10 @@ const Section = ({ name, category, items }: SectionProps) => {
   const { direction } = useInternationalizationContext();
 
   return (
-    <View className="space-y-[12px]">
+    <View className="space-y-[12px] p-[0px]">
       <View
         className={clsx(
-          "justify-between items-center",
+          "justify-between items-center px-[28px]",
           direction === "ltr" ? "flex-row" : "flex-row-reverse"
         )}
       >
@@ -24,7 +24,34 @@ const Section = ({ name, category, items }: SectionProps) => {
         </Text>
       </View>
 
-      <ScrollView className="space-x-[8px]" horizontal>
+      <ScrollView
+        className="space-x-[8px]"
+        contentContainerStyle={{
+          paddingHorizontal: 28,
+        }}
+        horizontal
+      >
+        {items.data.map((item, i) => {
+          return (
+            <View key={i}>
+              <Item {...item} publicId={item.public_id} />
+            </View>
+          );
+        })}
+        {items.data.map((item, i) => {
+          return (
+            <View key={i}>
+              <Item {...item} publicId={item.public_id} />
+            </View>
+          );
+        })}
+        {items.data.map((item, i) => {
+          return (
+            <View key={i}>
+              <Item {...item} publicId={item.public_id} />
+            </View>
+          );
+        })}
         {items.data.map((item, i) => {
           return (
             <View key={i}>
