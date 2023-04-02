@@ -40,7 +40,7 @@ const Section = ({ name, category, items }: SectionProps) => {
         {items.data.map((item, i) => {
           return (
             <View key={i}>
-              <Item {...item} publicId={item.public_id} />
+              <Item {...item} />
             </View>
           );
         })}

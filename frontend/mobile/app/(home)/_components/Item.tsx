@@ -1,23 +1,8 @@
 import { Image, View } from "react-native";
 import { Text } from "../../../src/components/atoms";
-import { Section } from "../../../src/interfaces";
+import { SectionItem } from "../../../src/interfaces";
 
-interface ItemProps {
-  publicId: string;
-  name: string;
-  brand: string;
-  image: string;
-  variants: {
-    number: number;
-    prices: {
-      min: number;
-      max: number;
-      currency: string;
-    };
-  };
-}
-
-const Item = ({ publicId, name, brand, image, variants }: ItemProps) => {
+const Item = ({ public_id, name, brand, image, variants }: SectionItem) => {
   return (
     <View className="w-[200px] h-[325] rounded-[4px] border-[1px] border-[#f6f6f6]">
       <View className="p-[28px] h-[172px] bg-[#F9F9F9]">
