@@ -3,12 +3,16 @@ import { useRouter } from "expo-router";
 import { ScrollView, View } from "react-native";
 import { Link, Text, Icon } from "../../../src/components/atoms";
 import { BaseButton } from "../../../src/components/bases";
-import { useInternationalizationContext } from "../../../src/hooks";
+import {
+  useInternationalizationContext,
+  useTranslationsContext,
+} from "../../../src/hooks";
 import { Section as SectionProps } from "../../../src/interfaces";
 import Item from "./Item";
 
 const Section = ({ name, category, items }: SectionProps) => {
   const router = useRouter();
+  const { t } = useTranslationsContext();
   const { direction } = useInternationalizationContext();
 
   return (
@@ -25,7 +29,7 @@ const Section = ({ name, category, items }: SectionProps) => {
 
         <Link
           onClick={() => router.push(`/category?name=${category}`)}
-          value="Show All"
+          value={t("HOME__SECTION_SHOW_ALL_BUTTON")}
           valueCN="text-[14px] text-[#777]"
           font="bold"
         />
@@ -46,7 +50,39 @@ const Section = ({ name, category, items }: SectionProps) => {
           );
         })}
 
-        {items.has_more && (
+        {items.data.map((item, i) => {
+          return (
+            <View key={i}>
+              <Item {...item} />
+            </View>
+          );
+        })}
+
+        {items.data.map((item, i) => {
+          return (
+            <View key={i}>
+              <Item {...item} />
+            </View>
+          );
+        })}
+
+        {items.data.map((item, i) => {
+          return (
+            <View key={i}>
+              <Item {...item} />
+            </View>
+          );
+        })}
+
+        {items.data.map((item, i) => {
+          return (
+            <View key={i}>
+              <Item {...item} />
+            </View>
+          );
+        })}
+
+        {true && (
           <BaseButton
             className="w-[200px] h-[325] rounded-[4px] border-[1px] border-[#f6f6f6] items-center justify-center space-y-[8px]"
             onClick={() => router.push(`/category?name=${category}`)}
@@ -60,7 +96,7 @@ const Section = ({ name, category, items }: SectionProps) => {
             />
 
             <Text font="medium" cn="text-[#0E333C] text-[14px]">
-              Show All Items
+              {t("HOME__SECTION_SHOW_ALL_ITEMS_CARD")}
             </Text>
           </BaseButton>
         )}
