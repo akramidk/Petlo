@@ -45,6 +45,7 @@ const Section = ({ name, category, items }: SectionProps) => {
       </View>
 
       <ScrollView
+        className={direction === "ltr" ? "self-start" : "self-end"}
         ref={scrollViewRef}
         contentContainerStyle={{
           paddingHorizontal: 28,
