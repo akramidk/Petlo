@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import { useRouter } from "expo-router";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { ScrollView, View } from "react-native";
 import { Link, Text, Icon } from "../../../src/components/atoms";
 import { BaseButton } from "../../../src/components/bases";
