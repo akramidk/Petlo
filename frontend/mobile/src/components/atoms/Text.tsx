@@ -14,6 +14,7 @@ interface TextProps extends ReactTextProps {
 }
 
 const Text = (props: TextProps) => {
+  const { font = "extraBold" } = props;
   const { languageWithoutGender, direction } = useInternationalizationContext();
 
   const fonts = {
@@ -46,7 +47,7 @@ const Text = (props: TextProps) => {
     <ReactText
       className={clsx(
         directions[direction],
-        fonts[languageWithoutGender][props.font],
+        fonts[languageWithoutGender][font],
         props?.specificCN?.directions?.[direction],
         props?.specificCN?.languages?.[languageWithoutGender],
         props?.cn
