@@ -38,7 +38,7 @@ const Item = ({ publicId, name, brand, image, variants }: ItemProps) => {
           <Text font="semiBold">{name}</Text>
         </Text>
 
-        <Text font="extraBold" cn="text-[#0E333C] text-[15px]">
+        <Text font="extraBold" cn="text-[#0E333C] text-[16px]">
           {`${variants.prices.min} ${variants.prices.currency}`}
         </Text>
       </View>

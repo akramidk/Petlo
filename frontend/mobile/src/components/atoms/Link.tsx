@@ -13,6 +13,7 @@ const Link = ({
   value,
   cn,
   valueCN,
+  font,
 }: LinkProps) => {
   const { direction } = useInternationalizationContext();
 
@@ -40,7 +41,7 @@ const Link = ({
           status === "active" ? "text-[#222]" : "text-[#888]",
           valueCN
         )}
-        font="extraBold"
+        font={font ?? "extraBold"}
       >
         {value}
       </Text>

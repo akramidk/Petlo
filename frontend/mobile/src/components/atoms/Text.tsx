@@ -2,16 +2,10 @@ import clsx from "clsx";
 import React from "react";
 import { Text as ReactText, TextProps as ReactTextProps } from "react-native";
 import { useInternationalizationContext } from "../../hooks";
+import { font } from "../../types";
 
 interface TextProps extends ReactTextProps {
-  font?:
-    | "extraLight"
-    | "light"
-    | "regular"
-    | "medium"
-    | "semiBold"
-    | "bold"
-    | "extraBold";
+  font?: font;
   cn?: string;
   specificCN?: {
     languages?: Record<"en" | "ar", string>;

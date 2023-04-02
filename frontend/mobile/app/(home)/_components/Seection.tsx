@@ -1,11 +1,13 @@
 import clsx from "clsx";
+import { useRouter } from "expo-router";
 import { ScrollView, View } from "react-native";
-import { Text } from "../../../src/components/atoms";
+import { Link, Text } from "../../../src/components/atoms";
 import { useInternationalizationContext } from "../../../src/hooks";
 import { Section as SectionProps } from "../../../src/interfaces";
 import Item from "./Item";
 
 const Section = ({ name, category, items }: SectionProps) => {
+  const router = useRouter();
   const { direction } = useInternationalizationContext();
 
   return (
@@ -19,9 +21,13 @@ const Section = ({ name, category, items }: SectionProps) => {
         <Text cn="text-[22px] text-[#0E333C]" font="extraBold">
           {name}
         </Text>
-        <Text cn="text-[14px] text-[#777]" font="bold">
-          Show All
-        </Text>
+
+        <Link
+          onClick={() => router.push(`/category?name=${category}`)}
+          value="Show All"
+          valueCN="text-[14px] text-[#777]"
+          font="bold"
+        />
       </View>
 
       <ScrollView
