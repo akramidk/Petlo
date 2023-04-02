@@ -28,6 +28,7 @@ module SectionsHelper::All
           limit: (8)
         )
 
+        next if items[:data].length == 0
         sections << {
           name: section[:name][language],
           category: section[:category],
