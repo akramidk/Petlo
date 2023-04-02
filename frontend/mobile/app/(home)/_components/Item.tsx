@@ -1,10 +1,17 @@
+import { useRouter } from "expo-router";
 import { Image, View } from "react-native";
 import { Text } from "../../../src/components/atoms";
+import { BaseButton } from "../../../src/components/bases";
 import { SectionItem } from "../../../src/interfaces";
 
 const Item = ({ public_id, name, brand, image, variants }: SectionItem) => {
+  const router = useRouter();
+
   return (
-    <View className="w-[200px] h-[325] rounded-[4px] border-[1px] border-[#f6f6f6]">
+    <BaseButton
+      className="w-[200px] h-[325] rounded-[4px] border-[1px] border-[#f6f6f6]"
+      onClick={() => router.push(`/item?publicId=${public_id}`)}
+    >
       <View className="p-[28px] h-[172px] bg-[#F9F9F9]">
         <Image
           style={{
@@ -27,7 +34,7 @@ const Item = ({ public_id, name, brand, image, variants }: SectionItem) => {
           {`${variants.prices.min} ${variants.prices.currency}`}
         </Text>
       </View>
-    </View>
+    </BaseButton>
   );
 };
 
