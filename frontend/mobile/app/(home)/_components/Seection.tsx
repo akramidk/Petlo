@@ -1,10 +1,11 @@
 import clsx from "clsx";
-import { View } from "react-native";
+import { ScrollView, View } from "react-native";
 import { Text } from "../../../src/components/atoms";
 import { useInternationalizationContext } from "../../../src/hooks";
 import { Section as SectionProps } from "../../../src/interfaces";
+import Item from "./Item";
 
-const Section = ({ name, category }: SectionProps) => {
+const Section = ({ name, category, items }: SectionProps) => {
   const { direction } = useInternationalizationContext();
 
   return (
@@ -23,7 +24,15 @@ const Section = ({ name, category }: SectionProps) => {
         </Text>
       </View>
 
-      <View className="bg-[#444] h-[325px]"></View>
+      <ScrollView horizontal>
+        {items.data.map((item, i) => {
+          return (
+            <View key={i}>
+              <Item {...item} />
+            </View>
+          );
+        })}
+      </ScrollView>
     </View>
   );
 };
