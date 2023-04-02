@@ -20,12 +20,12 @@ const Home = () => {
 
   return (
     <Scrollable>
-      <View>
+      <View className="space-y-[28px]">
         {sectionsResponse.body.data.map((section, i) => {
           return (
-            <Fragment key={i}>
+            <View key={i}>
               <Section {...section} />
-            </Fragment>
+            </View>
           );
         })}
       </View>
