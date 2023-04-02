@@ -34,12 +34,14 @@ const Section = ({ name, category, items }: SectionProps) => {
           {name}
         </Text>
 
-        <Link
-          onClick={() => router.push(`/category?name=${category}`)}
-          value={t("HOME__SECTION_SHOW_ALL_BUTTON")}
-          valueCN="text-[14px] text-[#777]"
-          font="bold"
-        />
+        {items.has_more && (
+          <Link
+            onClick={() => router.push(`/category?name=${category}`)}
+            value={t("HOME__SECTION_SHOW_ALL_BUTTON")}
+            valueCN="text-[14px] text-[#777]"
+            font="bold"
+          />
+        )}
       </View>
 
       <ScrollView
@@ -66,51 +68,7 @@ const Section = ({ name, category, items }: SectionProps) => {
           );
         })}
 
-        {items.data.map((item, i) => {
-          return (
-            <View
-              key={i}
-              className={direction === "ltr" ? "mr-[8px]" : "ml-[8px]"}
-            >
-              <Item {...item} />
-            </View>
-          );
-        })}
-
-        {items.data.map((item, i) => {
-          return (
-            <View
-              key={i}
-              className={direction === "ltr" ? "mr-[8px]" : "ml-[8px]"}
-            >
-              <Item {...item} />
-            </View>
-          );
-        })}
-
-        {items.data.map((item, i) => {
-          return (
-            <View
-              key={i}
-              className={direction === "ltr" ? "mr-[8px]" : "ml-[8px]"}
-            >
-              <Item {...item} />
-            </View>
-          );
-        })}
-
-        {items.data.map((item, i) => {
-          return (
-            <View
-              key={i}
-              className={direction === "ltr" ? "mr-[8px]" : "ml-[8px]"}
-            >
-              <Item {...item} />
-            </View>
-          );
-        })}
-
-        {true && (
+        {items.has_more && (
           <BaseButton
             className="w-[200px] h-[325] rounded-[4px] border-[1px] border-[#f6f6f6] items-center justify-center space-y-[8px]"
             onClick={() => router.push(`/category?name=${category}`)}
