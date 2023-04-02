@@ -36,15 +36,18 @@ const Section = ({ name, category, items }: SectionProps) => {
       </View>
 
       <ScrollView
-        className="space-x-[8px]"
         contentContainerStyle={{
           paddingHorizontal: 28,
+          flexDirection: direction === "ltr" ? "row" : "row-reverse",
         }}
         horizontal
       >
         {items.data.map((item, i) => {
           return (
-            <View key={i}>
+            <View
+              key={i}
+              className={direction === "ltr" ? "mr-[8px]" : "ml-[8px]"}
+            >
               <Item {...item} />
             </View>
           );
@@ -52,7 +55,10 @@ const Section = ({ name, category, items }: SectionProps) => {
 
         {items.data.map((item, i) => {
           return (
-            <View key={i}>
+            <View
+              key={i}
+              className={direction === "ltr" ? "mr-[8px]" : "ml-[8px]"}
+            >
               <Item {...item} />
             </View>
           );
@@ -60,7 +66,10 @@ const Section = ({ name, category, items }: SectionProps) => {
 
         {items.data.map((item, i) => {
           return (
-            <View key={i}>
+            <View
+              key={i}
+              className={direction === "ltr" ? "mr-[8px]" : "ml-[8px]"}
+            >
               <Item {...item} />
             </View>
           );
@@ -68,7 +77,10 @@ const Section = ({ name, category, items }: SectionProps) => {
 
         {items.data.map((item, i) => {
           return (
-            <View key={i}>
+            <View
+              key={i}
+              className={direction === "ltr" ? "mr-[8px]" : "ml-[8px]"}
+            >
               <Item {...item} />
             </View>
           );
@@ -76,7 +88,10 @@ const Section = ({ name, category, items }: SectionProps) => {
 
         {items.data.map((item, i) => {
           return (
-            <View key={i}>
+            <View
+              key={i}
+              className={direction === "ltr" ? "mr-[8px]" : "ml-[8px]"}
+            >
               <Item {...item} />
             </View>
           );
