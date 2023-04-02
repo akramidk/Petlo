@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import { useRouter } from "expo-router";
+import { useEffect, useRef } from "react";
 import { ScrollView, View } from "react-native";
 import { Link, Text, Icon } from "../../../src/components/atoms";
 import { BaseButton } from "../../../src/components/bases";
@@ -14,6 +15,12 @@ const Section = ({ name, category, items }: SectionProps) => {
   const router = useRouter();
   const { t } = useTranslationsContext();
   const { direction } = useInternationalizationContext();
+  const scrollViewRef = useRef<ScrollView>();
+
+  useEffect(() => {
+    if (direction === "rtl") {
+    }
+  }, []);
 
   return (
     <View className="space-y-[12px] p-[0px]">
@@ -36,10 +43,16 @@ const Section = ({ name, category, items }: SectionProps) => {
       </View>
 
       <ScrollView
+        ref={scrollViewRef}
         contentContainerStyle={{
           paddingHorizontal: 28,
           flexDirection: direction === "ltr" ? "row" : "row-reverse",
         }}
+        onContentSizeChange={
+          direction === "rtl"
+            ? () => scrollViewRef.current?.scrollToEnd({ animated: false })
+            : undefined
+        }
         horizontal
       >
         {items.data.map((item, i) => {
@@ -103,7 +116,11 @@ const Section = ({ name, category, items }: SectionProps) => {
             onClick={() => router.push(`/category?name=${category}`)}
           >
             <Icon
-              name="arrowRightCircleIcon"
+              name={
+                direction === "ltr"
+                  ? "arrowRightCircleIcon"
+                  : "arrowLeftCircleIcon"
+              }
               color="#0E333C"
               size={32}
               solid={false}

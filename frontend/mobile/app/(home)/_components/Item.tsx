@@ -25,9 +25,11 @@ const Item = ({ public_id, name, brand, image, variants }: SectionItem) => {
       </View>
 
       <View className="p-[16px] flex-1 justify-between">
-        <Text className="text-[#0E333C] text-[14px]">
+        <Text cn="text-[#0E333C] text-[14px]">
           <Text font="extraBold">{brand}</Text>{" "}
-          <Text font="semiBold">{name}</Text>
+          <Text font="semiBold" cn="text-[#0E333C]">
+            {name}
+          </Text>
         </Text>
 
         <Text font="extraBold" cn="text-[#0E333C] text-[16px]">

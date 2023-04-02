@@ -9,7 +9,10 @@ import {
   MapPinIcon as MapPin,
 } from "react-native-heroicons/solid";
 
-import { ArrowRightCircleIcon } from "react-native-heroicons/outline";
+import {
+  ArrowRightCircleIcon,
+  ArrowLeftCircleIcon,
+} from "react-native-heroicons/outline";
 
 // TODO add all the icons here
 
@@ -64,6 +67,9 @@ const Icon = ({
     },
     arrowRightCircleIcon: {
       outline: <ArrowRightCircleIcon {...props} />,
+    },
+    arrowLeftCircleIcon: {
+      outline: <ArrowLeftCircleIcon {...props} />,
     },
   };
 
