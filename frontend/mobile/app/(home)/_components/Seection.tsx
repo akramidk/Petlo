@@ -24,11 +24,11 @@ const Section = ({ name, category, items }: SectionProps) => {
         </Text>
       </View>
 
-      <ScrollView horizontal>
+      <ScrollView className="space-x-[8px]" horizontal>
         {items.data.map((item, i) => {
           return (
             <View key={i}>
-              <Item {...item} />
+              <Item {...item} publicId={item.public_id} />
             </View>
           );
         })}

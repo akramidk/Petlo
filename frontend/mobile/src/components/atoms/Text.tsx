@@ -4,7 +4,7 @@ import { Text as ReactText, TextProps as ReactTextProps } from "react-native";
 import { useInternationalizationContext } from "../../hooks";
 
 interface TextProps extends ReactTextProps {
-  font:
+  font?:
     | "extraLight"
     | "light"
     | "regular"
