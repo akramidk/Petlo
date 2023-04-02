@@ -82,6 +82,7 @@ const useAPIFetching = <Request, Response>({
     }
 
     if (data) {
+      console.log("hey");
       return {
         isFetching: false,
         statusCode: data.status,

@@ -109,7 +109,8 @@ const Layout = () => {
     (!newVersionAvailableResponse && newVersionAvailableResponse.isFetching) ||
     newVersionAvailableResponse?.body?.value ||
     storedLanguage === undefined ||
-    customer === undefined
+    customer === undefined ||
+    (!customer && !customer?.sessionToken)
   ) {
     // TODO new design for this insted of an Alert
     if (newVersionAvailableResponse?.body?.value) {
