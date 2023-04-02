@@ -38,27 +38,6 @@ const Section = ({ name, category, items }: SectionProps) => {
             </View>
           );
         })}
-        {items.data.map((item, i) => {
-          return (
-            <View key={i}>
-              <Item {...item} publicId={item.public_id} />
-            </View>
-          );
-        })}
-        {items.data.map((item, i) => {
-          return (
-            <View key={i}>
-              <Item {...item} publicId={item.public_id} />
-            </View>
-          );
-        })}
-        {items.data.map((item, i) => {
-          return (
-            <View key={i}>
-              <Item {...item} publicId={item.public_id} />
-            </View>
-          );
-        })}
       </ScrollView>
     </View>
   );
