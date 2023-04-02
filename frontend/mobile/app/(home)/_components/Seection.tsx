@@ -17,11 +17,6 @@ const Section = ({ name, category, items }: SectionProps) => {
   const { direction } = useInternationalizationContext();
   const scrollViewRef = useRef<ScrollView>();
 
-  useEffect(() => {
-    if (direction === "rtl") {
-    }
-  }, []);
-
   return (
     <View className="space-y-[12px] p-[0px]">
       <View
