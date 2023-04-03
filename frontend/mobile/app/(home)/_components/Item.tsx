@@ -55,9 +55,7 @@ const Item = ({ public_id, name, brand, image, variants }: SectionItem) => {
           <View
             className={clsx(
               "bg-[#0E333C] absolute mt-[12px] py-[6px] px-[10px] rounded-[4px] opacity-[.92]",
-              direction === "ltr"
-                ? "self-start ml-[12px]"
-                : "self-end ml-[12px]"
+              direction === "ltr" ? "left-0 ml-[12px]" : "right-0 mr-[12px]"
             )}
           >
             <Text font="medium" cn="text-[#fff] text-[13px]">
