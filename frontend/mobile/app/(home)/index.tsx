@@ -23,7 +23,7 @@ const Home = () => {
   return (
     <Scrollable cn="px-[0px]">
       <View className="space-y-[28px]">
-        {sectionsResponse.body.data.map((section, i) => {
+        {sectionsResponse?.body?.data?.map((section, i) => {
           return (
             <View key={i}>
               <Section {...section} />

@@ -1,4 +1,5 @@
 import { useRouter } from "expo-router";
+import { useMemo } from "react";
 import { Image, View } from "react-native";
 import { Text } from "../../../src/components/atoms";
 import { BaseButton } from "../../../src/components/bases";
@@ -6,6 +7,14 @@ import { SectionItem } from "../../../src/interfaces";
 
 const Item = ({ public_id, name, brand, image, variants }: SectionItem) => {
   const router = useRouter();
+
+  const price = useMemo(() => {
+    const min = variants.prices.min;
+    const max = variants.prices.max;
+    if (min === max) return `${min}`;
+
+    return `${min} - ${max}`;
+  }, [variants.prices]);
 
   return (
     <BaseButton
@@ -33,7 +42,7 @@ const Item = ({ public_id, name, brand, image, variants }: SectionItem) => {
         </Text>
 
         <Text font="extraBold" cn="text-[#0E333C] text-[16px]">
-          {`${variants.prices.min} ${variants.prices.currency}`}
+          {`${price} ${variants.prices.currency}`}
         </Text>
       </View>
     </BaseButton>
