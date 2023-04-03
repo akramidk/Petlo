@@ -8,9 +8,9 @@ import {
   useInternationalizationContext,
   useTranslationsContext,
 } from "../../../src/hooks";
-import { SectionItem } from "../../../src/interfaces";
+import { BriefItem } from "../../../src/interfaces";
 
-const Item = ({ public_id, name, brand, image, variants }: SectionItem) => {
+const Item = ({ public_id, name, brand, image, variants }: BriefItem) => {
   const router = useRouter();
   const { t } = useTranslationsContext();
   const { languageWithoutGender, direction } = useInternationalizationContext();

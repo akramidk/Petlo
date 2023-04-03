@@ -1,4 +1,4 @@
-import { SectionItem } from "../Entities/SectionItem";
+import { BriefItem } from "../Entities/BriefItem";
 
 export interface SearchRequest {
   value: string;
@@ -6,5 +6,5 @@ export interface SearchRequest {
 
 export interface SearchResponse {
   has_more: boolean;
-  data: SectionItem;
+  data: BriefItem;
 }

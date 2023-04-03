@@ -1,10 +1,10 @@
-import { SectionItem } from "./SectionItem";
+import { BriefItem } from "./BriefItem";
 
 export interface Section {
   name: string;
   category: string;
   items: {
     has_more: boolean;
-    data: SectionItem[];
+    data: BriefItem[];
   };
 }

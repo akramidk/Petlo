@@ -1,4 +1,4 @@
-export interface SectionItem {
+export interface BriefItem {
   public_id: string;
   name: string;
   brand: string;

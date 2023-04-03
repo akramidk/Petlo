@@ -101,7 +101,7 @@ import {
   CustomerAddressesResponse,
 } from "./Endpoints/CustomerAddresses";
 import { SectionsResponse } from "./Endpoints/Sections";
-import { SectionItem } from "./Entities/SectionItem";
+import { BriefItem } from "./Entities/BriefItem";
 
 //entities interfaces
 import { Customer } from "./Entities/Customer";
@@ -173,5 +173,5 @@ export {
   DataCardProps,
   LinkProps,
   Section,
-  SectionItem,
+  BriefItem,
 };
