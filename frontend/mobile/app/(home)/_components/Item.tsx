@@ -54,7 +54,7 @@ const Item = ({ public_id, name, brand, image, variants }: SectionItem) => {
         {variants.number > 1 && (
           <View
             className={clsx(
-              "bg-[#0E333C] absolute mt-[12px] py-[6px] px-[10px] rounded-[4px] opacity-[.92]",
+              "bg-[#0E333C] absolute mt-[12px] py-[6px] px-[10px] rounded-[4px] opacity-90",
               direction === "ltr" ? "left-0 ml-[12px]" : "right-0 mr-[12px]"
             )}
           >
