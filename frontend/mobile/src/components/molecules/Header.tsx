@@ -23,7 +23,7 @@ const Header = ({ activePath, showIcons }: HeaderProps) => {
                 <HeaderButton
                   icon={icon.id}
                   selected={icon.path === activePath}
-                  onClick={() => router.replace(icon.path)}
+                  onClick={() => router.push(icon.path)}
                 />
               </View>
             );

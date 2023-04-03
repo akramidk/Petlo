@@ -10,6 +10,7 @@ import Text from "../atoms/Text";
 import Button from "../atoms/Button";
 import Options from "../atoms/Options";
 import BaseButton from "./BaseButton";
+import { SearchFiled } from "../atoms";
 
 interface SelectorModalProps<T> {
   visible?: boolean;
@@ -56,37 +57,11 @@ const SelectorModal = <T extends BaseOption>({
   return (
     <Modal visible={visible} animationType="slide">
       <SafeAreaView className="h-full flex flex-col">
-        <View
-          className={clsx(
-            "border-b-[1px] border-b-[#f6f6f6] h-[56px] px-[28px] justify-between items-center",
-            direction === "ltr" ? "flex-row" : "flex-row-reverse"
-          )}
-        >
-          <TextInput
-            placeholder={t("OPTIONS_MODAL_COMP__SEARCH")}
-            placeholderTextColor="#aaa"
-            className={clsx(
-              "h-full flex-1",
-              direction === "ltr" ? "text-left" : "text-right",
-              language === "en" ? "font-e500" : "font-a400"
-            )}
-            onChangeText={setSearchValue}
-          />
-          <BaseButton onClick={onCancel} cn="h-full justify-center-center">
-            <Text
-              cn={"text-[#E64848] text-[14px] self-center"}
-              font="bold"
-              specificCN={{
-                languages: {
-                  en: "tracking-[1px]",
-                  ar: "",
-                },
-              }}
-            >
-              {t("OPTIONS_MODAL_COMP__CANCEL")}
-            </Text>
-          </BaseButton>
-        </View>
+        <SearchFiled
+          setSearchValue={setSearchValue}
+          searchValue={searchValue}
+          onCancel={onCancel}
+        />
 
         <ScrollView className="grow">
           <Options<T>

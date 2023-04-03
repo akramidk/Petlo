@@ -12,6 +12,7 @@ import HeaderButton from "./HeaderButton";
 import Logo from "./Logo";
 import Icon from "./Icon";
 import SmallButton from "./SmallButton";
+import SearchFiled from "./SearchFiled";
 
 export {
   SVGLogo,
@@ -28,4 +29,5 @@ export {
   Logo,
   Icon,
   SmallButton,
+  SearchFiled,
 };
