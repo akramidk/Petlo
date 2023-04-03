@@ -37,14 +37,30 @@ const Search = () => {
       {response?.isFetching ? (
         <Loading />
       ) : (
-        <ScrollView className="grow p-[28px]">
-          {response?.body?.data?.map((item, i) => {
-            return (
-              <View key={i}>
-                <Item {...item} />
-              </View>
-            );
-          })}
+        <ScrollView className="grow px-[28px]">
+          <View className="py-[28px] space-y-[12px]">
+            {response?.body?.data?.map((item, i) => {
+              return (
+                <View key={i}>
+                  <Item {...item} />
+                </View>
+              );
+            })}
+            {response?.body?.data?.map((item, i) => {
+              return (
+                <View key={i}>
+                  <Item {...item} />
+                </View>
+              );
+            })}
+            {response?.body?.data?.map((item, i) => {
+              return (
+                <View key={i}>
+                  <Item {...item} />
+                </View>
+              );
+            })}
+          </View>
         </ScrollView>
       )}
     </View>
