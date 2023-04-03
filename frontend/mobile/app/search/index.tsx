@@ -42,21 +42,7 @@ const Search = () => {
             {response?.body?.data?.map((item, i) => {
               return (
                 <View key={i}>
-                  <Item {...item} />
-                </View>
-              );
-            })}
-            {response?.body?.data?.map((item, i) => {
-              return (
-                <View key={i}>
-                  <Item {...item} />
-                </View>
-              );
-            })}
-            {response?.body?.data?.map((item, i) => {
-              return (
-                <View key={i}>
-                  <Item {...item} />
+                  <Item variant="large" data={item} />
                 </View>
               );
             })}

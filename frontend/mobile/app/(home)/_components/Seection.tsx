@@ -59,7 +59,7 @@ const Section = ({ name, category, items }: SectionProps) => {
               key={i}
               className={direction === "ltr" ? "mr-[8px]" : "ml-[8px]"}
             >
-              <Item {...item} />
+              <Item variant="small" data={item} />
             </View>
           );
         })}
