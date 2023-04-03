@@ -55,7 +55,7 @@ const Item = ({ variant, data }: ItemProps) => {
         priceText: "text-[16px]",
       },
       large: {
-        measurements: "w-[100%] h-[332]",
+        measurements: "w-[100%]",
         imageMeasurements: "h-[196px]",
         titleText: "text-[16px]",
         priceText: "text-[16px]",
@@ -102,12 +102,12 @@ const Item = ({ variant, data }: ItemProps) => {
         )}
       </View>
 
-      <View className="p-[16px] flex-1 justify-between">
+      <View className="p-[16px] flex-1 justify-between space-y-[12px]">
         <Text
           cn={clsx("text-[#0E333C]", variantsStyles.titleText)}
           numberOfLines={3}
         >
-          <Text font="extraBold">{data.brand}</Text>
+          <Text font="extraBold">{data.brand}</Text>{" "}
           <Text font="semiBold" cn="text-[#0E333C]">
             {data.name}
           </Text>
