@@ -34,7 +34,7 @@ const useAPIFetching = <Request, Response>({
   const [paginationRound, setPaginationRound] = useState(1);
 
   const SWREndpoint = useMemo(() => {
-    if (wait) {
+    if (wait && options?.wait === true) {
       return null;
     }
 
@@ -49,7 +49,7 @@ const useAPIFetching = <Request, Response>({
 
     const params = new URLSearchParams({ ...body, ...page } as {}).toString();
     return `${endpoint}?${params}`;
-  }, [endpoint, wait, paginationRound, options?.withPagination]);
+  }, [endpoint, wait, paginationRound, options?.withPagination, options?.wait]);
 
   const { URI, sessionToken } = useRequestBuilder({
     endpoint: SWREndpoint,

@@ -101,11 +101,12 @@ import {
   CustomerAddressesResponse,
 } from "./Endpoints/CustomerAddresses";
 import { SectionsResponse } from "./Endpoints/Sections";
-import { BriefItem } from "./Entities/BriefItem";
+import { SearchRequest, SearchResponse } from "./Endpoints/Search";
 
 //entities interfaces
 import { Customer } from "./Entities/Customer";
 import { Section } from "./Entities/Section";
+import { BriefItem } from "./Entities/BriefItem";
 
 export {
   NewVersionAvailableRequest,
@@ -169,6 +170,8 @@ export {
   CustomerAddressesRequest,
   CustomerAddressesResponse,
   SectionsResponse,
+  SearchRequest,
+  SearchResponse,
   Customer,
   DataCardProps,
   LinkProps,
