@@ -9,7 +9,7 @@ import {
   useTranslationsContext,
 } from "../../../src/hooks";
 import { Section as SectionProps } from "../../../src/interfaces";
-import Item from "./Item";
+import { Item } from "../../../src/components/molecules";
 
 const Section = ({ name, category, items }: SectionProps) => {
   const router = useRouter();

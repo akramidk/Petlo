@@ -2,13 +2,13 @@ import clsx from "clsx";
 import { useRouter } from "expo-router";
 import { useMemo } from "react";
 import { Image, View } from "react-native";
-import { Text } from "../../../src/components/atoms";
-import { BaseButton } from "../../../src/components/bases";
+import { Text } from "../atoms";
+import { BaseButton } from "../bases";
 import {
   useInternationalizationContext,
   useTranslationsContext,
-} from "../../../src/hooks";
-import { BriefItem } from "../../../src/interfaces";
+} from "../../hooks";
+import { BriefItem } from "../../interfaces";
 
 interface ItemProps {
   variant: "small" | "large";
@@ -49,15 +49,15 @@ const Item = ({ variant, data }: ItemProps) => {
   } = useMemo(() => {
     const variants = {
       small: {
-        measurements: "w-[200px] h-[325]",
-        imageMeasurements: "h-[172px]",
-        titleText: "text-[14px]",
+        measurements: "w-[200px] h-[312]",
+        imageMeasurements: "h-[172px] p-[28px]",
+        titleText: "text-[14px] leading-[22px]",
         priceText: "text-[16px]",
       },
       large: {
         measurements: "w-[100%]",
-        imageMeasurements: "h-[196px]",
-        titleText: "text-[16px]",
+        imageMeasurements: "h-[216px] p-[32px]",
+        titleText: "text-[16px] leading-[26px]",
         priceText: "text-[16px]",
       },
     };
@@ -73,12 +73,7 @@ const Item = ({ variant, data }: ItemProps) => {
       )}
       onClick={() => router.push(`/item?publicId=${data.public_id}`)}
     >
-      <View
-        className={clsx(
-          "p-[28px] bg-[#F9F9F9]",
-          variantsStyles.imageMeasurements
-        )}
-      >
+      <View className={clsx("bg-[#F9F9F9]", variantsStyles.imageMeasurements)}>
         <Image
           style={{
             flex: 1,
@@ -102,7 +97,7 @@ const Item = ({ variant, data }: ItemProps) => {
         )}
       </View>
 
-      <View className="p-[16px] flex-1 justify-between space-y-[12px]">
+      <View className="p-[16px] flex-1 justify-between space-y-[20px]">
         <Text
           cn={clsx("text-[#0E333C]", variantsStyles.titleText)}
           numberOfLines={3}

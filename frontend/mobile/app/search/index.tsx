@@ -6,7 +6,7 @@ import { SearchFiled } from "../../src/components/atoms";
 import { Endpoints } from "../../src/enums";
 import { useAPIFetching } from "../../src/hooks";
 import { SearchRequest, SearchResponse } from "../../src/interfaces";
-import Item from "../(home)/_components/Item";
+import { Item } from "../../src/components/molecules";
 import Loading from "../_Loading";
 
 const Search = () => {
