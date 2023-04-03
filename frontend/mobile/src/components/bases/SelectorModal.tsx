@@ -6,11 +6,9 @@ import {
   useTranslationsContext,
 } from "../../hooks";
 import { BaseOption, OptionsProps } from "../../interfaces";
-import Text from "../atoms/Text";
 import Button from "../atoms/Button";
 import Options from "../atoms/Options";
-import BaseButton from "./BaseButton";
-import { SearchFiled } from "../atoms";
+import SearchFiled from "../atoms/SearchFiled";
 
 interface SelectorModalProps<T> {
   visible?: boolean;
