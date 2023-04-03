@@ -28,4 +28,5 @@ export enum Endpoints {
   ADD_NEW_ADDRESS = "/v1/addresses",
   CUSTOMER_ADDRESSES = "/v1/addresses",
   SECTIONS = "/v1/sections",
+  SEARCH = "/v1/search",
 }
