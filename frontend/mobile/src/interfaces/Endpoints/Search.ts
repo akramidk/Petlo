@@ -6,5 +6,5 @@ export interface SearchRequest {
 
 export interface SearchResponse {
   has_more: boolean;
-  data: BriefItem;
+  data: BriefItem[];
 }

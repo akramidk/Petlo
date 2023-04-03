@@ -6,6 +6,8 @@ import { SearchFiled } from "../../src/components/atoms";
 import { Endpoints } from "../../src/enums";
 import { useAPIFetching } from "../../src/hooks";
 import { SearchRequest, SearchResponse } from "../../src/interfaces";
+import Item from "../(home)/_components/Item";
+import Loading from "../_Loading";
 
 const Search = () => {
   const router = useRouter();
@@ -13,6 +15,9 @@ const Search = () => {
   const [searchValue, setSearchValue] = useState("");
   const { response } = useAPIFetching<SearchRequest, SearchResponse>({
     endpoint: Endpoints.SEARCH,
+    SWROptions: {
+      revalidateIfStale: false,
+    },
     options: {
       wait: searchValue.trim().length === 0,
     },
@@ -20,8 +25,6 @@ const Search = () => {
       value: searchValue,
     },
   });
-
-  console.log("response", response);
 
   return (
     <View className="h-full flex flex-col">
@@ -31,7 +34,19 @@ const Search = () => {
         onCancel={router.back}
       />
 
-      <ScrollView className="grow"></ScrollView>
+      {response?.isFetching ? (
+        <Loading />
+      ) : (
+        <ScrollView className="grow p-[28px]">
+          {response?.body?.data?.map((item, i) => {
+            return (
+              <View key={i}>
+                <Item {...item} />
+              </View>
+            );
+          })}
+        </ScrollView>
+      )}
     </View>
   );
 };

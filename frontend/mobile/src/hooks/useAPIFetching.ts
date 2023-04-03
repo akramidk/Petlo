@@ -49,7 +49,14 @@ const useAPIFetching = <Request, Response>({
 
     const params = new URLSearchParams({ ...body, ...page } as {}).toString();
     return `${endpoint}?${params}`;
-  }, [endpoint, wait, paginationRound, options?.withPagination, options?.wait]);
+  }, [
+    endpoint,
+    wait,
+    paginationRound,
+    options?.withPagination,
+    options?.wait,
+    body,
+  ]);
 
   const { URI, sessionToken } = useRequestBuilder({
     endpoint: SWREndpoint,
