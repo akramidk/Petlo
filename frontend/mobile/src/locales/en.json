@@ -136,5 +136,6 @@
   "ADD_NEW_ADDRESS__STEP_2_NAME_FILED_PLACEHOLDER": "enter a name describe the address",
   "ADD_NEW_ADDRESS__STEP_2_ADD_BUTTON": "Add & Finish",
   "HOME__SECTION_SHOW_ALL_BUTTON": "Show All",
-  "HOME__SECTION_SHOW_ALL_ITEMS_CARD": "Show All Items"
+  "HOME__SECTION_SHOW_ALL_ITEMS_CARD": "Show All Items",
+  "HOME__OPTIONS_INSIDE": "options inside"
 }

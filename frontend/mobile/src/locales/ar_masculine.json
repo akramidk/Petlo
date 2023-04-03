@@ -140,5 +140,8 @@
   "ADD_NEW_ADDRESS__STEP_2_NAME_FILED_PLACEHOLDER": "ادخل اسم يصف العنوان",
   "ADD_NEW_ADDRESS__STEP_2_ADD_BUTTON": "اضف وانهي",
   "HOME__SECTION_SHOW_ALL_BUTTON": "شاهد الكل",
-  "HOME__SECTION_SHOW_ALL_ITEMS_CARD": "شاهد كل المنتجات"
+  "HOME__SECTION_SHOW_ALL_ITEMS_CARD": "شاهد كل المنتجات",
+  "HOME__OPTIONS_INSIDE_2": "خيارين بالداخل",
+  "HOME__OPTIONS_INSIDE_3_AND_ABOVE": "خيارات بالداخل",
+  "HOME__OPTIONS_INSIDE_11_AND_ABOVE": "خيار بالداخل"
 }
