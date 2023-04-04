@@ -102,6 +102,7 @@ import {
 } from "./Endpoints/CustomerAddresses";
 import { SectionsResponse } from "./Endpoints/Sections";
 import { SearchRequest, SearchResponse } from "./Endpoints/Search";
+import { CategoriesRequest, CategoriesResponse } from "./Endpoints/Categories";
 
 //entities interfaces
 import { Customer } from "./Entities/Customer";
@@ -172,6 +173,8 @@ export {
   SectionsResponse,
   SearchRequest,
   SearchResponse,
+  CategoriesRequest,
+  CategoriesResponse,
   Customer,
   DataCardProps,
   LinkProps,
