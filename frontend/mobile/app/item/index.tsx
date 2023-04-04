@@ -65,13 +65,13 @@ const Item = () => {
       </View>
 
       <ScrollView className="p-[28px]">
-        <View className="space-y-[16px]">
-          <View className="space-y-[4px]">
+        <View className="space-y-[12px] mb-[16]">
+          <View className="space-y-[6px]">
             <Text font="extraBold" cn="text-[20px] text-[#0E333C]">
               {item.name}
             </Text>
 
-            <Text font="semiBold" cn="text-[14px] text-[#444]">
+            <Text font="semiBold" cn="text-[14px] text-[#888]">
               {t("ITEM__BY")} {item.brand}
             </Text>
           </View>
@@ -79,6 +79,18 @@ const Item = () => {
           <Text font="extraBold" cn="text-[18px] text-[#0E333C]">
             20.99 USD
           </Text>
+        </View>
+
+        <View className="space-y-[12px]">
+          {options.map((option, i) => {
+            return (
+              <View key={i}>
+                <Text font="bold" cn="text-[14px] text-[#0E333C]">
+                  {option.name}
+                </Text>
+              </View>
+            );
+          })}
         </View>
       </ScrollView>
     </View>
