@@ -30,4 +30,5 @@ export enum Endpoints {
   SECTIONS = "/v1/sections",
   SEARCH = "/v1/search",
   CATEGORIES = "/v1/categories/${category}/items",
+  ITEM = "/v1/items/${publicId}",
 }
