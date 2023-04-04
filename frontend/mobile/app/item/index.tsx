@@ -29,10 +29,13 @@ const Item = () => {
     },
   });
 
-  const item = useMemo(() => {
+  const { item, options, variants } = useMemo(() => {
     if (response.isFetching) return;
 
-    return response.body;
+    const item = response.body;
+    const options = response.body.options;
+    const variants = response.body.variants;
+    return { item, options, variants };
   }, [response]);
 
   if (response.isFetching) {
