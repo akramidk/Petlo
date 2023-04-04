@@ -1,4 +1,8 @@
 import { useRouter, useSearchParams } from "expo-router";
+import { useMemo } from "react";
+import { View, Image } from "react-native";
+import { ScrollView } from "react-native-gesture-handler";
+import { BackButton, Text } from "../../src/components/atoms";
 import { PageStructure } from "../../src/components/organisms";
 import { Endpoints } from "../../src/enums";
 import { useAPIFetching } from "../../src/hooks";
@@ -10,16 +14,61 @@ const Item = () => {
   const { publicId } = useSearchParams();
   const { response } = useAPIFetching<void, ItemResponse>({
     endpoint: Endpoints.ITEM,
+    SWROptions: {
+      revalidateIfStale: false,
+    },
     slugs: {
       publicId,
     },
   });
 
+  const item = useMemo(() => {
+    if (response.isFetching) return;
+
+    return response.body;
+  }, [response]);
+
   if (response.isFetching) {
     return <Loading />;
   }
 
-  return <PageStructure title={publicId} backButton={router.back} />;
+  return (
+    <View className="grow">
+      <View className="h-[306px] p-[56px] bg-[#f6f6f6]">
+        <BackButton
+          onClick={router.back}
+          cn="absolute bg-[#eee] mt-[12px] ml-[12px]"
+        />
+        <Image
+          style={{
+            flex: 1,
+            resizeMode: "contain",
+          }}
+          source={{
+            uri: item.image,
+          }}
+        />
+      </View>
+
+      <ScrollView className="p-[28px]">
+        <View className="space-y-[16px]">
+          <View className="space-y-[4px]">
+            <Text font="extraBold" cn="text-[20px] text-[#0E333C]">
+              {item.name}
+            </Text>
+
+            <Text font="semiBold" cn="text-[14px] text-[#444]">
+              By {item.brand}
+            </Text>
+          </View>
+
+          <Text font="extraBold" cn="text-[18px] text-[#0E333C]">
+            20.99 USD
+          </Text>
+        </View>
+      </ScrollView>
+    </View>
+  );
 };
 
 export default Item;
