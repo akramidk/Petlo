@@ -50,8 +50,6 @@ const useAPIFetching = <Request, Response>({
       });
     }
 
-    console.log("endpointWithSlugs", endpointWithSlugs);
-
     if (!body && options?.withPagination !== true) {
       return endpointWithSlugs;
     }
