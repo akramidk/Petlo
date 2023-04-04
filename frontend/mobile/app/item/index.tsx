@@ -44,20 +44,17 @@ const Item = () => {
   useEffect(() => {
     if (options === undefined || selectedOptions.length > 0) return;
 
+    const array = selectedOptions.flat();
     options.forEach((option, i) => {
-      const array = selectedOptions.flat();
       array[i] = option.values[0];
-
-      setSelectedOptions(array);
     });
+
+    setSelectedOptions(array);
   }, [options]);
 
   if (response.isFetching) {
     return <Loading />;
   }
-
-  console.log("options", options);
-  console.log("selectedOptions", selectedOptions);
 
   return (
     <View className="grow">
