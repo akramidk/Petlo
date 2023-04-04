@@ -29,9 +29,11 @@ const Section = ({ name, category, items }: SectionProps) => {
           {name}
         </Text>
 
-        {items.has_more && (
+        {true && (
           <Link
-            onClick={() => router.push(`/category?name=${category}`)}
+            onClick={() =>
+              router.push(`/category?name=${name}&category=${category}`)
+            }
             value={t("HOME__SECTION_SHOW_ALL_BUTTON")}
             valueCN="text-[14px] text-[#777]"
             font="bold"

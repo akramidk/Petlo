@@ -9,6 +9,7 @@ import { ErrorResponse } from "../interfaces";
 interface useAPIFetchingProps<Request> {
   endpoint: Endpoints | null;
   body?: Request;
+  slugs?: { [key: string]: string };
   SWROptions?: SWRConfiguration;
   options?: {
     wait?: boolean;
@@ -27,6 +28,7 @@ interface useAPIFetchingResponse<Response> {
 const useAPIFetching = <Request, Response>({
   endpoint,
   body,
+  slugs,
   SWROptions,
   options,
 }: useAPIFetchingProps<Request>) => {
@@ -38,8 +40,20 @@ const useAPIFetching = <Request, Response>({
       return null;
     }
 
+    let endpointWithSlugs = endpoint as string;
+    if (slugs) {
+      Object.keys(slugs).forEach((slug) => {
+        endpointWithSlugs = endpointWithSlugs.replaceAll(
+          "${" + slug + "}",
+          slugs[slug]
+        );
+      });
+    }
+
+    console.log("endpointWithSlugs", endpointWithSlugs);
+
     if (!body && options?.withPagination !== true) {
-      return endpoint;
+      return endpointWithSlugs;
     }
 
     let page;
@@ -48,7 +62,7 @@ const useAPIFetching = <Request, Response>({
     }
 
     const params = new URLSearchParams({ ...body, ...page } as {}).toString();
-    return `${endpoint}?${params}`;
+    return `${endpointWithSlugs}?${params}`;
   }, [
     endpoint,
     wait,
@@ -56,6 +70,7 @@ const useAPIFetching = <Request, Response>({
     options?.withPagination,
     options?.wait,
     body,
+    slugs,
   ]);
 
   const { URI, sessionToken } = useRequestBuilder({

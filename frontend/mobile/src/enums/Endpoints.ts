@@ -29,4 +29,5 @@ export enum Endpoints {
   CUSTOMER_ADDRESSES = "/v1/addresses",
   SECTIONS = "/v1/sections",
   SEARCH = "/v1/search",
+  CATEGORIES = "/v1/categories/${category}/items",
 }
