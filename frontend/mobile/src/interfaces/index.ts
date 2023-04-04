@@ -103,6 +103,7 @@ import {
 import { SectionsResponse } from "./Endpoints/Sections";
 import { SearchRequest, SearchResponse } from "./Endpoints/Search";
 import { CategoriesRequest, CategoriesResponse } from "./Endpoints/Categories";
+import { ItemResponse } from "./Endpoints/Item";
 
 //entities interfaces
 import { Customer } from "./Entities/Customer";
@@ -175,6 +176,7 @@ export {
   SearchResponse,
   CategoriesRequest,
   CategoriesResponse,
+  ItemResponse,
   Customer,
   DataCardProps,
   LinkProps,
