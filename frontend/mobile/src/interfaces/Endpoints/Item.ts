@@ -8,6 +8,7 @@ export interface ItemResponse {
   options: {
     public_id: string;
     name: string;
+    unit: string | null;
     values: string[];
   }[];
   variants: {

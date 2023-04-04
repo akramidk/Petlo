@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import { useRouter, useSearchParams } from "expo-router";
-import { useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { View, Image } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { BackButton, Text } from "../../src/components/atoms";
@@ -20,7 +20,6 @@ const Item = () => {
   const { publicId } = useSearchParams();
   const { t } = useTranslationsContext();
   const { direction } = useInternationalizationContext();
-  const scrollViewRef = useRef<ScrollView>();
   const { response } = useAPIFetching<void, ItemResponse>({
     endpoint: Endpoints.ITEM,
     SWROptions: {
@@ -31,6 +30,9 @@ const Item = () => {
     },
   });
 
+  const scrollViewRef = useRef<ScrollView>();
+  const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
+
   const { item, options, variants } = useMemo(() => {
     const item = response?.body;
     const options = response?.body?.options;
@@ -39,9 +41,23 @@ const Item = () => {
     return { item, options, variants };
   }, [response]);
 
+  useEffect(() => {
+    if (options === undefined || selectedOptions.length > 0) return;
+
+    options.forEach((option, i) => {
+      const array = selectedOptions.flat();
+      array[i] = option.values[0];
+
+      setSelectedOptions(array);
+    });
+  }, [options]);
+
   if (response.isFetching) {
     return <Loading />;
   }
+
+  console.log("options", options);
+  console.log("selectedOptions", selectedOptions);
 
   return (
     <View className="grow">
@@ -106,18 +122,28 @@ const Item = () => {
                   }
                   horizontal
                 >
-                  {option.values.map((value, i) => {
+                  {option.values.map((value, y) => {
                     return (
-                      <View key={i}>
+                      <View key={y}>
                         <BaseButton
-                          onClick={() => {}}
+                          onClick={() => {
+                            const array = selectedOptions.flat();
+                            array[i] = value;
+
+                            console.log("array", array);
+
+                            setSelectedOptions(array);
+                          }}
                           cn={clsx(
-                            "px-[28px] py-[8px] border-[1.4px] border-[#0E333C] rounded-[4px]",
-                            direction === "ltr" ? "mr-[4px]" : "ml-[4px]"
+                            "px-[28px] py-[8px] border-[1.4px] rounded-[4px]",
+                            direction === "ltr" ? "mr-[4px]" : "ml-[4px]",
+                            value === selectedOptions[i]
+                              ? "border-[#0E333C]"
+                              : "border-[#f6f6f6]"
                           )}
                         >
                           <Text font="semiBold" cn="text-[#0E333C] text-[13px]">
-                            {value}
+                            {value} {option.unit}
                           </Text>
                         </BaseButton>
                       </View>
