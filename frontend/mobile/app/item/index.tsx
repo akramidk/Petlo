@@ -35,7 +35,11 @@ const Item = () => {
   const scrollViewRef = useRef<ScrollView>();
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
 
-  const { add: addToCart } = useCartContext();
+  const {
+    createStatus: createCartStatus,
+    add: addToCart,
+    addStatus: addToCartStatus,
+  } = useCartContext();
 
   const { item, options, variants } = useMemo(() => {
     const item = response?.body;
@@ -189,6 +193,7 @@ const Item = () => {
         <Button
           value="Add To Cart"
           onClick={() => addToCart(item.public_id, variant.public_id)}
+          status={createCartStatus ?? addToCartStatus}
         />
       </SafeAreaView>
     </View>

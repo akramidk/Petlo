@@ -6,10 +6,12 @@ interface CartContextProviderProps {
 }
 
 const CartContextProvider = ({ children }: CartContextProviderProps) => {
-  const { add } = useCart();
+  const { createStatus, add, addStatus } = useCart();
 
   return (
-    <CartContext.Provider value={{ add }}>{children}</CartContext.Provider>
+    <CartContext.Provider value={{ createStatus, add, addStatus }}>
+      {children}
+    </CartContext.Provider>
   );
 };
 

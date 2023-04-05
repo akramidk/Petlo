@@ -35,7 +35,7 @@ const useCart = () => {
 
   console.log("cartId", cartId);
 
-  return { add };
+  return { createStatus, add, addStatus };
 };
 
 export default useCart;
