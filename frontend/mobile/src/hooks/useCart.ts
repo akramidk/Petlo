@@ -31,11 +31,19 @@ const useCart = () => {
     setCartId(createResponse?.body?.cart?.public_id);
   }, [createResponse]);
 
-  const add = useCallback((item_id: string, variant_id: string) => {
-    if (cartId === undefined) {
-      createTrigger(undefined);
-    }
-  }, []);
+  const add = useCallback(
+    async (itemId: string, variantId: string) => {
+      if (cartId === undefined) {
+        await createTrigger(undefined);
+      }
+
+      addTrigger({
+        item_id: itemId,
+        variant_id: variantId,
+      });
+    },
+    [cartId]
+  );
 
   return { createStatus, add, addStatus };
 };
