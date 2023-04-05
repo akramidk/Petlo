@@ -32,4 +32,5 @@ export enum Endpoints {
   CATEGORIES = "/v1/categories/${category}/items",
   ITEM = "/v1/items/${publicId}",
   CREATE_NEW_CART = "/v1/carts",
+  CART_ADD_ITEM = "/v1/carts/${publicId}",
 }

@@ -18,8 +18,11 @@ const useCart = () => {
     undefined,
     undefined
   >({
-    endpoint: Endpoints.EDIT_PHONE_NUMBER_ON_VERIFICATION,
+    endpoint: Endpoints.CART_ADD_ITEM,
     method: "POST",
+    slugs: {
+      publicId: cartId,
+    },
     options: {},
   });
 
