@@ -65,8 +65,6 @@ const Item = () => {
         )
       );
 
-      console.log("isEqual", isEqual);
-
       return !isEqual;
     });
 
