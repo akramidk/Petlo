@@ -75,8 +75,6 @@ const useCart = () => {
     setNumberOfItems(numberOfItemsResponse.body.value);
   }, [numberOfItemsResponse]);
 
-  console.log("in", initialCartId ?? cartId);
-
   const add = useCallback(
     async (itemId: string, variantId: string) => {
       if (!initialCartId && !cartId) {
