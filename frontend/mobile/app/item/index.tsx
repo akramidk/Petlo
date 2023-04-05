@@ -52,6 +52,29 @@ const Item = () => {
     setSelectedOptions(array);
   }, [options]);
 
+  const variant = useMemo(() => {
+    if (variants === undefined || selectedOptions.length === 0) return;
+    let value;
+
+    variants.every((variant) => {
+      value = variant;
+      const variantOption = variant.options.map((option) => option.value);
+      const isEqual = variantOption.every((variantOptionValue) =>
+        selectedOptions.find(
+          (selectedOptionValue) => variantOptionValue === selectedOptionValue
+        )
+      );
+
+      console.log("isEqual", isEqual);
+
+      return !isEqual;
+    });
+
+    return value;
+  }, [selectedOptions]);
+
+  console.log("variant", variant);
+
   if (response.isFetching) {
     return <Loading />;
   }
@@ -91,7 +114,7 @@ const Item = () => {
           </View>
 
           <Text font="extraBold" cn="text-[18px] text-[#0E333C]">
-            20.99 USD
+            {variant.price} {item.currency}
           </Text>
         </View>
 
