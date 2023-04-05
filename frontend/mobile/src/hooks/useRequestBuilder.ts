@@ -26,7 +26,10 @@ const useRequestBuilder = ({
   const URI = `${API_URL}/${locale}${endpoint}`;
   const sessionToken = useMemo(() => {
     return (
-      overwriteSessionToken ?? customerContext?.customer?.sessionToken ?? ""
+      overwriteSessionToken ??
+      customerContext?.customer?.sessionToken ??
+      customerContext?.sessionToken ??
+      ""
     );
   }, [withoutAuthorization, overwriteSessionToken]);
 

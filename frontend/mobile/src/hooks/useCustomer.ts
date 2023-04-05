@@ -67,7 +67,7 @@ const useCustomer = () => {
     setCustomer(customer);
   };
 
-  return { customer, setCustomer, setCustomerWithSessionToken };
+  return { customer, setCustomer, setCustomerWithSessionToken, sessionToken };
 };
 
 export default useCustomer;

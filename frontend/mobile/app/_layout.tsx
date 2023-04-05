@@ -84,7 +84,8 @@ const Layout = () => {
     Manrope_800ExtraBold,
   });
 
-  const { customer, setCustomer, setCustomerWithSessionToken } = useCustomer();
+  const { customer, setCustomer, setCustomerWithSessionToken, sessionToken } =
+    useCustomer();
   const {
     language,
     changeLanguage,
@@ -109,6 +110,7 @@ const Layout = () => {
     (!newVersionAvailableResponse && newVersionAvailableResponse.isFetching) ||
     newVersionAvailableResponse?.body?.value ||
     storedLanguage === undefined ||
+    sessionToken === undefined ||
     customer === undefined
   ) {
     // TODO new design for this insted of an Alert
@@ -130,7 +132,12 @@ const Layout = () => {
 
   return (
     <CustomerContext.Provider
-      value={{ customer, setCustomer, setCustomerWithSessionToken }}
+      value={{
+        customer,
+        setCustomer,
+        setCustomerWithSessionToken,
+        sessionToken,
+      }}
     >
       <InternationalizationContext.Provider
         value={{
