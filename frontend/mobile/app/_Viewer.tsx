@@ -23,7 +23,8 @@ const Viewer = ({ children }: ViewerProps) => {
       {!hideHeder && (
         <Header
           activePath={pathname}
-          showIcons={showMenuAndIcons || !!pathname.includes("item")} // TODO clean this
+          showSearchIcon={showMenuAndIcons}
+          showCartIcon={showMenuAndIcons || !!pathname.includes("item")}
         />
       )}
       {children}
