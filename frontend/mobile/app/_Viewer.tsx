@@ -21,7 +21,10 @@ const Viewer = ({ children }: ViewerProps) => {
   return (
     <SafeAreaView className="h-full flex flex-col">
       {!hideHeder && (
-        <Header activePath={pathname} showIcons={showMenuAndIcons} />
+        <Header
+          activePath={pathname}
+          showIcons={showMenuAndIcons || !!pathname.includes("item")} // TODO clean this
+        />
       )}
       {children}
       {showMenuAndIcons && <Menu activePath={pathname} />}
