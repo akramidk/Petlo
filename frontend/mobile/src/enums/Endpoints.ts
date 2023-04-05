@@ -31,4 +31,5 @@ export enum Endpoints {
   SEARCH = "/v1/search",
   CATEGORIES = "/v1/categories/${category}/items",
   ITEM = "/v1/items/${publicId}",
+  CREATE_NEW_CART = "/v1/carts",
 }

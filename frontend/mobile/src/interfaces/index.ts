@@ -104,6 +104,7 @@ import { SectionsResponse } from "./Endpoints/Sections";
 import { SearchRequest, SearchResponse } from "./Endpoints/Search";
 import { CategoriesRequest, CategoriesResponse } from "./Endpoints/Categories";
 import { ItemResponse } from "./Endpoints/Item";
+import { CreateNewCartResponse } from "./Endpoints/CreateNewCart";
 
 //entities interfaces
 import { Customer } from "./Entities/Customer";
@@ -177,6 +178,7 @@ export {
   CategoriesRequest,
   CategoriesResponse,
   ItemResponse,
+  CreateNewCartResponse,
   Customer,
   DataCardProps,
   LinkProps,
