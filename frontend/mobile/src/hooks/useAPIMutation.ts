@@ -9,6 +9,7 @@ import { ErrorResponse } from "../interfaces";
 interface useAPIMutationProps {
   endpoint: Endpoints;
   method: "POST" | "PATCH" | "DELETE";
+  slugs?: { [key: string]: string };
   options?: {
     onSucceeded?: () => void;
     fireOnSucceededAfter?: number;
@@ -33,6 +34,7 @@ interface useAPIMutationResponse<Response> {
 const useAPIMutation = <Request, Response>({
   endpoint,
   method,
+  slugs,
   options: {
     onSucceeded,
     fireOnSucceededAfter = 0,
@@ -48,8 +50,22 @@ const useAPIMutation = <Request, Response>({
   const [status, setStatus] = useState<status>();
   const setAlert = useAlertContext();
 
+  const SWREndpoint = useMemo(() => {
+    let endpointWithSlugs = endpoint as string;
+    if (slugs) {
+      Object.keys(slugs).forEach((slug) => {
+        endpointWithSlugs = endpointWithSlugs.replaceAll(
+          "${" + slug + "}",
+          slugs[slug]
+        );
+      });
+    }
+
+    return endpointWithSlugs;
+  }, [endpoint, slugs]);
+
   const { URI, sessionToken } = useRequestBuilder({
-    endpoint: endpoint,
+    endpoint: SWREndpoint,
     withoutAuthorization: withoutAuthorization,
     overwriteSessionToken: overwriteSessionToken,
   });
@@ -66,7 +82,7 @@ const useAPIMutation = <Request, Response>({
   };
 
   const { trigger, data, error, isMutating } = useSWRMutation(
-    endpoint,
+    SWREndpoint,
     fetcher,
     {
       throwOnError: false,
