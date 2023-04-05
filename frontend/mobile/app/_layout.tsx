@@ -34,6 +34,7 @@ import {
   NewVersionAvailableResponse,
 } from "../src/interfaces";
 import {
+  CartContext,
   CustomerContext,
   InternationalizationContext,
   TranslationsContext,
@@ -46,6 +47,7 @@ import { AlertContextProvider } from "../src/providers";
 import Viewer from "./_Viewer";
 import { StatusBar } from "expo-status-bar";
 import { useEffect } from "react";
+import useCart from "../src/hooks/useCart";
 
 const Layout = () => {
   // TODO handled if no network
@@ -85,6 +87,8 @@ const Layout = () => {
   });
 
   const { customer, setCustomer, setCustomerWithSessionToken } = useCustomer();
+  const { add } = useCart();
+
   const {
     language,
     changeLanguage,
@@ -142,24 +146,26 @@ const Layout = () => {
         }}
       >
         <TranslationsContext.Provider value={{ t }}>
-          <RoutesRestrictor>
-            <TouchableWithoutFeedback
-              onPress={() => Keyboard.isVisible() && Keyboard.dismiss()}
-            >
-              {
-                // AlertContextProvider should be here
-              }
-              <AlertContextProvider>
+          <CartContext.Provider value={{ add }}>
+            <RoutesRestrictor>
+              <TouchableWithoutFeedback
+                onPress={() => Keyboard.isVisible() && Keyboard.dismiss()}
+              >
                 {
-                  // Viewer should be here
+                  // AlertContextProvider should be here
                 }
-                <Viewer>
-                  <StatusBar style="dark" />
-                  <Slot />
-                </Viewer>
-              </AlertContextProvider>
-            </TouchableWithoutFeedback>
-          </RoutesRestrictor>
+                <AlertContextProvider>
+                  {
+                    // Viewer should be here
+                  }
+                  <Viewer>
+                    <StatusBar style="dark" />
+                    <Slot />
+                  </Viewer>
+                </AlertContextProvider>
+              </TouchableWithoutFeedback>
+            </RoutesRestrictor>
+          </CartContext.Provider>
         </TranslationsContext.Provider>
       </InternationalizationContext.Provider>
     </CustomerContext.Provider>

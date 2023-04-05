@@ -24,7 +24,7 @@ const useCart = () => {
   });
 
   useEffect(() => {
-    setCartId(createResponse?.body?.public_id);
+    setCartId(createResponse?.body?.cart?.public_id);
   }, [createResponse]);
 
   const add = useCallback((item_id: string, variant_id: string) => {
@@ -32,6 +32,8 @@ const useCart = () => {
       createTrigger(undefined);
     }
   }, []);
+
+  console.log("cartId", cartId);
 
   return { add };
 };

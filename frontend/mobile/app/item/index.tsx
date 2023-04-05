@@ -13,6 +13,7 @@ import {
   useInternationalizationContext,
   useTranslationsContext,
 } from "../../src/hooks";
+import useCartContext from "../../src/hooks/useCartContext";
 import { ItemResponse } from "../../src/interfaces";
 import Loading from "../_Loading";
 
@@ -33,6 +34,8 @@ const Item = () => {
 
   const scrollViewRef = useRef<ScrollView>();
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
+
+  const { add: addToCart } = useCartContext();
 
   const { item, options, variants } = useMemo(() => {
     const item = response?.body;
@@ -185,7 +188,7 @@ const Item = () => {
       >
         <Button
           value="Add To Cart"
-          onClick={() => console.log(variant.public_id)}
+          onClick={() => addToCart(item.public_id, variant.public_id)}
         />
       </SafeAreaView>
     </View>
