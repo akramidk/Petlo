@@ -1,10 +1,19 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useCallback, useEffect, useState } from "react";
-import { Endpoints } from "../enums";
-import { CartAddItemRequest, CreateNewCartResponse } from "../interfaces";
+import { Endpoints, StorageKeys } from "../enums";
+import {
+  CartAddItemRequest,
+  CartNumberOfItemsResponse,
+  CreateNewCartResponse,
+} from "../interfaces";
+import useAPIFetching from "./useAPIFetching";
 import useAPIMutation from "./useAPIMutation";
 
 const useCart = () => {
+  const [initialCartId, setInitialCartId] = useState<string>();
   const [cartId, setCartId] = useState<string>();
+  const [numberOfItems, setNumberOfItems] = useState<number>(0);
+
   const {
     response: createResponse,
     trigger: createTrigger,
@@ -14,11 +23,24 @@ const useCart = () => {
     method: "POST",
     options: {},
   });
-  const {
-    response,
-    trigger: addTrigger,
-    status: addStatus,
-  } = useAPIMutation<CartAddItemRequest, undefined>({
+
+  const { response: numberOfItemsResponse } = useAPIFetching<
+    void,
+    CartNumberOfItemsResponse
+  >({
+    endpoint: Endpoints.CART_NUMBER_OF_ITEMS,
+    slugs: {
+      publicId: initialCartId,
+    },
+    options: {
+      wait: !initialCartId,
+    },
+  });
+
+  const { trigger: addTrigger, status: addStatus } = useAPIMutation<
+    CartAddItemRequest,
+    undefined
+  >({
     endpoint: Endpoints.CART_ADD_ITEM,
     method: "POST",
     slugs: {
@@ -28,12 +50,32 @@ const useCart = () => {
   });
 
   useEffect(() => {
-    setCartId(createResponse?.body?.cart?.public_id);
+    (async () => {
+      setInitialCartId(await AsyncStorage.getItem(StorageKeys.CART));
+    })();
+  }, []);
+
+  useEffect(() => {
+    const publicId = createResponse?.body?.cart?.public_id;
+    if (!publicId) return;
+
+    setCartId(publicId);
+    AsyncStorage.setItem(StorageKeys.CART, publicId);
   }, [createResponse]);
+
+  useEffect(() => {
+    if (
+      numberOfItemsResponse?.isFetching ||
+      !numberOfItemsResponse?.body?.value
+    )
+      return;
+
+    setNumberOfItems(numberOfItemsResponse.body.value);
+  }, [numberOfItemsResponse]);
 
   const add = useCallback(
     async (itemId: string, variantId: string) => {
-      if (cartId === undefined) {
+      if (!cartId) {
         await createTrigger(undefined);
       }
 
@@ -45,7 +87,7 @@ const useCart = () => {
     [cartId]
   );
 
-  return { createStatus, add, addStatus };
+  return { numberOfItems, createStatus, add, addStatus };
 };
 
 export default useCart;
