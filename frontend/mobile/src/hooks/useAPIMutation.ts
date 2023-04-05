@@ -87,7 +87,6 @@ const useAPIMutation = <Request, Response>({
     }
 
     if (error) {
-      console.log("error", error.response.data);
       return {
         status: "failed",
         statusCode: error.response.status,

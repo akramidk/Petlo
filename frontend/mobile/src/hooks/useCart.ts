@@ -33,8 +33,6 @@ const useCart = () => {
     }
   }, []);
 
-  console.log("cartId", cartId);
-
   return { createStatus, add, addStatus };
 };
 
