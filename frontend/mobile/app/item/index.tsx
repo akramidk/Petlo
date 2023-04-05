@@ -112,7 +112,7 @@ const Item = () => {
           </View>
 
           <Text font="extraBold" cn="text-[18px] text-[#0E333C]">
-            {variant.price} {item.currency}
+            {variant?.price} {item.currency}
           </Text>
         </View>
 
