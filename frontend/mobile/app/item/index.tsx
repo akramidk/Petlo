@@ -71,8 +71,6 @@ const Item = () => {
     return value;
   }, [selectedOptions]);
 
-  console.log("variant", variant);
-
   if (response.isFetching) {
     return <Loading />;
   }
@@ -147,8 +145,6 @@ const Item = () => {
                           onClick={() => {
                             const array = selectedOptions.flat();
                             array[i] = value;
-
-                            console.log("array", array);
 
                             setSelectedOptions(array);
                           }}
