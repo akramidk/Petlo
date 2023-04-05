@@ -44,7 +44,7 @@ const useCart = () => {
     endpoint: Endpoints.CART_ADD_ITEM,
     method: "POST",
     slugs: {
-      publicId: cartId,
+      publicId: initialCartId ?? cartId,
     },
     options: {
       onSucceeded: () => setNumberOfItems(numberOfItems + 1),
@@ -75,9 +75,11 @@ const useCart = () => {
     setNumberOfItems(numberOfItemsResponse.body.value);
   }, [numberOfItemsResponse]);
 
+  console.log("in", initialCartId ?? cartId);
+
   const add = useCallback(
     async (itemId: string, variantId: string) => {
-      if (!cartId) {
+      if (!initialCartId && !cartId) {
         await createTrigger(undefined);
       }
 
@@ -86,7 +88,7 @@ const useCart = () => {
         variant_id: variantId,
       });
     },
-    [cartId]
+    [initialCartId, cartId]
   );
 
   return { numberOfItems, createStatus, add, addStatus };
