@@ -34,7 +34,6 @@ import {
   NewVersionAvailableResponse,
 } from "../src/interfaces";
 import {
-  CartContext,
   CustomerContext,
   InternationalizationContext,
   TranslationsContext,
@@ -43,11 +42,10 @@ import { useTranslations } from "../src/hooks";
 import { Endpoints } from "../src/enums";
 import RoutesRestrictor from "./_RoutesRestrictor";
 import { useCustomer } from "../src/hooks";
-import { AlertContextProvider } from "../src/providers";
+import { AlertContextProvider, CartContextProvider } from "../src/providers";
 import Viewer from "./_Viewer";
 import { StatusBar } from "expo-status-bar";
 import { useEffect } from "react";
-import useCart from "../src/hooks/useCart";
 
 const Layout = () => {
   // TODO handled if no network
@@ -87,8 +85,6 @@ const Layout = () => {
   });
 
   const { customer, setCustomer, setCustomerWithSessionToken } = useCustomer();
-  const { add } = useCart();
-
   const {
     language,
     changeLanguage,
@@ -146,7 +142,7 @@ const Layout = () => {
         }}
       >
         <TranslationsContext.Provider value={{ t }}>
-          <CartContext.Provider value={{ add }}>
+          <CartContextProvider>
             <RoutesRestrictor>
               <TouchableWithoutFeedback
                 onPress={() => Keyboard.isVisible() && Keyboard.dismiss()}
@@ -165,7 +161,7 @@ const Layout = () => {
                 </AlertContextProvider>
               </TouchableWithoutFeedback>
             </RoutesRestrictor>
-          </CartContext.Provider>
+          </CartContextProvider>
         </TranslationsContext.Provider>
       </InternationalizationContext.Provider>
     </CustomerContext.Provider>

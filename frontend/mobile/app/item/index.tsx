@@ -12,8 +12,8 @@ import {
   useAPIFetching,
   useInternationalizationContext,
   useTranslationsContext,
+  useCartContext,
 } from "../../src/hooks";
-import useCartContext from "../../src/hooks/useCartContext";
 import { ItemResponse } from "../../src/interfaces";
 import Loading from "../_Loading";
 
