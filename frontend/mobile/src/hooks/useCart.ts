@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { Endpoints } from "../enums";
-import { CreateNewCartResponse } from "../interfaces";
+import { CartAddItemRequest, CreateNewCartResponse } from "../interfaces";
 import useAPIMutation from "./useAPIMutation";
 
 const useCart = () => {
@@ -14,10 +14,11 @@ const useCart = () => {
     method: "POST",
     options: {},
   });
-  const { trigger: addTrigger, status: addStatus } = useAPIMutation<
-    undefined,
-    undefined
-  >({
+  const {
+    response,
+    trigger: addTrigger,
+    status: addStatus,
+  } = useAPIMutation<CartAddItemRequest, undefined>({
     endpoint: Endpoints.CART_ADD_ITEM,
     method: "POST",
     slugs: {
