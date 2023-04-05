@@ -46,7 +46,9 @@ const useCart = () => {
     slugs: {
       publicId: cartId,
     },
-    options: {},
+    options: {
+      onSucceeded: () => setNumberOfItems(numberOfItems + 1),
+    },
   });
 
   useEffect(() => {
