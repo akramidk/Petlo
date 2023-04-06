@@ -9,6 +9,8 @@ import {
 import useAPIFetching from "./useAPIFetching";
 import useAPIMutation from "./useAPIMutation";
 
+// TODO need work
+
 const useCart = () => {
   const [initialCartId, setInitialCartId] = useState<string>();
   const [cartId, setCartId] = useState<string>();
@@ -56,6 +58,7 @@ const useCart = () => {
   });
 
   // TODO should not fair on app start
+  // TODO should not fair in rach render
   const { response: summaryResponse, setWait: summarySetWait } = useAPIFetching<
     undefined,
     undefined
