@@ -1,37 +1,50 @@
 import { useRouter } from "expo-router";
 import { useMemo } from "react";
+import { View } from "react-native";
+import { Text } from "../../src/components/atoms";
 import { PageStructure } from "../../src/components/organisms";
 import { useCartContext } from "../../src/hooks";
-import { CartSummaryResponse } from "../../src/interfaces";
+import { CartItemProps, CartSummaryResponse } from "../../src/interfaces";
 import Loading from "../_Loading";
+import Item from "./_Item";
 
 const Cart = () => {
   const router = useRouter();
   const { summary } = useCartContext();
 
-  const items = useMemo(() => {
+  const items: CartItemProps[] = useMemo(() => {
     if (!summary) return;
 
-    return (summary as CartSummaryResponse).items.map((item) => {
-      item.variants.map((variant) => {
-        return {
-          itemPublicId: item.public_id,
-          variantPublicId: variant.public_id,
-          name: item.name,
-          image: item.image,
-          quantity: variant.quantity,
-          amount: `${variant.amount} ${summary.currency}`,
-        };
-      });
+    return summary.items.map((item, i) => {
+      const variant = item.variants[i];
+
+      return {
+        itemPublicId: item.public_id,
+        variantPublicId: variant.public_id,
+        name: item.name,
+        image: item.image,
+        quantity: variant.quantity,
+        amount: `${variant.amount} ${summary.currency}`,
+      };
     });
   }, [summary]);
+
+  console.log("items", items);
 
   if (!summary) {
     return <Loading />;
   }
 
   return (
-    <PageStructure title="Your Cart" backButton={router.back}></PageStructure>
+    <PageStructure title="Your Cart" backButton={router.back}>
+      {items?.map((item, i) => {
+        return (
+          <View key={i}>
+            <Text>{item.name}</Text>
+          </View>
+        );
+      })}
+    </PageStructure>
   );
 };
 

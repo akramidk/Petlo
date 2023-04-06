@@ -9,6 +9,7 @@ import { BaseSelectorProps } from "./BaseSelectorProps";
 import { BaseButtonProps } from "./BaseButtonProps";
 import { DataCardProps } from "./DataCardProps";
 import { LinkProps } from "./LinkProps";
+import { CartItemProps } from "./CartItemProps";
 
 //endpoinds interfaces
 import {
@@ -190,4 +191,5 @@ export {
   LinkProps,
   Section,
   BriefItem,
+  CartItemProps,
 };
