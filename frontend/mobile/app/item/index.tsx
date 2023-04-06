@@ -6,7 +6,6 @@ import { ScrollView } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { BackButton, Button, Text } from "../../src/components/atoms";
 import { BaseButton } from "../../src/components/bases";
-import { PageStructure } from "../../src/components/organisms";
 import { Endpoints } from "../../src/enums";
 import {
   useAPIFetching,
