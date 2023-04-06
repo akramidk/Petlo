@@ -1,5 +1,5 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { Endpoints, StorageKeys } from "../enums";
 import {
   CartAddItemRequest,
@@ -13,6 +13,7 @@ const useCart = () => {
   const [initialCartId, setInitialCartId] = useState<string>();
   const [cartId, setCartId] = useState<string>();
   const [numberOfItems, setNumberOfItems] = useState<number>(0);
+  const [summary, setSummary] = useState();
 
   const {
     response: createResponse,
@@ -54,11 +55,36 @@ const useCart = () => {
     },
   });
 
+  // TODO should not fair on app start
+  const { response: summaryResponse, setWait: summarySetWait } = useAPIFetching<
+    undefined,
+    undefined
+  >({
+    endpoint: Endpoints.CART_SUMMARY,
+    slugs: {
+      publicId: initialCartId ?? cartId,
+    },
+    options: {
+      wait: !initialCartId && !cartId,
+    },
+  });
+
+  console.log("summaryResponse", summaryResponse?.isFetching);
+
   useEffect(() => {
     (async () => {
       setInitialCartId(await AsyncStorage.getItem(StorageKeys.CART));
     })();
   }, []);
+
+  useEffect(() => {
+    if (!numberOfItemsResponse || numberOfItemsResponse.isFetching) return;
+
+    if (numberOfItemsResponse.statusCode !== 200) {
+      setInitialCartId(null);
+      AsyncStorage.removeItem(StorageKeys.CART);
+    }
+  }, [numberOfItemsResponse]);
 
   useEffect(() => {
     const publicId = createResponse?.body?.cart?.public_id;
@@ -78,6 +104,12 @@ const useCart = () => {
     setNumberOfItems(numberOfItemsResponse.body.value);
   }, [numberOfItemsResponse]);
 
+  useEffect(() => {
+    if (!summaryResponse || summaryResponse.isFetching) return;
+
+    setSummary(summaryResponse.body);
+  }, [summaryResponse]);
+
   const add = useCallback(
     async (itemId: string, variantId: string) => {
       if (!initialCartId && !cartId) {
@@ -92,7 +124,7 @@ const useCart = () => {
     [initialCartId, cartId]
   );
 
-  return { numberOfItems, createStatus, add, addStatus };
+  return { numberOfItems, createStatus, add, addStatus, summary };
 };
 
 export default useCart;
