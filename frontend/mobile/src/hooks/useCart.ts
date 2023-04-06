@@ -4,6 +4,7 @@ import { Endpoints, StorageKeys } from "../enums";
 import {
   CartAddItemRequest,
   CartNumberOfItemsResponse,
+  CartSummaryResponse,
   CreateNewCartResponse,
 } from "../interfaces";
 import useAPIFetching from "./useAPIFetching";
@@ -15,7 +16,7 @@ const useCart = () => {
   const [initialCartId, setInitialCartId] = useState<string>();
   const [cartId, setCartId] = useState<string>();
   const [numberOfItems, setNumberOfItems] = useState<number>(0);
-  const [summary, setSummary] = useState();
+  const [summary, setSummary] = useState<CartSummaryResponse>();
 
   const {
     response: createResponse,
@@ -60,8 +61,8 @@ const useCart = () => {
   // TODO should not fair on app start
   // TODO should not fair in rach render
   const { response: summaryResponse, setWait: summarySetWait } = useAPIFetching<
-    undefined,
-    undefined
+    void,
+    CartSummaryResponse
   >({
     endpoint: Endpoints.CART_SUMMARY,
     slugs: {
