@@ -79,7 +79,7 @@ const Item = () => {
     return value;
   }, [selectedOptions]);
 
-  if (response.isFetching) {
+  if (response.isFetching || !variant) {
     return <Loading />;
   }
 
@@ -191,9 +191,13 @@ const Item = () => {
         edges={["bottom"]}
       >
         <Button
-          value="Add To Cart"
+          value={t("ITEM__ADD_TO_CART_BUTTON")}
           onClick={() => addToCart(item.public_id, variant.public_id)}
-          status={createCartStatus ?? addToCartStatus}
+          status={
+            createCartStatus ??
+            addToCartStatus ??
+            (variant.available ? "active" : "inactive")
+          }
         />
       </SafeAreaView>
     </View>
