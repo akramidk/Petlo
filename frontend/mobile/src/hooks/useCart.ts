@@ -72,8 +72,6 @@ const useCart = () => {
     },
   });
 
-  console.log("summaryResponse", summaryResponse?.isFetching);
-
   useEffect(() => {
     (async () => {
       setInitialCartId(await AsyncStorage.getItem(StorageKeys.CART));

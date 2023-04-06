@@ -7,8 +7,6 @@ const Cart = () => {
   const router = useRouter();
   const { summary } = useCartContext();
 
-  console.log("summary", summary);
-
   if (!summary) {
     return <Loading />;
   }

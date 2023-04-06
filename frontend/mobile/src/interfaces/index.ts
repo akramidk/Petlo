@@ -107,6 +107,7 @@ import { ItemResponse } from "./Endpoints/Item";
 import { CreateNewCartResponse } from "./Endpoints/CreateNewCart";
 import { CartAddItemRequest } from "./Endpoints/CartAddItem";
 import { CartNumberOfItemsResponse } from "./Endpoints/CartNumberOfItems";
+import { CartSummaryResponse } from "./Endpoints/CartSummary";
 
 //entities interfaces
 import { Customer } from "./Entities/Customer";
@@ -183,6 +184,7 @@ export {
   CreateNewCartResponse,
   CartAddItemRequest,
   CartNumberOfItemsResponse,
+  CartSummaryResponse,
   Customer,
   DataCardProps,
   LinkProps,
