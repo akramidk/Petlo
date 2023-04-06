@@ -1,11 +1,10 @@
-import { Text, View } from "react-native";
+import { useRouter } from "expo-router";
+import { PageStructure } from "../../src/components/organisms";
 
 const Cart = () => {
-  return (
-    <View>
-      <Text>Cart</Text>
-    </View>
-  );
+  const router = useRouter();
+
+  return <PageStructure title="Cart" backButton={router.back} />;
 };
 
 export default Cart;
