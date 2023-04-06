@@ -32,6 +32,9 @@ const useCart = () => {
     slugs: {
       publicId: initialCartId,
     },
+    SWROptions: {
+      shouldRetryOnError: false,
+    },
     options: {
       wait: !initialCartId,
     },
