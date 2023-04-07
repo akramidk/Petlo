@@ -21,6 +21,7 @@ const Cart = () => {
       return {
         itemPublicId: item.public_id,
         variantPublicId: variant.public_id,
+        options: variant.options,
         name: item.name,
         image: item.image,
         quantity: variant.quantity,
@@ -40,7 +41,7 @@ const Cart = () => {
       {items?.map((item, i) => {
         return (
           <View key={i}>
-            <Text>{item.name}</Text>
+            <Item {...item} />
           </View>
         );
       })}
