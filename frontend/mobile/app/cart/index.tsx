@@ -30,8 +30,6 @@ const Cart = () => {
     });
   }, [summary]);
 
-  console.log("items", items);
-
   if (!summary) {
     return <Loading />;
   }

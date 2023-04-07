@@ -58,8 +58,10 @@ const Item = ({
           </Text>
         </View>
 
-        <View className="absolute bottom-0 self-end">
+        <View className="absolute bottom-0 self-end flex-row">
+          <Text>-</Text>
           <Text>{quantity}</Text>
+          <Text>+</Text>
         </View>
       </View>
     </View>
