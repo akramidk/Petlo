@@ -57,6 +57,10 @@ const Item = ({
             {amount}
           </Text>
         </View>
+
+        <View className="absolute bottom-0 self-end">
+          <Text>{quantity}</Text>
+        </View>
       </View>
     </View>
   );
