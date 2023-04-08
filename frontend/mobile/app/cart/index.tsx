@@ -117,13 +117,15 @@ const Cart = () => {
 
   return (
     <PageStructure title={t("CART__TITLE")} backButton={router.back}>
-      {items?.map((item, i) => {
-        return (
-          <View key={i}>
-            <Item {...item} />
-          </View>
-        );
-      })}
+      <View className="space-y-[20px]">
+        {items?.map((item, i) => {
+          return (
+            <View key={i}>
+              <Item {...item} />
+            </View>
+          );
+        })}
+      </View>
     </PageStructure>
   );
 };
