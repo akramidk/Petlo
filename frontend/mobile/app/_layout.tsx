@@ -52,6 +52,7 @@ import Viewer from "./_Viewer";
 import { StatusBar } from "expo-status-bar";
 import { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import SideThings from "./_SideThings";
 
 const Layout = () => {
   // TODO handled if no network
@@ -128,26 +129,7 @@ const Layout = () => {
 
   useEffect(() => {
     cartStore.setCartId(cartId);
-
-    if (cartId) {
-      numberOfItemsSetWait(false);
-    }
   }, [cartId]);
-
-  useEffect(() => {
-    if (
-      numberOfItemsResponse?.isFetching === undefined ||
-      numberOfItemsResponse.isFetching
-    )
-      return;
-
-    if (
-      numberOfItemsResponse?.body?.value &&
-      numberOfItemsResponse.body.value > 0
-    ) {
-      cartStore.setNumberofItems(numberOfItemsResponse.body.value);
-    }
-  }, [numberOfItemsResponse]);
 
   // disable going back
   useEffect(() => {
@@ -204,22 +186,24 @@ const Layout = () => {
       >
         <TranslationsContext.Provider value={{ t }}>
           <RoutesRestrictor>
-            <TouchableWithoutFeedback
-              onPress={() => Keyboard.isVisible() && Keyboard.dismiss()}
-            >
-              {
-                // AlertContextProvider should be here
-              }
-              <AlertContextProvider>
+            <SideThings>
+              <TouchableWithoutFeedback
+                onPress={() => Keyboard.isVisible() && Keyboard.dismiss()}
+              >
                 {
-                  // Viewer should be here
+                  // AlertContextProvider should be here
                 }
-                <Viewer>
-                  <StatusBar style="dark" />
-                  <Slot />
-                </Viewer>
-              </AlertContextProvider>
-            </TouchableWithoutFeedback>
+                <AlertContextProvider>
+                  {
+                    // Viewer should be here
+                  }
+                  <Viewer>
+                    <StatusBar style="dark" />
+                    <Slot />
+                  </Viewer>
+                </AlertContextProvider>
+              </TouchableWithoutFeedback>
+            </SideThings>
           </RoutesRestrictor>
         </TranslationsContext.Provider>
       </InternationalizationContext.Provider>

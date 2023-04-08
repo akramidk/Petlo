@@ -1,3 +1,4 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import clsx from "clsx";
 import { useRouter, useSearchParams } from "expo-router";
 import React, {
@@ -12,7 +13,7 @@ import { ScrollView } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { BackButton, Button, Text } from "../../src/components/atoms";
 import { BaseButton } from "../../src/components/bases";
-import { Endpoints } from "../../src/enums";
+import { Endpoints, StorageKeys } from "../../src/enums";
 import {
   useAPIFetching,
   useInternationalizationContext,
@@ -54,8 +55,10 @@ const Item = () => {
     method: "POST",
     options: {
       onSucceeded: () => {
-        cartStore.setCartId(createResponse.body.cart.public_id);
-        cartStore.setSummary(createResponse.body.cart);
+        async () => {
+          await cartStore.setCartId(createResponse.body.cart.public_id);
+          await cartStore.setSummary(createResponse.body.cart);
+        };
       },
       resetSucceededStatusAfter: 500,
     },
@@ -69,12 +72,12 @@ const Item = () => {
     endpoint: Endpoints.CART_ADD_ITEM,
     method: "POST",
     slugs: {
-      publicId: cartStore.cartId ?? createResponse?.body?.cart?.public_id,
+      publicId: cartStore.cartId,
     },
     options: {
       onSucceeded: () => {
         cartStore.setSummary(addResponse.body.cart);
-        cartStore.setNumberofItems(addResponse.body.cart.items.length);
+        cartStore.setNumberofItems(addResponse.body.cart.number_of_items);
       },
       resetSucceededStatusAfter: 500,
     },
