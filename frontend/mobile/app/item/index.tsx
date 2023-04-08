@@ -1,6 +1,12 @@
 import clsx from "clsx";
 import { useRouter, useSearchParams } from "expo-router";
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { View, Image } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -12,8 +18,13 @@ import {
   useInternationalizationContext,
   useTranslationsContext,
   useCartContext,
+  useAPIMutation,
 } from "../../src/hooks";
-import { ItemResponse } from "../../src/interfaces";
+import {
+  CartAddItemRequest,
+  CreateNewCartResponse,
+  ItemResponse,
+} from "../../src/interfaces";
 import Loading from "../_Loading";
 
 const Item = () => {
@@ -31,14 +42,30 @@ const Item = () => {
     },
   });
 
+  const {
+    response: createResponse,
+    trigger: createTrigger,
+    status: createStatus,
+  } = useAPIMutation<void, CreateNewCartResponse>({
+    endpoint: Endpoints.CREATE_NEW_CART,
+    method: "POST",
+    options: {},
+  });
+
+  const { trigger: addTrigger, status: addStatus } = useAPIMutation<
+    CartAddItemRequest,
+    undefined
+  >({
+    endpoint: Endpoints.CART_ADD_ITEM,
+    method: "POST",
+    slugs: {
+      publicId: "",
+    },
+    options: {},
+  });
+
   const scrollViewRef = useRef<ScrollView>();
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
-
-  const {
-    createStatus: createCartStatus,
-    add: addToCart,
-    addStatus: addToCartStatus,
-  } = useCartContext();
 
   const { item, options, variants } = useMemo(() => {
     const item = response?.body;
@@ -58,6 +85,10 @@ const Item = () => {
 
     setSelectedOptions(array);
   }, [options]);
+
+  const addToCart = useCallback((itemId: string, variantId: string) => {
+    //
+  }, []);
 
   const variant = useMemo(() => {
     if (variants === undefined || selectedOptions.length === 0) return;
@@ -195,8 +226,8 @@ const Item = () => {
           value={t("ITEM__ADD_TO_CART_BUTTON")}
           onClick={() => addToCart(item.public_id, variant.public_id)}
           status={
-            createCartStatus ??
-            addToCartStatus ??
+            createStatus ??
+            addStatus ??
             (variant.available ? "active" : "inactive")
           }
         />
