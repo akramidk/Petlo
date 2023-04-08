@@ -1,6 +1,7 @@
 import { useRouter } from "expo-router";
 import { View } from "react-native";
 import { HEDER_ICONS } from "../../constants";
+import { useCartStore } from "../../hooks";
 import { HeaderButton, Logo } from "../atoms";
 
 interface HeaderProps {
@@ -11,6 +12,7 @@ interface HeaderProps {
 
 const Header = ({ activePath, showSearchIcon, showCartIcon }: HeaderProps) => {
   const router = useRouter();
+  const cartStore = useCartStore();
 
   return (
     <View className="flex-row h-[48px] px-[28px] bg-[#fff] border-b-[1px] border-b-[#f6f6f6] justify-between items-start pt-[6px]">
@@ -27,9 +29,11 @@ const Header = ({ activePath, showSearchIcon, showCartIcon }: HeaderProps) => {
 
             return (
               <View key={i} className="ml-[16px]">
-                {icon.id === "CART" && showCartIcon && (
-                  <View className="h-[10px] w-[10px] absolute z-10 rounded-full bg-[#E64848] border-[1px] border-[#fff]"></View>
-                )}
+                {icon.id === "CART" &&
+                  showCartIcon &&
+                  cartStore.numberofItems > 0 && (
+                    <View className="h-[10px] w-[10px] absolute z-10 rounded-full bg-[#E64848] border-[1px] border-[#fff]"></View>
+                  )}
                 <HeaderButton
                   icon={icon.id}
                   selected={icon.path === activePath}

@@ -122,7 +122,7 @@ const Layout = () => {
 
   useEffect(() => {
     (async () => {
-      await AsyncStorage.getItem(StorageKeys.CART);
+      setCartId(await AsyncStorage.getItem(StorageKeys.CART));
     })();
   }, []);
 
@@ -135,8 +135,15 @@ const Layout = () => {
   }, [cartId]);
 
   useEffect(() => {
-    if (!numberOfItemsResponse && numberOfItemsResponse.isFetching) return;
-    cartStore.setNumberofItems(numberOfItemsResponse.body.value);
+    if (
+      numberOfItemsResponse?.isFetching === undefined ||
+      numberOfItemsResponse.isFetching
+    )
+      return;
+
+    if (numberOfItemsResponse?.body?.value) {
+      cartStore.setNumberofItems(numberOfItemsResponse.body.value);
+    }
   }, [numberOfItemsResponse]);
 
   // disable going back
