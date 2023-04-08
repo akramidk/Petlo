@@ -3,14 +3,19 @@ import { useEffect, useMemo } from "react";
 import { View } from "react-native";
 import { PageStructure } from "../../src/components/organisms";
 import { Endpoints } from "../../src/enums";
-import { useAPIFetching, useCartStore } from "../../src/hooks";
-import { CartItemProps, CartSummaryResponse } from "../../src/interfaces";
+import { useAPIFetching, useAPIMutation, useCartStore } from "../../src/hooks";
+import {
+  CartAddItemRequest,
+  CartAddItemResponse,
+  CartItemProps,
+  CartSummaryResponse,
+} from "../../src/interfaces";
 import Loading from "../_Loading";
 import Item from "./_Item";
 
 const Cart = () => {
   const router = useRouter();
-  const { summary, cartId, setSummary } = useCartStore();
+  const { summary, cartId, setSummary, setNumberofItems } = useCartStore();
   const { response: summaryResponse, setWait: summarySetWait } = useAPIFetching<
     void,
     CartSummaryResponse
@@ -24,6 +29,25 @@ const Cart = () => {
     },
   });
 
+  const {
+    response: addResponse,
+    trigger: addTrigger,
+    status: addStatus,
+  } = useAPIMutation<CartAddItemRequest, CartAddItemResponse>({
+    endpoint: Endpoints.CART_ADD_ITEM,
+    method: "POST",
+    slugs: {
+      publicId: cartId,
+    },
+    options: {
+      onSucceeded: () => {
+        setSummary(addResponse.body.cart);
+        setNumberofItems(addResponse.body.cart.number_of_items);
+      },
+      resetSucceededStatusAfter: 500,
+    },
+  });
+
   const items: CartItemProps[] = useMemo(() => {
     if (!summary) return;
 
@@ -31,16 +55,21 @@ const Cart = () => {
       const variant = item.variants[i];
 
       return {
-        itemPublicId: item.public_id,
-        variantPublicId: variant.public_id,
         options: variant.options,
         name: item.name,
         image: item.image,
         quantity: variant.quantity,
         amount: `${variant.amount} ${summary.currency}`,
+        add: () =>
+          addTrigger({
+            item_id: item.public_id,
+            variant_id: variant.public_id,
+          }),
+        addStatus: addStatus,
+        remove: () => {},
       };
     });
-  }, [summary]);
+  }, [summary, addStatus]);
 
   useEffect(() => {
     if (!summary && cartId) summarySetWait(false);

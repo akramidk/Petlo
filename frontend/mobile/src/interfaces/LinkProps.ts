@@ -7,4 +7,5 @@ export interface LinkProps {
   cn?: string;
   valueCN?: string;
   font?: font;
+  hideValueIfNotActive?: boolean;
 }

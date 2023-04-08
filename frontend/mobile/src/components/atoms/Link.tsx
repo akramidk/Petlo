@@ -14,6 +14,7 @@ const Link = ({
   cn,
   valueCN,
   font = "extraBold",
+  hideValueIfNotActive = false,
 }: LinkProps) => {
   const { direction } = useInternationalizationContext();
 
@@ -35,16 +36,18 @@ const Link = ({
         </View>
       )}
 
-      <Text
-        cn={clsx(
-          "text-[14px]",
-          status === "active" ? "text-[#222]" : "text-[#888]",
-          valueCN
-        )}
-        font={font}
-      >
-        {value}
-      </Text>
+      {(!hideValueIfNotActive || status === "active") && (
+        <Text
+          cn={clsx(
+            "text-[14px]",
+            status === "active" ? "text-[#222]" : "text-[#888]",
+            valueCN
+          )}
+          font={font}
+        >
+          {value}
+        </Text>
+      )}
     </BaseButton>
   );
 };

@@ -1,17 +1,19 @@
 import { Fragment } from "react";
 import { View, Image } from "react-native";
-import { Text } from "../../src/components/atoms";
+import { Link, Text } from "../../src/components/atoms";
 import { CartItemProps } from "../../src/interfaces";
 
 const Item = ({
-  itemPublicId,
-  variantPublicId,
   options,
   name,
   image,
   quantity,
   amount,
+  add,
+  addStatus,
+  remove,
 }: CartItemProps) => {
+  console.log("addStatus");
   return (
     <View className="flex-row space-x-[16px] h-[72px]">
       <View className="h-[72px] w-[72px] p-[12px] bg-[#f9f9f9]">
@@ -58,10 +60,21 @@ const Item = ({
           </Text>
         </View>
 
-        <View className="absolute bottom-0 self-end flex-row">
-          <Text>-</Text>
+        <View className="absolute bottom-0 self-end flex-row items-center">
+          <Link
+            onClick={() => {}}
+            value="-"
+            cn="px-[12px]"
+            valueCN="text-[16px]"
+          />
           <Text>{quantity}</Text>
-          <Text>+</Text>
+          <Link
+            onClick={add}
+            value="+"
+            status={addStatus}
+            cn="px-[12px]"
+            valueCN="text-[16px]"
+          />
         </View>
       </View>
     </View>
