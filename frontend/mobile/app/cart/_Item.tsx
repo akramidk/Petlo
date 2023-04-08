@@ -12,6 +12,7 @@ const Item = ({
   add,
   addStatus,
   remove,
+  removeStatus,
 }: CartItemProps) => {
   console.log("addStatus");
   return (
@@ -62,7 +63,8 @@ const Item = ({
 
         <View className="absolute bottom-0 self-end flex-row items-center">
           <Link
-            onClick={() => {}}
+            onClick={remove}
+            status={removeStatus}
             value="-"
             cn="px-[12px]"
             valueCN="text-[16px]"

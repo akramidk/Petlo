@@ -48,6 +48,25 @@ const Cart = () => {
     },
   });
 
+  const {
+    response: removeResponse,
+    trigger: removeTrigger,
+    status: removeStatus,
+  } = useAPIMutation<CartAddItemRequest, CartAddItemResponse>({
+    endpoint: Endpoints.CART_REMOVE_ITEM,
+    method: "DELETE",
+    slugs: {
+      publicId: cartId,
+    },
+    options: {
+      onSucceeded: () => {
+        setSummary(removeResponse.body.cart);
+        setNumberofItems(removeResponse.body.cart.number_of_items);
+      },
+      resetSucceededStatusAfter: 500,
+    },
+  });
+
   const items: CartItemProps[] = useMemo(() => {
     if (!summary) return;
 
@@ -66,10 +85,15 @@ const Cart = () => {
             variant_id: variant.public_id,
           }),
         addStatus: addStatus,
-        remove: () => {},
+        remove: () =>
+          removeTrigger({
+            item_id: item.public_id,
+            variant_id: variant.public_id,
+          }),
+        removeStatus: removeStatus,
       };
     });
-  }, [summary, addStatus]);
+  }, [summary, addStatus, removeStatus]);
 
   useEffect(() => {
     if (!summary && cartId) summarySetWait(false);

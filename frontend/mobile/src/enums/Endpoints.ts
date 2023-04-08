@@ -33,6 +33,7 @@ export enum Endpoints {
   ITEM = "/v1/items/${publicId}",
   CREATE_NEW_CART = "/v1/carts",
   CART_ADD_ITEM = "/v1/carts/${publicId}",
+  CART_REMOVE_ITEM = "/v1/carts/${publicId}",
   CART_NUMBER_OF_ITEMS = "/v1/carts/${publicId}/number-of-items",
   CART_SUMMARY = "/v1/carts/${publicId}",
 }

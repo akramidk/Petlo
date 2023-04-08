@@ -112,6 +112,10 @@ import {
 } from "./Endpoints/CartAddItem";
 import { CartNumberOfItemsResponse } from "./Endpoints/CartNumberOfItems";
 import { CartSummaryResponse } from "./Endpoints/CartSummary";
+import {
+  CartRemoveItemRequest,
+  CartRemoveItemResponse,
+} from "./Endpoints/CartRemoveItem";
 
 //entities interfaces
 import { Customer } from "./Entities/Customer";
@@ -191,6 +195,8 @@ export {
   CartAddItemResponse,
   CartNumberOfItemsResponse,
   CartSummaryResponse,
+  CartRemoveItemRequest,
+  CartRemoveItemResponse,
   Customer,
   Cart,
   DataCardProps,

@@ -9,4 +9,5 @@ export interface CartItemProps {
   add: () => void;
   addStatus: buttonStatus;
   remove: () => void;
+  removeStatus: buttonStatus;
 }
