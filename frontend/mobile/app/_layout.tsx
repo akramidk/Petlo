@@ -26,10 +26,15 @@ import {
   Keyboard,
   BackHandler,
 } from "react-native";
-import { useAPIFetching, useInternationalization } from "../src/hooks";
+import {
+  useAPIFetching,
+  useCartStore,
+  useInternationalization,
+} from "../src/hooks";
 import * as Device from "expo-device";
 import * as Application from "expo-application";
 import {
+  CartNumberOfItemsResponse,
   NewVersionAvailableRequest,
   NewVersionAvailableResponse,
 } from "../src/interfaces";
@@ -39,13 +44,14 @@ import {
   TranslationsContext,
 } from "../src/contexts";
 import { useTranslations } from "../src/hooks";
-import { Endpoints } from "../src/enums";
+import { Endpoints, StorageKeys } from "../src/enums";
 import RoutesRestrictor from "./_RoutesRestrictor";
 import { useCustomer } from "../src/hooks";
 import { AlertContextProvider, CartContextProvider } from "../src/providers";
 import Viewer from "./_Viewer";
 import { StatusBar } from "expo-status-bar";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Layout = () => {
   // TODO handled if no network
@@ -97,6 +103,43 @@ const Layout = () => {
     language: language,
   });
 
+  // cart things
+  const [cartId, setCartId] = useState<string | null>();
+  const cartStore = useCartStore();
+  const { response: numberOfItemsResponse, setWait: numberOfItemsSetWait } =
+    useAPIFetching<void, CartNumberOfItemsResponse>({
+      endpoint: Endpoints.CART_NUMBER_OF_ITEMS,
+      slugs: {
+        publicId: cartId,
+      },
+      SWROptions: {
+        shouldRetryOnError: false,
+      },
+      options: {
+        wait: true,
+      },
+    });
+
+  useEffect(() => {
+    (async () => {
+      await AsyncStorage.getItem(StorageKeys.CART);
+    })();
+  }, []);
+
+  useEffect(() => {
+    cartStore.setCartId(cartId);
+
+    if (cartId) {
+      numberOfItemsSetWait(false);
+    }
+  }, [cartId]);
+
+  useEffect(() => {
+    if (!numberOfItemsResponse && numberOfItemsResponse.isFetching) return;
+    cartStore.setNumberofItems(numberOfItemsResponse.body.value);
+  }, [numberOfItemsResponse]);
+
+  // disable going back
   useEffect(() => {
     const backHandler = BackHandler.addEventListener(
       "hardwareBackPress",
@@ -111,7 +154,8 @@ const Layout = () => {
     newVersionAvailableResponse?.body?.value ||
     storedLanguage === undefined ||
     sessionToken === undefined ||
-    customer === undefined
+    customer === undefined ||
+    cartStore.cartId === undefined
   ) {
     // TODO new design for this insted of an Alert
     if (newVersionAvailableResponse?.body?.value) {
