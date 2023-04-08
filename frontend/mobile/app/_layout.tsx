@@ -141,7 +141,10 @@ const Layout = () => {
     )
       return;
 
-    if (numberOfItemsResponse?.body?.value) {
+    if (
+      numberOfItemsResponse?.body?.value &&
+      numberOfItemsResponse.body.value > 0
+    ) {
       cartStore.setNumberofItems(numberOfItemsResponse.body.value);
     }
   }, [numberOfItemsResponse]);
