@@ -9,6 +9,7 @@ import useCustomerContext from "./useCustomerContext";
 import useAlertContext from "./useAlertContext";
 import useCart from "./useCart";
 import useCartContext from "./useCartContext";
+import useCartStore from "./useCartStore";
 
 export {
   useAPIFetching,
@@ -22,4 +23,5 @@ export {
   useAlertContext,
   useCart,
   useCartContext,
+  useCartStore,
 };
