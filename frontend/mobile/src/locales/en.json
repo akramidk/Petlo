@@ -140,5 +140,6 @@
   "HOME__OPTIONS_INSIDE": "options inside",
   "ITEM__BY": "By",
   "ITEM__ADD_TO_CART_BUTTON": "Add To Cart",
-  "CART__TITLE": "Your Cart"
+  "CART__TITLE": "Your Cart",
+  "CART__CHECKOUT_BUTTON": "Checkout"
 }

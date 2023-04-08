@@ -22,7 +22,8 @@ const Cart = () => {
   const router = useRouter();
   const { t } = useTranslationsContext();
 
-  const { summary, cartId, setSummary, setNumberofItems } = useCartStore();
+  const { summary, cartId, setSummary, setNumberofItems, numberofItems } =
+    useCartStore();
   const { response: summaryResponse, setWait: summarySetWait } = useAPIFetching<
     void,
     CartSummaryResponse
@@ -116,7 +117,18 @@ const Cart = () => {
   }
 
   return (
-    <PageStructure title={t("CART__TITLE")} backButton={router.back}>
+    <PageStructure
+      title={t("CART__TITLE")}
+      backButton={router.back}
+      button={
+        numberofItems > 0
+          ? {
+              value: t("CART__CHECKOUT_BUTTON"),
+              onClick: () => router.push("/checkout"),
+            }
+          : undefined
+      }
+    >
       <View className="space-y-[20px]">
         {items?.map((item, i) => {
           return (
