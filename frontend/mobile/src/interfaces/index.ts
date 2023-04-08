@@ -106,7 +106,10 @@ import { SearchRequest, SearchResponse } from "./Endpoints/Search";
 import { CategoriesRequest, CategoriesResponse } from "./Endpoints/Categories";
 import { ItemResponse } from "./Endpoints/Item";
 import { CreateNewCartResponse } from "./Endpoints/CreateNewCart";
-import { CartAddItemRequest } from "./Endpoints/CartAddItem";
+import {
+  CartAddItemRequest,
+  CartAddItemResponse,
+} from "./Endpoints/CartAddItem";
 import { CartNumberOfItemsResponse } from "./Endpoints/CartNumberOfItems";
 import { CartSummaryResponse } from "./Endpoints/CartSummary";
 
@@ -185,6 +188,7 @@ export {
   ItemResponse,
   CreateNewCartResponse,
   CartAddItemRequest,
+  CartAddItemResponse,
   CartNumberOfItemsResponse,
   CartSummaryResponse,
   Customer,

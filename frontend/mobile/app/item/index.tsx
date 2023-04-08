@@ -18,6 +18,7 @@ import {
   useInternationalizationContext,
   useTranslationsContext,
   useAPIMutation,
+  useCartStore,
 } from "../../src/hooks";
 import {
   CartAddItemRequest,
@@ -31,6 +32,7 @@ const Item = () => {
   const { publicId } = useSearchParams();
   const { t } = useTranslationsContext();
   const { direction } = useInternationalizationContext();
+
   const { response } = useAPIFetching<void, ItemResponse>({
     endpoint: Endpoints.ITEM,
     SWROptions: {
@@ -41,6 +43,7 @@ const Item = () => {
     },
   });
 
+  const cartStore = useCartStore();
   const {
     response: createResponse,
     trigger: createTrigger,
@@ -48,7 +51,10 @@ const Item = () => {
   } = useAPIMutation<void, CreateNewCartResponse>({
     endpoint: Endpoints.CREATE_NEW_CART,
     method: "POST",
-    options: {},
+    options: {
+      onSucceeded: () =>
+        cartStore.setCartId(createResponse.body.cart.public_id),
+    },
   });
 
   const { trigger: addTrigger, status: addStatus } = useAPIMutation<
@@ -58,7 +64,7 @@ const Item = () => {
     endpoint: Endpoints.CART_ADD_ITEM,
     method: "POST",
     slugs: {
-      publicId: "",
+      publicId: cartStore.cartId,
     },
     options: {},
   });
@@ -85,8 +91,15 @@ const Item = () => {
     setSelectedOptions(array);
   }, [options]);
 
-  const addToCart = useCallback((itemId: string, variantId: string) => {
-    //
+  const addToCart = useCallback(async (itemId: string, variantId: string) => {
+    if (!cartStore.cartId) {
+      await createTrigger(undefined);
+    }
+
+    addTrigger({
+      item_id: itemId,
+      variant_id: variantId,
+    });
   }, []);
 
   const variant = useMemo(() => {
