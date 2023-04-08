@@ -22,6 +22,7 @@ import {
 } from "../../src/hooks";
 import {
   CartAddItemRequest,
+  CartAddItemResponse,
   CreateNewCartResponse,
   ItemResponse,
 } from "../../src/interfaces";
@@ -59,16 +60,22 @@ const Item = () => {
     },
   });
 
-  const { trigger: addTrigger, status: addStatus } = useAPIMutation<
-    CartAddItemRequest,
-    undefined
-  >({
+  const {
+    response: addResponse,
+    trigger: addTrigger,
+    status: addStatus,
+  } = useAPIMutation<CartAddItemRequest, CartAddItemResponse>({
     endpoint: Endpoints.CART_ADD_ITEM,
     method: "POST",
     slugs: {
       publicId: cartStore.cartId,
     },
-    options: {},
+    options: {
+      onSucceeded: () => {
+        cartStore.setSummary(addResponse.body.cart);
+        cartStore.setNumberofItems(addResponse.body.cart.items.length);
+      },
+    },
   });
 
   const scrollViewRef = useRef<ScrollView>();
