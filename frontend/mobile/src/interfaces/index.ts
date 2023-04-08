@@ -114,6 +114,7 @@ import { CartSummaryResponse } from "./Endpoints/CartSummary";
 import { Customer } from "./Entities/Customer";
 import { Section } from "./Entities/Section";
 import { BriefItem } from "./Entities/BriefItem";
+import { Cart } from "./Entities/Cart";
 
 export {
   NewVersionAvailableRequest,
@@ -187,6 +188,7 @@ export {
   CartNumberOfItemsResponse,
   CartSummaryResponse,
   Customer,
+  Cart,
   DataCardProps,
   LinkProps,
   Section,
