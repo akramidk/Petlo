@@ -55,10 +55,12 @@ const Item = () => {
     method: "POST",
     options: {
       onSucceeded: () => {
-        async () => {
-          await cartStore.setCartId(createResponse.body.cart.public_id);
-          await cartStore.setSummary(createResponse.body.cart);
-        };
+        AsyncStorage.setItem(
+          StorageKeys.CART,
+          createResponse.body.cart.public_id
+        );
+        cartStore.setCartId(createResponse.body.cart.public_id);
+        cartStore.setSummary(createResponse.body.cart);
       },
       resetSucceededStatusAfter: 500,
     },
@@ -72,7 +74,7 @@ const Item = () => {
     endpoint: Endpoints.CART_ADD_ITEM,
     method: "POST",
     slugs: {
-      publicId: cartStore.cartId,
+      publicId: cartStore.cartId ?? createResponse?.body?.cart?.public_id,
     },
     options: {
       onSucceeded: () => {

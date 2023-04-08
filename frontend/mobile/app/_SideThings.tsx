@@ -1,5 +1,6 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useEffect } from "react";
-import { Endpoints } from "../src/enums";
+import { Endpoints, StorageKeys } from "../src/enums";
 import { useAPIFetching, useCartStore } from "../src/hooks";
 import { CartNumberOfItemsResponse } from "../src/interfaces";
 
@@ -25,10 +26,12 @@ const SideThings = ({ children }: SideThingsProps) => {
   useEffect(() => {
     if (numberOfItemsResponse.isFetching) return;
 
-    if (
-      numberOfItemsResponse?.body?.value &&
-      numberOfItemsResponse.body.value > 0
-    ) {
+    if (!numberOfItemsResponse?.body?.value) {
+      AsyncStorage.removeItem(StorageKeys.CART);
+      return;
+    }
+
+    if (numberOfItemsResponse.body.value > 0) {
       cartStore.setNumberofItems(numberOfItemsResponse.body.value);
     }
   }, [numberOfItemsResponse]);
