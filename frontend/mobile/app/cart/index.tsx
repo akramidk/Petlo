@@ -3,7 +3,12 @@ import { useEffect, useMemo } from "react";
 import { View } from "react-native";
 import { PageStructure } from "../../src/components/organisms";
 import { Endpoints } from "../../src/enums";
-import { useAPIFetching, useAPIMutation, useCartStore } from "../../src/hooks";
+import {
+  useAPIFetching,
+  useAPIMutation,
+  useCartStore,
+  useTranslationsContext,
+} from "../../src/hooks";
 import {
   CartAddItemRequest,
   CartAddItemResponse,
@@ -15,6 +20,8 @@ import Item from "./_Item";
 
 const Cart = () => {
   const router = useRouter();
+  const { t } = useTranslationsContext();
+
   const { summary, cartId, setSummary, setNumberofItems } = useCartStore();
   const { response: summaryResponse, setWait: summarySetWait } = useAPIFetching<
     void,
@@ -109,7 +116,7 @@ const Cart = () => {
   }
 
   return (
-    <PageStructure title="Your Cart" backButton={router.back}>
+    <PageStructure title={t("CART__TITLE")} backButton={router.back}>
       {items?.map((item, i) => {
         return (
           <View key={i}>

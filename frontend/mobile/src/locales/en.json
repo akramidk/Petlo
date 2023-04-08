@@ -139,5 +139,6 @@
   "HOME__SECTION_SHOW_ALL_ITEMS_CARD": "Show All Items",
   "HOME__OPTIONS_INSIDE": "options inside",
   "ITEM__BY": "By",
-  "ITEM__ADD_TO_CART_BUTTON": "Add To Cart"
+  "ITEM__ADD_TO_CART_BUTTON": "Add To Cart",
+  "CART__TITLE": "Your Cart"
 }

@@ -1,6 +1,8 @@
+import clsx from "clsx";
 import { Fragment } from "react";
 import { View, Image } from "react-native";
 import { Link, Text } from "../../src/components/atoms";
+import { useInternationalizationContext } from "../../src/hooks";
 import { CartItemProps } from "../../src/interfaces";
 
 const Item = ({
@@ -14,10 +16,21 @@ const Item = ({
   remove,
   removeStatus,
 }: CartItemProps) => {
-  console.log("addStatus");
+  const { direction } = useInternationalizationContext();
+
   return (
-    <View className="flex-row space-x-[16px] h-[72px]">
-      <View className="h-[72px] w-[72px] p-[12px] bg-[#f9f9f9]">
+    <View
+      className={clsx(
+        "h-[72px]",
+        direction === "ltr" ? "flex-row" : "flex-row-reverse"
+      )}
+    >
+      <View
+        className={clsx(
+          "h-[72px] w-[72px] p-[12px] bg-[#f9f9f9]",
+          direction === "ltr" ? "mr-[16px]" : "ml-[16px]"
+        )}
+      >
         <Image
           style={{
             flex: 1,
@@ -42,10 +55,17 @@ const Item = ({
             {name}
           </Text>
 
-          <View className="flex-row space-x-[6px]">
+          <View
+            className={clsx(
+              direction === "ltr" ? "flex-row" : "flex-row-reverse"
+            )}
+          >
             {options.map((option, i) => {
               return (
-                <View key={i}>
+                <View
+                  key={i}
+                  className={direction === "ltr" ? "mr-[6px]" : "ml-[6px]"}
+                >
                   <Text font="medium" cn="text-[#777] text-[14px]">
                     {option}
                   </Text>
@@ -55,13 +75,23 @@ const Item = ({
           </View>
         </View>
 
-        <View className="absolute bottom-0">
+        <View
+          className={clsx(
+            "absolute bottom-0",
+            direction === "ltr" ? "self-start" : "self-end"
+          )}
+        >
           <Text font="semiBold" cn="text-[#666] text-[14.5px]">
             {amount}
           </Text>
         </View>
 
-        <View className="absolute bottom-0 self-end flex-row items-center">
+        <View
+          className={clsx(
+            "absolute bottom-0 self-end flex-row items-center",
+            direction === "ltr" ? "self-end" : "self-start"
+          )}
+        >
           <Link
             onClick={remove}
             status={removeStatus}
