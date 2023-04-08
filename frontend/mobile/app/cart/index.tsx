@@ -1,16 +1,14 @@
 import { useRouter } from "expo-router";
 import { useMemo } from "react";
 import { View } from "react-native";
-import { Text } from "../../src/components/atoms";
 import { PageStructure } from "../../src/components/organisms";
-import { useCartContext } from "../../src/hooks";
-import { CartItemProps, CartSummaryResponse } from "../../src/interfaces";
+import { Cart, CartItemProps, CartSummaryResponse } from "../../src/interfaces";
 import Loading from "../_Loading";
 import Item from "./_Item";
 
 const Cart = () => {
   const router = useRouter();
-  const { summary } = useCartContext();
+  const summary: Cart = {};
 
   const items: CartItemProps[] = useMemo(() => {
     if (!summary) return;

@@ -47,7 +47,7 @@ import { useTranslations } from "../src/hooks";
 import { Endpoints, StorageKeys } from "../src/enums";
 import RoutesRestrictor from "./_RoutesRestrictor";
 import { useCustomer } from "../src/hooks";
-import { AlertContextProvider, CartContextProvider } from "../src/providers";
+import { AlertContextProvider } from "../src/providers";
 import Viewer from "./_Viewer";
 import { StatusBar } from "expo-status-bar";
 import { useEffect, useState } from "react";
@@ -203,26 +203,24 @@ const Layout = () => {
         }}
       >
         <TranslationsContext.Provider value={{ t }}>
-          <CartContextProvider>
-            <RoutesRestrictor>
-              <TouchableWithoutFeedback
-                onPress={() => Keyboard.isVisible() && Keyboard.dismiss()}
-              >
+          <RoutesRestrictor>
+            <TouchableWithoutFeedback
+              onPress={() => Keyboard.isVisible() && Keyboard.dismiss()}
+            >
+              {
+                // AlertContextProvider should be here
+              }
+              <AlertContextProvider>
                 {
-                  // AlertContextProvider should be here
+                  // Viewer should be here
                 }
-                <AlertContextProvider>
-                  {
-                    // Viewer should be here
-                  }
-                  <Viewer>
-                    <StatusBar style="dark" />
-                    <Slot />
-                  </Viewer>
-                </AlertContextProvider>
-              </TouchableWithoutFeedback>
-            </RoutesRestrictor>
-          </CartContextProvider>
+                <Viewer>
+                  <StatusBar style="dark" />
+                  <Slot />
+                </Viewer>
+              </AlertContextProvider>
+            </TouchableWithoutFeedback>
+          </RoutesRestrictor>
         </TranslationsContext.Provider>
       </InternationalizationContext.Provider>
     </CustomerContext.Provider>

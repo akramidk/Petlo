@@ -7,8 +7,6 @@ import useCustomer from "./useCustomer";
 import useAPIMutation from "./useAPIMutation";
 import useCustomerContext from "./useCustomerContext";
 import useAlertContext from "./useAlertContext";
-import useCart from "./useCart";
-import useCartContext from "./useCartContext";
 import useCartStore from "./useCartStore";
 
 export {
@@ -21,7 +19,5 @@ export {
   useAPIMutation,
   useCustomerContext,
   useAlertContext,
-  useCart,
-  useCartContext,
   useCartStore,
 };
