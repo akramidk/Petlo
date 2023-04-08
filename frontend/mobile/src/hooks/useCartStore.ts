@@ -7,6 +7,7 @@ interface CartStore {
   numberofItems: number;
   setNumberofItems: (numberofItems: number) => void;
   summary: Cart | undefined;
+  setSummary: (summary: Cart) => void;
 }
 
 const useCartStore = create<CartStore>((set) => ({
@@ -16,6 +17,7 @@ const useCartStore = create<CartStore>((set) => ({
   setNumberofItems: (numberofItems) =>
     set(() => ({ numberofItems: numberofItems })),
   summary: undefined,
+  setSummary: (summary) => set(() => ({ summary: summary })),
 }));
 
 export default useCartStore;

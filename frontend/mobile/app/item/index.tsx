@@ -52,8 +52,10 @@ const Item = () => {
     endpoint: Endpoints.CREATE_NEW_CART,
     method: "POST",
     options: {
-      onSucceeded: () =>
-        cartStore.setCartId(createResponse.body.cart.public_id),
+      onSucceeded: () => {
+        cartStore.setCartId(createResponse.body.cart.public_id);
+        cartStore.setSummary(createResponse.body.cart);
+      },
     },
   });
 
