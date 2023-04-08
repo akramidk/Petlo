@@ -57,6 +57,7 @@ const Item = () => {
         cartStore.setCartId(createResponse.body.cart.public_id);
         cartStore.setSummary(createResponse.body.cart);
       },
+      resetSucceededStatusAfter: 500,
     },
   });
 
@@ -68,13 +69,14 @@ const Item = () => {
     endpoint: Endpoints.CART_ADD_ITEM,
     method: "POST",
     slugs: {
-      publicId: cartStore.cartId,
+      publicId: cartStore.cartId ?? createResponse?.body?.cart?.public_id,
     },
     options: {
       onSucceeded: () => {
         cartStore.setSummary(addResponse.body.cart);
         cartStore.setNumberofItems(addResponse.body.cart.items.length);
       },
+      resetSucceededStatusAfter: 500,
     },
   });
 
@@ -100,16 +102,19 @@ const Item = () => {
     setSelectedOptions(array);
   }, [options]);
 
-  const addToCart = useCallback(async (itemId: string, variantId: string) => {
-    if (!cartStore.cartId) {
-      await createTrigger(undefined);
-    }
+  const addToCart = useCallback(
+    async (itemId: string, variantId: string) => {
+      if (!cartStore.cartId) {
+        await createTrigger(undefined);
+      }
 
-    addTrigger({
-      item_id: itemId,
-      variant_id: variantId,
-    });
-  }, []);
+      addTrigger({
+        item_id: itemId,
+        variant_id: variantId,
+      });
+    },
+    [cartStore.cartId]
+  );
 
   const variant = useMemo(() => {
     if (variants === undefined || selectedOptions.length === 0) return;
@@ -247,8 +252,8 @@ const Item = () => {
           value={t("ITEM__ADD_TO_CART_BUTTON")}
           onClick={() => addToCart(item.public_id, variant.public_id)}
           status={
-            createStatus ??
             addStatus ??
+            createStatus ??
             (variant.available ? "active" : "inactive")
           }
         />

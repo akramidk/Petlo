@@ -80,15 +80,6 @@ const useCart = () => {
   }, []);
 
   useEffect(() => {
-    if (!numberOfItemsResponse || numberOfItemsResponse.isFetching) return;
-
-    if (numberOfItemsResponse.statusCode !== 200) {
-      setInitialCartId(null);
-      AsyncStorage.removeItem(StorageKeys.CART);
-    }
-  }, [numberOfItemsResponse]);
-
-  useEffect(() => {
     const publicId = createResponse?.body?.cart?.public_id;
     if (!publicId) return;
 
