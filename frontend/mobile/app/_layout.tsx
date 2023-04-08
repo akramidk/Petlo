@@ -107,29 +107,14 @@ const Layout = () => {
   // cart things
   const [cartId, setCartId] = useState<string | null>();
   const cartStore = useCartStore();
-  const { response: numberOfItemsResponse, setWait: numberOfItemsSetWait } =
-    useAPIFetching<void, CartNumberOfItemsResponse>({
-      endpoint: Endpoints.CART_NUMBER_OF_ITEMS,
-      slugs: {
-        publicId: cartId,
-      },
-      SWROptions: {
-        shouldRetryOnError: false,
-      },
-      options: {
-        wait: true,
-      },
-    });
 
   useEffect(() => {
     (async () => {
-      setCartId(await AsyncStorage.getItem(StorageKeys.CART));
+      cartStore.setCartId(await AsyncStorage.getItem(StorageKeys.CART));
     })();
   }, []);
 
-  useEffect(() => {
-    cartStore.setCartId(cartId);
-  }, [cartId]);
+  console.log("cartStore", cartStore.cartId);
 
   // disable going back
   useEffect(() => {

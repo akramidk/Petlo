@@ -24,14 +24,10 @@ const SideThings = ({ children }: SideThingsProps) => {
   });
 
   useEffect(() => {
+    console.log("numberOfItemsResponse", numberOfItemsResponse);
     if (numberOfItemsResponse.isFetching) return;
 
-    if (!numberOfItemsResponse?.body?.value) {
-      AsyncStorage.removeItem(StorageKeys.CART);
-      return;
-    }
-
-    if (numberOfItemsResponse.body.value > 0) {
+    if (numberOfItemsResponse?.body?.value > 0) {
       cartStore.setNumberofItems(numberOfItemsResponse.body.value);
     }
   }, [numberOfItemsResponse]);
