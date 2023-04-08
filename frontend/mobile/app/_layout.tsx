@@ -114,8 +114,6 @@ const Layout = () => {
     })();
   }, []);
 
-  console.log("cartStore", cartStore.cartId);
-
   // disable going back
   useEffect(() => {
     const backHandler = BackHandler.addEventListener(

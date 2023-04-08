@@ -24,7 +24,6 @@ const SideThings = ({ children }: SideThingsProps) => {
   });
 
   useEffect(() => {
-    console.log("numberOfItemsResponse", numberOfItemsResponse);
     if (numberOfItemsResponse.isFetching) return;
 
     if (numberOfItemsResponse?.body?.value > 0) {
