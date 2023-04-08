@@ -1,7 +1,6 @@
 import { useRouter } from "expo-router";
-import { Text, View } from "react-native";
+import { View } from "react-native";
 import { HEDER_ICONS } from "../../constants";
-import { useCartContext } from "../../hooks";
 import { HeaderButton, Logo } from "../atoms";
 
 interface HeaderProps {

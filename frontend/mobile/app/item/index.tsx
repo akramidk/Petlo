@@ -17,7 +17,6 @@ import {
   useAPIFetching,
   useInternationalizationContext,
   useTranslationsContext,
-  useCartContext,
   useAPIMutation,
 } from "../../src/hooks";
 import {

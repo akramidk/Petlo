@@ -49,7 +49,8 @@
     "react-native-toast-message": "^2.1.6",
     "react-native-web": "~0.18.7",
     "swr": "^2.0.4",
-    "typescript": "^4.9.5"
+    "typescript": "^4.9.5",
+    "zustand": "^4.3.7"
   },
   "devDependencies": {
     "@babel/core": "^7.19.3",
