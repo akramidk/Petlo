@@ -153,5 +153,6 @@
   "CHANGE_LANGUAGE__SAVE_BUTTON": "حفظ",
   "CHANGE_LANGUAGE__CONTINUE_BUTTON": "أكمل",
   "CHANGE_LANGUAGE_PRONOUN_TITLE": "صفة العرض",
-  "CHANGE_LANGUAGE_PRONOUN_HELPER_TEXT": "يرجى تحديد طريقة عرض اللغة العربية بصفة مذكرة ام مؤنثة."
+  "CHANGE_LANGUAGE_PRONOUN_HELPER_TEXT": "يرجى تحديد طريقة عرض اللغة العربية بصفة مذكرة ام مؤنثة.",
+  "CHANGE_LANGUAGE__CANCEL_BUTTON": "الغاء"
 }

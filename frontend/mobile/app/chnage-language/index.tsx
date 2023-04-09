@@ -24,6 +24,7 @@ const ChangeLanguage = () => {
     languageWithoutGender: currentLanguageWithoutGender,
     languageGender: currentLanguageGender,
     changeLanguage,
+    storedLanguage,
   } = useInternationalizationContext();
   const [selectedLanguage, setSelectedLanguage] = useState<LanguageOption>(
     LANGUAGES_OPTIONS.find(
@@ -60,12 +61,16 @@ const ChangeLanguage = () => {
     RNRestart.restart();
   };
 
+  const cancelHandler = () => {
+    changeLanguage(storedLanguage, false);
+    router.back();
+  };
+
   if (step === 1) {
     return (
       <PageStructure
         title={t("CHANGE_LANGUAGE__TITLE")}
         helperText={t("CHANGE_LANGUAGE__HELPER_TEXT")}
-        backButton={router.back}
         button={{
           value: selectedLanguage.gendered
             ? t("CHANGE_LANGUAGE__CONTINUE_BUTTON")
@@ -73,6 +78,10 @@ const ChangeLanguage = () => {
           onClick: languageHandler,
           status:
             selectedLanguage.id !== currentLanguage ? "active" : "inactive",
+        }}
+        link={{
+          value: t("CHANGE_LANGUAGE__CANCEL_BUTTON"),
+          onClick: cancelHandler,
         }}
       >
         <Options<LanguageOption>
@@ -92,11 +101,16 @@ const ChangeLanguage = () => {
       <PageStructure
         title={t("CHANGE_LANGUAGE__TITLE")}
         helperText={t("CHANGE_LANGUAGE_PRONOUN_HELPER_TEXT")}
+        backButton={() => setStep(1)}
         button={{
           value: t("CHANGE_LANGUAGE__SAVE_BUTTON"),
           onClick: adjectiveHandler,
           status:
             selectedAdjective !== currentLanguageGender ? "active" : "inactive",
+        }}
+        link={{
+          value: t("CHANGE_LANGUAGE__CANCEL_BUTTON"),
+          onClick: cancelHandler,
         }}
       >
         <Options
