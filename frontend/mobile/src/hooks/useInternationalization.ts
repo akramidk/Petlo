@@ -27,9 +27,14 @@ const useInternationalization = () => {
     undefined | null | language
   >();
 
-  //removeGender from gendered languages
+  //remove gender from gendered languages
   const removeGender = (language: language) => {
     return language.split("_")[0] as "ar" | "en";
+  };
+
+  //remove language from gendered languages
+  const removeLanguage = (language: language) => {
+    return language.split("_")[1] as "masculine" | "feminine" | null;
   };
 
   //set thing temporarily
@@ -38,6 +43,9 @@ const useInternationalization = () => {
   const [languageWithoutGender, setLanguageWithoutGender] = useState<
     "en" | "ar"
   >(removeGender(appLanguage));
+  const [languageGender, setLanguageGender] = useState<
+    "masculine" | "feminine" | null
+  >(removeLanguage(appLanguage));
   const [direction, setDirection] = useState<direction>(
     languagesDirection[appLanguage]
   );
@@ -53,6 +61,7 @@ const useInternationalization = () => {
 
     setLanguage(language);
     setLanguageWithoutGender(removeGender(language));
+    setLanguageGender(removeLanguage(language));
     setDirection(direction);
   };
 
@@ -91,6 +100,7 @@ const useInternationalization = () => {
     storedLanguage,
     direction,
     languageWithoutGender,
+    languageGender,
   };
 };
 

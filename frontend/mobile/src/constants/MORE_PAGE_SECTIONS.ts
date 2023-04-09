@@ -36,8 +36,8 @@ export const MORE_PAGE_SECTIONS: {
     options: [
       {
         icon: "language",
-        name: "MORE__APP_LANGUAGE_OPTION",
-        path: "/select-language",
+        name: "MORE__APP_CHANGE_LANGUAGE_OPTION",
+        path: "/chnage-language",
       },
     ],
   },
