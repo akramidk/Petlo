@@ -6,7 +6,7 @@ import {
   useTranslationsContext,
 } from "../../hooks";
 import { BaseOption, OptionsProps } from "../../interfaces";
-import { BottomContainer } from "../atoms";
+import BottomContainer from "../atoms/BottomContainer";
 import Button from "../atoms/Button";
 import Options from "../atoms/Options";
 import SearchFiled from "../atoms/SearchFiled";
