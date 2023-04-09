@@ -67,7 +67,18 @@ const useCustomer = () => {
     setCustomer(customer);
   };
 
-  return { customer, setCustomer, setCustomerWithSessionToken, sessionToken };
+  const clearCustomer = async () => {
+    await SecureStore.deleteItemAsync(StorageKeys.SESSION_TOKEN);
+    setCustomer(null);
+  };
+
+  return {
+    customer,
+    setCustomer,
+    setCustomerWithSessionToken,
+    sessionToken,
+    clearCustomer,
+  };
 };
 
 export default useCustomer;

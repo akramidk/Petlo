@@ -91,8 +91,13 @@ const Layout = () => {
     Manrope_800ExtraBold,
   });
 
-  const { customer, setCustomer, setCustomerWithSessionToken, sessionToken } =
-    useCustomer();
+  const {
+    customer,
+    setCustomer,
+    setCustomerWithSessionToken,
+    sessionToken,
+    clearCustomer,
+  } = useCustomer();
   const {
     language,
     changeLanguage,
@@ -156,6 +161,7 @@ const Layout = () => {
         setCustomer,
         setCustomerWithSessionToken,
         sessionToken,
+        clearCustomer,
       }}
     >
       <InternationalizationContext.Provider

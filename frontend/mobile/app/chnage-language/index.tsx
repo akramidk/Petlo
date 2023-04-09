@@ -49,7 +49,7 @@ const ChangeLanguage = () => {
 
     changeLanguage(selectedLanguage.id as language, true);
 
-    RNRestart.restart();
+    RNRestart?.restart();
   };
 
   const adjectiveHandler = () => {
@@ -58,7 +58,7 @@ const ChangeLanguage = () => {
       true
     );
 
-    RNRestart.restart();
+    RNRestart?.restart();
   };
 
   const cancelHandler = () => {

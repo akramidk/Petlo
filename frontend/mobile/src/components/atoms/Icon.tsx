@@ -7,6 +7,7 @@ import {
   LifebuoyIcon as SupportSolid,
   EllipsisVerticalIcon as MoreVertical,
   MapPinIcon as MapPin,
+  ArrowUturnDownIcon as ArrowUturnDown,
 } from "react-native-heroicons/solid";
 
 import {
@@ -15,6 +16,7 @@ import {
 } from "react-native-heroicons/outline";
 
 // TODO add all the icons here
+// TODO manage LTR/RTL here
 
 interface IconProps {
   name: string;
@@ -70,6 +72,9 @@ const Icon = ({
     },
     arrowLeftCircleIcon: {
       outline: <ArrowLeftCircleIcon {...props} />,
+    },
+    arrowUturnDown: {
+      solid: <ArrowUturnDown {...props} />,
     },
   };
 

@@ -9,4 +9,5 @@ export const HEDER_PATHS = [
   "/welcome",
   "/search",
   "/account/addresses/add-new-address",
+  "/sign-out",
 ];

@@ -49,6 +49,11 @@ export const MORE_PAGE_SECTIONS: {
         name: "MORE__OTHERS_SUPPORT_AND_FEEDBACK_OPTION",
         path: "/support-and-feedbacks",
       },
+      {
+        icon: "arrowUturnDown",
+        name: "MORE__OTHERS_SIGN_OUT",
+        path: "/sign-out",
+      },
     ],
   },
 ];
