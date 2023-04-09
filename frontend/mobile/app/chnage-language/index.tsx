@@ -63,10 +63,13 @@ const ChangeLanguage = () => {
   if (step === 1) {
     return (
       <PageStructure
-        title="Change Language"
+        title={t("CHANGE_LANGUAGE__TITLE")}
+        helperText={t("CHANGE_LANGUAGE__HELPER_TEXT")}
         backButton={router.back}
         button={{
-          value: "Select",
+          value: selectedLanguage.gendered
+            ? t("CHANGE_LANGUAGE__CONTINUE_BUTTON")
+            : t("CHANGE_LANGUAGE__SAVE_BUTTON"),
           onClick: languageHandler,
           status:
             selectedLanguage.id !== currentLanguage ? "active" : "inactive",
@@ -87,10 +90,10 @@ const ChangeLanguage = () => {
   if (step === 2) {
     return (
       <PageStructure
-        title="Change Language"
-        helperText="helper"
+        title={t("CHANGE_LANGUAGE__TITLE")}
+        helperText={t("CHANGE_LANGUAGE_PRONOUN_HELPER_TEXT")}
         button={{
-          value: "select",
+          value: t("CHANGE_LANGUAGE__SAVE_BUTTON"),
           onClick: adjectiveHandler,
           status:
             selectedAdjective !== currentLanguageGender ? "active" : "inactive",

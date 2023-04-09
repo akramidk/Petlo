@@ -147,5 +147,11 @@
   "ITEM__BY": "من",
   "ITEM__ADD_TO_CART_BUTTON": "اضف الى العربة",
   "CART__TITLE": "العربة",
-  "CART__CHECKOUT_BUTTON": "شيك اوت"
+  "CART__CHECKOUT_BUTTON": "شيك اوت",
+  "CHANGE_LANGUAGE__TITLE": "تغيير اللغة",
+  "CHANGE_LANGUAGE__HELPER_TEXT": "يرجى تحديد اللغة المراد استخدام البرنامج بها.",
+  "CHANGE_LANGUAGE__SAVE_BUTTON": "حفظ",
+  "CHANGE_LANGUAGE__CONTINUE_BUTTON": "أكمل",
+  "CHANGE_LANGUAGE_PRONOUN_TITLE": "صفة العرض",
+  "CHANGE_LANGUAGE_PRONOUN_HELPER_TEXT": "يرجى تحديد طريقة عرض اللغة العربية بصفة مذكرة ام مؤنثة."
 }

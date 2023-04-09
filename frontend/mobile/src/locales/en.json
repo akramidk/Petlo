@@ -141,5 +141,9 @@
   "ITEM__BY": "By",
   "ITEM__ADD_TO_CART_BUTTON": "Add To Cart",
   "CART__TITLE": "Your Cart",
-  "CART__CHECKOUT_BUTTON": "Checkout"
+  "CART__CHECKOUT_BUTTON": "Checkout",
+  "CHANGE_LANGUAGE__TITLE": "Change Language",
+  "CHANGE_LANGUAGE__HELPER_TEXT": "Select the language that you need to see the app with.",
+  "CHANGE_LANGUAGE__SAVE_BUTTON": "Save",
+  "CHANGE_LANGUAGE__CONTINUE_BUTTON": "Continue"
 }
