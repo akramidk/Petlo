@@ -18,8 +18,12 @@ import {
   AddNewAddressRequest,
   AddNewAddressResponse,
 } from "../../../src/interfaces";
+import * as Device from "expo-device";
 
-const GOOGLE_MAP_KEY = Constants.expoConfig.extra.GOOGLE_MAP_KEY;
+const GOOGLE_MAP_KEY =
+  Device.brand.toLowerCase() === "apple"
+    ? Constants.expoConfig.extra.GOOGLE_IOS_MAP_KEY
+    : Constants.expoConfig.extra.GOOGLE_ANDROID_MAP_KEY;
 
 const AddNewAddress = () => {
   const router = useRouter();

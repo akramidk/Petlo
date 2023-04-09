@@ -14,7 +14,7 @@ export default {
     ios: {
       config: {
         bundleIdentifier: "com.petlo",
-        googleMapsApiKey: "AIzaSyAhFzvU4bnxroW_qaIDBDbjsVfVmx1AtrE",
+        googleMapsApiKey: "AIzaSyATNdeJAH58V2JuSVA2C3qL0GO1VORbLzg",
       },
     },
     web: {
@@ -26,7 +26,8 @@ export default {
       },
       API_URL: process.env.API_URL,
       STRIPE_PUBLISHABLE_KEY: process.env.STRIPE_PUBLISHABLE_KEY,
-      GOOGLE_MAP_KEY: process.env.GOOGLE_MAP_KEY,
+      GOOGLE_ANDROID_MAP_KEY: process.env.GOOGLE_ANDROID_MAP_KEY,
+      GOOGLE_IOS_MAP_KEY: process.env.GOOGLE_IOS_MAP_KEY,
     },
     plugins: [
       "expo-localization",
