@@ -6,6 +6,7 @@ import {
   useTranslationsContext,
 } from "../../hooks";
 import { BaseOption, OptionsProps } from "../../interfaces";
+import { BottomContainer } from "../atoms";
 import Button from "../atoms/Button";
 import Options from "../atoms/Options";
 import SearchFiled from "../atoms/SearchFiled";
@@ -74,11 +75,7 @@ const SelectorModal = <T extends BaseOption>({
           />
         </ScrollView>
 
-        <View
-          className={clsx(
-            "fixed border-t-[1px] border-[#f6f6f6] px-[28px] pt-[16px]"
-          )}
-        >
+        <BottomContainer>
           <Button
             status={
               selectedOption?.id !== pastSelectedOption?.id
@@ -88,7 +85,7 @@ const SelectorModal = <T extends BaseOption>({
             value={t("OPTIONS_MODAL_COMP__SELECT")}
             onClick={onSelect}
           />
-        </View>
+        </BottomContainer>
       </SafeAreaView>
     </Modal>
   );

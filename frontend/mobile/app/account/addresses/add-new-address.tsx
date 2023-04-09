@@ -1,7 +1,13 @@
 import { Text, View } from "react-native";
 import MapView, { PROVIDER_GOOGLE, Marker } from "react-native-maps";
 import { useEffect, useState } from "react";
-import { Icon, Button, Link, Filed } from "../../../src/components/atoms";
+import {
+  Icon,
+  Button,
+  Link,
+  Filed,
+  BottomContainer,
+} from "../../../src/components/atoms";
 import * as Location from "expo-location";
 import Loading from "../../_Loading";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
@@ -145,11 +151,7 @@ const AddNewAddress = () => {
           </View>
         </View>
 
-        <View
-          className={
-            "fixed border-t-[1px] border-[#f6f6f6] px-[28px] pt-[12px]"
-          }
-        >
+        <BottomContainer>
           <Button
             value={t("ADD_NEW_ADDRESS__STEP_1_CONTINUE_BUTTON")}
             onClick={() => setStep(2)}
@@ -159,7 +161,7 @@ const AddNewAddress = () => {
             value={t("ADD_NEW_ADDRESS__STEP_1_CANCEL_BUTTON")}
             onClick={router.back}
           />
-        </View>
+        </BottomContainer>
       </View>
     );
   }

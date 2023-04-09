@@ -13,6 +13,7 @@ import Logo from "./Logo";
 import Icon from "./Icon";
 import SmallButton from "./SmallButton";
 import SearchFiled from "./SearchFiled";
+import BottomContainer from "./BottomContainer";
 
 export {
   SVGLogo,
@@ -30,4 +31,5 @@ export {
   Icon,
   SmallButton,
   SearchFiled,
+  BottomContainer,
 };

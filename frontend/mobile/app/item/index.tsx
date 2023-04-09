@@ -11,7 +11,12 @@ import React, {
 import { View, Image } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { BackButton, Button, Text } from "../../src/components/atoms";
+import {
+  BackButton,
+  BottomContainer,
+  Button,
+  Text,
+} from "../../src/components/atoms";
 import { BaseButton } from "../../src/components/bases";
 import { Endpoints, StorageKeys } from "../../src/enums";
 import {
@@ -147,7 +152,7 @@ const Item = () => {
   // TODO add a label if the variant not available
 
   return (
-    <View className="h-full flex flex-col">
+    <SafeAreaView className="h-full flex flex-col" edges={["bottom"]}>
       <View className="h-[306px] p-[56px] bg-[#f6f6f6]">
         <BackButton
           onClick={router.back}
@@ -247,12 +252,7 @@ const Item = () => {
         </View>
       </ScrollView>
 
-      <SafeAreaView
-        className={clsx(
-          "fixed border-t-[1px] border-[#f6f6f6] px-[28px] pt-[16px]"
-        )}
-        edges={["bottom"]}
-      >
+      <BottomContainer>
         <Button
           value={t("ITEM__ADD_TO_CART_BUTTON")}
           onClick={() => addToCart(item.public_id, variant.public_id)}
@@ -262,8 +262,8 @@ const Item = () => {
             (variant.available ? "active" : "inactive")
           }
         />
-      </SafeAreaView>
-    </View>
+      </BottomContainer>
+    </SafeAreaView>
   );
 };
 
