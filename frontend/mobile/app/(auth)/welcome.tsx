@@ -29,7 +29,7 @@ const Welcome = () => {
         <Logo cn="text-[52px] text-[#0E333C]" />
       </View>
 
-      <View className="absolute bottom-0 mb-[52px] px-[36px] flex-row space-x-[8px]">
+      <View className="absolute bottom-0 mb-[52px] px-[36px] flex-row space-x-[6px]">
         <BaseButton
           onClick={() => {
             router.push("/sign-up");
