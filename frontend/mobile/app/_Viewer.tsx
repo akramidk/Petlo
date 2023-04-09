@@ -14,6 +14,10 @@ const Viewer = ({ children }: ViewerProps) => {
     pathname
   );
 
+  if (pathname === "/welcome") {
+    return <>{children}</>;
+  }
+
   if (hideHeder && !showMenuAndIcons) {
     return <SafeAreaView className="h-full">{children}</SafeAreaView>;
   }
