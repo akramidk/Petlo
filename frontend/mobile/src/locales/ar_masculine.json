@@ -155,5 +155,8 @@
   "CHANGE_LANGUAGE__CONTINUE_BUTTON": "أكمل",
   "CHANGE_LANGUAGE_PRONOUN_TITLE": "صفة العرض",
   "CHANGE_LANGUAGE_PRONOUN_HELPER_TEXT": "يرجى تحديد طريقة عرض اللغة العربية بصفة مذكرة ام مؤنثة.",
-  "CHANGE_LANGUAGE__CANCEL_BUTTON": "الغاء"
+  "CHANGE_LANGUAGE__CANCEL_BUTTON": "الغاء",
+  "WELCOME__TITLE": "مرحباً في",
+  "WELCOME__SIGN_UP_BUTTON": "انشاء حساب",
+  "WELCOME__SIGN_IN_BUTTON": "تسجيل الدخول"
 }

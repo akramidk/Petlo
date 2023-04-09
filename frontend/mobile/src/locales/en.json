@@ -147,5 +147,8 @@
   "CHANGE_LANGUAGE__HELPER_TEXT": "Select the language that you need to see the app with.",
   "CHANGE_LANGUAGE__SAVE_BUTTON": "Save",
   "CHANGE_LANGUAGE__CONTINUE_BUTTON": "Continue",
-  "CHANGE_LANGUAGE__CANCEL_BUTTON": "Cancel"
+  "CHANGE_LANGUAGE__CANCEL_BUTTON": "Cancel",
+  "WELCOME__TITLE": "Welcome to",
+  "WELCOME__SIGN_UP_BUTTON": "Sign Up",
+  "WELCOME__SIGN_IN_BUTTON": "Sign In"
 }
