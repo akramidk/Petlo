@@ -97,15 +97,17 @@ const Item = ({
             status={removeStatus}
             value="-"
             cn="px-[12px]"
-            valueCN="text-[16px]"
+            valueCN="text-[18px]"
           />
-          <Text>{quantity}</Text>
+          <Text font="extraBold" cn="text-[15px] text-[#0E333C] ">
+            {quantity}
+          </Text>
           <Link
             onClick={add}
             value="+"
             status={addStatus}
             cn="px-[12px]"
-            valueCN="text-[16px]"
+            valueCN="text-[18px]"
           />
         </View>
       </View>
