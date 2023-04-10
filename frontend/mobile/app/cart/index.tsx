@@ -109,10 +109,10 @@ const Cart = () => {
 
   useEffect(() => {
     if (!summaryResponse || summaryResponse.isFetching) return;
-    setSummary(summaryResponse.body);
+    setSummary(summaryResponse.body ?? null);
   }, [summaryResponse]);
 
-  if (!summary && cartId) {
+  if (summary === undefined && cartId) {
     return <Loading />;
   }
 

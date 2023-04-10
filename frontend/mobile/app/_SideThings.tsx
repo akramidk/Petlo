@@ -26,6 +26,14 @@ const SideThings = ({ children }: SideThingsProps) => {
   useEffect(() => {
     if (numberOfItemsResponse.isFetching) return;
 
+    if (numberOfItemsResponse.statusCode !== 200) {
+      (async () => {
+        cartStore.setCartId(null);
+        await AsyncStorage.removeItem(StorageKeys.CART);
+      })();
+      return;
+    }
+
     if (numberOfItemsResponse?.body?.value > 0) {
       cartStore.setNumberofItems(numberOfItemsResponse.body.value);
     }

@@ -110,7 +110,6 @@ const Layout = () => {
   });
 
   // cart things
-  const [cartId, setCartId] = useState<string | null>();
   const cartStore = useCartStore();
 
   useEffect(() => {
