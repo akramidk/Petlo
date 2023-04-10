@@ -252,9 +252,13 @@ const Item = () => {
         </View>
       </ScrollView>
 
-      <BottomContainer>
+      <BottomContainer cn="pb-[8px]">
         <Button
-          value={t("ITEM__ADD_TO_CART_BUTTON")}
+          value={
+            variant.available
+              ? t("ITEM__ADD_TO_CART_BUTTON")
+              : t("ITEM__ADD_TO_CART_VARIANT_NOT_AVAILABLE_BUTTON")
+          }
           onClick={() => addToCart(item.public_id, variant.public_id)}
           status={
             addStatus ??
