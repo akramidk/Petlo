@@ -149,8 +149,6 @@ const Item = () => {
     return <Loading />;
   }
 
-  // TODO add a label if the variant not available
-
   return (
     <SafeAreaView className="h-full flex flex-col" edges={["bottom"]}>
       <View className="h-[306px] p-[56px] bg-[#f6f6f6]">
