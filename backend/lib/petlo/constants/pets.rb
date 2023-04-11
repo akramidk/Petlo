@@ -32,7 +32,7 @@ module CONSTANTS
           "en" => 'Akita'
         },
         alano_espanol: {
-          "ar" => "الانو إسبانيول"
+          "ar" => "الانو إسبانيول",
           "en" => 'Alano Español'
         },
         alaskan_klee_kai: {
@@ -44,7 +44,7 @@ module CONSTANTS
           "en" => 'Alaskan Malamute'
         },
         alpine_dachsbracke: {
-          "ar" => 'Alpine Dachsbracke', // TODO here
+          "ar" => 'Alpine Dachsbracke', # TODO here
           "en" => 'Alpine Dachsbracke'
         },
         alpine_spaniel: {
