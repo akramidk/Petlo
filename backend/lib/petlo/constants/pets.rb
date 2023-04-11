@@ -8,31 +8,31 @@ module CONSTANTS
   
       breeds: {
         affenpinscher: {
-          "ar" => 'Affenpinscher',
+          "ar" => 'أفينبينشر',
           "en" => 'Affenpinscher'
         },
         afghan_hound: {
-          "ar" => 'كلب الصيد الأفغاني',
+          "ar" => "الصيد الأفغاني",
           "en" => 'Afghan Hound'
         },
         aidi: {
-          "ar" => 'عايدي',
+          "ar" => 'آيدي',
           "en" => 'Aidi'
         },
         airedale_terrier: {
-          "ar" => 'Airedale Terrier',
+          "ar" => 'إيرديل تيرير',
           "en" => 'Airedale Terrier'
         },
-        akbash_dog: {
-          "ar" => 'كلب أكباش',
-          "en" => 'Akbash Dog'
+        akbash: {
+          "ar" => "أكباش",
+          "en" => 'Akbash'
         },
         akita: {
           "ar" => 'أكيتا',
           "en" => 'Akita'
         },
-        'alano_español': {
-          "ar" => 'Alano Español',
+        alano_espanol: {
+          "ar" => "الانو إسبانيول"
           "en" => 'Alano Español'
         },
         alaskan_klee_kai: {
@@ -40,11 +40,11 @@ module CONSTANTS
           "en" => 'Alaskan Klee Kai'
         },
         alaskan_malamute: {
-          "ar" => 'Alaskan Malamute',
+          "ar" => 'ملموت ألاسكي',
           "en" => 'Alaskan Malamute'
         },
         alpine_dachsbracke: {
-          "ar" => 'Alpine Dachsbracke',
+          "ar" => 'Alpine Dachsbracke', // TODO here
           "en" => 'Alpine Dachsbracke'
         },
         alpine_spaniel: {
@@ -52,19 +52,19 @@ module CONSTANTS
           "en" => 'Alpine Spaniel'
         },
         american_bulldog: {
-          "ar" => 'أمريكا بولدوج',
+          "ar" => "البلدغ الأمريكي",
           "en" => 'American Bulldog'
         },
         american_cocker_spaniel: {
-          "ar" => 'American Cocker Spaniel',
+          "ar" => "ذليل المنغمس الأمريكي",
           "en" => 'American Cocker Spaniel'
         },
         american_eskimo_dog: {
-          "ar" => 'كلب الأسكيمو الأمريكي',
-          "en" => 'American Eskimo Dog'
+          "ar" => "الأسكيمو الأمريكي",
+          "en" => 'American Eskimo'
         },
         american_foxhound: {
-          "ar" => 'Foxhound الأمريكية',
+          "ar" => "فوكس هوند اﻷمريكي",
           "en" => 'American Foxhound'
         },
         american_hairless_terrier: {
