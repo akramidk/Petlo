@@ -12,6 +12,7 @@ class Customer < ApplicationRecord
   has_secure_password
   encrypts :phone_number, deterministic: true
   encrypts :verification_code
+  encrypts :stripe_id, deterministic: true
   
   enum phone_verification_status: {
     unverified: 0,

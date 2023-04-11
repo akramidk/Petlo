@@ -3,6 +3,9 @@ class Card < ApplicationRecord
 
   belongs_to :customer
 
+  encrypts :last4
+  encrypts :fingerprint, deterministic: true
+
   validates :public_id, presence: { message: 2002000 }, uniqueness: { message: 2002001 }
   validates :customer_id, presence: { message: 2002002 }
   validates :processor, presence: { message: 2002003 }
