@@ -1,12 +1,11 @@
 module CurrentCustomer
    extend ActiveSupport::Concern
   
-   @@session_token = nil
    @@payload = nil
 
    def current_customer(permission: nil, verified:)
-     @@session_token = request.headers["Authorization"].split(' ').last if request.headers["Authorization"]
-     @@payload = SessionToken.decode(token: @@session_token)
+     session_token = request.headers["Authorization"].split(' ').last if request.headers["Authorization"]
+     @@payload = SessionToken.decode(token: session_token)
 
      if !@@payload || @@payload["limited_for"] != permission || !retrieve_the_customer(verified: verified)
         raise(RuntimeError, 1000001)
