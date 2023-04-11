@@ -1,5 +1,5 @@
 module PetsHelper::Index
-  LIMIT  = 16
+  LIMIT  = 100
   
   def index(customer:, language:, page:)
     offset = (LIMIT * page) - LIMIT

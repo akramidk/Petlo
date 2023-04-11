@@ -1,5 +1,5 @@
 module CategoriesHelper::Items
-  LIMIT = 16
+  LIMIT = 100
 
   def items(category:, country:, language:, page:)
     offset = (LIMIT * page) - LIMIT

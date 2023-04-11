@@ -1,5 +1,5 @@
 module CardsHelper::Index
-  LIMIT  = 16
+  LIMIT  = 100
   
   def index(customer:, page:)
     offset = (LIMIT * page) - LIMIT
