@@ -13,7 +13,7 @@ export interface ItemResponse {
   }[];
   variants: {
     public_id: string;
-    price: number;
+    price: string;
     available: boolean;
     options: {
       public_id: string;
