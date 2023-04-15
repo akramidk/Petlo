@@ -35,7 +35,10 @@ module Cart::Summary
                     available: available,
                     options: options,
                     quantity: quantity,
-                    amount: variant_amount
+                    amount: Utils.number_to_currency(
+                        country: country,
+                        number: variant_amount
+                    )
                 })
             end
 
@@ -51,7 +54,10 @@ module Cart::Summary
             public_id: public_id,
             exp_at: self.created_at + CONSTANTS::TIMES[:CART_EXP_AFTER],
             number_of_items: number_of_items,
-            amount: amount,
+            amount: Utils.number_to_currency(
+                country: country,
+                number: amount
+            ),
             currency: currency,
             items: items
         }

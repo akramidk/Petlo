@@ -17,8 +17,14 @@ module Item::ShortInformation
       variants: {
         number: number_of_variants,
         prices: {
-          min: prices[:min],
-          max: prices[:max],
+          min: Utils.number_to_currency(
+            country: country,
+            number: prices[:min]
+          ),
+          max: Utils.number_to_currency(
+            country: country,
+            number: prices[:max]
+          ),
           currency: CONSTANTS::COUNTRIES_CURRENCIES[country][language]
         }
       }

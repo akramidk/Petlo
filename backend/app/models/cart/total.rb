@@ -18,6 +18,9 @@ module Cart::Total
             end
         end
 
-        amount
+        Utils.number_to_currency(
+            country: country,
+            number: amount
+        )
     end
 end

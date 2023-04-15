@@ -24,7 +24,10 @@ module Item::LongInformation
             value: option.values.find_by(language: language).value
           }
         },
-        price: variant.prices.find_by(country: country).value
+        price: Utils.number_to_currency(
+          country: country,
+          number: variant.prices.find_by(country: country).value
+        )
       }
     }
 
