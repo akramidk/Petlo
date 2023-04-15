@@ -13,7 +13,7 @@ export interface Cart {
       available: boolean;
       options: string[];
       quantity: number;
-      amount: number;
+      amount: string;
     };
   }[];
 }

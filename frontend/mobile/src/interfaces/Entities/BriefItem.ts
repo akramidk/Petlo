@@ -6,8 +6,8 @@ export interface BriefItem {
   variants: {
     number: number;
     prices: {
-      min: number;
-      max: number;
+      min: string;
+      max: string;
       currency: string;
     };
   };
