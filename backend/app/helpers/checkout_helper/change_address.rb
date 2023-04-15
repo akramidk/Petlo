@@ -8,7 +8,7 @@ module CheckoutHelper::ChangeAddress
         address = customer.addresses.find_by(public_id: address_id)
         raise(RuntimeError, 3005003) if !address
 
-        delivery_amount = 2000 #not ready yet
+        delivery_amount = 2000 # TODO not ready yet, fix it
         checkout.update!(delivery_amount: delivery_amount)
 
         checkout.summary(language: language)
