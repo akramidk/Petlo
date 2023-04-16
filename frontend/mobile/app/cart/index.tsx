@@ -1,6 +1,7 @@
 import { useRouter } from "expo-router";
 import { useEffect, useMemo } from "react";
 import { View } from "react-native";
+import { Text } from "../../src/components/atoms";
 import { PageStructure } from "../../src/components/organisms";
 import { Endpoints } from "../../src/enums";
 import {
@@ -134,14 +135,31 @@ const Cart = () => {
           : undefined
       }
     >
-      <View className="space-y-[20px]">
-        {items?.map((item, i) => {
-          return (
-            <View key={i}>
-              <Item {...item} />
-            </View>
-          );
-        })}
+      <View className="space-y-[28px]">
+        <View className="space-y-[20px]">
+          {items?.map((item, i) => {
+            return (
+              <View key={i}>
+                <Item {...item} />
+              </View>
+            );
+          })}
+        </View>
+
+        <View>
+          <Text font="extraBold" cn="text-[15px] text-[#0E333C] mb-[12px]">
+            Payment Summary
+          </Text>
+
+          <View className="flex-row justify-between">
+            <Text font="semiBold" cn="text-[14px] text-[#666]">
+              Cart Total
+            </Text>
+            <Text font="semiBold" cn="text-[14px] text-[#666]">
+              {summary.amount} {summary.currency}
+            </Text>
+          </View>
+        </View>
       </View>
     </PageStructure>
   );
