@@ -69,7 +69,9 @@ const Home = () => {
 
   return (
     <Scrollable cn="px-[0px] space-y-[28px]">
-      <Banners data={bannersResponse.body.data} />
+      {bannersResponse.body.data.length > 0 && (
+        <Banners data={bannersResponse.body.data} />
+      )}
 
       <View className="space-y-[28px]">
         {sectionsResponse?.body?.data?.map((section, i) => {
