@@ -1,6 +1,6 @@
 import Swipeable from "react-native-gesture-handler/Swipeable";
 import { Banner } from "../../../src/interfaces";
-import { Image, View } from "react-native";
+import { Image, Text, View } from "react-native";
 import { useCallback, useState } from "react";
 import { StyleSheet, StyleProp } from "react-native";
 
@@ -64,6 +64,17 @@ const Banners = ({ data }: BannersProps) => {
 
   return (
     <View className="mx-[28px] rounded-[4px]">
+      <View className="absolute z-10 flex-row space-x-[2px] bottom-0 right-0 mb-[12px] mr-[12px]">
+        {data.map((item, index) => {
+          return (
+            <View
+              key={index}
+              className="bg-black w-[4px] h-[4px] rounded-full"
+            ></View>
+          );
+        })}
+      </View>
+
       <Swipeable
         childrenContainerStyle={{
           height: 136,
