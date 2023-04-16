@@ -55,9 +55,6 @@ const Home = () => {
     }
   );
 
-  console.log("bannersResponse", bannersResponse);
-  console.log("sectionsResponse", sectionsResponse);
-
   if (
     !storedLanguage ||
     !customer ||
