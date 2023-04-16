@@ -4,7 +4,7 @@ class BannerDetail < ApplicationRecord
     has_one_attached :image
 
     validates :banner_id, presence: true
-    validates :country, presence: true, uniqueness: { scope: :banner_id }
-    validates :language, presence: true, uniqueness: { scope: :banner_id }
-    validates :variant, presence: true, uniqueness: { scope: :banner_id }
+    validates :country, presence: true
+    validates :language, presence: true
+    validates :variant, presence: true
 end
