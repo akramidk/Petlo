@@ -1,4 +1,5 @@
 class Banner < ApplicationRecord
+    # TODO add error messages
+
     validates :public_id, presence: true, uniqueness: true
-    validates :path
 end
