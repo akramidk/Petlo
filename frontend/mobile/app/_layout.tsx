@@ -104,6 +104,7 @@ const Layout = () => {
     storedLanguage,
     direction,
     languageWithoutGender,
+    languageGender,
   } = useInternationalization();
   const { t } = useTranslations({
     language: language,
@@ -132,6 +133,7 @@ const Layout = () => {
     (!newVersionAvailableResponse && newVersionAvailableResponse.isFetching) ||
     newVersionAvailableResponse?.body?.value ||
     storedLanguage === undefined ||
+    languageGender === undefined ||
     sessionToken === undefined ||
     customer === undefined ||
     cartStore.cartId === undefined
@@ -171,6 +173,7 @@ const Layout = () => {
           direction,
           storedLanguage,
           languageWithoutGender,
+          languageGender,
         }}
       >
         <TranslationsContext.Provider value={{ t }}>

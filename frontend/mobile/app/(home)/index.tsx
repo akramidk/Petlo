@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { View } from "react-native";
 import { Endpoints } from "../../src/enums";
 import {
@@ -24,7 +25,7 @@ const Home = () => {
   >({
     endpoint: Endpoints.BANNERS,
     body: {
-      variant: languageGender,
+      variant: languageGender ?? "masculine",
     },
     SWROptions: {
       revalidateIfStale: false,
@@ -33,7 +34,7 @@ const Home = () => {
       // TODO ther's a problem that the home page is rendered then
       // the user got redirct to right page by RoutesRestrictor
       // this should be fix
-      wait: !storedLanguage && !customer,
+      wait: !storedLanguage && !customer && !languageGender,
     },
   });
 
@@ -52,7 +53,13 @@ const Home = () => {
     }
   );
 
-  if (!storedLanguage || !customer || sectionsResponse.isFetching) {
+  if (
+    !storedLanguage ||
+    !languageGender ||
+    !customer ||
+    bannersResponse.isFetching ||
+    sectionsResponse.isFetching
+  ) {
     return <Loading />;
   }
 
