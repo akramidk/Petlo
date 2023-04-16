@@ -71,8 +71,10 @@ const Banners = ({ data }: BannersProps) => {
             <View
               key={i}
               className={clsx(
-                "bg-[#0E333C] w-[8px] h-[8px] rounded-full",
-                i === index ? "opacity-90" : "opacity-50"
+                "bg-[#0E333C] w-[8px] h-[8px] rounded-full border-[1px]",
+                i === index
+                  ? "opacity-100 border-[#888]"
+                  : "opacity-50 border-[#444]"
               )}
             />
           );
