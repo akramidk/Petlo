@@ -18,6 +18,8 @@ import {
 import Loading from "../_Loading";
 import Item from "./_Item";
 
+// TODO fix addStatus run on all items
+
 const Cart = () => {
   const router = useRouter();
   const { t } = useTranslationsContext();
@@ -78,29 +80,32 @@ const Cart = () => {
   const items: CartItemProps[] = useMemo(() => {
     if (!summary) return;
 
-    return summary.items.map((item, i) => {
-      const variant = item.variants[i];
-
-      return {
-        options: variant.options,
-        name: item.name,
-        image: item.image,
-        quantity: variant.quantity,
-        amount: `${variant.amount} ${summary.currency}`,
-        add: () =>
-          addTrigger({
-            item_id: item.public_id,
-            variant_id: variant.public_id,
-          }),
-        addStatus: addStatus,
-        remove: () =>
-          removeTrigger({
-            item_id: item.public_id,
-            variant_id: variant.public_id,
-          }),
-        removeStatus: removeStatus,
-      };
+    const array: CartItemProps[] = [];
+    summary.items.forEach((item) => {
+      item.variants.forEach((variant) => {
+        array.push({
+          options: variant.options,
+          name: item.name,
+          image: item.image,
+          quantity: variant.quantity,
+          amount: `${variant.amount} ${summary.currency}`,
+          add: () =>
+            addTrigger({
+              item_id: item.public_id,
+              variant_id: variant.public_id,
+            }),
+          addStatus: addStatus,
+          remove: () =>
+            removeTrigger({
+              item_id: item.public_id,
+              variant_id: variant.public_id,
+            }),
+          removeStatus: removeStatus,
+        });
+      });
     });
+
+    return array;
   }, [summary, addStatus, removeStatus]);
 
   useEffect(() => {

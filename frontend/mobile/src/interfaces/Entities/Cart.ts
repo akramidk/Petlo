@@ -14,6 +14,6 @@ export interface Cart {
       options: string[];
       quantity: number;
       amount: string;
-    };
+    }[];
   }[];
 }
