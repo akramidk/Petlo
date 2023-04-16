@@ -5,17 +5,27 @@ import {
   useCustomerContext,
   useInternationalizationContext,
 } from "../../src/hooks";
-import { SectionsResponse } from "../../src/interfaces";
+import {
+  BannersRequest,
+  BannersResponse,
+  SectionsResponse,
+} from "../../src/interfaces";
 import Loading from "../_Loading";
 import Scrollable from "../_Scrollable";
 import Section from "./_components/Seection";
 
 const Home = () => {
   const { customer } = useCustomerContext();
-  const { storedLanguage } = useInternationalizationContext();
+  const { storedLanguage, languageGender } = useInternationalizationContext();
 
-  const { response: bannersResponse } = useAPIFetching<void, SectionsResponse>({
+  const { response: bannersResponse } = useAPIFetching<
+    BannersRequest,
+    BannersResponse
+  >({
     endpoint: Endpoints.BANNERS,
+    body: {
+      variant: languageGender,
+    },
     SWROptions: {
       revalidateIfStale: false,
     },

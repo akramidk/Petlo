@@ -116,6 +116,7 @@ import {
   CartRemoveItemRequest,
   CartRemoveItemResponse,
 } from "./Endpoints/CartRemoveItem";
+import { BannersRequest, BannersResponse } from "./Endpoints/Banners";
 
 //entities interfaces
 import { Customer } from "./Entities/Customer";
@@ -197,6 +198,8 @@ export {
   CartSummaryResponse,
   CartRemoveItemRequest,
   CartRemoveItemResponse,
+  BannersRequest,
+  BannersResponse,
   Customer,
   Cart,
   DataCardProps,
