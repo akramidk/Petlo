@@ -1,9 +1,9 @@
 class CreateBannerDetails < ActiveRecord::Migration[7.0]
   def change
     create_table :banner_details do |t|
-      t.string :country
-      t.string :language
-      t.string :variant
+      t.string :country, null: false
+      t.string :language, null: false
+      t.string :variant, null: false
 
       t.timestamps
     end
