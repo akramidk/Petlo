@@ -4,12 +4,19 @@ import { Image, Text, View } from "react-native";
 import { useCallback, useState } from "react";
 import { StyleSheet, StyleProp } from "react-native";
 import clsx from "clsx";
+import { BaseButton } from "../../../src/components/bases";
+import { useRouter } from "expo-router";
 
 interface BannersProps {
   data: Banner[];
 }
 
+// TODO should add animation when swipe
+// TODO should auto swipe
+
 const Banners = ({ data }: BannersProps) => {
+  const router = useRouter();
+  const [index, setIndex] = useState(0);
   const imageProps = {
     style: {
       flex: 1,
@@ -18,40 +25,21 @@ const Banners = ({ data }: BannersProps) => {
     } as StyleProp<any>,
   };
 
-  const [index, setIndex] = useState(0);
-
-  const renderRightBanner = useCallback((index) => {
-    return (
-      <Image
-        source={{
-          uri: data[index + 1].image,
-        }}
-        {...imageProps}
-      />
-    );
-  }, []);
-
   const renderChildBanner = useCallback(() => {
     return (
-      <Image
-        source={{
-          uri: data[index].image,
-        }}
-        {...imageProps}
-      />
+      <BaseButton
+        onClick={() => router.push(data[index].path)}
+        cn="h-[100%] w-[100%]"
+      >
+        <Image
+          source={{
+            uri: data[index].image,
+          }}
+          {...imageProps}
+        />
+      </BaseButton>
     );
   }, [index]);
-
-  const renderLeftBanner = useCallback(() => {
-    return (
-      <Image
-        source={{
-          uri: data[index - 1].image,
-        }}
-        {...imageProps}
-      />
-    );
-  }, []);
 
   const onSwipe = (direction: "left" | "right") => {
     if (
