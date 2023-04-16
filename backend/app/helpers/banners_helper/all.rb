@@ -10,7 +10,7 @@ module BannersHelper::All
             }
         )
 
-        banners.map{|banner|
+        data = banners.map{|banner|
             details = banner.details.find_by(country: country, language: language, variant: variant)
             
             {
@@ -19,5 +19,7 @@ module BannersHelper::All
                 path: banner.path,
             }
         }
+
+        { data: data }
     end
 end

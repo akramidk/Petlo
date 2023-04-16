@@ -14,6 +14,19 @@ const Home = () => {
   const { customer } = useCustomerContext();
   const { storedLanguage } = useInternationalizationContext();
 
+  const { response: bannersResponse } = useAPIFetching<void, SectionsResponse>({
+    endpoint: Endpoints.BANNERS,
+    SWROptions: {
+      revalidateIfStale: false,
+    },
+    options: {
+      // TODO ther's a problem that the home page is rendered then
+      // the user got redirct to right page by RoutesRestrictor
+      // this should be fix
+      wait: !storedLanguage && !customer,
+    },
+  });
+
   const { response: sectionsResponse } = useAPIFetching<void, SectionsResponse>(
     {
       endpoint: Endpoints.SECTIONS,
