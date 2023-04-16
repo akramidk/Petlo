@@ -14,6 +14,7 @@ import {
 import Loading from "../_Loading";
 import Scrollable from "../_Scrollable";
 import Section from "./_components/Seection";
+import Swipeable from "react-native-gesture-handler/Swipeable";
 
 const Home = () => {
   const { customer } = useCustomerContext();
