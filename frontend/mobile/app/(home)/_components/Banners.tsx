@@ -3,6 +3,7 @@ import { Banner } from "../../../src/interfaces";
 import { Image, Text, View } from "react-native";
 import { useCallback, useState } from "react";
 import { StyleSheet, StyleProp } from "react-native";
+import clsx from "clsx";
 
 interface BannersProps {
   data: Banner[];
@@ -64,13 +65,16 @@ const Banners = ({ data }: BannersProps) => {
 
   return (
     <View className="mx-[28px] rounded-[4px]">
-      <View className="absolute z-10 flex-row space-x-[2px] bottom-0 right-0 mb-[12px] mr-[12px]">
-        {data.map((item, index) => {
+      <View className="absolute z-10 flex-row space-x-[4px] bottom-0 right-0 mb-[12px] mr-[12px]">
+        {data.map((item, i) => {
           return (
             <View
-              key={index}
-              className="bg-black w-[4px] h-[4px] rounded-full"
-            ></View>
+              key={i}
+              className={clsx(
+                "bg-[#0E333C] w-[8px] h-[8px] rounded-full",
+                i === index ? "opacity-90" : "opacity-50"
+              )}
+            />
           );
         })}
       </View>
