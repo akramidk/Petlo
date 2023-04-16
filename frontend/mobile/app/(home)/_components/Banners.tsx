@@ -13,6 +13,7 @@ interface BannersProps {
 
 // TODO should add animation when swipe
 // TODO should auto swipe
+// TODO fix ar/en
 
 const Banners = ({ data }: BannersProps) => {
   const router = useRouter();
