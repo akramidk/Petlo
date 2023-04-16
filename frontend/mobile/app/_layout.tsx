@@ -133,7 +133,6 @@ const Layout = () => {
     (!newVersionAvailableResponse && newVersionAvailableResponse.isFetching) ||
     newVersionAvailableResponse?.body?.value ||
     storedLanguage === undefined ||
-    languageGender === undefined ||
     sessionToken === undefined ||
     customer === undefined ||
     cartStore.cartId === undefined
