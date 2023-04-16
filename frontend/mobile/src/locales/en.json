@@ -143,6 +143,8 @@
   "ITEM__ADD_TO_CART_BUTTON": "Add To Cart",
   "ITEM__ADD_TO_CART_VARIANT_NOT_AVAILABLE_BUTTON": "Variant Not Available",
   "CART__TITLE": "Your Cart",
+  "CART__PAYMENT_SUMMARY": "Payment Summary",
+  "CART__CART_TOTAL": "Cart Total",
   "CART__CHECKOUT_BUTTON": "Checkout",
   "CHANGE_LANGUAGE__TITLE": "Change Language",
   "CHANGE_LANGUAGE__HELPER_TEXT": "Select the language that you need to see the app with.",

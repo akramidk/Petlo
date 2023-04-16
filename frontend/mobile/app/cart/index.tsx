@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { useRouter } from "expo-router";
 import { useEffect, useMemo } from "react";
 import { View } from "react-native";
@@ -8,6 +9,7 @@ import {
   useAPIFetching,
   useAPIMutation,
   useCartStore,
+  useInternationalizationContext,
   useTranslationsContext,
 } from "../../src/hooks";
 import {
@@ -24,6 +26,7 @@ import Item from "./_Item";
 const Cart = () => {
   const router = useRouter();
   const { t } = useTranslationsContext();
+  const { direction } = useInternationalizationContext();
 
   const { summary, cartId, setSummary, setNumberofItems, numberofItems } =
     useCartStore();
@@ -148,12 +151,17 @@ const Cart = () => {
 
         <View>
           <Text font="extraBold" cn="text-[15px] text-[#0E333C] mb-[12px]">
-            Payment Summary
+            {t("CART__PAYMENT_SUMMARY")}
           </Text>
 
-          <View className="flex-row justify-between">
+          <View
+            className={clsx(
+              "justify-between",
+              direction === "ltr" ? "flex-row" : "flex-row-reverse"
+            )}
+          >
             <Text font="semiBold" cn="text-[14px] text-[#666]">
-              Cart Total
+              {t("CART__CART_TOTAL")}
             </Text>
             <Text font="semiBold" cn="text-[14px] text-[#666]">
               {summary.amount} {summary.currency}
