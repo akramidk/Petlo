@@ -43,6 +43,9 @@ Rails.application.routes.draw do
       #sections
       get "sections", to: "sections#index"
 
+      #banner
+      get "banners", to: "banners#index"
+
       #categories
       get "categories/:category/items", to: "categories#category_items"
 
