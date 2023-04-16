@@ -1,5 +1,6 @@
 class BannerDetail < ApplicationRecord
     # TODO add error messages
+    #TODO add inclusion
 
     has_one_attached :image
 
