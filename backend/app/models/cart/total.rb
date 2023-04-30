@@ -1,5 +1,5 @@
 module Cart::Total
-    def total(country:)
+    def total(country:, convert: true)
         amount = 0
 
         self.items.select(:item_id).group(:item_id).each do |cart_item|
@@ -18,6 +18,7 @@ module Cart::Total
             end
         end
 
+        return amount if !convert
         Utils.number_to_currency(
             country: country,
             number: amount

@@ -11,10 +11,10 @@ module CheckoutHelper::Create
             address = customer.addresses.find_by(public_id: address_id)
             raise(RuntimeError, 3005003) if !address
             
-            delivery_amount = 2 # TODO
+            delivery_amount = 2000 # TODO not ready yet, fix it
         end
 
-        cart_amount = cart.total(country: customer.country)
+        cart_amount = cart.total(country: customer.country, convert: false)
         currency = CONSTANTS::COUNTRIES_CURRENCIES[customer.country]["en"]
 
         checkout = Checkout.create!(
