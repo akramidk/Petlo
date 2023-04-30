@@ -119,10 +119,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_15_201936) do
     t.string "public_id", null: false
     t.bigint "customer_id", null: false
     t.bigint "cart_id", null: false
-    t.bigint "address_id", null: false
+    t.bigint "address_id"
     t.integer "status", default: 0, null: false
     t.integer "cart_amount", null: false
-    t.integer "delivery_amount", null: false
+    t.integer "delivery_amount"
     t.integer "amount", null: false
     t.string "currency", null: false
     t.datetime "created_at", null: false

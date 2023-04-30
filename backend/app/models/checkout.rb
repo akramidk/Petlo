@@ -4,7 +4,7 @@ class Checkout < ApplicationRecord
 
     belongs_to :customer
     belongs_to :cart
-    belongs_to :address
+    belongs_to :address, optional: true
 
     before_validation :calculate_the_amount
 

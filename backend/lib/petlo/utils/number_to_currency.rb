@@ -1,5 +1,7 @@
 module Utils
     def self.number_to_currency(country:, number:)
+        return nil if !number
+        
         currency_number_of_decimal = CONSTANTS::COUNTRIES_CURRENCY_NUMBER_OF_DECIMALS[country]
         divide_number_by = BigDecimal(10) ** BigDecimal(currency_number_of_decimal)
 

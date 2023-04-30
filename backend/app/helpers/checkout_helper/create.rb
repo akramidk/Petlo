@@ -7,11 +7,11 @@ module CheckoutHelper::Create
 
         address = nil
         delivery_amount = nil
-        if(address_id)
+        if address_id
             address = customer.addresses.find_by(public_id: address_id)
             raise(RuntimeError, 3005003) if !address
             
-            delivery_amount = 2 // TODO
+            delivery_amount = 2 # TODO
         end
 
         cart_amount = cart.total(country: customer.country)
