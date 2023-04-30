@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_15_201936) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_30_162717) do
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.bigint "record_id", null: false
@@ -73,6 +73,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_15_201936) do
 
   create_table "brands", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "public_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "card_payments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "payment_id", null: false
+    t.bigint "card_id", null: false
+    t.string "processed_by", null: false
+    t.string "processor_payment_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -190,6 +199,48 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_15_201936) do
     t.bigint "item_id", null: false
     t.boolean "weighted", null: false
     t.string "unit"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "order_items", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "order_id", null: false
+    t.bigint "item_id", null: false
+    t.bigint "variant_id", null: false
+    t.integer "price", null: false
+    t.integer "quantity", null: false
+    t.integer "total_price", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "order_pets", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "order_id", null: false
+    t.bigint "pet_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "orders", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "public_id", null: false
+    t.integer "status", default: 0, null: false
+    t.bigint "customer_id", null: false
+    t.bigint "autoship_id"
+    t.bigint "payment_id", null: false
+    t.bigint "address_id", null: false
+    t.integer "cart_amount", null: false
+    t.integer "delivery_amount", null: false
+    t.integer "amount", null: false
+    t.string "currency", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "payments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "public_id", null: false
+    t.bigint "order_id", null: false
+    t.integer "status", default: 0, null: false
+    t.integer "method", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
