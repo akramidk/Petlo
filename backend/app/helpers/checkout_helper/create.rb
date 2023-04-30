@@ -25,7 +25,6 @@ module CheckoutHelper::Create
             delivery_amount: delivery_amount,
             currency: currency
         )
-        cart.used!
 
         checkout.summary(country: customer.country, language: language)
     end
