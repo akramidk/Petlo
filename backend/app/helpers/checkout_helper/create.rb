@@ -27,6 +27,6 @@ module CheckoutHelper::Create
         )
         cart.used!
 
-        checkout.summary(language: language)
+        checkout.summary(country: customer.country, language: language)
     end
 end

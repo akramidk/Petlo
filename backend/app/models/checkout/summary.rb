@@ -1,10 +1,8 @@
 module Checkout::Summary
-    def summary(language:)
-        currency = self.currency
-        smallest_unit_multiplier = CONSTANTS::CURRENCIES_SMALLEST_UNIT_MULTIPLIER[currency]
-        cart_amount = self.cart_amount / smallest_unit_multiplier
-        delivery_amount = self.delivery_amount / smallest_unit_multiplier
-        amount = self.amount / smallest_unit_multiplier
+    def summary(country:, language:)
+        cart_amount = Utils.number_to_currency(country: country, number: self.cart_amount)
+        delivery_amount = Utils.number_to_currency(country: country, number: self.delivery_amount)
+        amount = Utils.number_to_currency(country: country, number: self.amount)
 
         {
             public_id: self.public_id,
