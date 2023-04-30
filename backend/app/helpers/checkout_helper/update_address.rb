@@ -1,5 +1,5 @@
-module CheckoutHelper::ChangeAddress
-    def change_address(customer:, public_id:, address_id:, language:)
+module CheckoutHelper::UpdateAddress
+    def update_address(customer:, public_id:, address_id:, language:)
         checkout = customer.checkouts.find_by(public_id: public_id)
         raise(RuntimeError, 3005004) if !checkout
         raise(RuntimeError, 3005005) if checkout.used?
