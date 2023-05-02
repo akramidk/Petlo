@@ -12,7 +12,7 @@ module OrdersHelper::Create
         raise(RuntimeError, 3006004) if cart.used?
         raise(RuntimeError, 3006005) if cart.created_at + CONSTANTS::TIMES[:CART_EXP_AFTER] < Time.now
 
-        if payment[:type] === "card"
+        if payment[:method] === "card"
             begin
                 payment[:processor_payment_id] = GatewayLib.make_payment(
                     processor: PROCESSOR,
@@ -38,11 +38,11 @@ module OrdersHelper::Create
 
         payment = Payment.create!(
             order_id: order.id,
-            status: payment[:type] === "card" ? "collected" : "uncollected",
-            method: payment[:type]
+            status: payment[:method] === "card" ? "collected" : "uncollected",
+            method: payment[:method]
         )
 
-        if payment[:type] === "card"
+        if payment[:method] === "card"
             CardPayment.create!(
                 payment_id: payment.id,
                 card_id: payment[:card][:id],
