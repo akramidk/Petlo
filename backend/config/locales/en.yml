@@ -154,5 +154,14 @@ en:
     3005005: "Checkout used before."
     3005006: "Checkout expired."
 
+    #order helper: 006
+    3006000: "Checkout not found."
+    3006001: "Checkout is used before."
+    3006002: "Checkout expired."
+    3006003: "Cart not found."
+    3006004: "Cart is used before."
+    3006005: "Cart expired."
+    3006006: "Payment failed."
+
     #verifications controller: 000
     4000000: "Customer verified before."
