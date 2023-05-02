@@ -1,7 +1,6 @@
 class CardPayment < ApplicationRecord
     belongs_to :payment
-
-    has_one :card
+    belongs_to :card
 
     validates :payment_id, presence: { message: 2012000 }, uniqueness: { message: 2012001 }
     validates :card_id, presence: { message: 2012002 }

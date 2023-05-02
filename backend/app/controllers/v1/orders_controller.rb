@@ -4,6 +4,7 @@ module V1
 
         def create
             OrdersHelper.create(
+                customer: @customer,
                 checkout_id: params[:checkout_id],
                 payment: params[:payment],
                 pets: params[:pets]

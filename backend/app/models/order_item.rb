@@ -1,8 +1,7 @@
 class OrderItem < ApplicationRecord
     belongs_to :order
-
-    has_one :item
-    has_one :variant
+    belongs_to :item
+    belongs_to :variant
 
     validates :order_id, presence: { message: 2009000 }
     validates :item_id, presence: { message: 2009001 }, uniqueness: { scope: [:order_id], message: 2009002 }
