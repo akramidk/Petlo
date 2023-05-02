@@ -18,14 +18,14 @@ class Order < ApplicationRecord
         canceled: 3
     }
 
-    validates :public_id, presence: { message:  }, uniqueness: { message:  }
-    validates :customer_id, presence: { message:  }
-    validates :payment_id, presence: { message:  }
-    validates :address_id, presence: { message:  }
-    validates :cart_amount, presence: { message:  }
-    validates :delivery_amount, presence: { message:  }
-    validates :amount, presence: { message:  }
-    validates :currency, presence: { message:  }
+    validates :public_id, presence: { message: 2008000 }, uniqueness: { message: 2008001 }
+    validates :customer_id, presence: { message: 2008002 }
+    validates :payment_id, presence: { message: 2008003 }
+    validates :address_id, presence: { message: 2008004 }
+    validates :cart_amount, presence: { message: 2008005 }
+    validates :delivery_amount, presence: { message: 2008006 }
+    validates :amount, presence: { message: 2008007 }
+    validates :currency, presence: { message: 2008008 }, inclusion: { in: CONSTANTS::CURRENCIES.keys, message: 2008009 }
 
     private
     def calculate_the_amount

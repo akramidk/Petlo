@@ -76,11 +76,23 @@ en:
     2007001: "Checkout public id is used before."
     2007002: "Checkout customer id is required"
     2007003: "Checkout cart id is required"
-    2007004: "Checkout cart is used before."
-    2007006: "Checkout cart amount is required"
-    2007008: "Checkout amount is required"
-    2007009: "Checkout currency is required"
-    2007010: "Checkout currency is invalid"
+    2007005: "Checkout cart amount is required"
+    2007006: "Checkout cart delivery is required"
+    2007007: "Checkout amount is required"
+    2007008: "Checkout currency is required"
+    2007009: "Checkout currency is invalid"
+
+    #order model: 008
+    2008000: "Order public id is required."
+    2008001: "Order public id is used before."
+    2008002: "Order customer id is required"
+    2008003: "Order payment id is required"
+    2008004: "Order address id is required"
+    2008005: "Order cart amount is required"
+    2008006: "Order cart delivery is required"
+    2008007: "Order amount is required"
+    2008008: "Order currency is required"
+    2008009: "Order currency is invalid"
 
     #items helper: 000
     3000000: "Item not found."
