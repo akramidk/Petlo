@@ -12,16 +12,19 @@ module OrdersHelper::Create
         raise(RuntimeError, ) if cart.used?
         raise(RuntimeError, ) if cart.created_at + CONSTANTS::TIMES[:CART_EXP_AFTER] < Time.now
 
-        #TODO begin
         if payment[:type] === "card"
-            payment[:processor_payment_id] = GatewayLib.make_payment(
-                processor: PROCESSOR,
-                data: {
-                    amount: checkout.amount,
-                    currency: CONSTANTS::COUNTRIES_CURRENCIES[customer.country]["en"],
-                    source: payment[:card][:id]
-                }
-            )
+            begin
+                payment[:processor_payment_id] = GatewayLib.make_payment(
+                    processor: PROCESSOR,
+                    data: {
+                        amount: checkout.amount,
+                        currency: CONSTANTS::COUNTRIES_CURRENCIES[customer.country]["en"],
+                        source: payment[:card][:id]
+                    }
+                )
+              rescue
+                raise(RuntimeError, )
+            end
         end
 
         order = Order.create!(
