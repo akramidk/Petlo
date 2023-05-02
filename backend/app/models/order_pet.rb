@@ -3,6 +3,6 @@ class OrderPet < ApplicationRecord
 
     has_one :pet
 
-    validates :order_id, presence: { message:  }
-    validates :pet_id, presence: { message:  }, uniqueness: { scope: [:order_id], message:  }
+    validates :order_id, presence: { message: 2010000 }
+    validates :pet_id, presence: { message: 2010001 }, uniqueness: { scope: [:order_id], message: 2010002 }
 end

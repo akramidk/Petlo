@@ -4,10 +4,10 @@ class OrderItem < ApplicationRecord
     has_one :item
     has_one :variant
 
-    validates :order_id, presence: { message:  }
-    validates :item_id, presence: { message:  }, uniqueness: { scope: [:order_id], message:  }
-    validates :variant_id, presence: { message:  }, uniqueness: { scope: [:item_id], message:  }
-    validates :price, presence: { message:  }
-    validates :quantity, presence: { message:  }
-    validates :total_price, presence: { message:  }
+    validates :order_id, presence: { message: 2009000 }
+    validates :item_id, presence: { message: 2009001 }, uniqueness: { scope: [:order_id], message: 2009002 }
+    validates :variant_id, presence: { message: 2009003 }, uniqueness: { scope: [:item_id], message: 2009004 }
+    validates :price, presence: { message: 2009005 }
+    validates :quantity, presence: { message: 2009006 }
+    validates :total_price, presence: { message: 2009007 }
 end

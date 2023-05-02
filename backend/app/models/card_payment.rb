@@ -3,8 +3,8 @@ class CardPayment < ApplicationRecord
 
     has_one :card
 
-    validates :payment_id, presence: { message:  }, uniqueness: { message:  }
-    validates :card_id, presence: { message:  }
-    validates :processed_by, presence: { message:  }
-    validates :processor_payment_id, presence: { message:  }
+    validates :payment_id, presence: { message: 2012000 }, uniqueness: { message: 2012001 }
+    validates :card_id, presence: { message: 2012002 }
+    validates :processed_by, presence: { message: 2012003 }
+    validates :processor_payment_id, presence: { message: 2012004 }
 end
