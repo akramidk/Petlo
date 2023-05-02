@@ -1,4 +1,6 @@
 class Payment < ApplicationRecord
+    include PublicIdGenerator
+
     belongs_to :order
 
     enum status: {

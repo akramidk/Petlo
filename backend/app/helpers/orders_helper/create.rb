@@ -23,5 +23,29 @@ module OrdersHelper::Create
                 }
             )
         end
+
+        order = Order.create!(
+            customer_id: customer.id,
+            address_id: checkout.address_id,
+            cart_amount: checkout.cart_amount,
+            delivery_amount: checkout.delivery_amount,
+            amount: checkout.amount,
+            currency: checkout.currency
+        )
+
+        payment = Payment.create!(
+            order_id: order.id,
+            status: payment[:type] === "card" ? "collected" : "uncollected",
+            method: payment[:type]
+        )
+
+        if payment[:type] === "card"
+            CardPayment.create!(
+                payment_id: payment.id,
+                card_id: payment[:card][:id],
+                processed_by: PROCESSOR,
+                processor_payment_id: payment[:processor_payment_id]
+            )
+        end
     end
 end
