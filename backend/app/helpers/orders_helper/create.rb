@@ -1,4 +1,6 @@
 module OrdersHelper::Create
+    PROCESSOR = "Stripe"
+
     def create(customer:, checkout_id:, payment:, pets:)
         checkout = customer.checkouts.find_by(public_id: checkout_id)
         raise(RuntimeError, ) if !checkout
@@ -9,5 +11,18 @@ module OrdersHelper::Create
         raise(RuntimeError, ) if !cart
         raise(RuntimeError, ) if cart.used?
         raise(RuntimeError, ) if cart.created_at + CONSTANTS::TIMES[:CART_EXP_AFTER] < Time.now
+
+        #begin
+        payment = nil
+        if payment[:type] === "card"
+            payment = GatewayLib.make_payment(
+                processor: PROCESSOR,
+                data: {
+                    amount: checkout.amount,
+                    currency: CONSTANTS::COUNTRIES_CURRENCIES[customer.country]["en"],
+                    source: payment[:card][:id]
+                }
+            )
+        end
     end
 end

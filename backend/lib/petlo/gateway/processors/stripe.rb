@@ -29,5 +29,17 @@ class StripeLib
                 fingerprint: card.fingerprint
             }
         end
+
+        def make_payment(data)
+            payment = Stripe::Charge.create({
+                amount: data[:amount],
+                currency: data[:currency].downcase,
+                source: data[:source],
+            })
+
+            {
+                processor_payment_id: payment.id
+            }
+        end
     end
 end
