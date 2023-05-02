@@ -3,11 +3,13 @@ module V1
         before_action -> { current_customer(verified: true) }
 
         def create
-            response = OrdersHelper.create(
+            OrdersHelper.create(
                 checkout_id: params[:checkout_id],
                 payment: params[:payment],
                 pets: params[:pets]
             )
+
+            render json: { status: "succeeded" }, status: 200
         end
     end
 end
