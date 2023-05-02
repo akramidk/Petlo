@@ -8,10 +8,10 @@ module OrdersHelper::Index
             public_id: order.public_id,
             status: order.status,
             autoship: !!order.autoship_id,
-            amount: order.amount,
             payment: {
                 method: order.payment.method,
             },
+            amount: order.amount,
             currency: CONSTANTS::COUNTRIES_CURRENCIES[customer.country][language],
             date: order.created_at
           }}
