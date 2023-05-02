@@ -78,6 +78,9 @@ Rails.application.routes.draw do
       #checkout
       post "checkout", to: "checkout#create"
       patch "checkout/:public_id/update-address", to: "checkout#update_address"
+
+      #order
+      post "order", to: "order#create"
     end
   end
 end
