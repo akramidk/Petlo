@@ -80,6 +80,7 @@ Rails.application.routes.draw do
       patch "checkout/:public_id/update-address", to: "checkout#update_address"
 
       #order
+      get "order", to: "order#index"
       post "order", to: "order#create"
     end
   end

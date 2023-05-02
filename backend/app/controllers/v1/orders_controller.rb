@@ -2,6 +2,18 @@ module V1
     class OrdersController < ApplicationController
         before_action -> { current_customer(verified: true) }
 
+        include OrdersHelper
+
+        def index
+            response = OrdersHelper.index(
+                customer: @customer,
+                page: params[:page],
+                language: params[:locale]
+            )
+
+            render json: { has_more: response[:has_more], data: response[:data] }, status: 200
+        end
+
         def create
             OrdersHelper.create(
                 customer: @customer,
