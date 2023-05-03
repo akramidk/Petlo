@@ -162,7 +162,7 @@ en:
     3006004: "Cart is used before."
     3006005: "Cart expired."
     3006006: "Payment failed."
-    3006006: "Checkout address id not attached."
+    3006007: "Checkout address id not attached."
 
     #verifications controller: 000
     4000000: "Customer verified before."

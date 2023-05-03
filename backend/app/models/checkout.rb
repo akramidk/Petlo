@@ -17,7 +17,6 @@ class Checkout < ApplicationRecord
     validates :customer_id, presence: { message: 2007002 }
     validates :cart_id, presence: { message: 2007003 }
     validates :cart_amount, presence: { message: 2007005 }
-    validates :delivery_amount, presence: { message: 2007006 }
     validates :amount, presence: { message: 2007007 }
     validates :currency, presence: { message: 2007008 }, inclusion: { in: CONSTANTS::CURRENCIES.keys, message: 2007009 }
 

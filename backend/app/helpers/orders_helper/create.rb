@@ -6,12 +6,10 @@ module OrdersHelper::Create
         raise(RuntimeError, 3006000) if !checkout
         raise(RuntimeError, 3006001) if checkout.used?
         raise(RuntimeError, 3006002) if checkout.created_at + CONSTANTS::TIMES[:CHECKOUT_EXP_AFTER] < Time.now
-        raise(RuntimeError, 3006002) if !checkout.address_id
+        raise(RuntimeError, 3006007) if !checkout.address_id
 
         cart = customer.carts.find_by(id: checkout.cart_id)
         raise(RuntimeError, 3006003) if !cart
-        raise(RuntimeError, 3006004) if cart.used?
-        raise(RuntimeError, 3006005) if cart.created_at + CONSTANTS::TIMES[:CART_EXP_AFTER] < Time.now
 
         if payment[:method] === "card"
             begin
@@ -80,7 +78,6 @@ module OrdersHelper::Create
             )
         end
 
-        #cart.used!
         #checkout.used!
     end
 end
