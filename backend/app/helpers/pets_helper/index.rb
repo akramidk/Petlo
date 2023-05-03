@@ -7,7 +7,8 @@ module PetsHelper::Index
       public_id: pet.public_id,
       name: pet.name,
       kind: CONSTANTS::PETS[pet.kind][:name][language],
-      breed: CONSTANTS::PETS[pet.kind][:breeds][pet.breed][language],
+      #TODO should be without to_sym
+      breed: CONSTANTS::PETS[pet.kind][:breeds][pet.breed.to_sym][language],
       gender: CONSTANTS::PET_GENDERS[pet.gender][language],
       image: pet.image.url
     }}
