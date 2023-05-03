@@ -11,14 +11,20 @@ module OrdersHelper::Create
         cart = customer.carts.find_by(id: checkout.cart_id)
         raise(RuntimeError, 3006003) if !cart
 
+        ##pets check
+
         if payment[:method] === "card"
+            @card = customer.cards.find_by(public_id: payment[:card][:id])
+            ##card check
+
             begin
-                payment[:processor_payment_id] = GatewayLib.make_payment(
+                @payment_response = GatewayLib.make_payment(
                     processor: PROCESSOR,
                     data: {
-                        amount: checkout.amount,
-                        currency: CONSTANTS::COUNTRIES_CURRENCIES[customer.country]["en"],
-                        source: payment[:card][:id]
+                        amount: 10000,
+                        currency: CONSTANTS::COUNTRIES_CURRENCIES[customer.country]["en"].downcase,
+                        source: @card.processor_card_id,
+                        customer_id: customer.stripe_id
                     }
                 )
               rescue
@@ -72,9 +78,9 @@ module OrdersHelper::Create
         if payment[:method] === "card"
             CardPayment.create!(
                 payment_id: payment.id,
-                card_id: payment[:card][:id],
+                card_id: @card.id,
                 processed_by: PROCESSOR,
-                processor_payment_id: payment[:processor_payment_id]
+                processor_payment_id: @payment_response[:processor_payment_id]
             )
         end
 

@@ -30,11 +30,12 @@ class StripeLib
             }
         end
 
-        def make_payment(data)
+        def make_payment(data:)
             payment = Stripe::Charge.create({
                 amount: data[:amount],
-                currency: data[:currency].downcase,
+                currency: "usd",
                 source: data[:source],
+                customer: data[:customer_id]
             })
 
             {
