@@ -20,7 +20,6 @@ class Order < ApplicationRecord
 
     validates :public_id, presence: { message: 2008000 }, uniqueness: { message: 2008001 }
     validates :customer_id, presence: { message: 2008002 }
-    #TODO remove it validates :payment_id, presence: { message: 2008003 } 
     validates :address_id, presence: { message: 2008004 }
     validates :cart_amount, presence: { message: 2008005 }
     validates :delivery_amount, presence: { message: 2008006 }

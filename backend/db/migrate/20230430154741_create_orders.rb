@@ -5,7 +5,6 @@ class CreateOrders < ActiveRecord::Migration[7.0]
       t.integer :status, null: false, default: 0
       t.bigint :customer_id, null: false
       t.bigint :autoship_id
-      t.bigint :payment_id, null: false
       t.bigint :address_id, null: false
       t.integer :cart_amount, null: false
       t.integer :delivery_amount, null: false

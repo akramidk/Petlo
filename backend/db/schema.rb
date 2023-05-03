@@ -226,7 +226,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_30_162717) do
     t.integer "status", default: 0, null: false
     t.bigint "customer_id", null: false
     t.bigint "autoship_id"
-    t.bigint "payment_id", null: false
     t.bigint "address_id", null: false
     t.integer "cart_amount", null: false
     t.integer "delivery_amount", null: false
