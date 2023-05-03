@@ -11,11 +11,17 @@ module OrdersHelper::Create
         cart = customer.carts.find_by(id: checkout.cart_id)
         raise(RuntimeError, 3006003) if !cart
 
-        ##pets check
+        pets_id = []
+        pets&.each do |public_id|
+            pet = customer.pets.find_by(public_id: public_id)
+            raise(RuntimeError, 3006008) if !pet
+
+            pets_id << pet.id
+        end
 
         if payment[:method] === "card"
             @card = customer.cards.find_by(public_id: payment[:card][:id])
-            ##card check
+            raise(RuntimeError, 3006009) if !@card
 
             begin
                 @payment_response = GatewayLib.make_payment(
@@ -59,13 +65,10 @@ module OrdersHelper::Create
             end
         end
 
-        pets&.each do |public_id|
-            pet = customer.pets.find_by(public_id: public_id)
-            next if !pet
-
+        pets_id.each do |id|
             OrderPet.create!(
                 order_id: order.id,
-                pet_id: pet.id
+                pet_id: id
             )
         end
 

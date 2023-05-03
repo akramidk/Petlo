@@ -163,6 +163,8 @@ en:
     3006005: "Cart expired."
     3006006: "Payment failed."
     3006007: "Checkout address id not attached."
+    3006008: "Pet not found."
+    3006009: "Card not found."
 
     #verifications controller: 000
     4000000: "Customer verified before."
