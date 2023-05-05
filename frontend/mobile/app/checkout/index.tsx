@@ -11,20 +11,17 @@ import {
   CustomerCardsResponse,
 } from "../../src/interfaces";
 import Loading from "../_Loading";
-import { Link, Options, OptionsWithLabel } from "../../src/components/atoms";
+import { Link, OptionsWithLabel } from "../../src/components/atoms";
 
 const Checkout = () => {
   const router = useRouter();
   const { cartId } = useSearchParams();
-  const {
-    response: createCheckoutResponse,
-    trigger: createCheckoutTrigger,
-    status: createCheckoutStatus,
-  } = useAPIMutation<unknown, unknown>({
-    endpoint: Endpoints.CHECKOUT,
-    method: "POST",
-    options: {},
-  });
+  const { response: createCheckoutResponse, trigger: createCheckoutTrigger } =
+    useAPIMutation<unknown, unknown>({
+      endpoint: Endpoints.CHECKOUT,
+      method: "POST",
+      options: {},
+    });
 
   const [paymentMethod, setPaymentMethod] = useState<BaseOption>();
   const [card, setCard] = useState<BaseOption>();
