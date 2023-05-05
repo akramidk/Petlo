@@ -81,20 +81,6 @@ const Cart = () => {
     },
   });
 
-  const {
-    response: createCheckoutResponse,
-    trigger: createCheckoutTrigger,
-    status: createCheckoutStatus,
-  } = useAPIMutation<unknown, unknown>({
-    endpoint: Endpoints.CHECKOUT,
-    method: "DELETE",
-    options: {
-      onSucceeded: () => {
-        router.push("/checkout");
-      },
-    },
-  });
-
   const items: CartItemProps[] = useMemo(() => {
     if (!summary) return;
 
@@ -148,11 +134,8 @@ const Cart = () => {
           ? {
               value: t("CART__CHECKOUT_BUTTON"),
               onClick: () => {
-                createCheckoutTrigger({
-                  card_id: cartId,
-                });
+                router.push(`/checkout?cartId=${cartId}`);
               },
-              status: createCheckoutStatus,
             }
           : undefined
       }
