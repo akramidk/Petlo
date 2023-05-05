@@ -112,7 +112,6 @@
   "CHANGE_PASSWORD__STEP_2_FILED_PLACEHOLDER": "ادخل كلمة المرور الجديدة (8 خانات أو اكثر)",
   "CHANGE_PASSWORD__STEP_2_CHANGE_BUTTON": "تغيير",
   "CARDS__TITLE": "بطاقاتك",
-  "CARDS__EXPIRES_IN": "تنتهي %{expYear}/%{expMonth}",
   "CARDS__ADD_NEW_CARD_BUTTON": "اضف بطاقة جديدة",
   "ADD_NEW_CARD__TITLE": "اضف بطاقة جديدة",
   "ADD_NEW_CARD__ADD_BUTTON": "اضافة",
@@ -161,5 +160,6 @@
   "CHANGE_LANGUAGE__CANCEL_BUTTON": "الغاء",
   "WELCOME__TITLE": "مرحباً في",
   "WELCOME__SIGN_UP_BUTTON": "انشاء حساب",
-  "WELCOME__SIGN_IN_BUTTON": "تسجيل الدخول"
+  "WELCOME__SIGN_IN_BUTTON": "تسجيل الدخول",
+  "CARD_TO_DATA_CARD__EXPIRES_IN": "تنتهي %{expYear}/%{expMonth}"
 }
