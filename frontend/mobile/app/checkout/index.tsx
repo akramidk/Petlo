@@ -13,6 +13,8 @@ import {
 import {
   BaseOption,
   Card,
+  CustomerAddressesRequest,
+  CustomerAddressesResponse,
   CustomerCardsRequest,
   CustomerCardsResponse,
 } from "../../src/interfaces";
@@ -36,6 +38,7 @@ const Checkout = () => {
 
   const [paymentMethod, setPaymentMethod] = useState<BaseOption>();
   const [card, setCard] = useState<BaseOption>();
+  const [address, setAddress] = useState<BaseOption>();
 
   useEffect(() => {
     createCheckoutTrigger({
@@ -48,6 +51,16 @@ const Checkout = () => {
     CustomerCardsResponse
   >({
     endpoint: Endpoints.CUSTOMER_CARDS,
+    options: {
+      withPagination: true,
+    },
+  });
+
+  const { response: addressesResponse } = useAPIFetching<
+    CustomerAddressesRequest,
+    CustomerAddressesResponse
+  >({
+    endpoint: Endpoints.CUSTOMER_ADDRESSES,
     options: {
       withPagination: true,
     },
@@ -71,62 +84,102 @@ const Checkout = () => {
     });
   }, [cardsResponse]);
 
+  const addresses = useMemo(() => {
+    return addressesResponse.body?.data?.map((address) => {
+      return {
+        id: address.public_id,
+        value: (
+          <DataCard
+            primaryText={address.name}
+            secondaryText={address.details}
+            withoutContainerStyles
+          />
+        ) as React.ReactNode,
+      };
+    });
+  }, [addressesResponse]);
+
   if (
     createCheckoutResponse === undefined ||
     createCheckoutResponse?.status === "loading" ||
     cardsResponse === undefined ||
-    cardsResponse.isFetching
+    cardsResponse.isFetching ||
+    addressesResponse === undefined ||
+    addressesResponse.isFetching
   ) {
     return <Loading />;
   }
 
   return (
     <PageStructure title="Checkout" backButton={router.back}>
-      <View>
+      <OptionsWithLabel
+        cn="mb-[32px]"
+        label={{
+          name: "Payment Method",
+          require: true,
+        }}
+        options={{
+          optionValueCn: "text-[#666]",
+          optionValueFont: "semiBold",
+          options: PAYMENT_METHODS,
+          signalSelect: {
+            selectedOption: paymentMethod,
+            setSelectedOption: setPaymentMethod,
+          },
+          translate: true,
+        }}
+      />
+
+      {paymentMethod?.id === "card" && (
+        <View className="mb-[40px]">
+          <OptionsWithLabel
+            cn="mb-[12px]"
+            label={{
+              name: "Select a Card",
+              require: true,
+            }}
+            options={{
+              optionValueCn: "text-[#666]",
+              optionValueFont: "semiBold",
+              options: cards,
+              signalSelect: {
+                selectedOption: card,
+                setSelectedOption: setCard,
+              },
+            }}
+          />
+
+          <Link
+            valueCN="text-[#9747FF] text-[14px]"
+            value="+ Add New Card To Use"
+            onClick={() => router.push("/account/cards/add-new-card")}
+          />
+        </View>
+      )}
+
+      <View className="mb-[28px]">
         <OptionsWithLabel
-          cn="mb-[32px]"
+          cn="mb-[12px]"
           label={{
-            name: "Payment Method",
+            name: "Select an Address",
             require: true,
           }}
           options={{
             optionValueCn: "text-[#666]",
             optionValueFont: "semiBold",
-            options: PAYMENT_METHODS,
+            options: addresses,
             signalSelect: {
-              selectedOption: paymentMethod,
-              setSelectedOption: setPaymentMethod,
+              selectedOption: address,
+              setSelectedOption: setAddress,
             },
-            translate: true,
           }}
         />
 
-        {paymentMethod?.id === "card" && (
-          <View className="mb-[28px]">
-            <OptionsWithLabel
-              cn="mb-[12px]"
-              label={{
-                name: "Select a Card",
-                require: true,
-              }}
-              options={{
-                optionValueCn: "text-[#666]",
-                optionValueFont: "semiBold",
-                options: cards,
-                signalSelect: {
-                  selectedOption: card,
-                  setSelectedOption: setCard,
-                },
-              }}
-            />
-
-            <Link
-              valueCN="text-[#9747FF] text-[14px]"
-              value="+ Add New Card To Use"
-              onClick={() => router.push("/account/cards/add-new-card")}
-            />
-          </View>
-        )}
+        <Link
+          valueCN="text-[#9747FF] text-[14px]"
+          value="+ Add New Address To Use"
+          onClick={() => router.push("/account/cards/add-new-address")}
+        />
       </View>
     </PageStructure>
   );
