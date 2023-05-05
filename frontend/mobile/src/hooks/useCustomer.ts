@@ -46,7 +46,7 @@ const useCustomer = () => {
   }, [sessionToken]);
 
   useEffect(() => {
-    if (response === undefined) return;
+    if (response === undefined || response.isFetching) return;
 
     if (response?.statusCode === 200) {
       setCustomer({
