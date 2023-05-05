@@ -84,7 +84,7 @@ const Checkout = () => {
     <PageStructure title="Checkout" backButton={router.back}>
       <View>
         <OptionsWithLabel
-          cn="mb-[16px]"
+          cn="mb-[32px]"
           label={{
             name: "Payment Method",
             require: true,
@@ -102,8 +102,9 @@ const Checkout = () => {
         />
 
         {paymentMethod?.id === "card" && (
-          <View>
+          <View className="mb-[28px]">
             <OptionsWithLabel
+              cn="mb-[12px]"
               label={{
                 name: "Select a Card",
                 require: true,
