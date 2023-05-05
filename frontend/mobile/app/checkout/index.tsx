@@ -41,6 +41,24 @@ const Checkout = () => {
     <PageStructure title="Checkout" backButton={router.back}>
       <View>
         <OptionsWithLabel
+          cn="mb-[16px]"
+          label={{
+            name: "Payment Method",
+            require: true,
+          }}
+          options={{
+            optionValueCn: "text-[#666]",
+            optionValueFont: "semiBold",
+            options: PAYMENT_METHODS,
+            signalSelect: {
+              selectedOption: paymentMethod,
+              setSelectedOption: setPaymentMethod,
+            },
+            translate: true,
+          }}
+        />
+
+        <OptionsWithLabel
           label={{
             name: "Payment Method",
             require: true,

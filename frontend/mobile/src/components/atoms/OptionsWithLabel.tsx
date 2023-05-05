@@ -4,16 +4,18 @@ import BaseLabel from "../bases/BaseLabel";
 import Options from "./Options";
 
 interface OptionsWithLabelProps<TOptions> {
+  cn?: string;
   label: BaseLabelProps;
   options?: OptionsProps<TOptions>;
 }
 
 const OptionsWithLabel = <TOptions extends BaseOption>({
+  cn,
   label,
   options,
 }: OptionsWithLabelProps<TOptions>) => {
   return (
-    <View>
+    <View className={cn}>
       <BaseLabel cn="mb-[16px]" {...label} />
       <Options {...options} />
     </View>
