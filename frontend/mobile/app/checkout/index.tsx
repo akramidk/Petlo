@@ -7,7 +7,7 @@ import { Endpoints } from "../../src/enums";
 import { useAPIMutation } from "../../src/hooks";
 import { BaseOption } from "../../src/interfaces";
 import Loading from "../_Loading";
-import { Options } from "../../src/components/atoms";
+import { Options, OptionsWithLabel } from "../../src/components/atoms";
 
 const Checkout = () => {
   const router = useRouter();
@@ -40,13 +40,21 @@ const Checkout = () => {
   return (
     <PageStructure title="Checkout" backButton={router.back}>
       <View>
-        <Options
-          options={PAYMENT_METHODS}
-          signalSelect={{
-            selectedOption: paymentMethod,
-            setSelectedOption: setPaymentMethod,
+        <OptionsWithLabel
+          label={{
+            name: "Payment Method",
+            require: true,
           }}
-          translate
+          options={{
+            optionValueCn: "text-[#666]",
+            optionValueFont: "semiBold",
+            options: PAYMENT_METHODS,
+            signalSelect: {
+              selectedOption: paymentMethod,
+              setSelectedOption: setPaymentMethod,
+            },
+            translate: true,
+          }}
         />
       </View>
     </PageStructure>

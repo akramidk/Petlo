@@ -1,3 +1,5 @@
+import { font } from "../types";
+
 export interface OptionsProps<T> {
   options: T[];
   cn?: string;
@@ -7,4 +9,6 @@ export interface OptionsProps<T> {
     selectedOption: T;
     setSelectedOption: (option: T) => void;
   };
+  optionValueCn?: string;
+  optionValueFont?: font;
 }

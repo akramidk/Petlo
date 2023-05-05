@@ -10,6 +10,8 @@ const Options = <T extends BaseOptionProps>({
   optionCN,
   translate = false,
   signalSelect,
+  optionValueCn,
+  optionValueFont,
 }: OptionsProps<T>) => {
   const { t } = useTranslationsContext();
 
@@ -36,6 +38,8 @@ const Options = <T extends BaseOptionProps>({
               selected={isSelected}
               onSelect={() => onSelectOption(option)}
               value={translate ? t(option.value) : option.value}
+              valueCn={optionValueCn}
+              valueFont={optionValueFont}
             />
           </View>
         );
