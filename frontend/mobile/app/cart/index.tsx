@@ -81,6 +81,20 @@ const Cart = () => {
     },
   });
 
+  const {
+    response: createCheckoutResponse,
+    trigger: createCheckoutTrigger,
+    status: createCheckoutStatus,
+  } = useAPIMutation<unknown, unknown>({
+    endpoint: Endpoints.CHECKOUT,
+    method: "DELETE",
+    options: {
+      onSucceeded: () => {
+        router.push("/checkout");
+      },
+    },
+  });
+
   const items: CartItemProps[] = useMemo(() => {
     if (!summary) return;
 
@@ -133,7 +147,12 @@ const Cart = () => {
         numberofItems > 0
           ? {
               value: t("CART__CHECKOUT_BUTTON"),
-              onClick: () => router.push("/checkout"),
+              onClick: () => {
+                createCheckoutTrigger({
+                  card_id: cartId,
+                });
+              },
+              status: createCheckoutStatus,
             }
           : undefined
       }

@@ -37,4 +37,5 @@ export enum Endpoints {
   CART_NUMBER_OF_ITEMS = "/v1/carts/${publicId}/number-of-items",
   CART_SUMMARY = "/v1/carts/${publicId}",
   BANNERS = "/v1/banners",
+  CHECKOUT = "/v1/checkout",
 }
