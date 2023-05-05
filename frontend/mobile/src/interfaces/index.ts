@@ -117,12 +117,14 @@ import {
   CartRemoveItemResponse,
 } from "./Endpoints/CartRemoveItem";
 import { BannersRequest, BannersResponse } from "./Endpoints/Banners";
+
 //entities interfaces
 import { Customer } from "./Entities/Customer";
 import { Section } from "./Entities/Section";
 import { BriefItem } from "./Entities/BriefItem";
 import { Cart } from "./Entities/Cart";
 import { Banner } from "./Entities/Banner";
+import { Card } from "./Entities/Card";
 
 export {
   NewVersionAvailableRequest,
@@ -208,4 +210,5 @@ export {
   BriefItem,
   CartItemProps,
   Banner,
+  Card,
 };

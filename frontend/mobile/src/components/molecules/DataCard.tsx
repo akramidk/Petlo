@@ -11,6 +11,7 @@ const DataCard = ({
   secondaryText,
   actions,
   prefixChild,
+  withoutContainerStyles = false,
 }: DataCardProps) => {
   const { direction } = useInternationalizationContext();
   const flex = useMemo(() => {
@@ -20,7 +21,10 @@ const DataCard = ({
   return (
     <View
       className={clsx(
-        "w-full border-[1px] border-[#f6f6f6] rounded-[4px] px-[20px] py-[14px]",
+        {
+          ["w-full border-[1px] border-[#f6f6f6] rounded-[4px] px-[20px] py-[14px]"]:
+            !withoutContainerStyles,
+        },
         prefixChild && flex // TODO fix this
       )}
     >

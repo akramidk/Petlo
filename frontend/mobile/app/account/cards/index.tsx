@@ -16,6 +16,7 @@ import Loading from "../../_Loading";
 import { PaymentIcon } from "react-native-payment-icons";
 import { View } from "react-native";
 import clsx from "clsx";
+import { cardToDataCard } from "../../../src/utils";
 
 type brand =
   | "american-express"
@@ -45,26 +46,11 @@ const Cards = () => {
     if (response.isFetching) return;
 
     return response.body.data.map((card) => {
-      return {
-        primaryText: `**** **** **** ${card.last4}`,
-        secondaryText: t("CARDS__EXPIRES_IN", {
-          expMonth: card.exp_month,
-          expYear: card.exp_year,
-        }),
-        prefixChild: (
-          <View
-            className={clsx(
-              "items-center justify-center",
-              direction === "ltr" ? "mr-[20px]" : "ml-[20px]"
-            )}
-          >
-            <PaymentIcon
-              type={card.brand.replace(" ", "-") as brand}
-              width={36}
-            />
-          </View>
-        ),
-      };
+      return cardToDataCard({
+        card: card,
+        direction: direction,
+        t: t,
+      });
     });
   }, [response]);
 

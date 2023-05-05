@@ -8,4 +8,5 @@ export interface DataCardProps {
     name: string;
   } & Pick<BaseButtonProps, "onClick">)[];
   prefixChild?: React.ReactNode;
+  withoutContainerStyles?: boolean;
 }

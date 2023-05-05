@@ -4,17 +4,28 @@ import { View, Text } from "react-native";
 import { PageStructure } from "../../src/components/organisms";
 import { PAYMENT_METHODS } from "../../src/constants";
 import { Endpoints } from "../../src/enums";
-import { useAPIFetching, useAPIMutation } from "../../src/hooks";
+import {
+  useAPIFetching,
+  useAPIMutation,
+  useInternationalizationContext,
+  useTranslationsContext,
+} from "../../src/hooks";
 import {
   BaseOption,
+  Card,
   CustomerCardsRequest,
   CustomerCardsResponse,
 } from "../../src/interfaces";
 import Loading from "../_Loading";
 import { Link, OptionsWithLabel } from "../../src/components/atoms";
+import { cardToDataCard } from "../../src/utils";
+import { DataCard } from "../../src/components/molecules";
 
 const Checkout = () => {
   const router = useRouter();
+  const { t } = useTranslationsContext();
+  const { direction } = useInternationalizationContext();
+
   const { cartId } = useSearchParams();
   const { response: createCheckoutResponse, trigger: createCheckoutTrigger } =
     useAPIMutation<unknown, unknown>({
@@ -43,13 +54,22 @@ const Checkout = () => {
   });
 
   const cards = useMemo(() => {
-    return cardsResponse.body.data?.map((card) => {
+    return cardsResponse.body?.data?.map((card) => {
       return {
         id: card.public_id,
-        value: card.last4,
+        value: (
+          <DataCard
+            {...cardToDataCard({
+              card: card,
+              direction: direction,
+              t: t,
+            })}
+            withoutContainerStyles
+          />
+        ) as React.ReactNode,
       };
     });
-  }, []);
+  }, [cardsResponse]);
 
   if (
     createCheckoutResponse === undefined ||
