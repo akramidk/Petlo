@@ -178,7 +178,7 @@ const Checkout = () => {
         <Link
           valueCN="text-[#9747FF] text-[14px]"
           value="+ Add New Address To Use"
-          onClick={() => router.push("/account/cards/add-new-address")}
+          onClick={() => router.push("/account/addresses/add-new-address")}
         />
       </View>
     </PageStructure>
