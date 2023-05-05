@@ -11,7 +11,7 @@ import {
   CustomerCardsResponse,
 } from "../../src/interfaces";
 import Loading from "../_Loading";
-import { Options, OptionsWithLabel } from "../../src/components/atoms";
+import { Link, Options, OptionsWithLabel } from "../../src/components/atoms";
 
 const Checkout = () => {
   const router = useRouter();
@@ -100,6 +100,12 @@ const Checkout = () => {
                   setSelectedOption: setCard,
                 },
               }}
+            />
+
+            <Link
+              valueCN="text-[#9747FF] text-[14px]"
+              value="+ Add New Card To Use"
+              onClick={() => router.push("/account/cards/add-new-card")}
             />
           </View>
         )}
