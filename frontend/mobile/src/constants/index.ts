@@ -10,6 +10,7 @@ import { MENU_TABS } from "./MENU_TABS";
 import { HEDER_ICONS } from "./HEDER_ICONS";
 import { MORE_PAGE_SECTIONS } from "./MORE_PAGE_SECTIONS";
 import { PETS_GENDERS } from "./PETS_GENDERS";
+import { PAYMENT_METHODS } from "./PAYMENT_METHODS";
 
 export {
   LANGUAGES_OPTIONS,
@@ -24,4 +25,5 @@ export {
   HEDER_ICONS,
   MORE_PAGE_SECTIONS,
   PETS_GENDERS,
+  PAYMENT_METHODS,
 };
