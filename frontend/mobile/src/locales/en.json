@@ -155,5 +155,17 @@
   "WELCOME__TITLE": "Welcome to",
   "WELCOME__SIGN_UP_BUTTON": "Sign Up",
   "WELCOME__SIGN_IN_BUTTON": "Sign In",
-  "CARD_TO_DATA_CARD__EXPIRES_IN": "Expires in %{expMonth}/%{expYear}"
+  "CARD_TO_DATA_CARD__EXPIRES_IN": "Expires in %{expMonth}/%{expYear}",
+  "CHECKOUT__TITLE": "Checkout",
+  "CHECKOUT__BUTTON": "Place Order",
+  "CHECKOUT__PAYMENT_METHOD": "Payment Method",
+  "CHECKOUT__SELECT_A_CARD": "Select a Card",
+  "CHECKOUT__SELECT_AN_ADDRESS": "Select an Address",
+  "CHECKOUT__THIS_ORDER_FOR": "This Order For",
+  "CHECKOUT__MULTIPLE_CHOICE": "multiple choice",
+  "CHECKOUT__PAYMENT_SUMMARY": "Payment Summary",
+  "CHECKOUT__CART_TOTAL": "Cart Total",
+  "CHECKOUT__DELIVERY_AMOUNT": "Delivery Amount",
+  "CHECKOUT__SELECT_ADDRESS_FIRST": "Select Address First",
+  "CHECKOUT__TOTAL_AMOUNT": "Total Amount"
 }

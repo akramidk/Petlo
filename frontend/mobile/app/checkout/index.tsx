@@ -200,10 +200,10 @@ const Checkout = () => {
 
   return (
     <PageStructure
-      title="Checkout"
+      title={t("CHECKOUT__TITLE")}
       backButton={router.back}
       button={{
-        value: "Place Order",
+        value: t("CHECKOUT__BUTTON"),
         onClick: () => {
           const cardObj =
             paymentMethod.id === "card"
@@ -229,7 +229,7 @@ const Checkout = () => {
       <OptionsWithLabel
         cn="mb-[24px]"
         label={{
-          name: "Payment Method",
+          name: t("CHECKOUT__PAYMENT_METHOD"),
           require: true,
         }}
         options={{
@@ -249,7 +249,7 @@ const Checkout = () => {
           <OptionsWithLabel
             cn="mb-[12px]"
             label={{
-              name: "Select a Card",
+              name: t("CHECKOUT__SELECT_A_CARD"),
               require: true,
             }}
             options={{
@@ -275,7 +275,7 @@ const Checkout = () => {
         <OptionsWithLabel
           cn="mb-[12px]"
           label={{
-            name: "Select an Address",
+            name: t("CHECKOUT__SELECT_AN_ADDRESS"),
             require: true,
           }}
           options={{
@@ -301,8 +301,8 @@ const Checkout = () => {
         <OptionsWithLabel
           cn="mb-[12px]"
           label={{
-            name: "This Order For",
-            helperText: "multiple choice",
+            name: t("CHECKOUT__THIS_ORDER_FOR"),
+            helperText: t("CHECKOUT__MULTIPLE_CHOICE"),
           }}
           options={{
             optionValueCn: "text-[#666]",
@@ -324,7 +324,7 @@ const Checkout = () => {
 
       <View>
         <Text font="extraBold" cn="text-[15px] text-[#0E333C] mb-[12px]">
-          Payment Summary
+          {t("CHECKOUT__PAYMENT_SUMMARY")}
         </Text>
 
         <View className="space-y-[12px]">
@@ -335,7 +335,7 @@ const Checkout = () => {
             )}
           >
             <Text font="semiBold" cn="text-[14px] text-[#666]">
-              Cart Total
+              {t("CHECKOUT__CART_TOTAL")}
             </Text>
             <Text font="semiBold" cn="text-[14px] text-[#666]">
               {checkout.cart_amount} {checkout.currency}
@@ -349,12 +349,12 @@ const Checkout = () => {
             )}
           >
             <Text font="semiBold" cn="text-[14px] text-[#666]">
-              Delivery Amount
+              {t("CHECKOUT__DELIVERY_AMOUNT")}
             </Text>
             <Text font="semiBold" cn="text-[14px] text-[#666]">
               {checkout.delivery_amount
                 ? `${checkout.delivery_amount} ${checkout.currency}`
-                : "Select Address First"}
+                : t("CHECKOUT__SELECT_ADDRESS_FIRST")}
             </Text>
           </View>
 
@@ -365,12 +365,12 @@ const Checkout = () => {
             )}
           >
             <Text font="bold" cn="text-[14px] text-[#444]">
-              Total Amount
+              {t("CHECKOUT__TOTAL_AMOUNT")}
             </Text>
             <Text font="bold" cn="text-[14px] text-[#444]">
               {checkout.delivery_amount
                 ? `${checkout.amount} ${checkout.currency}`
-                : "Select Address First"}
+                : t("CHECKOUT__SELECT_ADDRESS_FIRST")}
             </Text>
           </View>
         </View>
