@@ -15,4 +15,5 @@ export interface OptionsProps<T> {
     selectedOptions: T[];
     setSelectedOptions: (option: T[]) => void;
   };
+  preventDeselection?: boolean;
 }

@@ -13,6 +13,7 @@ const Options = <T extends BaseOptionProps>({
   optionValueCn,
   optionValueFont,
   multipleSelect,
+  preventDeselection = false,
 }: OptionsProps<T>) => {
   const { t } = useTranslationsContext();
 
@@ -59,7 +60,11 @@ const Options = <T extends BaseOptionProps>({
               cn={clsx(padding, optionCN)}
               selected={isSelected}
               onClick={() =>
-                isSelected ? deselectOption(option) : selectOption(option)
+                isSelected
+                  ? preventDeselection
+                    ? undefined
+                    : deselectOption(option)
+                  : selectOption(option)
               }
               value={translate ? t(option.value) : option.value}
               valueCn={optionValueCn}

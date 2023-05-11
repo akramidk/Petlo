@@ -256,6 +256,7 @@ const Checkout = () => {
               selectedOption: address,
               setSelectedOption: setAddress,
             },
+            preventDeselection: true,
           }}
         />
 
