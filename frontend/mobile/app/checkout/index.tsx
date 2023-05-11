@@ -15,6 +15,8 @@ import {
   Card,
   CreateNewCheckoutRequest,
   CreateNewCheckoutResponse,
+  CreateNewOrderRequest,
+  CreateNewOrderResponse,
   CustomerAddressesRequest,
   CustomerAddressesResponse,
   CustomerCardsRequest,
@@ -62,6 +64,18 @@ const Checkout = () => {
       publicId: createCheckoutResponse?.body?.checkout?.public_id,
     },
     options: {},
+  });
+
+  const { trigger: createNewOrderTrigger } = useAPIMutation<
+    CreateNewOrderRequest,
+    CreateNewOrderResponse
+  >({
+    endpoint: Endpoints.CREATE_NEW_ORDERS,
+    method: "POST",
+    options: {
+      onSucceeded: () => router.replace("/orders"),
+      fireOnSucceededAfter: 2000,
+    },
   });
 
   const checkout =
@@ -192,7 +206,25 @@ const Checkout = () => {
       backButton={router.back}
       button={{
         value: "Place Order",
-        onClick: () => console.log("orderrrrr"),
+        onClick: () => {
+          const cardObj =
+            paymentMethod.id === "card"
+              ? {
+                  card: {
+                    id: card.id as string,
+                  },
+                }
+              : {};
+
+          createNewOrderTrigger({
+            checkout_id: checkout.public_id,
+            payment: {
+              method: paymentMethod.id as "cash" | "card",
+              ...cardObj,
+            },
+            pets: pets?.map((pet) => pet.id) ?? [],
+          });
+        },
         status: buttonStatus,
       }}
     >

@@ -125,6 +125,10 @@ import {
   UpdateCheckoutAddressRequest,
   UpdateCheckoutAddressResponse,
 } from "./Endpoints/UpdateCheckoutAddress";
+import {
+  CreateNewOrderRequest,
+  CreateNewOrderResponse,
+} from "./Endpoints/CreateNewOrder";
 
 //entities interfaces
 import { Customer } from "./Entities/Customer";
@@ -215,6 +219,8 @@ export {
   CreateNewCheckoutResponse,
   UpdateCheckoutAddressRequest,
   UpdateCheckoutAddressResponse,
+  CreateNewOrderRequest,
+  CreateNewOrderResponse,
   Customer,
   Cart,
   DataCardProps,
