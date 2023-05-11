@@ -27,6 +27,7 @@ import { Link, OptionsWithLabel, Text } from "../../src/components/atoms";
 import { cardToDataCard } from "../../src/utils";
 import { DataCard } from "../../src/components/molecules";
 import clsx from "clsx";
+import { buttonStatus } from "../../src/types";
 
 const Checkout = () => {
   const router = useRouter();
@@ -133,6 +134,19 @@ const Checkout = () => {
     });
   }, [petsResponse]);
 
+  const buttonStatus: buttonStatus = useMemo(() => {
+    if (
+      checkout === undefined ||
+      checkout.delivery_amount === null ||
+      paymentMethod === undefined ||
+      (paymentMethod.id === "Card" && card === undefined) || //TODO use Enum
+      address === undefined
+    )
+      return "inactive";
+
+    return "active";
+  }, [checkout]);
+
   if (
     createCheckoutResponse === undefined ||
     createCheckoutResponse?.status === "loading" ||
@@ -147,7 +161,15 @@ const Checkout = () => {
   }
 
   return (
-    <PageStructure title="Checkout" backButton={router.back}>
+    <PageStructure
+      title="Checkout"
+      backButton={router.back}
+      button={{
+        value: "Place Order",
+        onClick: () => console.log("orderrrrr"),
+        status: buttonStatus,
+      }}
+    >
       <OptionsWithLabel
         cn="mb-[32px]"
         label={{
