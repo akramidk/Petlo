@@ -244,7 +244,7 @@ const Checkout = () => {
       </View>
 
       <View>
-        <Text font="extraBold" cn="text-[15px] text-[#0E333C] mb-[20px]">
+        <Text font="extraBold" cn="text-[15px] text-[#0E333C] mb-[12px]">
           Payment Summary
         </Text>
 
@@ -275,7 +275,7 @@ const Checkout = () => {
             <Text font="semiBold" cn="text-[14px] text-[#666]">
               {checkout.delivery_amount
                 ? `${checkout.delivery_amount} ${checkout.currency}`
-                : "Select an Address"}
+                : "Select Address First"}
             </Text>
           </View>
 
@@ -285,11 +285,13 @@ const Checkout = () => {
               direction === "ltr" ? "flex-row" : "flex-row-reverse"
             )}
           >
-            <Text font="semiBold" cn="text-[14px] text-[#666]">
+            <Text font="bold" cn="text-[14px] text-[#444]">
               Total Amount
             </Text>
-            <Text font="semiBold" cn="text-[14px] text-[#666]">
-              {checkout.amount} {checkout.currency}
+            <Text font="bold" cn="text-[14px] text-[#444]">
+              {checkout.delivery_amount
+                ? `${checkout.amount} ${checkout.currency}`
+                : "Select Address First"}
             </Text>
           </View>
         </View>
