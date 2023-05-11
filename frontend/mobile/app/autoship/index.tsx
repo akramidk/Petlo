@@ -1,11 +1,7 @@
-import { Text, View } from "react-native";
+import { PageStructure } from "../../src/components/organisms";
 
 const Autoship = () => {
-  return (
-    <View>
-      <Text>Autoship</Text>
-    </View>
-  );
+  return <PageStructure title="Autoship" />;
 };
 
 export default Autoship;

@@ -1,11 +1,7 @@
-import { Text, View } from "react-native";
+import { PageStructure } from "../../src/components/organisms";
 
 const Orders = () => {
-  return (
-    <View>
-      <Text>Orders</Text>
-    </View>
-  );
+  return <PageStructure title="Orders" />;
 };
 
 export default Orders;
