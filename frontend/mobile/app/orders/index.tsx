@@ -8,6 +8,7 @@ import Loading from "../_Loading";
 
 // TODO add the autoship
 // TODO add the delivery estimation
+// TODO redesign the whole card + create an order page for more info
 
 const Orders = () => {
   const { response } = useAPIFetching<void, OrdersResponse>({
@@ -23,7 +24,7 @@ const Orders = () => {
 
   return (
     <PageStructure title="Orders">
-      <View className="space-y-[6px]">
+      <View className="space-y-[8px]">
         {response.body.data.map((order, i) => {
           return (
             <View
@@ -31,16 +32,16 @@ const Orders = () => {
               className="w-full border-[1px] border-[#f6f6f6] rounded-[4px] px-[20px] py-[14px] space-y-[8px]"
             >
               <View className="flex-row justify-between">
-                <Text font="extraBold" cn="text-[#222]">
+                <Text font="extraBold" cn="text-[#222] text-[13.5px]">
                   Order No. {order.id}
                 </Text>
-                <Text font="bold" cn="text-[#666]">
+                <Text font="bold" cn="text-[#666] text-[13.5px]">
                   {order.amount} {order.currency}
                 </Text>
               </View>
 
               <View>
-                <Text font="semiBold" cn="text-[#888]">
+                <Text font="semiBold" cn="text-[#888] text-[13px]">
                   Order is {order.status}
                 </Text>
               </View>
