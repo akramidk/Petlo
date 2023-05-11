@@ -7,7 +7,7 @@ import { font } from "../../types";
 interface BaseOptionProps {
   value: string | React.ReactNode;
   selected?: boolean;
-  onSelect: () => void;
+  onClick: () => void;
   cn?: string;
   valueCn?: string;
   valueFont?: font;
@@ -16,13 +16,13 @@ interface BaseOptionProps {
 const BaseOption = ({
   value,
   selected = false,
-  onSelect,
+  onClick,
   cn,
   valueCn,
   valueFont,
 }: BaseOptionProps) => {
   return (
-    <BaseButton cn={clsx("justify-between", cn)} onClick={onSelect}>
+    <BaseButton cn={clsx("justify-between", cn)} onClick={onClick}>
       {typeof value === "string" ? (
         <Text
           cn={clsx("text-[16px] text-[#163E48]", valueCn)}

@@ -16,7 +16,7 @@ const Options = <T extends BaseOptionProps>({
 }: OptionsProps<T>) => {
   const { t } = useTranslationsContext();
 
-  const onSelectOption = (option: T) => {
+  const selectOption = (option: T) => {
     if (signalSelect) {
       signalSelect.setSelectedOption(option);
     } else if (multipleSelect) {
@@ -24,6 +24,17 @@ const Options = <T extends BaseOptionProps>({
         ? [...multipleSelect.selectedOptions, option]
         : [option];
 
+      multipleSelect.setSelectedOptions(options);
+    }
+  };
+
+  const deselectOption = (option: T) => {
+    if (signalSelect) {
+      signalSelect.setSelectedOption(undefined);
+    } else if (multipleSelect) {
+      const options = multipleSelect.selectedOptions.filter(
+        (_option) => _option.id !== option.id
+      );
       multipleSelect.setSelectedOptions(options);
     }
   };
@@ -47,7 +58,9 @@ const Options = <T extends BaseOptionProps>({
             <BaseOption
               cn={clsx(padding, optionCN)}
               selected={isSelected}
-              onSelect={() => onSelectOption(option)}
+              onClick={() =>
+                isSelected ? deselectOption(option) : selectOption(option)
+              }
               value={translate ? t(option.value) : option.value}
               valueCn={optionValueCn}
               valueFont={optionValueFont}
