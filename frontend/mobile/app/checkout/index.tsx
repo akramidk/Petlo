@@ -66,17 +66,15 @@ const Checkout = () => {
     options: {},
   });
 
-  const { trigger: createNewOrderTrigger } = useAPIMutation<
-    CreateNewOrderRequest,
-    CreateNewOrderResponse
-  >({
-    endpoint: Endpoints.CREATE_NEW_ORDERS,
-    method: "POST",
-    options: {
-      onSucceeded: () => router.replace("/orders"),
-      fireOnSucceededAfter: 2000,
-    },
-  });
+  const { status: createNewOrderStatus, trigger: createNewOrderTrigger } =
+    useAPIMutation<CreateNewOrderRequest, CreateNewOrderResponse>({
+      endpoint: Endpoints.CREATE_NEW_ORDERS,
+      method: "POST",
+      options: {
+        onSucceeded: () => router.replace("/orders"),
+        fireOnSucceededAfter: 2000,
+      },
+    });
 
   const checkout =
     updateCheckoutAddressResponse?.body?.checkout ??
@@ -225,7 +223,7 @@ const Checkout = () => {
             pets: pets?.map((pet) => pet.id) ?? [],
           });
         },
-        status: buttonStatus,
+        status: createNewOrderStatus ?? buttonStatus,
       }}
     >
       <OptionsWithLabel
