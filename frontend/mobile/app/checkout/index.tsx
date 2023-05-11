@@ -152,13 +152,13 @@ const Checkout = () => {
       checkout === undefined ||
       checkout.delivery_amount === null ||
       paymentMethod === undefined ||
-      (paymentMethod.id === "Card" && card === undefined) || //TODO use Enum
+      (paymentMethod.id === "card" && card === undefined) ||
       address === undefined
     )
       return "inactive";
 
     return "active";
-  }, [checkout]);
+  }, [checkout, paymentMethod, card, address]);
 
   useEffect(() => {
     createCheckoutTrigger({
@@ -175,7 +175,7 @@ const Checkout = () => {
 
   if (
     createCheckoutResponse === undefined ||
-    createCheckoutResponse?.status === "loading" ||
+    createCheckoutResponse.status !== "succeeded" ||
     cardsResponse === undefined ||
     cardsResponse.isFetching ||
     addressesResponse === undefined ||
