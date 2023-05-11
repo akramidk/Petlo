@@ -227,7 +227,7 @@ const Checkout = () => {
       }}
     >
       <OptionsWithLabel
-        cn="mb-[32px]"
+        cn="mb-[24px]"
         label={{
           name: "Payment Method",
           require: true,
@@ -271,7 +271,7 @@ const Checkout = () => {
         </View>
       )}
 
-      <View className="mb-[28px]">
+      <View className="mb-[40px]">
         <OptionsWithLabel
           cn="mb-[12px]"
           label={{
@@ -297,7 +297,7 @@ const Checkout = () => {
         />
       </View>
 
-      <View className="mb-[28px]">
+      <View className="mb-[40px]">
         <OptionsWithLabel
           cn="mb-[12px]"
           label={{
