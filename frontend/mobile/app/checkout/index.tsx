@@ -17,6 +17,8 @@ import {
   CustomerAddressesResponse,
   CustomerCardsRequest,
   CustomerCardsResponse,
+  CustomerPetsRequest,
+  CustomerPetsResponse,
 } from "../../src/interfaces";
 import Loading from "../_Loading";
 import { Link, OptionsWithLabel } from "../../src/components/atoms";
@@ -39,6 +41,7 @@ const Checkout = () => {
   const [paymentMethod, setPaymentMethod] = useState<BaseOption>();
   const [card, setCard] = useState<BaseOption>();
   const [address, setAddress] = useState<BaseOption>();
+  const [pet, setPet] = useState<BaseOption>();
 
   useEffect(() => {
     createCheckoutTrigger({
@@ -46,6 +49,7 @@ const Checkout = () => {
     });
   }, []);
 
+  //TODO get all isted of pagination
   const { response: cardsResponse } = useAPIFetching<
     CustomerCardsRequest,
     CustomerCardsResponse
@@ -61,6 +65,16 @@ const Checkout = () => {
     CustomerAddressesResponse
   >({
     endpoint: Endpoints.CUSTOMER_ADDRESSES,
+    options: {
+      withPagination: true,
+    },
+  });
+
+  const { response: petsResponse } = useAPIFetching<
+    CustomerPetsRequest,
+    CustomerPetsResponse
+  >({
+    endpoint: Endpoints.CUSTOMER_PETS,
     options: {
       withPagination: true,
     },
@@ -99,13 +113,30 @@ const Checkout = () => {
     });
   }, [addressesResponse]);
 
+  const pets = useMemo(() => {
+    return petsResponse.body?.data?.map((pet) => {
+      return {
+        id: pet.public_id,
+        value: (
+          <DataCard
+            primaryText={pet.name}
+            secondaryText={`${pet.breed} ${pet.gender}`}
+            withoutContainerStyles
+          />
+        ) as React.ReactNode,
+      };
+    });
+  }, [petsResponse]);
+
   if (
     createCheckoutResponse === undefined ||
     createCheckoutResponse?.status === "loading" ||
     cardsResponse === undefined ||
     cardsResponse.isFetching ||
     addressesResponse === undefined ||
-    addressesResponse.isFetching
+    addressesResponse.isFetching ||
+    petsResponse === undefined ||
+    petsResponse.isFetching
   ) {
     return <Loading />;
   }
@@ -179,6 +210,31 @@ const Checkout = () => {
           valueCN="text-[#9747FF] text-[14px]"
           value="+ Add New Address To Use"
           onClick={() => router.push("/account/addresses/add-new-address")}
+        />
+      </View>
+
+      <View className="mb-[28px]">
+        <OptionsWithLabel
+          cn="mb-[12px]"
+          label={{
+            name: "This Order For",
+            helperText: "multiple choice",
+          }}
+          options={{
+            optionValueCn: "text-[#666]",
+            optionValueFont: "semiBold",
+            options: pets,
+            signalSelect: {
+              selectedOption: pet,
+              setSelectedOption: setPet,
+            },
+          }}
+        />
+
+        <Link
+          valueCN="text-[#9747FF] text-[14px]"
+          value="+ Add New Pet To Use"
+          onClick={() => router.push("/account/pets/add-new-pet")}
         />
       </View>
     </PageStructure>

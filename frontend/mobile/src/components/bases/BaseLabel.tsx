@@ -27,7 +27,7 @@ const BaseLabel = ({ name, helperText, require, cn }: BaseLabelProps) => {
   return (
     <View
       className={clsx(
-        "flex-row",
+        "flex-row flex-wrap",
         direction === "ltr" ? "flex-row" : "flex-row-reverse",
         cn
       )}
