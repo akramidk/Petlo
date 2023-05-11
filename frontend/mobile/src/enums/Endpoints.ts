@@ -40,4 +40,5 @@ export enum Endpoints {
   CREATE_NEW_CHECKOUT = "/v1/checkout",
   UPDATE_CHECKOUT_ADDRESS = "/v1/checkout/${publicId}/update-address",
   CREATE_NEW_ORDERS = "/v1/orders",
+  ORDERS = "/v1/orders",
 }
