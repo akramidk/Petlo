@@ -129,6 +129,7 @@ import {
   CreateNewOrderRequest,
   CreateNewOrderResponse,
 } from "./Endpoints/CreateNewOrder";
+import { OrdersResponse } from "./Endpoints/Order";
 
 //entities interfaces
 import { Customer } from "./Entities/Customer";
@@ -138,6 +139,7 @@ import { Cart } from "./Entities/Cart";
 import { Banner } from "./Entities/Banner";
 import { Card } from "./Entities/Card";
 import { Checkout } from "./Entities/Checkout";
+import { Order } from "./Entities/Order";
 
 export {
   NewVersionAvailableRequest,
@@ -221,6 +223,7 @@ export {
   UpdateCheckoutAddressResponse,
   CreateNewOrderRequest,
   CreateNewOrderResponse,
+  OrdersResponse,
   Customer,
   Cart,
   DataCardProps,
@@ -231,4 +234,5 @@ export {
   Banner,
   Card,
   Checkout,
+  Order,
 };

@@ -8,7 +8,7 @@ module V1
             response = OrdersHelper.index(
                 customer: @customer,
                 page: params[:page],
-                language: params[:locale]
+                language: params[:locale].to_i
             )
 
             render json: { has_more: response[:has_more], data: response[:data] }, status: 200
