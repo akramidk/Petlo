@@ -41,7 +41,7 @@ const Checkout = () => {
   const [paymentMethod, setPaymentMethod] = useState<BaseOption>();
   const [card, setCard] = useState<BaseOption>();
   const [address, setAddress] = useState<BaseOption>();
-  const [pet, setPet] = useState<BaseOption>();
+  const [pet, setPet] = useState<BaseOption[]>();
 
   useEffect(() => {
     createCheckoutTrigger({
@@ -224,9 +224,9 @@ const Checkout = () => {
             optionValueCn: "text-[#666]",
             optionValueFont: "semiBold",
             options: pets,
-            signalSelect: {
-              selectedOption: pet,
-              setSelectedOption: setPet,
+            multipleSelect: {
+              selectedOptions: pet,
+              setSelectedOptions: setPet,
             },
           }}
         />

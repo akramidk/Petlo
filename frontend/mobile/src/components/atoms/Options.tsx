@@ -12,12 +12,19 @@ const Options = <T extends BaseOptionProps>({
   signalSelect,
   optionValueCn,
   optionValueFont,
+  multipleSelect,
 }: OptionsProps<T>) => {
   const { t } = useTranslationsContext();
 
   const onSelectOption = (option: T) => {
     if (signalSelect) {
       signalSelect.setSelectedOption(option);
+    } else if (multipleSelect) {
+      const options = multipleSelect.selectedOptions
+        ? [...multipleSelect.selectedOptions, option]
+        : [option];
+
+      multipleSelect.setSelectedOptions(options);
     }
   };
 
@@ -27,6 +34,10 @@ const Options = <T extends BaseOptionProps>({
         let isSelected: boolean;
         if (signalSelect) {
           isSelected = signalSelect.selectedOption?.id === option.id;
+        } else if (multipleSelect) {
+          isSelected = !!multipleSelect.selectedOptions?.find(
+            (item) => item.id === option.id
+          );
         }
 
         const padding: string = index === 0 ? "pb-[16px]" : "py-[16px]";

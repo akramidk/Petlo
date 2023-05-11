@@ -5,10 +5,14 @@ export interface OptionsProps<T> {
   cn?: string;
   optionCN?: string;
   translate?: boolean;
-  signalSelect: {
+  optionValueCn?: string;
+  optionValueFont?: font;
+  signalSelect?: {
     selectedOption: T;
     setSelectedOption: (option: T) => void;
   };
-  optionValueCn?: string;
-  optionValueFont?: font;
+  multipleSelect?: {
+    selectedOptions: T[];
+    setSelectedOptions: (option: T[]) => void;
+  };
 }
