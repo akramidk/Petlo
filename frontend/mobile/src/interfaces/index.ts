@@ -117,6 +117,10 @@ import {
   CartRemoveItemResponse,
 } from "./Endpoints/CartRemoveItem";
 import { BannersRequest, BannersResponse } from "./Endpoints/Banners";
+import {
+  CreateNewCheckoutRequest,
+  CreateNewCheckoutResponse,
+} from "./Endpoints/CreateNewCheckout";
 
 //entities interfaces
 import { Customer } from "./Entities/Customer";
@@ -125,6 +129,7 @@ import { BriefItem } from "./Entities/BriefItem";
 import { Cart } from "./Entities/Cart";
 import { Banner } from "./Entities/Banner";
 import { Card } from "./Entities/Card";
+import { Checkout } from "./Entities/Checkout";
 
 export {
   NewVersionAvailableRequest,
@@ -202,6 +207,8 @@ export {
   CartRemoveItemResponse,
   BannersRequest,
   BannersResponse,
+  CreateNewCheckoutRequest,
+  CreateNewCheckoutResponse,
   Customer,
   Cart,
   DataCardProps,
@@ -211,4 +218,5 @@ export {
   CartItemProps,
   Banner,
   Card,
+  Checkout,
 };

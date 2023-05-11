@@ -1,6 +1,6 @@
 import { useRouter, useSearchParams } from "expo-router";
 import { useEffect, useMemo, useState } from "react";
-import { View, Text } from "react-native";
+import { View } from "react-native";
 import { PageStructure } from "../../src/components/organisms";
 import { PAYMENT_METHODS } from "../../src/constants";
 import { Endpoints } from "../../src/enums";
@@ -13,6 +13,8 @@ import {
 import {
   BaseOption,
   Card,
+  CreateNewCheckoutRequest,
+  CreateNewCheckoutResponse,
   CustomerAddressesRequest,
   CustomerAddressesResponse,
   CustomerCardsRequest,
@@ -21,9 +23,10 @@ import {
   CustomerPetsResponse,
 } from "../../src/interfaces";
 import Loading from "../_Loading";
-import { Link, OptionsWithLabel } from "../../src/components/atoms";
+import { Link, OptionsWithLabel, Text } from "../../src/components/atoms";
 import { cardToDataCard } from "../../src/utils";
 import { DataCard } from "../../src/components/molecules";
+import clsx from "clsx";
 
 const Checkout = () => {
   const router = useRouter();
@@ -32,7 +35,7 @@ const Checkout = () => {
 
   const { cartId } = useSearchParams();
   const { response: createCheckoutResponse, trigger: createCheckoutTrigger } =
-    useAPIMutation<unknown, unknown>({
+    useAPIMutation<CreateNewCheckoutRequest, CreateNewCheckoutResponse>({
       endpoint: Endpoints.CHECKOUT,
       method: "POST",
       options: {},
@@ -45,9 +48,11 @@ const Checkout = () => {
 
   useEffect(() => {
     createCheckoutTrigger({
-      card_id: cartId,
+      cart_id: cartId,
     });
   }, []);
+
+  const checkout = createCheckoutResponse?.body?.checkout;
 
   //TODO get all isted of pagination
   const { response: cardsResponse } = useAPIFetching<
@@ -236,6 +241,58 @@ const Checkout = () => {
           value="+ Add New Pet To Use"
           onClick={() => router.push("/account/pets/add-new-pet")}
         />
+      </View>
+
+      <View>
+        <Text font="extraBold" cn="text-[15px] text-[#0E333C] mb-[20px]">
+          Payment Summary
+        </Text>
+
+        <View className="space-y-[12px]">
+          <View
+            className={clsx(
+              "justify-between",
+              direction === "ltr" ? "flex-row" : "flex-row-reverse"
+            )}
+          >
+            <Text font="semiBold" cn="text-[14px] text-[#666]">
+              Cart Total
+            </Text>
+            <Text font="semiBold" cn="text-[14px] text-[#666]">
+              {checkout.cart_amount} {checkout.currency}
+            </Text>
+          </View>
+
+          <View
+            className={clsx(
+              "justify-between",
+              direction === "ltr" ? "flex-row" : "flex-row-reverse"
+            )}
+          >
+            <Text font="semiBold" cn="text-[14px] text-[#666]">
+              Delivery Amount
+            </Text>
+            <Text font="semiBold" cn="text-[14px] text-[#666]">
+              {checkout.delivery_amount
+                ? `${checkout.delivery_amount} ${checkout.currency}`
+                : "Select an Address"}
+            </Text>
+          </View>
+
+          <View
+            className={clsx(
+              "justify-between",
+              direction === "ltr" ? "flex-row" : "flex-row-reverse"
+            )}
+          >
+            <Text font="semiBold" cn="text-[14px] text-[#666]">
+              Total Amount
+            </Text>
+            <Text font="semiBold" cn="text-[14px] text-[#666]">
+              {checkout.amount} {checkout.currency}
+            </Text>
+          </View>
+        </View>
       </View>
     </PageStructure>
   );
