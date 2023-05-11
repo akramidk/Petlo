@@ -21,6 +21,8 @@ import {
   CustomerCardsResponse,
   CustomerPetsRequest,
   CustomerPetsResponse,
+  UpdateCheckoutAddressRequest,
+  UpdateCheckoutAddressResponse,
 } from "../../src/interfaces";
 import Loading from "../_Loading";
 import { Link, OptionsWithLabel, Text } from "../../src/components/atoms";
@@ -33,27 +35,38 @@ const Checkout = () => {
   const router = useRouter();
   const { t } = useTranslationsContext();
   const { direction } = useInternationalizationContext();
-
   const { cartId } = useSearchParams();
-  const { response: createCheckoutResponse, trigger: createCheckoutTrigger } =
-    useAPIMutation<CreateNewCheckoutRequest, CreateNewCheckoutResponse>({
-      endpoint: Endpoints.CHECKOUT,
-      method: "POST",
-      options: {},
-    });
 
   const [paymentMethod, setPaymentMethod] = useState<BaseOption>();
   const [card, setCard] = useState<BaseOption>();
   const [address, setAddress] = useState<BaseOption>();
   const [pet, setPet] = useState<BaseOption[]>();
 
-  useEffect(() => {
-    createCheckoutTrigger({
-      cart_id: cartId,
+  const { response: createCheckoutResponse, trigger: createCheckoutTrigger } =
+    useAPIMutation<CreateNewCheckoutRequest, CreateNewCheckoutResponse>({
+      endpoint: Endpoints.CREATE_NEW_CHECKOUT,
+      method: "POST",
+      options: {},
     });
-  }, []);
 
-  const checkout = createCheckoutResponse?.body?.checkout;
+  const {
+    response: updateCheckoutAddressResponse,
+    trigger: updateCheckoutAddressTrigger,
+  } = useAPIMutation<
+    UpdateCheckoutAddressRequest,
+    UpdateCheckoutAddressResponse
+  >({
+    endpoint: Endpoints.UPDATE_CHECKOUT_ADDRESS,
+    method: "PATCH",
+    slugs: {
+      publicId: createCheckoutResponse?.body?.checkout?.public_id,
+    },
+    options: {},
+  });
+
+  const checkout =
+    updateCheckoutAddressResponse?.body?.checkout ??
+    createCheckoutResponse?.body?.checkout;
 
   //TODO get all isted of pagination
   const { response: cardsResponse } = useAPIFetching<
@@ -146,6 +159,19 @@ const Checkout = () => {
 
     return "active";
   }, [checkout]);
+
+  useEffect(() => {
+    createCheckoutTrigger({
+      cart_id: cartId,
+    });
+  }, []);
+
+  useEffect(() => {
+    if (address === undefined) return;
+    updateCheckoutAddressTrigger({
+      address_id: address.id as string,
+    });
+  }, [address]);
 
   if (
     createCheckoutResponse === undefined ||

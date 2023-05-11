@@ -121,6 +121,10 @@ import {
   CreateNewCheckoutRequest,
   CreateNewCheckoutResponse,
 } from "./Endpoints/CreateNewCheckout";
+import {
+  UpdateCheckoutAddressRequest,
+  UpdateCheckoutAddressResponse,
+} from "./Endpoints/UpdateCheckoutAddress";
 
 //entities interfaces
 import { Customer } from "./Entities/Customer";
@@ -209,6 +213,8 @@ export {
   BannersResponse,
   CreateNewCheckoutRequest,
   CreateNewCheckoutResponse,
+  UpdateCheckoutAddressRequest,
+  UpdateCheckoutAddressResponse,
   Customer,
   Cart,
   DataCardProps,
