@@ -175,5 +175,13 @@
   "CHECKOUT__CART_TOTAL": "مبلغ العربة",
   "CHECKOUT__DELIVERY_AMOUNT": "مبلغ التوصيل",
   "CHECKOUT__SELECT_ADDRESS_FIRST": "اختر العنوان اولاً",
-  "CHECKOUT__TOTAL_AMOUNT": "المبلغ اﻹجمالي"
+  "CHECKOUT__TOTAL_AMOUNT": "المبلغ اﻹجمالي",
+  "ORDERS__TITLE": "الطلبات",
+  "ORDERS__ORDER_NUMBER": "رقم الطلب",
+  "ORDERS__STATUSES": {
+    "preparing": "الطلب قيد التجهيز",
+    "out_for_delivery": "الطلب في الطريق اليك",
+    "delivered": "تم توصيل الطلب",
+    "canceled": "تم الغاء الطلب"
+  }
 }

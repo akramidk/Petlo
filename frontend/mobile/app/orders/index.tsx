@@ -2,15 +2,22 @@ import { View } from "react-native";
 import { PageStructure } from "../../src/components/organisms";
 import { Text } from "../../src/components/atoms";
 import { Endpoints } from "../../src/enums";
-import { useAPIFetching } from "../../src/hooks";
+import {
+  useAPIFetching,
+  useInternationalizationContext,
+  useTranslationsContext,
+} from "../../src/hooks";
 import { OrdersResponse } from "../../src/interfaces";
 import Loading from "../_Loading";
+import clsx from "clsx";
 
 // TODO add the autoship
 // TODO add the delivery estimation
 // TODO redesign the whole card + create an order page for more info
 
 const Orders = () => {
+  const { t } = useTranslationsContext();
+  const { direction } = useInternationalizationContext();
   const { response } = useAPIFetching<void, OrdersResponse>({
     endpoint: Endpoints.ORDERS,
     options: {
@@ -23,7 +30,7 @@ const Orders = () => {
   }
 
   return (
-    <PageStructure title="Orders">
+    <PageStructure title={t("ORDERS__TITLE")}>
       <View className="space-y-[8px]">
         {response.body.data.map((order, i) => {
           return (
@@ -31,9 +38,14 @@ const Orders = () => {
               key={i}
               className="w-full border-[1px] border-[#f6f6f6] rounded-[4px] px-[20px] py-[14px] space-y-[8px]"
             >
-              <View className="flex-row justify-between">
+              <View
+                className={clsx(
+                  "justify-between",
+                  direction === "ltr" ? "flex-row" : "flex-row-reverse"
+                )}
+              >
                 <Text font="extraBold" cn="text-[#222] text-[13.5px]">
-                  Order No. {order.id}
+                  {t("ORDERS__ORDER_NUMBER")} {order.id}
                 </Text>
                 <Text font="bold" cn="text-[#666] text-[13.5px]">
                   {order.amount} {order.currency}
@@ -42,7 +54,7 @@ const Orders = () => {
 
               <View>
                 <Text font="semiBold" cn="text-[#888] text-[13px]">
-                  Order is {order.status}
+                  {t(`ORDERS__STATUSES.${order.status}`)}
                 </Text>
               </View>
             </View>

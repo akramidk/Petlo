@@ -167,5 +167,13 @@
   "CHECKOUT__CART_TOTAL": "Cart Total",
   "CHECKOUT__DELIVERY_AMOUNT": "Delivery Amount",
   "CHECKOUT__SELECT_ADDRESS_FIRST": "Select Address First",
-  "CHECKOUT__TOTAL_AMOUNT": "Total Amount"
+  "CHECKOUT__TOTAL_AMOUNT": "Total Amount",
+  "ORDERS__TITLE": "Orders",
+  "ORDERS__ORDER_NUMBER": "Order No.",
+  "ORDERS__STATUSES": {
+    "preparing": "Order Under Preparing",
+    "out_for_delivery": "Order is Out For Delivery",
+    "delivered": "Order Was Delivered",
+    "canceled": "Order Was Canceled"
+  }
 }
