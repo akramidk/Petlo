@@ -11,7 +11,10 @@ module OrdersHelper::Index
             payment: {
                 method: order.payment.method,
             },
-            amount: order.amount,
+            amount: Utils.number_to_currency(
+                country: customer.country,
+                number: order.amount
+            ),
             currency: CONSTANTS::COUNTRIES_CURRENCIES[customer.country][language],
             date: order.created_at
           }}
