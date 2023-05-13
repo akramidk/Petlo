@@ -12,6 +12,8 @@ import {
   CartAddItemRequest,
   CartAddItemResponse,
   CartItemProps,
+  CartRemoveItemRequest,
+  CartRemoveItemResponse,
 } from "../../src/interfaces";
 
 const Item = ({
@@ -49,7 +51,7 @@ const Item = ({
     response: removeResponse,
     trigger: removeTrigger,
     status: removeStatus,
-  } = useAPIMutation<CartAddItemRequest, CartAddItemResponse>({
+  } = useAPIMutation<CartRemoveItemRequest, CartRemoveItemResponse>({
     endpoint: Endpoints.CART_REMOVE_ITEM,
     method: "DELETE",
     slugs: {
