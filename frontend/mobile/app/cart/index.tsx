@@ -88,23 +88,13 @@ const Cart = () => {
     summary.items.forEach((item) => {
       item.variants.forEach((variant) => {
         array.push({
+          itemId: item.public_id,
+          variantId: variant.public_id,
           options: variant.options,
           name: item.name,
           image: item.image,
           quantity: variant.quantity,
           amount: `${variant.amount} ${summary.currency}`,
-          add: () =>
-            addTrigger({
-              item_id: item.public_id,
-              variant_id: variant.public_id,
-            }),
-          addStatus: addStatus,
-          remove: () =>
-            removeTrigger({
-              item_id: item.public_id,
-              variant_id: variant.public_id,
-            }),
-          removeStatus: removeStatus,
         });
       });
     });

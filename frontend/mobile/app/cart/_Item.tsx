@@ -2,21 +2,67 @@ import clsx from "clsx";
 import { Fragment } from "react";
 import { View, Image } from "react-native";
 import { Link, Text } from "../../src/components/atoms";
-import { useInternationalizationContext } from "../../src/hooks";
-import { CartItemProps } from "../../src/interfaces";
+import { Endpoints } from "../../src/enums";
+import {
+  useAPIMutation,
+  useCartStore,
+  useInternationalizationContext,
+} from "../../src/hooks";
+import {
+  CartAddItemRequest,
+  CartAddItemResponse,
+  CartItemProps,
+} from "../../src/interfaces";
 
 const Item = ({
+  itemId,
+  variantId,
   options,
   name,
   image,
   quantity,
   amount,
-  add,
-  addStatus,
-  remove,
-  removeStatus,
 }: CartItemProps) => {
   const { direction } = useInternationalizationContext();
+  const { cartId, setSummary, setNumberofItems } = useCartStore();
+
+  const {
+    response: addResponse,
+    trigger: addTrigger,
+    status: addStatus,
+  } = useAPIMutation<CartAddItemRequest, CartAddItemResponse>({
+    endpoint: Endpoints.CART_ADD_ITEM,
+    method: "POST",
+    slugs: {
+      publicId: cartId,
+    },
+    options: {
+      onSucceeded: () => {
+        setSummary(addResponse.body.cart);
+        setNumberofItems(addResponse.body.cart.number_of_items);
+      },
+      resetSucceededStatusAfter: 500,
+    },
+  });
+
+  const {
+    response: removeResponse,
+    trigger: removeTrigger,
+    status: removeStatus,
+  } = useAPIMutation<CartAddItemRequest, CartAddItemResponse>({
+    endpoint: Endpoints.CART_REMOVE_ITEM,
+    method: "DELETE",
+    slugs: {
+      publicId: cartId,
+    },
+    options: {
+      onSucceeded: () => {
+        setSummary(removeResponse.body.cart);
+        setNumberofItems(removeResponse.body.cart.number_of_items);
+      },
+      resetSucceededStatusAfter: 500,
+    },
+  });
 
   return (
     <View
@@ -93,7 +139,12 @@ const Item = ({
           )}
         >
           <Link
-            onClick={remove}
+            onClick={() =>
+              removeTrigger({
+                item_id: itemId,
+                variant_id: variantId,
+              })
+            }
             status={removeStatus}
             value="-"
             cn="px-[12px]"
@@ -103,7 +154,12 @@ const Item = ({
             {quantity}
           </Text>
           <Link
-            onClick={add}
+            onClick={() =>
+              addTrigger({
+                item_id: itemId,
+                variant_id: variantId,
+              })
+            }
             value="+"
             status={addStatus}
             cn="px-[12px]"
