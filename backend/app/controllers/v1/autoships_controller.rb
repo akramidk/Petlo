@@ -28,5 +28,15 @@ module V1
 
       render json: { status: "succeeded" }, status: 200
     end
+
+    def change_name
+      AutoshipsHelper.change_name(
+        customer: @customer,
+        public_id: params[:public_id],
+        name: params[:name]
+      )
+
+      render json: { status: "succeeded" }, status: 200
+    end
   end
 end

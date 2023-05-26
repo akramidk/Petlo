@@ -188,13 +188,14 @@ en:
     3006008: "Pet not found."
     3006009: "Card not found."
 
-    #order helper: 007
+    #autoship helper: 007
     3007000: "Item not found."
     3007001: "Variant not found."
     3007002: "Card not found."
     3007003: "Pet not found."
     3007004: "Address not found."
     3007005: "First shipment date shouldn't be today or in the past."
+    3007006: "Autoship not found."
 
     #verifications controller: 000
     4000000: "Customer verified before."
