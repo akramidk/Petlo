@@ -181,5 +181,16 @@ en:
     3006008: "Pet not found."
     3006009: "Card not found."
 
+    #order helper: 007
+    3007000: "Recurring interval is required."
+    3007001: "Recurring interval count is required."
+    3007002: "Starting from is required."
+    3007003: "Items is required."
+    3007004: "Payment is required."
+    3007005: "Item not found."
+    3007006: "Variant not found."
+    3007007: "Card not found."
+    3007008: "Pet not found."
+
     #verifications controller: 000
     4000000: "Customer verified before."
