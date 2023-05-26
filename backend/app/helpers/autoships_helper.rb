@@ -3,4 +3,5 @@ module AutoshipsHelper
   extend Create
   extend ChangeName
   extend ChangeAddress
+  extend UpdateItems
 end

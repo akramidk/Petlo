@@ -2,6 +2,7 @@ class Autoship < ApplicationRecord
   include PublicIdGenerator
 
   has_many :items, class_name: "AutoshipItem"
+  has_many :pets, class_name: "AutoshipPet"
 
   belongs_to :customer
   belongs_to :address

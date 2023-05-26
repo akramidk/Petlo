@@ -88,6 +88,7 @@ Rails.application.routes.draw do
       post "autoships", to: "autoships#create"
       patch "autoships/:public_id/change-name", to: "autoships#change_name"
       patch "autoships/:public_id/change-address", to: "autoships#change_address"
+      patch "autoships/:public_id/update-items", to: "autoships#update_items"
     end
   end
 end
