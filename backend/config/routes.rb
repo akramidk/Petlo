@@ -79,9 +79,12 @@ Rails.application.routes.draw do
       post "checkout", to: "checkout#create"
       patch "checkout/:public_id/update-address", to: "checkout#update_address"
 
-      #order
+      #orders
       get "orders", to: "orders#index"
       post "orders", to: "orders#create"
+
+      #autoships
+      post "autoships", to: "autoships#create"
     end
   end
 end
