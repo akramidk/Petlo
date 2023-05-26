@@ -5,4 +5,5 @@ module AutoshipsHelper
   extend ChangeAddress
   extend UpdateItems
   extend UpdatePaymentInformation
+  extend UpdatePets
 end

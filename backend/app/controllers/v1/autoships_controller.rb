@@ -68,5 +68,15 @@ module V1
 
       render json: { status: "succeeded" }, status: 200
     end
+
+    def update_pets
+      AutoshipsHelper.update_pets(
+        customer: @customer,
+        public_id: params[:public_id],
+        pets: params[:pets]
+      )
+
+      render json: { status: "succeeded" }, status: 200
+    end
   end
 end
