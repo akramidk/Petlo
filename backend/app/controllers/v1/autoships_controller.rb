@@ -58,5 +58,15 @@ module V1
 
       render json: { status: "succeeded" }, status: 200
     end
+
+    def update_payment_information
+      AutoshipsHelper.update_payment_information(
+        customer: @customer,
+        public_id: params[:public_id],
+        payment: params[:payment]
+      )
+
+      render json: { status: "succeeded" }, status: 200
+    end
   end
 end

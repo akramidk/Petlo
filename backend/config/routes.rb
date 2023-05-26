@@ -86,9 +86,10 @@ Rails.application.routes.draw do
       #autoships
       get "autoships", to: "autoships#index"
       post "autoships", to: "autoships#create"
-      patch "autoships/:public_id/change-name", to: "autoships#change_name"
-      patch "autoships/:public_id/change-address", to: "autoships#change_address"
-      patch "autoships/:public_id/update-items", to: "autoships#update_items"
+      patch "autoships/:public_id/name", to: "autoships#change_name"
+      patch "autoships/:public_id/address", to: "autoships#change_address"
+      patch "autoships/:public_id/items", to: "autoships#update_items"
+      patch "autoships/:public_id/payment-information", to: "autoships#update_payment_information"
     end
   end
 end

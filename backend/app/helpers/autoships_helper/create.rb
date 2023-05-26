@@ -13,7 +13,7 @@ module AutoshipsHelper::Create
 
     payment_card_id = nil
     if payment[:method] == 'card'
-      payment_card_id = customer.cards.find_by(public_id: payment.card.id)&.id
+      payment_card_id = customer.cards.find_by(public_id: payment[:card][:id])&.id
       raise(RuntimeError, 3007002) unless payment_card_id
     end
 
