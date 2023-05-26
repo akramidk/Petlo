@@ -1,7 +1,11 @@
 class Autoship < ApplicationRecord
   include PublicIdGenerator
 
+  has_many :items, class_name: "AutoshipItem"
+
   belongs_to :customer
+  belongs_to :address
+  belongs_to :card, foreign_key: 'payment_card_id', optional: true
 
   enum status: {
     active: 0,

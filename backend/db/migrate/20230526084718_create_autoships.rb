@@ -5,6 +5,7 @@ class CreateAutoships < ActiveRecord::Migration[7.0]
       t.bigint :customer_id, null: false
       t.string :name, null: false
       t.integer :status, null: false
+      t.bigint :address_id, null: false
       t.integer :payment_method, null: false
       t.bigint :payment_card_id
       t.integer :recurring_interval, null: false

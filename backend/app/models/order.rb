@@ -1,13 +1,13 @@
 class Order < ApplicationRecord
     include PublicIdGenerator
 
-    has_one :customer
-    has_one :autoship
-    has_one :payment
-    has_one :address
-
     has_many :items, class_name: 'OrderItem'
     has_many :pets, class_name: 'OrderPet'
+    has_one :payment
+
+    belongs_to :customer
+    belongs_to :autoship
+    belongs_to :address
 
     before_validation :calculate_the_amount
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_26_084718) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_26_091654) do
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.bigint "record_id", null: false
@@ -46,11 +46,20 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_26_084718) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "autoship_items", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "autoship_id", null: false
+    t.bigint "item_id", null: false
+    t.bigint "variant_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "autoships", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "public_id", null: false
     t.bigint "customer_id", null: false
     t.string "name", null: false
     t.integer "status", null: false
+    t.bigint "address_id", null: false
     t.integer "payment_method", null: false
     t.bigint "payment_card_id"
     t.integer "recurring_interval", null: false
