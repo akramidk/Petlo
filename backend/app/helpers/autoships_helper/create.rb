@@ -6,7 +6,7 @@ module AutoshipsHelper::Create
       splitted_next_shipment_on[1].to_i,
       splitted_next_shipment_on[2].to_i
     )
-    raise(RuntimeError, 3007005) unless next_shipment_on > Time.now.to_date
+    raise(RuntimeError, 3007005) unless next_shipment_on > Utils.utc_to_local_time(country: customer.country)
 
     address = customer.addresses.find_by(public_id: address_id)
     raise(RuntimeError, 3007004) unless address

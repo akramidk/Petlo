@@ -1,0 +1,5 @@
+module CONSTANTS
+  DIFFERENCE_BETWEEN_UTC_AND_LOCAL_TIME = {
+    "JO" => 3
+  }
+end
