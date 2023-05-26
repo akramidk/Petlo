@@ -94,7 +94,7 @@ en:
     2008008: "Order currency is required"
     2008009: "Order currency is invalid"
 
-    #order item: 009
+    #order item model: 009
     2009000: "Order id is required."
     2009001: "Item id is required."
     2009002: "Item id is used before."
@@ -104,23 +104,33 @@ en:
     2009006: "Quantity is required."
     2009007: "Total price is required."
 
-    #order pet: 010
+    #order pet model: 010
     2010000: "Order id is required."
     2010001: "Pet id is required."
     2010002: "Pet id is used before."
 
-    #payment: 011
+    #payment model: 011
     2011000: "Public id is required."
     2011001: "Public id is used before."
     2011002: "Order id is required."
     2011003: "Order id is used before."
 
-    #card payment: 012
+    #card payment model: 012
     2012000: "Payment id is required."
     2012001: "Payment id is used before."
     2012002: "Card id is required."
     2012003: "Processed by is required."
     2012004: "Processor payment id is required."
+
+    #autoship model: 013
+    2013000: "Autoship public id is required."
+    2013001: "Autoship public id is used before."
+    2013002: "Customer id is required."
+    2013003: "Name id is required."
+    2013004: "Name id is used before."
+    2013005: "Payment card id is required."
+    2013006: "Recurring interval count is required."
+    2013007: "Recurring interval count number not in the range."
 
     #items helper: 000
     3000000: "Item not found."

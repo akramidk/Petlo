@@ -23,10 +23,10 @@ class Autoship < ApplicationRecord
     month: 1,
   }
 
-  validates :public_id, presence: { message: 1 }, uniqueness: { message: 1 }
-  validates :customer_id, presence: { message: 1 }
-  validates :name, presence: { message: 1 }, uniqueness: { scope: :customer_id, message: 1 }
-  validates :payment_card_id, presence: { message: 1 }, if: -> { self.payment_methods == "card" }
-  validates :recurring_interval_count, presence: { message: 1 }, numericality: { in: 5..90, message: 1 }, if: -> { self.recurring_intervals == "day" }
-  validates :recurring_interval_count, presence: { message: 1 }, numericality: { in: 1..3, message: 1 }, if: -> { self.recurring_intervals == "month" }
+  validates :public_id, presence: { message: 2013000 }, uniqueness: { message: 2013001 }
+  validates :customer_id, presence: { message: 2013002 }
+  validates :name, presence: { message: 2013003 }, uniqueness: { scope: :customer_id, message: 2013004 }
+  validates :payment_card_id, presence: { message: 2013005 }, if: -> { self.payment_methods == "card" }
+  validates :recurring_interval_count, presence: { message: 2013006 }, numericality: { in: 5..90, message: 2013007 }, if: -> { self.recurring_intervals == "day" }
+  validates :recurring_interval_count, presence: { message: 2013006 }, numericality: { in: 1..3, message: 2013007 }, if: -> { self.recurring_intervals == "month" }
 end
