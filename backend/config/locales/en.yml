@@ -132,6 +132,11 @@ en:
     2013006: "Recurring interval count is required."
     2013007: "Recurring interval count number not in the range."
 
+    #autoship items model: 014
+    2014000: "Autoship id is required."
+    2014001: "Item id is required."
+    2014002: "Variant id is required."
+
     #items helper: 000
     3000000: "Item not found."
 
