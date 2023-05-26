@@ -1,5 +1,13 @@
 module AutoshipsHelper::Create
   def create(customer:, name:, recurring_interval:, recurring_interval_count:, next_shipment_on:, items:, address_id:, payment:, pets:)
+    splitted_next_shipment_on = next_shipment_on.split("-")
+    next_shipment_on = Date.new(
+      splitted_next_shipment_on[0].to_i,
+      splitted_next_shipment_on[1].to_i,
+      splitted_next_shipment_on[2].to_i
+    )
+    raise(RuntimeError, 3007005) unless next_shipment_on > Time.now.to_date
+
     address = customer.addresses.find_by(public_id: address_id)
     raise(RuntimeError, 3007004) unless address
 
@@ -46,13 +54,6 @@ module AutoshipsHelper::Create
       }
     end
 
-    splitted_next_shipment_on = next_shipment_on.split("-")
-    next_shipment_on = {
-      year: splitted_next_shipment_on[0].to_i,
-      month: splitted_next_shipment_on[1].to_i,
-      day: splitted_next_shipment_on[2].to_i
-    }
-
     Autoship.create!(
       customer_id: customer.id,
       name: name,
@@ -62,7 +63,7 @@ module AutoshipsHelper::Create
       payment_card_id: payment_card_id,
       recurring_interval: recurring_interval,
       recurring_interval_count: recurring_interval_count,
-      next_shipment_on: Date.new(next_shipment_on[:year], next_shipment_on[:month], next_shipment_on[:day])
+      next_shipment_on: next_shipment_on
     )
   end
 end
