@@ -127,7 +127,7 @@ en:
     2013001: "Autoship public id is used before."
     2013002: "Customer id is required."
     2013003: "Name id is required."
-    2013004: "Name id is used before."
+    2013004: "Name is used before."
     2013005: "Payment card id is required."
     2013006: "Recurring interval count is required."
     2013007: "Recurring interval count number not in the range."
@@ -136,6 +136,11 @@ en:
     2014000: "Autoship id is required."
     2014001: "Item id is required."
     2014002: "Variant id is required."
+
+    #autoship items model: 015
+    2015000: "Autoship id is required."
+    2015001: "Pet id is required."
+    2015002: "Pet is used before."
 
     #items helper: 000
     3000000: "Item not found."
