@@ -54,7 +54,7 @@ module AutoshipsHelper::Create
       }
     end
 
-    Autoship.create!(
+    autoship = Autoship.create!(
       customer_id: customer.id,
       name: name,
       status: "active",
@@ -65,5 +65,13 @@ module AutoshipsHelper::Create
       recurring_interval_count: recurring_interval_count,
       next_shipment_on: next_shipment_on
     )
+
+    _items.each do |item|
+      AutoshipItem.create!(autoship_id: autoship.id, item_id: item[:id], variant_id: item[:variant_id], quantity: item[:quantity])
+    end
+
+    pets_id.each do |id|
+      AutoshipPet.create!(autoship_id: autoship.id, pet_id: id)
+    end
   end
 end
