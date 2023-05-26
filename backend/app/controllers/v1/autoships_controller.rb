@@ -4,6 +4,15 @@ module V1
 
     include AutoshipsHelper
 
+    def index
+      response = AutoshipsHelper.index(
+        customer: @customer,
+        page: params[:page].to_i
+      )
+
+      render json: { has_more: response[:has_more], data: response[:data] }, status: 200
+    end
+
     def create
       AutoshipsHelper.create(
         customer: @customer,

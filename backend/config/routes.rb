@@ -84,6 +84,7 @@ Rails.application.routes.draw do
       post "orders", to: "orders#create"
 
       #autoships
+      get "autoships", to: "autoships#index"
       post "autoships", to: "autoships#create"
     end
   end

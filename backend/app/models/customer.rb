@@ -9,6 +9,7 @@ class Customer < ApplicationRecord
   has_many :carts
   has_many :checkouts
   has_many :orders
+  has_many :autoships
 
   has_secure_password
   encrypts :phone_number, deterministic: true
