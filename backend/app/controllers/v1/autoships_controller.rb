@@ -38,5 +38,15 @@ module V1
 
       render json: { status: "succeeded" }, status: 200
     end
+
+    def change_address
+      AutoshipsHelper.change_address(
+        customer: @customer,
+        public_id: params[:public_id],
+        address_id: params[:address_id]
+      )
+
+      render json: { status: "succeeded" }, status: 200
+    end
   end
 end
