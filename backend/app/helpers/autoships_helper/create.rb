@@ -1,22 +1,10 @@
 module AutoshipsHelper::Create
-  def create(customer:, name:, recurring_interval:, recurring_interval_count:, starting_from:, items:, payment:, pets:)
-    _items = []
-    items.each do |item|
-      _item = Item.find_by(public_id: item.id)
-      raise(RuntimeError, 3007000) unless _item
-
-      variant = _item.variants.find_by(public_id: item.variant_id)
-      raise(RuntimeError, 3007001) unless variant
-
-      _items << {
-        id: _item.id,
-        variant_id: variant_id.id,
-        quantity: item.quantity
-      }
-    end
+  def create(customer:, name:, recurring_interval:, recurring_interval_count:, next_shipment_on:, items:, address_id:, payment:, pets:)
+    address = customer.addresses.find_by(public_id: address_id)
+    raise(RuntimeError, 3007004) unless address
 
     payment_card_id = nil
-    if payment.method == 'card'
+    if payment[:method] == 'card'
       payment_card_id = customer.cards.find_by(public_id: payment.card.id)&.id
       raise(RuntimeError, 3007002) unless payment_card_id
     end
@@ -28,5 +16,53 @@ module AutoshipsHelper::Create
 
       pets_id << pet.id
     end
+
+    _items = []
+    items.each do |item|
+      _item = Item.joins(
+        :availabilities
+      ).where(availabilities: {
+        country: customer.country,
+        value: true
+      }).find_by(
+        public_id: item[:id]
+      )
+      raise(RuntimeError, 3007000) unless _item
+
+      variant = _item.variants.joins(
+        :availabilities
+      ).where(availabilities: {
+        country: customer.country,
+        value: true
+      }).find_by(
+        public_id: item[:variant_id]
+      )
+      raise(RuntimeError, 3007001) unless variant
+
+      _items << {
+        id: _item.id,
+        variant_id: variant.id,
+        quantity: item[:quantity]
+      }
+    end
+
+    splitted_next_shipment_on = next_shipment_on.split("-")
+    next_shipment_on = {
+      year: splitted_next_shipment_on[0].to_i,
+      month: splitted_next_shipment_on[1].to_i,
+      day: splitted_next_shipment_on[2].to_i
+    }
+
+    Autoship.create!(
+      customer_id: customer.id,
+      name: name,
+      status: "active",
+      address_id: address.id,
+      payment_method: payment[:method],
+      payment_card_id: payment_card_id,
+      recurring_interval: recurring_interval,
+      recurring_interval_count: recurring_interval_count,
+      next_shipment_on: Date.new(next_shipment_on[:year], next_shipment_on[:month], next_shipment_on[:day])
+    )
   end
 end

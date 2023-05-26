@@ -10,8 +10,9 @@ module V1
         name: params[:name],
         recurring_interval: params[:recurring_interval],
         recurring_interval_count: params[:recurring_interval_count],
-        starting_from: params[:starting_from],
+        next_shipment_on: params[:next_shipment_on],
         items: params[:items],
+        address_id: params[:address_id],
         payment: params[:payment],
         pets: params[:pets]
       )

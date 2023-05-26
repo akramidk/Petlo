@@ -186,6 +186,7 @@ en:
     3007001: "Variant not found."
     3007002: "Card not found."
     3007003: "Pet not found."
+    3007004: "Address not found."
 
     #verifications controller: 000
     4000000: "Customer verified before."
