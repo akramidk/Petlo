@@ -141,6 +141,8 @@ en:
     2015000: "Autoship id is required."
     2015001: "Pet id is required."
     2015002: "Pet is used before."
+    2015003: "Quantity is required."
+    2015004: "Quantity should be greater than zero."
 
     #items helper: 000
     3000000: "Item not found."
