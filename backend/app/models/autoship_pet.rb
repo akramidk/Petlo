@@ -1,0 +1,2 @@
+class AutoshipPet < ApplicationRecord
+end
