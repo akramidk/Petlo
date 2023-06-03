@@ -94,6 +94,7 @@ Rails.application.routes.draw do
       get "autoships/calculate-delivery-amount", to: "autoships#calculate_delivery_amount"
       patch "autoships/:public_id/deactivate", to: "autoships#deactivate"
       patch "autoships/:public_id/activate", to: "autoships#activate"
+      get "autoships/calculate-items-amount", to: "autoships#calculate_items_amount"
     end
   end
 end

@@ -197,6 +197,8 @@ en:
     3007005: "First shipment date shouldn't be today or in the past."
     3007006: "Autoship not found."
     3007007: "Next shipment date shouldn't be today or in the past."
+    3007008: "Item not found."
+    3007009: "Variant not found."
 
     #verifications controller: 000
     4000000: "Customer verified before."
