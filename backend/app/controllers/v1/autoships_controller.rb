@@ -97,5 +97,17 @@ module V1
 
       render json: { status: "succeeded" }, status: 200
     end
+
+    def activate
+      AutoshipsHelper.activate(
+        customer: @customer,
+        public_id: params[:public_id],
+        recurring_interval: params[:recurring_interval],
+        recurring_interval_count: params[:recurring_interval_count],
+        next_shipment_on: params[:next_shipment_on]
+      )
+
+      render json: { status: "succeeded" }, status: 200
+    end
   end
 end
