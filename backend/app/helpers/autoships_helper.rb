@@ -7,4 +7,5 @@ module AutoshipsHelper
   extend UpdatePaymentInformation
   extend UpdatePets
   extend CalculateDeliveryAmount
+  extend Deactivate
 end

@@ -92,6 +92,7 @@ Rails.application.routes.draw do
       patch "autoships/:public_id/payment-information", to: "autoships#update_payment_information"
       patch "autoships/:public_id/pets", to: "autoships#update_pets"
       get "autoships/calculate-delivery-amount", to: "autoships#calculate_delivery_amount"
+      patch "autoships/:public_id/deactivate", to: "autoships#deactivate"
     end
   end
 end
