@@ -20,7 +20,10 @@ const Autoship = () => {
     return response.body.data.map((autoship) => {
       return {
         primaryText: autoship.name,
-        secondaryText: `Next shipment on ${autoship.next_shipment_on}`,
+        secondaryText: `Next shipment on ${autoship.next_shipment_on
+          .split("-")
+          .reverse()
+          .join("-")}`,
       };
     });
   }, [response]);
