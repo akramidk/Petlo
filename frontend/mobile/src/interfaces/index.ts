@@ -130,6 +130,7 @@ import {
   CreateNewOrderResponse,
 } from "./Endpoints/CreateNewOrder";
 import { OrdersResponse } from "./Endpoints/Order";
+import { AutoshipsResponse } from "./Endpoints/Autoships";
 
 //entities interfaces
 import { Customer } from "./Entities/Customer";
