@@ -32,7 +32,7 @@ const Autoship = () => {
   console.log(autoships);
 
   return (
-    <PageStructure title="Autoship">
+    <PageStructure title="Autoships">
       <DataCards data={autoships} />
     </PageStructure>
   );
