@@ -6,7 +6,7 @@ import { DataCardProps } from "../../src/interfaces";
 import { AutoshipsResponse } from "../../src/interfaces/Endpoints/Autoships";
 import Loading from "../_Loading";
 
-const Autoship = () => {
+const Autoships = () => {
   const { response } = useAPIFetching<void, AutoshipsResponse>({
     endpoint: Endpoints.AUTOSHIPS,
     options: {
@@ -32,8 +32,6 @@ const Autoship = () => {
     return <Loading />;
   }
 
-  console.log(autoships);
-
   return (
     <PageStructure title="Autoships">
       <DataCards data={autoships} />
@@ -41,4 +39,4 @@ const Autoship = () => {
   );
 };
 
-export default Autoship;
+export default Autoships;

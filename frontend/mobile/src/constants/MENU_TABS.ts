@@ -14,9 +14,9 @@ export const MENU_TABS: {
     path: "/orders",
   },
   {
-    id: "AUTOSHIP",
-    value: "COMMON__AUTOSHIP",
-    path: "/autoship",
+    id: "AUTOSHIPS",
+    value: "COMMON__AUTOSHIPS",
+    path: "/autoships",
   },
   {
     id: "MORE",

@@ -69,7 +69,7 @@ const Icon = ({
       ) : (
         <OrdersUnselected {...props} />
       );
-    case "AUTOSHIP":
+    case "AUTOSHIPS":
       return selected ? (
         <AutoshipSelected {...props} />
       ) : (
