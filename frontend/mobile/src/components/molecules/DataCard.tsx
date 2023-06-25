@@ -3,7 +3,7 @@ import { useMemo } from "react";
 import { View } from "react-native";
 import { useInternationalizationContext } from "../../hooks";
 import { DataCardProps } from "../../interfaces";
-import { Text } from "../atoms";
+import { Icon, Text } from "../atoms";
 import { BaseButton } from "../bases";
 
 const DataCard = ({
@@ -45,6 +45,12 @@ const DataCard = ({
               <Text font="semiBold" cn=" text-[14px] text-[#aaa]">
                 {actions[0].name}
               </Text>
+            </BaseButton>
+          ) : null}
+
+          {actions && actions.length > 1 ? (
+            <BaseButton onClick={() => console.log("bla bla")}>
+              <Icon name="moreHorizontal" size={20} color="#888" />
             </BaseButton>
           ) : null}
         </View>

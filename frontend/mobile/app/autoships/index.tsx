@@ -24,6 +24,10 @@ const Autoships = () => {
           .split("-")
           .reverse()
           .join("-")}`,
+        actions: [
+          { name: "bla 1", onClick: () => {} },
+          { name: "bla 2", onClick: () => {} },
+        ],
       };
     });
   }, [response]);

@@ -8,6 +8,7 @@ import {
   EllipsisVerticalIcon as MoreVertical,
   MapPinIcon as MapPin,
   ArrowUturnDownIcon as ArrowUturnDown,
+  EllipsisHorizontalIcon as MoreHorizontal,
 } from "react-native-heroicons/solid";
 
 import {
@@ -75,6 +76,9 @@ const Icon = ({
     },
     arrowUturnDown: {
       solid: <ArrowUturnDown {...props} />,
+    },
+    moreHorizontal: {
+      solid: <MoreHorizontal {...props} />,
     },
   };
 
