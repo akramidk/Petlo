@@ -1,10 +1,11 @@
 import clsx from "clsx";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { View } from "react-native";
 import { useInternationalizationContext } from "../../hooks";
 import { DataCardProps } from "../../interfaces";
 import { Icon, Text } from "../atoms";
 import { BaseButton } from "../bases";
+import BottomSheetOptions from "./BottomSheetOptions";
 
 const DataCard = ({
   primaryText,
@@ -18,6 +19,8 @@ const DataCard = ({
     return direction === "ltr" ? "flex-row" : "flex-row-reverse";
   }, [direction]);
 
+  const [actionsVisible, setActionsVisible] = useState(false);
+
   return (
     <View
       className={clsx(
@@ -29,6 +32,11 @@ const DataCard = ({
       )}
     >
       {prefixChild}
+
+      <BottomSheetOptions
+        visible={actionsVisible}
+        onClose={() => setActionsVisible(false)}
+      />
 
       <View className="space-y-[8px]">
         <View className={clsx("justify-between", flex)}>
@@ -49,7 +57,7 @@ const DataCard = ({
           ) : null}
 
           {actions && actions.length > 1 ? (
-            <BaseButton onClick={() => console.log("bla bla")}>
+            <BaseButton onClick={() => setActionsVisible(true)}>
               <Icon name="moreHorizontal" size={20} color="#888" />
             </BaseButton>
           ) : null}

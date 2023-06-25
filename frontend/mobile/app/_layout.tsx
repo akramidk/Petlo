@@ -53,6 +53,7 @@ import { StatusBar } from "expo-status-bar";
 import { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import SideThings from "./_SideThings";
+import { BottomSheetOptions } from "../src/components/molecules";
 
 const Layout = () => {
   // TODO handled if no network
