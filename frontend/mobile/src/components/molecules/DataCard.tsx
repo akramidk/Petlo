@@ -36,6 +36,15 @@ const DataCard = ({
       <BottomSheetOptions
         visible={actionsVisible}
         onClose={() => setActionsVisible(false)}
+        actions={[
+          { name: "Test 1", onClick: () => {} },
+          { name: "Test 2", onClick: () => {} },
+          { name: "Test 3", onClick: () => {} },
+          { name: "Test 4", onClick: () => {} },
+          { name: "Test 5", onClick: () => {} },
+          { name: "Test 6", onClick: () => {} },
+          { name: "Test 7", onClick: () => {} },
+        ]}
       />
 
       <View className="space-y-[8px]">
