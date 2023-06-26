@@ -4,13 +4,14 @@ import { Text } from "../../src/components/atoms";
 import { BaseButton } from "../../src/components/bases";
 import { DataCards, PageStructure } from "../../src/components/organisms";
 import { Endpoints } from "../../src/enums";
-import { useAPIFetching } from "../../src/hooks";
+import { useAPIFetching, useTranslationsContext } from "../../src/hooks";
 import { DataCardProps } from "../../src/interfaces";
 import { AutoshipsResponse } from "../../src/interfaces/Endpoints/Autoships";
 import Loading from "../_Loading";
 
 const Autoships = () => {
   const router = useRouter();
+  const { t } = useTranslationsContext();
   const { response } = useAPIFetching<void, AutoshipsResponse>({
     endpoint: Endpoints.AUTOSHIPS,
     options: {
@@ -24,19 +25,21 @@ const Autoships = () => {
     return response.body.data.map((autoship) => {
       return {
         primaryText: autoship.name,
-        secondaryText: `Next shipment on ${autoship.next_shipment_on
-          .split("-")
-          .reverse()
-          .join("-")}`,
+        secondaryText: `${t(
+          "AUTOSHIPS__NEXT_SHIPMENT_ON"
+        )} ${autoship.next_shipment_on.split("-").reverse().join("-")}`,
         actions: [
           {
-            name: "Change Name",
+            name: t("AUTOSHIPS__ACTIONS.CHANGE_NAME"),
             onClick: () => router.push("/autoships/change-name"),
           },
-          { name: "Change Address", onClick: () => {} },
-          { name: "Change Items", onClick: () => {} },
-          { name: "Change Payment Information", onClick: () => {} },
-          { name: "Change Pets", onClick: () => {} },
+          { name: t("AUTOSHIPS__ACTIONS.CHANGE_ADDRESS"), onClick: () => {} },
+          { name: t("AUTOSHIPS__ACTIONS.CHANGE_ITEMS"), onClick: () => {} },
+          {
+            name: t("AUTOSHIPS__ACTIONS.CHANGE_PAYMENT_INFORMATION"),
+            onClick: () => {},
+          },
+          { name: t("AUTOSHIPS__ACTIONS.CHANGE_PETS"), onClick: () => {} },
         ],
       };
     });
@@ -48,14 +51,14 @@ const Autoships = () => {
 
   return (
     <PageStructure
-      title="Autoships"
+      title={t("AUTOSHIPS__TITLE")}
       floatingElement={
         <BaseButton
           cn="bg-[#6BADAE] px-[32px] py-[20px] rounded-full shadow-lg"
           onClick={() => router.push("/autoships/create-new-autoship")}
         >
           <Text font="bold" cn="text-[#fff] text-[14px]">
-            Create an Autoship
+            {t("AUTOSHIPS__CREATE_AN_AUTOSHIP")}
           </Text>
         </BaseButton>
       }

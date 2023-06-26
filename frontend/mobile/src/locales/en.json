@@ -175,5 +175,15 @@
     "out_for_delivery": "Order is Out For Delivery",
     "delivered": "Order Was Delivered",
     "canceled": "Order Was Canceled"
+  },
+  "AUTOSHIPS__TITLE": "Autoships",
+  "AUTOSHIPS__CREATE_AN_AUTOSHIP": "Create an Autoship",
+  "AUTOSHIPS__NEXT_SHIPMENT_ON": "Next shipment on",
+  "AUTOSHIPS__ACTIONS": {
+    "CHANGE_NAME": "Change Name",
+    "CHANGE_ADDRESS": "Change Address",
+    "CHANGE_ITEMS": "Change Items",
+    "CHANGE_PAYMENT_INFORMATION": "Change Payment Information",
+    "CHANGE_PETS": "Change Pets"
   }
 }
