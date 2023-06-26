@@ -1,3 +1,4 @@
+import { useRouter } from "expo-router";
 import { useMemo } from "react";
 import { DataCards, PageStructure } from "../../src/components/organisms";
 import { Endpoints } from "../../src/enums";
@@ -7,6 +8,7 @@ import { AutoshipsResponse } from "../../src/interfaces/Endpoints/Autoships";
 import Loading from "../_Loading";
 
 const Autoships = () => {
+  const router = useRouter();
   const { response } = useAPIFetching<void, AutoshipsResponse>({
     endpoint: Endpoints.AUTOSHIPS,
     options: {
@@ -25,8 +27,14 @@ const Autoships = () => {
           .reverse()
           .join("-")}`,
         actions: [
-          { name: "bla 1", onClick: () => {} },
-          { name: "bla 2", onClick: () => {} },
+          {
+            name: "Change Name",
+            onClick: () => router.push("/autoships/change-name"),
+          },
+          { name: "Change Address", onClick: () => {} },
+          { name: "Change Items", onClick: () => {} },
+          { name: "Change Payment Information", onClick: () => {} },
+          { name: "Change Pets", onClick: () => {} },
         ],
       };
     });
