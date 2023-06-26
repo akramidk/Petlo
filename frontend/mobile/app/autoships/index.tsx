@@ -1,5 +1,7 @@
 import { useRouter } from "expo-router";
 import { useMemo } from "react";
+import { Text } from "../../src/components/atoms";
+import { BaseButton } from "../../src/components/bases";
 import { DataCards, PageStructure } from "../../src/components/organisms";
 import { Endpoints } from "../../src/enums";
 import { useAPIFetching } from "../../src/hooks";
@@ -45,7 +47,19 @@ const Autoships = () => {
   }
 
   return (
-    <PageStructure title="Autoships">
+    <PageStructure
+      title="Autoships"
+      floatingElement={
+        <BaseButton
+          cn="bg-[#8EAD99] px-[32px] py-[20px] rounded-full shadow-md"
+          onClick={() => {}}
+        >
+          <Text font="extraBold" cn="text-[#fff] text-[14px]">
+            Create an Autoship
+          </Text>
+        </BaseButton>
+      }
+    >
       <DataCards data={autoships} />
     </PageStructure>
   );

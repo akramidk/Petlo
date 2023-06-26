@@ -4,6 +4,7 @@ import { Button, BackButton, Text, Link, BottomContainer } from "../atoms";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import clsx from "clsx";
 import * as Device from "expo-device";
+import { BaseButton } from "../bases";
 
 interface PageStructureProps {
   title?: string;
@@ -12,6 +13,7 @@ interface PageStructureProps {
   button?: ButtonProps;
   backButton?: () => void;
   link?: LinkProps;
+  floatingElement?: React.ReactNode;
 }
 
 const PageStructure = ({
@@ -21,6 +23,7 @@ const PageStructure = ({
   button,
   backButton,
   link,
+  floatingElement,
 }: PageStructureProps) => {
   const isIOS = Device.brand.toLowerCase() === "apple";
   const linkProps = {
@@ -29,7 +32,7 @@ const PageStructure = ({
   };
 
   return (
-    <>
+    <View className="flex flex-1 relative">
       <View className="p-[28px] space-y-[12px]">
         {backButton && <BackButton onClick={backButton} />}
         {title && (
@@ -48,13 +51,19 @@ const PageStructure = ({
         <View className="px-[28px] pb-[28px]">{children}</View>
       </KeyboardAwareScrollView>
 
+      {floatingElement && (
+        <View className="absolute bottom-[16px] self-center">
+          {floatingElement}
+        </View>
+      )}
+
       {(button || link) && (
         <BottomContainer cn={!isIOS && !link && "pb-[8px]"}>
           {button && <Button {...button} />}
           {link && <Link {...linkProps} />}
         </BottomContainer>
       )}
-    </>
+    </View>
   );
 };
 
