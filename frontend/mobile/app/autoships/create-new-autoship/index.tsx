@@ -2,10 +2,12 @@ import { useRouter } from "expo-router";
 import { useMemo, useState } from "react";
 import { Filed } from "../../../src/components/atoms";
 import { DataCards, PageStructure } from "../../../src/components/organisms";
+import { useTranslationsContext } from "../../../src/hooks";
 import { DataCardProps } from "../../../src/interfaces";
 
 const CreateNewAutoship = () => {
   const router = useRouter();
+  const { t } = useTranslationsContext();
   const [name, setName] = useState("");
 
   const cards: DataCardProps[] = useMemo(() => {
@@ -31,7 +33,7 @@ const CreateNewAutoship = () => {
 
   return (
     <PageStructure
-      title="Create an Autoship"
+      title={t("CREATE_AN_AUTOSHIP__TITLE")}
       button={{
         value: "Create",
         onClick: () => {},

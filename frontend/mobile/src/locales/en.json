@@ -185,5 +185,6 @@
     "CHANGE_ITEMS": "Change Items",
     "CHANGE_PAYMENT_INFORMATION": "Change Payment Information",
     "CHANGE_PETS": "Change Pets"
-  }
+  },
+  "CREATE_AN_AUTOSHIP__TITLE": "Create An Autoship"
 }
