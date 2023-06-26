@@ -13,19 +13,19 @@ const CreateNewAutoship = () => {
   const cards: DataCardProps[] = useMemo(() => {
     return [
       {
-        primaryText: "Items",
+        primaryText: t("CREATE_AN_AUTOSHIP__STEPS.WHAT.PRIMARY_TEXT"),
         secondaryText: "Select items",
       },
       {
-        primaryText: "Delivery Address",
+        primaryText: t("CREATE_AN_AUTOSHIP__STEPS.WHERE.PRIMARY_TEXT"),
         secondaryText: "Select items",
       },
       {
-        primaryText: "Payment Method",
+        primaryText: t("CREATE_AN_AUTOSHIP__STEPS.HOW.PRIMARY_TEXT"),
         secondaryText: "Select items",
       },
       {
-        primaryText: "Shipping Date",
+        primaryText: t("CREATE_AN_AUTOSHIP__STEPS.WHEN.PRIMARY_TEXT"),
         secondaryText: "Select items",
       },
     ];

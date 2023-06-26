@@ -186,5 +186,19 @@
     "CHANGE_PAYMENT_INFORMATION": "Change Payment Information",
     "CHANGE_PETS": "Change Pets"
   },
-  "CREATE_AN_AUTOSHIP__TITLE": "Create An Autoship"
+  "CREATE_AN_AUTOSHIP__TITLE": "Create An Autoship",
+  "CREATE_AN_AUTOSHIP__STEPS": {
+    "WHAT": {
+      "PRIMARY_TEXT": "What to autoship?"
+    },
+    "WHERE": {
+      "PRIMARY_TEXT": "Where to deliver?"
+    },
+    "HOW": {
+      "PRIMARY_TEXT": "How you'll pay?"
+    },
+    "WHEN": {
+      "PRIMARY_TEXT": "When it'll arrive?"
+    }
+  }
 }
