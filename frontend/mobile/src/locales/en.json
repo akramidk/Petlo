@@ -189,16 +189,32 @@
   "CREATE_AN_AUTOSHIP__TITLE": "Create An Autoship",
   "CREATE_AN_AUTOSHIP__STEPS": {
     "WHAT": {
-      "PRIMARY_TEXT": "What to autoship?"
+      "PRIMARY_TEXT": "What to autoship?",
+      "SECONDARY_TEXT": {
+        "WITHOUT_DATA": "WITHOUT_DATA",
+        "WITH_DATA": "Hello"
+      }
     },
     "WHERE": {
-      "PRIMARY_TEXT": "Where to deliver?"
+      "PRIMARY_TEXT": "Where to deliver?",
+      "SECONDARY_TEXT": {
+        "WITHOUT_DATA": "WITHOUT_DATA",
+        "WITH_DATA": "Hello"
+      }
     },
     "HOW": {
-      "PRIMARY_TEXT": "How you'll pay?"
+      "PRIMARY_TEXT": "How you'll pay?",
+      "SECONDARY_TEXT": {
+        "WITHOUT_DATA": "WITHOUT_DATA",
+        "WITH_DATA": "Hello"
+      }
     },
     "WHEN": {
-      "PRIMARY_TEXT": "When it'll arrive?"
+      "PRIMARY_TEXT": "When it'll arrive?",
+      "SECONDARY_TEXT": {
+        "WITHOUT_DATA": "WITHOUT_DATA",
+        "WITH_DATA": "Hello"
+      }
     }
   }
 }

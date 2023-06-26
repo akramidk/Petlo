@@ -14,19 +14,27 @@ const CreateNewAutoship = () => {
     return [
       {
         primaryText: t("CREATE_AN_AUTOSHIP__STEPS.WHAT.PRIMARY_TEXT"),
-        secondaryText: "Select items",
+        secondaryText: t(
+          "CREATE_AN_AUTOSHIP__STEPS.WHAT.SECONDARY_TEXT.WITHOUT_DATA"
+        ),
       },
       {
         primaryText: t("CREATE_AN_AUTOSHIP__STEPS.WHERE.PRIMARY_TEXT"),
-        secondaryText: "Select items",
+        secondaryText: t(
+          "CREATE_AN_AUTOSHIP__STEPS.WHERE.SECONDARY_TEXT.WITHOUT_DATA"
+        ),
       },
       {
         primaryText: t("CREATE_AN_AUTOSHIP__STEPS.HOW.PRIMARY_TEXT"),
-        secondaryText: "Select items",
+        secondaryText: t(
+          "CREATE_AN_AUTOSHIP__STEPS.HOW.SECONDARY_TEXT.WITHOUT_DATA"
+        ),
       },
       {
         primaryText: t("CREATE_AN_AUTOSHIP__STEPS.WHEN.PRIMARY_TEXT"),
-        secondaryText: "Select items",
+        secondaryText: t(
+          "CREATE_AN_AUTOSHIP__STEPS.WHEN.SECONDARY_TEXT.WITHOUT_DATA"
+        ),
       },
     ];
   }, []);
