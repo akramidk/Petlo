@@ -1,5 +1,6 @@
-import { useRouter } from "expo-router";
-import { useMemo, useState } from "react";
+import { Address } from "@stripe/stripe-react-native";
+import { useRouter, useSearchParams } from "expo-router";
+import { useEffect, useMemo, useState } from "react";
 import { Filed } from "../../../src/components/atoms";
 import { DataCards, PageStructure } from "../../../src/components/organisms";
 import { useTranslationsContext } from "../../../src/hooks";
@@ -7,8 +8,10 @@ import { DataCardProps } from "../../../src/interfaces";
 
 const CreateNewAutoship = () => {
   const router = useRouter();
+  const { data } = useSearchParams();
   const { t } = useTranslationsContext();
   const [name, setName] = useState("");
+  const [address, setAddress] = useState<Address>();
 
   const cards: DataCardProps[] = useMemo(() => {
     return [
@@ -45,6 +48,30 @@ const CreateNewAutoship = () => {
       },
     ];
   }, []);
+
+  useEffect(() => {
+    const _data = JSON.parse(data ?? "{}");
+
+    if (_data["name"]) {
+      setName(_data["name"]);
+    }
+
+    console.log("_data", _data);
+  }, []);
+
+  useEffect(() => {
+    const data = {};
+
+    if (name) {
+      data["name"] = name;
+    }
+
+    if (address) {
+      data["address"] = address;
+    }
+
+    router.setParams({ data: JSON.stringify(data) });
+  }, [name, address]);
 
   return (
     <PageStructure

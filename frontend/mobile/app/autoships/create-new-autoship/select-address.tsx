@@ -1,4 +1,4 @@
-import { useRouter } from "expo-router";
+import { useRouter, useSearchParams } from "expo-router";
 import React, { useMemo, useState } from "react";
 import { Link, OptionsWithLabel } from "../../../src/components/atoms";
 import { DataCard } from "../../../src/components/molecules";
@@ -15,6 +15,7 @@ import Loading from "../../_Loading";
 const SelectAddress = () => {
   const router = useRouter();
   const { t } = useTranslationsContext();
+  const { data } = useSearchParams();
 
   const [address, setAddress] = useState<BaseOption>();
   const { response: addressesResponse } = useAPIFetching<
