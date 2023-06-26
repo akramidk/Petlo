@@ -23,6 +23,13 @@ const CreateNewAutoship = () => {
         secondaryText: t(
           "CREATE_AN_AUTOSHIP__STEPS.WHERE.SECONDARY_TEXT.WITHOUT_DATA"
         ),
+        actions: [
+          {
+            name: "Select",
+            onClick: () =>
+              router.push("/autoships/create-new-autoship/select-address"),
+          },
+        ],
       },
       {
         primaryText: t("CREATE_AN_AUTOSHIP__STEPS.HOW.PRIMARY_TEXT"),

@@ -5,7 +5,7 @@ import Options from "./Options";
 
 interface OptionsWithLabelProps<TOptions> {
   cn?: string;
-  label: BaseLabelProps;
+  label?: BaseLabelProps;
   options?: OptionsProps<TOptions>;
 }
 
@@ -16,7 +16,7 @@ const OptionsWithLabel = <TOptions extends BaseOption>({
 }: OptionsWithLabelProps<TOptions>) => {
   return (
     <View className={cn}>
-      <BaseLabel cn="mb-[16px]" {...label} />
+      {label && <BaseLabel cn="mb-[16px]" {...label} />}
       <Options {...options} />
     </View>
   );
