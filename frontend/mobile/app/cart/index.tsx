@@ -141,25 +141,27 @@ const Cart = () => {
           })}
         </View>
 
-        <View>
-          <Text font="extraBold" cn="text-[15px] text-[#0E333C] mb-[12px]">
-            {t("CART__PAYMENT_SUMMARY")}
-          </Text>
+        {summary && (
+          <View>
+            <Text font="extraBold" cn="text-[15px] text-[#0E333C] mb-[12px]">
+              {t("CART__PAYMENT_SUMMARY")}
+            </Text>
 
-          <View
-            className={clsx(
-              "justify-between",
-              direction === "ltr" ? "flex-row" : "flex-row-reverse"
-            )}
-          >
-            <Text font="semiBold" cn="text-[14px] text-[#666]">
-              {t("CART__CART_TOTAL")}
-            </Text>
-            <Text font="semiBold" cn="text-[14px] text-[#666]">
-              {summary.amount} {summary.currency}
-            </Text>
+            <View
+              className={clsx(
+                "justify-between",
+                direction === "ltr" ? "flex-row" : "flex-row-reverse"
+              )}
+            >
+              <Text font="semiBold" cn="text-[14px] text-[#666]">
+                {t("CART__CART_TOTAL")}
+              </Text>
+              <Text font="semiBold" cn="text-[14px] text-[#666]">
+                {summary.amount} {summary.currency}
+              </Text>
+            </View>
           </View>
-        </View>
+        )}
       </View>
     </PageStructure>
   );
