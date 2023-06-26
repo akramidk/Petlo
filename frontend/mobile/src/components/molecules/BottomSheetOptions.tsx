@@ -21,11 +21,11 @@ const BottomSheetOptions = ({
   onClose,
   actions,
 }: BottomSheetOptionsProps) => {
-  const snapPoints = useMemo(() => {
-    if (actions.length > 4) return ["40%"];
-
-    return [ACTION_HEIGHT * actions.length + 60];
-  }, [actions]);
+  const snapPoints = useMemo(
+    () =>
+      actions.length > 4 ? ["40%"] : [ACTION_HEIGHT * actions.length + 60],
+    [actions]
+  );
 
   return (
     <Modal
