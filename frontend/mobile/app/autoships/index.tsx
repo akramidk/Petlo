@@ -52,7 +52,7 @@ const Autoships = () => {
       floatingElement={
         <BaseButton
           cn="bg-[#6BADAE] px-[32px] py-[20px] rounded-full shadow-lg"
-          onClick={() => router.push("/autoships/create")}
+          onClick={() => router.push("/autoships/create-new-autoship")}
         >
           <Text font="bold" cn="text-[#fff] text-[14px]">
             Create an Autoship
