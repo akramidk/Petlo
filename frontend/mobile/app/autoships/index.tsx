@@ -51,10 +51,10 @@ const Autoships = () => {
       title="Autoships"
       floatingElement={
         <BaseButton
-          cn="bg-[#8EAD99] px-[32px] py-[20px] rounded-full shadow-md"
+          cn="bg-[#6BADAE] px-[32px] py-[20px] rounded-full shadow-lg"
           onClick={() => {}}
         >
-          <Text font="extraBold" cn="text-[#fff] text-[14px]">
+          <Text font="bold" cn="text-[#fff] text-[14px]">
             Create an Autoship
           </Text>
         </BaseButton>
