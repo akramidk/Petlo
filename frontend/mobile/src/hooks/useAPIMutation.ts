@@ -119,7 +119,6 @@ const useAPIMutation = <Request, Response>({
     setStatus("failed");
 
     if (showFailedAlert) {
-      console.log("response.error", response.error);
       setAlert({
         variant: "failed",
         value: response.error.error.message,
