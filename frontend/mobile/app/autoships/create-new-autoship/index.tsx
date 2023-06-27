@@ -1,10 +1,9 @@
-import { Address } from "@stripe/stripe-react-native";
 import { useRouter } from "expo-router";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { Filed } from "../../../src/components/atoms";
 import { DataCards, PageStructure } from "../../../src/components/organisms";
 import { useDataContext, useTranslationsContext } from "../../../src/hooks";
-import { DataCardProps } from "../../../src/interfaces";
+import { DataCardProps, Address } from "../../../src/interfaces";
 
 const CreateNewAutoship = () => {
   const router = useRouter();
@@ -24,12 +23,14 @@ const CreateNewAutoship = () => {
       },
       {
         primaryText: t("CREATE_AN_AUTOSHIP__STEPS.WHERE.PRIMARY_TEXT"),
-        secondaryText: t(
-          "CREATE_AN_AUTOSHIP__STEPS.WHERE.SECONDARY_TEXT.WITHOUT_DATA"
-        ),
+        secondaryText: address
+          ? t("CREATE_AN_AUTOSHIP__STEPS.WHERE.SECONDARY_TEXT.WITH_DATA", {
+              addressName: address.name,
+            })
+          : t("CREATE_AN_AUTOSHIP__STEPS.WHERE.SECONDARY_TEXT.WITHOUT_DATA"),
         actions: [
           {
-            name: "Select",
+            name: address ? "Change" : "Select",
             onClick: () =>
               router.push("/autoships/create-new-autoship/select-address"),
           },
@@ -48,7 +49,7 @@ const CreateNewAutoship = () => {
         ),
       },
     ];
-  }, []);
+  }, [address]);
 
   useEffect(() => {
     if (data === undefined) return;
@@ -86,7 +87,10 @@ const CreateNewAutoship = () => {
       }}
       link={{
         value: "Cancel",
-        onClick: router.back,
+        onClick: () => {
+          setData(undefined);
+          router.back();
+        },
       }}
     >
       <Filed

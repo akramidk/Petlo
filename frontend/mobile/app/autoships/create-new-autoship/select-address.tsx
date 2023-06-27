@@ -55,17 +55,6 @@ const SelectAddress = () => {
     );
   }, []);
 
-  useEffect(() => {
-    if (address === undefined) return;
-
-    setData({
-      ...data,
-      address: addressesResponse.body.data.find(
-        (_address) => address.id === _address.public_id
-      ),
-    });
-  }, [address]);
-
   if (addressesResponse === undefined || addressesResponse.isFetching) {
     return <Loading />;
   }
@@ -73,7 +62,23 @@ const SelectAddress = () => {
   return (
     <PageStructure
       title={t("CREATE_AN_AUTOSHIP__STEPS.WHERE.PRIMARY_TEXT")}
-      button={{ value: "Select", onClick: router.back }}
+      button={{
+        value: "Select",
+        onClick: () => {
+          setData({
+            ...data,
+            address: addressesResponse.body.data.find(
+              (_address) => address.id === _address.public_id
+            ),
+          });
+
+          router.back();
+        },
+        status:
+          address === undefined || address?.id === data?.address?.public_id
+            ? "inactive"
+            : "active",
+      }}
       link={{ value: "Cancel", onClick: router.back }}
     >
       <OptionsWithLabel

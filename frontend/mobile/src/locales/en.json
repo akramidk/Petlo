@@ -199,7 +199,7 @@
       "PRIMARY_TEXT": "Where to deliver?",
       "SECONDARY_TEXT": {
         "WITHOUT_DATA": "Select where to deliver",
-        "WITH_DATA": "Hello"
+        "WITH_DATA": "Deliver to %{addressName}"
       }
     },
     "HOW": {
