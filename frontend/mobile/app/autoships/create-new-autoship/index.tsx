@@ -3,7 +3,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { Filed } from "../../../src/components/atoms";
 import { DataCards, PageStructure } from "../../../src/components/organisms";
 import { useDataContext, useTranslationsContext } from "../../../src/hooks";
-import { DataCardProps, Address } from "../../../src/interfaces";
+import { DataCardProps, Address, Payment } from "../../../src/interfaces";
 
 const CreateNewAutoship = () => {
   const router = useRouter();
@@ -12,7 +12,7 @@ const CreateNewAutoship = () => {
 
   const [name, setName] = useState("");
   const [address, setAddress] = useState<Address>();
-  const [payment, setPayment] = useState<Address>();
+  const [payment, setPayment] = useState<Payment>();
 
   const cards: DataCardProps[] = useMemo(() => {
     return [
@@ -44,9 +44,9 @@ const CreateNewAutoship = () => {
         ),
         actions: [
           {
-            name: address ? "Change" : "Select",
+            name: payment ? "Change" : "Select",
             onClick: () =>
-              router.push("/autoships/create-new-autoship/select-address"),
+              router.push("/autoships/create-new-autoship/select-payment"),
           },
         ],
       },
