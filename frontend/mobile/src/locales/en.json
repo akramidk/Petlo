@@ -208,7 +208,7 @@
         "WITHOUT_DATA": "Select how you'll pay",
         "WITH_DATA": {
           "CASH": "Cash",
-          "CARD": "Using the card that end with %{last4}, and expires in %{expMonth}/%{expYear}"
+          "CARD": "The card that ends with %{last4}"
         }
       }
     },
