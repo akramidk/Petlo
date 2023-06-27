@@ -143,6 +143,7 @@ import { Checkout } from "./Entities/Checkout";
 import { Order } from "./Entities/Order";
 import { Address } from "./Entities/Address";
 import { Payment } from "./Entities/Payment";
+import { Pet } from "./Entities/Pet";
 
 export {
   NewVersionAvailableRequest,
@@ -240,4 +241,5 @@ export {
   Order,
   Address,
   Payment,
+  Pet,
 };

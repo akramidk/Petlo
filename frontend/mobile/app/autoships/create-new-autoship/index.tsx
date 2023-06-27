@@ -3,7 +3,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { Filed } from "../../../src/components/atoms";
 import { DataCards, PageStructure } from "../../../src/components/organisms";
 import { useDataContext, useTranslationsContext } from "../../../src/hooks";
-import { DataCardProps, Address, Payment } from "../../../src/interfaces";
+import { DataCardProps, Address, Payment, Pet } from "../../../src/interfaces";
 
 const CreateNewAutoship = () => {
   const router = useRouter();
@@ -15,6 +15,7 @@ const CreateNewAutoship = () => {
   const cards: DataCardProps[] = useMemo(() => {
     const address: Address = data?.address;
     const payment: Payment = data?.payment;
+    const pets: Pet[] = data?.pets;
 
     return [
       {
@@ -61,6 +62,13 @@ const CreateNewAutoship = () => {
         secondaryText: t(
           "CREATE_AN_AUTOSHIP__STEPS.WHOM.SECONDARY_TEXT.WITHOUT_DATA"
         ),
+        actions: [
+          {
+            name: pets ? "Change" : "Select",
+            onClick: () =>
+              router.push("/autoships/create-new-autoship/select-pets"),
+          },
+        ],
       },
       {
         primaryText: t("CREATE_AN_AUTOSHIP__STEPS.WHEN.PRIMARY_TEXT"),
