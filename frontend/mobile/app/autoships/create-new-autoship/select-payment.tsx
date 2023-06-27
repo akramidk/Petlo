@@ -27,6 +27,7 @@ const SelectPayment = () => {
   const { data, setData } = useDataContext();
   const { direction } = useInternationalizationContext();
 
+  const payment: Payment = data?.payment;
   const [paymentMethod, setPaymentMethod] = useState<BaseOption>();
   const [card, setCard] = useState<BaseOption>();
 
@@ -59,7 +60,6 @@ const SelectPayment = () => {
   }, [cardsResponse]);
 
   useEffect(() => {
-    const payment: Payment = data?.payment;
     if (payment === undefined) return;
 
     setPaymentMethod(
@@ -103,6 +103,16 @@ const SelectPayment = () => {
 
           router.back();
         },
+        status:
+          paymentMethod === undefined ||
+          (paymentMethod.id === "card" && card === undefined) ||
+          (paymentMethod.id === "cash" &&
+            paymentMethod.id === payment?.method) ||
+          (paymentMethod.id === "card" &&
+            paymentMethod.id === payment?.method &&
+            card.id === payment?.card?.public_id)
+            ? "inactive"
+            : "active",
       }}
       link={{ value: "Cancel", onClick: router.back }}
     >
