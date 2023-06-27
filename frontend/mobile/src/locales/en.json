@@ -206,7 +206,10 @@
       "PRIMARY_TEXT": "How you'll pay?",
       "SECONDARY_TEXT": {
         "WITHOUT_DATA": "Select how you'll pay",
-        "WITH_DATA": "Hello"
+        "WITH_DATA": {
+          "CASH": "Cash",
+          "CARD": "Using the card that end with %{last4}, and expires in %{expMonth}/%{expYear}"
+        }
       }
     },
     "WHEN": {

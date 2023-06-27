@@ -40,9 +40,11 @@ const CreateNewAutoship = () => {
       },
       {
         primaryText: t("CREATE_AN_AUTOSHIP__STEPS.HOW.PRIMARY_TEXT"),
-        secondaryText: t(
-          "CREATE_AN_AUTOSHIP__STEPS.HOW.SECONDARY_TEXT.WITHOUT_DATA"
-        ),
+        secondaryText: payment
+          ? t(
+              `CREATE_AN_AUTOSHIP__STEPS.HOW.SECONDARY_TEXT.WITH_DATA.${payment.method.toUpperCase()}`
+            )
+          : t("CREATE_AN_AUTOSHIP__STEPS.HOW.SECONDARY_TEXT.WITHOUT_DATA"),
         actions: [
           {
             name: payment ? "Change" : "Select",

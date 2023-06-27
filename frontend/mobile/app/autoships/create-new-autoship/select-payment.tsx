@@ -59,8 +59,6 @@ const SelectPayment = () => {
   }, [cardsResponse]);
 
   useEffect(() => {
-    console.log("data", data);
-
     const payment: Payment = data?.payment;
     if (payment === undefined) return;
 
@@ -97,8 +95,6 @@ const SelectPayment = () => {
               },
             };
           }
-
-          console.log("payment", payment);
 
           setData({
             ...data,
