@@ -47,7 +47,7 @@ import { useTranslations } from "../src/hooks";
 import { Endpoints, StorageKeys } from "../src/enums";
 import RoutesRestrictor from "./_RoutesRestrictor";
 import { useCustomer } from "../src/hooks";
-import { AlertContextProvider } from "../src/providers";
+import { AlertContextProvider, DataContextProvider } from "../src/providers";
 import Viewer from "./_Viewer";
 import { StatusBar } from "expo-status-bar";
 import { useEffect, useState } from "react";
@@ -157,49 +157,51 @@ const Layout = () => {
   }
 
   return (
-    <CustomerContext.Provider
-      value={{
-        customer,
-        setCustomer,
-        setCustomerWithSessionToken,
-        sessionToken,
-        clearCustomer,
-      }}
-    >
-      <InternationalizationContext.Provider
+    <DataContextProvider>
+      <CustomerContext.Provider
         value={{
-          language,
-          changeLanguage,
-          direction,
-          storedLanguage,
-          languageWithoutGender,
-          languageGender,
+          customer,
+          setCustomer,
+          setCustomerWithSessionToken,
+          sessionToken,
+          clearCustomer,
         }}
       >
-        <TranslationsContext.Provider value={{ t }}>
-          <RoutesRestrictor>
-            <SideThings>
-              <TouchableWithoutFeedback
-                onPress={() => Keyboard.isVisible() && Keyboard.dismiss()}
-              >
-                {
-                  // AlertContextProvider should be here
-                }
-                <AlertContextProvider>
+        <InternationalizationContext.Provider
+          value={{
+            language,
+            changeLanguage,
+            direction,
+            storedLanguage,
+            languageWithoutGender,
+            languageGender,
+          }}
+        >
+          <TranslationsContext.Provider value={{ t }}>
+            <RoutesRestrictor>
+              <SideThings>
+                <TouchableWithoutFeedback
+                  onPress={() => Keyboard.isVisible() && Keyboard.dismiss()}
+                >
                   {
-                    // Viewer should be here
+                    // AlertContextProvider should be here
                   }
-                  <Viewer>
-                    <StatusBar style="dark" />
-                    <Slot />
-                  </Viewer>
-                </AlertContextProvider>
-              </TouchableWithoutFeedback>
-            </SideThings>
-          </RoutesRestrictor>
-        </TranslationsContext.Provider>
-      </InternationalizationContext.Provider>
-    </CustomerContext.Provider>
+                  <AlertContextProvider>
+                    {
+                      // Viewer should be here
+                    }
+                    <Viewer>
+                      <StatusBar style="dark" />
+                      <Slot />
+                    </Viewer>
+                  </AlertContextProvider>
+                </TouchableWithoutFeedback>
+              </SideThings>
+            </RoutesRestrictor>
+          </TranslationsContext.Provider>
+        </InternationalizationContext.Provider>
+      </CustomerContext.Provider>
+    </DataContextProvider>
   );
 };
 

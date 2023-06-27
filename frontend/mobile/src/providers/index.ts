@@ -1,3 +1,4 @@
 import AlertContextProvider from "./AlertContextProvider";
+import DataContextProvider from "./DataContextProvider";
 
-export { AlertContextProvider };
+export { AlertContextProvider, DataContextProvider };

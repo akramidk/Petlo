@@ -8,6 +8,7 @@ import useAPIMutation from "./useAPIMutation";
 import useCustomerContext from "./useCustomerContext";
 import useAlertContext from "./useAlertContext";
 import useCartStore from "./useCartStore";
+import useDataContext from "./useDataContext";
 
 export {
   useAPIFetching,
@@ -20,4 +21,5 @@ export {
   useCustomerContext,
   useAlertContext,
   useCartStore,
+  useDataContext,
 };
