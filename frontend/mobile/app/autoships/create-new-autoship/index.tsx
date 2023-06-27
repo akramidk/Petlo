@@ -10,11 +10,12 @@ const CreateNewAutoship = () => {
   const { t } = useTranslationsContext();
   const { data, setData } = useDataContext();
 
-  const [name, setName] = useState("");
-  const [address, setAddress] = useState<Address>();
-  const [payment, setPayment] = useState<Payment>();
+  const [name, setName] = useState(data?.name ?? "");
 
   const cards: DataCardProps[] = useMemo(() => {
+    const address: Address = data?.address;
+    const payment: Payment = data?.payment;
+
     return [
       {
         primaryText: t("CREATE_AN_AUTOSHIP__STEPS.WHAT.PRIMARY_TEXT"),
@@ -63,33 +64,11 @@ const CreateNewAutoship = () => {
         ),
       },
     ];
-  }, [address]);
+  }, [data]);
 
   useEffect(() => {
-    if (data === undefined) return;
-
-    if (data?.name) {
-      setName(data.name);
-    }
-
-    if (data?.address) {
-      setAddress(data.address);
-    }
-  }, []);
-
-  useEffect(() => {
-    const data = {};
-
-    if (name) {
-      data["name"] = name;
-    }
-
-    if (address) {
-      data["address"] = address;
-    }
-
-    setData(data);
-  }, [name, address]);
+    if (name) setData({ ...data, name });
+  }, [name]);
 
   return (
     <PageStructure

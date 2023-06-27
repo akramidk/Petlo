@@ -1,5 +1,5 @@
 import { useRouter } from "expo-router";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { PageStructure } from "../../../src/components/organisms";
 import { PAYMENT_METHODS } from "../../../src/constants";
 import {
@@ -12,6 +12,7 @@ import {
   BaseOption,
   CustomerCardsRequest,
   CustomerCardsResponse,
+  Payment,
 } from "../../../src/interfaces";
 import { Link, OptionsWithLabel } from "../../../src/components/atoms";
 import { View } from "react-native";
@@ -57,6 +58,23 @@ const SelectPayment = () => {
     });
   }, [cardsResponse]);
 
+  useEffect(() => {
+    console.log("data", data);
+
+    const payment: Payment = data?.payment;
+    if (payment === undefined) return;
+
+    setPaymentMethod(
+      PAYMENT_METHODS.find(
+        (paymentMethod) => payment.method === paymentMethod.id
+      )
+    );
+
+    if (payment.method === "card") {
+      setCard(cards.find((card) => card.id === payment.card.id));
+    }
+  }, []);
+
   if (cardsResponse === undefined || cardsResponse.isFetching) {
     return <Loading />;
   }
@@ -67,8 +85,24 @@ const SelectPayment = () => {
       button={{
         value: "Select",
         onClick: () => {
+          let payment: Payment = {
+            method: paymentMethod.id as Payment["method"],
+          };
+
+          if (payment.method === "card") {
+            payment = {
+              ...payment,
+              card: {
+                id: card.id as string,
+              },
+            };
+          }
+
+          console.log("payment", payment);
+
           setData({
             ...data,
+            payment,
           });
 
           router.back();
