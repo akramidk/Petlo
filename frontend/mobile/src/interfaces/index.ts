@@ -142,6 +142,7 @@ import { Card } from "./Entities/Card";
 import { Checkout } from "./Entities/Checkout";
 import { Order } from "./Entities/Order";
 import { Address } from "./Entities/Address";
+import { Payment } from "./Entities/Payment";
 
 export {
   NewVersionAvailableRequest,
@@ -238,4 +239,5 @@ export {
   Checkout,
   Order,
   Address,
+  Payment,
 };

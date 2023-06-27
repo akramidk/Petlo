@@ -12,6 +12,7 @@ const CreateNewAutoship = () => {
 
   const [name, setName] = useState("");
   const [address, setAddress] = useState<Address>();
+  const [payment, setPayment] = useState<Address>();
 
   const cards: DataCardProps[] = useMemo(() => {
     return [
@@ -41,6 +42,13 @@ const CreateNewAutoship = () => {
         secondaryText: t(
           "CREATE_AN_AUTOSHIP__STEPS.HOW.SECONDARY_TEXT.WITHOUT_DATA"
         ),
+        actions: [
+          {
+            name: address ? "Change" : "Select",
+            onClick: () =>
+              router.push("/autoships/create-new-autoship/select-address"),
+          },
+        ],
       },
       {
         primaryText: t("CREATE_AN_AUTOSHIP__STEPS.WHOM.PRIMARY_TEXT"),
