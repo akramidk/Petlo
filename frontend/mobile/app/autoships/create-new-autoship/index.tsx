@@ -43,6 +43,12 @@ const CreateNewAutoship = () => {
         ),
       },
       {
+        primaryText: t("CREATE_AN_AUTOSHIP__STEPS.WHOM.PRIMARY_TEXT"),
+        secondaryText: t(
+          "CREATE_AN_AUTOSHIP__STEPS.WHOM.SECONDARY_TEXT.WITHOUT_DATA"
+        ),
+      },
+      {
         primaryText: t("CREATE_AN_AUTOSHIP__STEPS.WHEN.PRIMARY_TEXT"),
         secondaryText: t(
           "CREATE_AN_AUTOSHIP__STEPS.WHEN.SECONDARY_TEXT.WITHOUT_DATA"

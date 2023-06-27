@@ -215,6 +215,13 @@
         "WITHOUT_DATA": "WITHOUT_DATA",
         "WITH_DATA": "Hello"
       }
+    },
+    "WHOM": {
+      "PRIMARY_TEXT": "For whom?",
+      "SECONDARY_TEXT": {
+        "WITHOUT_DATA": "WITHOUT_DATA",
+        "WITH_DATA": "Hello"
+      }
     }
   }
 }
