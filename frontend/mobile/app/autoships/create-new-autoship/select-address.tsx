@@ -1,10 +1,14 @@
 import { useRouter } from "expo-router";
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Link, OptionsWithLabel } from "../../../src/components/atoms";
 import { DataCard } from "../../../src/components/molecules";
 import { PageStructure } from "../../../src/components/organisms";
 import { Endpoints } from "../../../src/enums";
-import { useAPIFetching, useTranslationsContext } from "../../../src/hooks";
+import {
+  useAPIFetching,
+  useDataContext,
+  useTranslationsContext,
+} from "../../../src/hooks";
 import {
   BaseOption,
   CustomerAddressesRequest,
@@ -15,6 +19,7 @@ import Loading from "../../_Loading";
 const SelectAddress = () => {
   const router = useRouter();
   const { t } = useTranslationsContext();
+  const { data, setData } = useDataContext();
 
   const [address, setAddress] = useState<BaseOption>();
   const { response: addressesResponse } = useAPIFetching<
@@ -41,6 +46,25 @@ const SelectAddress = () => {
       };
     });
   }, [addressesResponse]);
+
+  useEffect(() => {
+    if (addresses.length === 0 || data?.address === undefined) return;
+
+    setAddress(
+      addresses.find((address) => address.id === data.address?.public_id)
+    );
+  }, []);
+
+  useEffect(() => {
+    if (address === undefined) return;
+
+    setData({
+      ...data,
+      address: addressesResponse.body.data.find(
+        (_address) => address.id === _address.public_id
+      ),
+    });
+  }, [address]);
 
   if (addressesResponse === undefined || addressesResponse.isFetching) {
     return <Loading />;
