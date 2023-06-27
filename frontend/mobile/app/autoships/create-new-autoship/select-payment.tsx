@@ -69,7 +69,7 @@ const SelectPayment = () => {
     );
 
     if (payment.method === "card") {
-      setCard(cards.find((card) => card.id === payment.card.id));
+      setCard(cards.find((card) => card.id === payment.card.public_id));
     }
   }, []);
 
@@ -90,9 +90,9 @@ const SelectPayment = () => {
           if (payment.method === "card") {
             payment = {
               ...payment,
-              card: {
-                id: card.id as string,
-              },
+              card: cardsResponse.body.data.find(
+                (_card) => _card.public_id === card.id
+              ),
             };
           }
 

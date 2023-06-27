@@ -1,6 +1,6 @@
+import { Card } from "./Card";
+
 export interface Payment {
   method: "cash" | "card";
-  card?: {
-    id: string;
-  };
+  card?: Partial<Card>;
 }

@@ -3,7 +3,12 @@ import { BaseResponse } from "./Base";
 
 export interface CreateNewOrderRequest {
   checkout_id: string;
-  payment: Payment;
+  payment: {
+    method: "cash" | "card";
+    card?: {
+      id: string;
+    };
+  };
   pets: string[];
 }
 
