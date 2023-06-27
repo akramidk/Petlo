@@ -1,14 +1,16 @@
 import { Address } from "@stripe/stripe-react-native";
 import { useRouter } from "expo-router";
-import { useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { Filed } from "../../../src/components/atoms";
 import { DataCards, PageStructure } from "../../../src/components/organisms";
-import { useTranslationsContext } from "../../../src/hooks";
+import { useDataContext, useTranslationsContext } from "../../../src/hooks";
 import { DataCardProps } from "../../../src/interfaces";
 
 const CreateNewAutoship = () => {
   const router = useRouter();
   const { t } = useTranslationsContext();
+  const { data, setData } = useDataContext();
+
   const [name, setName] = useState("");
   const [address, setAddress] = useState<Address>();
 
@@ -47,6 +49,32 @@ const CreateNewAutoship = () => {
       },
     ];
   }, []);
+
+  useEffect(() => {
+    if (data === undefined) return;
+
+    if (data?.name) {
+      setName(data.name);
+    }
+
+    if (data?.address) {
+      setAddress(data.address);
+    }
+  }, []);
+
+  useEffect(() => {
+    const data = {};
+
+    if (name) {
+      data["name"] = name;
+    }
+
+    if (address) {
+      data["address"] = address;
+    }
+
+    setData(data);
+  }, [name, address]);
 
   return (
     <PageStructure
