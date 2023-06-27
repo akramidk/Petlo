@@ -99,10 +99,10 @@ const CreateNewAutoship = () => {
         placeholder="enter a name like My Cat Autoship"
         onChange={setName}
         value={name}
-        cn="mb-[12px]"
+        cn="mb-[8px]"
       />
 
-      <DataCards data={cards} cn="space-y-[12px]" />
+      <DataCards data={cards} cn="space-y-[8px]" />
     </PageStructure>
   );
 };
