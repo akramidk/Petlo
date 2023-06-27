@@ -48,7 +48,7 @@ const SelectAddress = () => {
   }, [addressesResponse]);
 
   useEffect(() => {
-    if (addresses.length === 0 || data?.address === undefined) return;
+    if ((addresses ?? []).length === 0 || data?.address === undefined) return;
 
     setAddress(
       addresses.find((address) => address.id === data.address?.public_id)
