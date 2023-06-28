@@ -12,6 +12,8 @@
   "COMMON__FEMALE": "انثى",
   "COMMON__CASH": "نقداً عند الاستلام",
   "COMMON__CARD": "بطاقة إئتمان",
+  "COMMON__SELECT": "اختر",
+  "COMMON__SAVE": "حفظ",
   "ROOT_LAYOUT__NEW_UPDATE_AVAILABLE_TITLE": "تحديث جديد متوفر",
   "ROOT_LAYOUT__NEW_UPDATE_AVAILABLE_MESSAGE": "يجب تحديث التطبيق للتمكن من إستخدامه.",
   "SELECT_LANGUAGE__TITLE": "لغة التطبيق",
@@ -183,5 +185,56 @@
     "out_for_delivery": "الطلب في الطريق اليك",
     "delivered": "تم توصيل الطلب",
     "canceled": "تم الغاء الطلب"
+  },
+  "AUTOSHIPS__TITLE": "أوتوشيب",
+  "AUTOSHIPS__CREATE_AN_AUTOSHIP": "أنشئ أوتوشيب",
+  "AUTOSHIPS__NEXT_SHIPMENT_ON": "الشحنة القادمة يوم",
+  "AUTOSHIPS__ACTIONS": {
+    "CHANGE_NAME": "تغيير اﻹسم",
+    "CHANGE_ADDRESS": "تغيير عنوان الشحن",
+    "CHANGE_ITEMS": "تغيير المنتجات",
+    "CHANGE_PAYMENT_INFORMATION": "تغيير طريقة الدفع",
+    "CHANGE_PETS": "تغيير الحيوانات"
+  },
+  "CREATE_AN_AUTOSHIP__TITLE": "أنشئ أوتوشيب",
+  "CREATE_AN_AUTOSHIP__STEPS": {
+    "WHAT": {
+      "PRIMARY_TEXT": "What to autoship?",
+      "SECONDARY_TEXT": {
+        "WITHOUT_DATA": "Select the items that you want to receive",
+        "WITH_DATA": "Hello"
+      }
+    },
+    "WHERE": {
+      "PRIMARY_TEXT": "إلى اين تريد التوصيل؟",
+      "SECONDARY_TEXT": {
+        "WITHOUT_DATA": "اختر أين تريد التوصيل",
+        "WITH_DATA": "الشحن لـ %{addressName}"
+      }
+    },
+    "HOW": {
+      "PRIMARY_TEXT": "كيف ستقوم بالدفع؟",
+      "SECONDARY_TEXT": {
+        "WITHOUT_DATA": "اختر كيف ستوقم بالدفع",
+        "WITH_DATA": {
+          "CASH": "نقداً عند الاستلام",
+          "CARD": "البطاقة الإئتمانية المنهية بـ %{last4}"
+        }
+      }
+    },
+    "WHEN": {
+      "PRIMARY_TEXT": "When'll it arrive?",
+      "SECONDARY_TEXT": {
+        "WITHOUT_DATA": "WITHOUT_DATA",
+        "WITH_DATA": "Hello"
+      }
+    },
+    "WHOM": {
+      "PRIMARY_TEXT": "لمن؟",
+      "SECONDARY_TEXT": {
+        "WITHOUT_DATA": "اختر لمن هذا الأوتوشيب",
+        "WITH_DATA": "Hello"
+      }
+    }
   }
 }
