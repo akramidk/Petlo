@@ -48,7 +48,17 @@ const SelectPets = () => {
   }
 
   return (
-    <PageStructure title="Pets">
+    <PageStructure
+      title="Pets"
+      button={{
+        value: "Select",
+        onClick: () => {
+          router.back();
+        },
+        status: "inactive",
+      }}
+      link={{ value: "Cancel", onClick: router.back }}
+    >
       <OptionsWithLabel
         cn="mb-[12px]"
         options={{
