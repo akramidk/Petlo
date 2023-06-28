@@ -51,24 +51,20 @@ const SelectPets = () => {
   }, [petsResponse]);
 
   const buttonStatus: buttonStatus = useMemo(() => {
-    let savedPets = (data?.pets as Pet[]) ?? [];
+    const savedPets = (data?.pets as Pet[]) ?? [];
     let newPets = pets ?? [];
 
-    savedPets.every((savedPet) => {
+    const isSavedPetsStillExist = savedPets.every((savedPet) => {
       const newPet = newPets.find((pet) => pet.id === savedPet.public_id);
 
       if (newPet) {
-        savedPets = savedPets.filter((pet) => pet.public_id !== newPet.id);
         newPets = newPets.filter((pet) => pet.id !== newPet.id);
       }
 
       return newPet;
     });
 
-    console.log("savedPets", savedPets);
-    console.log("newPets", newPets);
-
-    if (savedPets.length === 0 && newPets.length === 0) return "inactive";
+    if (isSavedPetsStillExist && newPets.length === 0) return "inactive";
     return "active";
   }, [pets, data?.pets]);
 
