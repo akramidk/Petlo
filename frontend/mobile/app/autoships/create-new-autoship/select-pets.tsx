@@ -1,20 +1,27 @@
 import { PageStructure } from "../../../src/components/organisms";
 import { Link, OptionsWithLabel, Text } from "../../../src/components/atoms";
 import { useRouter } from "expo-router";
-import { useAPIFetching, useTranslationsContext } from "../../../src/hooks";
-import { useMemo, useState } from "react";
+import {
+  useAPIFetching,
+  useDataContext,
+  useTranslationsContext,
+} from "../../../src/hooks";
+import { useEffect, useMemo, useState } from "react";
 import {
   BaseOption,
   CustomerPetsRequest,
   CustomerPetsResponse,
+  Pet,
 } from "../../../src/interfaces";
 import { Endpoints } from "../../../src/enums";
 import { DataCard } from "../../../src/components/molecules";
 import Loading from "../../_Loading";
+import { buttonStatus } from "../../../src/types";
 
 const SelectPets = () => {
   const router = useRouter();
   const { t } = useTranslationsContext();
+  const { data, setData } = useDataContext();
 
   const [pets, setPets] = useState<BaseOption[]>();
 
@@ -43,6 +50,39 @@ const SelectPets = () => {
     });
   }, [petsResponse]);
 
+  const buttonStatus: buttonStatus = useMemo(() => {
+    let savedPets = (data?.pets as Pet[]) ?? [];
+    let newPets = pets ?? [];
+
+    savedPets.every((savedPet) => {
+      const newPet = newPets.find((pet) => pet.id === savedPet.public_id);
+
+      if (newPet) {
+        savedPets = savedPets.filter((pet) => pet.public_id !== newPet.id);
+        newPets = newPets.filter((pet) => pet.id !== newPet.id);
+      }
+
+      return newPet;
+    });
+
+    console.log("savedPets", savedPets);
+    console.log("newPets", newPets);
+
+    if (savedPets.length === 0 && newPets.length === 0) return "inactive";
+    return "active";
+  }, [pets, data?.pets]);
+
+  useEffect(() => {
+    const savedPets = data?.pets as Pet[];
+    if (customerPets === undefined || savedPets === undefined) return;
+
+    setPets(
+      savedPets.map((savedPet) =>
+        customerPets.find((pet) => pet.id === savedPet.public_id)
+      )
+    );
+  }, []);
+
   if (petsResponse === undefined || petsResponse.isFetching) {
     return <Loading />;
   }
@@ -53,9 +93,18 @@ const SelectPets = () => {
       button={{
         value: "Select",
         onClick: () => {
+          setData({
+            ...data,
+            pets: pets.map((pet) => {
+              return petsResponse.body.data.find(
+                (customerPet) => customerPet.public_id === pet.id
+              );
+            }),
+          });
+
           router.back();
         },
-        status: "inactive",
+        status: buttonStatus,
       }}
       link={{ value: "Cancel", onClick: router.back }}
     >

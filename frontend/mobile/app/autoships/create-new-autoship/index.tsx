@@ -59,9 +59,9 @@ const CreateNewAutoship = () => {
       },
       {
         primaryText: t("CREATE_AN_AUTOSHIP__STEPS.WHOM.PRIMARY_TEXT"),
-        secondaryText: t(
-          "CREATE_AN_AUTOSHIP__STEPS.WHOM.SECONDARY_TEXT.WITHOUT_DATA"
-        ),
+        secondaryText: pets
+          ? pets.map((pet) => pet.name).join(", ")
+          : t("CREATE_AN_AUTOSHIP__STEPS.WHOM.SECONDARY_TEXT.WITHOUT_DATA"),
         actions: [
           {
             name: pets ? "Change" : "Select",
