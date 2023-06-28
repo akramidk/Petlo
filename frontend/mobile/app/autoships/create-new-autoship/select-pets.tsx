@@ -85,9 +85,9 @@ const SelectPets = () => {
 
   return (
     <PageStructure
-      title="Pets"
+      title={t("CREATE_AN_AUTOSHIP__STEPS.WHOM.PRIMARY_TEXT")}
       button={{
-        value: "Select",
+        value: t("COMMON__SAVE"),
         onClick: () => {
           setData({
             ...data,
