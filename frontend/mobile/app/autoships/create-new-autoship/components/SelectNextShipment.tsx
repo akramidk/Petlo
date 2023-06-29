@@ -1,9 +1,8 @@
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { DateTime } from "luxon";
 import BaseSelector from "../../../../src/components/bases/BaseSelector";
-import { View, Text } from "react-native";
+import { View } from "react-native";
 import BaseLabel from "../../../../src/components/bases/BaseLabel";
-import { useRouter } from "expo-router";
 import Popover from "react-native-popover-view";
 import { Dispatch, SetStateAction, useState } from "react";
 import NextShipment from "../interfaces/NextShipment";
