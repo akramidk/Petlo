@@ -40,7 +40,11 @@ const SelectNextShipment = ({
               <View>
                 <BaseSelector
                   placeholder="Select first shipment date"
-                  value=""
+                  value={
+                    selectedValue
+                      ? `${selectedValue.day}/${selectedValue.month}/${selectedValue.year}`
+                      : undefined
+                  }
                   onClick={() => setIsVisible(true)}
                 />
               </View>
