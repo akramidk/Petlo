@@ -10,7 +10,7 @@ const BaseSelector = <T extends BaseOption>({
   value,
   translate = false,
   cn,
-  setOptionsModalVisible,
+  onClick,
   showDropdownIcon = false,
   preventRTL = false,
 }: BaseSelectorProps<T>) => {
@@ -23,7 +23,7 @@ const BaseSelector = <T extends BaseOption>({
         showDropdownIcon && "space-x-[12px]",
         cn
       )}
-      onClick={() => setOptionsModalVisible(true)}
+      onClick={() => onClick(true)}
       preventRTL={preventRTL}
     >
       <Text

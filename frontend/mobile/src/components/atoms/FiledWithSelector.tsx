@@ -46,7 +46,7 @@ const FiledWithSelector = <T extends BaseOption>({
         <BaseSelector
           cn="rounded-r-[0px] mr-[1px]"
           value={signalSelect.selectedOption?.value}
-          setOptionsModalVisible={setOptionsModalVisible}
+          onClick={setOptionsModalVisible}
           translate={translate}
           showDropdownIcon
           preventRTL

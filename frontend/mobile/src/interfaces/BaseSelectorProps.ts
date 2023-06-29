@@ -1,9 +1,11 @@
+import React from "react";
+
 export interface BaseSelectorProps<T> {
   placeholder?: string;
-  value: string | number;
+  value: string | number | React.ReactNode;
   translate?: boolean;
   cn?: string;
-  setOptionsModalVisible: (visible: boolean) => void;
+  onClick: (visible: boolean) => void;
   showDropdownIcon?: boolean;
   preventRTL?: boolean;
 }

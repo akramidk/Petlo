@@ -84,7 +84,7 @@ const CreateNewAutoship = () => {
           {
             name: pets ? changeText : selectText,
             onClick: () =>
-              router.push("/autoships/create-new-autoship/select-pets"),
+              router.push("/autoships/create-new-autoship/select-date"),
           },
         ],
       },
