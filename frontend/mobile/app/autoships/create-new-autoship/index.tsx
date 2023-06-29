@@ -11,12 +11,14 @@ const CreateNewAutoship = () => {
   const { data, setData } = useDataContext();
 
   const [name, setName] = useState(data?.name ?? "");
+  const address: Address = data?.address;
+  const payment: Payment = data?.payment;
+  const pets: Pet[] = data?.pets;
+  const recurring_interval: "day" | "month" = data?.recurring_interval;
+  const recurring_interval_count: number = data?.recurring_interval_count;
+  const next_shipment_on: string = data?.next_shipment_on;
 
   const cards: DataCardProps[] = useMemo(() => {
-    const address: Address = data?.address;
-    const payment: Payment = data?.payment;
-    const pets: Pet[] = data?.pets;
-
     const selectText = t("COMMON__SELECT");
     const changeText = t("COMMON__CHANGE");
 
@@ -78,9 +80,16 @@ const CreateNewAutoship = () => {
         secondaryText: t(
           "CREATE_AN_AUTOSHIP__STEPS.WHEN.SECONDARY_TEXT.WITHOUT_DATA"
         ),
+        actions: [
+          {
+            name: pets ? changeText : selectText,
+            onClick: () =>
+              router.push("/autoships/create-new-autoship/select-pets"),
+          },
+        ],
       },
     ];
-  }, [data]);
+  }, [address, payment, pets]);
 
   useEffect(() => {
     if (name) setData({ ...data, name });
