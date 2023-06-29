@@ -63,7 +63,7 @@ const SelectAddress = () => {
     <PageStructure
       title={t("CREATE_AN_AUTOSHIP__STEPS.WHERE.PRIMARY_TEXT")}
       button={{
-        value: "Select",
+        value: t("COMMON__SELECT"),
         onClick: () => {
           setData({
             ...data,
@@ -79,7 +79,7 @@ const SelectAddress = () => {
             ? "inactive"
             : "active",
       }}
-      link={{ value: "Cancel", onClick: router.back }}
+      link={{ value: t("COMMON__CANCEL"), onClick: router.back }}
     >
       <OptionsWithLabel
         cn="mb-[12px]"

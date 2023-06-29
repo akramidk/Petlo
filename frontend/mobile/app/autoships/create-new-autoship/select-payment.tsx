@@ -81,7 +81,7 @@ const SelectPayment = () => {
     <PageStructure
       title={t("CREATE_AN_AUTOSHIP__STEPS.HOW.PRIMARY_TEXT")}
       button={{
-        value: "Select",
+        value: t("COMMON__SELECT"),
         onClick: () => {
           let payment: Payment = {
             method: paymentMethod.id as Payment["method"],
@@ -114,7 +114,7 @@ const SelectPayment = () => {
             ? "inactive"
             : "active",
       }}
-      link={{ value: "Cancel", onClick: router.back }}
+      link={{ value: t("COMMON__CANCEL"), onClick: router.back }}
     >
       <OptionsWithLabel
         cn="mb-[24px]"

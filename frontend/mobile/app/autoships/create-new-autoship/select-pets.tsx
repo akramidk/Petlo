@@ -102,7 +102,7 @@ const SelectPets = () => {
         },
         status: buttonStatus,
       }}
-      link={{ value: "Cancel", onClick: router.back }}
+      link={{ value: t("COMMON__CANCEL"), onClick: router.back }}
     >
       <OptionsWithLabel
         cn="mb-[12px]"

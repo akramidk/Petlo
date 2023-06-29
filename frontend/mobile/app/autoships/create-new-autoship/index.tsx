@@ -17,6 +17,9 @@ const CreateNewAutoship = () => {
     const payment: Payment = data?.payment;
     const pets: Pet[] = data?.pets;
 
+    const selectText = t("COMMON__SELECT");
+    const changeText = t("COMMON__CHANGE");
+
     return [
       {
         primaryText: t("CREATE_AN_AUTOSHIP__STEPS.WHAT.PRIMARY_TEXT"),
@@ -33,7 +36,7 @@ const CreateNewAutoship = () => {
           : t("CREATE_AN_AUTOSHIP__STEPS.WHERE.SECONDARY_TEXT.WITHOUT_DATA"),
         actions: [
           {
-            name: address ? "Change" : "Select",
+            name: address ? changeText : selectText,
             onClick: () =>
               router.push("/autoships/create-new-autoship/select-address"),
           },
@@ -51,7 +54,7 @@ const CreateNewAutoship = () => {
           : t("CREATE_AN_AUTOSHIP__STEPS.HOW.SECONDARY_TEXT.WITHOUT_DATA"),
         actions: [
           {
-            name: payment ? "Change" : "Select",
+            name: payment ? changeText : selectText,
             onClick: () =>
               router.push("/autoships/create-new-autoship/select-payment"),
           },
@@ -64,7 +67,7 @@ const CreateNewAutoship = () => {
           : t("CREATE_AN_AUTOSHIP__STEPS.WHOM.SECONDARY_TEXT.WITHOUT_DATA"),
         actions: [
           {
-            name: pets ? "Change" : "Select",
+            name: pets ? changeText : selectText,
             onClick: () =>
               router.push("/autoships/create-new-autoship/select-pets"),
           },
@@ -87,12 +90,12 @@ const CreateNewAutoship = () => {
     <PageStructure
       title={t("CREATE_AN_AUTOSHIP__TITLE")}
       button={{
-        value: "Create",
+        value: t("COMMON__CREATE"),
         onClick: () => {},
         status: "inactive",
       }}
       link={{
-        value: "Cancel",
+        value: t("COMMON__CANCEL"),
         onClick: () => {
           setData(undefined);
           router.back();

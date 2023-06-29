@@ -25,7 +25,7 @@ const DataCard = ({
     <View
       className={clsx(
         {
-          ["w-full border-[1px] border-[#f6f6f6] rounded-[4px] px-[20px] py-[14px]"]:
+          ["w-full border-[1px] border-[#f6f6f6] rounded-[4px] px-[20px] pb-[14px]"]:
             !withoutContainerStyles,
         },
         prefixChild && flex // TODO fix this
@@ -43,14 +43,14 @@ const DataCard = ({
         <View className={clsx("justify-between", flex)}>
           <Text
             font="extraBold"
-            cn="text-[14px] text-[#0E333C] w-[70%]"
+            cn="text-[14px] text-[#0E333C] w-[70%] mt-[14px]"
             numberOfLines={1}
           >
             {primaryText}
           </Text>
 
           {actions && actions.length === 1 ? (
-            <BaseButton onClick={actions[0].onClick}>
+            <BaseButton onClick={actions[0].onClick} cn="pt-[14px]">
               <Text font="semiBold" cn=" text-[14px] text-[#aaa]">
                 {actions[0].name}
               </Text>
@@ -58,7 +58,7 @@ const DataCard = ({
           ) : null}
 
           {actions && actions.length > 1 ? (
-            <BaseButton onClick={() => setActionsVisible(true)}>
+            <BaseButton onClick={() => setActionsVisible(true)} cn="pt-[14px]">
               <Icon name="moreHorizontal" size={20} color="#888" />
             </BaseButton>
           ) : null}
