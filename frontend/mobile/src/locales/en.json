@@ -192,6 +192,8 @@
     "CHANGE_PETS": "Change Pets"
   },
   "CREATE_AN_AUTOSHIP__TITLE": "Create An Autoship",
+  "CREATE_AN_AUTOSHIP__NAME_FILED_LABEL": "Autoship Name",
+  "CREATE_AN_AUTOSHIP__NAME_FILED_PLACEHOLDER": "enter a name like My Cat Autoship",
   "CREATE_AN_AUTOSHIP__STEPS": {
     "WHAT": {
       "PRIMARY_TEXT": "What to autoship?",

@@ -103,9 +103,9 @@ const CreateNewAutoship = () => {
       }}
     >
       <Filed
-        name="Autoship Name"
+        name={t("CREATE_AN_AUTOSHIP__NAME_FILED_LABEL")}
+        placeholder={t("CREATE_AN_AUTOSHIP__NAME_FILED_PLACEHOLDER")}
         require={true}
-        placeholder="enter a name like My Cat Autoship"
         onChange={setName}
         value={name}
         cn="mb-[8px]"

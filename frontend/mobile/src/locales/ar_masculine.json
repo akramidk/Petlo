@@ -200,6 +200,8 @@
     "CHANGE_PETS": "تغيير الحيوانات"
   },
   "CREATE_AN_AUTOSHIP__TITLE": "أنشئ أوتوشيب",
+  "CREATE_AN_AUTOSHIP__NAME_FILED_LABEL": "اسم الأوتوشيب",
+  "CREATE_AN_AUTOSHIP__NAME_FILED_PLACEHOLDER": "ادخل اسماً مثل أوتوشيب قطتي",
   "CREATE_AN_AUTOSHIP__STEPS": {
     "WHAT": {
       "PRIMARY_TEXT": "What to autoship?",
