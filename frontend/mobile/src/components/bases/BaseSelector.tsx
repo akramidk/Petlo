@@ -32,7 +32,7 @@ const BaseSelector = <T extends BaseOption>({
         cn={value ? "text-[#444]" : "text-[#aaa]"}
         font="medium"
       >
-        {(translate && value ? t(value) : value) ?? placeholder}
+        {value ? (translate ? t(value) : value) : placeholder}
       </Text>
 
       {showDropdownIcon ? (
