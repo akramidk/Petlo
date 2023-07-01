@@ -29,6 +29,11 @@ const SelectThePeriod = ({
             onChange={setRecurringIntervalCount}
             value={recurringIntervalCount}
             keyboardType="number-pad"
+            placeholder={
+              recurringInterval.id === "day"
+                ? "from 5 to 90 days"
+                : "from 1 to 3 months"
+            }
           />
           <Selector
             cn="w-[36%]"
