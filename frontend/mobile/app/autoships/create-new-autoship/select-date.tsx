@@ -4,6 +4,8 @@ import { useRouter } from "expo-router";
 import { useState } from "react";
 import SelectNextShipment from "./components/SelectNextShipment";
 import NextShipment from "./interfaces/NextShipment";
+import SelectThePeriod from "./components/SelectThePeriod";
+import { View } from "react-native";
 
 const SelectDate = () => {
   const router = useRouter();
@@ -24,6 +26,8 @@ const SelectDate = () => {
       link={{ value: t("COMMON__CANCEL"), onClick: router.back }}
     >
       <SelectNextShipment value={nextShipment} setValue={setNextShipment} />
+      <View className="mb-[16px]" />
+      <SelectThePeriod />
     </PageStructure>
   );
 };

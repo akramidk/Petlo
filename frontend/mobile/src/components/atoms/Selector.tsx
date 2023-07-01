@@ -18,10 +18,11 @@ const Selector = <T extends BaseOption>({
   name,
   helperText,
   require,
+  showDropdownIcon,
 }: SelectorProps<T> &
   Pick<BaseLabelProps, "name" | "helperText" | "require"> &
   Pick<OptionsProps<T>, "options" | "signalSelect" | "translate"> &
-  Pick<BaseSelectorProps<T>, "placeholder">) => {
+  Pick<BaseSelectorProps<T>, "placeholder" | "showDropdownIcon">) => {
   const [optionsModalVisible, setOptionsModalVisible] = useState(false);
 
   return (
@@ -48,6 +49,7 @@ const Selector = <T extends BaseOption>({
           value={signalSelect.selectedOption?.value}
           onClick={setOptionsModalVisible}
           translate={translate}
+          showDropdownIcon={showDropdownIcon}
         />
       </View>
     </>
