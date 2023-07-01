@@ -21,7 +21,7 @@ const SelectThePeriod = ({
   return (
     <>
       <View className="space-y-[8px]">
-        <BaseLabel name="Shipping then, after?" />
+        <BaseLabel name="Shipping then, after?" require />
 
         <View className="flex flex-row justify-between space-x-[8px]">
           <Filed
