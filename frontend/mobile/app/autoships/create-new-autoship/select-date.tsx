@@ -28,14 +28,13 @@ const SelectDate = () => {
 
   const recurringIntervalCountAsNumber = Number(recurringIntervalCount);
 
-  const isValid =
-    nextShipment &&
-    ((recurringInterval.id === "day" &&
+  const isRecurringIntervalCountValid =
+    (recurringInterval.id === "day" &&
       recurringIntervalCountAsNumber >= 5 &&
       recurringIntervalCountAsNumber <= 90) ||
-      (recurringInterval.id === "month" &&
-        recurringIntervalCountAsNumber >= 1 &&
-        recurringIntervalCountAsNumber <= 3));
+    (recurringInterval.id === "month" &&
+      recurringIntervalCountAsNumber >= 1 &&
+      recurringIntervalCountAsNumber <= 3);
 
   return (
     <PageStructure
@@ -45,7 +44,8 @@ const SelectDate = () => {
         onClick: () => {
           router.back();
         },
-        status: isValid ? "active" : "inactive",
+        status:
+          nextShipment && isRecurringIntervalCountValid ? "active" : "inactive",
       }}
       link={{ value: t("COMMON__CANCEL"), onClick: router.back }}
     >
@@ -58,39 +58,43 @@ const SelectDate = () => {
         setRecurringInterval={setRecurringInterval}
       />
 
-      {isValid && (
-        <View className="space-y-[12px] mt-[32px]">
-          <View
-            className={clsx(
-              "justify-between",
-              direction === "ltr" ? "flex-row" : "flex-row-reverse"
-            )}
-          >
-            <Text font="semiBold" cn="text-[14px] text-[#666]">
-              First shipment on
-            </Text>
-            <Text font="semiBold" cn="text-[14px] text-[#666]">
-              {nextShipment
-                ? `${nextShipment.day}/${nextShipment.month}/${nextShipment.year}`
-                : "not selected"}
-            </Text>
-          </View>
-
-          <View
-            className={clsx(
-              "justify-between",
-              direction === "ltr" ? "flex-row" : "flex-row-reverse"
-            )}
-          >
-            <Text font="semiBold" cn="text-[14px] text-[#666]">
-              Then every
-            </Text>
-            <Text font="semiBold" cn="text-[14px] text-[#666]">
-              {recurringIntervalCountAsNumber} {t(recurringInterval.value)}
-            </Text>
-          </View>
+      <View className="space-y-[12px] mt-[32px]">
+        <View
+          className={clsx(
+            "justify-between",
+            direction === "ltr" ? "flex-row" : "flex-row-reverse"
+          )}
+        >
+          <Text font="semiBold" cn="text-[14px] text-[#666]">
+            First shipment on
+          </Text>
+          <Text font="semiBold" cn="text-[14px] text-[#666]">
+            {nextShipment
+              ? `${nextShipment.day}/${nextShipment.month}/${nextShipment.year}`
+              : "not selected"}
+          </Text>
         </View>
-      )}
+
+        <View
+          className={clsx(
+            "justify-between",
+            direction === "ltr" ? "flex-row" : "flex-row-reverse"
+          )}
+        >
+          <Text font="semiBold" cn="text-[14px] text-[#666]">
+            Then every
+          </Text>
+          <Text font="semiBold" cn="text-[14px] text-[#666]">
+            {recurringIntervalCountAsNumber
+              ? isRecurringIntervalCountValid
+                ? `${recurringIntervalCountAsNumber} ${t(
+                    recurringInterval.value
+                  )}`
+                : "unvalid input"
+              : "not selected"}
+          </Text>
+        </View>
+      </View>
     </PageStructure>
   );
 };
