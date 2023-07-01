@@ -15,6 +15,8 @@
   "COMMON__CHANGE": "Change",
   "COMMON__CANCEL": "Cancel",
   "COMMON__CREATE": "Create",
+  "COMMON__DAYS": "Day",
+  "COMMON__MONTHS": "Month",
   "ROOT_LAYOUT__NEW_UPDATE_AVAILABLE_TITLE": "New Update Available",
   "ROOT_LAYOUT__NEW_UPDATE_AVAILABLE_MESSAGE": "The app must be updated first to be use.",
   "SELECT_LANGUAGE__TITLE": "App Language",

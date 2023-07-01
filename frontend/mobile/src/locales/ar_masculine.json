@@ -17,6 +17,8 @@
   "COMMON__CHANGE": "تغيير",
   "COMMON__CANCEL": "الغاء",
   "COMMON__CREATE": "انشاء",
+  "COMMON__DAYS": "ايام",
+  "COMMON__MONTHS": "شهر",
   "ROOT_LAYOUT__NEW_UPDATE_AVAILABLE_TITLE": "تحديث جديد متوفر",
   "ROOT_LAYOUT__NEW_UPDATE_AVAILABLE_MESSAGE": "يجب تحديث التطبيق للتمكن من إستخدامه.",
   "SELECT_LANGUAGE__TITLE": "لغة التطبيق",

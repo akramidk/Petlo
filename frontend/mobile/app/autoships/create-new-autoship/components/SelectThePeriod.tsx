@@ -6,10 +6,15 @@ import {
   Selector,
 } from "../../../../src/components/atoms";
 import BaseLabel from "../../../../src/components/bases/BaseLabel";
+import { AUTOSHIP_RECURRING_INTERVAL_OPTIONS } from "../../../../src/constants";
 import { BaseOption } from "../../../../src/interfaces";
 
 const SelectThePeriod = () => {
-  const [countryCode, setCountryCode] = useState<BaseOption>();
+  const [recurringIntervalCount, setRecurringIntervalCount] =
+    useState<string>();
+  const [recurringInterval, setRecurringInterval] = useState<BaseOption>(
+    AUTOSHIP_RECURRING_INTERVAL_OPTIONS[0]
+  );
 
   return (
     <>
@@ -17,16 +22,21 @@ const SelectThePeriod = () => {
         <BaseLabel name="Shipping then, after?" />
 
         <View className="flex flex-row justify-between space-x-[8px]">
-          <Filed cn="w-[70%]" onChange={() => {}} value="" />
+          <Filed
+            cn="w-[63%]"
+            onChange={setRecurringIntervalCount}
+            value={recurringIntervalCount}
+          />
           <Selector
-            cn="w-[29%]"
+            cn="w-[36%]"
             name=""
             signalSelect={{
-              selectedOption: countryCode,
-              setSelectedOption: setCountryCode,
+              selectedOption: recurringInterval,
+              setSelectedOption: setRecurringInterval,
             }}
-            options={[]}
+            options={AUTOSHIP_RECURRING_INTERVAL_OPTIONS}
             showDropdownIcon
+            translate
           />
         </View>
       </View>
