@@ -11,7 +11,7 @@ import { BaseOption } from "../../../../src/interfaces";
 
 const SelectThePeriod = () => {
   const [recurringIntervalCount, setRecurringIntervalCount] =
-    useState<string>();
+    useState<string>("");
   const [recurringInterval, setRecurringInterval] = useState<BaseOption>(
     AUTOSHIP_RECURRING_INTERVAL_OPTIONS[0]
   );
@@ -26,6 +26,7 @@ const SelectThePeriod = () => {
             cn="w-[63%]"
             onChange={setRecurringIntervalCount}
             value={recurringIntervalCount}
+            keyboardType="number-pad"
           />
           <Selector
             cn="w-[36%]"
