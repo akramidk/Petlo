@@ -45,7 +45,7 @@ const SelectDate = () => {
         onClick: () => {
           router.back();
         },
-        status: "inactive",
+        status: isValid ? "active" : "inactive",
       }}
       link={{ value: t("COMMON__CANCEL"), onClick: router.back }}
     >
