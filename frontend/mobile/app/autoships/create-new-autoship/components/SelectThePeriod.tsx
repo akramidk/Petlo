@@ -1,21 +1,23 @@
-import { useState } from "react";
+import { Dispatch, SetStateAction } from "react";
 import { View } from "react-native";
-import {
-  Filed,
-  FiledWithSelector,
-  Selector,
-} from "../../../../src/components/atoms";
+import { Filed, Selector } from "../../../../src/components/atoms";
 import BaseLabel from "../../../../src/components/bases/BaseLabel";
 import { AUTOSHIP_RECURRING_INTERVAL_OPTIONS } from "../../../../src/constants";
 import { BaseOption } from "../../../../src/interfaces";
 
-const SelectThePeriod = () => {
-  const [recurringIntervalCount, setRecurringIntervalCount] =
-    useState<string>("");
-  const [recurringInterval, setRecurringInterval] = useState<BaseOption>(
-    AUTOSHIP_RECURRING_INTERVAL_OPTIONS[0]
-  );
+interface SelectThePeriodProps {
+  recurringInterval: BaseOption;
+  setRecurringInterval: Dispatch<SetStateAction<BaseOption>>;
+  recurringIntervalCount: string;
+  setRecurringIntervalCount: Dispatch<SetStateAction<string>>;
+}
 
+const SelectThePeriod = ({
+  recurringInterval,
+  setRecurringInterval,
+  recurringIntervalCount,
+  setRecurringIntervalCount,
+}: SelectThePeriodProps) => {
   return (
     <>
       <View className="space-y-[8px]">

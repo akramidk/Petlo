@@ -6,12 +6,19 @@ import SelectNextShipment from "./components/SelectNextShipment";
 import NextShipment from "./interfaces/NextShipment";
 import SelectThePeriod from "./components/SelectThePeriod";
 import { View } from "react-native";
+import { AUTOSHIP_RECURRING_INTERVAL_OPTIONS } from "../../../src/constants";
+import { BaseOption } from "../../../src/interfaces";
 
 const SelectDate = () => {
   const router = useRouter();
   const { t } = useTranslationsContext();
 
   const [nextShipment, setNextShipment] = useState<NextShipment>();
+  const [recurringIntervalCount, setRecurringIntervalCount] =
+    useState<string>("");
+  const [recurringInterval, setRecurringInterval] = useState<BaseOption>(
+    AUTOSHIP_RECURRING_INTERVAL_OPTIONS[0]
+  );
 
   return (
     <PageStructure
@@ -27,7 +34,12 @@ const SelectDate = () => {
     >
       <SelectNextShipment value={nextShipment} setValue={setNextShipment} />
       <View className="mb-[16px]" />
-      <SelectThePeriod />
+      <SelectThePeriod
+        recurringIntervalCount={recurringIntervalCount}
+        setRecurringIntervalCount={setRecurringIntervalCount}
+        recurringInterval={recurringInterval}
+        setRecurringInterval={setRecurringInterval}
+      />
     </PageStructure>
   );
 };
