@@ -15,9 +15,9 @@ const CreateNewAutoship = () => {
   const address: Address = data?.address;
   const payment: Payment = data?.payment;
   const pets: Pet[] = data?.pets;
-  const recurringInterval: "day" | "month" = data?.recurring_interval;
-  const recurringIntervalCount: number = data?.recurring_interval_count;
-  const nextShipment: NextShipment = data?.next_shipment_on;
+  const nextShipment: NextShipment = data?.nextShipment;
+  const recurringInterval: "day" | "month" = data?.recurringInterval;
+  const recurringIntervalCount: number = data?.recurringIntervalCount;
 
   const cards: DataCardProps[] = useMemo(() => {
     const selectText = t("COMMON__SELECT");

@@ -1,5 +1,6 @@
 import { PageStructure } from "../../../src/components/organisms";
 import {
+  useDataContext,
   useInternationalizationContext,
   useTranslationsContext,
 } from "../../../src/hooks";
@@ -18,13 +19,14 @@ const SelectDate = () => {
   const router = useRouter();
   const { t } = useTranslationsContext();
   const { direction } = useInternationalizationContext();
+  const { data, setData } = useDataContext();
 
   const [nextShipment, setNextShipment] = useState<NextShipment>();
-  const [recurringIntervalCount, setRecurringIntervalCount] =
-    useState<string>("");
   const [recurringInterval, setRecurringInterval] = useState<BaseOption>(
     AUTOSHIP_RECURRING_INTERVAL_OPTIONS[0]
   );
+  const [recurringIntervalCount, setRecurringIntervalCount] =
+    useState<string>("");
 
   const recurringIntervalCountAsNumber = Number(recurringIntervalCount);
 
@@ -42,6 +44,13 @@ const SelectDate = () => {
       button={{
         value: t("COMMON__SAVE"),
         onClick: () => {
+          setData({
+            ...data,
+            nextShipment: nextShipment,
+            recurringInterval: recurringInterval,
+            recurringIntervalCount: recurringIntervalCount,
+          });
+
           router.back();
         },
         status:
