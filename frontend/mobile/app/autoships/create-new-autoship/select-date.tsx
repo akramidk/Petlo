@@ -18,8 +18,8 @@ import clsx from "clsx";
 const SelectDate = () => {
   const router = useRouter();
   const { t } = useTranslationsContext();
-  const { direction } = useInternationalizationContext();
   const { data, setData } = useDataContext();
+  const { direction } = useInternationalizationContext();
 
   const [nextShipment, setNextShipment] = useState<NextShipment>();
   const [recurringInterval, setRecurringInterval] = useState<BaseOption>(
