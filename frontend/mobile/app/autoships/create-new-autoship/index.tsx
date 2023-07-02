@@ -1,9 +1,10 @@
 import { useRouter } from "expo-router";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Filed } from "../../../src/components/atoms";
 import { DataCards, PageStructure } from "../../../src/components/organisms";
 import { useDataContext, useTranslationsContext } from "../../../src/hooks";
 import { DataCardProps, Address, Payment, Pet } from "../../../src/interfaces";
+import NextShipment from "./interfaces/NextShipment";
 
 const CreateNewAutoship = () => {
   const router = useRouter();
@@ -14,9 +15,9 @@ const CreateNewAutoship = () => {
   const address: Address = data?.address;
   const payment: Payment = data?.payment;
   const pets: Pet[] = data?.pets;
-  const recurring_interval: "day" | "month" = data?.recurring_interval;
-  const recurring_interval_count: number = data?.recurring_interval_count;
-  const next_shipment_on: string = data?.next_shipment_on;
+  const recurringInterval: "day" | "month" = data?.recurring_interval;
+  const recurringIntervalCount: number = data?.recurring_interval_count;
+  const nextShipment: NextShipment = data?.next_shipment_on;
 
   const cards: DataCardProps[] = useMemo(() => {
     const selectText = t("COMMON__SELECT");
@@ -77,12 +78,14 @@ const CreateNewAutoship = () => {
       },
       {
         primaryText: t("CREATE_AN_AUTOSHIP__STEPS.WHEN.PRIMARY_TEXT"),
-        secondaryText: t(
-          "CREATE_AN_AUTOSHIP__STEPS.WHEN.SECONDARY_TEXT.WITHOUT_DATA"
-        ),
+        secondaryText: nextShipment
+          ? t("CREATE_AN_AUTOSHIP__STEPS.WHEN.SECONDARY_TEXT.WITH_DATA", {
+              firstShipmentDate: `${nextShipment.day}/${nextShipment.month}/${nextShipment.year}`,
+            })
+          : t("CREATE_AN_AUTOSHIP__STEPS.WHEN.SECONDARY_TEXT.WITHOUT_DATA"),
         actions: [
           {
-            name: pets ? changeText : selectText,
+            name: nextShipment ? changeText : selectText,
             onClick: () =>
               router.push("/autoships/create-new-autoship/select-date"),
           },

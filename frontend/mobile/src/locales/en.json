@@ -231,7 +231,7 @@
       "PRIMARY_TEXT": "When should it arrive?",
       "SECONDARY_TEXT": {
         "WITHOUT_DATA": "WITHOUT_DATA",
-        "WITH_DATA": "Hello"
+        "WITH_DATA": "First shipment on ${firstShipmentDate}, then every ${thenEvery}"
       }
     }
   },
