@@ -11,6 +11,7 @@ import { DataCardProps } from "./DataCardProps";
 import { LinkProps } from "./LinkProps";
 import { CartItemProps } from "./CartItemProps";
 import { RecurringInterval } from "./RecurringInterval";
+import { Item } from "./Entities/Item";
 
 //endpoinds interfaces
 import {
@@ -160,6 +161,7 @@ export {
   BaseSelectorProps,
   BaseButtonProps,
   RecurringInterval,
+  Item,
   ErrorResponse,
   CreateNewCustomerRequest,
   CreateNewCustomerResponse,
