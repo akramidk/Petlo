@@ -141,7 +141,7 @@ const Cart = () => {
           })}
         </View>
 
-        {summary && (
+        {summary && summary.amount !== "0.00" && (
           <View>
             <Text font="extraBold" cn="text-[15px] text-[#0E333C] mb-[12px]">
               {t("CART__PAYMENT_SUMMARY")}
