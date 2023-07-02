@@ -35,6 +35,13 @@ const CreateNewAutoship = () => {
         secondaryText: t(
           "CREATE_AN_AUTOSHIP__STEPS.WHAT.SECONDARY_TEXT.WITHOUT_DATA"
         ),
+        actions: [
+          {
+            name: address ? changeText : selectText,
+            onClick: () =>
+              router.push("/autoships/create-new-autoship/select-items"),
+          },
+        ],
       },
       {
         primaryText: t("CREATE_AN_AUTOSHIP__STEPS.WHERE.PRIMARY_TEXT"),
