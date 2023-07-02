@@ -6,6 +6,7 @@ import BaseLabel from "../../../../src/components/bases/BaseLabel";
 import Popover from "react-native-popover-view";
 import { Dispatch, SetStateAction, useState } from "react";
 import NextShipment from "../interfaces/NextShipment";
+import { useTranslationsContext } from "../../../../src/hooks";
 
 interface SelectNextShipment {
   value: NextShipment;
@@ -17,6 +18,7 @@ const SelectNextShipment = ({
   setValue,
 }: SelectNextShipment) => {
   const [isVisible, setIsVisible] = useState(false);
+  const { t } = useTranslationsContext();
 
   const luxonDate = DateTime.now();
   const JSDate = luxonDate.toJSDate();
@@ -29,7 +31,10 @@ const SelectNextShipment = ({
   return (
     <>
       <View className="space-y-[8px]">
-        <BaseLabel name="First Shipment Date" require />
+        <BaseLabel
+          name={t("CREATE_AN_AUTOSHIP__SHIPMENT_DATE_FILED_LABEL")}
+          require
+        />
 
         <View>
           <Popover
@@ -38,7 +43,9 @@ const SelectNextShipment = ({
             from={
               <View>
                 <BaseSelector
-                  placeholder="Select first shipment date"
+                  placeholder={t(
+                    "CREATE_AN_AUTOSHIP__SHIPMENT_DATE_FILED_PLACEHOLDER"
+                  )}
                   value={
                     selectedValue
                       ? `${selectedValue.day}/${selectedValue.month}/${selectedValue.year}`

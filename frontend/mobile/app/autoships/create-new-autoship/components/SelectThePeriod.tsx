@@ -3,6 +3,7 @@ import { View } from "react-native";
 import { Filed, Selector } from "../../../../src/components/atoms";
 import BaseLabel from "../../../../src/components/bases/BaseLabel";
 import { AUTOSHIP_RECURRING_INTERVAL_OPTIONS } from "../../../../src/constants";
+import { useTranslationsContext } from "../../../../src/hooks";
 import { BaseOption } from "../../../../src/interfaces";
 
 interface SelectThePeriodProps {
@@ -18,10 +19,15 @@ const SelectThePeriod = ({
   recurringIntervalCount,
   setRecurringIntervalCount,
 }: SelectThePeriodProps) => {
+  const { t } = useTranslationsContext();
+
   return (
     <>
       <View className="space-y-[8px]">
-        <BaseLabel name="Recurring after the first shipment every?" require />
+        <BaseLabel
+          name={t("CREATE_AN_AUTOSHIP__RECURRING_AFTER_FILED_LABEL")}
+          require
+        />
 
         <View className="flex flex-row justify-between space-x-[8px]">
           <Filed
@@ -31,8 +37,10 @@ const SelectThePeriod = ({
             keyboardType="number-pad"
             placeholder={
               recurringInterval.id === "day"
-                ? "from 5 to 90 days"
-                : "from 1 to 3 months"
+                ? t("CREATE_AN_AUTOSHIP__RECURRING_AFTER_DAY_FILED_PLACEHOLDER")
+                : t(
+                    "CREATE_AN_AUTOSHIP__RECURRING_AFTER_MONTH_FILED_PLACEHOLDER"
+                  )
             }
           />
           <Selector

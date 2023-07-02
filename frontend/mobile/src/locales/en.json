@@ -221,18 +221,23 @@
         }
       }
     },
-    "WHEN": {
-      "PRIMARY_TEXT": "When'll it arrive?",
-      "SECONDARY_TEXT": {
-        "WITHOUT_DATA": "WITHOUT_DATA",
-        "WITH_DATA": "Hello"
-      }
-    },
     "WHOM": {
       "PRIMARY_TEXT": "For whom?",
       "SECONDARY_TEXT": {
         "WITHOUT_DATA": "Select for whom this autoship"
       }
+    },
+    "WHEN": {
+      "PRIMARY_TEXT": "When should it arrive?",
+      "SECONDARY_TEXT": {
+        "WITHOUT_DATA": "WITHOUT_DATA",
+        "WITH_DATA": "Hello"
+      }
     }
-  }
+  },
+  "CREATE_AN_AUTOSHIP__SHIPMENT_DATE_FILED_LABEL": "First shipment date",
+  "CREATE_AN_AUTOSHIP__SHIPMENT_DATE_FILED_PLACEHOLDER": "Select first shipment date",
+  "CREATE_AN_AUTOSHIP__RECURRING_AFTER_FILED_LABEL": "Recurring after the first shipment every?",
+  "CREATE_AN_AUTOSHIP__RECURRING_AFTER_DAY_FILED_PLACEHOLDER": "from 5 to 90 days",
+  "CREATE_AN_AUTOSHIP__RECURRING_AFTER_MONTH_FILED_PLACEHOLDER": "from 1 to 3 months"
 }
