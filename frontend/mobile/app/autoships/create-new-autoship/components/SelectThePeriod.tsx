@@ -8,10 +8,10 @@ import {
   useInternationalizationContext,
   useTranslationsContext,
 } from "../../../../src/hooks";
-import { BaseOption } from "../../../../src/interfaces";
+import { BaseOption, RecurringInterval } from "../../../../src/interfaces";
 
 interface SelectThePeriodProps {
-  recurringInterval: BaseOption;
+  recurringInterval: RecurringInterval;
   setRecurringInterval: Dispatch<SetStateAction<BaseOption>>;
   recurringIntervalCount: string;
   setRecurringIntervalCount: Dispatch<SetStateAction<string>>;
@@ -53,7 +53,7 @@ const SelectThePeriod = ({
                   )
             }
           />
-          <Selector
+          <Selector<RecurringInterval>
             cn="w-[36%]"
             name=""
             signalSelect={{

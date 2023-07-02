@@ -10,6 +10,7 @@ import { BaseButtonProps } from "./BaseButtonProps";
 import { DataCardProps } from "./DataCardProps";
 import { LinkProps } from "./LinkProps";
 import { CartItemProps } from "./CartItemProps";
+import { RecurringInterval } from "./RecurringInterval";
 
 //endpoinds interfaces
 import {
@@ -158,6 +159,7 @@ export {
   BaseFiledProps,
   BaseSelectorProps,
   BaseButtonProps,
+  RecurringInterval,
   ErrorResponse,
   CreateNewCustomerRequest,
   CreateNewCustomerResponse,

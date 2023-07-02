@@ -11,7 +11,7 @@ import NextShipment from "./interfaces/NextShipment";
 import SelectThePeriod from "./components/SelectThePeriod";
 import { View } from "react-native";
 import { AUTOSHIP_RECURRING_INTERVAL_OPTIONS } from "../../../src/constants";
-import { BaseOption } from "../../../src/interfaces";
+import { BaseOption, RecurringInterval } from "../../../src/interfaces";
 import { Text } from "../../../src/components/atoms";
 import clsx from "clsx";
 
@@ -24,7 +24,7 @@ const SelectDate = () => {
   const [nextShipment, setNextShipment] = useState<NextShipment>(
     data?.nextShipment
   );
-  const [recurringInterval, setRecurringInterval] = useState<BaseOption>(
+  const [recurringInterval, setRecurringInterval] = useState<RecurringInterval>(
     data?.recurringInterval
       ? AUTOSHIP_RECURRING_INTERVAL_OPTIONS.find(
           (recurringInterval) =>
@@ -55,7 +55,7 @@ const SelectDate = () => {
           setData({
             ...data,
             nextShipment: nextShipment,
-            recurringInterval: recurringInterval.id,
+            recurringInterval: recurringInterval,
             recurringIntervalCount: recurringIntervalCount,
           });
 

@@ -241,7 +241,7 @@
       "PRIMARY_TEXT": "متى يجب ان تصل؟",
       "SECONDARY_TEXT": {
         "WITHOUT_DATA": "قم بتعيين اعدادات الأوتوشيب",
-        "WITH_DATA": "%{firstShipmentDate}, ومن ثم كل %{thenEvery}"
+        "WITH_DATA": "%{firstShipmentDate}، ومن ثم كل %{thenEvery}"
       }
     }
   },

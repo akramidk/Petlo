@@ -3,7 +3,13 @@ import { useEffect, useMemo, useState } from "react";
 import { Filed } from "../../../src/components/atoms";
 import { DataCards, PageStructure } from "../../../src/components/organisms";
 import { useDataContext, useTranslationsContext } from "../../../src/hooks";
-import { DataCardProps, Address, Payment, Pet } from "../../../src/interfaces";
+import {
+  DataCardProps,
+  Address,
+  Payment,
+  Pet,
+  RecurringInterval,
+} from "../../../src/interfaces";
 import NextShipment from "./interfaces/NextShipment";
 
 const CreateNewAutoship = () => {
@@ -16,7 +22,7 @@ const CreateNewAutoship = () => {
   const payment: Payment = data?.payment;
   const pets: Pet[] = data?.pets;
   const nextShipment: NextShipment = data?.nextShipment;
-  const recurringInterval: "day" | "month" = data?.recurringInterval;
+  const recurringInterval: RecurringInterval = data?.recurringInterval;
   const recurringIntervalCount: number = data?.recurringIntervalCount;
 
   const cards: DataCardProps[] = useMemo(() => {
@@ -81,7 +87,9 @@ const CreateNewAutoship = () => {
         secondaryText: nextShipment
           ? t("CREATE_AN_AUTOSHIP__STEPS.WHEN.SECONDARY_TEXT.WITH_DATA", {
               firstShipmentDate: `${nextShipment.day}/${nextShipment.month}/${nextShipment.year}`,
-              thenEvery: `${recurringIntervalCount} ${recurringInterval}`,
+              thenEvery: `${recurringIntervalCount} ${t(
+                recurringInterval.value
+              )}`,
             })
           : t("CREATE_AN_AUTOSHIP__STEPS.WHEN.SECONDARY_TEXT.WITHOUT_DATA"),
         actions: [
