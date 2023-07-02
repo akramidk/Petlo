@@ -28,7 +28,7 @@ const SelectDate = () => {
     data?.recurringInterval
       ? AUTOSHIP_RECURRING_INTERVAL_OPTIONS.find(
           (recurringInterval) =>
-            recurringInterval.id === data?.recurringInterval
+            recurringInterval.id === data.recurringInterval.id
         )
       : AUTOSHIP_RECURRING_INTERVAL_OPTIONS[0]
   );
