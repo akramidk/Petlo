@@ -83,12 +83,12 @@ const SelectDate = () => {
           )}
         >
           <Text font="semiBold" cn="text-[14px] text-[#666]">
-            First shipment on
+            {t("CREATE_AN_AUTOSHIP__FIRST_SHIPMENT_ON")}
           </Text>
           <Text font="semiBold" cn="text-[14px] text-[#666]">
             {nextShipment
               ? `${nextShipment.day}/${nextShipment.month}/${nextShipment.year}`
-              : "not selected"}
+              : t("COMMON__NOT_SELECTED")}
           </Text>
         </View>
 
@@ -107,8 +107,10 @@ const SelectDate = () => {
                 ? `${recurringIntervalCountAsNumber} ${t(
                     recurringInterval.value
                   )}`
-                : "unvalid input"
-              : "not selected"}
+                : recurringInterval.id === "day"
+                ? t("CREATE_AN_AUTOSHIP__RECURRING_INTERVAL_INVALID_DAYS")
+                : t("CREATE_AN_AUTOSHIP__RECURRING_INTERVAL_INVALID_MONTHS")
+              : t("COMMON__NOT_ADDED")}
           </Text>
         </View>
       </View>

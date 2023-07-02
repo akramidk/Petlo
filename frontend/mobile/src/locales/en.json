@@ -17,6 +17,8 @@
   "COMMON__CREATE": "Create",
   "COMMON__DAYS": "Day",
   "COMMON__MONTHS": "Month",
+  "COMMON__NOT_SELECTED": "not selected",
+  "COMMON__NOT_ADDED": "not added",
   "ROOT_LAYOUT__NEW_UPDATE_AVAILABLE_TITLE": "New Update Available",
   "ROOT_LAYOUT__NEW_UPDATE_AVAILABLE_MESSAGE": "The app must be updated first to be use.",
   "SELECT_LANGUAGE__TITLE": "App Language",
@@ -238,6 +240,9 @@
   "CREATE_AN_AUTOSHIP__SHIPMENT_DATE_FILED_LABEL": "First shipment date",
   "CREATE_AN_AUTOSHIP__SHIPMENT_DATE_FILED_PLACEHOLDER": "Select first shipment date",
   "CREATE_AN_AUTOSHIP__RECURRING_AFTER_FILED_LABEL": "Recurring after the first shipment every?",
-  "CREATE_AN_AUTOSHIP__RECURRING_AFTER_DAY_FILED_PLACEHOLDER": "from 5 to 90 days",
-  "CREATE_AN_AUTOSHIP__RECURRING_AFTER_MONTH_FILED_PLACEHOLDER": "from 1 to 3 months"
+  "CREATE_AN_AUTOSHIP__RECURRING_AFTER_DAY_FILED_PLACEHOLDER": "between 5 to 90 days",
+  "CREATE_AN_AUTOSHIP__RECURRING_AFTER_MONTH_FILED_PLACEHOLDER": "between 1 to 3 months",
+  "CREATE_AN_AUTOSHIP__FIRST_SHIPMENT_ON": "First shipment on",
+  "CREATE_AN_AUTOSHIP__RECURRING_INTERVAL_INVALID_DAYS": "should be between 5 to 90 days",
+  "CREATE_AN_AUTOSHIP__RECURRING_INTERVAL_INVALID_MONTHS": "should be between 1 to 3 months"
 }
