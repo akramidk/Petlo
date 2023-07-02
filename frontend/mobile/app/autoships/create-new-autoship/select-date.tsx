@@ -21,12 +21,20 @@ const SelectDate = () => {
   const { data, setData } = useDataContext();
   const { direction } = useInternationalizationContext();
 
-  const [nextShipment, setNextShipment] = useState<NextShipment>();
-  const [recurringInterval, setRecurringInterval] = useState<BaseOption>(
-    AUTOSHIP_RECURRING_INTERVAL_OPTIONS[0]
+  const [nextShipment, setNextShipment] = useState<NextShipment>(
+    data?.nextShipment
   );
-  const [recurringIntervalCount, setRecurringIntervalCount] =
-    useState<string>("");
+  const [recurringInterval, setRecurringInterval] = useState<BaseOption>(
+    data?.recurringInterval
+      ? AUTOSHIP_RECURRING_INTERVAL_OPTIONS.find(
+          (recurringInterval) =>
+            recurringInterval.id === data?.recurringInterval
+        )
+      : AUTOSHIP_RECURRING_INTERVAL_OPTIONS[0]
+  );
+  const [recurringIntervalCount, setRecurringIntervalCount] = useState<string>(
+    data?.recurringIntervalCount ?? ""
+  );
 
   const recurringIntervalCountAsNumber = Number(recurringIntervalCount);
 
