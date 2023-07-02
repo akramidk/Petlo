@@ -46,6 +46,13 @@ const SelectDate = () => {
       recurringIntervalCountAsNumber >= 1 &&
       recurringIntervalCountAsNumber <= 3);
 
+  const isChanged =
+    data?.recurringInterval !== recurringInterval ||
+    data?.recurringIntervalCount !== recurringIntervalCount ||
+    data?.nextShipment?.day !== nextShipment?.day ||
+    data?.nextShipment?.month !== nextShipment?.month ||
+    data?.nextShipment?.year !== nextShipment.year;
+
   return (
     <PageStructure
       title={t("CREATE_AN_AUTOSHIP__STEPS.WHEN.PRIMARY_TEXT")}
@@ -62,7 +69,9 @@ const SelectDate = () => {
           router.back();
         },
         status:
-          nextShipment && isRecurringIntervalCountValid ? "active" : "inactive",
+          nextShipment && isRecurringIntervalCountValid && isChanged
+            ? "active"
+            : "inactive",
       }}
       link={{ value: t("COMMON__CANCEL"), onClick: router.back }}
     >
