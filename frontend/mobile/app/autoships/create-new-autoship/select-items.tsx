@@ -17,7 +17,11 @@ const SelectItems = () => {
     <PageStructure
       title={t("CREATE_AN_AUTOSHIP__STEPS.WHAT.PRIMARY_TEXT")}
       link={{ value: t("COMMON__CANCEL"), onClick: router.back }}
-      viewCN="min-h-full"
+      helperText={
+        items === undefined
+          ? t("CREATE_AN_AUTOSHIP__NO_ITEMS_ADDED")
+          : undefined
+      }
     >
       <ItemsViewer
         items={items}
@@ -26,19 +30,7 @@ const SelectItems = () => {
         }}
         detailsTranslationValue="Payme"
         totalTranslationValue="Tot"
-        noItemsTranslationValue={t("CREATE_AN_AUTOSHIP__NO_ITEMS_ADDED")}
       />
-
-      <View className="absolute self-center bottom-[16px]">
-        <BaseButton
-          cn="bg-[#6BADAE] px-[32px] py-[20px] rounded-full shadow-lg"
-          onClick={() => {}}
-        >
-          <Text font="bold" cn="text-[#fff] text-[14px]">
-            Add an Item
-          </Text>
-        </BaseButton>
-      </View>
     </PageStructure>
   );
 };

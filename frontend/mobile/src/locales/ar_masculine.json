@@ -254,5 +254,6 @@
   "CREATE_AN_AUTOSHIP__FIRST_SHIPMENT_ON": "اول شحنة بتاريخ",
   "CREATE_AN_AUTOSHIP__THEN_EVERY": "بعد ذلك كل",
   "CREATE_AN_AUTOSHIP__RECURRING_INTERVAL_INVALID_DAYS": "يجب ان يكون بين 5 الى 90 يوم",
-  "CREATE_AN_AUTOSHIP__RECURRING_INTERVAL_INVALID_MONTHS": "يجب ان يكون ما بين 1 الى 3 اشهر"
+  "CREATE_AN_AUTOSHIP__RECURRING_INTERVAL_INVALID_MONTHS": "يجب ان يكون ما بين 1 الى 3 اشهر",
+  "CREATE_AN_AUTOSHIP__NO_ITEMS_ADDED": "لم يتم اضافة منتجات"
 }

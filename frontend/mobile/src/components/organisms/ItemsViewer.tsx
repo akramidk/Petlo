@@ -13,7 +13,6 @@ interface ItemsViewerProps {
   renderItem: (item: CartItemProps) => React.ReactNode;
   detailsTranslationValue: string;
   totalTranslationValue: string;
-  noItemsTranslationValue: string;
   amount?: string;
   currency?: string;
 }
@@ -23,7 +22,6 @@ const ItemsViewer = ({
   renderItem,
   detailsTranslationValue,
   totalTranslationValue,
-  noItemsTranslationValue,
   amount,
   currency,
 }: ItemsViewerProps) => {
@@ -33,11 +31,9 @@ const ItemsViewer = ({
   return (
     <View className="space-y-[28px]">
       <View className="space-y-[20px]">
-        {items
-          ? items.map((item, i) => {
-              return <View key={i}>{renderItem(item)}</View>;
-            })
-          : noItemsTranslationValue}
+        {items?.map((item, i) => {
+          return <View key={i}>{renderItem(item)}</View>;
+        })}
       </View>
 
       {amount && amount !== "0.00" && (
