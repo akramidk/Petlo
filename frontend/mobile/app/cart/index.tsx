@@ -137,6 +137,7 @@ const Cart = () => {
         }}
         detailsTranslationValue={t("CART__PAYMENT_SUMMARY")}
         totalTranslationValue={t("CART__CART_TOTAL")}
+        noItemsTranslationValue={t("CART__CART_IS_EMPTY")}
         amount={summary?.amount}
         currency={summary?.currency}
       />

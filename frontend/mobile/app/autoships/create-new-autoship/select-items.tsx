@@ -26,6 +26,7 @@ const SelectItems = () => {
         }}
         detailsTranslationValue="Payme"
         totalTranslationValue="Tot"
+        noItemsTranslationValue={t("CREATE_AN_AUTOSHIP__NO_ITEMS_ADDED")}
       />
 
       <View className="absolute self-center bottom-[16px]">

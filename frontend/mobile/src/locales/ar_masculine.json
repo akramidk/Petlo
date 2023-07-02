@@ -162,6 +162,7 @@
   "CART__CHECKOUT_BUTTON": "شيك اوت",
   "CART__PAYMENT_SUMMARY": "ملخص الدفع",
   "CART__CART_TOTAL": "مبلغ العربة",
+  "CART__CART_IS_EMPTY": "العربة خالية",
   "CHANGE_LANGUAGE__TITLE": "تغيير اللغة",
   "CHANGE_LANGUAGE__HELPER_TEXT": "يرجى تحديد اللغة المراد استخدام البرنامج بها.",
   "CHANGE_LANGUAGE__SAVE_BUTTON": "حفظ",

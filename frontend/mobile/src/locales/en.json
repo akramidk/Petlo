@@ -153,6 +153,7 @@
   "ITEM__ADD_TO_CART_BUTTON": "Add To Cart",
   "ITEM__ADD_TO_CART_VARIANT_NOT_AVAILABLE_BUTTON": "Variant Not Available",
   "CART__TITLE": "Your Cart",
+  "CART__CART_IS_EMPTY": "Cart is empty",
   "CART__PAYMENT_SUMMARY": "Payment Summary",
   "CART__CART_TOTAL": "Cart Total",
   "CART__CHECKOUT_BUTTON": "Checkout",
@@ -245,5 +246,6 @@
   "CREATE_AN_AUTOSHIP__FIRST_SHIPMENT_ON": "First shipment on",
   "CREATE_AN_AUTOSHIP__THEN_EVERY": "Then every",
   "CREATE_AN_AUTOSHIP__RECURRING_INTERVAL_INVALID_DAYS": "should be between 5 to 90 days",
-  "CREATE_AN_AUTOSHIP__RECURRING_INTERVAL_INVALID_MONTHS": "should be between 1 to 3 months"
+  "CREATE_AN_AUTOSHIP__RECURRING_INTERVAL_INVALID_MONTHS": "should be between 1 to 3 months",
+  "CREATE_AN_AUTOSHIP__NO_ITEMS_ADDED": "No items added"
 }
