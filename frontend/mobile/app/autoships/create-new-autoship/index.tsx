@@ -81,6 +81,7 @@ const CreateNewAutoship = () => {
         secondaryText: nextShipment
           ? t("CREATE_AN_AUTOSHIP__STEPS.WHEN.SECONDARY_TEXT.WITH_DATA", {
               firstShipmentDate: `${nextShipment.day}/${nextShipment.month}/${nextShipment.year}`,
+              thenEvery: `${recurringIntervalCount} ${recurringInterval}`,
             })
           : t("CREATE_AN_AUTOSHIP__STEPS.WHEN.SECONDARY_TEXT.WITHOUT_DATA"),
         actions: [

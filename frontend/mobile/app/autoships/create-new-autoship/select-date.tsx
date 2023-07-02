@@ -47,7 +47,7 @@ const SelectDate = () => {
           setData({
             ...data,
             nextShipment: nextShipment,
-            recurringInterval: recurringInterval,
+            recurringInterval: recurringInterval.id,
             recurringIntervalCount: recurringIntervalCount,
           });
 
