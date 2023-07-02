@@ -28,7 +28,7 @@ const Viewer = ({ children }: ViewerProps) => {
         <Header
           activePath={pathname}
           showSearchIcon={showMenuAndIcons}
-          showCartIcon={showMenuAndIcons || !!pathname.includes("item")}
+          showCartIcon={showMenuAndIcons || !!pathname.includes("/item")}
         />
       )}
       {children}
