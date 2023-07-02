@@ -1,9 +1,9 @@
 import clsx from "clsx";
 import { useRouter } from "expo-router";
-import { useEffect, useMemo } from "react";
+import { Fragment, useEffect, useMemo } from "react";
 import { View } from "react-native";
 import { Text } from "../../src/components/atoms";
-import { PageStructure } from "../../src/components/organisms";
+import { ItemsViewer, PageStructure } from "../../src/components/organisms";
 import { Endpoints } from "../../src/enums";
 import {
   useAPIFetching,
@@ -130,39 +130,16 @@ const Cart = () => {
           : undefined
       }
     >
-      <View className="space-y-[28px]">
-        <View className="space-y-[20px]">
-          {items?.map((item, i) => {
-            return (
-              <View key={i}>
-                <Item {...item} />
-              </View>
-            );
-          })}
-        </View>
-
-        {summary && summary.amount !== "0.00" && (
-          <View>
-            <Text font="extraBold" cn="text-[15px] text-[#0E333C] mb-[12px]">
-              {t("CART__PAYMENT_SUMMARY")}
-            </Text>
-
-            <View
-              className={clsx(
-                "justify-between",
-                direction === "ltr" ? "flex-row" : "flex-row-reverse"
-              )}
-            >
-              <Text font="semiBold" cn="text-[14px] text-[#666]">
-                {t("CART__CART_TOTAL")}
-              </Text>
-              <Text font="semiBold" cn="text-[14px] text-[#666]">
-                {summary.amount} {summary.currency}
-              </Text>
-            </View>
-          </View>
-        )}
-      </View>
+      <ItemsViewer
+        items={items}
+        renderItem={(item) => {
+          return <Item {...item} />;
+        }}
+        detailsTranslationValue={t("CART__PAYMENT_SUMMARY")}
+        totalTranslationValue={t("CART__CART_TOTAL")}
+        amount={summary?.amount}
+        currency={summary?.currency}
+      />
     </PageStructure>
   );
 };
