@@ -6,7 +6,10 @@ import BaseLabel from "../../../../src/components/bases/BaseLabel";
 import Popover from "react-native-popover-view";
 import { Dispatch, SetStateAction, useState } from "react";
 import NextShipment from "../interfaces/NextShipment";
-import { useTranslationsContext } from "../../../../src/hooks";
+import {
+  useInternationalizationContext,
+  useTranslationsContext,
+} from "../../../../src/hooks";
 
 interface SelectNextShipment {
   value: NextShipment;
@@ -17,8 +20,8 @@ const SelectNextShipment = ({
   value: selectedValue,
   setValue,
 }: SelectNextShipment) => {
-  const [isVisible, setIsVisible] = useState(false);
   const { t } = useTranslationsContext();
+  const { languageWithoutGender } = useInternationalizationContext();
 
   const luxonDate = DateTime.now();
   const JSDate = luxonDate.toJSDate();
@@ -27,6 +30,8 @@ const SelectNextShipment = ({
     : JSDate;
   const minimumDate = JSDate;
   const maximumDate = luxonDate.plus({ month: 3 }).toJSDate();
+
+  const [isVisible, setIsVisible] = useState(false);
 
   return (
     <>
@@ -78,6 +83,7 @@ const SelectNextShipment = ({
                   setIsVisible(false);
                 }
               }}
+              locale={languageWithoutGender}
             />
           </Popover>
         </View>

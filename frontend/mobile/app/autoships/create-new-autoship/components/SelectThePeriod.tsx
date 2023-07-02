@@ -1,9 +1,13 @@
+import clsx from "clsx";
 import { Dispatch, SetStateAction } from "react";
 import { View } from "react-native";
 import { Filed, Selector } from "../../../../src/components/atoms";
 import BaseLabel from "../../../../src/components/bases/BaseLabel";
 import { AUTOSHIP_RECURRING_INTERVAL_OPTIONS } from "../../../../src/constants";
-import { useTranslationsContext } from "../../../../src/hooks";
+import {
+  useInternationalizationContext,
+  useTranslationsContext,
+} from "../../../../src/hooks";
 import { BaseOption } from "../../../../src/interfaces";
 
 interface SelectThePeriodProps {
@@ -20,6 +24,7 @@ const SelectThePeriod = ({
   setRecurringIntervalCount,
 }: SelectThePeriodProps) => {
   const { t } = useTranslationsContext();
+  const { direction } = useInternationalizationContext();
 
   return (
     <>
@@ -29,7 +34,12 @@ const SelectThePeriod = ({
           require
         />
 
-        <View className="flex flex-row justify-between space-x-[8px]">
+        <View
+          className={clsx(
+            "flex justify-between space-x-[8px]",
+            direction === "ltr" ? "flex-row" : "flex-row-reverse"
+          )}
+        >
           <Filed
             cn="w-[63%]"
             onChange={setRecurringIntervalCount}

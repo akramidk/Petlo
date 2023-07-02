@@ -99,7 +99,7 @@ const SelectDate = () => {
           )}
         >
           <Text font="semiBold" cn="text-[14px] text-[#666]">
-            Then every
+            {t("CREATE_AN_AUTOSHIP__THEN_EVERY")}
           </Text>
           <Text font="semiBold" cn="text-[14px] text-[#666]">
             {recurringIntervalCountAsNumber
