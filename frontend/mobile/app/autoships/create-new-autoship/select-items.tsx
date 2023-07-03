@@ -22,6 +22,23 @@ const SelectItems = () => {
           ? t("CREATE_AN_AUTOSHIP__NO_ITEMS_ADDED")
           : undefined
       }
+      button={{
+        value: t("COMMON__SAVE"),
+        onClick: () => {
+          router.back();
+        },
+      }}
+      floatingElementCN="bottom-[152px]"
+      floatingElement={
+        <BaseButton
+          cn="bg-[#6BADAE] px-[32px] py-[20px] rounded-full shadow-lg"
+          onClick={() => router.push("/autoships/create-new-autoship")}
+        >
+          <Text font="bold" cn="text-[#fff] text-[14px]">
+            {t("AUTOSHIPS__CREATE_AN_AUTOSHIP")}
+          </Text>
+        </BaseButton>
+      }
     >
       <ItemsViewer
         items={items}

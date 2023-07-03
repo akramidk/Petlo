@@ -15,6 +15,7 @@ interface PageStructureProps {
   link?: LinkProps;
   floatingElement?: React.ReactNode;
   viewCN?: string;
+  floatingElementCN?: string;
 }
 
 const PageStructure = ({
@@ -26,6 +27,7 @@ const PageStructure = ({
   link,
   floatingElement,
   viewCN,
+  floatingElementCN,
 }: PageStructureProps) => {
   const isIOS = Device.brand.toLowerCase() === "apple";
   const linkProps = {
@@ -54,7 +56,12 @@ const PageStructure = ({
       </KeyboardAwareScrollView>
 
       {floatingElement && (
-        <View className="absolute bottom-[16px] self-center">
+        <View
+          className={clsx(
+            "absolute bottom-[16px] self-center",
+            floatingElementCN
+          )}
+        >
           {floatingElement}
         </View>
       )}
