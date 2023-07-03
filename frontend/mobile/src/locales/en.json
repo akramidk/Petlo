@@ -247,5 +247,6 @@
   "CREATE_AN_AUTOSHIP__THEN_EVERY": "Then every",
   "CREATE_AN_AUTOSHIP__RECURRING_INTERVAL_INVALID_DAYS": "should be between 5 to 90 days",
   "CREATE_AN_AUTOSHIP__RECURRING_INTERVAL_INVALID_MONTHS": "should be between 1 to 3 months",
-  "CREATE_AN_AUTOSHIP__NO_ITEMS_ADDED": "No items added"
+  "CREATE_AN_AUTOSHIP__NO_ITEMS_ADDED": "No items added",
+  "CREATE_AN_AUTOSHIP__ADD_AN_ITEM": "Add an Item"
 }
