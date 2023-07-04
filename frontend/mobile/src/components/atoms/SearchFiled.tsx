@@ -10,7 +10,7 @@ import Text from "./Text";
 interface SearchFiledProps {
   setSearchValue: (value: string) => void;
   searchValue: string;
-  onCancel: () => void;
+  onCancel?: () => void;
 }
 
 const SearchFiled = ({
@@ -39,20 +39,22 @@ const SearchFiled = ({
         onChangeText={setSearchValue}
         value={searchValue}
       />
-      <BaseButton onClick={onCancel} cn="h-full justify-center-center">
-        <Text
-          cn={"text-[#E64848] text-[14px] self-center"}
-          font="bold"
-          specificCN={{
-            languages: {
-              en: "tracking-[1px]",
-              ar: "",
-            },
-          }}
-        >
-          {t("SEARCH_FILED_COMP__CANCEL")}
-        </Text>
-      </BaseButton>
+      {onCancel && (
+        <BaseButton onClick={onCancel} cn="h-full justify-center-center">
+          <Text
+            cn={"text-[#E64848] text-[14px] self-center"}
+            font="bold"
+            specificCN={{
+              languages: {
+                en: "tracking-[1px]",
+                ar: "",
+              },
+            }}
+          >
+            {t("SEARCH_FILED_COMP__CANCEL")}
+          </Text>
+        </BaseButton>
+      )}
     </View>
   );
 };

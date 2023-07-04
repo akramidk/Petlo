@@ -6,16 +6,24 @@ import { CartItemProps } from "../../../src/interfaces";
 import { View } from "react-native";
 import { BaseButton } from "../../../src/components/bases";
 import { Text } from "../../../src/components/atoms";
+import SearchAndSelectItems from "./components/SearchAndSelectItems";
 
 const SelectItems = () => {
   const router = useRouter();
   const { t } = useTranslationsContext();
 
   const [items, setItems] = useState<CartItemProps[]>();
-  const [step, setStep] = useState(1);
+  const [showSearchAndSelectItems, setShowSearchAndSelectItems] =
+    useState(false);
 
-  if (step === 1) {
-    return (
+  return (
+    <>
+      {showSearchAndSelectItems && (
+        <SearchAndSelectItems
+          onClose={() => setShowSearchAndSelectItems(false)}
+        />
+      )}
+
       <PageStructure
         title={t("CREATE_AN_AUTOSHIP__STEPS.WHAT.PRIMARY_TEXT")}
         link={{ value: t("COMMON__CANCEL"), onClick: router.back }}
@@ -35,7 +43,7 @@ const SelectItems = () => {
         floatingElement={
           <BaseButton
             cn="bg-[#6BADAE] px-[32px] py-[20px] rounded-full shadow-lg"
-            onClick={() => setStep(2)}
+            onClick={() => setShowSearchAndSelectItems(true)}
           >
             <Text font="bold" cn="text-[#fff] text-[14px]">
               {t("CREATE_AN_AUTOSHIP__ADD_AN_ITEM")}
@@ -52,12 +60,8 @@ const SelectItems = () => {
           totalTranslationValue="Tot"
         />
       </PageStructure>
-    );
-  }
-
-  if (step === 2) {
-    return <PageStructure title="Items" />;
-  }
+    </>
+  );
 };
 
 export default SelectItems;
