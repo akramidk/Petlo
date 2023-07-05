@@ -1,4 +1,3 @@
-import { View } from "react-native";
 import { ActivityIndicator } from "react-native-paper";
 
 const Loading = () => {
