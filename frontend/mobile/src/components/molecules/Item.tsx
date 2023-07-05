@@ -13,9 +13,10 @@ import { BriefItem } from "../../interfaces";
 interface ItemProps {
   variant: "small" | "large";
   data: BriefItem;
+  onClick: () => void;
 }
 
-const Item = ({ variant, data }: ItemProps) => {
+const Item = ({ variant, data, onClick }: ItemProps) => {
   const router = useRouter();
   const { t } = useTranslationsContext();
   const { languageWithoutGender, direction } = useInternationalizationContext();
@@ -71,7 +72,7 @@ const Item = ({ variant, data }: ItemProps) => {
         "rounded-[4px] border-[1px] border-[#f6f6f6]",
         variantsStyles.measurements
       )}
-      onClick={() => router.push(`/item?publicId=${data.public_id}`)}
+      onClick={onClick}
     >
       <View className={clsx("bg-[#F9F9F9]", variantsStyles.imageMeasurements)}>
         <Image

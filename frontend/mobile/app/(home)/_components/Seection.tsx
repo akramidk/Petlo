@@ -61,7 +61,11 @@ const Section = ({ name, category, items }: SectionProps) => {
               key={i}
               className={direction === "ltr" ? "mr-[8px]" : "ml-[8px]"}
             >
-              <Item variant="small" data={item} />
+              <Item
+                variant="small"
+                data={item}
+                onClick={() => router.push(`/item?publicId=${item.public_id}`)}
+              />
             </View>
           );
         })}

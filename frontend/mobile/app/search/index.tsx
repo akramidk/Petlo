@@ -42,7 +42,13 @@ const Search = () => {
             {response?.body?.data?.map((item, i) => {
               return (
                 <View key={i}>
-                  <Item variant="large" data={item} />
+                  <Item
+                    variant="large"
+                    data={item}
+                    onClick={() =>
+                      router.push(`/item?publicId=${item.public_id}`)
+                    }
+                  />
                 </View>
               );
             })}

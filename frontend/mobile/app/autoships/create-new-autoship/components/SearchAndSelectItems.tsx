@@ -27,6 +27,10 @@ const SearchAndSelectItems = ({ onClose }: SearchAndSelectItemsProps) => {
     },
   });
 
+  const [openedItemPublicId, setOpendItemPublicId] = useState<string>();
+
+  console.log("openedItemPublicId", openedItemPublicId);
+
   return (
     <Modal
       animationIn="fadeIn"
@@ -49,7 +53,11 @@ const SearchAndSelectItems = ({ onClose }: SearchAndSelectItemsProps) => {
           {response?.body?.data?.map((item, i) => {
             return (
               <View key={i}>
-                <Item variant="large" data={item} />
+                <Item
+                  variant="large"
+                  data={item}
+                  onClick={() => setOpendItemPublicId(item.public_id)}
+                />
               </View>
             );
           })}
