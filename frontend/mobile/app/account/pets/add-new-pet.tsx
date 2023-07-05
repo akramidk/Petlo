@@ -15,7 +15,7 @@ import {
   BaseOption,
   PetsInformationResponse,
 } from "../../../src/interfaces";
-import Loading from "../../Loading";
+import Loading from "../../../src/components/pages/Loading";
 
 const AddNewPet = () => {
   const router = useRouter();
