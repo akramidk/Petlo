@@ -1,4 +1,4 @@
-import { SearchFiled } from "../../../../src/components/atoms";
+import { SearchFiled, Text } from "../../../../src/components/atoms";
 import BottomSheet, { BottomSheetScrollView } from "@gorhom/bottom-sheet";
 import Modal from "react-native-modal";
 import { useState } from "react";
@@ -7,6 +7,8 @@ import { SearchRequest, SearchResponse } from "../../../../src/interfaces";
 import { Endpoints } from "../../../../src/enums";
 import { View } from "react-native";
 import { Item } from "../../../../src/components/molecules";
+import { ItemPreview } from "../../../../src/components/pages";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 interface SearchAndSelectItemsProps {
   onClose: () => void;
@@ -28,8 +30,6 @@ const SearchAndSelectItems = ({ onClose }: SearchAndSelectItemsProps) => {
   });
 
   const [openedItemPublicId, setOpendItemPublicId] = useState<string>();
-
-  console.log("openedItemPublicId", openedItemPublicId);
 
   return (
     <Modal
@@ -63,6 +63,28 @@ const SearchAndSelectItems = ({ onClose }: SearchAndSelectItemsProps) => {
           })}
         </BottomSheetScrollView>
       </BottomSheet>
+
+      <Modal
+        animationIn="fadeIn"
+        animationOut="fadeOut"
+        style={{ margin: 0 }}
+        isVisible={!!openedItemPublicId}
+      >
+        <BottomSheet
+          snapPoints={["90%"]}
+          onClose={() => setOpendItemPublicId(undefined)}
+          animateOnMount
+          enablePanDownToClose
+        >
+          <ItemPreview
+            publicId={openedItemPublicId}
+            onBack={() => setOpendItemPublicId(undefined)}
+            onAdd={() => {}}
+            addTranslationValue="add"
+            bottomContainerCN="pb-[32px]"
+          />
+        </BottomSheet>
+      </Modal>
     </Modal>
   );
 };

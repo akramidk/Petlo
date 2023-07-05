@@ -14,12 +14,13 @@ import { buttonStatus } from "../../types";
 import { Endpoints } from "../../enums";
 import Loading from "./Loading";
 
-interface ItemProps {
+interface ItemPreviewProps {
   publicId: string;
   onBack: () => void;
   onAdd: (itemId: string, variantId: string) => void;
-  addStatus: buttonStatus | undefined;
+  addStatus?: buttonStatus;
   addTranslationValue: string;
+  bottomContainerCN?: string;
 }
 
 const ItemPreview = ({
@@ -28,7 +29,8 @@ const ItemPreview = ({
   onAdd,
   addStatus,
   addTranslationValue,
-}: ItemProps) => {
+  bottomContainerCN,
+}: ItemPreviewProps) => {
   const { t } = useTranslationsContext();
   const { direction } = useInternationalizationContext();
   const { response } = useAPIFetching<void, ItemResponse>({
@@ -38,6 +40,9 @@ const ItemPreview = ({
     },
     slugs: {
       publicId,
+    },
+    options: {
+      wait: publicId === undefined,
     },
   });
 
@@ -82,7 +87,13 @@ const ItemPreview = ({
     setSelectedOptions(array);
   }, [options]);
 
-  if (response.isFetching || !variant) {
+  if (
+    response === undefined ||
+    response.isFetching ||
+    !variant ||
+    !item ||
+    !options
+  ) {
     return <Loading />;
   }
 
@@ -187,7 +198,7 @@ const ItemPreview = ({
         </View>
       </ScrollView>
 
-      <BottomContainer cn="pb-[8px]">
+      <BottomContainer cn={clsx("pb-[8px]", bottomContainerCN)}>
         <Button
           value={
             variant.available
