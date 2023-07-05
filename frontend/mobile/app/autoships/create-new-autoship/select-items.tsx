@@ -20,16 +20,17 @@ const SelectItems = () => {
 
   const addItemHandler = (item: Item, selectedVariantId: string) => {
     let _item = items?.find((_item) => _item.itemId === item.public_id);
-    const variant = item.variants.find(
-      (variant) => variant.public_id === selectedVariantId
-    );
 
     if (_item) {
       _item.quantity += 1;
-      _item.amount = (Number(_item.amount) + Number(variant.price))
-        .toFixed(2)
-        .toString();
+      _item.amount = (
+        Number(_item.amount) + Number(_item.variantPrice)
+      ).toFixed(2);
     } else {
+      const variant = item.variants.find(
+        (variant) => variant.public_id === selectedVariantId
+      );
+
       _item = {
         itemId: item.public_id,
         variantId: selectedVariantId,
@@ -38,6 +39,7 @@ const SelectItems = () => {
         image: item.image,
         amount: variant.price,
         quantity: 1,
+        variantPrice: variant.price,
       };
     }
 
@@ -83,10 +85,6 @@ const SelectItems = () => {
         <ItemsViewer
           items={items}
           renderItem={(item) => {
-            const variant = item.variants.find(
-              (variant) => variant.public_id === selectedVariantId
-            );
-
             return (
               <ItemViewer
                 {...item}
@@ -96,11 +94,24 @@ const SelectItems = () => {
                     {
                       ...item,
                       quantity: item.quantity + 1,
-                      amount: item.amount,
+                      amount: (
+                        Number(item.amount) + Number(item.variantPrice)
+                      ).toFixed(2),
                     },
                   ])
                 }
-                remove={() => {}}
+                remove={() => () => {
+                  setItems([
+                    ...items,
+                    {
+                      ...item,
+                      quantity: item.quantity - 1,
+                      amount: (
+                        Number(item.amount) - Number(item.variantPrice)
+                      ).toFixed(2),
+                    },
+                  ]);
+                }}
               />
             );
           }}
