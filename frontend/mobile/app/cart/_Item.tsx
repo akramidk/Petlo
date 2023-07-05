@@ -9,7 +9,7 @@ import {
 } from "../../src/interfaces";
 import { ItemViewer } from "../../src/components/molecules";
 
-const Item = (peops: CartItemProps) => {
+const Item = (props: CartItemProps) => {
   const { cartId, setSummary, setNumberofItems } = useCartStore();
 
   const {
@@ -52,7 +52,7 @@ const Item = (peops: CartItemProps) => {
 
   return (
     <ItemViewer
-      {...peops}
+      {...props}
       add={(itemId: string, variantId: string) => {
         addTrigger({ item_id: itemId, variant_id: variantId });
       }}

@@ -6,6 +6,9 @@ import { CartItemProps, Item } from "../../../src/interfaces";
 import { BaseButton } from "../../../src/components/bases";
 import { Text } from "../../../src/components/atoms";
 import SearchAndSelectItems from "./components/SearchAndSelectItems";
+import { ItemViewer } from "../../../src/components/molecules";
+
+//TODO the calculation should hapeend in the back
 
 const SelectItems = () => {
   const router = useRouter();
@@ -17,14 +20,16 @@ const SelectItems = () => {
 
   const addItemHandler = (item: Item, selectedVariantId: string) => {
     let _item = items?.find((_item) => _item.itemId === item.public_id);
+    const variant = item.variants.find(
+      (variant) => variant.public_id === selectedVariantId
+    );
 
     if (_item) {
       _item.quantity += 1;
-      _item.amount += _item.amount;
+      _item.amount = (Number(_item.amount) + Number(variant.price))
+        .toFixed(2)
+        .toString();
     } else {
-      const variant = item.variants.find(
-        (variant) => variant.public_id === selectedVariantId
-      );
       _item = {
         itemId: item.public_id,
         variantId: selectedVariantId,
@@ -38,8 +43,6 @@ const SelectItems = () => {
 
     setItems([...(items ?? []), _item]);
   };
-
-  console.log("items", items);
 
   return (
     <>
@@ -79,8 +82,27 @@ const SelectItems = () => {
       >
         <ItemsViewer
           items={items}
-          renderItem={() => {
-            return <></>;
+          renderItem={(item) => {
+            const variant = item.variants.find(
+              (variant) => variant.public_id === selectedVariantId
+            );
+
+            return (
+              <ItemViewer
+                {...item}
+                add={() =>
+                  setItems([
+                    ...items,
+                    {
+                      ...item,
+                      quantity: item.quantity + 1,
+                      amount: item.amount,
+                    },
+                  ])
+                }
+                remove={() => {}}
+              />
+            );
           }}
           detailsTranslationValue="Payme"
           totalTranslationValue="Tot"
