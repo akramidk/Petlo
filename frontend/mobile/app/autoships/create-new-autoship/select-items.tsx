@@ -19,31 +19,24 @@ const SelectItems = () => {
     useState(false);
 
   const addItemHandler = (item: Item, selectedVariantId: string) => {
-    let _item = items?.find((_item) => _item.itemId === item.public_id);
+    const _items = [...(items ?? [])];
 
-    if (_item) {
-      _item.quantity += 1;
-      _item.amount = (
-        Number(_item.amount) + Number(_item.variantPrice)
-      ).toFixed(2);
-    } else {
-      const variant = item.variants.find(
-        (variant) => variant.public_id === selectedVariantId
-      );
+    const variant = item.variants.find(
+      (variant) => variant.public_id === selectedVariantId
+    );
 
-      _item = {
-        itemId: item.public_id,
-        variantId: selectedVariantId,
-        options: variant.options.map((option) => option.value),
-        name: item.name,
-        image: item.image,
-        amount: variant.price,
-        quantity: 1,
-        variantPrice: variant.price,
-      };
-    }
+    _items.push({
+      itemId: item.public_id,
+      variantId: selectedVariantId,
+      options: variant.options.map((option) => option.value),
+      name: item.name,
+      image: item.image,
+      amount: variant.price,
+      quantity: 1,
+      variantPrice: variant.price,
+    });
 
-    setItems([...(items ?? []), _item]);
+    setItems(_items);
   };
 
   return (
@@ -85,32 +78,33 @@ const SelectItems = () => {
         <ItemsViewer
           items={items}
           renderItem={(item) => {
+            const _items = [...items];
+            const itemIndex = _items.findIndex(
+              (_item) => _item.itemId === item.itemId
+            );
+
             return (
               <ItemViewer
                 {...item}
-                add={() =>
-                  setItems([
-                    ...items,
-                    {
-                      ...item,
-                      quantity: item.quantity + 1,
-                      amount: (
-                        Number(item.amount) + Number(item.variantPrice)
-                      ).toFixed(2),
-                    },
-                  ])
-                }
-                remove={() => () => {
-                  setItems([
-                    ...items,
-                    {
-                      ...item,
-                      quantity: item.quantity - 1,
-                      amount: (
-                        Number(item.amount) - Number(item.variantPrice)
-                      ).toFixed(2),
-                    },
-                  ]);
+                add={() => {
+                  const item = _items[itemIndex];
+
+                  _items[itemIndex].quantity = item.quantity + 1;
+                  _items[itemIndex].amount = (
+                    Number(item.amount) + Number(item.variantPrice)
+                  ).toFixed(2);
+
+                  setItems(_items);
+                }}
+                remove={() => {
+                  const item = _items[itemIndex];
+
+                  _items[itemIndex].quantity = item.quantity - 1;
+                  _items[itemIndex].amount = (
+                    Number(item.amount) - Number(item.variantPrice)
+                  ).toFixed(2);
+
+                  setItems(_items);
                 }}
               />
             );
