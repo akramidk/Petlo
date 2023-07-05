@@ -2,7 +2,7 @@ import { useRouter } from "expo-router";
 import { useState } from "react";
 import { ItemsViewer, PageStructure } from "../../../src/components/organisms";
 import { useTranslationsContext } from "../../../src/hooks";
-import { CartItemProps } from "../../../src/interfaces";
+import { CartItemProps, Item } from "../../../src/interfaces";
 import { View } from "react-native";
 import { BaseButton } from "../../../src/components/bases";
 import { Text } from "../../../src/components/atoms";
@@ -21,6 +21,7 @@ const SelectItems = () => {
       {showSearchAndSelectItems && (
         <SearchAndSelectItems
           onClose={() => setShowSearchAndSelectItems(false)}
+          addItem={(item: Item) => {}}
         />
       )}
 

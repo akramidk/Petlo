@@ -1,9 +1,13 @@
 import { SearchFiled, Text } from "../../../../src/components/atoms";
 import BottomSheet, { BottomSheetScrollView } from "@gorhom/bottom-sheet";
 import Modal from "react-native-modal";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { useAPIFetching } from "../../../../src/hooks";
-import { SearchRequest, SearchResponse } from "../../../../src/interfaces";
+import {
+  Item as IItem,
+  SearchRequest,
+  SearchResponse,
+} from "../../../../src/interfaces";
 import { Endpoints } from "../../../../src/enums";
 import { View } from "react-native";
 import { Item } from "../../../../src/components/molecules";
@@ -12,9 +16,13 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 interface SearchAndSelectItemsProps {
   onClose: () => void;
+  addItem: (item: IItem) => void;
 }
 
-const SearchAndSelectItems = ({ onClose }: SearchAndSelectItemsProps) => {
+const SearchAndSelectItems = ({
+  onClose,
+  addItem,
+}: SearchAndSelectItemsProps) => {
   const [searchValue, setSearchValue] = useState("");
   const { response } = useAPIFetching<SearchRequest, SearchResponse>({
     endpoint: Endpoints.SEARCH,
