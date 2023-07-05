@@ -18,9 +18,16 @@ interface ItemProps {
   onBack: () => void;
   onAdd: (itemId: string, variantId: string) => void;
   addStatus: buttonStatus | undefined;
+  addTranslationValue: string;
 }
 
-const ItemPreview = ({ publicId, onBack, onAdd, addStatus }: ItemProps) => {
+const ItemPreview = ({
+  publicId,
+  onBack,
+  onAdd,
+  addStatus,
+  addTranslationValue,
+}: ItemProps) => {
   const { t } = useTranslationsContext();
   const { direction } = useInternationalizationContext();
   const { response } = useAPIFetching<void, ItemResponse>({
@@ -109,7 +116,7 @@ const ItemPreview = ({ publicId, onBack, onAdd, addStatus }: ItemProps) => {
               </Text>
 
               <Text font="semiBold" cn="text-[14px] text-[#888]">
-                {t("ITEM__BY")} {item.brand}
+                {t("ITEM_PREVIEW__BY")} {item.brand}
               </Text>
             </View>
 
@@ -183,8 +190,8 @@ const ItemPreview = ({ publicId, onBack, onAdd, addStatus }: ItemProps) => {
         <Button
           value={
             variant.available
-              ? t("ITEM__ADD_TO_CART_BUTTON")
-              : t("ITEM__ADD_TO_CART_VARIANT_NOT_AVAILABLE_BUTTON")
+              ? addTranslationValue
+              : t("ITEM_PREVIEW__ADD_TO_CART_VARIANT_NOT_AVAILABLE_BUTTON")
           }
           onClick={() => onAdd(item.public_id, variant.public_id)}
           status={addStatus ?? (variant.available ? "active" : "inactive")}

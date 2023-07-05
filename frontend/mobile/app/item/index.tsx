@@ -3,7 +3,11 @@ import { useRouter, useSearchParams } from "expo-router";
 import React, { useCallback } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Endpoints, StorageKeys } from "../../src/enums";
-import { useAPIMutation, useCartStore } from "../../src/hooks";
+import {
+  useAPIMutation,
+  useCartStore,
+  useTranslationsContext,
+} from "../../src/hooks";
 import {
   CartAddItemRequest,
   CartAddItemResponse,
@@ -13,6 +17,7 @@ import { ItemPreview } from "../../src/components/pages";
 
 const Item = () => {
   const router = useRouter();
+  const { t } = useTranslationsContext();
   const { publicId } = useSearchParams();
 
   const cartStore = useCartStore();
@@ -76,6 +81,7 @@ const Item = () => {
         onAdd={addToCart}
         addStatus={addStatus ?? createStatus}
         onBack={router.back}
+        addTranslationValue={t("ITEM__ADD_TO_CART_BUTTON")}
       />
     </SafeAreaView>
   );
