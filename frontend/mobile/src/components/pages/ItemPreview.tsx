@@ -12,6 +12,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { BaseButton } from "../bases";
 import { buttonStatus } from "../../types";
 import { Endpoints } from "../../enums";
+import Loading from "./Loading";
 
 interface ItemProps {
   publicId: string;
@@ -82,7 +83,7 @@ const ItemPreview = ({
   }, [options]);
 
   if (response.isFetching || !variant) {
-    return <></>;
+    return <Loading />;
   }
 
   return (
