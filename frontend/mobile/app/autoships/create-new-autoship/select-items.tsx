@@ -2,7 +2,7 @@ import { useRouter } from "expo-router";
 import { useState } from "react";
 import { ItemsViewer, PageStructure } from "../../../src/components/organisms";
 import { useTranslationsContext } from "../../../src/hooks";
-import { CartItemProps } from "../../../src/interfaces";
+import { CartItemProps, Item } from "../../../src/interfaces";
 import { BaseButton } from "../../../src/components/bases";
 import { Text } from "../../../src/components/atoms";
 import SearchAndSelectItems from "./components/SearchAndSelectItems";
@@ -15,14 +15,38 @@ const SelectItems = () => {
   const [showSearchAndSelectItems, setShowSearchAndSelectItems] =
     useState(false);
 
+  const addItemHandler = (item: Item, selectedVariantId: string) => {
+    let _item = items?.find((_item) => _item.itemId === item.public_id);
+
+    if (_item) {
+      _item.quantity += 1;
+      _item.amount += _item.amount;
+    } else {
+      const variant = item.variants.find(
+        (variant) => variant.public_id === selectedVariantId
+      );
+      _item = {
+        itemId: item.public_id,
+        variantId: selectedVariantId,
+        options: variant.options.map((option) => option.value),
+        name: item.name,
+        image: item.image,
+        amount: variant.price,
+        quantity: 1,
+      };
+    }
+
+    setItems([...(items ?? []), _item]);
+  };
+
+  console.log("items", items);
+
   return (
     <>
       {showSearchAndSelectItems && (
         <SearchAndSelectItems
           onClose={() => setShowSearchAndSelectItems(false)}
-          addItem={(item, selectedVariantId) =>
-            console.log(item, selectedVariantId)
-          }
+          addItem={addItemHandler}
         />
       )}
 
