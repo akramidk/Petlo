@@ -78,7 +78,9 @@ const Item = () => {
     <SafeAreaView className="h-full flex flex-col" edges={["bottom"]}>
       <ItemPreview
         publicId={publicId}
-        onAdd={addToCart}
+        onAdd={(item, selectedVariantId) =>
+          addToCart(item.public_id, selectedVariantId)
+        }
         addStatus={addStatus ?? createStatus}
         onBack={router.back}
         addTranslationValue={t("ITEM__ADD_TO_CART_BUTTON")}

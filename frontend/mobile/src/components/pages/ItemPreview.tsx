@@ -5,7 +5,7 @@ import {
   useInternationalizationContext,
   useTranslationsContext,
 } from "../../hooks";
-import { ItemResponse } from "../../interfaces";
+import { Item, ItemResponse } from "../../interfaces";
 import { BackButton, Text, BottomContainer, Button } from "../atoms";
 import { ScrollView } from "react-native-gesture-handler";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -17,7 +17,7 @@ import Loading from "./Loading";
 interface ItemPreviewProps {
   publicId: string;
   onBack: () => void;
-  onAdd: (itemId: string, variantId: string) => void;
+  onAdd: (item: Item, selectedVariantId: string) => void;
   addStatus?: buttonStatus;
   addTranslationValue: string;
   bottomContainerCN?: string;
@@ -205,7 +205,7 @@ const ItemPreview = ({
               ? addTranslationValue
               : t("ITEM_PREVIEW__ADD_TO_CART_VARIANT_NOT_AVAILABLE_BUTTON")
           }
-          onClick={() => onAdd(item.public_id, variant.public_id)}
+          onClick={() => onAdd(item, variant.public_id)}
           status={addStatus ?? (variant.available ? "active" : "inactive")}
         />
       </BottomContainer>
