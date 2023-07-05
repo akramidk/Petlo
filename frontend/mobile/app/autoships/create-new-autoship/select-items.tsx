@@ -21,7 +21,9 @@ const SelectItems = () => {
       {showSearchAndSelectItems && (
         <SearchAndSelectItems
           onClose={() => setShowSearchAndSelectItems(false)}
-          addItem={(item: Item) => {}}
+          addItem={(item, selectedVariantId) =>
+            console.log(item, selectedVariantId)
+          }
         />
       )}
 

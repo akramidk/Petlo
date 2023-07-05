@@ -1,7 +1,7 @@
 import { SearchFiled, Text } from "../../../../src/components/atoms";
 import BottomSheet, { BottomSheetScrollView } from "@gorhom/bottom-sheet";
 import Modal from "react-native-modal";
-import { Dispatch, SetStateAction, useState } from "react";
+import { useState } from "react";
 import { useAPIFetching } from "../../../../src/hooks";
 import {
   Item as IItem,
@@ -12,11 +12,10 @@ import { Endpoints } from "../../../../src/enums";
 import { View } from "react-native";
 import { Item } from "../../../../src/components/molecules";
 import { ItemPreview } from "../../../../src/components/pages";
-import { SafeAreaView } from "react-native-safe-area-context";
 
 interface SearchAndSelectItemsProps {
   onClose: () => void;
-  addItem: (item: IItem) => void;
+  addItem: (item: IItem, selectedVariantId: string) => void;
 }
 
 const SearchAndSelectItems = ({
@@ -87,7 +86,7 @@ const SearchAndSelectItems = ({
           <ItemPreview
             publicId={openedItemPublicId}
             onBack={() => setOpendItemPublicId(undefined)}
-            onAdd={() => {}}
+            onAdd={addItem}
             addTranslationValue="add"
             bottomContainerCN="pb-[32px]"
           />
