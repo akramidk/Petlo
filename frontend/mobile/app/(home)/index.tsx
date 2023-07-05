@@ -11,7 +11,7 @@ import {
   BannersResponse,
   SectionsResponse,
 } from "../../src/interfaces";
-import Loading from "../../src/components/pages/Loading";
+import { Loading } from "../../src/components/pages";
 import Scrollable from "../_Scrollable";
 import Section from "./_components/Seection";
 import Swipeable from "react-native-gesture-handler/Swipeable";

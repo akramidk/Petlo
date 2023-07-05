@@ -4,7 +4,7 @@ import {
   useInternationalizationContext,
   useCustomerContext,
 } from "../src/hooks";
-import Loading from "../src/components/pages/Loading";
+import { Loading } from "../src/components/pages";
 
 interface RoutesRestrictorProps {
   children: React.ReactNode;

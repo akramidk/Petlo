@@ -5,7 +5,7 @@ import { PageStructure } from "../../src/components/organisms";
 import { Endpoints } from "../../src/enums";
 import { useAPIFetching } from "../../src/hooks";
 import { CategoriesRequest, CategoriesResponse } from "../../src/interfaces";
-import Loading from "../../src/components/pages/Loading";
+import { Loading } from "../../src/components/pages";
 
 const Category = () => {
   const router = useRouter();

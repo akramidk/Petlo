@@ -14,7 +14,7 @@ import {
   CustomerAddressesRequest,
   CustomerAddressesResponse,
 } from "../../../src/interfaces";
-import Loading from "../../../src/components/pages/Loading";
+import { Loading } from "../../../src/components/pages";
 
 const SelectAddress = () => {
   const router = useRouter();

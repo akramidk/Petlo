@@ -26,7 +26,7 @@ import {
   UpdateCheckoutAddressRequest,
   UpdateCheckoutAddressResponse,
 } from "../../src/interfaces";
-import Loading from "../../src/components/pages/Loading";
+import { Loading } from "../../src/components/pages";
 import { Link, OptionsWithLabel, Text } from "../../src/components/atoms";
 import { cardToDataCard } from "../../src/utils";
 import { DataCard } from "../../src/components/molecules";

@@ -7,7 +7,7 @@ import { Endpoints } from "../../src/enums";
 import { useAPIFetching, useTranslationsContext } from "../../src/hooks";
 import { DataCardProps } from "../../src/interfaces";
 import { AutoshipsResponse } from "../../src/interfaces/Endpoints/Autoships";
-import Loading from "../../src/components/pages/Loading";
+import { Loading } from "../../src/components/pages";
 
 const Autoships = () => {
   const router = useRouter();

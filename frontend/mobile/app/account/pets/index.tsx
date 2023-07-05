@@ -10,7 +10,7 @@ import {
   CustomerPetsResponse,
   DataCardProps,
 } from "../../../src/interfaces";
-import Loading from "../../../src/components/pages/Loading";
+import { Loading } from "../../../src/components/pages";
 
 const Pets = () => {
   const router = useRouter();
