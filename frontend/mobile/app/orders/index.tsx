@@ -8,7 +8,7 @@ import {
   useTranslationsContext,
 } from "../../src/hooks";
 import { OrdersResponse } from "../../src/interfaces";
-import Loading from "../_Loading";
+import Loading from "../Loading";
 import clsx from "clsx";
 
 // TODO add the autoship

@@ -10,7 +10,7 @@ import {
   CustomerInformationsResponse,
   DataCardProps,
 } from "../../../src/interfaces";
-import Loading from "../../_Loading";
+import Loading from "../../Loading";
 
 const Informations = () => {
   const router = useRouter();

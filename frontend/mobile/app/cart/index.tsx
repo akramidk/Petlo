@@ -18,7 +18,7 @@ import {
   CartItemProps,
   CartSummaryResponse,
 } from "../../src/interfaces";
-import Loading from "../_Loading";
+import Loading from "../Loading";
 import Item from "./_Item";
 
 // TODO fix addStatus run on all items

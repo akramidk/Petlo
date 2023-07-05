@@ -15,7 +15,7 @@ import {
 } from "../../../src/interfaces";
 import { Endpoints } from "../../../src/enums";
 import { DataCard } from "../../../src/components/molecules";
-import Loading from "../../_Loading";
+import Loading from "../../Loading";
 import { buttonStatus } from "../../../src/types";
 
 const SelectPets = () => {

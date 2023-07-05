@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useCustomerContext } from "../../src/hooks";
-import Loading from "../_Loading";
+import Loading from "../Loading";
 
 const SignOut = () => {
   const { clearCustomer } = useCustomerContext();

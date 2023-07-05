@@ -19,7 +19,7 @@ import { View } from "react-native";
 import { Endpoints } from "../../../src/enums";
 import { cardToDataCard } from "../../../src/utils";
 import { DataCard } from "../../../src/components/molecules";
-import Loading from "../../_Loading";
+import Loading from "../../Loading";
 
 const SelectPayment = () => {
   const router = useRouter();

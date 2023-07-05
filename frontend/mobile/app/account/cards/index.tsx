@@ -12,7 +12,7 @@ import {
   CustomerCardsResponse,
   DataCardProps,
 } from "../../../src/interfaces";
-import Loading from "../../_Loading";
+import Loading from "../../Loading";
 import { PaymentIcon } from "react-native-payment-icons";
 import { View } from "react-native";
 import clsx from "clsx";

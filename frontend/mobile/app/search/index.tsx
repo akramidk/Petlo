@@ -7,7 +7,7 @@ import { Endpoints } from "../../src/enums";
 import { useAPIFetching } from "../../src/hooks";
 import { SearchRequest, SearchResponse } from "../../src/interfaces";
 import { Item } from "../../src/components/molecules";
-import Loading from "../_Loading";
+import Loading from "../Loading";
 
 const Search = () => {
   const router = useRouter();

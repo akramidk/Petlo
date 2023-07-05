@@ -8,7 +8,7 @@ import {
   CustomerAddressesResponse,
   DataCardProps,
 } from "../../../src/interfaces";
-import Loading from "../../_Loading";
+import Loading from "../../Loading";
 
 const Addresses = () => {
   const router = useRouter();

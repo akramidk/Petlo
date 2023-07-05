@@ -9,7 +9,7 @@ import {
   BottomContainer,
 } from "../../../src/components/atoms";
 import * as Location from "expo-location";
-import Loading from "../../_Loading";
+import Loading from "../../Loading";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import Constants from "expo-constants";
 import {
