@@ -133,6 +133,11 @@ import {
 } from "./Endpoints/CreateNewOrder";
 import { OrdersResponse } from "./Endpoints/Order";
 import { AutoshipsResponse } from "./Endpoints/Autoships";
+import { AutoshipItemsCalculation } from "./Entities/AutoshipItemsCalculation";
+import {
+  CalculateAutoshipItemsAmountRequest,
+  CalculateAutoshipItemsAmountResponse,
+} from "./Endpoints/CalculateAutoshipItemsAmount";
 
 //entities interfaces
 import { Customer } from "./Entities/Customer";
@@ -162,6 +167,7 @@ export {
   BaseButtonProps,
   RecurringInterval,
   Item,
+  AutoshipItemsCalculation,
   ErrorResponse,
   CreateNewCustomerRequest,
   CreateNewCustomerResponse,
@@ -195,6 +201,8 @@ export {
   ChangeCustomerPhoneNumberResponse,
   VerifyRequestedPermissionRequest,
   VerifyRequestedPermissionResponse,
+  CalculateAutoshipItemsAmountRequest,
+  CalculateAutoshipItemsAmountResponse,
   ChangePasswordRequest,
   ChangePasswordResponse,
   AddNewCardRequest,

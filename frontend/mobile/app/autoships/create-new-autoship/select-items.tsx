@@ -2,7 +2,12 @@ import { useRouter } from "expo-router";
 import { useEffect, useState } from "react";
 import { ItemsViewer, PageStructure } from "../../../src/components/organisms";
 import { useAPIMutation, useTranslationsContext } from "../../../src/hooks";
-import { CartItemProps, Item } from "../../../src/interfaces";
+import {
+  CalculateAutoshipItemsAmountRequest,
+  CalculateAutoshipItemsAmountResponse,
+  CartItemProps,
+  Item,
+} from "../../../src/interfaces";
 import { BaseButton } from "../../../src/components/bases";
 import { Text } from "../../../src/components/atoms";
 import SearchAndSelectItems from "./components/SearchAndSelectItems";
@@ -86,7 +91,10 @@ const SelectItems = () => {
     response: calculationResponse,
     trigger: calculationTrigger,
     status: calculationStatus,
-  } = useAPIMutation<any, any>({
+  } = useAPIMutation<
+    CalculateAutoshipItemsAmountRequest,
+    CalculateAutoshipItemsAmountResponse
+  >({
     endpoint: Endpoints.CALCULATE_AUTOSHIP_ITEMS_AMOUNT,
     method: "POST",
     options: {},
@@ -105,8 +113,6 @@ const SelectItems = () => {
       }),
     });
   }, [items]);
-
-  console.log("calculationResponse", calculationResponse);
 
   return (
     <>
@@ -160,6 +166,13 @@ const SelectItems = () => {
             );
           }}
           totalTranslationValue="Total Amount"
+          amount={
+            items === undefined ||
+            items.length === 0 ||
+            calculationResponse === undefined
+              ? undefined
+              : `${calculationResponse.body.amount} ${calculationResponse.body.currency}`
+          }
         />
       </PageStructure>
     </>
