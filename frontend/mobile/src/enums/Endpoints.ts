@@ -42,4 +42,5 @@ export enum Endpoints {
   CREATE_NEW_ORDERS = "/v1/orders",
   ORDERS = "/v1/orders",
   AUTOSHIPS = "/v1/autoships",
+  CALCULATE_AUTOSHIP_ITEMS_AMOUNT = "/v1/autoships/calculate-items-amount",
 }
