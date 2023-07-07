@@ -159,8 +159,7 @@ const SelectItems = () => {
               />
             );
           }}
-          detailsTranslationValue="Payme"
-          totalTranslationValue="Tot"
+          totalTranslationValue="Total Amount"
         />
       </PageStructure>
     </>
