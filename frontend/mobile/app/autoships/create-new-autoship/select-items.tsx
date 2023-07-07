@@ -1,12 +1,13 @@
 import { useRouter } from "expo-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ItemsViewer, PageStructure } from "../../../src/components/organisms";
-import { useTranslationsContext } from "../../../src/hooks";
+import { useAPIMutation, useTranslationsContext } from "../../../src/hooks";
 import { CartItemProps, Item } from "../../../src/interfaces";
 import { BaseButton } from "../../../src/components/bases";
 import { Text } from "../../../src/components/atoms";
 import SearchAndSelectItems from "./components/SearchAndSelectItems";
 import { ItemViewer } from "../../../src/components/molecules";
+import { Endpoints } from "../../../src/enums";
 
 //TODO the calculation should hapeend in the back
 
@@ -80,6 +81,32 @@ const SelectItems = () => {
 
     setItems(_items);
   };
+
+  const {
+    response: calculationResponse,
+    trigger: calculationTrigger,
+    status: calculationStatus,
+  } = useAPIMutation<any, any>({
+    endpoint: Endpoints.CALCULATE_AUTOSHIP_ITEMS_AMOUNT,
+    method: "POST",
+    options: {},
+  });
+
+  useEffect(() => {
+    if (items === undefined || items.length === 0) return;
+
+    calculationTrigger({
+      data: items.map((item) => {
+        return {
+          item_id: item.itemId,
+          variant_id: item.variantId,
+          quantity: item.quantity,
+        };
+      }),
+    });
+  }, [items]);
+
+  console.log("calculationResponse", calculationResponse);
 
   return (
     <>
