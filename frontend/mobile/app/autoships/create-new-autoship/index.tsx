@@ -51,7 +51,7 @@ const CreateNewAutoship = () => {
     const selectText = t("COMMON__SELECT");
     const changeText = t("COMMON__CHANGE");
 
-    const numberofTotalItem = itemsCalculation
+    const numberofItems = itemsCalculation
       ? itemsCalculation.items.reduce((accumulator, item) => {
           let number = 0;
 
@@ -67,11 +67,13 @@ const CreateNewAutoship = () => {
       {
         primaryText: t("CREATE_AN_AUTOSHIP__STEPS.WHAT.PRIMARY_TEXT"),
         secondaryText: itemsCalculation
-          ? numberofTotalItem
+          ? t("CREATE_AN_AUTOSHIP__STEPS.WHAT.SECONDARY_TEXT.WITH_DATA", {
+              numberOfItems: numberofItems,
+            })
           : t("CREATE_AN_AUTOSHIP__STEPS.WHAT.SECONDARY_TEXT.WITHOUT_DATA"),
         actions: [
           {
-            name: address ? changeText : selectText,
+            name: itemsCalculation ? changeText : selectText,
             onClick: () =>
               router.push("/autoships/create-new-autoship/select-items"),
           },

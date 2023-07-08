@@ -204,7 +204,7 @@
       "PRIMARY_TEXT": "What to autoship?",
       "SECONDARY_TEXT": {
         "WITHOUT_DATA": "Select the items that you want to receive",
-        "WITH_DATA": "Hello"
+        "WITH_DATA": "%{numberOfItems} items selected"
       }
     },
     "WHERE": {
@@ -233,7 +233,7 @@
     "WHEN": {
       "PRIMARY_TEXT": "When should it arrive?",
       "SECONDARY_TEXT": {
-        "WITHOUT_DATA": "WITHOUT_DATA",
+        "WITHOUT_DATA": "Configure your autoship date",
         "WITH_DATA": "%{firstShipmentDate}, then every %{thenEvery}"
       }
     }
