@@ -1,7 +1,11 @@
 import { useRouter } from "expo-router";
 import { useEffect, useMemo, useState } from "react";
 import { ItemsViewer, PageStructure } from "../../../src/components/organisms";
-import { useAPIMutation, useTranslationsContext } from "../../../src/hooks";
+import {
+  useAPIMutation,
+  useDataContext,
+  useTranslationsContext,
+} from "../../../src/hooks";
 import {
   CalculateAutoshipItemsAmountRequest,
   CalculateAutoshipItemsAmountResponse,
@@ -19,17 +23,34 @@ import { Endpoints } from "../../../src/enums";
 const SelectItems = () => {
   const router = useRouter();
   const { t } = useTranslationsContext();
+  const { data, setData } = useDataContext();
 
+  const selectedItemsData = useMemo(() => {
+    if (data?.itemsCalculation === undefined) return undefined;
+
+    const array = [];
+    data.itemsCalculation.items.forEach((item) => {
+      item.variants.forEach((variant) => {
+        array.push({
+          itemId: item.public_id,
+          variantId: variant.public_id,
+          quantity: variant.quantity,
+        });
+      });
+    });
+
+    return array;
+  }, []);
   const [selectedItems, setSelectedItems] = useState<
     {
       itemId: string;
       variantId: string;
       quantity: number;
     }[]
-  >();
+  >(selectedItemsData);
 
   const [savedCalculationResponse, setSavedCalculationResponse] =
-    useState<CalculateAutoshipItemsAmountResponse>();
+    useState<CalculateAutoshipItemsAmountResponse>(data?.itemsCalculation);
 
   const [showSearchAndSelectItems, setShowSearchAndSelectItems] =
     useState(false);
@@ -153,6 +174,7 @@ const SelectItems = () => {
         button={{
           value: t("COMMON__SAVE"),
           onClick: () => {
+            setData({ ...data, itemsCalculation: savedCalculationResponse });
             router.back();
           },
           status: isSaveButtonActive ? "active" : "inactive",
