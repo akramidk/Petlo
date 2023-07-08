@@ -209,10 +209,10 @@
   "CREATE_AN_AUTOSHIP__NAME_FILED_PLACEHOLDER": "ادخل اسماً مثل أوتوشيب قطتي",
   "CREATE_AN_AUTOSHIP__STEPS": {
     "WHAT": {
-      "PRIMARY_TEXT": "What to autoship?",
+      "PRIMARY_TEXT": "ماذا تريد ان تشحن؟",
       "SECONDARY_TEXT": {
-        "WITHOUT_DATA": "Select the items that you want to receive",
-        "WITH_DATA": "Hello"
+        "WITHOUT_DATA": "اختر المنتجات التي تريد ان تصلك",
+        "WITH_DATA": "%{numberOfItems} منتجات مختارة"
       }
     },
     "WHERE": {
@@ -255,5 +255,10 @@
   "CREATE_AN_AUTOSHIP__THEN_EVERY": "بعد ذلك كل",
   "CREATE_AN_AUTOSHIP__RECURRING_INTERVAL_INVALID_DAYS": "يجب ان يكون بين 5 الى 90 يوم",
   "CREATE_AN_AUTOSHIP__RECURRING_INTERVAL_INVALID_MONTHS": "يجب ان يكون ما بين 1 الى 3 اشهر",
-  "CREATE_AN_AUTOSHIP__NO_ITEMS_ADDED": "لم يتم اضافة منتجات"
+  "CREATE_AN_AUTOSHIP__NO_ITEMS_ADDED": "لم يتم اضافة منتجات",
+  "CREATE_AN_AUTOSHIP__PAYMENT_DETAILS": "تفاصيل الدفع",
+  "CREATE_AN_AUTOSHIP__ITEMS_AMOUNT": "قيمة المنتجات",
+  "CREATE_AN_AUTOSHIP__DELIVERY_AMOUNT": "قيمة التوصيل",
+  "CREATE_AN_AUTOSHIP__NO_ITEMS_ARE_SELECTED": "لا يوجد منتجات مختارة",
+  "CREATE_AN_AUTOSHIP__NO_ADDRESS_IS_SELECTED": "لا يوجد عنوان توصيل مختار"
 }

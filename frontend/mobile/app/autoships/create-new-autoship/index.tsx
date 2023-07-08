@@ -248,7 +248,7 @@ const CreateNewAutoship = () => {
 
       <View className="mt-[32px]">
         <Text font="extraBold" cn="text-[15px] text-[#0E333C] mb-[12px]">
-          Details
+          {t("CREATE_AN_AUTOSHIP__PAYMENT_DETAILS")}
         </Text>
 
         <View className="space-y-[12px]">
@@ -259,12 +259,12 @@ const CreateNewAutoship = () => {
             )}
           >
             <Text font="semiBold" cn="text-[14px] text-[#666]">
-              Items Amount
+              {t("CREATE_AN_AUTOSHIP__ITEMS_AMOUNT")}
             </Text>
             <Text font="semiBold" cn="text-[14px] text-[#666]">
               {itemsCalculation
                 ? `${itemsCalculation.amount} ${itemsCalculation.currency}`
-                : "not"}
+                : t("CREATE_AN_AUTOSHIP__NO_ITEMS_ARE_SELECTED")}
             </Text>
           </View>
 
@@ -275,12 +275,12 @@ const CreateNewAutoship = () => {
             )}
           >
             <Text font="semiBold" cn="text-[14px] text-[#666]">
-              Delivery Amount
+              {t("CREATE_AN_AUTOSHIP__DELIVERY_AMOUNT")}
             </Text>
             <Text font="semiBold" cn="text-[14px] text-[#666]">
               {deliveryCalculation
                 ? `${deliveryCalculation.amount} ${deliveryCalculation.currency}`
-                : "not"}
+                : t("CREATE_AN_AUTOSHIP__NO_ADDRESS_IS_SELECTED")}
             </Text>
           </View>
         </View>
