@@ -125,6 +125,15 @@ const CreateNewAutoship = () => {
     ];
   }, [address, payment, pets]);
 
+  const isCreateButtonActive =
+    name.trim().length > 0 &&
+    address &&
+    payment &&
+    nextShipment &&
+    recurringInterval &&
+    recurringIntervalCount &&
+    itemsCalculation;
+
   useEffect(() => {
     if (name) setData({ ...data, name });
   }, [name]);
@@ -135,7 +144,7 @@ const CreateNewAutoship = () => {
       button={{
         value: t("COMMON__CREATE"),
         onClick: () => {},
-        status: "inactive",
+        status: isCreateButtonActive ? "active" : "inactive",
       }}
       link={{
         value: t("COMMON__CANCEL"),
