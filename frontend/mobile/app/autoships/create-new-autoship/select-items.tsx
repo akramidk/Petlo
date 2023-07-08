@@ -27,6 +27,10 @@ const SelectItems = () => {
       quantity: number;
     }[]
   >();
+
+  const [savedCalculationResponse, setSavedCalculationResponse] =
+    useState<CalculateAutoshipItemsAmountResponse>();
+
   const [showSearchAndSelectItems, setShowSearchAndSelectItems] =
     useState(false);
 
@@ -68,18 +72,46 @@ const SelectItems = () => {
     }
   };
 
-  const {
-    response: calculationResponse,
-    trigger: calculationTrigger,
-    status: calculationStatus,
-  } = useAPIMutation<
-    CalculateAutoshipItemsAmountRequest,
-    CalculateAutoshipItemsAmountResponse
-  >({
-    endpoint: Endpoints.AUTOSHIP_ITEMS_CALCULATION,
-    method: "POST",
-    options: {},
-  });
+  const { response: calculationResponse, trigger: calculationTrigger } =
+    useAPIMutation<
+      CalculateAutoshipItemsAmountRequest,
+      CalculateAutoshipItemsAmountResponse
+    >({
+      endpoint: Endpoints.AUTOSHIP_ITEMS_CALCULATION,
+      method: "POST",
+      options: {},
+    });
+
+  const items: CartItemProps[] = useMemo(() => {
+    if (savedCalculationResponse === undefined) return items;
+
+    const array: CartItemProps[] = [];
+    savedCalculationResponse.items.forEach((item) => {
+      item.variants.forEach((variant) => {
+        array.push({
+          itemId: item.public_id,
+          variantId: variant.public_id,
+          options: variant.options,
+          name: item.name,
+          image: item.image,
+          quantity: variant.quantity,
+          amount: `${variant.amount} ${savedCalculationResponse.currency}`,
+        });
+      });
+    });
+
+    return array;
+  }, [savedCalculationResponse]);
+
+  useEffect(() => {
+    if (
+      calculationResponse === undefined ||
+      calculationResponse.status === "loading"
+    )
+      return;
+
+    setSavedCalculationResponse(calculationResponse.body);
+  }, [calculationResponse]);
 
   useEffect(() => {
     if (selectedItems === undefined || selectedItems.length === 0) return;
@@ -94,35 +126,6 @@ const SelectItems = () => {
       }),
     });
   }, [selectedItems]);
-
-  console.log("selectedItems", selectedItems);
-
-  const items: CartItemProps[] = useMemo(() => {
-    if (
-      calculationResponse === undefined ||
-      calculationResponse.status === "loading"
-    )
-      return;
-
-    const array: CartItemProps[] = [];
-    calculationResponse.body.items.forEach((item) => {
-      item.variants.forEach((variant) => {
-        array.push({
-          itemId: item.public_id,
-          variantId: variant.public_id,
-          options: variant.options,
-          name: item.name,
-          image: item.image,
-          quantity: variant.quantity,
-          amount: `${variant.amount} ${calculationResponse.body.currency}`,
-        });
-      });
-    });
-
-    return array;
-  }, [calculationResponse]);
-
-  console.log("calculationResponse", calculationResponse);
 
   return (
     <>
@@ -166,8 +169,8 @@ const SelectItems = () => {
             return <ItemViewer {...item} add={add} remove={remove} />;
           }}
           totalTranslationValue="Total Amount"
-          amount={calculationResponse?.body?.amount}
-          currency={calculationResponse?.body?.currency}
+          amount={savedCalculationResponse?.amount}
+          currency={savedCalculationResponse?.currency}
         />
       </PageStructure>
     </>
