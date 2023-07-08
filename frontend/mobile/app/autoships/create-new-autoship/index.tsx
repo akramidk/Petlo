@@ -248,7 +248,6 @@ const CreateNewAutoship = () => {
       <View>
         <BaseLabel
           name={t("CREATE_AN_AUTOSHIP__OTHER_INFORMATION")}
-          require
           cn="mb-[8px]"
         />
         <DataCards data={cards} cn="space-y-[6px]" />
