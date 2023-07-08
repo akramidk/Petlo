@@ -2,7 +2,12 @@ import { useRouter } from "expo-router";
 import { useEffect, useMemo, useState } from "react";
 import { Filed } from "../../../src/components/atoms";
 import { DataCards, PageStructure } from "../../../src/components/organisms";
-import { useDataContext, useTranslationsContext } from "../../../src/hooks";
+import { Endpoints } from "../../../src/enums";
+import {
+  useAPIMutation,
+  useDataContext,
+  useTranslationsContext,
+} from "../../../src/hooks";
 import {
   DataCardProps,
   Address,
@@ -133,6 +138,17 @@ const CreateNewAutoship = () => {
     recurringInterval &&
     recurringIntervalCount &&
     itemsCalculation;
+
+  const { response, trigger, status } = useAPIMutation<void, void>({
+    endpoint: Endpoints.CREATE_AN_AUTOSHIP,
+    method: "POST",
+    options: {
+      onSucceeded: () => {
+        //
+      },
+      resetSucceededStatusAfter: 2000,
+    },
+  });
 
   useEffect(() => {
     if (name) setData({ ...data, name });
