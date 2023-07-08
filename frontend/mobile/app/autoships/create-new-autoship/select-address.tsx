@@ -118,13 +118,13 @@ const SelectAddress = () => {
 
       <Link
         valueCN="text-[#9747FF] text-[14px]"
-        value="+ Add New Address To Use"
+        value={t("CREATE_AN_AUTOSHIP__ADD_NEW_ADDRESS_TO_USE")}
         onClick={() => router.push("/account/addresses/add-new-address")}
       />
 
       <View className="mt-[32px]">
         <Text font="extraBold" cn="text-[15px] text-[#0E333C] mb-[12px]">
-          Details
+          {t("CREATE_AN_AUTOSHIP__DELIVERY_CALCULATION")}
         </Text>
 
         <View
@@ -134,11 +134,11 @@ const SelectAddress = () => {
           )}
         >
           <Text font="semiBold" cn="text-[14px] text-[#666]">
-            Delivery Amount
+            {t("CREATE_AN_AUTOSHIP__DELIVERY_CALCULATION_AMOUNT")}
           </Text>
           <Text font="semiBold" cn="text-[14px] text-[#666]">
             {address === undefined ? (
-              "bl bla"
+              t("CREATE_AN_AUTOSHIP__SHOULD_SELECT_AN_ADDRESS")
             ) : calculationResponse === undefined ||
               calculationResponse.isFetching ? (
               <ActivityIndicator animating={true} color="#666" size={14} />
