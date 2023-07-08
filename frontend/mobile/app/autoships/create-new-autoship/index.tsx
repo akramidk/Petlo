@@ -34,6 +34,11 @@ const CreateNewAutoship = () => {
   const recurringIntervalCount: number = data?.recurringIntervalCount;
   const itemsCalculation: CalculateAutoshipItemsAmountResponse =
     data?.itemsCalculation;
+  const selectedItems: {
+    itemId: string;
+    variantId: string;
+    quantity: number;
+  }[] = data?.selectedItems;
 
   const cards: DataCardProps[] = useMemo(() => {
     const selectText = t("COMMON__SELECT");
@@ -156,7 +161,37 @@ const CreateNewAutoship = () => {
   });
 
   const createHandler = useCallback(() => {
-    //
+    const items = selectedItems.map((item) => {
+      return {
+        id: item.itemId,
+        variant_id: item.variantId,
+        quantity: item.quantity,
+      };
+    });
+
+    const nextShipmentOn = `${nextShipment.year}-${nextShipment.month}-${nextShipment.day}`;
+
+    const cardObj =
+      payment.method === "card"
+        ? {
+            card: {
+              id: payment.card.public_id as string,
+            },
+          }
+        : {};
+
+    trigger({
+      name,
+      recurring_interval: recurringInterval.id,
+      recurring_interval_count: recurringIntervalCount,
+      next_shipment_on: nextShipmentOn,
+      address_id: address.public_id,
+      items: items,
+      payment: {
+        method: "cash",
+        ...cardObj,
+      },
+    });
   }, []);
 
   useEffect(() => {

@@ -25,33 +25,13 @@ const SelectItems = () => {
   const { t } = useTranslationsContext();
   const { data, setData } = useDataContext();
 
-  const selectedItemsData: {
-    itemId: string;
-    variantId: string;
-    quantity: number;
-  }[] = useMemo(() => {
-    if (data?.itemsCalculation === undefined) return undefined;
-
-    const array = [];
-    data.itemsCalculation.items.forEach((item) => {
-      item.variants.forEach((variant) => {
-        array.push({
-          itemId: item.public_id,
-          variantId: variant.public_id,
-          quantity: variant.quantity,
-        });
-      });
-    });
-
-    return array;
-  }, []);
   const [selectedItems, setSelectedItems] = useState<
     {
       itemId: string;
       variantId: string;
       quantity: number;
     }[]
-  >(selectedItemsData);
+  >(data?.selectedItems);
 
   const [savedCalculationResponse, setSavedCalculationResponse] =
     useState<CalculateAutoshipItemsAmountResponse>(data?.itemsCalculation);
@@ -134,18 +114,8 @@ const SelectItems = () => {
   }, [savedCalculationResponse]);
 
   const isSaveButtonActive = useMemo(() => {
-    if (
-      savedCalculationResponse === undefined &&
-      selectedItemsData === undefined
-    )
-      return false;
-
-    if (selectedItemsData === undefined) {
-      return true;
-    }
-
     return true;
-  }, [savedCalculationResponse, selectedItemsData]);
+  }, [savedCalculationResponse]);
 
   console.log("isSaveButtonActive", isSaveButtonActive);
 
@@ -194,7 +164,11 @@ const SelectItems = () => {
         button={{
           value: t("COMMON__SAVE"),
           onClick: () => {
-            setData({ ...data, itemsCalculation: savedCalculationResponse });
+            setData({
+              ...data,
+              itemsCalculation: savedCalculationResponse,
+              selectedItems: selectedItems,
+            });
             router.back();
           },
           status: isSaveButtonActive ? "active" : "inactive",
