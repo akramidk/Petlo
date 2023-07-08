@@ -6,5 +6,4 @@ export interface CalculateAutoshipItemsAmountRequest {
 }
 
 export interface CalculateAutoshipItemsAmountResponse
-  extends BaseResponse,
-    AutoshipItemsCalculation {}
+  extends AutoshipItemsCalculation {}

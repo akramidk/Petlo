@@ -9,6 +9,7 @@ import {
   Payment,
   Pet,
   RecurringInterval,
+  CalculateAutoshipItemsAmountResponse,
 } from "../../../src/interfaces";
 import NextShipment from "./interfaces/NextShipment";
 
@@ -24,17 +25,31 @@ const CreateNewAutoship = () => {
   const nextShipment: NextShipment = data?.nextShipment;
   const recurringInterval: RecurringInterval = data?.recurringInterval;
   const recurringIntervalCount: number = data?.recurringIntervalCount;
+  const itemsCalculation: CalculateAutoshipItemsAmountResponse =
+    data?.itemsCalculation;
 
   const cards: DataCardProps[] = useMemo(() => {
     const selectText = t("COMMON__SELECT");
     const changeText = t("COMMON__CHANGE");
 
+    const numberofTotalItem = itemsCalculation
+      ? itemsCalculation.items.reduce((accumulator, item) => {
+          let number = 0;
+
+          item.variants.forEach((variant) => {
+            number += variant.quantity;
+          });
+
+          return accumulator + number;
+        }, 0)
+      : undefined;
+
     return [
       {
         primaryText: t("CREATE_AN_AUTOSHIP__STEPS.WHAT.PRIMARY_TEXT"),
-        secondaryText: t(
-          "CREATE_AN_AUTOSHIP__STEPS.WHAT.SECONDARY_TEXT.WITHOUT_DATA"
-        ),
+        secondaryText: itemsCalculation
+          ? numberofTotalItem
+          : t("CREATE_AN_AUTOSHIP__STEPS.WHAT.SECONDARY_TEXT.WITHOUT_DATA"),
         actions: [
           {
             name: address ? changeText : selectText,
