@@ -90,7 +90,7 @@ const SelectAddress = () => {
             address: addressesResponse.body.data.find(
               (_address) => address.id === _address.public_id
             ),
-            deliveryCalculation: calculationResponse,
+            deliveryCalculation: calculationResponse.body,
           });
 
           router.back();

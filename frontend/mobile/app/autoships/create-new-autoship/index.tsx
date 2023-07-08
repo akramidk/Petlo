@@ -1,11 +1,12 @@
 import { useRouter } from "expo-router";
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { Filed } from "../../../src/components/atoms";
+import { Filed, Text } from "../../../src/components/atoms";
 import { DataCards, PageStructure } from "../../../src/components/organisms";
 import { Endpoints } from "../../../src/enums";
 import {
   useAPIMutation,
   useDataContext,
+  useInternationalizationContext,
   useTranslationsContext,
 } from "../../../src/hooks";
 import {
@@ -17,13 +18,17 @@ import {
   CalculateAutoshipItemsAmountResponse,
   CreateAnAutoshipRequest,
   CreateAnAutoshipResponse,
+  CalculateDeliveryAmountResponse,
 } from "../../../src/interfaces";
 import NextShipment from "./interfaces/NextShipment";
+import { View } from "react-native";
+import clsx from "clsx";
 
 const CreateNewAutoship = () => {
   const router = useRouter();
   const { t } = useTranslationsContext();
   const { data, setData } = useDataContext();
+  const { direction } = useInternationalizationContext();
 
   const [name, setName] = useState(data?.name ?? "");
   const address: Address = data?.address;
@@ -34,7 +39,8 @@ const CreateNewAutoship = () => {
   const recurringIntervalCount: number = data?.recurringIntervalCount;
   const itemsCalculation: CalculateAutoshipItemsAmountResponse =
     data?.itemsCalculation;
-  const deliveryCalculation = data?.deliveryCalculation;
+  const deliveryCalculation: CalculateDeliveryAmountResponse =
+    data?.deliveryCalculation;
   const selectedItems: {
     itemId: string;
     variantId: string;
@@ -235,6 +241,46 @@ const CreateNewAutoship = () => {
       />
 
       <DataCards data={cards} cn="space-y-[8px]" />
+
+      <View className="mt-[32px]">
+        <Text font="extraBold" cn="text-[15px] text-[#0E333C] mb-[12px]">
+          Details
+        </Text>
+
+        <View className="space-y-[12px]">
+          <View
+            className={clsx(
+              "justify-between",
+              direction === "ltr" ? "flex-row" : "flex-row-reverse"
+            )}
+          >
+            <Text font="semiBold" cn="text-[14px] text-[#666]">
+              Items Amount
+            </Text>
+            <Text font="semiBold" cn="text-[14px] text-[#666]">
+              {itemsCalculation
+                ? `${itemsCalculation.amount} ${itemsCalculation.currency}`
+                : "not"}
+            </Text>
+          </View>
+
+          <View
+            className={clsx(
+              "justify-between",
+              direction === "ltr" ? "flex-row" : "flex-row-reverse"
+            )}
+          >
+            <Text font="semiBold" cn="text-[14px] text-[#666]">
+              Delivery Amount
+            </Text>
+            <Text font="semiBold" cn="text-[14px] text-[#666]">
+              {deliveryCalculation
+                ? `${deliveryCalculation.amount} ${deliveryCalculation.currency}`
+                : "not"}
+            </Text>
+          </View>
+        </View>
+      </View>
     </PageStructure>
   );
 };
