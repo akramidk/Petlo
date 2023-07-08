@@ -8,7 +8,4 @@ export interface CartItemProps {
   image: string;
   quantity: number;
   amount: string;
-
-  //HACK temporary to the autoship items
-  variantPrice?: string;
 }
