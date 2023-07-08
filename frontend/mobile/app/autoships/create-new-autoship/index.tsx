@@ -214,7 +214,7 @@ const CreateNewAutoship = () => {
       button={{
         value: t("COMMON__CREATE"),
         onClick: createHandler,
-        status: isCreateButtonActive ? "active" : "inactive",
+        status: status ?? (isCreateButtonActive ? "active" : "inactive"),
       }}
       link={{
         value: t("COMMON__CANCEL"),
