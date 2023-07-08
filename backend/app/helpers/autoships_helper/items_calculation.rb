@@ -1,5 +1,5 @@
-module AutoshipsHelper::CalculateItemsAmount
-  def calculate_items_amount(customer:, data:, language:)
+module AutoshipsHelper::ItemsCalculation
+  def items_calculation(customer:, data:, language:)
     amount = 0
 
     data.each do |obj|

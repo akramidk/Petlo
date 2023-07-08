@@ -9,5 +9,5 @@ module AutoshipsHelper
   extend CalculateDeliveryAmount
   extend Deactivate
   extend Activate
-  extend CalculateItemsAmount
+  extend ItemsCalculation
 end
