@@ -31,7 +31,7 @@ const SelectItems = () => {
     useState(false);
 
   const add = (itemId: string, variantId: string) => {
-    const selectedItemsCopy = [...selectedItems];
+    const selectedItemsCopy = [...(selectedItems ?? [])];
     const isItemAddedBefore = selectedItemsCopy.find(
       (item) => item.itemId === itemId && item.variantId === variantId
     );
@@ -95,8 +95,14 @@ const SelectItems = () => {
     });
   }, [selectedItems]);
 
+  console.log("selectedItems", selectedItems);
+
   const items: CartItemProps[] = useMemo(() => {
-    if (!calculationResponse) return;
+    if (
+      calculationResponse === undefined ||
+      calculationResponse.status === "loading"
+    )
+      return;
 
     const array: CartItemProps[] = [];
     calculationResponse.body.items.forEach((item) => {
@@ -108,13 +114,15 @@ const SelectItems = () => {
           name: item.name,
           image: item.image,
           quantity: variant.quantity,
-          amount: `${calculationResponse.body.amount} ${calculationResponse.body.currency}`,
+          amount: `${variant.amount} ${calculationResponse.body.currency}`,
         });
       });
     });
 
     return array;
   }, [calculationResponse]);
+
+  console.log("calculationResponse", calculationResponse);
 
   return (
     <>
