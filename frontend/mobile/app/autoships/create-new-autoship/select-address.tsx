@@ -1,12 +1,13 @@
 import { useRouter } from "expo-router";
 import React, { useEffect, useMemo, useState } from "react";
-import { Link, OptionsWithLabel } from "../../../src/components/atoms";
+import { Link, OptionsWithLabel, Text } from "../../../src/components/atoms";
 import { DataCard } from "../../../src/components/molecules";
 import { PageStructure } from "../../../src/components/organisms";
 import { Endpoints } from "../../../src/enums";
 import {
   useAPIFetching,
   useDataContext,
+  useInternationalizationContext,
   useTranslationsContext,
 } from "../../../src/hooks";
 import {
@@ -15,11 +16,14 @@ import {
   CustomerAddressesResponse,
 } from "../../../src/interfaces";
 import { Loading } from "../../../src/components/pages";
+import { View } from "react-native";
+import clsx from "clsx";
 
 const SelectAddress = () => {
   const router = useRouter();
   const { t } = useTranslationsContext();
   const { data, setData } = useDataContext();
+  const { direction } = useInternationalizationContext();
 
   const [address, setAddress] = useState<BaseOption>();
   const { response: addressesResponse } = useAPIFetching<
@@ -100,6 +104,26 @@ const SelectAddress = () => {
         value="+ Add New Address To Use"
         onClick={() => router.push("/account/addresses/add-new-address")}
       />
+
+      <View className="mt-[32px]">
+        <Text font="extraBold" cn="text-[15px] text-[#0E333C] mb-[12px]">
+          Details
+        </Text>
+
+        <View
+          className={clsx(
+            "justify-between",
+            direction === "ltr" ? "flex-row" : "flex-row-reverse"
+          )}
+        >
+          <Text font="semiBold" cn="text-[14px] text-[#666]">
+            Delivery Amount
+          </Text>
+          <Text font="semiBold" cn="text-[14px] text-[#666]">
+            2
+          </Text>
+        </View>
+      </View>
     </PageStructure>
   );
 };
