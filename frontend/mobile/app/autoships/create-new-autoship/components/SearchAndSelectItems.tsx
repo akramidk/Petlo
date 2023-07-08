@@ -12,15 +12,18 @@ import { Endpoints } from "../../../../src/enums";
 import { View } from "react-native";
 import { Item } from "../../../../src/components/molecules";
 import { ItemPreview } from "../../../../src/components/pages";
+import { buttonStatus } from "../../../../src/types";
 
 interface SearchAndSelectItemsProps {
   onClose: () => void;
   addItem: (itemId: string, variantId: string) => void;
+  addStatus: buttonStatus | undefined;
 }
 
 const SearchAndSelectItems = ({
   onClose,
   addItem,
+  addStatus,
 }: SearchAndSelectItemsProps) => {
   const [searchValue, setSearchValue] = useState("");
   const { response } = useAPIFetching<SearchRequest, SearchResponse>({
@@ -89,6 +92,7 @@ const SearchAndSelectItems = ({
             onAdd={addItem}
             addTranslationValue="add"
             bottomContainerCN="pb-[32px]"
+            addStatus={addStatus}
           />
         </BottomSheet>
       </Modal>

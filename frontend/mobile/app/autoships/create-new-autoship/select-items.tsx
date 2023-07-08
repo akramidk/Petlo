@@ -93,15 +93,20 @@ const SelectItems = () => {
     }
   };
 
-  const { response: calculationResponse, trigger: calculationTrigger } =
-    useAPIMutation<
-      CalculateAutoshipItemsAmountRequest,
-      CalculateAutoshipItemsAmountResponse
-    >({
-      endpoint: Endpoints.AUTOSHIP_ITEMS_CALCULATION,
-      method: "POST",
-      options: {},
-    });
+  const {
+    response: calculationResponse,
+    trigger: calculationTrigger,
+    status: calculationStatus,
+  } = useAPIMutation<
+    CalculateAutoshipItemsAmountRequest,
+    CalculateAutoshipItemsAmountResponse
+  >({
+    endpoint: Endpoints.AUTOSHIP_ITEMS_CALCULATION,
+    method: "POST",
+    options: {
+      resetSucceededStatusAfter: 2000,
+    },
+  });
 
   const items: CartItemProps[] = useMemo(() => {
     if (savedCalculationResponse === undefined) return items;
@@ -160,6 +165,7 @@ const SelectItems = () => {
         <SearchAndSelectItems
           onClose={() => setShowSearchAndSelectItems(false)}
           addItem={add}
+          addStatus={calculationStatus}
         />
       )}
 
