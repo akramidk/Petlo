@@ -91,11 +91,14 @@ const SelectPets = () => {
         onClick: () => {
           setData({
             ...data,
-            pets: pets.map((pet) => {
-              return petsResponse.body.data.find(
-                (customerPet) => customerPet.public_id === pet.id
-              );
-            }),
+            pets:
+              pets && pets.length > 0
+                ? pets.map((pet) => {
+                    return petsResponse.body.data.find(
+                      (customerPet) => customerPet.public_id === pet.id
+                    );
+                  })
+                : undefined,
           });
 
           router.back();
