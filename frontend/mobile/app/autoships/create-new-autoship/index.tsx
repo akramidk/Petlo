@@ -153,7 +153,7 @@ const CreateNewAutoship = () => {
     recurringIntervalCount &&
     itemsCalculation;
 
-  const { response, trigger, status } = useAPIMutation<
+  const { trigger, status } = useAPIMutation<
     CreateAnAutoshipRequest,
     CreateAnAutoshipResponse
   >({
