@@ -11,7 +11,7 @@ import {
 import { Endpoints } from "../../../../src/enums";
 import { View } from "react-native";
 import { Item } from "../../../../src/components/molecules";
-import { ItemPreview } from "../../../../src/components/pages";
+import { ItemPreview, Loading } from "../../../../src/components/pages";
 import { buttonStatus } from "../../../../src/types";
 
 interface SearchAndSelectItemsProps {
@@ -63,17 +63,21 @@ const SearchAndSelectItems = ({
         />
 
         <BottomSheetScrollView style={{ padding: 28 }}>
-          {response?.body?.data?.map((item, i) => {
-            return (
-              <View key={i}>
-                <Item
-                  variant="large"
-                  data={item}
-                  onClick={() => setOpendItemPublicId(item.public_id)}
-                />
-              </View>
-            );
-          })}
+          {response?.isFetching ? (
+            <Loading />
+          ) : (
+            response?.body?.data?.map((item, i) => {
+              return (
+                <View key={i}>
+                  <Item
+                    variant="large"
+                    data={item}
+                    onClick={() => setOpendItemPublicId(item.public_id)}
+                  />
+                </View>
+              );
+            })
+          )}
         </BottomSheetScrollView>
       </BottomSheet>
 
