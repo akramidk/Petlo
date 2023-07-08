@@ -65,6 +65,11 @@ const SearchAndSelectItems = ({
         <BottomSheetScrollView style={{ padding: 28 }}>
           {response?.isFetching ? (
             <Loading />
+          ) : searchValue.trim().length > 0 &&
+            response?.body?.data?.length === 0 ? (
+            <Text font="medium" cn="text-[#666] text-[14px] self-center">
+              {t("COMMON__NOTHING_FOUND")}
+            </Text>
           ) : (
             response?.body?.data?.map((item, i) => {
               return (
