@@ -23,6 +23,7 @@ import {
 import NextShipment from "./interfaces/NextShipment";
 import { View } from "react-native";
 import clsx from "clsx";
+import BaseLabel from "../../../src/components/bases/BaseLabel";
 
 const CreateNewAutoship = () => {
   const router = useRouter();
@@ -241,10 +242,17 @@ const CreateNewAutoship = () => {
         require={true}
         onChange={setName}
         value={name}
-        cn="mb-[8px]"
+        cn="mb-[32px]"
       />
 
-      <DataCards data={cards} cn="space-y-[8px]" />
+      <View>
+        <BaseLabel
+          name={t("CREATE_AN_AUTOSHIP__OTHER_INFORMATION")}
+          require
+          cn="mb-[8px]"
+        />
+        <DataCards data={cards} cn="space-y-[6px]" />
+      </View>
 
       <View className="mt-[32px]">
         <Text font="extraBold" cn="text-[15px] text-[#0E333C] mb-[12px]">
