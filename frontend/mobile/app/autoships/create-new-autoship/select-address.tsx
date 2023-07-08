@@ -36,6 +36,16 @@ const SelectAddress = () => {
     },
   });
 
+  const { response: calculationResponse } = useAPIFetching<any, any>({
+    endpoint: Endpoints.CALCULATE_DELIVERY_AMOUNT,
+    options: {
+      wait: address === undefined,
+    },
+    body: {
+      address_id: address?.id,
+    },
+  });
+
   const addresses = useMemo(() => {
     return addressesResponse.body?.data?.map((address) => {
       return {
@@ -120,7 +130,12 @@ const SelectAddress = () => {
             Delivery Amount
           </Text>
           <Text font="semiBold" cn="text-[14px] text-[#666]">
-            2
+            {address === undefined
+              ? "bl bla"
+              : calculationResponse === undefined ||
+                calculationResponse.isFetching
+              ? "loading"
+              : calculationResponse.body}
           </Text>
         </View>
       </View>
