@@ -9,7 +9,7 @@ import { ActivityIndicator } from "react-native-paper";
 interface ItemsViewerProps {
   items: CartItemProps[];
   renderItem: (item: CartItemProps) => React.ReactNode;
-  detailsTranslationValue?: string;
+  detailsTranslationValue: string;
   totalTranslationValue: string;
   amount?: string;
   currency?: string;
