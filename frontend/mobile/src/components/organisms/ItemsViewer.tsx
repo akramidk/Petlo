@@ -25,7 +25,6 @@ const ItemsViewer = ({
   amount,
   currency,
 }: ItemsViewerProps) => {
-  const { t } = useTranslationsContext();
   const { direction } = useInternationalizationContext();
 
   return (
