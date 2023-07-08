@@ -1,5 +1,5 @@
 import { useRouter } from "expo-router";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { ItemsViewer, PageStructure } from "../../../src/components/organisms";
 import { useAPIMutation, useTranslationsContext } from "../../../src/hooks";
 import {
@@ -20,71 +20,52 @@ const SelectItems = () => {
   const router = useRouter();
   const { t } = useTranslationsContext();
 
-  const [items, setItems] = useState<CartItemProps[]>();
+  const [selectedItems, setSelectedItems] = useState<
+    {
+      itemId: string;
+      variantId: string;
+      quantity: number;
+    }[]
+  >();
   const [showSearchAndSelectItems, setShowSearchAndSelectItems] =
     useState(false);
 
-  const changeQuantity = (
-    itemId: string,
-    variantId: string,
-    operation: "add" | "remove"
-  ) => {
-    let itemsCopy = [...items];
-    const itemIndex = itemsCopy.findIndex(
+  const add = (itemId: string, variantId: string) => {
+    const selectedItemsCopy = [...selectedItems];
+    const isItemAddedBefore = selectedItemsCopy.find(
       (item) => item.itemId === itemId && item.variantId === variantId
-    );
-    const item = itemsCopy[itemIndex];
-
-    if (operation === "add") {
-      item.quantity = item.quantity + 1;
-      item.amount = (Number(item.amount) + Number(item.variantPrice)).toFixed(
-        2
-      );
-    } else if (operation === "remove") {
-      if (item.quantity === 1) {
-        itemsCopy = itemsCopy.filter(
-          (_item) =>
-            _item.itemId !== item.itemId || _item.variantId !== item.variantId
-        );
-      } else {
-        item.quantity = item.quantity - 1;
-        item.amount = (Number(item.amount) - Number(item.variantPrice)).toFixed(
-          2
-        );
-      }
-    }
-
-    setItems(itemsCopy);
-  };
-
-  const addItemHandler = (item: Item, selectedVariantId: string) => {
-    const _items = [...(items ?? [])];
-    const variant = item.variants.find(
-      (variant) => variant.public_id === selectedVariantId
-    );
-
-    const isItemAddedBefore = _items.find(
-      (_item) =>
-        _item.itemId === item.public_id && _item.variantId === variant.public_id
     );
 
     if (isItemAddedBefore) {
-      changeQuantity(item.public_id, variant.public_id, "add");
-      return;
+      isItemAddedBefore.quantity += 1;
+    } else {
+      selectedItemsCopy.push({
+        itemId: itemId,
+        variantId: variantId,
+        quantity: 1,
+      });
     }
 
-    _items.push({
-      itemId: item.public_id,
-      variantId: selectedVariantId,
-      options: variant.options.map((option) => option.value),
-      name: item.name,
-      image: item.image,
-      amount: variant.price,
-      quantity: 1,
-      variantPrice: variant.price,
-    });
+    setSelectedItems(selectedItemsCopy);
+  };
 
-    setItems(_items);
+  const remove = (itemId: string, variantId: string) => {
+    let selectedItemsCopy = [...selectedItems];
+    const item = selectedItemsCopy.find(
+      (item) => item.itemId === itemId && item.variantId === variantId
+    );
+
+    if (item) {
+      item.quantity -= 1;
+
+      if (item.quantity === 0) {
+        selectedItemsCopy = selectedItemsCopy.filter(
+          (item) => item.itemId !== itemId || item.variantId !== variantId
+        );
+      }
+
+      setSelectedItems(selectedItemsCopy);
+    }
   };
 
   const {
@@ -95,16 +76,16 @@ const SelectItems = () => {
     CalculateAutoshipItemsAmountRequest,
     CalculateAutoshipItemsAmountResponse
   >({
-    endpoint: Endpoints.CALCULATE_AUTOSHIP_ITEMS_AMOUNT,
+    endpoint: Endpoints.AUTOSHIP_ITEMS_CALCULATION,
     method: "POST",
     options: {},
   });
 
   useEffect(() => {
-    if (items === undefined || items.length === 0) return;
+    if (selectedItems === undefined || selectedItems.length === 0) return;
 
     calculationTrigger({
-      data: items.map((item) => {
+      data: selectedItems.map((item) => {
         return {
           item_id: item.itemId,
           variant_id: item.variantId,
@@ -112,14 +93,35 @@ const SelectItems = () => {
         };
       }),
     });
-  }, [items]);
+  }, [selectedItems]);
+
+  const items: CartItemProps[] = useMemo(() => {
+    if (!calculationResponse) return;
+
+    const array: CartItemProps[] = [];
+    calculationResponse.body.items.forEach((item) => {
+      item.variants.forEach((variant) => {
+        array.push({
+          itemId: item.public_id,
+          variantId: variant.public_id,
+          options: variant.options,
+          name: item.name,
+          image: item.image,
+          quantity: variant.quantity,
+          amount: `${calculationResponse.body.amount} ${calculationResponse.body.currency}`,
+        });
+      });
+    });
+
+    return array;
+  }, [calculationResponse]);
 
   return (
     <>
       {showSearchAndSelectItems && (
         <SearchAndSelectItems
           onClose={() => setShowSearchAndSelectItems(false)}
-          addItem={addItemHandler}
+          addItem={add}
         />
       )}
 
@@ -153,17 +155,7 @@ const SelectItems = () => {
         <ItemsViewer
           items={items}
           renderItem={(item) => {
-            return (
-              <ItemViewer
-                {...item}
-                add={(itemId, variantId) =>
-                  changeQuantity(itemId, variantId, "add")
-                }
-                remove={(itemId, variantId) =>
-                  changeQuantity(itemId, variantId, "remove")
-                }
-              />
-            );
+            return <ItemViewer {...item} add={add} remove={remove} />;
           }}
           totalTranslationValue="Total Amount"
           amount={calculationResponse?.body?.amount}

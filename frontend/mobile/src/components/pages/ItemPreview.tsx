@@ -17,7 +17,7 @@ import Loading from "./Loading";
 interface ItemPreviewProps {
   publicId: string;
   onBack: () => void;
-  onAdd: (item: Item, selectedVariantId: string) => void;
+  onAdd: (itemId: string, variantId: string) => void;
   addStatus?: buttonStatus;
   addTranslationValue: string;
   bottomContainerCN?: string;
@@ -205,7 +205,7 @@ const ItemPreview = ({
               ? addTranslationValue
               : t("ITEM_PREVIEW__ADD_TO_CART_VARIANT_NOT_AVAILABLE_BUTTON")
           }
-          onClick={() => onAdd(item, variant.public_id)}
+          onClick={() => onAdd(item.public_id, variant.public_id)}
           status={addStatus ?? (variant.available ? "active" : "inactive")}
         />
       </BottomContainer>

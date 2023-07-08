@@ -15,7 +15,7 @@ import { ItemPreview } from "../../../../src/components/pages";
 
 interface SearchAndSelectItemsProps {
   onClose: () => void;
-  addItem: (item: IItem, selectedVariantId: string) => void;
+  addItem: (itemId: string, variantId: string) => void;
 }
 
 const SearchAndSelectItems = ({
