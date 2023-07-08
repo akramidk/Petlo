@@ -25,7 +25,11 @@ const SelectItems = () => {
   const { t } = useTranslationsContext();
   const { data, setData } = useDataContext();
 
-  const selectedItemsData = useMemo(() => {
+  const selectedItemsData: {
+    itemId: string;
+    variantId: string;
+    quantity: number;
+  }[] = useMemo(() => {
     if (data?.itemsCalculation === undefined) return undefined;
 
     const array = [];
@@ -130,10 +134,20 @@ const SelectItems = () => {
   }, [savedCalculationResponse]);
 
   const isSaveButtonActive = useMemo(() => {
-    if (savedCalculationResponse === undefined) return false;
+    if (
+      savedCalculationResponse === undefined &&
+      selectedItemsData === undefined
+    )
+      return false;
+
+    if (selectedItemsData === undefined) {
+      return true;
+    }
 
     return true;
-  }, [savedCalculationResponse]);
+  }, [savedCalculationResponse, selectedItemsData]);
+
+  console.log("isSaveButtonActive", isSaveButtonActive);
 
   useEffect(() => {
     if (
