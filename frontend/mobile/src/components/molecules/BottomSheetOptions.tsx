@@ -33,6 +33,7 @@ const BottomSheetOptions = ({
       animationOut="fadeOut"
       style={{ margin: 0 }}
       isVisible={visible}
+      onBackdropPress={onClose}
     >
       <BottomSheet
         snapPoints={snapPoints}

@@ -46,6 +46,7 @@ const SearchAndSelectItems = ({
       animationIn="fadeIn"
       animationOut="fadeOut"
       style={{ margin: 0 }}
+      onBackdropPress={onClose}
       isVisible
     >
       <BottomSheet
@@ -79,6 +80,7 @@ const SearchAndSelectItems = ({
         animationOut="fadeOut"
         style={{ margin: 0 }}
         isVisible={!!openedItemPublicId}
+        onBackdropPress={() => setOpendItemPublicId(undefined)}
       >
         <BottomSheet
           snapPoints={["90%"]}
