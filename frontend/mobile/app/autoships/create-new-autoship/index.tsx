@@ -1,5 +1,5 @@
 import { useRouter } from "expo-router";
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { Filed } from "../../../src/components/atoms";
 import { DataCards, PageStructure } from "../../../src/components/organisms";
 import { Endpoints } from "../../../src/enums";
@@ -15,6 +15,8 @@ import {
   Pet,
   RecurringInterval,
   CalculateAutoshipItemsAmountResponse,
+  CreateAnAutoshipRequest,
+  CreateAnAutoshipResponse,
 } from "../../../src/interfaces";
 import NextShipment from "./interfaces/NextShipment";
 
@@ -139,7 +141,10 @@ const CreateNewAutoship = () => {
     recurringIntervalCount &&
     itemsCalculation;
 
-  const { response, trigger, status } = useAPIMutation<void, void>({
+  const { response, trigger, status } = useAPIMutation<
+    CreateAnAutoshipRequest,
+    CreateAnAutoshipResponse
+  >({
     endpoint: Endpoints.CREATE_AN_AUTOSHIP,
     method: "POST",
     options: {
@@ -149,6 +154,10 @@ const CreateNewAutoship = () => {
       resetSucceededStatusAfter: 2000,
     },
   });
+
+  const createHandler = useCallback(() => {
+    //
+  }, []);
 
   useEffect(() => {
     if (name) setData({ ...data, name });

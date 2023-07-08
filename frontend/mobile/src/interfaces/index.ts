@@ -138,6 +138,10 @@ import {
   CalculateAutoshipItemsAmountRequest,
   CalculateAutoshipItemsAmountResponse,
 } from "./Endpoints/CalculateAutoshipItemsAmount";
+import {
+  CreateAnAutoshipRequest,
+  CreateAnAutoshipResponse,
+} from "./Endpoints/CreateAnAutoship";
 
 //entities interfaces
 import { Customer } from "./Entities/Customer";
@@ -240,6 +244,8 @@ export {
   CreateNewOrderRequest,
   CreateNewOrderResponse,
   OrdersResponse,
+  CreateAnAutoshipRequest,
+  CreateAnAutoshipResponse,
   Customer,
   Cart,
   DataCardProps,
