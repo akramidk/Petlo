@@ -34,6 +34,7 @@ const CreateNewAutoship = () => {
   const recurringIntervalCount: number = data?.recurringIntervalCount;
   const itemsCalculation: CalculateAutoshipItemsAmountResponse =
     data?.itemsCalculation;
+  const deliveryCalculation = data?.deliveryCalculation;
   const selectedItems: {
     itemId: string;
     variantId: string;
