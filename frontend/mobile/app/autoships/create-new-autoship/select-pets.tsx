@@ -122,7 +122,7 @@ const SelectPets = () => {
 
       <Link
         valueCN="text-[#9747FF] text-[14px]"
-        value="+ Add New Pet To Use"
+        value={t("CREATE_AN_AUTOSHIP__ADD_NEW_PET_TO_USE")}
         onClick={() => router.push("/account/pets/add-new-pet")}
       />
     </PageStructure>
