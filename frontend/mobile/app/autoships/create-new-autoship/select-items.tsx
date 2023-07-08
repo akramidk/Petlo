@@ -103,6 +103,12 @@ const SelectItems = () => {
     return array;
   }, [savedCalculationResponse]);
 
+  const isSaveButtonActive = useMemo(() => {
+    if (savedCalculationResponse === undefined) return false;
+
+    return true;
+  }, [savedCalculationResponse]);
+
   useEffect(() => {
     if (
       calculationResponse === undefined ||
@@ -149,7 +155,7 @@ const SelectItems = () => {
           onClick: () => {
             router.back();
           },
-          status: "inactive",
+          status: isSaveButtonActive ? "active" : "inactive",
         }}
         floatingElementCN="bottom-[152px]"
         floatingElement={
