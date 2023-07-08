@@ -12,12 +12,15 @@ import {
 } from "../../../src/hooks";
 import {
   BaseOption,
+  CalculateDeliveryAmountRequest,
+  CalculateDeliveryAmountResponse,
   CustomerAddressesRequest,
   CustomerAddressesResponse,
 } from "../../../src/interfaces";
 import { Loading } from "../../../src/components/pages";
 import { View } from "react-native";
 import clsx from "clsx";
+import { ActivityIndicator } from "react-native-paper";
 
 const SelectAddress = () => {
   const router = useRouter();
@@ -36,13 +39,16 @@ const SelectAddress = () => {
     },
   });
 
-  const { response: calculationResponse } = useAPIFetching<any, any>({
+  const { response: calculationResponse } = useAPIFetching<
+    CalculateDeliveryAmountRequest,
+    CalculateDeliveryAmountResponse
+  >({
     endpoint: Endpoints.CALCULATE_DELIVERY_AMOUNT,
     options: {
       wait: address === undefined,
     },
     body: {
-      address_id: address?.id,
+      address_id: address?.id as string,
     },
   });
 
@@ -130,12 +136,14 @@ const SelectAddress = () => {
             Delivery Amount
           </Text>
           <Text font="semiBold" cn="text-[14px] text-[#666]">
-            {address === undefined
-              ? "bl bla"
-              : calculationResponse === undefined ||
-                calculationResponse.isFetching
-              ? "loading"
-              : calculationResponse.body}
+            {address === undefined ? (
+              "bl bla"
+            ) : calculationResponse === undefined ||
+              calculationResponse.isFetching ? (
+              <ActivityIndicator animating={true} color="#666" size={14} />
+            ) : (
+              `${calculationResponse.body.amount} ${calculationResponse.body.currency}`
+            )}
           </Text>
         </View>
       </View>
