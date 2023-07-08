@@ -182,17 +182,27 @@ const CreateNewAutoship = () => {
 
     trigger({
       name,
+      next_shipment_on: nextShipmentOn,
       recurring_interval: recurringInterval.id,
       recurring_interval_count: recurringIntervalCount,
-      next_shipment_on: nextShipmentOn,
       address_id: address.public_id,
       items: items,
       payment: {
         method: "cash",
         ...cardObj,
       },
+      pets: pets ? pets.map((pet) => pet.public_id) : undefined,
     });
-  }, []);
+  }, [
+    name,
+    nextShipment,
+    recurringInterval,
+    recurringIntervalCount,
+    address,
+    selectedItems,
+    payment,
+    pets,
+  ]);
 
   useEffect(() => {
     if (name) setData({ ...data, name });
@@ -203,7 +213,7 @@ const CreateNewAutoship = () => {
       title={t("CREATE_AN_AUTOSHIP__TITLE")}
       button={{
         value: t("COMMON__CREATE"),
-        onClick: () => {},
+        onClick: createHandler,
         status: isCreateButtonActive ? "active" : "inactive",
       }}
       link={{
