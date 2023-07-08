@@ -188,8 +188,10 @@ const SelectItems = () => {
           renderItem={(item) => {
             return <ItemViewer {...item} add={add} remove={remove} />;
           }}
-          detailsTranslationValue="Items Calculation"
-          totalTranslationValue="Total Amount"
+          detailsTranslationValue={t("CREATE_AN_AUTOSHIP__ITEMS_CALCULATION")}
+          totalTranslationValue={t(
+            "CREATE_AN_AUTOSHIP__ITEMS_CALCULATION_TOTAL_AMOUNT"
+          )}
           amount={savedCalculationResponse?.amount}
           currency={savedCalculationResponse?.currency}
           isAmountLoading={calculationResponse?.status === "loading"}

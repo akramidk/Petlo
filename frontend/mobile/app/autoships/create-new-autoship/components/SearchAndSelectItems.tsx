@@ -2,7 +2,7 @@ import { SearchFiled, Text } from "../../../../src/components/atoms";
 import BottomSheet, { BottomSheetScrollView } from "@gorhom/bottom-sheet";
 import Modal from "react-native-modal";
 import { useState } from "react";
-import { useAPIFetching } from "../../../../src/hooks";
+import { useAPIFetching, useTranslationsContext } from "../../../../src/hooks";
 import {
   Item as IItem,
   SearchRequest,
@@ -25,6 +25,8 @@ const SearchAndSelectItems = ({
   addItem,
   addStatus,
 }: SearchAndSelectItemsProps) => {
+  const { t } = useTranslationsContext();
+
   const [searchValue, setSearchValue] = useState("");
   const { response } = useAPIFetching<SearchRequest, SearchResponse>({
     endpoint: Endpoints.SEARCH,
@@ -92,7 +94,7 @@ const SearchAndSelectItems = ({
             publicId={openedItemPublicId}
             onBack={() => setOpendItemPublicId(undefined)}
             onAdd={addItem}
-            addTranslationValue="add"
+            addTranslationValue={t("CREATE_AN_AUTOSHIP__ADD_ITEM_TO_AUTOSHIP")}
             bottomContainerCN="pb-[32px]"
             addStatus={addStatus}
           />

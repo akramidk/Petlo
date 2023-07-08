@@ -256,9 +256,13 @@
   "CREATE_AN_AUTOSHIP__RECURRING_INTERVAL_INVALID_DAYS": "يجب ان يكون بين 5 الى 90 يوم",
   "CREATE_AN_AUTOSHIP__RECURRING_INTERVAL_INVALID_MONTHS": "يجب ان يكون ما بين 1 الى 3 اشهر",
   "CREATE_AN_AUTOSHIP__NO_ITEMS_ADDED": "لم يتم اضافة منتجات",
+  "CREATE_AN_AUTOSHIP__ADD_AN_ITEM": "اضافة منتج",
   "CREATE_AN_AUTOSHIP__PAYMENT_DETAILS": "تفاصيل الدفع",
   "CREATE_AN_AUTOSHIP__ITEMS_AMOUNT": "قيمة المنتجات",
   "CREATE_AN_AUTOSHIP__DELIVERY_AMOUNT": "قيمة التوصيل",
   "CREATE_AN_AUTOSHIP__NO_ITEMS_ARE_SELECTED": "لا يوجد منتجات مختارة",
-  "CREATE_AN_AUTOSHIP__NO_ADDRESS_IS_SELECTED": "لا يوجد عنوان توصيل مختار"
+  "CREATE_AN_AUTOSHIP__NO_ADDRESS_IS_SELECTED": "لا يوجد عنوان توصيل مختار",
+  "CREATE_AN_AUTOSHIP__ADD_ITEM_TO_AUTOSHIP": "اضافة",
+  "CREATE_AN_AUTOSHIP__ITEMS_CALCULATION": "حساب المنتجات",
+  "CREATE_AN_AUTOSHIP__ITEMS_CALCULATION_TOTAL_AMOUNT": "القيمة الكلية"
 }
