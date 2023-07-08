@@ -4,13 +4,15 @@ import { View } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { SearchFiled } from "../../src/components/atoms";
 import { Endpoints } from "../../src/enums";
-import { useAPIFetching } from "../../src/hooks";
+import { useAPIFetching, useTranslationsContext } from "../../src/hooks";
 import { SearchRequest, SearchResponse } from "../../src/interfaces";
 import { Item } from "../../src/components/molecules";
 import { Loading } from "../../src/components/pages";
+import { Text } from "../../src/components/atoms";
 
 const Search = () => {
   const router = useRouter();
+  const { t } = useTranslationsContext();
 
   const [searchValue, setSearchValue] = useState("");
   const { response } = useAPIFetching<SearchRequest, SearchResponse>({
@@ -39,19 +41,26 @@ const Search = () => {
       ) : (
         <ScrollView className="grow px-[28px]">
           <View className="py-[28px] space-y-[12px]">
-            {response?.body?.data?.map((item, i) => {
-              return (
-                <View key={i}>
-                  <Item
-                    variant="large"
-                    data={item}
-                    onClick={() =>
-                      router.push(`/item?publicId=${item.public_id}`)
-                    }
-                  />
-                </View>
-              );
-            })}
+            {searchValue.trim().length > 0 &&
+            response?.body?.data?.length === 0 ? (
+              <Text font="medium" cn="text-[#666] text-[14px] self-center">
+                {t("COMMON__NOTHING_FOUND")}
+              </Text>
+            ) : (
+              response?.body?.data?.map((item, i) => {
+                return (
+                  <View key={i}>
+                    <Item
+                      variant="large"
+                      data={item}
+                      onClick={() =>
+                        router.push(`/item?publicId=${item.public_id}`)
+                      }
+                    />
+                  </View>
+                );
+              })
+            )}
           </View>
         </ScrollView>
       )}
