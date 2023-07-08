@@ -117,8 +117,6 @@ const SelectItems = () => {
     return true;
   }, [savedCalculationResponse]);
 
-  console.log("isSaveButtonActive", isSaveButtonActive);
-
   useEffect(() => {
     if (
       calculationResponse === undefined ||

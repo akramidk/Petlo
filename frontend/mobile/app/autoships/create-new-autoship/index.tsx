@@ -161,9 +161,11 @@ const CreateNewAutoship = () => {
     method: "POST",
     options: {
       onSucceeded: () => {
-        //
+        setData(undefined);
+        router.back();
       },
       resetSucceededStatusAfter: 2000,
+      fireOnSucceededAfter: 2000,
     },
   });
 
