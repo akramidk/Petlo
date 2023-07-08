@@ -1,12 +1,10 @@
 import clsx from "clsx";
 import React from "react";
 import { View } from "react-native";
-import {
-  useInternationalizationContext,
-  useTranslationsContext,
-} from "../../hooks";
+import { useInternationalizationContext } from "../../hooks";
 import { CartItemProps } from "../../interfaces";
 import { Text } from "../atoms";
+import { ActivityIndicator } from "react-native-paper";
 
 interface ItemsViewerProps {
   items: CartItemProps[];
@@ -15,6 +13,7 @@ interface ItemsViewerProps {
   totalTranslationValue: string;
   amount?: string;
   currency?: string;
+  isAmountLoading?: boolean;
 }
 
 const ItemsViewer = ({
@@ -24,6 +23,7 @@ const ItemsViewer = ({
   totalTranslationValue,
   amount,
   currency,
+  isAmountLoading,
 }: ItemsViewerProps) => {
   const { direction } = useInternationalizationContext();
 
@@ -35,7 +35,7 @@ const ItemsViewer = ({
         })}
       </View>
 
-      {amount && amount !== "0.00" && (
+      {((amount && amount !== "0.00") || isAmountLoading) && (
         <View>
           <Text font="extraBold" cn="text-[15px] text-[#0E333C] mb-[12px]">
             {detailsTranslationValue}
@@ -51,7 +51,11 @@ const ItemsViewer = ({
               {totalTranslationValue}
             </Text>
             <Text font="semiBold" cn="text-[14px] text-[#666]">
-              {amount} {currency}
+              {isAmountLoading ? (
+                <ActivityIndicator animating={true} color="#666" size={14} />
+              ) : (
+                `${amount} ${currency}`
+              )}
             </Text>
           </View>
         </View>

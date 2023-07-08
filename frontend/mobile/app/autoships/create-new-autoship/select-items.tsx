@@ -171,6 +171,7 @@ const SelectItems = () => {
           totalTranslationValue="Total Amount"
           amount={savedCalculationResponse?.amount}
           currency={savedCalculationResponse?.currency}
+          isAmountLoading={calculationResponse?.status === "loading"}
         />
       </PageStructure>
     </>
