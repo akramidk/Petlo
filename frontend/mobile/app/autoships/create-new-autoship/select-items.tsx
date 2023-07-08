@@ -166,13 +166,8 @@ const SelectItems = () => {
             );
           }}
           totalTranslationValue="Total Amount"
-          amount={
-            items === undefined ||
-            items.length === 0 ||
-            calculationResponse === undefined
-              ? undefined
-              : `${calculationResponse.body.amount} ${calculationResponse.body.currency}`
-          }
+          amount={calculationResponse?.body?.amount}
+          currency={calculationResponse?.body?.currency}
         />
       </PageStructure>
     </>
