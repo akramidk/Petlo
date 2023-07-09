@@ -195,7 +195,9 @@
     "CHANGE_ADDRESS": "Change Address",
     "CHANGE_ITEMS": "Change Items",
     "CHANGE_PAYMENT_INFORMATION": "Change Payment Information",
-    "CHANGE_PETS": "Change Pets"
+    "CHANGE_PETS": "Change Pets",
+    "DEACTIVATE_AUTOSHIP": "Deactivate Autoship",
+    "REACTIVATE": "reactivate"
   },
   "CREATE_AN_AUTOSHIP__TITLE": "Create An Autoship",
   "CREATE_AN_AUTOSHIP__NAME_FILED_LABEL": "Autoship Name",

@@ -40,6 +40,7 @@ const Autoships = () => {
             onClick: () => {},
           },
           { name: t("AUTOSHIPS__ACTIONS.CHANGE_PETS"), onClick: () => {} },
+          { name: t("AUTOSHIPS__ACTIONS.CHANGE_PETS"), onClick: () => {} },
         ],
       };
     });

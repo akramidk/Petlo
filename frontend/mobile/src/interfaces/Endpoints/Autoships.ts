@@ -3,7 +3,7 @@ export interface AutoshipsResponse {
   data: {
     public_id: string;
     name: string;
-    status: string;
+    status: "active" | "inactive" | "deactivated";
     next_shipment_on: string;
   }[];
 }

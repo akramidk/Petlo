@@ -23,7 +23,7 @@ const BottomSheetOptions = ({
 }: BottomSheetOptionsProps) => {
   const snapPoints = useMemo(
     () =>
-      actions.length > 4 ? ["40%"] : [ACTION_HEIGHT * actions.length + 60],
+      actions.length > 4 ? ["45%"] : [ACTION_HEIGHT * actions.length + 60],
     [actions]
   );
 
