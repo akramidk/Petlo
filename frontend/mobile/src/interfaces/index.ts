@@ -150,6 +150,10 @@ import {
   ChangeAutoshipNameRequest,
   ChangeAutoshipNameResponse,
 } from "./Endpoints/ChangeAutoshipName";
+import {
+  ChangeAutoshipAddressRequest,
+  ChangeAutoshipAddressResponse,
+} from "./Endpoints/ChangeAutoshipAddress";
 
 //entities interfaces
 import { Customer } from "./Entities/Customer";
@@ -258,6 +262,8 @@ export {
   CalculateDeliveryAmountResponse,
   ChangeAutoshipNameRequest,
   ChangeAutoshipNameResponse,
+  ChangeAutoshipAddressRequest,
+  ChangeAutoshipAddressResponse,
   Customer,
   Cart,
   DataCardProps,

@@ -15,6 +15,8 @@ import {
   BaseOption,
   CalculateDeliveryAmountRequest,
   CalculateDeliveryAmountResponse,
+  ChangeAutoshipAddressRequest,
+  ChangeAutoshipAddressResponse,
   CustomerAddressesRequest,
   CustomerAddressesResponse,
 } from "../../src/interfaces";
@@ -71,7 +73,10 @@ const Address = () => {
     });
   }, [addressesResponse]);
 
-  const { trigger, status } = useAPIMutation<void, void>({
+  const { trigger, status } = useAPIMutation<
+    ChangeAutoshipAddressRequest,
+    ChangeAutoshipAddressResponse
+  >({
     endpoint: Endpoints.CHANGE_AUTOSHIP_ADDRESS,
     method: "PATCH",
     options: {
@@ -109,6 +114,7 @@ const Address = () => {
         value: isChange ? t("COMMON__CHANGE") : t("COMMON__SELECT"),
         onClick: () => {
           if (isChange) {
+            trigger({ address_id: address.id as string });
             return;
           }
 
