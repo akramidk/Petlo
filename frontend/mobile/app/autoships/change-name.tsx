@@ -32,7 +32,7 @@ const ChangeName = () => {
 
   return (
     <PageStructure
-      title="Change Autoship Name"
+      title={t("CHANGE_AUTOSHIP_NAME__TITLE")}
       button={{
         value: t("COMMON__CHANGE"),
         onClick: () => trigger({ name: name }),
