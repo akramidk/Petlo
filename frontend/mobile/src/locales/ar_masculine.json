@@ -203,7 +203,9 @@
     "CHANGE_ADDRESS": "تغيير عنوان الشحن",
     "CHANGE_ITEMS": "تغيير المنتجات",
     "CHANGE_PAYMENT_INFORMATION": "تغيير طريقة الدفع",
-    "CHANGE_PETS": "تغيير الحيوانات"
+    "CHANGE_PETS": "تغيير الحيوانات",
+    "DEACTIVATE_AUTOSHIP": "ايقاف الاوتوشيب",
+    "REACTIVATE": "اعادة التفعيل"
   },
   "CREATE_AN_AUTOSHIP__TITLE": "أنشئ أوتوشيب",
   "CREATE_AN_AUTOSHIP__NAME_FILED_LABEL": "اسم الأوتوشيب",

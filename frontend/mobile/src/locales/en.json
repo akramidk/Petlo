@@ -197,7 +197,7 @@
     "CHANGE_PAYMENT_INFORMATION": "Change Payment Information",
     "CHANGE_PETS": "Change Pets",
     "DEACTIVATE_AUTOSHIP": "Deactivate Autoship",
-    "REACTIVATE": "reactivate"
+    "REACTIVATE": "Reactivate"
   },
   "CREATE_AN_AUTOSHIP__TITLE": "Create An Autoship",
   "CREATE_AN_AUTOSHIP__NAME_FILED_LABEL": "Autoship Name",

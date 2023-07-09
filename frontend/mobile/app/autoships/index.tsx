@@ -23,12 +23,10 @@ const Autoships = () => {
     if (response.isFetching) return [];
 
     return response.body.data.map((autoship) => {
-      return {
-        primaryText: autoship.name,
-        secondaryText: `${t(
-          "AUTOSHIPS__NEXT_SHIPMENT_ON"
-        )} ${autoship.next_shipment_on.split("-").reverse().join("-")}`,
-        actions: [
+      const actions = [];
+
+      if (autoship.status === "active") {
+        actions.push(
           {
             name: t("AUTOSHIPS__ACTIONS.CHANGE_NAME"),
             onClick: () => router.push("/autoships/change-name"),
@@ -40,8 +38,21 @@ const Autoships = () => {
             onClick: () => {},
           },
           { name: t("AUTOSHIPS__ACTIONS.CHANGE_PETS"), onClick: () => {} },
-          { name: t("AUTOSHIPS__ACTIONS.CHANGE_PETS"), onClick: () => {} },
-        ],
+          { name: t("AUTOSHIPS__ACTIONS.CHANGE_PETS"), onClick: () => {} }
+        );
+      } else {
+        actions.push({
+          name: t("AUTOSHIPS__ACTIONS.REACTIVATE"),
+          onClick: () => {},
+        });
+      }
+
+      return {
+        primaryText: autoship.name,
+        secondaryText: `${t(
+          "AUTOSHIPS__NEXT_SHIPMENT_ON"
+        )} ${autoship.next_shipment_on.split("-").reverse().join("-")}`,
+        actions: actions,
       };
     });
   }, [response]);
