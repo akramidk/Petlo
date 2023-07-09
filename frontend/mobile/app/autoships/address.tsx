@@ -22,7 +22,7 @@ import { View } from "react-native";
 import clsx from "clsx";
 import { ActivityIndicator } from "react-native-paper";
 
-const SelectAddress = () => {
+const Address = () => {
   const router = useRouter();
   const { t } = useTranslationsContext();
   const { data, setData } = useDataContext();
@@ -152,4 +152,4 @@ const SelectAddress = () => {
   );
 };
 
-export default SelectAddress;
+export default Address;
