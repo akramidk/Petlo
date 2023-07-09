@@ -6,6 +6,7 @@ import { PageStructure } from "../../src/components/organisms";
 import { Endpoints } from "../../src/enums";
 import {
   useAPIFetching,
+  useAPIMutation,
   useDataContext,
   useInternationalizationContext,
   useTranslationsContext,
@@ -24,14 +25,12 @@ import { ActivityIndicator } from "react-native-paper";
 
 const Address = () => {
   const router = useRouter();
-  const { type } = useSearchParams();
   const { t } = useTranslationsContext();
   const { data, setData } = useDataContext();
+  const { type, publicId } = useSearchParams();
   const { direction } = useInternationalizationContext();
 
   const isChange = type === "change";
-
-  console.log("isChange", isChange);
 
   const [address, setAddress] = useState<BaseOption>();
   const { response: addressesResponse } = useAPIFetching<
@@ -72,6 +71,21 @@ const Address = () => {
     });
   }, [addressesResponse]);
 
+  const { trigger, status } = useAPIMutation<void, void>({
+    endpoint: Endpoints.CHANGE_AUTOSHIP_ADDRESS,
+    method: "PATCH",
+    options: {
+      onSucceeded: () => {
+        setData(undefined);
+        router.back();
+      },
+      fireOnSucceededAfter: 1000,
+    },
+    slugs: {
+      publicId: publicId,
+    },
+  });
+
   useEffect(() => {
     if ((addresses ?? []).length === 0 || data?.address === undefined) return;
 
@@ -109,11 +123,16 @@ const Address = () => {
           router.back();
         },
         status:
-          address === undefined || address?.id === data?.address?.public_id
+          status ??
+          (address === undefined || address?.id === data?.address?.public_id
             ? "inactive"
-            : "active",
+            : "active"),
       }}
-      link={{ value: t("COMMON__CANCEL"), onClick: router.back }}
+      link={{
+        value: t("COMMON__CANCEL"),
+        onClick: router.back,
+        status: status ? "inactive" : "active",
+      }}
     >
       <OptionsWithLabel
         cn="mb-[12px]"
