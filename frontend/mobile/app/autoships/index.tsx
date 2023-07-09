@@ -29,7 +29,10 @@ const Autoships = () => {
         actions.push(
           {
             name: t("AUTOSHIPS__ACTIONS.CHANGE_NAME"),
-            onClick: () => router.push("/autoships/change-name"),
+            onClick: () =>
+              router.push(
+                `/autoships/change-name?publicId=${autoship.public_id}`
+              ),
           },
           { name: t("AUTOSHIPS__ACTIONS.CHANGE_ADDRESS"), onClick: () => {} },
           { name: t("AUTOSHIPS__ACTIONS.CHANGE_ITEMS"), onClick: () => {} },
