@@ -86,10 +86,18 @@ const Address = () => {
 
   return (
     <PageStructure
-      title={t("CREATE_AN_AUTOSHIP__STEPS.WHERE.PRIMARY_TEXT")}
+      title={
+        isChange
+          ? t("CHANGE_AUTOSHIP_ADDRESS__TITLE")
+          : t("CREATE_AN_AUTOSHIP__STEPS.WHERE.PRIMARY_TEXT")
+      }
       button={{
-        value: t("COMMON__SELECT"),
+        value: isChange ? t("COMMON__CHANGE") : t("COMMON__SELECT"),
         onClick: () => {
+          if (isChange) {
+            return;
+          }
+
           setData({
             ...data,
             address: addressesResponse.body.data.find(
