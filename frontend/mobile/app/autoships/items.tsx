@@ -18,9 +18,7 @@ import SearchAndSelectItems from "./components/SearchAndSelectItems";
 import { ItemViewer } from "../../src/components/molecules";
 import { Endpoints } from "../../src/enums";
 
-//TODO the calculation should hapeend in the back
-
-const SelectItems = () => {
+const Items = () => {
   const router = useRouter();
   const { t } = useTranslationsContext();
   const { data, setData } = useDataContext();
@@ -201,4 +199,4 @@ const SelectItems = () => {
   );
 };
 
-export default SelectItems;
+export default Items;

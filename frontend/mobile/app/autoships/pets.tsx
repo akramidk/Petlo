@@ -18,7 +18,7 @@ import { DataCard } from "../../src/components/molecules";
 import { Loading } from "../../src/components/pages";
 import { buttonStatus } from "../../src/types";
 
-const SelectPets = () => {
+const Pets = () => {
   const router = useRouter();
   const { t } = useTranslationsContext();
   const { data, setData } = useDataContext();
@@ -129,4 +129,4 @@ const SelectPets = () => {
   );
 };
 
-export default SelectPets;
+export default Pets;

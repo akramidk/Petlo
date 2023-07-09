@@ -15,7 +15,7 @@ import { BaseOption, RecurringInterval } from "../../src/interfaces";
 import { Text } from "../../src/components/atoms";
 import clsx from "clsx";
 
-const SelectDate = () => {
+const Date = () => {
   const router = useRouter();
   const { t } = useTranslationsContext();
   const { data, setData } = useDataContext();
@@ -127,4 +127,4 @@ const SelectDate = () => {
   );
 };
 
-export default SelectDate;
+export default Date;

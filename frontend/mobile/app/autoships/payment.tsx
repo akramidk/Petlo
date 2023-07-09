@@ -12,7 +12,7 @@ import {
   BaseOption,
   CustomerCardsRequest,
   CustomerCardsResponse,
-  Payment,
+  Payment as IPayment,
 } from "../../src/interfaces";
 import { Link, OptionsWithLabel } from "../../src/components/atoms";
 import { View } from "react-native";
@@ -21,13 +21,13 @@ import { cardToDataCard } from "../../src/utils";
 import { DataCard } from "../../src/components/molecules";
 import { Loading } from "../../src/components/pages";
 
-const SelectPayment = () => {
+const Payment = () => {
   const router = useRouter();
   const { t } = useTranslationsContext();
   const { data, setData } = useDataContext();
   const { direction } = useInternationalizationContext();
 
-  const payment: Payment = data?.payment;
+  const payment: IPayment = data?.payment;
   const [paymentMethod, setPaymentMethod] = useState<BaseOption>();
   const [card, setCard] = useState<BaseOption>();
 
@@ -83,8 +83,8 @@ const SelectPayment = () => {
       button={{
         value: t("COMMON__SELECT"),
         onClick: () => {
-          let payment: Payment = {
-            method: paymentMethod.id as Payment["method"],
+          let payment: IPayment = {
+            method: paymentMethod.id as IPayment["method"],
           };
 
           if (payment.method === "card") {
@@ -160,4 +160,4 @@ const SelectPayment = () => {
   );
 };
 
-export default SelectPayment;
+export default Payment;
