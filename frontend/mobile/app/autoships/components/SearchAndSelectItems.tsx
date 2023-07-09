@@ -1,18 +1,18 @@
-import { SearchFiled, Text } from "../../../../src/components/atoms";
+import { SearchFiled, Text } from "../../../src/components/atoms";
 import BottomSheet, { BottomSheetScrollView } from "@gorhom/bottom-sheet";
 import Modal from "react-native-modal";
 import { useState } from "react";
-import { useAPIFetching, useTranslationsContext } from "../../../../src/hooks";
+import { useAPIFetching, useTranslationsContext } from "../../../src/hooks";
 import {
   Item as IItem,
   SearchRequest,
   SearchResponse,
-} from "../../../../src/interfaces";
-import { Endpoints } from "../../../../src/enums";
+} from "../../../src/interfaces";
+import { Endpoints } from "../../../src/enums";
 import { View } from "react-native";
-import { Item } from "../../../../src/components/molecules";
-import { ItemPreview, Loading } from "../../../../src/components/pages";
-import { buttonStatus } from "../../../../src/types";
+import { Item } from "../../../src/components/molecules";
+import { ItemPreview, Loading } from "../../../src/components/pages";
+import { buttonStatus } from "../../../src/types";
 
 interface SearchAndSelectItemsProps {
   onClose: () => void;

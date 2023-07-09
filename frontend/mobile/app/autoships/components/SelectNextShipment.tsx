@@ -1,15 +1,15 @@
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { DateTime } from "luxon";
-import BaseSelector from "../../../../src/components/bases/BaseSelector";
+import BaseSelector from "../../../src/components/bases/BaseSelector";
 import { View } from "react-native";
-import BaseLabel from "../../../../src/components/bases/BaseLabel";
+import BaseLabel from "../../../src/components/bases/BaseLabel";
 import Popover from "react-native-popover-view";
 import { Dispatch, SetStateAction, useState } from "react";
 import NextShipment from "../interfaces/NextShipment";
 import {
   useInternationalizationContext,
   useTranslationsContext,
-} from "../../../../src/hooks";
+} from "../../../src/hooks";
 
 interface SelectNextShipment {
   value: NextShipment;

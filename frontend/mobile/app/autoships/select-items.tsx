@@ -1,22 +1,22 @@
 import { useRouter } from "expo-router";
 import { useEffect, useMemo, useState } from "react";
-import { ItemsViewer, PageStructure } from "../../../src/components/organisms";
+import { ItemsViewer, PageStructure } from "../../src/components/organisms";
 import {
   useAPIMutation,
   useDataContext,
   useTranslationsContext,
-} from "../../../src/hooks";
+} from "../../src/hooks";
 import {
   CalculateAutoshipItemsAmountRequest,
   CalculateAutoshipItemsAmountResponse,
   CartItemProps,
   Item,
-} from "../../../src/interfaces";
-import { BaseButton } from "../../../src/components/bases";
-import { Text } from "../../../src/components/atoms";
+} from "../../src/interfaces";
+import { BaseButton } from "../../src/components/bases";
+import { Text } from "../../src/components/atoms";
 import SearchAndSelectItems from "./components/SearchAndSelectItems";
-import { ItemViewer } from "../../../src/components/molecules";
-import { Endpoints } from "../../../src/enums";
+import { ItemViewer } from "../../src/components/molecules";
+import { Endpoints } from "../../src/enums";
 
 //TODO the calculation should hapeend in the back
 

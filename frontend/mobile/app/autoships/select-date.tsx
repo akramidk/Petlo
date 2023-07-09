@@ -1,18 +1,18 @@
-import { PageStructure } from "../../../src/components/organisms";
+import { PageStructure } from "../../src/components/organisms";
 import {
   useDataContext,
   useInternationalizationContext,
   useTranslationsContext,
-} from "../../../src/hooks";
+} from "../../src/hooks";
 import { useRouter } from "expo-router";
 import { useState } from "react";
 import SelectNextShipment from "./components/SelectNextShipment";
 import NextShipment from "./interfaces/NextShipment";
 import SelectThePeriod from "./components/SelectThePeriod";
 import { View } from "react-native";
-import { AUTOSHIP_RECURRING_INTERVAL_OPTIONS } from "../../../src/constants";
-import { BaseOption, RecurringInterval } from "../../../src/interfaces";
-import { Text } from "../../../src/components/atoms";
+import { AUTOSHIP_RECURRING_INTERVAL_OPTIONS } from "../../src/constants";
+import { BaseOption, RecurringInterval } from "../../src/interfaces";
+import { Text } from "../../src/components/atoms";
 import clsx from "clsx";
 
 const SelectDate = () => {

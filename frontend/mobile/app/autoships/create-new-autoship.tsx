@@ -1,14 +1,14 @@
 import { useRouter } from "expo-router";
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { Filed, Text } from "../../../src/components/atoms";
-import { DataCards, PageStructure } from "../../../src/components/organisms";
-import { Endpoints } from "../../../src/enums";
+import { Filed, Text } from "../../src/components/atoms";
+import { DataCards, PageStructure } from "../../src/components/organisms";
+import { Endpoints } from "../../src/enums";
 import {
   useAPIMutation,
   useDataContext,
   useInternationalizationContext,
   useTranslationsContext,
-} from "../../../src/hooks";
+} from "../../src/hooks";
 import {
   DataCardProps,
   Address,
@@ -19,11 +19,11 @@ import {
   CreateAnAutoshipRequest,
   CreateAnAutoshipResponse,
   CalculateDeliveryAmountResponse,
-} from "../../../src/interfaces";
+} from "../../src/interfaces";
 import NextShipment from "./interfaces/NextShipment";
 import { View } from "react-native";
 import clsx from "clsx";
-import BaseLabel from "../../../src/components/bases/BaseLabel";
+import BaseLabel from "../../src/components/bases/BaseLabel";
 
 const CreateNewAutoship = () => {
   const router = useRouter();

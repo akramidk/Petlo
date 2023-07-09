@@ -1,25 +1,25 @@
 import { useRouter } from "expo-router";
 import { useEffect, useMemo, useState } from "react";
-import { PageStructure } from "../../../src/components/organisms";
-import { PAYMENT_METHODS } from "../../../src/constants";
+import { PageStructure } from "../../src/components/organisms";
+import { PAYMENT_METHODS } from "../../src/constants";
 import {
   useAPIFetching,
   useDataContext,
   useInternationalizationContext,
   useTranslationsContext,
-} from "../../../src/hooks";
+} from "../../src/hooks";
 import {
   BaseOption,
   CustomerCardsRequest,
   CustomerCardsResponse,
   Payment,
-} from "../../../src/interfaces";
-import { Link, OptionsWithLabel } from "../../../src/components/atoms";
+} from "../../src/interfaces";
+import { Link, OptionsWithLabel } from "../../src/components/atoms";
 import { View } from "react-native";
-import { Endpoints } from "../../../src/enums";
-import { cardToDataCard } from "../../../src/utils";
-import { DataCard } from "../../../src/components/molecules";
-import { Loading } from "../../../src/components/pages";
+import { Endpoints } from "../../src/enums";
+import { cardToDataCard } from "../../src/utils";
+import { DataCard } from "../../src/components/molecules";
+import { Loading } from "../../src/components/pages";
 
 const SelectPayment = () => {
   const router = useRouter();

@@ -1,14 +1,14 @@
 import clsx from "clsx";
 import { Dispatch, SetStateAction } from "react";
 import { View } from "react-native";
-import { Filed, Selector } from "../../../../src/components/atoms";
-import BaseLabel from "../../../../src/components/bases/BaseLabel";
-import { AUTOSHIP_RECURRING_INTERVAL_OPTIONS } from "../../../../src/constants";
+import { Filed, Selector } from "../../../src/components/atoms";
+import BaseLabel from "../../../src/components/bases/BaseLabel";
+import { AUTOSHIP_RECURRING_INTERVAL_OPTIONS } from "../../../src/constants";
 import {
   useInternationalizationContext,
   useTranslationsContext,
-} from "../../../../src/hooks";
-import { BaseOption, RecurringInterval } from "../../../../src/interfaces";
+} from "../../../src/hooks";
+import { BaseOption, RecurringInterval } from "../../../src/interfaces";
 
 interface SelectThePeriodProps {
   recurringInterval: RecurringInterval;

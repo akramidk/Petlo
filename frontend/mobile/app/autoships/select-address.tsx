@@ -1,23 +1,23 @@
 import { useRouter } from "expo-router";
 import React, { useEffect, useMemo, useState } from "react";
-import { Link, OptionsWithLabel, Text } from "../../../src/components/atoms";
-import { DataCard } from "../../../src/components/molecules";
-import { PageStructure } from "../../../src/components/organisms";
-import { Endpoints } from "../../../src/enums";
+import { Link, OptionsWithLabel, Text } from "../../src/components/atoms";
+import { DataCard } from "../../src/components/molecules";
+import { PageStructure } from "../../src/components/organisms";
+import { Endpoints } from "../../src/enums";
 import {
   useAPIFetching,
   useDataContext,
   useInternationalizationContext,
   useTranslationsContext,
-} from "../../../src/hooks";
+} from "../../src/hooks";
 import {
   BaseOption,
   CalculateDeliveryAmountRequest,
   CalculateDeliveryAmountResponse,
   CustomerAddressesRequest,
   CustomerAddressesResponse,
-} from "../../../src/interfaces";
-import { Loading } from "../../../src/components/pages";
+} from "../../src/interfaces";
+import { Loading } from "../../src/components/pages";
 import { View } from "react-native";
 import clsx from "clsx";
 import { ActivityIndicator } from "react-native-paper";

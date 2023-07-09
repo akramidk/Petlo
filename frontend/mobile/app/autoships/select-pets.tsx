@@ -1,22 +1,22 @@
-import { PageStructure } from "../../../src/components/organisms";
-import { Link, OptionsWithLabel, Text } from "../../../src/components/atoms";
+import { PageStructure } from "../../src/components/organisms";
+import { Link, OptionsWithLabel, Text } from "../../src/components/atoms";
 import { useRouter } from "expo-router";
 import {
   useAPIFetching,
   useDataContext,
   useTranslationsContext,
-} from "../../../src/hooks";
+} from "../../src/hooks";
 import { useEffect, useMemo, useState } from "react";
 import {
   BaseOption,
   CustomerPetsRequest,
   CustomerPetsResponse,
   Pet,
-} from "../../../src/interfaces";
-import { Endpoints } from "../../../src/enums";
-import { DataCard } from "../../../src/components/molecules";
-import { Loading } from "../../../src/components/pages";
-import { buttonStatus } from "../../../src/types";
+} from "../../src/interfaces";
+import { Endpoints } from "../../src/enums";
+import { DataCard } from "../../src/components/molecules";
+import { Loading } from "../../src/components/pages";
+import { buttonStatus } from "../../src/types";
 
 const SelectPets = () => {
   const router = useRouter();
