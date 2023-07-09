@@ -34,7 +34,13 @@ const Autoships = () => {
                 `/autoships/change-name?publicId=${autoship.public_id}`
               ),
           },
-          { name: t("AUTOSHIPS__ACTIONS.CHANGE_ADDRESS"), onClick: () => {} },
+          {
+            name: t("AUTOSHIPS__ACTIONS.CHANGE_ADDRESS"),
+            onClick: () =>
+              router.push(
+                `/autoships/address?publicId=${autoship.public_id}&type=change`
+              ),
+          },
           { name: t("AUTOSHIPS__ACTIONS.CHANGE_ITEMS"), onClick: () => {} },
           {
             name: t("AUTOSHIPS__ACTIONS.CHANGE_PAYMENT_INFORMATION"),

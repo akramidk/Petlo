@@ -75,7 +75,7 @@ const CreateNewAutoship = () => {
         actions: [
           {
             name: itemsCalculation ? changeText : selectText,
-            onClick: () => router.push("/autoships/select-items"),
+            onClick: () => router.push("/autoships/items"),
           },
         ],
       },
@@ -89,7 +89,7 @@ const CreateNewAutoship = () => {
         actions: [
           {
             name: address ? changeText : selectText,
-            onClick: () => router.push("/autoships/select-address"),
+            onClick: () => router.push("/autoships/address"),
           },
         ],
       },
@@ -106,7 +106,7 @@ const CreateNewAutoship = () => {
         actions: [
           {
             name: payment ? changeText : selectText,
-            onClick: () => router.push("/autoships/select-payment"),
+            onClick: () => router.push("/autoships/payment"),
           },
         ],
       },
@@ -118,7 +118,7 @@ const CreateNewAutoship = () => {
         actions: [
           {
             name: pets ? changeText : selectText,
-            onClick: () => router.push("/autoships/select-pets"),
+            onClick: () => router.push("/autoships/pets"),
           },
         ],
       },
@@ -135,7 +135,7 @@ const CreateNewAutoship = () => {
         actions: [
           {
             name: nextShipment ? changeText : selectText,
-            onClick: () => router.push("/autoships/select-date"),
+            onClick: () => router.push("/autoships/date"),
           },
         ],
       },

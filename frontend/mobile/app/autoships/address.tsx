@@ -1,4 +1,4 @@
-import { useRouter } from "expo-router";
+import { useRouter, useSearchParams } from "expo-router";
 import React, { useEffect, useMemo, useState } from "react";
 import { Link, OptionsWithLabel, Text } from "../../src/components/atoms";
 import { DataCard } from "../../src/components/molecules";
@@ -24,9 +24,14 @@ import { ActivityIndicator } from "react-native-paper";
 
 const Address = () => {
   const router = useRouter();
+  const { type } = useSearchParams();
   const { t } = useTranslationsContext();
   const { data, setData } = useDataContext();
   const { direction } = useInternationalizationContext();
+
+  const isChange = type === "change";
+
+  console.log("isChange", isChange);
 
   const [address, setAddress] = useState<BaseOption>();
   const { response: addressesResponse } = useAPIFetching<
