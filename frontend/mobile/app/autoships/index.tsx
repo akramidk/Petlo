@@ -85,7 +85,7 @@ const Autoships = () => {
               }
 
               setData({
-                payment: payment,
+                payment,
               });
 
               router.push(
