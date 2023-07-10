@@ -21,6 +21,10 @@ import { Endpoints } from "../../src/enums";
 import { cardToDataCard } from "../../src/utils";
 import { DataCard } from "../../src/components/molecules";
 import { Loading } from "../../src/components/pages";
+import {
+  ChangeAutoshipPaymentRequest,
+  ChangeAutoshipPaymentResponse,
+} from "../../src/interfaces/Endpoints/ChangeAutoshipPayment";
 
 const Payment = () => {
   const router = useRouter();
@@ -63,7 +67,10 @@ const Payment = () => {
     });
   }, [cardsResponse]);
 
-  const { trigger, status } = useAPIMutation<any, any>({
+  const { trigger, status } = useAPIMutation<
+    ChangeAutoshipPaymentRequest,
+    ChangeAutoshipPaymentResponse
+  >({
     endpoint: Endpoints.CHANGE_AUTOSHIP_PAYMENT_INFORMATION,
     method: "PATCH",
     options: {
@@ -117,6 +124,22 @@ const Payment = () => {
                 (_card) => _card.public_id === card.id
               ),
             };
+          }
+
+          if (isChange) {
+            const _payment = {
+              method: payment.method,
+            };
+
+            if (payment.method === "card") {
+              _payment["card"] = {
+                id: payment.card.public_id,
+              };
+            }
+
+            trigger(_payment);
+
+            return;
           }
 
           setData({
