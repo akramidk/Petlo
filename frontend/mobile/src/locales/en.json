@@ -196,6 +196,7 @@
     "CHANGE_ITEMS": "Change Items",
     "CHANGE_PAYMENT_INFORMATION": "Change Payment Information",
     "CHANGE_PETS": "Change Pets",
+    "ADD_PETS": "Add Pets",
     "DEACTIVATE_AUTOSHIP": "Deactivate Autoship",
     "REACTIVATE": "Reactivate"
   },
@@ -267,6 +268,7 @@
   "CREATE_AN_AUTOSHIP__ADD_NEW_CARD_TO_USE": "Add New Card To Use",
   "CREATE_AN_AUTOSHIP__ADD_NEW_PET_TO_USE": "Add New Pet To Use",
   "CREATE_AN_AUTOSHIP__OTHER_INFORMATION": "Other Information",
-  "CHANGE_AUTOSHIP_NAME__TITLE": "Change Autoship Name",
-  "CHANGE_AUTOSHIP_ADDRESS__TITLE": "Change Autoship Address"
+  "CHANGE_AUTOSHIP_NAME__TITLE": "Change Name",
+  "CHANGE_AUTOSHIP_ADDRESS__TITLE": "Change Deliver Address",
+  "CHANGE_AUTOSHIP_PETS__TITLE": "Change Pets"
 }

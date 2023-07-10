@@ -1,6 +1,6 @@
 import { PageStructure } from "../../src/components/organisms";
 import { Link, OptionsWithLabel, Text } from "../../src/components/atoms";
-import { useRouter } from "expo-router";
+import { useRouter, useSearchParams } from "expo-router";
 import {
   useAPIFetching,
   useDataContext,
@@ -22,6 +22,9 @@ const Pets = () => {
   const router = useRouter();
   const { t } = useTranslationsContext();
   const { data, setData } = useDataContext();
+  const { type, publicId } = useSearchParams();
+
+  const isChange = type === "change";
 
   const [pets, setPets] = useState<BaseOption[]>();
 
@@ -77,7 +80,7 @@ const Pets = () => {
         customerPets.find((pet) => pet.id === savedPet.public_id)
       )
     );
-  }, []);
+  }, [customerPets, data]);
 
   if (petsResponse === undefined || petsResponse.isFetching) {
     return <Loading />;
@@ -85,9 +88,13 @@ const Pets = () => {
 
   return (
     <PageStructure
-      title={t("CREATE_AN_AUTOSHIP__STEPS.WHOM.PRIMARY_TEXT")}
+      title={
+        isChange
+          ? t("CHANGE_AUTOSHIP_PETS__TITLE")
+          : t("CREATE_AN_AUTOSHIP__STEPS.WHOM.PRIMARY_TEXT")
+      }
       button={{
-        value: t("COMMON__SAVE"),
+        value: isChange ? t("COMMON__CHANGE") : t("COMMON__SAVE"),
         onClick: () => {
           setData({
             ...data,

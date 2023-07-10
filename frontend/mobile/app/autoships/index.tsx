@@ -58,8 +58,24 @@ const Autoships = () => {
             name: t("AUTOSHIPS__ACTIONS.CHANGE_PAYMENT_INFORMATION"),
             onClick: () => {},
           },
-          { name: t("AUTOSHIPS__ACTIONS.CHANGE_PETS"), onClick: () => {} },
-          { name: t("AUTOSHIPS__ACTIONS.CHANGE_PETS"), onClick: () => {} }
+          {
+            name: t("AUTOSHIPS__ACTIONS.CHANGE_PETS"),
+            onClick: () => {
+              setData({
+                pets: autoship.pets.map((pet) => {
+                  return { public_id: pet };
+                }),
+              });
+
+              router.push(
+                `/autoships/pets?publicId=${autoship.public_id}&type=change`
+              );
+            },
+          },
+          {
+            name: t("AUTOSHIPS__ACTIONS.DEACTIVATE_AUTOSHIP"),
+            onClick: () => {},
+          }
         );
       } else {
         actions.push({

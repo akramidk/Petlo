@@ -6,5 +6,6 @@ export interface AutoshipsResponse {
     status: "active" | "inactive" | "deactivated";
     next_shipment_on: string;
     address_id: string;
+    pets: string[];
   }[];
 }

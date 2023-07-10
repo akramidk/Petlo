@@ -58,8 +58,6 @@ const Address = () => {
     },
   });
 
-  console.log("addressesResponse", addressesResponse);
-
   const addresses = useMemo(() => {
     return addressesResponse.body?.data?.map((address) => {
       return {

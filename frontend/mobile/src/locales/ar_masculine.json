@@ -204,6 +204,7 @@
     "CHANGE_ITEMS": "تغيير المنتجات",
     "CHANGE_PAYMENT_INFORMATION": "تغيير طريقة الدفع",
     "CHANGE_PETS": "تغيير الحيوانات",
+    "ADD_PETS": "اضف حيوانات",
     "DEACTIVATE_AUTOSHIP": "ايقاف الاوتوشيب",
     "REACTIVATE": "اعادة التفعيل"
   },
@@ -275,6 +276,7 @@
   "CREATE_AN_AUTOSHIP__ADD_NEW_CARD_TO_USE": "اضف بطاقة جديدة لاستخدامها",
   "CREATE_AN_AUTOSHIP__ADD_NEW_PET_TO_USE": "اضف حيوان جديد لاستخدامه",
   "CREATE_AN_AUTOSHIP__OTHER_INFORMATION": "معلومات آخرى",
-  "CHANGE_AUTOSHIP_NAME__TITLE": "تغيير اسم الاوتوشيب",
-  "CHANGE_AUTOSHIP_ADDRESS__TITLE": "تغيير عنوان الاوتوشيب"
+  "CHANGE_AUTOSHIP_NAME__TITLE": "تغيير الاسم",
+  "CHANGE_AUTOSHIP_ADDRESS__TITLE": "تغيير عنوان الشحن",
+  "CHANGE_AUTOSHIP_PETS__TITLE": "تغيير الحيوانات"
 }
