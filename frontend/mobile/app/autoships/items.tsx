@@ -119,6 +119,21 @@ const Items = () => {
     return true;
   }, [savedCalculationResponse]);
 
+  const { trigger, status } = useAPIMutation<any, any>({
+    endpoint: Endpoints.CHANGE_AUTOSHIP_ITEMS,
+    method: "PATCH",
+    options: {
+      onSucceeded: () => {
+        setData(undefined);
+        router.back();
+      },
+      fireOnSucceededAfter: 1000,
+    },
+    slugs: {
+      publicId: publicId,
+    },
+  });
+
   useEffect(() => {
     if (
       calculationResponse === undefined ||
@@ -172,6 +187,7 @@ const Items = () => {
 
             router.back();
           },
+          status: status ? "inactive" : "active",
         }}
         helperText={
           items === undefined
