@@ -22,10 +22,10 @@ const Deactivate = () => {
 
   return (
     <PageStructure
-      title="Deactivate"
-      helperText="Are You Sure?"
+      title={t("DEACTIVATE_AN_AUTOSHIP__TITLE")}
+      helperText={t("DEACTIVATE_AN_AUTOSHIP__HELPER_TEXT")}
       button={{
-        value: "Yes I'm Sure",
+        value: t("DEACTIVATE_AN_AUTOSHIP__BUTTON"),
         onClick: () => trigger(undefined),
         status: status,
         cn: status ? "" : "bg-[#E64848]",

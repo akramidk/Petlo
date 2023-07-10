@@ -282,5 +282,8 @@
   "CHANGE_AUTOSHIP_ITEMS__TITLE": "تغيير المنتجات",
   "CHANGE_AUTOSHIP_PAYMENT__TITLE": "تغيير كيف تقوم بالدفع",
   "REACTIVATE_AN_AUTOSHIP__TITLE": "اعادة تفعيل",
-  "REACTIVATE_AN_AUTOSHIP__BUTTON": "اعادة تفعيل"
+  "REACTIVATE_AN_AUTOSHIP__BUTTON": "اعادة تفعيل",
+  "DEACTIVATE_AN_AUTOSHIP__TITLE": "ايقاف الأوتوشيب",
+  "DEACTIVATE_AN_AUTOSHIP__HELPER_TEXT": "هل انت متاكد انت تريد ايقات الأوتوشيب؟\nاذا نعم يمكنك اعادة تفعيله متى تشاء.",
+  "DEACTIVATE_AN_AUTOSHIP__BUTTON": "نعم انا متاكد"
 }
