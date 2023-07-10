@@ -109,7 +109,10 @@ const Autoships = () => {
           },
           {
             name: t("AUTOSHIPS__ACTIONS.DEACTIVATE_AUTOSHIP"),
-            onClick: () => {},
+            onClick: () =>
+              router.push(
+                `/autoships/deactivate?publicId=${autoship.public_id}`
+              ),
           }
         );
       } else {
@@ -124,9 +127,13 @@ const Autoships = () => {
 
       return {
         primaryText: autoship.name,
-        secondaryText: `${t(
-          "AUTOSHIPS__NEXT_SHIPMENT_ON"
-        )} ${autoship.next_shipment_on.split("-").reverse().join("-")}`,
+        secondaryText:
+          autoship.status === "active"
+            ? `${t("AUTOSHIPS__NEXT_SHIPMENT_ON")} ${autoship.next_shipment_on
+                .split("-")
+                .reverse()
+                .join("-")}`
+            : undefined,
         actions: actions,
       };
     });

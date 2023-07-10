@@ -28,6 +28,7 @@ const Deactivate = () => {
         value: "Yes I'm Sure",
         onClick: () => trigger(undefined),
         status: status,
+        cn: status ? "" : "bg-[#E64848]",
       }}
       link={{
         value: t("COMMON__CANCEL"),
