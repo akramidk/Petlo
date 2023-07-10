@@ -37,7 +37,7 @@ const CreateNewAutoship = () => {
   const pets: Pet[] = data?.pets;
   const nextShipment: NextShipment = data?.nextShipment;
   const recurringInterval: RecurringInterval = data?.recurringInterval;
-  const recurringIntervalCount: number = data?.recurringIntervalCount;
+  const recurringIntervalCount: string = data?.recurringIntervalCount;
   const itemsCalculation: CalculateAutoshipItemsAmountResponse =
     data?.itemsCalculation;
   const deliveryCalculation: CalculateDeliveryAmountResponse =
@@ -191,7 +191,7 @@ const CreateNewAutoship = () => {
       name,
       next_shipment_on: nextShipmentOn,
       recurring_interval: recurringInterval.id,
-      recurring_interval_count: recurringIntervalCount,
+      recurring_interval_count: Number(recurringIntervalCount),
       address_id: address.public_id,
       items: items,
       payment: {

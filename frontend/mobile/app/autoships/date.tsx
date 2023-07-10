@@ -1,5 +1,6 @@
 import { PageStructure } from "../../src/components/organisms";
 import {
+  useAPIMutation,
   useDataContext,
   useInternationalizationContext,
   useTranslationsContext,
@@ -11,9 +12,15 @@ import NextShipment from "./interfaces/NextShipment";
 import SelectThePeriod from "./components/SelectThePeriod";
 import { View } from "react-native";
 import { AUTOSHIP_RECURRING_INTERVAL_OPTIONS } from "../../src/constants";
-import { BaseOption, RecurringInterval } from "../../src/interfaces";
+import {
+  BaseOption,
+  ReactivateAnAutoshipRequest,
+  ReactivateAnAutoshipResponse,
+  RecurringInterval,
+} from "../../src/interfaces";
 import { Text } from "../../src/components/atoms";
 import clsx from "clsx";
+import { Endpoints } from "../../src/enums";
 
 const Date = () => {
   const router = useRouter();
@@ -56,6 +63,21 @@ const Date = () => {
     data?.nextShipment?.month !== nextShipment?.month ||
     data?.nextShipment?.year !== nextShipment.year;
 
+  const { trigger, status } = useAPIMutation<
+    ReactivateAnAutoshipRequest,
+    ReactivateAnAutoshipResponse
+  >({
+    endpoint: Endpoints.REACTIVE_AN_AUTOSHIP,
+    method: "PATCH",
+    options: {
+      onSucceeded: router.back,
+      fireOnSucceededAfter: 1000,
+    },
+    slugs: {
+      publicId: publicId,
+    },
+  });
+
   return (
     <PageStructure
       title={
@@ -68,6 +90,15 @@ const Date = () => {
           ? t("REACTIVATE_AN_AUTOSHIP__BUTTON")
           : t("COMMON__SAVE"),
         onClick: () => {
+          if (isReactivate) {
+            trigger({
+              next_shipment_on: `${nextShipment.year}-${nextShipment.month}-${nextShipment.day}`,
+              recurring_interval: recurringInterval.id,
+              recurring_interval_count: Number(recurringIntervalCount),
+            });
+            return;
+          }
+
           setData({
             ...data,
             nextShipment: nextShipment,
@@ -78,9 +109,10 @@ const Date = () => {
           router.back();
         },
         status:
-          nextShipment && isRecurringIntervalCountValid && isChanged
+          status ??
+          (nextShipment && isRecurringIntervalCountValid && isChanged
             ? "active"
-            : "inactive",
+            : "inactive"),
       }}
       link={{
         value: t("COMMON__CANCEL"),
