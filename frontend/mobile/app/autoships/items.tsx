@@ -17,6 +17,7 @@ import { Text } from "../../src/components/atoms";
 import SearchAndSelectItems from "./components/SearchAndSelectItems";
 import { ItemViewer } from "../../src/components/molecules";
 import { Endpoints } from "../../src/enums";
+import { Loading } from "../../src/components/pages";
 
 const Items = () => {
   const router = useRouter();
@@ -138,6 +139,10 @@ const Items = () => {
       }),
     });
   }, [selectedItems]);
+
+  if (selectedItems?.length > 0 && !savedCalculationResponse) {
+    return <Loading />;
+  }
 
   return (
     <>

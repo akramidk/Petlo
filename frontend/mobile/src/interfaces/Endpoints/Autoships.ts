@@ -7,5 +7,10 @@ export interface AutoshipsResponse {
     next_shipment_on: string;
     address_id: string;
     pets: string[];
+    items: {
+      item_id: string;
+      variant_id: string;
+      quantity: number;
+    }[];
   }[];
 }

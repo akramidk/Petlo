@@ -53,7 +53,24 @@ const Autoships = () => {
               );
             },
           },
-          { name: t("AUTOSHIPS__ACTIONS.CHANGE_ITEMS"), onClick: () => {} },
+          {
+            name: t("AUTOSHIPS__ACTIONS.CHANGE_ITEMS"),
+            onClick: () => {
+              setData({
+                selectedItems: autoship.items.map((item) => {
+                  return {
+                    itemId: item.item_id,
+                    variantId: item.variant_id,
+                    quantity: item.quantity,
+                  };
+                }),
+              });
+
+              router.push(
+                `/autoships/items?publicId=${autoship.public_id}&type=change`
+              );
+            },
+          },
           {
             name: t("AUTOSHIPS__ACTIONS.CHANGE_PAYMENT_INFORMATION"),
             onClick: () => {},
