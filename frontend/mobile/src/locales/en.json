@@ -276,6 +276,6 @@
   "REACTIVATE_AN_AUTOSHIP__TITLE": "Reactivate",
   "REACTIVATE_AN_AUTOSHIP__BUTTON": "Reactivate",
   "DEACTIVATE_AN_AUTOSHIP__TITLE": "Deactivate",
-  "DEACTIVATE_AN_AUTOSHIP__HELPER_TEXT": "Are you sure that you want to deactivate your autoship?\nIf yes you can reactivate when ever you want.",
+  "DEACTIVATE_AN_AUTOSHIP__HELPER_TEXT": "Are you sure that you want to deactivate your autoship?\n\nIf yes you can reactivate it when ever you want.",
   "DEACTIVATE_AN_AUTOSHIP__BUTTON": "Yes I'm Sure"
 }
