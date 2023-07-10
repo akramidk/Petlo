@@ -1,11 +1,11 @@
 import BottomSheet, { BottomSheetScrollView } from "@gorhom/bottom-sheet";
 import { Fragment, useMemo, useRef } from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, Dimensions } from "react-native";
 import Modal from "react-native-modal";
 import { Text } from "../atoms";
 import { BaseButton } from "../bases";
 
-const ACTION_HEIGHT = 58;
+const ACTION_HEIGHT = 60;
 
 interface BottomSheetOptionsProps {
   visible: boolean;
@@ -21,10 +21,12 @@ const BottomSheetOptions = ({
   onClose,
   actions,
 }: BottomSheetOptionsProps) => {
+  const windowHeight = Dimensions.get("window").height;
+  const actionsHeight = ACTION_HEIGHT * actions.length + 80;
   const snapPoints = useMemo(
     () =>
-      actions.length > 4 ? ["45%"] : [ACTION_HEIGHT * actions.length + 60],
-    [actions]
+      actionsHeight < (windowHeight * 80) / 100 ? [actionsHeight] : ["80%"],
+    [windowHeight, actionsHeight]
   );
 
   return (
