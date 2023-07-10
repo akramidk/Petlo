@@ -224,7 +224,7 @@ const Items = () => {
 
             router.back();
           },
-          status: isSaveButtonActive ? "active" : "inactive",
+          status: status ?? (isSaveButtonActive ? "active" : "inactive"),
         }}
         floatingElementCN="bottom-[152px]"
         floatingElement={
