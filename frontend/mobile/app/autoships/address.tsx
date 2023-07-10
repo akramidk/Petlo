@@ -136,7 +136,13 @@ const Address = () => {
       }}
       link={{
         value: t("COMMON__CANCEL"),
-        onClick: router.back,
+        onClick: () => {
+          if (isChange) {
+            setData(undefined);
+          }
+
+          router.back();
+        },
         status: status ? "inactive" : "active",
       }}
     >
