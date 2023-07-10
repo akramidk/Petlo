@@ -271,5 +271,6 @@
   "CHANGE_AUTOSHIP_NAME__TITLE": "Change Name",
   "CHANGE_AUTOSHIP_ADDRESS__TITLE": "Change Deliver Address",
   "CHANGE_AUTOSHIP_PETS__TITLE": "Change Pets",
-  "CHANGE_AUTOSHIP_ITEMS__TITLE": "Change Items"
+  "CHANGE_AUTOSHIP_ITEMS__TITLE": "Change Items",
+  "CHANGE_AUTOSHIP_PAYMENT__TITLE": "Change How You Pay"
 }

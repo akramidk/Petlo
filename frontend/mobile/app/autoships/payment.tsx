@@ -1,4 +1,4 @@
-import { useRouter } from "expo-router";
+import { useRouter, useSearchParams } from "expo-router";
 import { useEffect, useMemo, useState } from "react";
 import { PageStructure } from "../../src/components/organisms";
 import { PAYMENT_METHODS } from "../../src/constants";
@@ -26,6 +26,9 @@ const Payment = () => {
   const { t } = useTranslationsContext();
   const { data, setData } = useDataContext();
   const { direction } = useInternationalizationContext();
+  const { type, publicId } = useSearchParams();
+
+  const isChange = type === "change";
 
   const payment: IPayment = data?.payment;
   const [paymentMethod, setPaymentMethod] = useState<BaseOption>();
@@ -79,9 +82,13 @@ const Payment = () => {
 
   return (
     <PageStructure
-      title={t("CREATE_AN_AUTOSHIP__STEPS.HOW.PRIMARY_TEXT")}
+      title={
+        isChange
+          ? t("CHANGE_AUTOSHIP_PAYMENT__TITLE")
+          : t("CREATE_AN_AUTOSHIP__STEPS.HOW.PRIMARY_TEXT")
+      }
       button={{
-        value: t("COMMON__SELECT"),
+        value: isChange ? t("COMMON__CHANGE") : t("COMMON__SELECT"),
         onClick: () => {
           let payment: IPayment = {
             method: paymentMethod.id as IPayment["method"],
@@ -114,7 +121,16 @@ const Payment = () => {
             ? "inactive"
             : "active",
       }}
-      link={{ value: t("COMMON__CANCEL"), onClick: router.back }}
+      link={{
+        value: t("COMMON__CANCEL"),
+        onClick: () => {
+          if (isChange) {
+            setData(undefined);
+          }
+
+          router.back();
+        },
+      }}
     >
       <OptionsWithLabel
         cn="mb-[24px]"
