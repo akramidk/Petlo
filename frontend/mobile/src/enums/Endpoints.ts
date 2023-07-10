@@ -51,4 +51,5 @@ export enum Endpoints {
   CHANGE_AUTOSHIP_ITEMS = "/v1/autoships/${publicId}/items",
   CHANGE_AUTOSHIP_PAYMENT_INFORMATION = "/v1/autoships/${publicId}/payment-information",
   REACTIVE_AN_AUTOSHIP = "/v1/autoships/${publicId}/activate",
+  DEACTIVATE_AN_AUTOSHIP = "/v1/autoships/${publicId}/deactivate",
 }
