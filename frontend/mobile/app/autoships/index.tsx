@@ -73,7 +73,25 @@ const Autoships = () => {
           },
           {
             name: t("AUTOSHIPS__ACTIONS.CHANGE_PAYMENT_INFORMATION"),
-            onClick: () => {},
+            onClick: () => {
+              const payment = {
+                method: autoship.payment_method,
+              };
+
+              if (autoship.payment_method === "card") {
+                payment["card"] = {
+                  public_id: autoship.payment_card_id,
+                };
+              }
+
+              setData({
+                payment: payment,
+              });
+
+              router.push(
+                `/autoships/payment?publicId=${autoship.public_id}&type=change`
+              );
+            },
           },
           {
             name: t("AUTOSHIPS__ACTIONS.CHANGE_PETS"),

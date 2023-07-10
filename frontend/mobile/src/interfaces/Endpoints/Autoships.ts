@@ -12,5 +12,7 @@ export interface AutoshipsResponse {
       variant_id: string;
       quantity: number;
     }[];
+    payment_method: "cash" | "card";
+    payment_card_id: string | null;
   }[];
 }
