@@ -84,13 +84,7 @@ const Date = () => {
       }}
       link={{
         value: t("COMMON__CANCEL"),
-        onClick: () => {
-          if (isReactivate) {
-            setData(undefined);
-          }
-
-          router.back();
-        },
+        onClick: router.back,
       }}
     >
       <SelectNextShipment value={nextShipment} setValue={setNextShipment} />

@@ -115,7 +115,10 @@ const Autoships = () => {
       } else {
         actions.push({
           name: t("AUTOSHIPS__ACTIONS.REACTIVATE"),
-          onClick: () => {},
+          onClick: () =>
+            router.push(
+              `/autoships/date?publicId=${autoship.public_id}&type=reactivate`
+            ),
         });
       }
 
