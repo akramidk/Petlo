@@ -164,13 +164,13 @@ const Items = () => {
             : t("CREATE_AN_AUTOSHIP__STEPS.WHAT.PRIMARY_TEXT")
         }
         link={{
-          value: isChange ? t("COMMON__CHANGE") : t("COMMON__CANCEL"),
+          value: t("COMMON__CANCEL"),
           onClick: () => {
             if (isChange) {
               setData(undefined);
-
-              router.back();
             }
+
+            router.back();
           },
         }}
         helperText={
@@ -179,7 +179,7 @@ const Items = () => {
             : undefined
         }
         button={{
-          value: t("COMMON__SAVE"),
+          value: isChange ? t("COMMON__CHANGE") : t("COMMON__SAVE"),
           onClick: () => {
             setData({
               ...data,
