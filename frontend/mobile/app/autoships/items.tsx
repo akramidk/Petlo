@@ -163,7 +163,7 @@ const Items = () => {
     });
   }, [selectedItems]);
 
-  if (selectedItems?.length > 0 && !savedCalculationResponse) {
+  if (isChange && selectedItems?.length > 0 && !savedCalculationResponse) {
     return <Loading />;
   }
 
