@@ -47,4 +47,5 @@ export enum Endpoints {
   CALCULATE_DELIVERY_AMOUNT = "/v1/autoships/calculate-delivery-amount",
   CHANGE_AUTOSHIP_NAME = "/v1/autoships/${publicId}/name",
   CHANGE_AUTOSHIP_ADDRESS = "/v1/autoships/${publicId}/address",
+  CHANGE_AUTOSHIP_PETS = "/v1/autoships/${publicId}/pets",
 }

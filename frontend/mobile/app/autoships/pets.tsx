@@ -3,12 +3,17 @@ import { Link, OptionsWithLabel, Text } from "../../src/components/atoms";
 import { useRouter, useSearchParams } from "expo-router";
 import {
   useAPIFetching,
+  useAPIMutation,
   useDataContext,
   useTranslationsContext,
 } from "../../src/hooks";
 import { useEffect, useMemo, useState } from "react";
 import {
   BaseOption,
+  ChangeAutoshipAddressRequest,
+  ChangeAutoshipAddressResponse,
+  ChangeAutoshipPetsRequest,
+  ChangeAutoshipPetsResponse,
   CustomerPetsRequest,
   CustomerPetsResponse,
   Pet,
@@ -82,6 +87,24 @@ const Pets = () => {
     );
   }, [customerPets, data]);
 
+  const { trigger, status } = useAPIMutation<
+    ChangeAutoshipPetsRequest,
+    ChangeAutoshipPetsResponse
+  >({
+    endpoint: Endpoints.CHANGE_AUTOSHIP_PETS,
+    method: "PATCH",
+    options: {
+      onSucceeded: () => {
+        setData(undefined);
+        router.back();
+      },
+      fireOnSucceededAfter: 1000,
+    },
+    slugs: {
+      publicId: publicId,
+    },
+  });
+
   if (petsResponse === undefined || petsResponse.isFetching) {
     return <Loading />;
   }
@@ -96,6 +119,11 @@ const Pets = () => {
       button={{
         value: isChange ? t("COMMON__CHANGE") : t("COMMON__SAVE"),
         onClick: () => {
+          if (isChange) {
+            trigger({ pets: pets.map((pet) => pet.id as string) });
+            return;
+          }
+
           setData({
             ...data,
             pets:
@@ -110,9 +138,19 @@ const Pets = () => {
 
           router.back();
         },
-        status: buttonStatus,
+        status: status ?? buttonStatus,
       }}
-      link={{ value: t("COMMON__CANCEL"), onClick: router.back }}
+      link={{
+        value: t("COMMON__CANCEL"),
+        onClick: () => {
+          if (isChange) {
+            setData(undefined);
+          }
+
+          router.back();
+        },
+        status: status ? "inactive" : "active",
+      }}
     >
       <OptionsWithLabel
         cn="mb-[12px]"
