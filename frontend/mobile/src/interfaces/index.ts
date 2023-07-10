@@ -158,6 +158,10 @@ import {
   ChangeAutoshipPetsRequest,
   ChangeAutoshipPetsResponse,
 } from "./Endpoints/ChangeAutoshipPets";
+import {
+  ChangeAutoshipItemsRequest,
+  ChangeAutoshipItemsResponse,
+} from "./Endpoints/ChangeAutoshipItems";
 
 //entities interfaces
 import { Customer } from "./Entities/Customer";
@@ -270,6 +274,8 @@ export {
   ChangeAutoshipAddressResponse,
   ChangeAutoshipPetsRequest,
   ChangeAutoshipPetsResponse,
+  ChangeAutoshipItemsRequest,
+  ChangeAutoshipItemsResponse,
   Customer,
   Cart,
   DataCardProps,

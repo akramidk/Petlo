@@ -10,6 +10,8 @@ import {
   CalculateAutoshipItemsAmountRequest,
   CalculateAutoshipItemsAmountResponse,
   CartItemProps,
+  ChangeAutoshipItemsRequest,
+  ChangeAutoshipItemsResponse,
   Item,
 } from "../../src/interfaces";
 import { BaseButton } from "../../src/components/bases";
@@ -119,7 +121,10 @@ const Items = () => {
     return true;
   }, [savedCalculationResponse]);
 
-  const { trigger, status } = useAPIMutation<any, any>({
+  const { trigger, status } = useAPIMutation<
+    ChangeAutoshipItemsRequest,
+    ChangeAutoshipItemsResponse
+  >({
     endpoint: Endpoints.CHANGE_AUTOSHIP_ITEMS,
     method: "PATCH",
     options: {
@@ -197,6 +202,20 @@ const Items = () => {
         button={{
           value: isChange ? t("COMMON__CHANGE") : t("COMMON__SAVE"),
           onClick: () => {
+            if (isChange) {
+              trigger({
+                items: selectedItems.map((item) => {
+                  return {
+                    id: item.itemId,
+                    variant_id: item.variantId,
+                    quantity: item.quantity,
+                  };
+                }),
+              });
+
+              return;
+            }
+
             setData({
               ...data,
               itemsCalculation: savedCalculationResponse,
