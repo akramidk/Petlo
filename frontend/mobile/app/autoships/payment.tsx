@@ -4,6 +4,7 @@ import { PageStructure } from "../../src/components/organisms";
 import { PAYMENT_METHODS } from "../../src/constants";
 import {
   useAPIFetching,
+  useAPIMutation,
   useDataContext,
   useInternationalizationContext,
   useTranslationsContext,
@@ -62,6 +63,21 @@ const Payment = () => {
     });
   }, [cardsResponse]);
 
+  const { trigger, status } = useAPIMutation<any, any>({
+    endpoint: Endpoints.CHANGE_AUTOSHIP_PAYMENT_INFORMATION,
+    method: "PATCH",
+    options: {
+      onSucceeded: () => {
+        setData(undefined);
+        router.back();
+      },
+      fireOnSucceededAfter: 1000,
+    },
+    slugs: {
+      publicId: publicId,
+    },
+  });
+
   useEffect(() => {
     if (payment === undefined) return;
 
@@ -111,7 +127,8 @@ const Payment = () => {
           router.back();
         },
         status:
-          paymentMethod === undefined ||
+          status ??
+          (paymentMethod === undefined ||
           (paymentMethod.id === "card" && card === undefined) ||
           (paymentMethod.id === "cash" &&
             paymentMethod.id === payment?.method) ||
@@ -119,7 +136,7 @@ const Payment = () => {
             paymentMethod.id === payment?.method &&
             card.id === payment?.card?.public_id)
             ? "inactive"
-            : "active",
+            : "active"),
       }}
       link={{
         value: t("COMMON__CANCEL"),
@@ -130,6 +147,7 @@ const Payment = () => {
 
           router.back();
         },
+        status: status ? "inactive" : "active",
       }}
     >
       <OptionsWithLabel
