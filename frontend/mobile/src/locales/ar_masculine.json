@@ -280,5 +280,7 @@
   "CHANGE_AUTOSHIP_ADDRESS__TITLE": "تغيير عنوان الشحن",
   "CHANGE_AUTOSHIP_PETS__TITLE": "تغيير الحيوانات",
   "CHANGE_AUTOSHIP_ITEMS__TITLE": "تغيير المنتجات",
-  "CHANGE_AUTOSHIP_PAYMENT__TITLE": "تغيير كيف تقوم بالدفع"
+  "CHANGE_AUTOSHIP_PAYMENT__TITLE": "تغيير كيف تقوم بالدفع",
+  "REACTIVATE_AN_AUTOSHIP__TITLE": "اعادة تفعيل",
+  "REACTIVATE_AN_AUTOSHIP__BUTTON": "اعادة تفعيل"
 }

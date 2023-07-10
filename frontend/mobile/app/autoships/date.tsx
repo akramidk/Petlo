@@ -4,7 +4,7 @@ import {
   useInternationalizationContext,
   useTranslationsContext,
 } from "../../src/hooks";
-import { useRouter } from "expo-router";
+import { useRouter, useSearchParams } from "expo-router";
 import { useState } from "react";
 import SelectNextShipment from "./components/SelectNextShipment";
 import NextShipment from "./interfaces/NextShipment";
@@ -19,7 +19,10 @@ const Date = () => {
   const router = useRouter();
   const { t } = useTranslationsContext();
   const { data, setData } = useDataContext();
+  const { type, publicId } = useSearchParams();
   const { direction } = useInternationalizationContext();
+
+  const isReactivate = type === "reactivate";
 
   const [nextShipment, setNextShipment] = useState<NextShipment>(
     data?.nextShipment
@@ -55,9 +58,15 @@ const Date = () => {
 
   return (
     <PageStructure
-      title={t("CREATE_AN_AUTOSHIP__STEPS.WHEN.PRIMARY_TEXT")}
+      title={
+        isReactivate
+          ? t("REACTIVATE_AN_AUTOSHIP__TITLE")
+          : t("CREATE_AN_AUTOSHIP__STEPS.WHEN.PRIMARY_TEXT")
+      }
       button={{
-        value: t("COMMON__SAVE"),
+        value: isReactivate
+          ? t("REACTIVATE_AN_AUTOSHIP__BUTTON")
+          : t("COMMON__SAVE"),
         onClick: () => {
           setData({
             ...data,
@@ -73,7 +82,16 @@ const Date = () => {
             ? "active"
             : "inactive",
       }}
-      link={{ value: t("COMMON__CANCEL"), onClick: router.back }}
+      link={{
+        value: t("COMMON__CANCEL"),
+        onClick: () => {
+          if (isReactivate) {
+            setData(undefined);
+          }
+
+          router.back();
+        },
+      }}
     >
       <SelectNextShipment value={nextShipment} setValue={setNextShipment} />
       <View className="mb-[16px]" />

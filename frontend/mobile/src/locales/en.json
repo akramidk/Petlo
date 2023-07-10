@@ -272,5 +272,7 @@
   "CHANGE_AUTOSHIP_ADDRESS__TITLE": "Change Deliver Address",
   "CHANGE_AUTOSHIP_PETS__TITLE": "Change Pets",
   "CHANGE_AUTOSHIP_ITEMS__TITLE": "Change Items",
-  "CHANGE_AUTOSHIP_PAYMENT__TITLE": "Change How You Pay"
+  "CHANGE_AUTOSHIP_PAYMENT__TITLE": "Change How You Pay",
+  "REACTIVATE_AN_AUTOSHIP__TITLE": "Reactivate",
+  "REACTIVATE_AN_AUTOSHIP__BUTTON": "Reactivate"
 }
