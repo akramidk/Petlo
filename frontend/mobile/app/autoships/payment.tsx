@@ -35,7 +35,6 @@ const Payment = () => {
 
   const isChange = type === "change";
 
-  const payment: IPayment = data?.payment;
   const [paymentMethod, setPaymentMethod] = useState<BaseOption>();
   const [card, setCard] = useState<BaseOption>();
 
@@ -86,18 +85,18 @@ const Payment = () => {
   });
 
   useEffect(() => {
-    if (payment === undefined) return;
+    if (data?.payment === undefined) return;
 
     setPaymentMethod(
       PAYMENT_METHODS.find(
-        (paymentMethod) => payment.method === paymentMethod.id
+        (paymentMethod) => data.payment.method === paymentMethod.id
       )
     );
 
-    if (payment.method === "card") {
-      setCard(cards.find((card) => card.id === payment.card.public_id));
+    if (data.payment.method === "card") {
+      setCard(cards.find((card) => card.id === data.payment.card.public_id));
     }
-  }, []);
+  }, [cards, data]);
 
   if (cardsResponse === undefined || cardsResponse.isFetching) {
     return <Loading />;
@@ -154,10 +153,10 @@ const Payment = () => {
           (paymentMethod === undefined ||
           (paymentMethod.id === "card" && card === undefined) ||
           (paymentMethod.id === "cash" &&
-            paymentMethod.id === payment?.method) ||
+            paymentMethod.id === data?.payment?.method) ||
           (paymentMethod.id === "card" &&
-            paymentMethod.id === payment?.method &&
-            card.id === payment?.card?.public_id)
+            paymentMethod.id === data?.payment?.method &&
+            card.id === data?.payment?.card?.public_id)
             ? "inactive"
             : "active"),
       }}
