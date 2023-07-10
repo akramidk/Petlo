@@ -35,9 +35,9 @@ module AutoshipsHelper::Index
       item_public_id = Item.find_by(id: autoship_item.item_id).public_id
       variant_public_id = Variant.find_by(id: autoship_item.variant_id, item_id: autoship_item.item_id).public_id
 
-      items = {
+      items << {
         item_id: item_public_id,
-        variant_public_id: variant_public_id,
+        variant_id: variant_public_id,
         quantity: autoship_item.quantity
       }
     end
