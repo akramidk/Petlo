@@ -1,9 +1,11 @@
 import { BaseResponse } from "./Base";
 
 export interface ChangeAutoshipPaymentRequest {
-  method: "cash" | "card";
-  card?: {
-    id?: string;
+  payment: {
+    method: "cash" | "card";
+    card?: {
+      id?: string;
+    };
   };
 }
 

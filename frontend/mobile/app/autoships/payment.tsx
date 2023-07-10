@@ -85,7 +85,7 @@ const Payment = () => {
   });
 
   useEffect(() => {
-    if (data?.payment === undefined) return;
+    if (data?.payment === undefined || cards === undefined) return;
 
     setPaymentMethod(
       PAYMENT_METHODS.find(
@@ -126,17 +126,17 @@ const Payment = () => {
           }
 
           if (isChange) {
-            const _payment = {
+            const triggerPayment = {
               method: payment.method,
             };
 
             if (payment.method === "card") {
-              _payment["card"] = {
+              triggerPayment["card"] = {
                 id: payment.card.public_id,
               };
             }
 
-            trigger(_payment);
+            trigger({ payment: triggerPayment });
 
             return;
           }
