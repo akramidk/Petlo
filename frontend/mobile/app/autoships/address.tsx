@@ -58,6 +58,8 @@ const Address = () => {
     },
   });
 
+  console.log("addressesResponse", addressesResponse);
+
   const addresses = useMemo(() => {
     return addressesResponse.body?.data?.map((address) => {
       return {
@@ -97,7 +99,7 @@ const Address = () => {
     setAddress(
       addresses.find((address) => address.id === data.address?.public_id)
     );
-  }, []);
+  }, [addresses, data]);
 
   if (addressesResponse === undefined || addressesResponse.isFetching) {
     return <Loading />;

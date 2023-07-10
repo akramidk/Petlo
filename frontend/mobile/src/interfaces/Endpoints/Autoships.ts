@@ -5,5 +5,6 @@ export interface AutoshipsResponse {
     name: string;
     status: "active" | "inactive" | "deactivated";
     next_shipment_on: string;
+    address_id: string;
   }[];
 }

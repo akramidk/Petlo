@@ -4,7 +4,11 @@ import { Text } from "../../src/components/atoms";
 import { BaseButton } from "../../src/components/bases";
 import { DataCards, PageStructure } from "../../src/components/organisms";
 import { Endpoints } from "../../src/enums";
-import { useAPIFetching, useTranslationsContext } from "../../src/hooks";
+import {
+  useAPIFetching,
+  useDataContext,
+  useTranslationsContext,
+} from "../../src/hooks";
 import { DataCardProps } from "../../src/interfaces";
 import { AutoshipsResponse } from "../../src/interfaces/Endpoints/Autoships";
 import { Loading } from "../../src/components/pages";
@@ -12,6 +16,7 @@ import { Loading } from "../../src/components/pages";
 const Autoships = () => {
   const router = useRouter();
   const { t } = useTranslationsContext();
+  const { data, setData } = useDataContext();
   const { response } = useAPIFetching<void, AutoshipsResponse>({
     endpoint: Endpoints.AUTOSHIPS,
     options: {
@@ -36,10 +41,17 @@ const Autoships = () => {
           },
           {
             name: t("AUTOSHIPS__ACTIONS.CHANGE_ADDRESS"),
-            onClick: () =>
+            onClick: () => {
+              setData({
+                address: {
+                  public_id: autoship.address_id,
+                },
+              });
+
               router.push(
                 `/autoships/address?publicId=${autoship.public_id}&type=change`
-              ),
+              );
+            },
           },
           { name: t("AUTOSHIPS__ACTIONS.CHANGE_ITEMS"), onClick: () => {} },
           {
