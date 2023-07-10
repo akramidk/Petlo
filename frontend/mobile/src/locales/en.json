@@ -270,5 +270,6 @@
   "CREATE_AN_AUTOSHIP__OTHER_INFORMATION": "Other Information",
   "CHANGE_AUTOSHIP_NAME__TITLE": "Change Name",
   "CHANGE_AUTOSHIP_ADDRESS__TITLE": "Change Deliver Address",
-  "CHANGE_AUTOSHIP_PETS__TITLE": "Change Pets"
+  "CHANGE_AUTOSHIP_PETS__TITLE": "Change Pets",
+  "CHANGE_AUTOSHIP_ITEMS__TITLE": "Change Items"
 }

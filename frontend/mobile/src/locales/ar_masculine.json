@@ -278,5 +278,6 @@
   "CREATE_AN_AUTOSHIP__OTHER_INFORMATION": "معلومات آخرى",
   "CHANGE_AUTOSHIP_NAME__TITLE": "تغيير الاسم",
   "CHANGE_AUTOSHIP_ADDRESS__TITLE": "تغيير عنوان الشحن",
-  "CHANGE_AUTOSHIP_PETS__TITLE": "تغيير الحيوانات"
+  "CHANGE_AUTOSHIP_PETS__TITLE": "تغيير الحيوانات",
+  "CHANGE_AUTOSHIP_ITEMS__TITLE": "تغيير المنتجات"
 }

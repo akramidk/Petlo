@@ -1,4 +1,4 @@
-import { useRouter } from "expo-router";
+import { useRouter, useSearchParams } from "expo-router";
 import { useEffect, useMemo, useState } from "react";
 import { ItemsViewer, PageStructure } from "../../src/components/organisms";
 import {
@@ -23,6 +23,9 @@ const Items = () => {
   const router = useRouter();
   const { t } = useTranslationsContext();
   const { data, setData } = useDataContext();
+  const { type, publicId } = useSearchParams();
+
+  const isChange = type === "change";
 
   const [selectedItems, setSelectedItems] = useState<
     {
@@ -155,8 +158,21 @@ const Items = () => {
       )}
 
       <PageStructure
-        title={t("CREATE_AN_AUTOSHIP__STEPS.WHAT.PRIMARY_TEXT")}
-        link={{ value: t("COMMON__CANCEL"), onClick: router.back }}
+        title={
+          isChange
+            ? t("CHANGE_AUTOSHIP_ITEMS__TITLE")
+            : t("CREATE_AN_AUTOSHIP__STEPS.WHAT.PRIMARY_TEXT")
+        }
+        link={{
+          value: isChange ? t("COMMON__CHANGE") : t("COMMON__CANCEL"),
+          onClick: () => {
+            if (isChange) {
+              setData(undefined);
+
+              router.back();
+            }
+          },
+        }}
         helperText={
           items === undefined
             ? t("CREATE_AN_AUTOSHIP__NO_ITEMS_ADDED")
@@ -170,6 +186,7 @@ const Items = () => {
               itemsCalculation: savedCalculationResponse,
               selectedItems: selectedItems,
             });
+
             router.back();
           },
           status: isSaveButtonActive ? "active" : "inactive",
