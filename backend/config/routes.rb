@@ -97,5 +97,13 @@ Rails.application.routes.draw do
       # TODO should get not post but akram used post to use useAPIMutation
       post "autoships/items-calculation", to: "autoships#items_calculation"
     end
+
+    namespace :dashboard do
+      #categories
+      get "categories", to: "categories#index"
+      get "categories/:id", to: "categories#show"
+      put "categories/:id", to: "categories#update"
+      post "categories", to: "categories#create"
+    end
   end
 end

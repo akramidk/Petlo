@@ -4,9 +4,9 @@ module Dashboard
 
     def index
       data = Category.all.map{|category| {
-        id: parent.public_id,
+        id: category.public_id,
         name: category.name,
-        parent_id: Category.find_by(id: category.parent_id).public_id
+        parent_id: category.parent_id ? Category.find_by(id: category.parent_id).public_id : nil
       }}
 
       render json: { data: data }, status: 200
@@ -23,14 +23,14 @@ module Dashboard
 
     def show
       category = Category.find_by(public_id: param[:id])
-      parent = Category.find_by(id: category.parent_id)
+      parent = category.parent_id ? Category.find_by(id: category.parent_id) : nil
       data = {
         id: category.public_id,
         name: category.name,
-        parent: {
+        parent: parent ? {
           id: parent.public_id,
           name: parent.name
-        }
+        } : nil
       }
 
       render json: { data: data }, status: 200
