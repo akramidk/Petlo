@@ -100,12 +100,13 @@ Rails.application.routes.draw do
 
     namespace :dashboard do
       #categories
+      post "categories", to: "categories#create"
       get "categories", to: "categories#index"
       get "categories/:id", to: "categories#show"
       put "categories/:id", to: "categories#update"
-      post "categories", to: "categories#create"
 
       #brands
+      post "brands", to: "brands#create"
       get "brands", to: "brands#index"
     end
   end

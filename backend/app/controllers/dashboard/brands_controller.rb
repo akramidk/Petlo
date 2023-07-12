@@ -17,5 +17,21 @@ module Dashboard
 
       render json: { data: data }, status: 200
     end
+
+    def create
+      brand = Brand.create!
+      BrandName.create!(
+        brand_id: brand.id,
+        language: "ar",
+        value: params[:ar_name]
+      )
+      BrandName.create!(
+        brand_id: brand.id,
+        language: "en",
+        value: params[:en_name]
+      )
+
+      render json: { status: "succeeded" }, status: 200
+    end
   end
 end
