@@ -110,6 +110,9 @@ Rails.application.routes.draw do
       get "brands", to: "brands#index"
       get "brands/:id", to: "brands#show"
       put "brands/:id", to: "brands#update"
+
+      #banners
+      get "banners", to: "banners#index"
     end
   end
 end
