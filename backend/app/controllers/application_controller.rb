@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 
   include CurrentCustomer
   include Rescuable
+  include CheckDashboardKey
 
   private
   def set_locale
