@@ -45,5 +45,13 @@ module Dashboard
 
       render json: data, status: 200
     end
+
+    def update
+      brand = Brand.find_by(public_id: params[:id])
+      BrandName.find_by(brand_id: brand.id, language: "ar").update!(value: params[:ar_name])
+      BrandName.find_by(brand_id: brand.id, language: "en").update!(value: params[:en_name])
+
+      render json: { status: "succeeded" }, status: 200
+    end
   end
 end

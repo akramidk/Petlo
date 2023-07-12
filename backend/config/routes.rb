@@ -109,6 +109,7 @@ Rails.application.routes.draw do
       post "brands", to: "brands#create"
       get "brands", to: "brands#index"
       get "brands/:id", to: "brands#show"
+      put "brands/:id", to: "brands#update"
     end
   end
 end
