@@ -104,6 +104,9 @@ Rails.application.routes.draw do
       get "categories/:id", to: "categories#show"
       put "categories/:id", to: "categories#update"
       post "categories", to: "categories#create"
+
+      #brands
+      get "brands", to: "brands#index"
     end
   end
 end
