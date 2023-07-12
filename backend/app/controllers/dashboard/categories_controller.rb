@@ -22,7 +22,7 @@ module Dashboard
     end
 
     def show
-      category = Category.find_by(public_id: param[:id])
+      category = Category.find_by(public_id: params[:id])
       parent = category.parent_id ? Category.find_by(id: category.parent_id) : nil
       data = {
         id: category.public_id,
@@ -33,11 +33,11 @@ module Dashboard
         } : nil
       }
 
-      render json: { data: data }, status: 200
+      render json: data, status: 200
     end
 
     def update
-      category = Category.find_by(public_id: param[:id])
+      category = Category.find_by(public_id: params[:id])
 
       category.update!(
         name: params[:name],
