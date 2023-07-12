@@ -15,7 +15,7 @@ module Dashboard
     def create
       Category.create!(
         name: params[:name],
-        parent_id: Category.find_by(public_id: params[:parent_id]).id
+        parent_id: params[:parent_id] ?  Category.find_by(public_id: params[:parent_id]).id : nil
       )
 
       render json: { status: "succeeded" }, status: 200
@@ -41,7 +41,7 @@ module Dashboard
 
       category.update!(
         name: params[:name],
-        parent_id: Category.find_by(public_id: params[:parent_id]).id
+        parent_id: params[:parent_id] ? Category.find_by(public_id: params[:parent_id]).id : nil
       )
 
       render json: { status: "succeeded" }, status: 200
