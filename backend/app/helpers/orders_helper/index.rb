@@ -3,7 +3,7 @@ module OrdersHelper::Index
 
     def index(customer:, page:, language:)
         offset = (LIMIT * page) - LIMIT
-        orders = customer.orders.limit(LIMIT + 1).offset(offset).map{|order| {
+        orders = customer.orders.order(id: :desc).limit(LIMIT + 1).offset(offset).map{|order| {
             id: order.id + 81201,
             public_id: order.public_id,
             status: order.status,
