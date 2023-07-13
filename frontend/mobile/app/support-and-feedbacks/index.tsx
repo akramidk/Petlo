@@ -2,8 +2,6 @@ import { useRouter } from "expo-router";
 import { PageStructure } from "../../src/components/organisms";
 import { useTranslationsContext } from "../../src/hooks";
 
-// TODO change your number
-
 const SupportAndFeedbacks = () => {
   const router = useRouter();
   const { t } = useTranslationsContext();
