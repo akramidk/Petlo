@@ -75,9 +75,9 @@ Rails.application.routes.draw do
       post "carts/:public_id", to: "carts#add_item"
       delete "carts/:public_id", to: "carts#remove_item"
 
-      #checkout
-      post "checkout", to: "checkout#create"
-      patch "checkout/:public_id/update-address", to: "checkout#update_address"
+      #checkouts
+      post "checkouts", to: "checkouts#create"
+      patch "checkouts/:public_id/update-address", to: "checkouts#update_address"
 
       #orders
       get "orders", to: "orders#index"

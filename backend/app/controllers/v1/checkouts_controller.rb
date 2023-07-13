@@ -1,5 +1,5 @@
 module V1
-  class CheckoutController < ApplicationController
+  class CheckoutsController < ApplicationController
     before_action -> { current_customer(verified: true) }
 
     include CheckoutHelper
