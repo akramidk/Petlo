@@ -1,5 +1,5 @@
 module SearchHelper::Items
-  LIMIT = 8
+  LIMIT = 16
   
   def items(country:, language:, value:)
     search_results = Item.joins(
