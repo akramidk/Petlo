@@ -46,7 +46,7 @@ const useCustomer = () => {
   }, [sessionToken]);
 
   useEffect(() => {
-    if (response === undefined || response.isFetching) return;
+    if (!sessionToken || response === undefined || response.isFetching) return;
 
     if (response?.statusCode === 200) {
       setCustomer({
@@ -69,6 +69,7 @@ const useCustomer = () => {
 
   const clearCustomer = async () => {
     await SecureStore.deleteItemAsync(StorageKeys.SESSION_TOKEN);
+    setSessionToken(null);
     setCustomer(null);
   };
 
