@@ -12,11 +12,11 @@ module SearchHelper::Items
       }
     ).where(
       details: {
-        language: language
+        language: language != "en" ? [language, "en"] : "en"
       }
     ).where(
       "details.name LIKE ?", "%#{value}%"
-    ).limit(LIMIT)
+    ).limit(LIMIT).uniq
 
     items = {
       has_more: false, 
