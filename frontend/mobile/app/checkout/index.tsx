@@ -33,8 +33,6 @@ import { DataCard } from "../../src/components/molecules";
 import clsx from "clsx";
 import { buttonStatus } from "../../src/types";
 
-// TODO add the delivery estimation
-
 const Checkout = () => {
   const router = useRouter();
   const { t } = useTranslationsContext();
