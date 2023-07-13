@@ -9,6 +9,7 @@ import BottomSheetOptions from "./BottomSheetOptions";
 
 const DataCard = ({
   primaryText,
+  helperText,
   secondaryText,
   actions = [],
   prefixChild,
@@ -41,13 +42,27 @@ const DataCard = ({
 
       <View className="space-y-[8px]">
         <View className={clsx("justify-between", flex)}>
-          <Text
-            font="extraBold"
-            cn="text-[14px] text-[#0E333C] w-[70%] mt-[14px]"
-            numberOfLines={1}
-          >
-            {primaryText}
-          </Text>
+          <View className={clsx("flex-wrap w-[70%] items-center", flex)}>
+            <Text
+              font="extraBold"
+              cn="text-[14px] text-[#0E333C] mt-[14px]"
+              numberOfLines={1}
+            >
+              {primaryText}
+            </Text>
+
+            {helperText && (
+              <Text
+                font="medium"
+                cn={clsx(
+                  "text-[14px] text-[#888]",
+                  direction === "ltr" ? "ml-[4px]" : "mr-[4px]"
+                )}
+              >
+                ({helperText})
+              </Text>
+            )}
+          </View>
 
           {actions && actions.length === 1 ? (
             <BaseButton onClick={actions[0].onClick} cn="pt-[14px]">

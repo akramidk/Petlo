@@ -112,6 +112,7 @@ const CreateNewAutoship = () => {
       },
       {
         primaryText: t("CREATE_AN_AUTOSHIP__STEPS.WHOM.PRIMARY_TEXT"),
+        helperText: (t("COMMON__OPTIONAL") as string).toLocaleLowerCase(),
         secondaryText: pets
           ? pets.map((pet) => pet.name).join(", ")
           : t("CREATE_AN_AUTOSHIP__STEPS.WHOM.SECONDARY_TEXT.WITHOUT_DATA"),
