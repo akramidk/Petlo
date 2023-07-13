@@ -22,6 +22,7 @@
   "COMMON__NOT_SELECTED": "لم يتم الاختيار",
   "COMMON__NOT_ADDED": "لم يتم اضافته",
   "COMMON__NOTHING_FOUND": "لم يتم العثور على نتائج",
+  "COMMON__CARD_PAYMENT_WARNING": "** تتم معالجة الدفع بالبطاقة بالدولار الأمريكي",
   "ROOT_LAYOUT__NEW_UPDATE_AVAILABLE_TITLE": "تحديث جديد متوفر",
   "ROOT_LAYOUT__NEW_UPDATE_AVAILABLE_MESSAGE": "يجب تحديث التطبيق للتمكن من إستخدامه.",
   "SELECT_LANGUAGE__TITLE": "لغة التطبيق",
