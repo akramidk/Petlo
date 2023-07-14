@@ -48,11 +48,8 @@ const CreateNewAutoship = () => {
     quantity: number;
   }[] = data?.selectedItems;
 
-  const cards: DataCardProps[] = useMemo(() => {
-    const selectText = t("COMMON__SELECT");
-    const changeText = t("COMMON__CHANGE");
-
-    const numberofItems = itemsCalculation
+  const numberofItems = useMemo(() => {
+    return itemsCalculation
       ? itemsCalculation.items.reduce((accumulator, item) => {
           let number = 0;
 
@@ -62,20 +59,25 @@ const CreateNewAutoship = () => {
 
           return accumulator + number;
         }, 0)
-      : undefined;
+      : 0;
+  }, [itemsCalculation]);
+
+  const cards: DataCardProps[] = useMemo(() => {
+    const selectText = t("COMMON__SELECT");
+    const changeText = t("COMMON__CHANGE");
 
     return [
       {
         primaryText: t("CREATE_AN_AUTOSHIP__STEPS.WHAT.PRIMARY_TEXT"),
         secondaryText:
-          itemsCalculation && itemsCalculation.items.length > 0
+          numberofItems > 0
             ? t("CREATE_AN_AUTOSHIP__STEPS.WHAT.SECONDARY_TEXT.WITH_DATA", {
                 numberOfItems: numberofItems,
               })
             : t("CREATE_AN_AUTOSHIP__STEPS.WHAT.SECONDARY_TEXT.WITHOUT_DATA"),
         actions: [
           {
-            name: itemsCalculation ? changeText : selectText,
+            name: numberofItems > 0 ? changeText : selectText,
             onClick: () => router.push("/autoships/items"),
           },
         ],
@@ -151,7 +153,7 @@ const CreateNewAutoship = () => {
     nextShipment &&
     recurringInterval &&
     recurringIntervalCount &&
-    itemsCalculation;
+    numberofItems > 0;
 
   const { trigger, status } = useAPIMutation<
     CreateAnAutoshipRequest,
@@ -266,7 +268,7 @@ const CreateNewAutoship = () => {
               {t("CREATE_AN_AUTOSHIP__ITEMS_AMOUNT")}
             </Text>
             <Text font="semiBold" cn="text-[14px] text-[#666]">
-              {itemsCalculation && itemsCalculation.items.length > 0
+              {numberofItems > 0
                 ? `${itemsCalculation.amount} ${itemsCalculation.currency}`
                 : t("CREATE_AN_AUTOSHIP__NO_ITEMS_ARE_SELECTED")}
             </Text>
