@@ -192,7 +192,7 @@ const Payment = () => {
             cn="mb-[12px]"
             label={{
               name: t("CHECKOUT__SELECT_A_CARD"),
-              helperText: t("COMMON__CARD_PAYMENT_WARNING"),
+              bottomHelperText: t("COMMON__CARD_PAYMENT_WARNING"),
               require: true,
             }}
             options={{
