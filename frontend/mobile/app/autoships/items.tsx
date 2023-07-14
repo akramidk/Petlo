@@ -77,14 +77,9 @@ const Items = () => {
         );
       }
 
-      console.log("item.quantity", item.quantity);
-      console.log("selectedItemsCopy", selectedItemsCopy);
-
       setSelectedItems(selectedItemsCopy);
     }
   };
-
-  console.log("selectedItems", selectedItems);
 
   const {
     response: calculationResponse,

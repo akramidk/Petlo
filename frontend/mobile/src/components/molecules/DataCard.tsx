@@ -41,11 +41,13 @@ const DataCard = ({
       />
 
       <View className="space-y-[8px]">
-        <View className={clsx("justify-between", flex)}>
-          <View className={clsx("flex-wrap w-[70%] items-center", flex)}>
+        <View className={clsx("justify-between items-center", flex)}>
+          <View
+            className={clsx("flex-wrap w-[70%] mt-[14px] items-center", flex)}
+          >
             <Text
               font="extraBold"
-              cn="text-[14px] text-[#0E333C] mt-[14px]"
+              cn="text-[14px] text-[#0E333C]"
               numberOfLines={1}
             >
               {primaryText}
