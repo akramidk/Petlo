@@ -192,6 +192,9 @@
   "AUTOSHIPS__TITLE": "Autoships",
   "AUTOSHIPS__CREATE_AN_AUTOSHIP": "Create an Autoship",
   "AUTOSHIPS__NEXT_SHIPMENT_ON": "Next shipment on",
+  "AUTOSHIPS__DEACTIVATED": "Deactivated",
+  "AUTOSHIPS__INACTIVE": "Inactive",
+  "AUTOSHIPS__PAYMENT_ERROR": "Card payment failed 3 times",
   "AUTOSHIPS__ACTIONS": {
     "CHANGE_NAME": "Change Name",
     "CHANGE_ADDRESS": "Change Address",

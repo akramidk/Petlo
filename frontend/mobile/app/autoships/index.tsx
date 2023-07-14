@@ -127,12 +127,18 @@ const Autoships = () => {
 
       return {
         primaryText: autoship.name,
+        helperText:
+          autoship.status !== "active"
+            ? t(`AUTOSHIPS__${autoship.status.toUpperCase()}`)
+            : undefined,
         secondaryText:
           autoship.status === "active"
             ? `${t("AUTOSHIPS__NEXT_SHIPMENT_ON")} ${autoship.next_shipment_on
                 .split("-")
                 .reverse()
                 .join("-")}`
+            : autoship.status === "inactive"
+            ? t("AUTOSHIPS__PAYMENT_ERROR")
             : undefined,
         actions: actions,
       };

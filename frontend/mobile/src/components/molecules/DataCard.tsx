@@ -61,7 +61,7 @@ const DataCard = ({
                   direction === "ltr" ? "ml-[4px]" : "mr-[4px]"
                 )}
               >
-                ({helperText})
+                {helperText}
               </Text>
             )}
           </View>

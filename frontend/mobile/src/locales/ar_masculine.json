@@ -197,6 +197,9 @@
     "delivered": "تم توصيل الطلب",
     "canceled": "تم الغاء الطلب"
   },
+  "AUTOSHIPS__DEACTIVATED": "موقوف",
+  "AUTOSHIPS__INACTIVE": "غير نشط",
+  "AUTOSHIPS__PAYMENT_ERROR": "فشل الدفع بالبطاقة 3 مرات",
   "AUTOSHIPS__TITLE": "أوتوشيب",
   "AUTOSHIPS__CREATE_AN_AUTOSHIP": "أنشئ أوتوشيب",
   "AUTOSHIPS__NEXT_SHIPMENT_ON": "الشحنة القادمة يوم",
