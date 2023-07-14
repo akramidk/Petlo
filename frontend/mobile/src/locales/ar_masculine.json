@@ -22,7 +22,6 @@
   "COMMON__NOT_SELECTED": "لم يتم الاختيار",
   "COMMON__NOT_ADDED": "لم يتم اضافته",
   "COMMON__NOTHING_FOUND": "لم يتم العثور على نتائج",
-  "COMMON__CARD_PAYMENT_WARNING": "تتم معالجة الدفع بالبطاقة بالدولار الأمريكي",
   "COMMON__OPTIONAL": "اختياري",
   "ROOT_LAYOUT__NEW_UPDATE_AVAILABLE_TITLE": "تحديث جديد متوفر",
   "ROOT_LAYOUT__NEW_UPDATE_AVAILABLE_MESSAGE": "يجب تحديث التطبيق للتمكن من إستخدامه.",
@@ -189,6 +188,7 @@
   "CHECKOUT__DELIVERY_AMOUNT": "مبلغ التوصيل",
   "CHECKOUT__SELECT_ADDRESS_FIRST": "اختر العنوان اولاً",
   "CHECKOUT__TOTAL_AMOUNT": "المبلغ اﻹجمالي",
+  "CHECKOUT__CARD_PAYMENT_WARNING": "تتم معالجة الدفع بالبطاقة بالدولار الأمريكي",
   "ORDERS__TITLE": "الطلبات",
   "ORDERS__ORDER_NUMBER": "رقم الطلب",
   "ORDERS__STATUSES": {
@@ -213,6 +213,7 @@
     "DEACTIVATE_AUTOSHIP": "ايقاف الاوتوشيب",
     "REACTIVATE": "اعادة التفعيل"
   },
+  "AUTOSHIPS__CARD_PAYMENT_WARNINGS": "* تتم معالجة الدفع بالبطاقة بالدولار الأمريكي\n\n**سوف نقوم بخصم المبلغ قبل 24 ساعة من وقت كل شحنة، اذا فشلت المحاولة سنقوم بالمحاولة مرة آخرى قبل 12 ساعة و6 ساعات، اذا كل المحاولات فشلت سوف نقوم بتغيير الأوتوشيب ل غير نشط",
   "CREATE_AN_AUTOSHIP__TITLE": "أنشئ أوتوشيب",
   "CREATE_AN_AUTOSHIP__NAME_FILED_LABEL": "اسم الأوتوشيب",
   "CREATE_AN_AUTOSHIP__NAME_FILED_PLACEHOLDER": "ادخل اسماً مثل أوتوشيب قطتي",

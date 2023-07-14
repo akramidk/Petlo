@@ -250,7 +250,7 @@ const Checkout = () => {
             cn="mb-[12px]"
             label={{
               name: t("CHECKOUT__SELECT_A_CARD"),
-              bottomHelperText: t("COMMON__CARD_PAYMENT_WARNING"),
+              bottomHelperText: t("CHECKOUT__CARD_PAYMENT_WARNING"),
               require: true,
             }}
             options={{

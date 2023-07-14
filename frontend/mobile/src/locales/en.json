@@ -20,7 +20,6 @@
   "COMMON__NOT_SELECTED": "not selected",
   "COMMON__NOT_ADDED": "not added",
   "COMMON__NOTHING_FOUND": "Nothing Found",
-  "COMMON__CARD_PAYMENT_WARNING": "card payment is processed in United States Dollar",
   "COMMON__OPTIONAL": "Optional",
   "ROOT_LAYOUT__NEW_UPDATE_AVAILABLE_TITLE": "New Update Available",
   "ROOT_LAYOUT__NEW_UPDATE_AVAILABLE_MESSAGE": "The app must be updated first to be use.",
@@ -181,6 +180,7 @@
   "CHECKOUT__DELIVERY_AMOUNT": "Delivery Amount",
   "CHECKOUT__SELECT_ADDRESS_FIRST": "Select Address First",
   "CHECKOUT__TOTAL_AMOUNT": "Total Amount",
+  "CHECKOUT__CARD_PAYMENT_WARNING": "* card payment is processed in United States Dollar",
   "ORDERS__TITLE": "Orders",
   "ORDERS__ORDER_NUMBER": "Order No.",
   "ORDERS__STATUSES": {
@@ -205,6 +205,7 @@
     "DEACTIVATE_AUTOSHIP": "Deactivate Autoship",
     "REACTIVATE": "Reactivate"
   },
+  "AUTOSHIPS__CARD_PAYMENT_WARNINGS": "* card payment is processed in United States Dollar.\n\n** we will try to deduct the amount from a card before 24h of the shipping date, if failed we try before 12h and 6h, if all attempts failed we make the Autoship inactive.",
   "CREATE_AN_AUTOSHIP__TITLE": "Create An Autoship",
   "CREATE_AN_AUTOSHIP__NAME_FILED_LABEL": "Autoship Name",
   "CREATE_AN_AUTOSHIP__NAME_FILED_PLACEHOLDER": "enter a name like My Cat Autoship",

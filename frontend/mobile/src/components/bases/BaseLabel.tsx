@@ -23,18 +23,18 @@ const BaseLabel = ({
       name: "font-a600",
       require: "font-a600 mr-[2px]",
       helperText: "font-a400 mr-[4px]",
-      bottomHelperText: "font-a400",
+      bottomHelperText: "font-a400 text-right",
     },
     ar_feminine: {
       name: "font-a600",
       require: "font-a600 mr-[2px]",
       helperText: "font-a400 mr-[4px]",
-      bottomHelperText: "font-a400",
+      bottomHelperText: "font-a400 text-right",
     },
   };
 
   return (
-    <View className={clsx("space-y-[4px]", cn)}>
+    <View className={clsx("space-y-[8px]", cn)}>
       <View
         className={clsx(
           "flex-row flex-wrap",
