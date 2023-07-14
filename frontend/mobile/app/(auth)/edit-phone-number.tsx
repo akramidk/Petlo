@@ -60,6 +60,7 @@ const EditPhoneNumber = () => {
     >
       <FiledWithSelector
         name={t("EDIT_PHONE_NUMBER__NEW_PHONE_NUMBER_FILED_LABEL")}
+        helperText={t("COMMON__PHONE_NUMBER_WITHOUT_ZERO")}
         require={true}
         placeholder={t("EDIT_PHONE_NUMBER__NEW_PHONE_NUMBER_PLACEHOLDER")}
         options={COUNTIES_PHONE_CODE_OPTIONS}

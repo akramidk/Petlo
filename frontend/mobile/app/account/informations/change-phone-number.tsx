@@ -123,6 +123,7 @@ const ChangePhoneNumber = () => {
       >
         <FiledWithSelector
           placeholder={t("CHANGE_PHONE_NUMBER__STEP_2_FILED_PLACEHOLDER")}
+          helperText={t("COMMON__PHONE_NUMBER_WITHOUT_ZERO")}
           options={COUNTIES_PHONE_CODE_OPTIONS}
           signalSelect={{
             selectedOption: countryCode,

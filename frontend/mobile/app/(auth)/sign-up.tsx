@@ -103,6 +103,7 @@ const SignUp = () => {
       <FiledWithSelector
         cn="mb-[16px]"
         name={t("SIGN_UP__PHONE_NUMBER_FILED_LABEL")}
+        helperText={t("COMMON__PHONE_NUMBER_WITHOUT_ZERO")}
         require={true}
         placeholder={t("SIGN_UP__PHONE_NUMBER_FILED_PLACEHOLDER")}
         options={COUNTIES_PHONE_CODE_OPTIONS}

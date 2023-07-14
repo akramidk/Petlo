@@ -77,6 +77,7 @@ const SignIn = () => {
       <FiledWithSelector
         cn="mb-[16px]"
         name={t("SIGN_IN__PHONE_NUMBER_LABEL")}
+        helperText={t("COMMON__PHONE_NUMBER_WITHOUT_ZERO")}
         require={true}
         placeholder={t("SIGN_IN__PHONE_NUMBER_PLACEHOLDER")}
         options={COUNTIES_PHONE_CODE_OPTIONS}
