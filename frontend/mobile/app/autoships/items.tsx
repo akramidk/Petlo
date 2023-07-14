@@ -77,9 +77,14 @@ const Items = () => {
         );
       }
 
+      console.log("item.quantity", item.quantity);
+      console.log("selectedItemsCopy", selectedItemsCopy);
+
       setSelectedItems(selectedItemsCopy);
     }
   };
+
+  console.log("selectedItems", selectedItems);
 
   const {
     response: calculationResponse,
@@ -97,7 +102,7 @@ const Items = () => {
   });
 
   const items: CartItemProps[] = useMemo(() => {
-    if (savedCalculationResponse === undefined) return items;
+    if (savedCalculationResponse === undefined) return;
 
     const array: CartItemProps[] = [];
     savedCalculationResponse.items.forEach((item) => {
@@ -150,7 +155,11 @@ const Items = () => {
   }, [calculationResponse]);
 
   useEffect(() => {
-    if (selectedItems === undefined || selectedItems.length === 0) return;
+    if (selectedItems === undefined) return;
+
+    if (selectedItems.length === 0) {
+      setSavedCalculationResponse(undefined);
+    }
 
     calculationTrigger({
       data: selectedItems.map((item) => {
