@@ -129,7 +129,9 @@ const Cart = () => {
             }
           : undefined
       }
-      helperText={items.length === 0 ? t("CART__CART_IS_EMPTY") : undefined}
+      helperText={
+        !items || items.length === 0 ? t("CART__CART_IS_EMPTY") : undefined
+      }
     >
       <ItemsViewer
         items={items}

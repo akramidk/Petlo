@@ -67,11 +67,12 @@ const CreateNewAutoship = () => {
     return [
       {
         primaryText: t("CREATE_AN_AUTOSHIP__STEPS.WHAT.PRIMARY_TEXT"),
-        secondaryText: itemsCalculation
-          ? t("CREATE_AN_AUTOSHIP__STEPS.WHAT.SECONDARY_TEXT.WITH_DATA", {
-              numberOfItems: numberofItems,
-            })
-          : t("CREATE_AN_AUTOSHIP__STEPS.WHAT.SECONDARY_TEXT.WITHOUT_DATA"),
+        secondaryText:
+          itemsCalculation && itemsCalculation.items.length > 0
+            ? t("CREATE_AN_AUTOSHIP__STEPS.WHAT.SECONDARY_TEXT.WITH_DATA", {
+                numberOfItems: numberofItems,
+              })
+            : t("CREATE_AN_AUTOSHIP__STEPS.WHAT.SECONDARY_TEXT.WITHOUT_DATA"),
         actions: [
           {
             name: itemsCalculation ? changeText : selectText,
@@ -265,7 +266,7 @@ const CreateNewAutoship = () => {
               {t("CREATE_AN_AUTOSHIP__ITEMS_AMOUNT")}
             </Text>
             <Text font="semiBold" cn="text-[14px] text-[#666]">
-              {itemsCalculation
+              {itemsCalculation && itemsCalculation.items.length > 0
                 ? `${itemsCalculation.amount} ${itemsCalculation.currency}`
                 : t("CREATE_AN_AUTOSHIP__NO_ITEMS_ARE_SELECTED")}
             </Text>

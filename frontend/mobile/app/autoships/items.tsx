@@ -97,7 +97,11 @@ const Items = () => {
   });
 
   const items: CartItemProps[] = useMemo(() => {
-    if (savedCalculationResponse === undefined) return;
+    if (
+      !savedCalculationResponse ||
+      savedCalculationResponse.items.length === 0
+    )
+      return;
 
     const array: CartItemProps[] = [];
     savedCalculationResponse.items.forEach((item) => {
@@ -117,9 +121,68 @@ const Items = () => {
     return array;
   }, [savedCalculationResponse]);
 
+  const itemsData =
+    (data?.itemsCalculation as CalculateAutoshipItemsAmountResponse)?.items ??
+    [];
+  const responseItems = savedCalculationResponse?.items ?? [];
+
   const isSaveButtonActive = useMemo(() => {
+    if (itemsData.length === 0 && responseItems.length === 0) return false;
+
+    const savedItems: { id: string; variantId: string; quantity: number }[] =
+      [];
+    itemsData.forEach((item) => {
+      item.variants.forEach((variant) => {
+        savedItems.push({
+          id: item.public_id,
+          variantId: variant.public_id,
+          quantity: variant.quantity,
+        });
+      });
+    });
+
+    let newItems: { id: string; variantId: string; quantity: number }[] = [];
+    responseItems.forEach((item) => {
+      item.variants.forEach((variant) => {
+        newItems.push({
+          id: item.public_id,
+          variantId: variant.public_id,
+          quantity: variant.quantity,
+        });
+      });
+    });
+
+    const isSavedItemsStillExistAndQuantityNotChanged = savedItems.every(
+      (savedItem) => {
+        const isStillExistAndQuantityNotChanged = newItems.find(
+          (newItem) =>
+            newItem.id === savedItem.id &&
+            newItem.variantId === savedItem.variantId &&
+            newItem.quantity === savedItem.quantity
+        );
+
+        console.log(
+          "isStillExistAndQuantityNotChanged",
+          isStillExistAndQuantityNotChanged
+        );
+
+        if (isStillExistAndQuantityNotChanged) {
+          newItems = newItems.filter(
+            (newItem) =>
+              newItem.id !== savedItem.id ||
+              newItem.variantId !== savedItem.variantId
+          );
+        }
+
+        return isStillExistAndQuantityNotChanged;
+      }
+    );
+
+    if (isSavedItemsStillExistAndQuantityNotChanged && newItems.length === 0)
+      return false;
+
     return true;
-  }, [savedCalculationResponse]);
+  }, [itemsData, responseItems]);
 
   const { trigger, status } = useAPIMutation<
     ChangeAutoshipItemsRequest,
