@@ -25,7 +25,7 @@ class Customer::VerificationJob
 
     ENUM::PERMISSIONS[:CHANGE_CUSTOMER_PASSWORD] => {
       "ar" => "رمز التحقق الخاص بك لتغيير كلمة المرور",
-      "en" => "Your verification code to chnage your password is"
+      "en" => "Your verification code to change your password is"
     }
   }
 
