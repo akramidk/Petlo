@@ -87,6 +87,7 @@ module OrdersHelper::Create
             )
         end
 
+        cart.used!
         checkout.used!
     end
 end

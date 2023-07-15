@@ -6,7 +6,7 @@ class Order < ApplicationRecord
     has_one :payment
 
     belongs_to :customer
-    belongs_to :autoship
+    belongs_to :autoship, optional: true
     belongs_to :address
 
     before_validation :calculate_the_amount
