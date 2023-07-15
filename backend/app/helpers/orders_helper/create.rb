@@ -27,7 +27,7 @@ module OrdersHelper::Create
                 @payment_response = GatewayLib.make_payment(
                     processor: PROCESSOR,
                     data: {
-                        amount: 10000,
+                        amount: checkout.cart_amount + checkout.delivery_amount,
                         currency: CONSTANTS::COUNTRIES_CURRENCIES[customer.country]["en"].downcase,
                         source: @card.processor_card_id,
                         customer_id: customer.stripe_id
