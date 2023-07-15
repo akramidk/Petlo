@@ -7,6 +7,7 @@ import { Endpoints } from "../../src/enums";
 import {
   useAPIFetching,
   useAPIMutation,
+  useCartStore,
   useInternationalizationContext,
   useTranslationsContext,
 } from "../../src/hooks";
@@ -42,7 +43,9 @@ const Checkout = () => {
   const [paymentMethod, setPaymentMethod] = useState<BaseOption>();
   const [card, setCard] = useState<BaseOption>();
   const [address, setAddress] = useState<BaseOption>();
-  const [pet, setPet] = useState<BaseOption[]>();
+  const [selectedPets, setSelectedPets] = useState<BaseOption[]>();
+
+  const { setCartId, setNumberofItems, setSummary } = useCartStore();
 
   const { response: createCheckoutResponse, trigger: createCheckoutTrigger } =
     useAPIMutation<CreateNewCheckoutRequest, CreateNewCheckoutResponse>({
@@ -71,7 +74,13 @@ const Checkout = () => {
       endpoint: Endpoints.CREATE_NEW_ORDERS,
       method: "POST",
       options: {
-        onSucceeded: () => router.replace("/orders"),
+        onSucceeded: () => {
+          setCartId(null);
+          setNumberofItems(0);
+          setSummary(undefined);
+
+          router.replace("/orders");
+        },
         fireOnSucceededAfter: 2000,
       },
     });
@@ -220,7 +229,7 @@ const Checkout = () => {
               method: paymentMethod.id as "cash" | "card",
               ...cardObj,
             },
-            pets: pets?.map((pet) => pet.id) ?? [],
+            pets: selectedPets?.map((pet) => pet.id as string) ?? [],
           });
         },
         status: createNewOrderStatus ?? buttonStatus,
@@ -310,8 +319,8 @@ const Checkout = () => {
             optionValueFont: "semiBold",
             options: pets,
             multipleSelect: {
-              selectedOptions: pet,
-              setSelectedOptions: setPet,
+              selectedOptions: selectedPets,
+              setSelectedOptions: setSelectedPets,
             },
           }}
         />

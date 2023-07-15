@@ -24,7 +24,6 @@ import Item from "./_Item";
 const Cart = () => {
   const router = useRouter();
   const { t } = useTranslationsContext();
-  const { direction } = useInternationalizationContext();
 
   const { summary, cartId, setSummary, setNumberofItems, numberofItems } =
     useCartStore();
