@@ -130,5 +130,14 @@ module V1
 
       render json: response, status: 200
     end
+
+    def next_shipment_date_after_the_skip
+      response = AutoshipsHelper.next_shipment_date_after_the_skip(
+        customer: @customer,
+        public_id: params[:public_id]
+      )
+
+      render json: response, status: 200
+    end
   end
 end
