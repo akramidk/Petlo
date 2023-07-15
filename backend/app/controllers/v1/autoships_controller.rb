@@ -119,5 +119,16 @@ module V1
 
       render json: response, status: 200
     end
+
+    def calculation
+      response = AutoshipsHelper.calculation(
+        customer: @customer,
+        address_id: params[:address_id],
+        items: params[:items],
+        language: params[:locale]
+      )
+
+      render json: response, status: 200
+    end
   end
 end

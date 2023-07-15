@@ -10,4 +10,5 @@ module AutoshipsHelper
   extend Deactivate
   extend Activate
   extend ItemsCalculation
+  extend Calculation
 end

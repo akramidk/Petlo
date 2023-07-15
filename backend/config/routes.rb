@@ -96,6 +96,7 @@ Rails.application.routes.draw do
       patch "autoships/:public_id/activate", to: "autoships#activate"
       # TODO should get not post but akram used post to use useAPIMutation
       post "autoships/items-calculation", to: "autoships#items_calculation"
+      post "autoships/calculation", to: "autoships#calculation"
     end
 
     namespace :dashboard do
