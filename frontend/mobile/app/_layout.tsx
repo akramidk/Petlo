@@ -139,7 +139,6 @@ const Layout = () => {
     cartStore.cartId === undefined
   ) {
     // TODO new design for this insted of an Alert
-    // TODO store url
     if (newVersionAvailableResponse?.body?.value) {
       Alert.alert(
         t("ROOT_LAYOUT__NEW_UPDATE_AVAILABLE_TITLE"),

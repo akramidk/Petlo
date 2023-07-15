@@ -12,7 +12,6 @@ import { Loading } from "../../src/components/pages";
 import clsx from "clsx";
 
 // TODO add the autoship
-// TODO add the delivery estimation
 // TODO redesign the whole card + create an order page for more info
 
 const Orders = () => {

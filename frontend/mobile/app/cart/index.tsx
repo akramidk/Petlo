@@ -21,8 +21,6 @@ import {
 import { Loading } from "../../src/components/pages";
 import Item from "./_Item";
 
-// TODO fix addStatus run on all items
-
 const Cart = () => {
   const router = useRouter();
   const { t } = useTranslationsContext();
