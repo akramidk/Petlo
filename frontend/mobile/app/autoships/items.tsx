@@ -20,6 +20,7 @@ import SearchAndSelectItems from "./components/SearchAndSelectItems";
 import { ItemViewer } from "../../src/components/molecules";
 import { Endpoints } from "../../src/enums";
 import { Loading } from "../../src/components/pages";
+import { buttonStatus } from "../../src/types";
 
 const Items = () => {
   const router = useRouter();
@@ -36,6 +37,11 @@ const Items = () => {
       quantity: number;
     }[]
   >(data?.selectedItems);
+
+  const [currentOperation, setCurrentOperation] = useState<{
+    operation: "add" | "remove";
+    item: { id: string; variantId: string };
+  }>();
 
   const [savedCalculationResponse, setSavedCalculationResponse] =
     useState<CalculateAutoshipItemsAmountResponse>(data?.itemsCalculation);
@@ -59,6 +65,10 @@ const Items = () => {
       });
     }
 
+    setCurrentOperation({
+      operation: "add",
+      item: { id: itemId, variantId: variantId },
+    });
     setSelectedItems(selectedItemsCopy);
   };
 
@@ -77,6 +87,10 @@ const Items = () => {
         );
       }
 
+      setCurrentOperation({
+        operation: "remove",
+        item: { id: itemId, variantId: variantId },
+      });
       setSelectedItems(selectedItemsCopy);
     }
   };
@@ -92,7 +106,16 @@ const Items = () => {
     endpoint: Endpoints.AUTOSHIP_ITEMS_CALCULATION,
     method: "POST",
     options: {
-      resetSucceededStatusAfter: 2000,
+      resetSucceededStatusAfter: 1000,
+      resetFailedStatusAfter: 1000,
+      fireOnFailedAfter: 1000,
+      fireOnSucceededAfter: 1000,
+      onSucceeded: () => {
+        setCurrentOperation(undefined);
+      },
+      onFailed: () => {
+        setCurrentOperation(undefined);
+      },
     },
   });
 
@@ -308,7 +331,31 @@ const Items = () => {
         <ItemsViewer
           items={items}
           renderItem={(item) => {
-            return <ItemViewer {...item} add={add} remove={remove} />;
+            const addStatus: buttonStatus = currentOperation
+              ? currentOperation.operation === "add" &&
+                item.itemId === currentOperation.item.id &&
+                item.variantId === currentOperation.item.variantId
+                ? calculationResponse?.status
+                : "inactive"
+              : undefined;
+
+            const removeStatus: buttonStatus = currentOperation
+              ? currentOperation.operation === "remove" &&
+                item.itemId === currentOperation.item.id &&
+                item.variantId === currentOperation.item.variantId
+                ? calculationResponse?.status
+                : "inactive"
+              : undefined;
+
+            return (
+              <ItemViewer
+                {...item}
+                add={add}
+                remove={remove}
+                addStatus={addStatus}
+                removeStatus={removeStatus}
+              />
+            );
           }}
           detailsTranslationValue={t("CREATE_AN_AUTOSHIP__ITEMS_CALCULATION")}
           totalTranslationValue={t(

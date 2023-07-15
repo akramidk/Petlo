@@ -12,7 +12,9 @@ interface useAPIMutationProps {
   slugs?: { [key: string]: string };
   options?: {
     onSucceeded?: () => void;
+    onFailed?: () => void;
     fireOnSucceededAfter?: number;
+    fireOnFailedAfter?: number;
     withoutAuthorization?: boolean;
     overwriteSessionToken?: string;
     showFailedAlert?: boolean;
@@ -37,7 +39,9 @@ const useAPIMutation = <Request, Response>({
   slugs,
   options: {
     onSucceeded,
+    onFailed,
     fireOnSucceededAfter = 0,
+    fireOnFailedAfter = 0,
     withoutAuthorization = false,
     overwriteSessionToken,
     showFailedAlert = true,
@@ -126,6 +130,12 @@ const useAPIMutation = <Request, Response>({
         value: response.error.error.message,
         hideAfter: hideFailedAlertAfter,
       });
+    }
+
+    if (onFailed) {
+      setTimeout(() => {
+        onFailed();
+      }, fireOnFailedAfter);
     }
 
     setTimeout(() => {
