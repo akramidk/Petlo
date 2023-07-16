@@ -15,6 +15,7 @@ interface SelectThePeriodProps {
   setRecurringInterval: Dispatch<SetStateAction<BaseOption>>;
   recurringIntervalCount: string;
   setRecurringIntervalCount: Dispatch<SetStateAction<string>>;
+  isChange: boolean;
 }
 
 const SelectThePeriod = ({
@@ -22,6 +23,7 @@ const SelectThePeriod = ({
   setRecurringInterval,
   recurringIntervalCount,
   setRecurringIntervalCount,
+  isChange,
 }: SelectThePeriodProps) => {
   const { t } = useTranslationsContext();
   const { direction } = useInternationalizationContext();
@@ -30,7 +32,11 @@ const SelectThePeriod = ({
     <>
       <View className="space-y-[8px]">
         <BaseLabel
-          name={t("CREATE_AN_AUTOSHIP__RECURRING_AFTER_FILED_LABEL")}
+          name={
+            isChange
+              ? t("CHANGE_SHIPMENTS_DATES__THEN_EVERY")
+              : t("CREATE_AN_AUTOSHIP__RECURRING_AFTER_FILED_LABEL")
+          }
           require
         />
 

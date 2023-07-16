@@ -295,5 +295,6 @@
   "DEACTIVATE_AN_AUTOSHIP__HELPER_TEXT": "Are you sure that you want to deactivate your autoship?\n\nIf yes you can reactivate it when ever you want.",
   "DEACTIVATE_AN_AUTOSHIP__BUTTON": "Yes I'm Sure",
   "CHANGE_SHIPMENTS_DATES__TITLE": "Change Shipments Dates",
-  "CHANGE_SHIPMENTS_DATES__NEXT_SHIPMENT_ON": "Next shipment on"
+  "CHANGE_SHIPMENTS_DATES__NEXT_SHIPMENT_ON": "Next shipment on",
+  "CHANGE_SHIPMENTS_DATES__THEN_EVERY": "Then every"
 }

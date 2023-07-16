@@ -173,6 +173,7 @@ const Date = () => {
         setRecurringIntervalCount={setRecurringIntervalCount}
         recurringInterval={recurringInterval}
         setRecurringInterval={setRecurringInterval}
+        isChange={isChange}
       />
 
       <View className="space-y-[12px] mt-[32px]">
