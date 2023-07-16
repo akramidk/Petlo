@@ -12,5 +12,8 @@ export interface AutoshipItemsCalculation {
     }[];
   }[];
   amount: string;
+  usd_amount: string;
+  amount_after_discount: string;
+  usd_amount_after_discount: string;
   currency: string;
 }

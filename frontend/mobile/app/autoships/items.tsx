@@ -361,9 +361,12 @@ const Items = () => {
           totalTranslationValue={t(
             "CREATE_AN_AUTOSHIP__ITEMS_CALCULATION_TOTAL_AMOUNT"
           )}
+          total2TranslationValue={t(
+            "CREATE_AN_AUTOSHIP__ITEMS_CALCULATION_TOTAL_AMOUNT_AFTER_DISCOUNT"
+          )}
           amount={savedCalculationResponse?.amount}
+          amount2={savedCalculationResponse?.amount_after_discount}
           currency={savedCalculationResponse?.currency}
-          isAmountLoading={calculationResponse?.status === "loading"}
         />
       </PageStructure>
     </>

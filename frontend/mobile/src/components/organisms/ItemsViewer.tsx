@@ -11,9 +11,12 @@ interface ItemsViewerProps {
   renderItem: (item: CartItemProps) => React.ReactNode;
   detailsTranslationValue: string;
   totalTranslationValue: string;
+  total2TranslationValue?: string;
   amount?: string;
+  amount2?: string;
   currency?: string;
   isAmountLoading?: boolean;
+  isAmount2Loading?: boolean;
 }
 
 const ItemsViewer = ({
@@ -21,9 +24,12 @@ const ItemsViewer = ({
   renderItem,
   detailsTranslationValue,
   totalTranslationValue,
+  total2TranslationValue,
   amount,
+  amount2,
   currency,
   isAmountLoading,
+  isAmount2Loading,
 }: ItemsViewerProps) => {
   const { direction } = useInternationalizationContext();
 
@@ -41,22 +47,48 @@ const ItemsViewer = ({
             {detailsTranslationValue}
           </Text>
 
-          <View
-            className={clsx(
-              "justify-between",
-              direction === "ltr" ? "flex-row" : "flex-row-reverse"
-            )}
-          >
-            <Text font="semiBold" cn="text-[14px] text-[#666]">
-              {totalTranslationValue}
-            </Text>
-            <Text font="semiBold" cn="text-[14px] text-[#666]">
-              {isAmountLoading ? (
-                <ActivityIndicator animating={true} color="#666" size={14} />
-              ) : (
-                `${amount} ${currency}`
+          <View className="space-y-[8px]">
+            <View
+              className={clsx(
+                "justify-between",
+                direction === "ltr" ? "flex-row" : "flex-row-reverse"
               )}
-            </Text>
+            >
+              <Text font="semiBold" cn="text-[14px] text-[#666]">
+                {totalTranslationValue}
+              </Text>
+              <Text font="semiBold" cn="text-[14px] text-[#666]">
+                {isAmountLoading ? (
+                  <ActivityIndicator animating={true} color="#666" size={14} />
+                ) : (
+                  `${amount} ${currency}`
+                )}
+              </Text>
+            </View>
+
+            {total2TranslationValue && (
+              <View
+                className={clsx(
+                  "justify-between",
+                  direction === "ltr" ? "flex-row" : "flex-row-reverse"
+                )}
+              >
+                <Text font="semiBold" cn="text-[14px] text-[#666]">
+                  {total2TranslationValue}
+                </Text>
+                <Text font="semiBold" cn="text-[14px] text-[#666]">
+                  {isAmount2Loading ? (
+                    <ActivityIndicator
+                      animating={true}
+                      color="#666"
+                      size={14}
+                    />
+                  ) : (
+                    `${amount2} ${currency}`
+                  )}
+                </Text>
+              </View>
+            )}
           </View>
         </View>
       )}
