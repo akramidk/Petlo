@@ -284,6 +284,24 @@ const CreateNewAutoship = () => {
           {t("CREATE_AN_AUTOSHIP__PAYMENT_DETAILS")}
         </Text>
 
+        {numberofItems === 0 && !address && !calculationResponse?.body && (
+          <Text font="semiBold" cn="text-[14px] text-[#666]">
+            {t("CREATE_AN_AUTOSHIP__SELECT_ITEMS_AND_ADDRESS")}
+          </Text>
+        )}
+
+        {numberofItems === 0 && address && !calculationResponse?.body && (
+          <Text font="semiBold" cn="text-[14px] text-[#666]">
+            {t("CREATE_AN_AUTOSHIP__SELECT_ITEMS")}
+          </Text>
+        )}
+
+        {numberofItems > 0 && !address && !calculationResponse?.body && (
+          <Text font="semiBold" cn="text-[14px] text-[#666]">
+            {t("CREATE_AN_AUTOSHIP__SELECT_ADDRESS")}
+          </Text>
+        )}
+
         {numberofItems > 0 && address && calculationResponse?.body && (
           <View className="space-y-[12px]">
             <View
