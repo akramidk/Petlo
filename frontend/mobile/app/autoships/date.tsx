@@ -58,7 +58,7 @@ const Date = () => {
       recurringIntervalCountAsNumber <= 3);
 
   const isChanged =
-    data?.recurringInterval !== recurringInterval ||
+    data?.recurringInterval?.id !== recurringInterval.id ||
     data?.recurringIntervalCount !== recurringIntervalCount ||
     data?.nextShipment?.day !== nextShipment?.day ||
     data?.nextShipment?.month !== nextShipment?.month ||
@@ -104,6 +104,10 @@ const Date = () => {
             return;
           }
 
+          if (isChange) {
+            return;
+          }
+
           setData({
             ...data,
             nextShipment: nextShipment,
@@ -121,7 +125,13 @@ const Date = () => {
       }}
       link={{
         value: t("COMMON__CANCEL"),
-        onClick: router.back,
+        onClick: () => {
+          if (isChange) {
+            setData(undefined);
+          }
+
+          router.back();
+        },
       }}
     >
       <SelectNextShipment

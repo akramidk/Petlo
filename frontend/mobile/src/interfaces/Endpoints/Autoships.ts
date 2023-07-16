@@ -14,5 +14,7 @@ export interface AutoshipsResponse {
     }[];
     payment_method: "cash" | "card";
     payment_card_id: string | null;
+    recurring_interval_count: number;
+    recurring_interval: "day" | "month";
   }[];
 }

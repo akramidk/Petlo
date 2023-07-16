@@ -12,6 +12,7 @@ import {
 import { DataCardProps } from "../../src/interfaces";
 import { AutoshipsResponse } from "../../src/interfaces/Endpoints/Autoships";
 import { Loading } from "../../src/components/pages";
+import NextShipment from "./interfaces/NextShipment";
 
 const Autoships = () => {
   const router = useRouter();
@@ -109,10 +110,27 @@ const Autoships = () => {
           },
           {
             name: t("AUTOSHIPS__ACTIONS.CHANGE_SHIPMENTS_DATES"),
-            onClick: () =>
+            onClick: () => {
+              const nextShipmentAsArray = autoship.next_shipment_on.split("-");
+              const nextShipment: NextShipment = {
+                year: Number(nextShipmentAsArray[0]),
+                month: Number(nextShipmentAsArray[1]),
+                day: Number(nextShipmentAsArray[2]),
+              };
+
+              setData({
+                recurringIntervalCount:
+                  autoship.recurring_interval_count.toString(),
+                recurringInterval: {
+                  id: autoship.recurring_interval,
+                },
+                nextShipment: nextShipment,
+              });
+
               router.push(
                 `/autoships/date?publicId=${autoship.public_id}&type=change`
-              ),
+              );
+            },
           },
           {
             name: t("AUTOSHIPS__ACTIONS.DEACTIVATE_AUTOSHIP"),
