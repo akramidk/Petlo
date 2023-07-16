@@ -166,11 +166,14 @@ import {
   ReactivateAnAutoshipRequest,
   ReactivateAnAutoshipResponse,
 } from "./Endpoints/ReactivateAnAutoship";
-
 import {
   AutoshipCalculationRequest,
   AutoshipCalculationResponse,
 } from "./Endpoints/AutoshipCalculation";
+import {
+  UpdateAutoshipDateRequest,
+  UpdateAutoshipDateResponse,
+} from "./Endpoints/UpdateAutoshipDate";
 
 //entities interfaces
 import { Customer } from "./Entities/Customer";

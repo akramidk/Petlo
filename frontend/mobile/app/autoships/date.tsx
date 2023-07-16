@@ -21,6 +21,10 @@ import {
 import { Text } from "../../src/components/atoms";
 import clsx from "clsx";
 import { Endpoints } from "../../src/enums";
+import {
+  UpdateAutoshipDateRequest,
+  UpdateAutoshipDateResponse,
+} from "../../src/interfaces/Endpoints/UpdateAutoshipDate";
 
 const Date = () => {
   const router = useRouter();
@@ -79,6 +83,24 @@ const Date = () => {
     },
   });
 
+  const { trigger: changeTrigger, status: changeStatus } = useAPIMutation<
+    UpdateAutoshipDateRequest,
+    UpdateAutoshipDateResponse
+  >({
+    endpoint: Endpoints.UPDATE_AUTOSHIP_DATE,
+    method: "PATCH",
+    options: {
+      onSucceeded: () => {
+        setData(undefined);
+        router.back();
+      },
+      fireOnSucceededAfter: 1000,
+    },
+    slugs: {
+      publicId: publicId,
+    },
+  });
+
   return (
     <PageStructure
       title={
@@ -105,6 +127,11 @@ const Date = () => {
           }
 
           if (isChange) {
+            changeTrigger({
+              next_shipment_on: `${nextShipment.year}-${nextShipment.month}-${nextShipment.day}`,
+              recurring_interval: recurringInterval.id,
+              recurring_interval_count: Number(recurringIntervalCount),
+            });
             return;
           }
 
@@ -119,6 +146,7 @@ const Date = () => {
         },
         status:
           status ??
+          changeStatus ??
           (nextShipment && isRecurringIntervalCountValid && isChanged
             ? "active"
             : "inactive"),
