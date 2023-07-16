@@ -3,6 +3,8 @@ module Utils
   NUMBER_TO_USD = 100
 
   def self.number_to_usd(country:, number:, as_string: false)
+    return nil unless number
+
     currency_number_of_decimal = CONSTANTS::COUNTRIES_CURRENCY_NUMBER_OF_DECIMALS[country]
     divide_number_by = BigDecimal(10) ** BigDecimal(currency_number_of_decimal)
     the_real_number = BigDecimal(number) / BigDecimal(divide_number_by)

@@ -15,17 +15,37 @@ module AutoshipsHelper::Calculation
         country: customer.country,
         number: items_amount
       ),
+      usd_items_amount: Utils.number_to_usd(
+        country: customer.country,
+        number: items_amount,
+        as_string: true
+      ),
       items_amount_after_discount: Utils.number_to_currency(
         country: customer.country,
         number: items_amount_after_discount
+      ),
+      usd_items_amount_after_discount: Utils.number_to_usd(
+        country: customer.country,
+        number: items_amount_after_discount,
+        as_string: true
       ),
       delivery_amount: Utils.number_to_currency(
         country: customer.country,
         number: delivery_amount
       ),
+      usd_delivery_amount: Utils.number_to_usd(
+        country: customer.country,
+        number: delivery_amount,
+        as_string: true
+      ),
       total: Utils.number_to_currency(
         country: customer.country,
         number: total
+      ),
+      usd_total: Utils.number_to_usd(
+        country: customer.country,
+        number: total,
+        as_string: true
       ),
       currency: CONSTANTS::COUNTRIES_CURRENCIES[customer.country][language]
     }

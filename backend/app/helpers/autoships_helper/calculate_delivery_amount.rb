@@ -8,6 +8,11 @@ module AutoshipsHelper::CalculateDeliveryAmount
         country: customer.country,
         number: CONSTANTS::DELIVERY_COSTS[customer.country]
       ),
+      usd_amount: Utils.number_to_usd(
+        country: customer.country,
+        number: CONSTANTS::DELIVERY_COSTS[customer.country],
+        as_string: true
+      ),
       currency: CONSTANTS::COUNTRIES_CURRENCIES[customer.country][language]
     }
   end
