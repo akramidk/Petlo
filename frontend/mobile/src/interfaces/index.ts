@@ -167,6 +167,11 @@ import {
   ReactivateAnAutoshipResponse,
 } from "./Endpoints/ReactivateAnAutoship";
 
+import {
+  AutoshipCalculationRequest,
+  AutoshipCalculationResponse,
+} from "./Endpoints/AutoshipCalculation";
+
 //entities interfaces
 import { Customer } from "./Entities/Customer";
 import { Section } from "./Entities/Section";
@@ -282,6 +287,8 @@ export {
   ChangeAutoshipItemsResponse,
   ReactivateAnAutoshipRequest,
   ReactivateAnAutoshipResponse,
+  AutoshipCalculationRequest,
+  AutoshipCalculationResponse,
   Customer,
   Cart,
   DataCardProps,

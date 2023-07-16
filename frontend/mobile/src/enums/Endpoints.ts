@@ -44,6 +44,7 @@ export enum Endpoints {
   AUTOSHIPS = "/v1/autoships",
   AUTOSHIP_ITEMS_CALCULATION = "/v1/autoships/items-calculation",
   CREATE_AN_AUTOSHIP = "/v1/autoships",
+  AUTOSHIP_CALCULATION = "/v1/autoships/calculation",
   CALCULATE_DELIVERY_AMOUNT = "/v1/autoships/calculate-delivery-amount",
   CHANGE_AUTOSHIP_NAME = "/v1/autoships/${publicId}/name",
   CHANGE_AUTOSHIP_ADDRESS = "/v1/autoships/${publicId}/address",

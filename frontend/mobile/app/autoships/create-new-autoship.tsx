@@ -19,6 +19,8 @@ import {
   CreateAnAutoshipRequest,
   CreateAnAutoshipResponse,
   CalculateDeliveryAmountResponse,
+  AutoshipCalculationRequest,
+  AutoshipCalculationResponse,
 } from "../../src/interfaces";
 import NextShipment from "./interfaces/NextShipment";
 import { View } from "react-native";
@@ -171,6 +173,16 @@ const CreateNewAutoship = () => {
     },
   });
 
+  const {
+    trigger: calculationTrigger,
+    status: calculationStatus,
+    response: calculationResponse,
+  } = useAPIMutation<AutoshipCalculationRequest, AutoshipCalculationResponse>({
+    endpoint: Endpoints.AUTOSHIP_CALCULATION,
+    method: "POST",
+    options: {},
+  });
+
   const createHandler = useCallback(() => {
     const items = selectedItems.map((item) => {
       return {
@@ -219,6 +231,21 @@ const CreateNewAutoship = () => {
     if (name) setData({ ...data, name });
   }, [name]);
 
+  useEffect(() => {
+    if (!selectedItems || selectedItems.length === 0 || !address) return;
+
+    calculationTrigger({
+      items: selectedItems.map((item) => {
+        return {
+          item_id: item.itemId,
+          variant_id: item.variantId,
+          quantity: item.quantity,
+        };
+      }),
+      address_id: address.public_id,
+    });
+  }, [selectedItems, address]);
+
   return (
     <PageStructure
       title={t("CREATE_AN_AUTOSHIP__TITLE")}
@@ -257,45 +284,45 @@ const CreateNewAutoship = () => {
           {t("CREATE_AN_AUTOSHIP__PAYMENT_DETAILS")}
         </Text>
 
-        <View className="space-y-[12px]">
-          <View
-            className={clsx(
-              "justify-between",
-              direction === "ltr" ? "flex-row" : "flex-row-reverse"
-            )}
-          >
-            <Text font="semiBold" cn="text-[14px] text-[#666]">
-              {t("CREATE_AN_AUTOSHIP__ITEMS_AMOUNT")}
-            </Text>
-            <Text font="semiBold" cn="text-[14px] text-[#666]">
-              {numberofItems > 0
-                ? `${itemsCalculation.amount} ${itemsCalculation.currency} ${
-                    payment?.method === "card"
-                      ? `(${itemsCalculation.amount_after_discount} ${t(
-                          "COMMON__USD"
-                        )})`
-                      : ""
-                  }`
-                : t("CREATE_AN_AUTOSHIP__NO_ITEMS_ARE_SELECTED")}
-            </Text>
-          </View>
+        {numberofItems > 0 && address && calculationResponse?.body && (
+          <View className="space-y-[12px]">
+            <View
+              className={clsx(
+                "justify-between",
+                direction === "ltr" ? "flex-row" : "flex-row-reverse"
+              )}
+            >
+              <Text font="semiBold" cn="text-[14px] text-[#666]">
+                {t("CREATE_AN_AUTOSHIP__ITEMS_AMOUNT")}
+              </Text>
+              <Text font="semiBold" cn="text-[14px] text-[#666]">
+                {`${calculationResponse.body.items_amount} ${
+                  calculationResponse.body.currency
+                } ${
+                  payment?.method === "card"
+                    ? `(${itemsCalculation.amount_after_discount} ${t(
+                        "COMMON__USD"
+                      )})`
+                    : ""
+                }`}
+              </Text>
+            </View>
 
-          <View
-            className={clsx(
-              "justify-between",
-              direction === "ltr" ? "flex-row" : "flex-row-reverse"
-            )}
-          >
-            <Text font="semiBold" cn="text-[14px] text-[#666]">
-              {t("CREATE_AN_AUTOSHIP__DELIVERY_AMOUNT")}
-            </Text>
-            <Text font="semiBold" cn="text-[14px] text-[#666]">
-              {deliveryCalculation
-                ? `${deliveryCalculation.amount} ${deliveryCalculation.currency}`
-                : t("CREATE_AN_AUTOSHIP__NO_ADDRESS_IS_SELECTED")}
-            </Text>
+            <View
+              className={clsx(
+                "justify-between",
+                direction === "ltr" ? "flex-row" : "flex-row-reverse"
+              )}
+            >
+              <Text font="semiBold" cn="text-[14px] text-[#666]">
+                {t("CREATE_AN_AUTOSHIP__DELIVERY_AMOUNT")}
+              </Text>
+              <Text font="semiBold" cn="text-[14px] text-[#666]">
+                {`${calculationResponse.body.delivery_amount} ${calculationResponse.body.currency}`}
+              </Text>
+            </View>
           </View>
-        </View>
+        )}
       </View>
     </PageStructure>
   );
