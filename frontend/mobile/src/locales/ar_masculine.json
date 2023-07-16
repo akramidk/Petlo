@@ -294,6 +294,8 @@
   "CHANGE_AUTOSHIP_PETS__TITLE": "تغيير الحيوانات",
   "CHANGE_AUTOSHIP_ITEMS__TITLE": "تغيير المنتجات",
   "CHANGE_AUTOSHIP_PAYMENT__TITLE": "تغيير كيف تقوم بالدفع",
+  "CREATE_AN_AUTOSHIP__SHIPMENTS_DETAILS": "معلومات الشحن",
+  "CREATE_AN_AUTOSHIP__SELECT_DATE_AND_EVERY": "يجب ان تختار متى يجب ان تصل اولاً.",
   "REACTIVATE_AN_AUTOSHIP__TITLE": "اعادة تفعيل",
   "REACTIVATE_AN_AUTOSHIP__BUTTON": "اعادة تفعيل",
   "DEACTIVATE_AN_AUTOSHIP__TITLE": "ايقاف الأوتوشيب",

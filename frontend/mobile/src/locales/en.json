@@ -281,6 +281,8 @@
   "CREATE_AN_AUTOSHIP__SELECT_ITEMS_AND_ADDRESS": "You should select what to autoship, and where to deliver at first.",
   "CREATE_AN_AUTOSHIP__SELECT_ITEMS": "You should select what to autoship at first.",
   "CREATE_AN_AUTOSHIP__SELECT_ADDRESS": "You should select where deliver at first.",
+  "CREATE_AN_AUTOSHIP__SHIPMENTS_DETAILS": "Shipments Details",
+  "CREATE_AN_AUTOSHIP__SELECT_DATE_AND_EVERY": "You should select when it should arrive at first.",
   "CHANGE_AUTOSHIP_NAME__TITLE": "Change Name",
   "CHANGE_AUTOSHIP_ADDRESS__TITLE": "Change Deliver Address",
   "CHANGE_AUTOSHIP_PETS__TITLE": "Change Pets",
