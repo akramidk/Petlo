@@ -199,7 +199,7 @@ const CreateNewAutoship = () => {
       address_id: address.public_id,
       items: items,
       payment: {
-        method: "cash",
+        method: payment.method,
         ...cardObj,
       },
       pets: pets ? pets.map((pet) => pet.public_id) : undefined,

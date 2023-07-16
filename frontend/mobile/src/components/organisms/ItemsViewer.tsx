@@ -47,7 +47,7 @@ const ItemsViewer = ({
             {detailsTranslationValue}
           </Text>
 
-          <View className="space-y-[8px]">
+          <View className="space-y-[10px]">
             <View
               className={clsx(
                 "justify-between",
