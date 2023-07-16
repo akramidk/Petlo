@@ -272,6 +272,8 @@
   "CREATE_AN_AUTOSHIP__ADD_AN_ITEM": "اضافة منتج",
   "CREATE_AN_AUTOSHIP__PAYMENT_DETAILS": "تفاصيل الدفع",
   "CREATE_AN_AUTOSHIP__ITEMS_AMOUNT": "قيمة المنتجات",
+  "CREATE_AN_AUTOSHIP__ITEMS_AMOUNT_AFTER_DISCOUNT": "قيمة المنتجات بعد الخصم",
+  "CREATE_AN_AUTOSHIP__TOTAL_AMOUNT": "المبلغ اﻹجمالي",
   "CREATE_AN_AUTOSHIP__DELIVERY_AMOUNT": "قيمة التوصيل",
   "CREATE_AN_AUTOSHIP__NO_ITEMS_ARE_SELECTED": "لا يوجد منتجات مختارة",
   "CREATE_AN_AUTOSHIP__NO_ADDRESS_IS_SELECTED": "لا يوجد عنوان توصيل مختار",

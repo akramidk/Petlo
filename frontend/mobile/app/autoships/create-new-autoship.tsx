@@ -300,9 +300,31 @@ const CreateNewAutoship = () => {
                   calculationResponse.body.currency
                 } ${
                   payment?.method === "card"
-                    ? `(${itemsCalculation.amount_after_discount} ${t(
+                    ? `(${calculationResponse.body.usd_items_amount} ${t(
                         "COMMON__USD"
                       )})`
+                    : ""
+                }`}
+              </Text>
+            </View>
+
+            <View
+              className={clsx(
+                "justify-between",
+                direction === "ltr" ? "flex-row" : "flex-row-reverse"
+              )}
+            >
+              <Text font="semiBold" cn="text-[14px] text-[#666]">
+                {t("CREATE_AN_AUTOSHIP__ITEMS_AMOUNT_AFTER_DISCOUNT")}
+              </Text>
+              <Text font="semiBold" cn="text-[14px] text-[#666]">
+                {`${calculationResponse.body.items_amount_after_discount} ${
+                  calculationResponse.body.currency
+                } ${
+                  payment?.method === "card"
+                    ? `(${
+                        calculationResponse.body.usd_items_amount_after_discount
+                      } ${t("COMMON__USD")})`
                     : ""
                 }`}
               </Text>
@@ -318,7 +340,37 @@ const CreateNewAutoship = () => {
                 {t("CREATE_AN_AUTOSHIP__DELIVERY_AMOUNT")}
               </Text>
               <Text font="semiBold" cn="text-[14px] text-[#666]">
-                {`${calculationResponse.body.delivery_amount} ${calculationResponse.body.currency}`}
+                {`${calculationResponse.body.delivery_amount} ${
+                  calculationResponse.body.currency
+                } ${
+                  payment?.method === "card"
+                    ? `(${calculationResponse.body.usd_delivery_amount} ${t(
+                        "COMMON__USD"
+                      )})`
+                    : ""
+                }`}
+              </Text>
+            </View>
+
+            <View
+              className={clsx(
+                "justify-between",
+                direction === "ltr" ? "flex-row" : "flex-row-reverse"
+              )}
+            >
+              <Text font="semiBold" cn="text-[14px] text-[#666]">
+                {t("CREATE_AN_AUTOSHIP__TOTAL_AMOUNT")}
+              </Text>
+              <Text font="semiBold" cn="text-[14px] text-[#666]">
+                {`${calculationResponse.body.total} ${
+                  calculationResponse.body.currency
+                } ${
+                  payment?.method === "card"
+                    ? `(${calculationResponse.body.usd_total} ${t(
+                        "COMMON__USD"
+                      )})`
+                    : ""
+                }`}
               </Text>
             </View>
           </View>
