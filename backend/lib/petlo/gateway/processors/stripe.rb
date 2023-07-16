@@ -32,7 +32,7 @@ class StripeLib
 
         def make_payment(data:)
             #TODO should handle other countries
-            amount = Utils.non_usd_to_usd(country: "JO", number: data[:amount])
+            amount = Utils.number_to_usd(country: "JO", number: data[:amount])
 
             payment = Stripe::Charge.create({
                 amount: amount,
