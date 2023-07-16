@@ -22,13 +22,15 @@ const Viewer = ({ children }: ViewerProps) => {
     return <SafeAreaView className="h-full">{children}</SafeAreaView>;
   }
 
+  console.log("pathname", pathname);
+
   return (
     <SafeAreaView className="h-full flex flex-col">
       {!hideHeder && (
         <Header
           activePath={pathname}
           showSearchIcon={showMenuAndIcons}
-          showCartIcon={showMenuAndIcons || !!pathname.includes("/item")}
+          showCartIcon={showMenuAndIcons || pathname === "/item"}
         />
       )}
       {children}
