@@ -24,6 +24,7 @@
   "COMMON__NOTHING_FOUND": "لم يتم العثور على نتائج",
   "COMMON__OPTIONAL": "اختياري",
   "COMMON__PHONE_NUMBER_WITHOUT_ZERO": "بدون الصفر اﻷول",
+  "COMMON__USD": "دولار أمريكي",
   "ROOT_LAYOUT__NEW_UPDATE_AVAILABLE_TITLE": "تحديث جديد متوفر",
   "ROOT_LAYOUT__NEW_UPDATE_AVAILABLE_MESSAGE": "يجب تحديث التطبيق للتمكن من إستخدامه.",
   "SELECT_LANGUAGE__TITLE": "لغة التطبيق",
@@ -190,6 +191,7 @@
   "CHECKOUT__SELECT_ADDRESS_FIRST": "اختر العنوان اولاً",
   "CHECKOUT__TOTAL_AMOUNT": "المبلغ اﻹجمالي",
   "CHECKOUT__CARD_PAYMENT_WARNING": "تتم معالجة الدفع بالبطاقة بالدولار الأمريكي",
+  "CHECKOUT__WILL_BE_DELIVERED": "سيتم شحنها",
   "ORDERS__TITLE": "الطلبات",
   "ORDERS__ORDER_NUMBER": "رقم الطلب",
   "ORDERS__STATUSES": {

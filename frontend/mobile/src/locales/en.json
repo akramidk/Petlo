@@ -22,6 +22,7 @@
   "COMMON__NOTHING_FOUND": "Nothing Found",
   "COMMON__OPTIONAL": "Optional",
   "COMMON__PHONE_NUMBER_WITHOUT_ZERO": "without the first zero",
+  "COMMON__USD": "USD",
   "ROOT_LAYOUT__NEW_UPDATE_AVAILABLE_TITLE": "New Update Available",
   "ROOT_LAYOUT__NEW_UPDATE_AVAILABLE_MESSAGE": "The app must be updated first to be use.",
   "SELECT_LANGUAGE__TITLE": "App Language",
@@ -182,6 +183,7 @@
   "CHECKOUT__SELECT_ADDRESS_FIRST": "Select Address First",
   "CHECKOUT__TOTAL_AMOUNT": "Total Amount",
   "CHECKOUT__CARD_PAYMENT_WARNING": "* card payment is processed in United States Dollar",
+  "CHECKOUT__WILL_BE_DELIVERED": "Will Be Delivered",
   "ORDERS__TITLE": "Orders",
   "ORDERS__ORDER_NUMBER": "Order No.",
   "ORDERS__STATUSES": {

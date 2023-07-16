@@ -332,56 +332,83 @@ const Checkout = () => {
         />
       </View>
 
-      <View>
-        <Text font="extraBold" cn="text-[15px] text-[#0E333C] mb-[12px]">
-          {t("CHECKOUT__PAYMENT_SUMMARY")}
-        </Text>
+      <View className="space-y-[32px]">
+        <View>
+          <Text font="extraBold" cn="text-[15px] text-[#0E333C] mb-[12px]">
+            {t("CHECKOUT__WILL_BE_DELIVERED")}
+          </Text>
 
-        <View className="space-y-[12px]">
-          <View
-            className={clsx(
-              "justify-between",
-              direction === "ltr" ? "flex-row" : "flex-row-reverse"
-            )}
-          >
-            <Text font="semiBold" cn="text-[14px] text-[#666]">
-              {t("CHECKOUT__CART_TOTAL")}
-            </Text>
-            <Text font="semiBold" cn="text-[14px] text-[#666]">
-              {checkout.cart_amount} {checkout.currency}
-            </Text>
-          </View>
+          <Text font="semiBold" cn="text-[14px] text-[#666]">
+            {checkout.delivery_estimation ??
+              t("CHECKOUT__SELECT_ADDRESS_FIRST")}
+          </Text>
+        </View>
 
-          <View
-            className={clsx(
-              "justify-between",
-              direction === "ltr" ? "flex-row" : "flex-row-reverse"
-            )}
-          >
-            <Text font="semiBold" cn="text-[14px] text-[#666]">
-              {t("CHECKOUT__DELIVERY_AMOUNT")}
-            </Text>
-            <Text font="semiBold" cn="text-[14px] text-[#666]">
-              {checkout.delivery_amount
-                ? `${checkout.delivery_amount} ${checkout.currency}`
-                : t("CHECKOUT__SELECT_ADDRESS_FIRST")}
-            </Text>
-          </View>
+        <View>
+          <Text font="extraBold" cn="text-[15px] text-[#0E333C] mb-[12px]">
+            {t("CHECKOUT__PAYMENT_SUMMARY")}
+          </Text>
 
-          <View
-            className={clsx(
-              "justify-between",
-              direction === "ltr" ? "flex-row" : "flex-row-reverse"
-            )}
-          >
-            <Text font="bold" cn="text-[14px] text-[#444]">
-              {t("CHECKOUT__TOTAL_AMOUNT")}
-            </Text>
-            <Text font="bold" cn="text-[14px] text-[#444]">
-              {checkout.delivery_amount
-                ? `${checkout.amount} ${checkout.currency}`
-                : t("CHECKOUT__SELECT_ADDRESS_FIRST")}
-            </Text>
+          <View className="space-y-[12px]">
+            <View
+              className={clsx(
+                "justify-between",
+                direction === "ltr" ? "flex-row" : "flex-row-reverse"
+              )}
+            >
+              <Text font="semiBold" cn="text-[14px] text-[#666]">
+                {t("CHECKOUT__CART_TOTAL")}
+              </Text>
+              <Text font="semiBold" cn="text-[14px] text-[#666]">
+                {`${checkout.cart_amount} ${checkout.currency} ${
+                  paymentMethod?.id === "card"
+                    ? `(${checkout.usd_cart_amount} ${t("COMMON__USD")})`
+                    : ""
+                }`}
+              </Text>
+            </View>
+
+            <View
+              className={clsx(
+                "justify-between",
+                direction === "ltr" ? "flex-row" : "flex-row-reverse"
+              )}
+            >
+              <Text font="semiBold" cn="text-[14px] text-[#666]">
+                {t("CHECKOUT__DELIVERY_AMOUNT")}
+              </Text>
+              <Text font="semiBold" cn="text-[14px] text-[#666]">
+                {checkout.delivery_amount
+                  ? `${checkout.delivery_amount} ${checkout.currency} ${
+                      paymentMethod?.id === "card"
+                        ? `(${checkout.usd_delivery_amount} ${t(
+                            "COMMON__USD"
+                          )})`
+                        : ""
+                    }`
+                  : t("CHECKOUT__SELECT_ADDRESS_FIRST")}
+              </Text>
+            </View>
+
+            <View
+              className={clsx(
+                "justify-between",
+                direction === "ltr" ? "flex-row" : "flex-row-reverse"
+              )}
+            >
+              <Text font="bold" cn="text-[14px] text-[#444]">
+                {t("CHECKOUT__TOTAL_AMOUNT")}
+              </Text>
+              <Text font="bold" cn="text-[14px] text-[#444]">
+                {checkout.delivery_amount
+                  ? `${checkout.amount} ${checkout.currency} ${
+                      paymentMethod?.id === "card"
+                        ? `(${checkout.usd_amount} ${t("COMMON__USD")})`
+                        : ""
+                    }`
+                  : t("CHECKOUT__SELECT_ADDRESS_FIRST")}
+              </Text>
+            </View>
           </View>
         </View>
       </View>

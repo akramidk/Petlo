@@ -16,7 +16,7 @@ const OptionsWithLabel = <TOptions extends BaseOption>({
 }: OptionsWithLabelProps<TOptions>) => {
   return (
     <View className={cn}>
-      {label && <BaseLabel cn="mb-[16px]" {...label} />}
+      {label && <BaseLabel cn="mb-[12px]" {...label} />}
       <Options {...options} />
     </View>
   );
