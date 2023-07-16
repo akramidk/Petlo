@@ -269,7 +269,13 @@ const CreateNewAutoship = () => {
             </Text>
             <Text font="semiBold" cn="text-[14px] text-[#666]">
               {numberofItems > 0
-                ? `${itemsCalculation.amount} ${itemsCalculation.currency}`
+                ? `${itemsCalculation.amount} ${itemsCalculation.currency} ${
+                    payment?.method === "card"
+                      ? `(${itemsCalculation.amount_after_discount} ${t(
+                          "COMMON__USD"
+                        )})`
+                      : ""
+                  }`
                 : t("CREATE_AN_AUTOSHIP__NO_ITEMS_ARE_SELECTED")}
             </Text>
           </View>
