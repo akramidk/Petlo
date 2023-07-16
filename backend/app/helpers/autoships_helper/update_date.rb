@@ -1,19 +1,20 @@
-module AutoshipsHelper::UpdatePets
-  def update_pets(customer:, public_id:, pets:)
+module AutoshipsHelper::UpdateDate
+  def update_date(customer:, public_id:, recurring_interval:, recurring_interval_count:, next_shipment_on:)
     autoship = customer.autoships.find_by(public_id: public_id)
     raise(RuntimeError, 3007006) unless autoship
 
-    pets_id = []
-    pets&.each do |pet_public_id|
-      pet = customer.pets.find_by(public_id: pet_public_id)
-      raise(RuntimeError, 3007003) unless pet
+    splitted_next_shipment_on = next_shipment_on.split("-")
+    next_shipment_on = Date.new(
+      splitted_next_shipment_on[0].to_i,
+      splitted_next_shipment_on[1].to_i,
+      splitted_next_shipment_on[2].to_i
+    )
+    raise(RuntimeError, 3007005) unless next_shipment_on > Utils.utc_to_local_time(country: customer.country)
 
-      pets_id << pet.id
-    end
-
-    autoship.pets.destroy_all
-    pets_id.each do |id|
-      AutoshipPet.create!(autoship_id: autoship.id, pet_id: id)
-    end
+    autoship.update!(
+      recurring_interval: recurring_interval,
+      recurring_interval_count: recurring_interval_count,
+      next_shipment_on: next_shipment_on
+    )
   end
 end

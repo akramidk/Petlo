@@ -92,12 +92,13 @@ Rails.application.routes.draw do
       patch "autoships/:public_id/payment-information", to: "autoships#update_payment_information"
       patch "autoships/:public_id/pets", to: "autoships#update_pets"
       get "autoships/calculate-delivery-amount", to: "autoships#calculate_delivery_amount"
+      get "autoships/:public_id/next-shipment-date-after-the-skip", to: "autoships#next_shipment_date_after_the_skip"
       patch "autoships/:public_id/deactivate", to: "autoships#deactivate"
       patch "autoships/:public_id/activate", to: "autoships#activate"
+      patch "autoships/:public_id/date", to: "autoships#update_date"
       # TODO should get not post but akram used post to use useAPIMutation
       post "autoships/items-calculation", to: "autoships#items_calculation"
       post "autoships/calculation", to: "autoships#calculation"
-      get "autoships/:public_id/next-shipment-date-after-the-skip", to: "autoships#next_shipment_date_after_the_skip"
     end
 
     namespace :dashboard do
