@@ -8,9 +8,19 @@ module AutoshipsHelper::ItemsCalculation
         country: customer.country,
         number: result[:amount]
       ),
+      usd_amount: Utils.number_to_usd(
+        country: customer.country,
+        number: result[:amount],
+        as_string: true
+      ),
       amount_after_discount: Utils.number_to_currency(
         country: customer.country,
         number: result[:amount_after_discount]
+      ),
+      usd_amount_after_discount: Utils.number_to_usd(
+        country: customer.country,
+        number: result[:amount_after_discount],
+        as_string: true
       ),
       currency: CONSTANTS::COUNTRIES_CURRENCIES[customer.country][language]
     }
