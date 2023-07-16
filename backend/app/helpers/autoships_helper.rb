@@ -12,4 +12,5 @@ module AutoshipsHelper
   extend ItemsCalculation
   extend Calculation
   extend NextShipmentDateAfterTheSkip
+  extend UpdateDate
 end
