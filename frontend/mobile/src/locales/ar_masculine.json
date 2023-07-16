@@ -213,6 +213,7 @@
     "CHANGE_PAYMENT_INFORMATION": "تغيير طريقة الدفع",
     "CHANGE_PETS": "تغيير الحيوانات",
     "ADD_PETS": "اضف حيوانات",
+    "CHANGE_SHIPMENTS_DATES": "تغيير تواريخ الشحنات",
     "DEACTIVATE_AUTOSHIP": "ايقاف الاوتوشيب",
     "REACTIVATE": "اعادة التفعيل"
   },

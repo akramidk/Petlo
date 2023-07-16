@@ -205,6 +205,7 @@
     "CHANGE_PAYMENT_INFORMATION": "Change Payment Information",
     "CHANGE_PETS": "Change Pets",
     "ADD_PETS": "Add Pets",
+    "CHANGE_SHIPMENTS_DATES": "Change Shipments Dates",
     "DEACTIVATE_AUTOSHIP": "Deactivate Autoship",
     "REACTIVATE": "Reactivate"
   },

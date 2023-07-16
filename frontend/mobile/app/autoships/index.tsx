@@ -108,6 +108,13 @@ const Autoships = () => {
             },
           },
           {
+            name: t("AUTOSHIPS__ACTIONS.CHANGE_SHIPMENTS_DATES"),
+            onClick: () =>
+              router.push(
+                `/autoships/date?publicId=${autoship.public_id}&type=change`
+              ),
+          },
+          {
             name: t("AUTOSHIPS__ACTIONS.DEACTIVATE_AUTOSHIP"),
             onClick: () =>
               router.push(
