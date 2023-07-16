@@ -235,179 +235,211 @@ const Checkout = () => {
         status: createNewOrderStatus ?? buttonStatus,
       }}
     >
-      <OptionsWithLabel
-        cn="mb-[24px]"
-        label={{
-          name: t("CHECKOUT__PAYMENT_METHOD"),
-          require: true,
-        }}
-        options={{
-          optionValueCn: "text-[#666]",
-          optionValueFont: "semiBold",
-          options: PAYMENT_METHODS,
-          signalSelect: {
-            selectedOption: paymentMethod,
-            setSelectedOption: setPaymentMethod,
-          },
-          translate: true,
-        }}
-      />
-
-      {paymentMethod?.id === "card" && (
-        <View className="mb-[40px]">
+      <View>
+        <View>
           <OptionsWithLabel
-            cn="mb-[12px]"
             label={{
-              name: t("CHECKOUT__SELECT_A_CARD"),
-              bottomHelperText: t("CHECKOUT__CARD_PAYMENT_WARNING"),
+              name: t("CHECKOUT__PAYMENT_METHOD"),
               require: true,
             }}
             options={{
               optionValueCn: "text-[#666]",
               optionValueFont: "semiBold",
-              options: cards,
+              options: PAYMENT_METHODS,
               signalSelect: {
-                selectedOption: card,
-                setSelectedOption: setCard,
+                selectedOption: paymentMethod,
+                setSelectedOption: setPaymentMethod,
+              },
+              translate: true,
+            }}
+          />
+
+          {paymentMethod?.id === "card" && (
+            <View className="mt-[16px]">
+              <OptionsWithLabel
+                label={{
+                  name: t("CHECKOUT__SELECT_A_CARD"),
+                  bottomHelperText: t("CHECKOUT__CARD_PAYMENT_WARNING"),
+                  require: true,
+                }}
+                options={{
+                  optionValueCn: "text-[#666]",
+                  optionValueFont: "semiBold",
+                  options: cards,
+                  signalSelect: {
+                    selectedOption: card,
+                    setSelectedOption: setCard,
+                  },
+                }}
+              />
+
+              <Link
+                valueCN="text-[#9747FF] text-[14px]"
+                value="+ Add New Card To Use"
+                onClick={() => router.push("/account/cards/add-new-card")}
+              />
+            </View>
+          )}
+        </View>
+
+        <View
+          style={{
+            borderWidth: 1,
+            borderStyle: "dashed",
+            borderColor: "#ddd",
+            marginTop: 36,
+            marginBottom: 48,
+          }}
+        />
+
+        <View>
+          <OptionsWithLabel
+            label={{
+              name: t("CHECKOUT__SELECT_AN_ADDRESS"),
+              cn: "p-0",
+              require: true,
+            }}
+            options={{
+              optionValueCn: "text-[#666]",
+              optionValueFont: "semiBold",
+              options: addresses,
+              signalSelect: {
+                selectedOption: address,
+                setSelectedOption: setAddress,
+              },
+              preventDeselection: true,
+            }}
+          />
+
+          <Link
+            valueCN="text-[#9747FF] text-[14px]"
+            value="+ Add New Address To Use"
+            onClick={() => router.push("/account/addresses/add-new-address")}
+          />
+        </View>
+
+        <View
+          style={{
+            borderWidth: 1,
+            borderStyle: "dashed",
+            borderColor: "#ddd",
+            marginTop: 48,
+            marginBottom: 48,
+          }}
+        />
+
+        <View>
+          <OptionsWithLabel
+            label={{
+              name: t("CHECKOUT__THIS_ORDER_FOR"),
+              helperText: t("CHECKOUT__MULTIPLE_CHOICE"),
+              cn: "p-0",
+            }}
+            options={{
+              optionValueCn: "text-[#666]",
+              optionValueFont: "semiBold",
+              options: pets,
+              multipleSelect: {
+                selectedOptions: selectedPets,
+                setSelectedOptions: setSelectedPets,
               },
             }}
           />
 
           <Link
             valueCN="text-[#9747FF] text-[14px]"
-            value="+ Add New Card To Use"
-            onClick={() => router.push("/account/cards/add-new-card")}
+            value="+ Add New Pet To Use"
+            onClick={() => router.push("/account/pets/add-new-pet")}
           />
         </View>
-      )}
 
-      <View className="mb-[40px]">
-        <OptionsWithLabel
-          cn="mb-[12px]"
-          label={{
-            name: t("CHECKOUT__SELECT_AN_ADDRESS"),
-            require: true,
-          }}
-          options={{
-            optionValueCn: "text-[#666]",
-            optionValueFont: "semiBold",
-            options: addresses,
-            signalSelect: {
-              selectedOption: address,
-              setSelectedOption: setAddress,
-            },
-            preventDeselection: true,
+        <View
+          style={{
+            borderWidth: 1,
+            borderStyle: "dashed",
+            borderColor: "#ddd",
+            marginTop: 48,
+            marginBottom: 48,
           }}
         />
 
-        <Link
-          valueCN="text-[#9747FF] text-[14px]"
-          value="+ Add New Address To Use"
-          onClick={() => router.push("/account/addresses/add-new-address")}
-        />
-      </View>
+        <View className="space-y-[36px]">
+          <View>
+            <Text font="extraBold" cn="text-[15px] text-[#0E333C] mb-[12px]">
+              {t("CHECKOUT__WILL_BE_DELIVERED")}
+            </Text>
 
-      <View className="mb-[40px]">
-        <OptionsWithLabel
-          cn="mb-[12px]"
-          label={{
-            name: t("CHECKOUT__THIS_ORDER_FOR"),
-            helperText: t("CHECKOUT__MULTIPLE_CHOICE"),
-          }}
-          options={{
-            optionValueCn: "text-[#666]",
-            optionValueFont: "semiBold",
-            options: pets,
-            multipleSelect: {
-              selectedOptions: selectedPets,
-              setSelectedOptions: setSelectedPets,
-            },
-          }}
-        />
+            <Text font="semiBold" cn="text-[14px] text-[#666]">
+              {checkout.delivery_estimation ??
+                t("CHECKOUT__SELECT_ADDRESS_FIRST")}
+            </Text>
+          </View>
 
-        <Link
-          valueCN="text-[#9747FF] text-[14px]"
-          value="+ Add New Pet To Use"
-          onClick={() => router.push("/account/pets/add-new-pet")}
-        />
-      </View>
+          <View>
+            <Text font="extraBold" cn="text-[15px] text-[#0E333C] mb-[12px]">
+              {t("CHECKOUT__PAYMENT_SUMMARY")}
+            </Text>
 
-      <View className="space-y-[32px]">
-        <View>
-          <Text font="extraBold" cn="text-[15px] text-[#0E333C] mb-[12px]">
-            {t("CHECKOUT__WILL_BE_DELIVERED")}
-          </Text>
+            <View className="space-y-[12px]">
+              <View
+                className={clsx(
+                  "justify-between",
+                  direction === "ltr" ? "flex-row" : "flex-row-reverse"
+                )}
+              >
+                <Text font="semiBold" cn="text-[14px] text-[#666]">
+                  {t("CHECKOUT__CART_TOTAL")}
+                </Text>
+                <Text font="semiBold" cn="text-[14px] text-[#666]">
+                  {`${checkout.cart_amount} ${checkout.currency} ${
+                    paymentMethod?.id === "card"
+                      ? `(${checkout.usd_cart_amount} ${t("COMMON__USD")})`
+                      : ""
+                  }`}
+                </Text>
+              </View>
 
-          <Text font="semiBold" cn="text-[14px] text-[#666]">
-            {checkout.delivery_estimation ??
-              t("CHECKOUT__SELECT_ADDRESS_FIRST")}
-          </Text>
-        </View>
+              <View
+                className={clsx(
+                  "justify-between",
+                  direction === "ltr" ? "flex-row" : "flex-row-reverse"
+                )}
+              >
+                <Text font="semiBold" cn="text-[14px] text-[#666]">
+                  {t("CHECKOUT__DELIVERY_AMOUNT")}
+                </Text>
+                <Text font="semiBold" cn="text-[14px] text-[#666]">
+                  {checkout.delivery_amount
+                    ? `${checkout.delivery_amount} ${checkout.currency} ${
+                        paymentMethod?.id === "card"
+                          ? `(${checkout.usd_delivery_amount} ${t(
+                              "COMMON__USD"
+                            )})`
+                          : ""
+                      }`
+                    : t("CHECKOUT__SELECT_ADDRESS_FIRST")}
+                </Text>
+              </View>
 
-        <View>
-          <Text font="extraBold" cn="text-[15px] text-[#0E333C] mb-[12px]">
-            {t("CHECKOUT__PAYMENT_SUMMARY")}
-          </Text>
-
-          <View className="space-y-[12px]">
-            <View
-              className={clsx(
-                "justify-between",
-                direction === "ltr" ? "flex-row" : "flex-row-reverse"
-              )}
-            >
-              <Text font="semiBold" cn="text-[14px] text-[#666]">
-                {t("CHECKOUT__CART_TOTAL")}
-              </Text>
-              <Text font="semiBold" cn="text-[14px] text-[#666]">
-                {`${checkout.cart_amount} ${checkout.currency} ${
-                  paymentMethod?.id === "card"
-                    ? `(${checkout.usd_cart_amount} ${t("COMMON__USD")})`
-                    : ""
-                }`}
-              </Text>
-            </View>
-
-            <View
-              className={clsx(
-                "justify-between",
-                direction === "ltr" ? "flex-row" : "flex-row-reverse"
-              )}
-            >
-              <Text font="semiBold" cn="text-[14px] text-[#666]">
-                {t("CHECKOUT__DELIVERY_AMOUNT")}
-              </Text>
-              <Text font="semiBold" cn="text-[14px] text-[#666]">
-                {checkout.delivery_amount
-                  ? `${checkout.delivery_amount} ${checkout.currency} ${
-                      paymentMethod?.id === "card"
-                        ? `(${checkout.usd_delivery_amount} ${t(
-                            "COMMON__USD"
-                          )})`
-                        : ""
-                    }`
-                  : t("CHECKOUT__SELECT_ADDRESS_FIRST")}
-              </Text>
-            </View>
-
-            <View
-              className={clsx(
-                "justify-between",
-                direction === "ltr" ? "flex-row" : "flex-row-reverse"
-              )}
-            >
-              <Text font="bold" cn="text-[14px] text-[#444]">
-                {t("CHECKOUT__TOTAL_AMOUNT")}
-              </Text>
-              <Text font="bold" cn="text-[14px] text-[#444]">
-                {checkout.delivery_amount
-                  ? `${checkout.amount} ${checkout.currency} ${
-                      paymentMethod?.id === "card"
-                        ? `(${checkout.usd_amount} ${t("COMMON__USD")})`
-                        : ""
-                    }`
-                  : t("CHECKOUT__SELECT_ADDRESS_FIRST")}
-              </Text>
+              <View
+                className={clsx(
+                  "justify-between",
+                  direction === "ltr" ? "flex-row" : "flex-row-reverse"
+                )}
+              >
+                <Text font="bold" cn="text-[14px] text-[#444]">
+                  {t("CHECKOUT__TOTAL_AMOUNT")}
+                </Text>
+                <Text font="bold" cn="text-[14px] text-[#444]">
+                  {checkout.delivery_amount
+                    ? `${checkout.amount} ${checkout.currency} ${
+                        paymentMethod?.id === "card"
+                          ? `(${checkout.usd_amount} ${t("COMMON__USD")})`
+                          : ""
+                      }`
+                    : t("CHECKOUT__SELECT_ADDRESS_FIRST")}
+                </Text>
+              </View>
             </View>
           </View>
         </View>
