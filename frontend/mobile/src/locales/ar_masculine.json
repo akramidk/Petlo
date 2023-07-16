@@ -301,5 +301,7 @@
   "REACTIVATE_AN_AUTOSHIP__BUTTON": "اعادة تفعيل",
   "DEACTIVATE_AN_AUTOSHIP__TITLE": "ايقاف الأوتوشيب",
   "DEACTIVATE_AN_AUTOSHIP__HELPER_TEXT": "هل انت متاكد انت تريد ايقاف الأوتوشيب؟\n\nاذا نعم يمكنك اعادة تفعيله متى تشاء.",
-  "DEACTIVATE_AN_AUTOSHIP__BUTTON": "نعم انا متاكد"
+  "DEACTIVATE_AN_AUTOSHIP__BUTTON": "نعم انا متاكد",
+  "CHANGE_SHIPMENTS_DATES__TITLE": "تغيير تواريخ الشحنات",
+  "CHANGE_SHIPMENTS_DATES__NEXT_SHIPMENT_ON": "الشحنة القادمة يوم"
 }

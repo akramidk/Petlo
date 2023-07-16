@@ -14,11 +14,13 @@ import {
 interface SelectNextShipment {
   value: NextShipment;
   setValue: Dispatch<SetStateAction<NextShipment>>;
+  isChange: boolean;
 }
 
 const SelectNextShipment = ({
   value: selectedValue,
   setValue,
+  isChange,
 }: SelectNextShipment) => {
   const { t } = useTranslationsContext();
   const { languageWithoutGender } = useInternationalizationContext();
@@ -37,7 +39,11 @@ const SelectNextShipment = ({
     <>
       <View className="space-y-[8px]">
         <BaseLabel
-          name={t("CREATE_AN_AUTOSHIP__SHIPMENT_DATE_FILED_LABEL")}
+          name={
+            isChange
+              ? t("CHANGE_SHIPMENTS_DATES__NEXT_SHIPMENT_ON")
+              : t("CREATE_AN_AUTOSHIP__SHIPMENT_DATE_FILED_LABEL")
+          }
           require
         />
 

@@ -30,6 +30,7 @@ const Date = () => {
   const { direction } = useInternationalizationContext();
 
   const isReactivate = type === "reactivate";
+  const isChange = type === "change";
 
   const [nextShipment, setNextShipment] = useState<NextShipment>(
     data?.nextShipment
@@ -83,11 +84,15 @@ const Date = () => {
       title={
         isReactivate
           ? t("REACTIVATE_AN_AUTOSHIP__TITLE")
+          : isChange
+          ? t("CHANGE_SHIPMENTS_DATES__TITLE")
           : t("CREATE_AN_AUTOSHIP__STEPS.WHEN.PRIMARY_TEXT")
       }
       button={{
         value: isReactivate
           ? t("REACTIVATE_AN_AUTOSHIP__BUTTON")
+          : isChange
+          ? t("COMMON__CHANGE")
           : t("COMMON__SAVE"),
         onClick: () => {
           if (isReactivate) {
@@ -119,7 +124,11 @@ const Date = () => {
         onClick: router.back,
       }}
     >
-      <SelectNextShipment value={nextShipment} setValue={setNextShipment} />
+      <SelectNextShipment
+        value={nextShipment}
+        setValue={setNextShipment}
+        isChange={isChange}
+      />
       <View className="mb-[16px]" />
       <SelectThePeriod
         recurringIntervalCount={recurringIntervalCount}
@@ -136,7 +145,9 @@ const Date = () => {
           )}
         >
           <Text font="semiBold" cn="text-[14px] text-[#666]">
-            {t("CREATE_AN_AUTOSHIP__FIRST_SHIPMENT_ON")}
+            {isChange
+              ? t("CHANGE_SHIPMENTS_DATES__NEXT_SHIPMENT_ON")
+              : t("CREATE_AN_AUTOSHIP__FIRST_SHIPMENT_ON")}
           </Text>
           <Text font="semiBold" cn="text-[14px] text-[#666]">
             {nextShipment
