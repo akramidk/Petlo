@@ -140,6 +140,15 @@ module V1
       render json: response, status: 200
     end
 
+    def skip
+      response = AutoshipsHelper.skip(
+        customer: @customer,
+        public_id: params[:public_id]
+      )
+
+      render json: { status: "succeeded" }, status: 200
+    end
+
     def update_date
       AutoshipsHelper.update_date(
         customer: @customer,
