@@ -133,6 +133,11 @@ const Autoships = () => {
             },
           },
           {
+            name: t("AUTOSHIPS__ACTIONS.SKIP"),
+            onClick: () =>
+              router.push(`/autoships/skip?publicId=${autoship.public_id}`),
+          },
+          {
             name: t("AUTOSHIPS__ACTIONS.DEACTIVATE_AUTOSHIP"),
             onClick: () =>
               router.push(

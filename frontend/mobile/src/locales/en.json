@@ -207,6 +207,7 @@
     "ADD_PETS": "Add Pets",
     "CHANGE_SHIPMENTS_DATES": "Change Shipments Dates",
     "DEACTIVATE_AUTOSHIP": "Deactivate Autoship",
+    "SKIP": "Skip Next Shipment",
     "REACTIVATE": "Reactivate"
   },
   "AUTOSHIPS__CARD_PAYMENT_WARNINGS": "* card payment is processed in United States Dollar.\n\n** we will try to deduct the amount from a card before 24h of the shipping date, if failed we try before 12h and 6h, if all attempts failed we make the Autoship inactive.",
