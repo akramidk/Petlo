@@ -42,10 +42,12 @@ const Skip = () => {
 
   return (
     <PageStructure
-      title="skip"
-      helperText="skip"
+      title={t("SKIP_AUTOSHIP__TITLE")}
+      helperText={t("SKIP_AUTOSHIP__HELPER_TEXT", {
+        date: response.body.date.split("-").reverse().join("-"),
+      })}
       button={{
-        value: "yes skip",
+        value: t("SKIP_AUTOSHIP__BUTTON"),
         onClick: () => trigger(undefined),
         status: status,
         cn: status ? "" : "bg-[#E64848]",
