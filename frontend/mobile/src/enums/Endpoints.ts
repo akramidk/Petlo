@@ -55,4 +55,5 @@ export enum Endpoints {
   DEACTIVATE_AN_AUTOSHIP = "/v1/autoships/${publicId}/deactivate",
   UPDATE_AUTOSHIP_DATE = "/v1/autoships/${publicId}/date",
   SKIP_AUTOSHIP = "/v1/autoships/${publicId}/skip",
+  NEXT_SHIPMENT_DATE_AFTER_THE_SKIP = "/v1/autoships/${publicId}/next-shipment-date-after-the-skip",
 }
