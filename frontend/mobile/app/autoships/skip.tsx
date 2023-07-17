@@ -7,13 +7,17 @@ import {
   useAPIMutation,
   useTranslationsContext,
 } from "../../src/hooks";
+import { NextShipmentDateAfterTheSkipResponse } from "../../src/interfaces";
 
 const Skip = () => {
   const router = useRouter();
   const { publicId } = useSearchParams();
   const { t } = useTranslationsContext();
 
-  const { response } = useAPIFetching<void, void>({
+  const { response } = useAPIFetching<
+    void,
+    NextShipmentDateAfterTheSkipResponse
+  >({
     endpoint: Endpoints.NEXT_SHIPMENT_DATE_AFTER_THE_SKIP,
     slugs: {
       publicId: publicId,
