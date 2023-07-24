@@ -10,6 +10,7 @@ import {
   ArrowUturnDownIcon as ArrowUturnDown,
   EllipsisHorizontalIcon as MoreHorizontal,
   XCircleIcon as CloseCircle,
+  HandRaisedIcon as HandRaised,
 } from "react-native-heroicons/solid";
 
 import {
@@ -83,6 +84,9 @@ const Icon = ({
     },
     closeCircle: {
       solid: <CloseCircle {...props} />,
+    },
+    handRaised: {
+      solid: <HandRaised {...props} />,
     },
   };
 

@@ -45,6 +45,11 @@ export const MORE_PAGE_SECTIONS: {
     title: "MORE__OTHERS_SECTION_TITLE",
     options: [
       {
+        icon: "handRaised",
+        name: "MORE__OTHERS_REQUEST_A_PRODUCT",
+        path: "/request-a-product",
+      },
+      {
         icon: "support",
         name: "MORE__OTHERS_SUPPORT_AND_FEEDBACK_OPTION",
         path: "/support-and-feedbacks",
