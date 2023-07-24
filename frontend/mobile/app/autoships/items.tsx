@@ -184,11 +184,6 @@ const Items = () => {
             newItem.quantity === savedItem.quantity
         );
 
-        console.log(
-          "isStillExistAndQuantityNotChanged",
-          isStillExistAndQuantityNotChanged
-        );
-
         if (isStillExistAndQuantityNotChanged) {
           newItems = newItems.filter(
             (newItem) =>
