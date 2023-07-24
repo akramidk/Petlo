@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { View } from "react-native";
 import { Endpoints } from "../../src/enums";
 import {
@@ -14,8 +13,8 @@ import {
 import { Loading } from "../../src/components/pages";
 import Scrollable from "../_Scrollable";
 import Section from "./_components/Seection";
-import Swipeable from "react-native-gesture-handler/Swipeable";
 import Banners from "./_components/Banners";
+import { Warning } from "./_components/Warning";
 
 const Home = () => {
   const { customer } = useCustomerContext();
@@ -69,6 +68,8 @@ const Home = () => {
       {bannersResponse.body.data.length > 0 && (
         <Banners data={bannersResponse.body.data} />
       )}
+
+      <Warning firstText="What?" secondText="Click" />
 
       <View className="space-y-[28px]">
         {sectionsResponse?.body?.data?.map((section, i) => {
