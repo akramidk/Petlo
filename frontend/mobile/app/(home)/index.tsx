@@ -80,8 +80,8 @@ const Home = () => {
         <View className="h-[4px]" />
 
         <Warning
-          firstText={t("HOME__WARNING_1_FIRST_TEXT")}
-          secondText={t("HOME__WARNING_1_SECOND_TEXT")}
+          firstText={t("HOME__WARNING_2_FIRST_TEXT")}
+          secondText={t("HOME__WARNING_2_SECOND_TEXT")}
         />
       </View>
 
