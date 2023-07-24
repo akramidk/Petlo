@@ -1,8 +1,10 @@
 import BottomSheet, { BottomSheetScrollView } from "@gorhom/bottom-sheet";
-import { Fragment, useMemo, useRef } from "react";
-import { StyleSheet, View, Dimensions } from "react-native";
+import clsx from "clsx";
+import { useMemo, useRef } from "react";
+import { View, Dimensions } from "react-native";
 import Modal from "react-native-modal";
-import { Text } from "../atoms";
+import { useInternationalizationContext } from "../../hooks";
+import { Icon, Text } from "../atoms";
 import { BaseButton } from "../bases";
 
 const ACTION_HEIGHT = 60;
@@ -21,6 +23,8 @@ const BottomSheetOptions = ({
   onClose,
   actions,
 }: BottomSheetOptionsProps) => {
+  const { direction } = useInternationalizationContext();
+
   const windowHeight = Dimensions.get("window").height;
   const actionsHeight = ACTION_HEIGHT * actions.length + 80;
   const snapPoints = useMemo(
@@ -43,6 +47,16 @@ const BottomSheetOptions = ({
         animateOnMount
         enablePanDownToClose
       >
+        <BaseButton
+          className={clsx(
+            "my-[12px] mx-[28px]",
+            direction === "ltr" ? "flex-row" : "flex-row-reverse"
+          )}
+          onClick={onClose}
+        >
+          <Icon name="closeCircle" color="#888" size={28} />
+        </BaseButton>
+
         <BottomSheetScrollView>
           <View className="divide-y divide-[#f6f6f6] pb-[28px]">
             {actions.map((action, index) => {

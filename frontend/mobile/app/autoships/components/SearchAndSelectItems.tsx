@@ -60,6 +60,7 @@ const SearchAndSelectItems = ({
         <SearchFiled
           searchValue={searchValue}
           setSearchValue={setSearchValue}
+          onCancel={onClose}
         />
 
         <BottomSheetScrollView style={{ padding: 28 }}>

@@ -9,6 +9,7 @@ import {
   MapPinIcon as MapPin,
   ArrowUturnDownIcon as ArrowUturnDown,
   EllipsisHorizontalIcon as MoreHorizontal,
+  XCircleIcon as CloseCircle,
 } from "react-native-heroicons/solid";
 
 import {
@@ -79,6 +80,9 @@ const Icon = ({
     },
     moreHorizontal: {
       solid: <MoreHorizontal {...props} />,
+    },
+    closeCircle: {
+      solid: <CloseCircle {...props} />,
     },
   };
 
