@@ -303,5 +303,7 @@
   "SKIP_AUTOSHIP__HELPER_TEXT": "Next shipment will be skipped to %{date}, are you sure about this?",
   "SKIP_AUTOSHIP__BUTTON": "Yes I'm Sure",
   "REQUEST_A_PRODUCT__TITLE": "Request To Add Products",
-  "REQUEST_A_PRODUCT__HELPER_TEXT": "If you can't find the products that you want, just send us a photo for them to our Whatsapp on +962790119952."
+  "REQUEST_A_PRODUCT__HELPER_TEXT": "If you can't find the products that you want, just send us a photo for them to our Whatsapp on +962790119952.",
+  "HOME__WARNING_1_FIRST_TEXT": "Can't find the products you want?",
+  "HOME__WARNING_1_SECOND_TEXT": "Click here to request products."
 }

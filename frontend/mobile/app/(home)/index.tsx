@@ -4,6 +4,7 @@ import {
   useAPIFetching,
   useCustomerContext,
   useInternationalizationContext,
+  useTranslationsContext,
 } from "../../src/hooks";
 import {
   BannersRequest,
@@ -19,6 +20,7 @@ import { Warning } from "./_components/Warning";
 const Home = () => {
   const { customer } = useCustomerContext();
   const { storedLanguage, languageGender } = useInternationalizationContext();
+  const { t } = useTranslationsContext();
 
   const { response: bannersResponse } = useAPIFetching<
     BannersRequest,
@@ -69,7 +71,10 @@ const Home = () => {
         <Banners data={bannersResponse.body.data} />
       )}
 
-      <Warning firstText="What?" secondText="Click" />
+      <Warning
+        firstText={t("HOME__WARNING_1_FIRST_TEXT")}
+        secondText={t("HOME__WARNING_1_SECOND_TEXT")}
+      />
 
       <View className="space-y-[28px]">
         {sectionsResponse?.body?.data?.map((section, i) => {
