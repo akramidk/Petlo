@@ -8,8 +8,8 @@ const RequestAProduct = () => {
 
   return (
     <PageStructure
-      title={t("SUPPORT_AND_FEEDBACKS__TITLE")}
-      helperText={t("SUPPORT_AND_FEEDBACKS__HELPER_TEXT")}
+      title={t("REQUEST_A_PRODUCT__TITLE")}
+      helperText={t("REQUEST_A_PRODUCT__HELPER_TEXT")}
       backButton={router.back}
     />
   );
