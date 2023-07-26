@@ -16,11 +16,13 @@ import Scrollable from "../_Scrollable";
 import Section from "./_components/Seection";
 import Banners from "./_components/Banners";
 import { Warning } from "./_components/Warning";
+import { useRouter } from "expo-router";
 
 const Home = () => {
+  const router = useRouter();
+  const { t } = useTranslationsContext();
   const { customer } = useCustomerContext();
   const { storedLanguage, languageGender } = useInternationalizationContext();
-  const { t } = useTranslationsContext();
 
   const { response: bannersResponse } = useAPIFetching<
     BannersRequest,
@@ -75,6 +77,7 @@ const Home = () => {
         <Warning
           firstText={t("HOME__WARNING_1_FIRST_TEXT")}
           secondText={t("HOME__WARNING_1_SECOND_TEXT")}
+          onClick={() => router.push("/request-a-product")}
         />
 
         <View className="h-[4px]" />
@@ -82,6 +85,7 @@ const Home = () => {
         <Warning
           firstText={t("HOME__WARNING_2_FIRST_TEXT")}
           secondText={t("HOME__WARNING_2_SECOND_TEXT")}
+          onClick={() => router.push("/support-and-feedbacks")}
         />
       </View>
 
