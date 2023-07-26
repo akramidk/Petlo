@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { View } from "react-native";
 import { Endpoints } from "../../enums";
 import { useAPIFetching } from "../../hooks";
@@ -18,6 +19,7 @@ const SectionsItemsWithFilter = () => {
   return (
     <View>
       <View></View>
+
       <View></View>
     </View>
   );
