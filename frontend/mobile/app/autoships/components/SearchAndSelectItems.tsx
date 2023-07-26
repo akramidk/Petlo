@@ -13,6 +13,7 @@ import { View } from "react-native";
 import { Item } from "../../../src/components/molecules";
 import { ItemPreview, Loading } from "../../../src/components/pages";
 import { buttonStatus } from "../../../src/types";
+import { SectionsItemsWithFilter } from "../../../src/components/organisms";
 
 interface SearchAndSelectItemsProps {
   onClose: () => void;
@@ -62,6 +63,12 @@ const SearchAndSelectItems = ({
           setSearchValue={setSearchValue}
           onCancel={onClose}
         />
+
+        {searchValue.trim().length === 0 && (
+          <SectionsItemsWithFilter
+            onItemClick={(publicId) => setOpendItemPublicId(publicId)}
+          />
+        )}
 
         <BottomSheetScrollView style={{ padding: 28 }}>
           {response?.isFetching ? (

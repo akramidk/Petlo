@@ -10,7 +10,7 @@ import { Loading } from "../pages";
 import { Item } from "../molecules";
 
 interface SectionsItemsWithFilterProps {
-  onItemClick: () => void;
+  onItemClick: (publicId: string) => void;
 }
 
 const SectionsItemsWithFilter = ({
@@ -82,7 +82,11 @@ const SectionsItemsWithFilter = ({
         {selectedSection?.items?.data?.map?.((item, index) => {
           return (
             <View key={index}>
-              <Item variant="large" data={item} onClick={onItemClick} />
+              <Item
+                variant="large"
+                data={item}
+                onClick={() => onItemClick(item.public_id)}
+              />
             </View>
           );
         })}
