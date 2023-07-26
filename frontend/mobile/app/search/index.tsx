@@ -9,6 +9,7 @@ import { SearchRequest, SearchResponse } from "../../src/interfaces";
 import { Item } from "../../src/components/molecules";
 import { Loading } from "../../src/components/pages";
 import { Text } from "../../src/components/atoms";
+import SectionsItemsWithFilter from "../../src/components/organisms/SectionsItemsWithFilter";
 
 const Search = () => {
   const router = useRouter();
@@ -35,6 +36,8 @@ const Search = () => {
         setSearchValue={setSearchValue}
         onCancel={router.back}
       />
+
+      {searchValue.trim().length === 0 && <SectionsItemsWithFilter />}
 
       {response?.isFetching ? (
         <Loading />

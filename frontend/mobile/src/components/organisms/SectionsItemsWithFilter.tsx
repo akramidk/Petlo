@@ -28,7 +28,7 @@ const SectionsItemsWithFilter = () => {
   }
 
   return (
-    <View>
+    <View className="py-[28px] space-[16px]">
       <ScrollView
         className={direction === "ltr" ? "self-start" : "self-end"}
         ref={scrollViewRef}
@@ -45,31 +45,33 @@ const SectionsItemsWithFilter = () => {
         }
         horizontal
       >
-        {response.body.data.map((section, index) => {
-          return (
-            <View key={index}>
-              <BaseButton
-                onClick={() => {
-                  //
-                }}
-                cn={clsx(
-                  "px-[28px] py-[8px] border-[1.4px] rounded-[4px]",
-                  direction === "ltr" ? "mr-[4px]" : "ml-[4px]",
-                  section.category === selectedSection
-                    ? "border-[#0E333C]"
-                    : "border-[#f6f6f6]"
-                )}
-              >
-                <Text font="semiBold" cn="text-[#0E333C] text-[13px]">
-                  {section.name}
-                </Text>
-              </BaseButton>
-            </View>
-          );
-        })}
+        <View className="px-[28px] flex flex-row">
+          {response.body.data.map((section, index) => {
+            return (
+              <View key={index}>
+                <BaseButton
+                  onClick={() => {
+                    //
+                  }}
+                  cn={clsx(
+                    "px-[28px] py-[8px] border-[1.4px] rounded-[4px]",
+                    direction === "ltr" ? "mr-[4px]" : "ml-[4px]",
+                    section.category === selectedSection
+                      ? "border-[#0E333C]"
+                      : "border-[#f6f6f6]"
+                  )}
+                >
+                  <Text font="semiBold" cn="text-[#0E333C] text-[13px]">
+                    {section.name}
+                  </Text>
+                </BaseButton>
+              </View>
+            );
+          })}
+        </View>
       </ScrollView>
 
-      <View></View>
+      <View className="px-[28x]"></View>
     </View>
   );
 };
