@@ -37,7 +37,9 @@ const Search = () => {
         onCancel={router.back}
       />
 
-      {searchValue.trim().length === 0 && <SectionsItemsWithFilter />}
+      {searchValue.trim().length === 0 && (
+        <SectionsItemsWithFilter onItemClick={() => {}} />
+      )}
 
       {response?.isFetching ? (
         <Loading />

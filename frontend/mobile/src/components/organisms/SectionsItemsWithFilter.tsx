@@ -3,15 +3,22 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import { ScrollView, View } from "react-native";
 import { Endpoints } from "../../enums";
 import { useAPIFetching, useInternationalizationContext } from "../../hooks";
-import { SectionsResponse } from "../../interfaces";
+import { Section, SectionsResponse } from "../../interfaces";
 import { BaseButton } from "../bases";
 import { Text } from "../atoms";
 import { Loading } from "../pages";
+import { Item } from "../molecules";
 
-const SectionsItemsWithFilter = () => {
+interface SectionsItemsWithFilterProps {
+  onItemClick: () => void;
+}
+
+const SectionsItemsWithFilter = ({
+  onItemClick,
+}: SectionsItemsWithFilterProps) => {
   const { direction } = useInternationalizationContext();
 
-  const [selectedSection, setSelectedSection] = useState<string>();
+  const [selectedSection, setSelectedSection] = useState<Section>();
   const scrollViewRef = useRef<ScrollView>();
 
   const { response } = useAPIFetching<void, SectionsResponse>({
@@ -20,7 +27,7 @@ const SectionsItemsWithFilter = () => {
 
   useEffect(() => {
     if (response.isFetching) return;
-    setSelectedSection(response.body.data[0].category);
+    setSelectedSection(response.body.data[0]);
   }, [response]);
 
   if (response.isFetching) {
@@ -51,12 +58,12 @@ const SectionsItemsWithFilter = () => {
               <View key={index}>
                 <BaseButton
                   onClick={() => {
-                    //
+                    setSelectedSection(section);
                   }}
                   cn={clsx(
                     "px-[28px] py-[8px] border-[1.4px] rounded-[4px]",
                     direction === "ltr" ? "mr-[4px]" : "ml-[4px]",
-                    section.category === selectedSection
+                    section.category === selectedSection.category
                       ? "border-[#0E333C]"
                       : "border-[#f6f6f6]"
                   )}
@@ -71,7 +78,15 @@ const SectionsItemsWithFilter = () => {
         </View>
       </ScrollView>
 
-      <View className="px-[28x]"></View>
+      <View className="px-[28x]">
+        {selectedSection?.items?.data?.map?.((item, index) => {
+          return (
+            <View key={index}>
+              <Item variant="large" data={item} onClick={onItemClick} />
+            </View>
+          );
+        })}
+      </View>
     </View>
   );
 };
