@@ -4,4 +4,4 @@ digitalocean:
   access_key_id: <%= ENV["DIGITALOCEAN_SPACE_ACCESS_KEY"] %>
   secret_access_key: <%= ENV["DIGITALOCEAN_SPACE_SECRET_KEY"] %>
   bucket: <%= ENV["DIGITALOCEAN_SPACE_BUCKET"] %>
-  region: unused
+  region: <%= ENV["DIGITALOCEAN_SPACE_REGION"] %>

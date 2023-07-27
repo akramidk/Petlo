@@ -14,13 +14,10 @@ module Dashboard
           banner_id: banner.id,
           country: detail[:country],
           language: detail[:language],
-          variant: detail[:variant],
-          image:{
-            io: StringIO.new(Base64.decode64(detail[:image].split(',')[1])),
-            content_type: "image/png",
-            filename: "#{banner.public_id}.png"
-          }
+          variant: detail[:variant]
         )
+
+        variant.image.attach(io: StringIO.new(Base64.decode64(detail[:image].split(',')[1])), content_type: "image/png", filename: "#{banner.public_id}_#{variant.id}.png")
       end
 
       render json: { status: "succeeded" }, status: 200
