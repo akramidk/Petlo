@@ -116,6 +116,7 @@ Rails.application.routes.draw do
       put "brands/:id", to: "brands#update"
 
       #banners
+      post "banners", to: "banners#create"
       get "banners", to: "banners#index"
     end
   end
