@@ -52,10 +52,10 @@ module Dashboard
       options_combinations = options.length === 1 ? options[0].product() : options[0].product(*options[1..-1])
 
       options_combinations.each do |option|
-        variant = Variant.create!(item_id: item_1.id)
+        variant = Variant.create!(item_id: item.id)
 
         option.each do |value|
-          VariantOption.create!(variant_id: variant.id, option_id: value.id, option_value_number: value.number)
+          VariantOption.create!(variant_id: variant.id, option_id: value[:id], option_value_number: value[:number])
         end
       end
 
@@ -65,6 +65,8 @@ module Dashboard
           options: variant.options.map{|option|
             option.values.find_by(language: "en").value
           },
+          price: nil,
+          available: nil,
         }
       }
 
