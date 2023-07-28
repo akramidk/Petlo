@@ -17,7 +17,15 @@ module Dashboard
           variant: detail[:variant]
         )
 
-        variant.image.attach(io: StringIO.new(Base64.decode64(detail[:image].split(',')[1])), content_type: "image/png", filename: "#{banner.public_id}_#{variant.id}.png")
+        image = detail[:image].split(',')
+        content_type = image[0].split(":")[1].split(";")[0]
+        abbreviation = content_type.split("/")[1]
+        base64 = image[1]
+        variant.image.attach(
+          io: StringIO.new(Base64.decode64(base64)),
+          content_type: content_type,
+          filename: "#{banner.public_id}_#{variant.id}.#{abbreviation}"
+        )
       end
 
       render json: { status: "succeeded" }, status: 200

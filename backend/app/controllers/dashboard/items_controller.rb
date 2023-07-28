@@ -7,10 +7,14 @@ module Dashboard
       item = Item.create!(brand_id: brand.id)
 
       #image
+      image = params[:image].split(',')
+      content_type = image[0].split(":")[1].split(";")[0]
+      abbreviation = content_type.split("/")[1]
+      base64 = image[1]
       item.image.attach(
-        io: StringIO.new(Base64.decode64(params[:image].split(',')[1])),
-        content_type: "image/png",
-        filename: "#{item.public_id}.png"
+        io: StringIO.new(Base64.decode64(base64)),
+        content_type: content_type,
+        filename: "#{item.public_id}.#{abbreviation}"
       )
 
       #details
