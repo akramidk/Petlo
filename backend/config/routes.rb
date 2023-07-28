@@ -118,6 +118,9 @@ Rails.application.routes.draw do
       #banners
       post "banners", to: "banners#create"
       get "banners", to: "banners#index"
+
+      #items
+      post "items", to: "items#create"
     end
   end
 end
