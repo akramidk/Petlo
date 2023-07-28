@@ -121,6 +121,7 @@ Rails.application.routes.draw do
 
       #items
       post "items", to: "items#create"
+      post "items/variants", to: "items#variants"
     end
   end
 end

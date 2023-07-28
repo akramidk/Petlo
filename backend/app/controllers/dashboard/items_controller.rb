@@ -70,7 +70,21 @@ module Dashboard
         }
       }
 
-      render json: { status: "succeeded", variants: variants }, status: 200
+      render json: { status: "succeeded", item_public_id: item.public_id, available: nil, variants: variants }, status: 200
+    end
+
+    def variants
+      params[:variants].each do |data|
+        variant = Variant.find_by(public_id: data[:public_id])
+
+        VariantAvailability.create!(variant_id: variant.id, country: "JO", value: data[:available])
+        VariantPrice.create!(variant_id: variant.id, country: "JO", value: data[:price])
+      end
+
+      item = Item.find_by(public_id: params[:item_public_id])
+      item.availabilities.find_by(country: "JO").update(value: params[:available])
+
+      render json: { status: "succeeded" }, status: 200
     end
   end
 end
