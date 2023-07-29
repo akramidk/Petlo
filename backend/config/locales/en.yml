@@ -9,20 +9,20 @@ en:
   errors:
     #common
     1000000: "Unknown error, please try again."
-    1000001: "Invalid session token."
+    1000001: "Invalid session."
     1000002: "Invalid dashboard key."
 
     #customer model: 000
     2000000: "Customer public id is required."
     2000001: "Customer public id is used before."
-    2000002: "Customer name is required."
-    2000003: "Customer country is required."
+    2000002: "You should enter your name."
+    2000003: "You should select your country."
     2000004: "Customer country is invalid."
-    2000005: "Customer phone number is required."
-    2000006: "Customer phone number is used before."
-    2000007: "Customer password is required"
-    2000008: "Customer password is too short"
-    2000009: "Invalid verification code."
+    2000005: "You should enter your phone number."
+    2000006: "The entered phone number is used before."
+    2000007: "You should enter a password"
+    2000008: "The password should be 8 characters or more."
+    2000009: "Wrong verification code."
     2000010: "Invalid permission."
     2000011: "Verification code expired."
 

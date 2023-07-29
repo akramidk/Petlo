@@ -8,23 +8,23 @@ ar:
   #The next 3 number define the error number
   errors:
     #common
-    1000000: "Unknown error, please try again."
+    1000000: "خطأ غير معروف، يرجى المحاولة مرة أُخرى."
     1000001: "Invalid session token."
     1000002: "Invalid dashboard key."
 
     #customer model: 000
     2000000: "Customer public id is required."
     2000001: "Customer public id is used before."
-    2000002: "Customer name is required."
-    2000003: "Customer country is required."
+    2000002: "يجب إدخال الاسم."
+    2000003: "يجب اختيار الدولة."
     2000004: "Customer country is invalid."
-    2000005: "Customer phone number is required."
-    2000006: "Customer phone number is used before."
-    2000007: "Customer password is required"
-    2000008: "Customer password is too short"
-    2000009: "Invalid verification code."
+    2000005: "يجب إدخال رقم الهاتف."
+    2000006: "رقم الهاتف المُدخل مستخدم من قبل."
+    2000007: "يجب إدخال كلمة مرور."
+    2000008: "يجب ان تتكون كلمة المرور من 8 خانات أو أكثر."
+    2000009: "رمز التاكيد خاطئ."
     2000010: "Invalid permission."
-    2000011: "Verification code expired."
+    2000011: "رمز التاكيد مُنتهي الصلاحية."
 
     #pet model: 001
     2001000: "Pet public id is required."
