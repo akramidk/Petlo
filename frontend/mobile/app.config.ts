@@ -35,7 +35,7 @@ export default {
         "expo-location",
         {
           locationAlwaysAndWhenInUsePermission:
-            "Allow $(PRODUCT_NAME) to use your location.",
+            "Allow Petlo to use your location.",
         },
       ],
     ],
