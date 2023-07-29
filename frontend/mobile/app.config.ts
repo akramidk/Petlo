@@ -3,6 +3,7 @@ export default {
     name: "Petlo",
     slug: "Petlo",
     scheme: "acme",
+    icon: "./src/assets/images/icon.png",
     android: {
       package: "com.petlo",
       config: {
