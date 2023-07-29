@@ -24,6 +24,11 @@ module Dashboard
       #availability
       ItemAvailability.create!(item_id: item.id, country: "JO", value: false)
 
+      #categories
+      params[:categories].each do |category|
+        Relation.create!(item_id: item.id, category_id: Category.find_by(public_id: category).id)
+      end
+
       #options
       params[:options].each do |data|
         option = Option.create!(item_id: item.id, weighted: data[:weighted], unit: data[:weighted] ? data[:unit] : nil)
