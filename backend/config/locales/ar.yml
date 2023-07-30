@@ -165,20 +165,20 @@ ar:
     3003003: "رقم الهاتف المُدخل مُطابق للرقم الحالي."
 
     #carts helper: 004
-    3004000: "Cart not found."
-    3004001: "Cart expired."
-    3004002: "Item not found."
-    3004003: "Variant not found."
+    3004000: "لم يتم إيجاد السلة."
+    3004001: "إنتهت صلاحية السلة."
+    3004002: "لم يتم إيجاد المنتج."
+    3004003: "لم يتم إيجاد الصنف."
     3004004: "No item to remove."
-    3004005: "Cart used before."
+    3004005: "تم استخدام السلة في طلب سابق."
 
     #checkout helper: 005
-    3005000: "Cart not found."
-    3005001: "Cart used before."
-    3005002: "Cart expired."
+    3005000: "لم يتم إيجاد السلة."
+    3005001: "تم استخدام السلة في طلب سابق."
+    3005002: "إنتهت صلاحية السلة."
     3005003: "Address not found."
     3005004: "Checkout not found."
-    3005005: "Checkout used before."
+    3005005: "تم استخدام عملية الدفع في طلب سابق."
     3005006: "Checkout expired."
 
     #order helper: 006
@@ -188,7 +188,7 @@ ar:
     3006003: "Cart not found."
     3006004: "Cart is used before."
     3006005: "Cart expired."
-    3006006: "Payment failed."
+    3006006: "فشلت عملية الدفع، يرجى المحاولة مرة اخرى."
     3006007: "Checkout address id not attached."
     3006008: "Pet not found."
     3006009: "Card not found."

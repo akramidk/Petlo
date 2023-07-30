@@ -170,15 +170,15 @@ en:
     3004002: "Item not found."
     3004003: "Variant not found."
     3004004: "No item to remove."
-    3004005: "Cart used before."
+    3004005: "The cart was used in a previous order."
 
     #checkout helper: 005
     3005000: "Cart not found."
-    3005001: "Cart used before."
+    3005001: "The cart was used in a previous order."
     3005002: "Cart expired."
     3005003: "Address not found."
     3005004: "Checkout not found."
-    3005005: "Checkout used before."
+    3005005: "The checkout was used in a previous order."
     3005006: "Checkout expired."
 
     #order helper: 006
@@ -188,7 +188,7 @@ en:
     3006003: "Cart not found."
     3006004: "Cart is used before."
     3006005: "Cart expired."
-    3006006: "Payment failed."
+    3006006: "Payment failed, please try again."
     3006007: "Checkout address id not attached."
     3006008: "Pet not found."
     3006009: "Card not found."
