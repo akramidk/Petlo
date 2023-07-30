@@ -47,11 +47,11 @@ ar:
     2002004: "Card processor card id is required."
     2002005: "Card brand is required."
     2002006: "Card last4 is required."
-    2002007: "Card exp month is required."
-    2002008: "Card exp month is invalid."
-    2002009: "Card exp year is required."
+    2002007: "يجب إدخال شهر اﻹنتهاء."
+    2002008: "شهر اﻹنتهاء غير صالح."
+    2002009: "يحب إدخال سنة اﻹنتهاء."
     2002010: "Card fingerprint is required."
-    2002011: "Card fingerprint is useed before."
+    2002011: "البطاقة المدخلة مستخدمة من قبل."
 
     #address model: 003
     2003000: "Address public id is required."
