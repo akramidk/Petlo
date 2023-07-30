@@ -131,8 +131,8 @@ ar:
     2013000: "Autoship public id is required."
     2013001: "Autoship public id is used before."
     2013002: "Customer id is required."
-    2013003: "Name id is required."
-    2013004: "Name is used before."
+    2013003: "يجب إدخال الاسم."
+    2013004: "الاسم المُدخل مستخدم من قبل."
     2013005: "Payment card id is required."
     2013006: "Recurring interval count is required."
     2013007: "Recurring interval count number not in the range."
@@ -142,7 +142,7 @@ ar:
     2014001: "Item id is required."
     2014002: "Variant id is required."
 
-    #autoship items model: 015
+    #autoship pets model: 015
     2015000: "Autoship id is required."
     2015001: "Pet id is required."
     2015002: "Pet is used before."
@@ -150,19 +150,19 @@ ar:
     2015004: "Quantity should be greater than zero."
 
     #items helper: 000
-    3000000: "Item not found."
+    3000000: "لم يتم إيجاد المنتج."
 
     #pets helper: 001
-    3001000: "Pet not found."
+    3001000: "لم يتم إيجاد الحيوان."
 
     #sessions helper: 002
-    3002000: "Invalid credentials."
+    3002000: "رقم الهاتف أو كلمة المرور غير صحيحة."
 
     #customers helper: 003
     3003000: "Invalid permission."
-    3003001: "Wrong phone number."
-    3003002: "Wrong password."
-    3003003: "The Phone number is the same as yours."
+    3003001: "رقم الهاتف المدخل غير صحيح."
+    3003002: "كلمة المرور غير صحيحة."
+    3003003: "رقم الهاتف المُدخل مُطابق للرقم الحالي."
 
     #carts helper: 004
     3004000: "Cart not found."

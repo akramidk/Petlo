@@ -131,8 +131,8 @@ en:
     2013000: "Autoship public id is required."
     2013001: "Autoship public id is used before."
     2013002: "Customer id is required."
-    2013003: "Name id is required."
-    2013004: "Name is used before."
+    2013003: "You should enter the name."
+    2013004: "The entered name is used before."
     2013005: "Payment card id is required."
     2013006: "Recurring interval count is required."
     2013007: "Recurring interval count number not in the range."
@@ -142,7 +142,7 @@ en:
     2014001: "Item id is required."
     2014002: "Variant id is required."
 
-    #autoship items model: 015
+    #autoship pets model: 015
     2015000: "Autoship id is required."
     2015001: "Pet id is required."
     2015002: "Pet is used before."
@@ -156,13 +156,13 @@ en:
     3001000: "Pet not found."
 
     #sessions helper: 002
-    3002000: "Invalid credentials."
+    3002000: "Invalid phone number or password."
 
     #customers helper: 003
     3003000: "Invalid permission."
-    3003001: "Wrong phone number."
-    3003002: "Wrong password."
-    3003003: "The Phone number is the same as yours."
+    3003001: "The entered phone number isn't correct."
+    3003002: "The entered password isn't correct."
+    3003003: "The entered phone number is matches your current one."
 
     #carts helper: 004
     3004000: "Cart not found."
