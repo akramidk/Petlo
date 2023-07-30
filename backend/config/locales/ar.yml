@@ -57,9 +57,9 @@ ar:
     2003000: "Address public id is required."
     2003001: "Address public id is used before."
     2003002: "Customer id is required."
-    2003003: "Address is used before."
-    2003004: "Address name is required."
-    2003005: "Address name is used before."
+    2003003: "العنوان المُختار مستخدم من قبل."
+    2003004: "يجب إدخال الاسم."
+    2003005: "الاسم المُدخل مستخدم من قبل."
     2003006: "Address longitude is required."
     2003007: "Address latitude is required."
 

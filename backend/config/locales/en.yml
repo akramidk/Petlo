@@ -51,15 +51,15 @@ en:
     2002008: "The entered expiry month is invalid."
     2002009: "You should enter the expiry year."
     2002010: "Card fingerprint is required."
-    2002011: "The entered card is exist."
+    2002011: "The entered card already exists."
 
     #address model: 003
     2003000: "Address public id is required."
     2003001: "Address public id is used before."
     2003002: "Customer id is required."
-    2003003: "Address is used before."
-    2003004: "Address name is required."
-    2003005: "Address name is used before."
+    2003003: "The specified address already exists."
+    2003004: "You should enter the name."
+    2003005: "The entered name is used before."
     2003006: "Address longitude is required."
     2003007: "Address latitude is required."
 
