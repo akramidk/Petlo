@@ -30,13 +30,13 @@ ar:
     2001000: "Pet public id is required."
     2001001: "Pet public id is used before."
     2001002: "Pet customer id is required."
-    2001003: "Pet name is required."
-    2001004: "Pet name is used before."
-    2001005: "Pet kind is required."
+    2001003: "يجب إدخال الاسم."
+    2001004: "الاسم المُدخل مستخدم من قبل."
+    2001005: "يجب اختيار النوع."
     2001006: "Pet kind is invalid."
-    2001007: "Pet breed is required."
+    2001007: "يجب اختيار الفصيلة."
     2001008: "Pet breed is invalid."
-    2001009: "Pet gender is required."
+    2001009: "يجب اختيار الجنس."
     2001010: "Pet gender is invalid."
 
     #card model: 002

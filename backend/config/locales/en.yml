@@ -30,13 +30,13 @@ en:
     2001000: "Pet public id is required."
     2001001: "Pet public id is used before."
     2001002: "Pet customer id is required."
-    2001003: "Pet name is required."
-    2001004: "Pet name is used before."
-    2001005: "Pet kind is required."
+    2001003: "You should enter the name."
+    2001004: "The entered name is used before."
+    2001005: "You should select a kind."
     2001006: "Pet kind is invalid."
-    2001007: "Pet breed is required."
+    2001007: "You should select a breed."
     2001008: "Pet breed is invalid."
-    2001009: "Pet gender is required."
+    2001009: "You should select a gender."
     2001010: "Pet gender is invalid."
 
     #card model: 002
