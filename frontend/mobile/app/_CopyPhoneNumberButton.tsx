@@ -1,14 +1,20 @@
-import { useTranslationsContext } from "../src/hooks";
+import {
+  useInternationalizationContext,
+  useTranslationsContext,
+} from "../src/hooks";
 import { BaseButton } from "../src/components/bases";
 import { Icon, Text } from "../src/components/atoms";
 import * as Clipboard from "expo-clipboard";
 import { View } from "react-native";
 import { useEffect, useState } from "react";
+import clsx from "clsx";
 
 const PHONE_NUMBER = "+962790119952";
 
 export const CopyPhoneNumberButton = () => {
   const { t } = useTranslationsContext();
+  const { direction } = useInternationalizationContext();
+
   const [clicked, setClicked] = useState(false);
 
   useEffect(() => {
@@ -28,7 +34,12 @@ export const CopyPhoneNumberButton = () => {
         await Clipboard.setStringAsync(PHONE_NUMBER);
       }}
     >
-      <View className="flex flex-row items-center space-x-[8px]">
+      <View
+        className={clsx(
+          "flex items-center",
+          direction === "ltr" ? "flex-row" : "flex-row-reverse"
+        )}
+      >
         {clicked ? (
           <Icon
             name="checkMark"
@@ -47,7 +58,13 @@ export const CopyPhoneNumberButton = () => {
           />
         )}
 
-        <Text font="bold" cn="text-[#666] text-[14px]">
+        <Text
+          font="bold"
+          cn={clsx(
+            "text-[#666] text-[14px]",
+            direction === "ltr" ? "ml-[8px]" : "mr-[8px]"
+          )}
+        >
           {t("COMMON__COPY_PHONE_NUMBER")}
         </Text>
       </View>
