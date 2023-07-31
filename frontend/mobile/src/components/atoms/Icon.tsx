@@ -16,6 +16,7 @@ import {
 import {
   ArrowRightCircleIcon,
   ArrowLeftCircleIcon,
+  ClipboardIcon as Clipboard,
 } from "react-native-heroicons/outline";
 
 // TODO add all the icons here
@@ -87,6 +88,9 @@ const Icon = ({
     },
     handRaised: {
       solid: <HandRaised {...props} />,
+    },
+    clipboard: {
+      outline: <Clipboard {...props} />,
     },
   };
 
