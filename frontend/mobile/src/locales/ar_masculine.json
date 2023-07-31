@@ -25,6 +25,7 @@
   "COMMON__OPTIONAL": "اختياري",
   "COMMON__PHONE_NUMBER_WITHOUT_ZERO": "بدون الصفر اﻷول",
   "COMMON__USD": "دولار أمريكي",
+  "COMMON__COPY_PHONE_NUMBER": "انسخ رقم الهاتف",
   "ROOT_LAYOUT__NEW_UPDATE_AVAILABLE_TITLE": "تحديث جديد متوفر",
   "ROOT_LAYOUT__NEW_UPDATE_AVAILABLE_MESSAGE": "يجب تحديث التطبيق للتمكن من إستخدامه.",
   "SELECT_LANGUAGE__TITLE": "لغة التطبيق",
