@@ -8,6 +8,7 @@ import {
   useAPIFetching,
   useAPIMutation,
   useCartStore,
+  useDataContext,
   useInternationalizationContext,
   useTranslationsContext,
 } from "../../src/hooks";
@@ -40,10 +41,16 @@ const Checkout = () => {
   const { direction } = useInternationalizationContext();
   const { cartId } = useSearchParams();
 
-  const [paymentMethod, setPaymentMethod] = useState<BaseOption>();
-  const [card, setCard] = useState<BaseOption>();
-  const [address, setAddress] = useState<BaseOption>();
-  const [selectedPets, setSelectedPets] = useState<BaseOption[]>();
+  const { data, setData } = useDataContext();
+
+  const [paymentMethod, setPaymentMethod] = useState<BaseOption>(
+    data?.paymentMethod
+  );
+  const [card, setCard] = useState<BaseOption>(data?.card);
+  const [address, setAddress] = useState<BaseOption>(data?.address);
+  const [selectedPets, setSelectedPets] = useState<BaseOption[]>(
+    data?.selectedPets
+  );
 
   const { setCartId, setNumberofItems, setSummary } = useCartStore();
 
@@ -194,6 +201,30 @@ const Checkout = () => {
     });
   }, [address]);
 
+  useEffect(() => {
+    const obj = {};
+
+    if (paymentMethod) {
+      obj["paymentMethod"] = paymentMethod;
+    }
+
+    if (card) {
+      obj["card"] = card;
+    }
+
+    if (address) {
+      obj["address"] = address;
+    }
+
+    if (selectedPets) {
+      obj["selectedPets"] = selectedPets;
+    }
+
+    if (Object.keys(obj).length > 0) {
+      setData(obj);
+    }
+  }, [paymentMethod, card, address, selectedPets]);
+
   if (
     createCheckoutResponse === undefined ||
     createCheckoutResponse.status !== "succeeded" ||
@@ -210,7 +241,10 @@ const Checkout = () => {
   return (
     <PageStructure
       title={t("CHECKOUT__TITLE")}
-      backButton={router.back}
+      backButton={() => {
+        setData(undefined);
+        router.back();
+      }}
       button={{
         value: t("CHECKOUT__BUTTON"),
         onClick: () => {
