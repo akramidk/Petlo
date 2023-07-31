@@ -154,6 +154,8 @@ const ChangePassword = () => {
         }}
       >
         <Filed
+          name={t("CHANGE_PASSWORD__STEP_2_FILED_LABEL")}
+          helperText={t("CHANGE_PASSWORD__STEP_2_FILED_HELPER_TEXT")}
           placeholder={t("CHANGE_PASSWORD__STEP_2_FILED_PLACEHOLDER")}
           onChange={setPassword}
           value={password}
