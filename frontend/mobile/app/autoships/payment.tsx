@@ -25,7 +25,7 @@ import {
   ChangeAutoshipPaymentRequest,
   ChangeAutoshipPaymentResponse,
 } from "../../src/interfaces/Endpoints/ChangeAutoshipPayment";
-import { Warning } from "../(home)/_components/Warning";
+import { Warning } from "../../src/components/molecules";
 
 const Payment = () => {
   const router = useRouter();

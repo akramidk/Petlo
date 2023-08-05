@@ -34,7 +34,7 @@ import { cardToDataCard } from "../../src/utils";
 import { DataCard } from "../../src/components/molecules";
 import clsx from "clsx";
 import { buttonStatus } from "../../src/types";
-import { Warning } from "../(home)/_components/Warning";
+import { Warning } from "../../src/components/molecules";
 
 const Checkout = () => {
   const router = useRouter();

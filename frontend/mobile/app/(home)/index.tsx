@@ -15,7 +15,7 @@ import { Loading } from "../../src/components/pages";
 import Scrollable from "../_Scrollable";
 import Section from "./_components/Seection";
 import Banners from "./_components/Banners";
-import { Warning } from "./_components/Warning";
+import { Warning } from "../../src/components/molecules";
 import { useRouter } from "expo-router";
 
 const Home = () => {
