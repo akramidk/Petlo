@@ -196,7 +196,11 @@ const Checkout = () => {
   }, []);
 
   useEffect(() => {
-    if (address === undefined) return;
+    if (
+      createCheckoutResponse?.body?.checkout?.public_id === undefined ||
+      address === undefined
+    )
+      return;
     updateCheckoutAddressTrigger({
       address_id: address.id as string,
     });
