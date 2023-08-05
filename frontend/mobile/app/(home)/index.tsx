@@ -73,7 +73,7 @@ const Home = () => {
         <Banners data={bannersResponse.body.data} />
       )}
 
-      <View>
+      <View className="mx-[28px]">
         <Warning
           firstText={t("HOME__WARNING_1_FIRST_TEXT")}
           secondText={t("HOME__WARNING_1_SECOND_TEXT")}
