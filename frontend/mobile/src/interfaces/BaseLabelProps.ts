@@ -1,7 +1,9 @@
+import React from "react";
+
 export interface BaseLabelProps {
   name: string;
   helperText?: string;
-  bottomHelperText?: string;
+  bottomHelperElement?: React.ReactNode;
   require?: boolean;
   cn?: string;
 }

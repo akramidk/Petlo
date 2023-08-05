@@ -34,6 +34,7 @@ import { cardToDataCard } from "../../src/utils";
 import { DataCard } from "../../src/components/molecules";
 import clsx from "clsx";
 import { buttonStatus } from "../../src/types";
+import { Warning } from "../(home)/_components/Warning";
 
 const Checkout = () => {
   const router = useRouter();
@@ -293,7 +294,9 @@ const Checkout = () => {
               <OptionsWithLabel
                 label={{
                   name: t("CHECKOUT__SELECT_A_CARD"),
-                  bottomHelperText: t("CHECKOUT__CARD_PAYMENT_WARNING"),
+                  bottomHelperElement: (
+                    <Warning secondText={t("CHECKOUT__CARD_PAYMENT_WARNING")} />
+                  ),
                   require: true,
                 }}
                 options={{

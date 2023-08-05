@@ -186,7 +186,7 @@
   "CHECKOUT__DELIVERY_AMOUNT": "Delivery Amount",
   "CHECKOUT__SELECT_ADDRESS_FIRST": "Select Address First",
   "CHECKOUT__TOTAL_AMOUNT": "Total Amount",
-  "CHECKOUT__CARD_PAYMENT_WARNING": "* Card payment is processed in United States Dollar",
+  "CHECKOUT__CARD_PAYMENT_WARNING": "Card payment is processed in United States Dollar",
   "CHECKOUT__WILL_BE_DELIVERED": "Will Be Delivered",
   "ORDERS__TITLE": "Orders",
   "ORDERS__ORDER_NUMBER": "Order No.",
@@ -214,7 +214,7 @@
     "SKIP": "Skip Next Shipment",
     "REACTIVATE": "Reactivate"
   },
-  "AUTOSHIPS__CARD_PAYMENT_WARNINGS": "* Card payment is processed in United States Dollar.\n\n** We will try to deduct the amount from a card before 24h of the shipping date. If failed, we try again before 12h and 6h. If all attempts fail, we make the Autoship inactive.",
+  "AUTOSHIPS__CARD_PAYMENT_WARNINGS": "Card payment is processed in United States Dollar.\n\nWe will try to deduct the amount from a card before 24h of the shipping date. If failed, we try again before 12h and 6h. If all attempts fail, we make the Autoship inactive.",
   "CREATE_AN_AUTOSHIP__TITLE": "Create An Autoship",
   "CREATE_AN_AUTOSHIP__NAME_FILED_LABEL": "Autoship Name",
   "CREATE_AN_AUTOSHIP__NAME_FILED_PLACEHOLDER": "enter a name like (My Cat Autoship)",

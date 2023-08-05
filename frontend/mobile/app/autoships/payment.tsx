@@ -25,6 +25,7 @@ import {
   ChangeAutoshipPaymentRequest,
   ChangeAutoshipPaymentResponse,
 } from "../../src/interfaces/Endpoints/ChangeAutoshipPayment";
+import { Warning } from "../(home)/_components/Warning";
 
 const Payment = () => {
   const router = useRouter();
@@ -192,7 +193,9 @@ const Payment = () => {
             cn="mb-[12px]"
             label={{
               name: t("CHECKOUT__SELECT_A_CARD"),
-              bottomHelperText: t("AUTOSHIPS__CARD_PAYMENT_WARNINGS"),
+              bottomHelperElement: (
+                <Warning secondText={t("AUTOSHIPS__CARD_PAYMENT_WARNINGS")} />
+              ),
               require: true,
             }}
             options={{

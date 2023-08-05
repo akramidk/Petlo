@@ -8,7 +8,7 @@ const BaseLabel = ({
   helperText,
   require,
   cn,
-  bottomHelperText,
+  bottomHelperElement,
 }: BaseLabelProps) => {
   const { language, direction } = useInternationalizationContext();
 
@@ -17,19 +17,16 @@ const BaseLabel = ({
       name: "font-e700",
       require: "font-e700 ml-[2px]",
       helperText: "font-e500 ml-[4px]",
-      bottomHelperText: "font-e500",
     },
     ar_masculine: {
       name: "font-a600",
       require: "font-a600 mr-[2px]",
       helperText: "font-a400 mr-[4px]",
-      bottomHelperText: "font-a400 text-right",
     },
     ar_feminine: {
       name: "font-a600",
       require: "font-a600 mr-[2px]",
       helperText: "font-a400 mr-[4px]",
-      bottomHelperText: "font-a400 text-right",
     },
   };
 
@@ -71,15 +68,8 @@ const BaseLabel = ({
         )}
       </View>
 
-      {bottomHelperText && (
-        <Text
-          className={clsx(
-            "text-[14px] text-[#888]",
-            className[language].bottomHelperText
-          )}
-        >
-          {bottomHelperText}
-        </Text>
+      {bottomHelperElement && (
+        <View className="mt-[4px]">{bottomHelperElement}</View>
       )}
     </View>
   );

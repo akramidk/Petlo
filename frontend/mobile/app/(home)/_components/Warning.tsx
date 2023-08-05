@@ -11,7 +11,7 @@ interface WarningParams {
 export const Warning = ({ firstText, secondText, onClick }: WarningParams) => {
   return (
     <Container
-      cn="px-[16px] py-[12px] border-[1px] border-[#eee] bg-[#f8f8f8] mx-[28px] rounded-[8px]"
+      cn="px-[16px] py-[12px] border-[1px] border-[#eee] bg-[#f8f8f8] rounded-[8px]"
       onClick={onClick}
     >
       <View className="space-y-[4px]">
