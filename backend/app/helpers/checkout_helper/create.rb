@@ -3,7 +3,8 @@ module CheckoutHelper::Create
         cart = customer.carts.find_by(public_id: cart_id)
         raise(RuntimeError, 3005000) if !cart
         raise(RuntimeError, 3005001) if cart.used?
-        raise(RuntimeError, 3005002) if cart.created_at + CONSTANTS::TIMES[:CART_EXP_AFTER] < Time.now
+        #will ignore the time until v2
+        #raise(RuntimeError, 3005002) if cart.created_at + CONSTANTS::TIMES[:CART_EXP_AFTER] < Time.now
 
         address = nil
         delivery_amount = nil

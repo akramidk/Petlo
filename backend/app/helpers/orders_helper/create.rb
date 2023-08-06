@@ -5,7 +5,8 @@ module OrdersHelper::Create
         checkout = customer.checkouts.find_by(public_id: checkout_id)
         raise(RuntimeError, 3006000) if !checkout
         raise(RuntimeError, 3006001) if checkout.used?
-        raise(RuntimeError, 3006002) if checkout.created_at + CONSTANTS::TIMES[:CHECKOUT_EXP_AFTER] < Time.now
+        #will ignore the time until v2
+        #raise(RuntimeError, 3006002) if checkout.created_at + CONSTANTS::TIMES[:CHECKOUT_EXP_AFTER] < Time.now
         raise(RuntimeError, 3006007) if !checkout.address_id
 
         cart = customer.carts.find_by(id: checkout.cart_id)

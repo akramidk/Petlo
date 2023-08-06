@@ -1,6 +1,5 @@
 export interface Cart {
   public_id: string;
-  exp_at: string;
   number_of_items: number;
   amount: string;
   currency: string;
