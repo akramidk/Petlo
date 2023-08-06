@@ -1,4 +1,6 @@
 module SectionsHelper::All
+  DEFAULT_LIMIT = 8
+  
   SECTIONS = [
     {
       name: {
@@ -16,7 +18,7 @@ module SectionsHelper::All
     }
   ]
   
-  def all(customer:, language:)
+  def all(customer:, language:, limit:)
     sections = []
   
     begin
@@ -25,7 +27,7 @@ module SectionsHelper::All
           category: section[:category],
           country: customer.country,
           language: language,
-          limit: (8)
+          limit: (limit || DEFAULT_LIMIT)
         )
 
         next if items[:data].length == 0

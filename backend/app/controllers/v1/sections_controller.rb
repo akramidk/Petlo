@@ -5,7 +5,7 @@ module V1
     include SectionsHelper
 
     def index
-      response = SectionsHelper.all(customer: @customer, language: params[:locale])
+      response = SectionsHelper.all(customer: @customer, language: params[:locale], limit: params[:limit])
       render json: { data: response[:data] }, status: 200
     end
   end
