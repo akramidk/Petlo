@@ -21,8 +21,11 @@ const SectionsItemsWithFilter = ({
   const [selectedSection, setSelectedSection] = useState<Section>();
   const scrollViewRef = useRef<ScrollView>();
 
-  const { response } = useAPIFetching<void, SectionsResponse>({
+  const { response } = useAPIFetching<{ limit: number }, SectionsResponse>({
     endpoint: Endpoints.SECTIONS,
+    body: {
+      limit: 100,
+    },
   });
 
   useEffect(() => {
