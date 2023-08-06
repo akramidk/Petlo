@@ -83,6 +83,7 @@ const Checkout = () => {
       method: "POST",
       options: {
         onSucceeded: () => {
+          setData(undefined);
           setCartId(null);
           setNumberofItems(0);
           setSummary(undefined);
