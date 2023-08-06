@@ -81,7 +81,7 @@ const ItemPreview = ({
 
     const array = selectedOptions.flat();
     options.forEach((option, i) => {
-      array[i] = option.values[0];
+      array[i] = option.values[0].value;
     });
 
     setSelectedOptions(array);
@@ -168,14 +168,14 @@ const ItemPreview = ({
                           <BaseButton
                             onClick={() => {
                               const array = selectedOptions.flat();
-                              array[i] = value;
+                              array[i] = value.value;
 
                               setSelectedOptions(array);
                             }}
                             cn={clsx(
                               "px-[28px] py-[8px] border-[1.4px] rounded-[4px]",
                               direction === "ltr" ? "mr-[4px]" : "ml-[4px]",
-                              value === selectedOptions[i]
+                              value.value === selectedOptions[i]
                                 ? "border-[#0E333C]"
                                 : "border-[#f6f6f6]"
                             )}
@@ -184,7 +184,7 @@ const ItemPreview = ({
                               font="semiBold"
                               cn="text-[#0E333C] text-[13px]"
                             >
-                              {value}
+                              {value.value} {value.unit}
                             </Text>
                           </BaseButton>
                         </View>
