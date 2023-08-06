@@ -3,12 +3,19 @@ module Item::LongInformation
     available = self.availabilities.find_by(country: country).value
 
     options = self.options.map{ |option|
+      values = []
+      
+      option.values.where(language: language).each do |option_value|
+        values << {
+          value: option_value.value,
+          unit: option_value.unit
+        }
+      end
+
       {
         public_id: option.public_id,
         name: option.names.find_by(language: language).value,
-        values: option.values.where(language: language).map{|option_value|
-          {value: option_value.value, option_value.unit}
-        }
+        values: values
       }
     }
 
