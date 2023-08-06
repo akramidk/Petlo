@@ -8,7 +8,7 @@ module Item::LongInformation
       option.values.where(language: language).each do |option_value|
         values << {
           value: option_value.value,
-          unit: option_value.unit
+          unit: CONSTANTS::OPTION_UNITS.dig(option_value.unit, language)
         }
       end
 
