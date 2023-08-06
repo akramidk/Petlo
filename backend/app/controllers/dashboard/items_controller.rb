@@ -40,10 +40,10 @@ module Dashboard
         #values
         number = 1
         data[:values].each do |value|
-          unit = data[:weighted] ? CONSTANTS::OPTION_UNITS[value[:unit]] : nil
+          unit = data[:weighted] ? value[:unit] : nil
 
-          OptionValue.create!(option_id: option.id, number: number, language: "en", value: value[:en], unit: unit["en"])
-          OptionValue.create!(option_id: option.id, number: number, language: "ar", value: value[:ar], unit: unit["ar"])
+          OptionValue.create!(option_id: option.id, number: number, language: "en", value: value[:en], unit: unit)
+          OptionValue.create!(option_id: option.id, number: number, language: "ar", value: value[:ar], unit: unit)
 
           number += 1
         end

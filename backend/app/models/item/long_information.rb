@@ -7,7 +7,7 @@ module Item::LongInformation
         public_id: option.public_id,
         name: option.names.find_by(language: language).value,
         values: option.values.where(language: language).map{|option_value|
-          option_value.value + " " + option_value.unit
+          (option_value.value + " " + CONSTANTS::OPTION_UNITS.dig(option_value.unit, language)).strip
         }
       }
     }
