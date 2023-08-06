@@ -5,6 +5,7 @@ class CreateOptionValues < ActiveRecord::Migration[7.0]
       t.integer :number, null: false
       t.string :language, null: false
       t.string :value, null: false
+      t.string :unit
 
       t.timestamps
     end

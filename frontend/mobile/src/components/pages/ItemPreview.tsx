@@ -184,7 +184,7 @@ const ItemPreview = ({
                               font="semiBold"
                               cn="text-[#0E333C] text-[13px]"
                             >
-                              {value} {option.unit}
+                              {value}
                             </Text>
                           </BaseButton>
                         </View>

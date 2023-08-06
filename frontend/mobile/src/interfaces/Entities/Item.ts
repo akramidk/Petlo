@@ -8,7 +8,6 @@ export interface Item {
   options: {
     public_id: string;
     name: string;
-    unit: string | null;
     values: string[];
   }[];
   variants: {

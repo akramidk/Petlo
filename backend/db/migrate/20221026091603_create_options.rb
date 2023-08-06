@@ -4,7 +4,6 @@ class CreateOptions < ActiveRecord::Migration[7.0]
       t.string :public_id, null: false, unique: true
       t.bigint :item_id, null: false
       t.boolean :weighted, null: false
-      t.string :unit
 
       t.timestamps
     end

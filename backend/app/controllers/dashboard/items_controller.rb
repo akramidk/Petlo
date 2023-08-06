@@ -31,7 +31,7 @@ module Dashboard
 
       #options
       params[:options].each do |data|
-        option = Option.create!(item_id: item.id, weighted: data[:weighted], unit: data[:weighted] ? data[:unit] : nil)
+        option = Option.create!(item_id: item.id, weighted: data[:weighted])
 
         #names
         OptionName.create!(option_id: option.id, language: "en", value: data[:en_name])
@@ -40,8 +40,10 @@ module Dashboard
         #values
         number = 1
         data[:values].each do |value|
-          OptionValue.create!(option_id: option.id, number: number, language: "en", value: value[:en])
-          OptionValue.create!(option_id: option.id, number: number, language: "ar", value: value[:ar])
+          unit = data[:weighted] ? CONSTANTS::OPTION_UNITS[value[:unit]] : nil
+
+          OptionValue.create!(option_id: option.id, number: number, language: "en", value: value[:en], unit: unit["en"])
+          OptionValue.create!(option_id: option.id, number: number, language: "ar", value: value[:ar], unit: unit["ar"])
 
           number += 1
         end

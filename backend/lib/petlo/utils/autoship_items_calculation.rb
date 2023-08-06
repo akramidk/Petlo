@@ -41,8 +41,9 @@ module Utils
 
         options = []
         variant.options.each do |option|
-          value = option.values.find_by(language: language).value
-          unit = CONSTANTS::OPTION_UNITS.dig(option.unit, language)
+          option_value = option.values.find_by(language: language)
+          value = option_value.value
+          unit = option_value.unit
           options.push((value + " " + unit.to_s).strip)
         end
 
