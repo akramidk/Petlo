@@ -39,7 +39,7 @@ const Home = () => {
       // TODO ther's a problem that the home page is rendered then
       // the user got redirct to right page by RoutesRestrictor
       // this should be fix
-      wait: !storedLanguage && !customer && !languageGender,
+      wait: !storedLanguage || !customer || !languageGender,
     },
   });
 
@@ -53,7 +53,7 @@ const Home = () => {
         // TODO ther's a problem that the home page is rendered then
         // the user got redirct to right page by RoutesRestrictor
         // this should be fix
-        wait: !storedLanguage && !customer,
+        wait: !storedLanguage || !customer,
       },
     }
   );
