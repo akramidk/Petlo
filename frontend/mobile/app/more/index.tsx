@@ -17,7 +17,7 @@ const More = () => {
   const { direction } = useInternationalizationContext();
 
   return (
-    <Scrollable cn="space-y-[28px]">
+    <Scrollable cn="space-y-[28px] bg-[#fff]">
       {MORE_PAGE_SECTIONS.map((section, i) => {
         return (
           <View key={i}>

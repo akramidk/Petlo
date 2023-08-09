@@ -73,7 +73,7 @@ const Home = () => {
   }
 
   return (
-    <Scrollable cn="px-[0px] space-y-[28px]">
+    <Scrollable cn="px-[0px] space-y-[28px] bg-[#fff]">
       {bannersResponse.body.data.length > 0 && (
         <Banners data={bannersResponse.body.data} />
       )}

@@ -5,10 +5,6 @@
   "build": {
     "development": {
       "developmentClient": false,
-      "distribution": "internal",
-      "ios": {
-        "resourceClass": "m1-medium"
-      },
       "android": {
         "buildType": "apk"
       },
@@ -19,22 +15,7 @@
         "GOOGLE_IOS_MAP_KEY": "AIzaSyATNdeJAH58V2JuSVA2C3qL0GO1VORbLzg"
       }
     },
-    "preview": {
-      "distribution": "internal",
-      "ios": {
-        "resourceClass": "m1-medium"
-      },
-      "env": {
-        "API_URL": "https://api.dev.petlo.co",
-        "STRIPE_PUBLISHABLE_KEY": "pk_test_51MLCpbBOEiCvkdTpNPVHQTabYpsAlE2aOm3lH4P6CgOhdYWVDBZs7bpDGHR5ewLjia5eii60w78ZkACtudbrWEun00gDTjfPaX",
-        "GOOGLE_ANDROID_MAP_KEY": "AIzaSyAhFzvU4bnxroW_qaIDBDbjsVfVmx1AtrE",
-        "GOOGLE_IOS_MAP_KEY": "AIzaSyATNdeJAH58V2JuSVA2C3qL0GO1VORbLzg"
-      }
-    },
     "production": {
-      "ios": {
-        "resourceClass": "m1-medium"
-      },
       "env": {
         "API_URL": "https://api.petlo.co",
         "STRIPE_PUBLISHABLE_KEY": "pk_live_51MLCpbBOEiCvkdTpwSNodwH2qAXbBB26zXu7mZJFRJSKMe7NHheEDh78Mqk8YD3uJZ4r2OPtXpB4PnAdlIqLwAm700ebGaLL57",
