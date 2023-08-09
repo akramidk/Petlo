@@ -36,7 +36,7 @@ const PageStructure = ({
   };
 
   return (
-    <View className="flex flex-1 relative">
+    <View className="flex flex-1 relative bg-[#fff]">
       <View className="p-[28px] space-y-[12px]">
         {backButton && <BackButton onClick={backButton} />}
         {title && (
@@ -58,7 +58,7 @@ const PageStructure = ({
       {floatingElement && (
         <View
           className={clsx(
-            "absolute bottom-[16px] self-center",
+            "absolute bottom-[16px] self-center bg-[#fff]",
             floatingElementCN
           )}
         >
