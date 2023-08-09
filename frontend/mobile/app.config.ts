@@ -13,8 +13,8 @@ export default {
       },
     },
     ios: {
+      bundleIdentifier: "com.petlo",
       config: {
-        bundleIdentifier: "com.petlo",
         googleMapsApiKey: "AIzaSyATNdeJAH58V2JuSVA2C3qL0GO1VORbLzg",
       },
     },
