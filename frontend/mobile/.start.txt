@@ -1,1 +1,0 @@
-API_URL=https://api.dev.petlo.co STRIPE_PUBLISHABLE_KEY=pk_test_51MLCpbBOEiCvkdTpNPVHQTabYpsAlE2aOm3lH4P6CgOhdYWVDBZs7bpDGHR5ewLjia5eii60w78ZkACtudbrWEun00gDTjfPaX GOOGLE_MAP_KEY=AIzaSyAhFzvU4bnxroW_qaIDBDbjsVfVmx1AtrE yarn expo start -c
