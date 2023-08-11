@@ -75,15 +75,13 @@ const Item = () => {
   );
 
   return (
-    <SafeAreaView className="h-full flex flex-col" edges={["bottom"]}>
-      <ItemPreview
-        publicId={publicId}
-        onAdd={(itemId, variantId) => addToCart(itemId, variantId)}
-        addStatus={addStatus ?? createStatus}
-        onBack={router.back}
-        addTranslationValue={t("ITEM__ADD_TO_CART_BUTTON")}
-      />
-    </SafeAreaView>
+    <ItemPreview
+      publicId={publicId}
+      onAdd={(itemId, variantId) => addToCart(itemId, variantId)}
+      addStatus={addStatus ?? createStatus}
+      onBack={router.back}
+      addTranslationValue={t("ITEM__ADD_TO_CART_BUTTON")}
+    />
   );
 };
 
