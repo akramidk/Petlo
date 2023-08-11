@@ -65,9 +65,9 @@ const AddNewCard = () => {
             });
           }}
           cardStyle={{
-            textColor: "#444",
+            textColor: "#444444",
             fontSize: 14,
-            placeholderColor: "#aaa",
+            placeholderColor: "#aaaaaa",
             textErrorColor: "#E64848",
             fontFamily:
               languageWithoutGender === "en"
