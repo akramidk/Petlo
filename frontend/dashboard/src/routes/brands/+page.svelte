@@ -7,7 +7,7 @@
     }
 </script>
 
-<RequestOptions bind:data={data} method="POST" actionName="/brands" />
+<RequestOptions bind:data={data} method="POST" actionName="brands" />
 <input bind:value={data.en_name} required type="text" placeholder="English name" class="input input-bordered w-full max-w-xs" />
 <input bind:value={data.ar_name} required type="text" placeholder="Arabic name" class="input input-bordered w-full max-w-xs" />
 

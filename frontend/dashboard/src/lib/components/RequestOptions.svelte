@@ -13,7 +13,9 @@
     console.log("method", method)
     console.log("actionName", actionName)
     console.log("dev env", devEnvironemt)
-        await Requests.makeAuthRequest(devEnvironemt, method, actionName, data)
+        await Requests.makeAuthRequest(devEnvironemt, method, actionName, data, {}, {
+            "Content-Type": "application/json"
+        })
         .then(resp => {
             console.log(resp)
         })
