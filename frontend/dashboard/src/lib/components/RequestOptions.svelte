@@ -1,6 +1,9 @@
 <script lang="ts">
 	import { Requests } from '$lib/utils';
 	import type { DevEnv, Method } from '$lib/utils';
+	import { createEventDispatcher } from 'svelte';
+
+	const dispatch = createEventDispatcher();
 
 	export let data: any;
 	export let method: Method;
@@ -24,8 +27,11 @@
 				'Content-Type': 'application/json'
 			}
 		)
-			.then((resp) => {
-				if (resp.ok) buttonTitle = 'Done 👍';
+			.then(async (resp) => {
+				if (resp.ok) {
+					buttonTitle = 'Bread 👍';
+					dispatch('request-ok', await resp.json());
+				}
 			})
 			.catch((err) => {
 				console.error(err);
