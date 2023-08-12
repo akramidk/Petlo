@@ -1,8 +1,8 @@
 module CONSTANTS
   OPTION_UNITS = {
-    "GM" => {
+    "G" => {
       "ar" => "غرام",
-      "en" => "gm"
+      "en" => "g"
     },
     "KG" => {
       "ar" => "كيلو غرام",
