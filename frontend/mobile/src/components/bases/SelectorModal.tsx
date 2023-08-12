@@ -50,7 +50,11 @@ const SelectorModal = <T extends BaseOption>({
   };
 
   const optionsAfterSearch = useMemo(() => {
-    return options.filter((option) => option.value.includes(searchValue));
+    return options.filter((option) =>
+      (option.value as string)
+        .toLocaleLowerCase()
+        .includes(searchValue.toLocaleLowerCase())
+    );
   }, [searchValue, options]);
 
   return (
