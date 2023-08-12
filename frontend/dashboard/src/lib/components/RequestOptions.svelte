@@ -7,21 +7,28 @@
     export let actionName: string
     export let devEnvironemt: DevEnv = "dev"
 
+    let buttonTitle = "Submit"
 
     async function sendRequest() {
     console.log("data", data)
     console.log("method", method)
     console.log("actionName", actionName)
     console.log("dev env", devEnvironemt)
+        buttonTitle = "Sending..."
         await Requests.makeAuthRequest(devEnvironemt, method, actionName, data, {}, {
             "Content-Type": "application/json"
         })
         .then(resp => {
-            console.log(resp)
+            if (resp.ok) buttonTitle = "Done 👍"
         })
         .catch(err => {
             console.error(err)
+            buttonTitle = "Something went wrong"
         })
+
+        setTimeout(() => {
+            buttonTitle = "Submit"
+        }, 2000);
     }
 </script>
 
@@ -32,5 +39,5 @@
       <option value="prod">Production</option>
     </select>
 
-    <button class="btn" on:click={sendRequest}>Submit</button>
+    <button class="btn" on:click={sendRequest}>{buttonTitle}</button>
 </div>
