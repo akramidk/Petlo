@@ -1,11 +1,11 @@
 import config from '$lib/config';
 
 export type Method = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
-type devEnv = 'dev' | 'prod';
+export type DevEnv = 'dev' | 'prod';
 
 export default class Requests {
 	static async makeRequest(
-		env: devEnv,
+		env: DevEnv,
 		method: Method,
 		action: string,
 		body: any,
@@ -17,7 +17,7 @@ export default class Requests {
 	}
 
 	static async makeAuthRequest(
-		env: devEnv,
+		env: DevEnv,
 		method: Method,
 		action: string,
 		body: any,
@@ -40,7 +40,7 @@ export default class Requests {
 	}
 
 	private static async _makeRequest(
-		env: devEnv = 'dev',
+		env: DevEnv = 'dev',
 		method: string,
 		action: string,
 		params: any,
