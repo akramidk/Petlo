@@ -196,6 +196,9 @@
   "CHECKOUT__TOTAL_AMOUNT": "المبلغ الإجمالي",
   "CHECKOUT__CARD_PAYMENT_WARNING": "تتم معالجة الدفع بالبطاقة بالدولار الأمريكي",
   "CHECKOUT__WILL_BE_DELIVERED": "سيتم شحنها",
+  "CHECKOUT__ADD_NEW_ADDRESS_TO_USE": "أضف عنوان جديد لاستخدامه",
+  "CHECKOUT__ADD_NEW_CARD_TO_USE": "أضف بطاقة جديدة لاستخدامها",
+  "CHECKOUT__ADD_NEW_PET_TO_USE": "أضف حيوان جديد لاستخدامه",
   "ORDERS__TITLE": "الطلبات",
   "ORDERS__ORDER_NUMBER": "رقم الطلب",
   "ORDERS__STATUSES": {

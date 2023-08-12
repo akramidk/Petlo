@@ -162,7 +162,7 @@ const Address = () => {
 
       <Link
         valueCN="text-[#9747FF] text-[14px]"
-        value={t("CREATE_AN_AUTOSHIP__ADD_NEW_ADDRESS_TO_USE")}
+        value={`+ ${t("CREATE_AN_AUTOSHIP__ADD_NEW_ADDRESS_TO_USE")}`}
         onClick={() => router.push("/account/addresses/add-new-address")}
       />
 

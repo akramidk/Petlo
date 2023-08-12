@@ -188,6 +188,9 @@
   "CHECKOUT__TOTAL_AMOUNT": "Total Amount",
   "CHECKOUT__CARD_PAYMENT_WARNING": "Card payment is processed in United States Dollar",
   "CHECKOUT__WILL_BE_DELIVERED": "Will Be Delivered",
+  "CHECKOUT__ADD_NEW_ADDRESS_TO_USE": "Add New Address To Use",
+  "CHECKOUT__ADD_NEW_CARD_TO_USE": "Add New Card To Use",
+  "CHECKOUT__ADD_NEW_PET_TO_USE": "Add New Pet To Use",
   "ORDERS__TITLE": "Orders",
   "ORDERS__ORDER_NUMBER": "Order No.",
   "ORDERS__STATUSES": {

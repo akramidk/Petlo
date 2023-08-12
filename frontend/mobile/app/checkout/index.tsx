@@ -318,7 +318,7 @@ const Checkout = () => {
               <Link
                 cn="mt-[16px]"
                 valueCN="text-[#9747FF] text-[14px]"
-                value="+ Add New Card To Use"
+                value={`+ ${t("CHECKOUT__ADD_NEW_CARD_TO_USE")}`}
                 onClick={() => router.push("/account/cards/add-new-card")}
               />
             </View>
@@ -357,7 +357,7 @@ const Checkout = () => {
           <Link
             cn="mt-[16px]"
             valueCN="text-[#9747FF] text-[14px]"
-            value="+ Add New Address To Use"
+            value={`+ ${t("CHECKOUT__ADD_NEW_ADDRESS_TO_USE")}`}
             onClick={() => router.push("/account/addresses/add-new-address")}
           />
         </View>
@@ -393,7 +393,7 @@ const Checkout = () => {
           <Link
             cn="mt-[16px]"
             valueCN="text-[#9747FF] text-[14px]"
-            value="+ Add New Pet To Use"
+            value={`+ ${t("CHECKOUT__ADD_NEW_PET_TO_USE")}`}
             onClick={() => router.push("/account/pets/add-new-pet")}
           />
         </View>
