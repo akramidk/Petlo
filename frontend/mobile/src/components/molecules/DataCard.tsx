@@ -82,7 +82,7 @@ const DataCard = ({
         </View>
 
         {secondaryText && (
-          <Text font="medium" cn="text-[14px] text-[#777]" numberOfLines={1}>
+          <Text font="medium" cn="text-[14px] text-[#777]">
             {secondaryText}
           </Text>
         )}
