@@ -22,6 +22,10 @@
 
 	let imageFile: HTMLInputElement;
 	async function updateImage() {
+		if (imageFile.files[0].size > 5 * 1024 * 1024) {
+			window.alert('oi file too large!');
+			return;
+		}
 		data.image = await readFile(imageFile.files[0]);
 	}
 
@@ -86,6 +90,9 @@
 	actionName="items"
 	bind:devEnvironemt
 	changeHandler={fetchStuff}
+	on:request-ok={(e) => {
+		console.log(e.detail);
+	}}
 />
 
 <select class="select select-bordered w-full max-w-xs" bind:value={data.categories[0]}>
