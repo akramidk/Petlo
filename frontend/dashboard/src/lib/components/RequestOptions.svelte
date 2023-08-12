@@ -5,7 +5,7 @@
     export let data: any
     export let method: Method
     export let actionName: string
-    let devEnvironemt: DevEnv = "dev"
+    export let devEnvironemt: DevEnv = "dev"
 
 
     async function sendRequest() {
