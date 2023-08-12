@@ -1,8 +1,9 @@
 <script lang="ts">
-    const links = [
-        {name: "Brands", link: "/brands", target: "_self"},
-        {name: "Categories", link: "/categories", target: "_self"},
-    ]
+	const links = [
+		{ name: 'Brands', link: '/brands', target: '_self' },
+		{ name: 'Categories', link: '/categories', target: '_self' },
+		{ name: 'Items', link: '/items', target: '_self' }
+	];
 </script>
 
 <header
@@ -16,9 +17,8 @@
 				<li>
 					<a
 						class="underline hover:text-[#20DB8F]"
-						target={link.target ?? "_blank"}
-						href={link.link}
-						>{link.name}</a
+						target={link.target ?? '_blank'}
+						href={link.link}>{link.name}</a
 					>
 				</li>
 			{/each}

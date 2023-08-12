@@ -1,9 +1,9 @@
 <script>
 	import '../app.postcss';
-    import Header from "$lib/components/Header.svelte"
+	import Header from '$lib/components/Header.svelte';
 </script>
 
-<Header/>
+<Header />
 <div class="p-8">
-    <slot />
+	<slot />
 </div>
