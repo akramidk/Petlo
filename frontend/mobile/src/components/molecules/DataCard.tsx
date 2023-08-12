@@ -68,7 +68,7 @@ const DataCard = ({
 
           {actions && actions.length === 1 ? (
             <BaseButton onClick={actions[0].onClick} cn="pt-[14px]">
-              <Text font="semiBold" cn=" text-[14px] text-[#aaa]">
+              <Text font="semiBold" cn=" text-[14px] text-[#6578DD]">
                 {actions[0].name}
               </Text>
             </BaseButton>
