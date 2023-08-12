@@ -6,14 +6,11 @@
     export let method: Method
     export let actionName: string
     export let devEnvironemt: DevEnv = "dev"
+    export let changeHandler = () => {console.log("changed")}
 
     let buttonTitle = "Submit"
 
     async function sendRequest() {
-    console.log("data", data)
-    console.log("method", method)
-    console.log("actionName", actionName)
-    console.log("dev env", devEnvironemt)
         buttonTitle = "Sending..."
         await Requests.makeAuthRequest(devEnvironemt, method, actionName, data, {}, {
             "Content-Type": "application/json"
@@ -33,7 +30,7 @@
 </script>
 
 <div class="block my-5">
-    <select class="select select-bordered w-full max-w-xs" bind:value={devEnvironemt}>
+    <select class="select select-bordered w-full max-w-xs" bind:value={devEnvironemt} on:change={changeHandler}>
       <option disabled>Request enviroment</option>
       <option selected value="dev">Development</option>
       <option value="prod">Production</option>

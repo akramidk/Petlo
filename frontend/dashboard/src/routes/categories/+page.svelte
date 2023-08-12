@@ -13,7 +13,7 @@
 
     let currentCategories: {id: string, name: string, parent_id: string | null}[] = []
 
-    onMount(async () => {
+    async function fetchCategories() {
         await Requests.makeAuthRequest(devEnvironemt, "GET", "categories")
         .then(resp => resp.json())
         .then(data => {
@@ -22,12 +22,14 @@
         .catch(err => {
             console.error(err)
         })
+    }
 
-        console.log(currentCategories)
+    onMount(async () => {
+        await fetchCategories()
     })
 </script>
 
-<RequestOptions bind:data={data} method="POST" actionName="categories" />
+<RequestOptions bind:data={data} method="POST" actionName="categories" bind:devEnvironemt={devEnvironemt} changeHandler={fetchCategories} />
 <input bind:value={data.name} required type="text" placeholder="Name" class="input input-bordered w-full max-w-xs" />
 <select class="select select-bordered w-full max-w-xs" bind:value={data.parent_id}>
   <option disabled selected value={null}>Parent Id</option>
