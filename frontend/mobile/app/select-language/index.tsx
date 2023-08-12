@@ -11,6 +11,7 @@ import {
 } from "../../src/constants";
 import { LanguageOption, BaseOption } from "../../src/interfaces";
 import { language } from "../../src/types";
+import RNRestart from "react-native-restart";
 
 const SelectLanguage = () => {
   const { t } = useTranslationsContext();
@@ -25,6 +26,7 @@ const SelectLanguage = () => {
       changeLanguage(`${selectedLanguage.id}_masculine` as language, false);
     } else {
       changeLanguage(selectedLanguage.id as language, true);
+      RNRestart?.restart();
     }
   };
 
@@ -33,6 +35,8 @@ const SelectLanguage = () => {
       `${selectedLanguage.id}_${selectedAdjective.id}` as language,
       true
     );
+
+    RNRestart?.restart();
   };
 
   if (step === 1) {
