@@ -31,7 +31,7 @@ export default class Requests {
 			action,
 			params,
 			{
-				Authorization: `Bearer ${config.backendApiToken}`,
+				Authorization: `${config.backendApiToken}`,
 				...headers
 			},
 			body,
