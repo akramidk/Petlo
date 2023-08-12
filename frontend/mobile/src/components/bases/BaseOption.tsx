@@ -22,7 +22,7 @@ const BaseOption = ({
   valueFont,
 }: BaseOptionProps) => {
   return (
-    <BaseButton cn={clsx("justify-between", cn)} onClick={onClick}>
+    <BaseButton cn={clsx("justify-between items-center", cn)} onClick={onClick}>
       {typeof value === "string" ? (
         <Text
           cn={clsx("text-[16px] text-[#163E48]", valueCn)}
