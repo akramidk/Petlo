@@ -13,6 +13,8 @@ import { BaseOption, LanguageOption } from "../../src/interfaces";
 import { Options } from "../../src/components/atoms";
 import { language } from "../../src/types";
 import RNRestart from "react-native-restart";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { StorageKeys } from "../../src/enums";
 
 const ChangeLanguage = () => {
   const router = useRouter();
@@ -37,6 +39,11 @@ const ChangeLanguage = () => {
     )
   );
 
+  const onChange = async () => {
+    await AsyncStorage.setItem(StorageKeys.REVALIDATE_HOME_PAGE_DATA, "true");
+    RNRestart?.restart();
+  };
+
   const languageHandler = () => {
     if (selectedLanguage.gendered) {
       setStep(2);
@@ -49,7 +56,7 @@ const ChangeLanguage = () => {
 
     changeLanguage(selectedLanguage.id as language, true);
 
-    RNRestart?.restart();
+    onChange();
   };
 
   const adjectiveHandler = () => {
@@ -58,7 +65,7 @@ const ChangeLanguage = () => {
       true
     );
 
-    RNRestart?.restart();
+    onChange();
   };
 
   const cancelHandler = () => {

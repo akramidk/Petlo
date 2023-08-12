@@ -86,7 +86,7 @@ const useAPIFetching = <Request, Response>({
     }).then((res) => res);
   };
 
-  const { data, error, isLoading, isValidating } = useSWR(
+  const { data, error, isLoading, isValidating, mutate } = useSWR(
     SWREndpoint,
     fetcher,
     SWROptions
@@ -118,7 +118,7 @@ const useAPIFetching = <Request, Response>({
     }
   }, [isLoading, isValidating, data, error]);
 
-  return { response, setWait, fetchMore, round: paginationRound };
+  return { response, setWait, fetchMore, round: paginationRound, mutate };
 };
 
 export default useAPIFetching;

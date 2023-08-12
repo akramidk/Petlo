@@ -1,5 +1,5 @@
 import { View } from "react-native";
-import { Endpoints } from "../../src/enums";
+import { Endpoints, StorageKeys } from "../../src/enums";
 import {
   useAPIFetching,
   useCustomerContext,
@@ -17,6 +17,8 @@ import Section from "./_components/Seection";
 import Banners from "./_components/Banners";
 import { Warning } from "../../src/components/molecules";
 import { useRouter } from "expo-router";
+import { useEffect, useState } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Home = () => {
   const router = useRouter();
@@ -24,7 +26,10 @@ const Home = () => {
   const { customer } = useCustomerContext();
   const { storedLanguage, languageGender } = useInternationalizationContext();
 
-  const { response: bannersResponse } = useAPIFetching<
+  const [isCheckingRevalidationFinished, setIsCheckingRevalidationFinished] =
+    useState(false);
+
+  const { response: bannersResponse, mutate: mutateBanners } = useAPIFetching<
     BannersRequest,
     BannersResponse
   >({
@@ -46,20 +51,37 @@ const Home = () => {
     },
   });
 
-  const { response: sectionsResponse } = useAPIFetching<void, SectionsResponse>(
-    {
-      endpoint: Endpoints.SECTIONS,
-      SWROptions: {
-        revalidateIfStale: false,
-      },
-      options: {
-        // TODO ther's a problem that the home page is rendered then
-        // the user got redirct to right page by RoutesRestrictor
-        // this should be fix
-        wait: !storedLanguage || !customer,
-      },
-    }
-  );
+  const { response: sectionsResponse, mutate: mutateSections } = useAPIFetching<
+    void,
+    SectionsResponse
+  >({
+    endpoint: Endpoints.SECTIONS,
+    SWROptions: {
+      revalidateIfStale: false,
+    },
+    options: {
+      // TODO ther's a problem that the home page is rendered then
+      // the user got redirct to right page by RoutesRestrictor
+      // this should be fix
+      wait: !storedLanguage || !customer,
+    },
+  });
+
+  useEffect(() => {
+    (async () => {
+      if (
+        JSON.parse(
+          await AsyncStorage.getItem(StorageKeys.REVALIDATE_HOME_PAGE_DATA)
+        ) === true
+      ) {
+        mutateBanners();
+        mutateSections();
+        await AsyncStorage.removeItem(StorageKeys.REVALIDATE_HOME_PAGE_DATA);
+      }
+    })();
+
+    setIsCheckingRevalidationFinished(true);
+  }, []);
 
   if (
     !storedLanguage ||
@@ -67,7 +89,8 @@ const Home = () => {
     bannersResponse === undefined ||
     bannersResponse.isFetching ||
     sectionsResponse === undefined ||
-    sectionsResponse.isFetching
+    sectionsResponse.isFetching ||
+    isCheckingRevalidationFinished === false
   ) {
     return <Loading />;
   }
