@@ -14,6 +14,7 @@ import {
 import { useRouter } from "expo-router";
 import { Endpoints } from "../../../src/enums";
 import { AddNewCardRequest, AddNewCardResponse } from "../../../src/interfaces";
+import { View } from "react-native";
 
 const STRIPE_PUBLISHABLE_KEY =
   Constants.expoConfig.extra.STRIPE_PUBLISHABLE_KEY;
@@ -55,32 +56,31 @@ const AddNewCard = () => {
       }}
     >
       <StripeProvider publishableKey={STRIPE_PUBLISHABLE_KEY}>
-        <CardField
-          postalCodeEnabled={false}
-          onCardChange={(card) => {
-            createToken({
-              type: "Card",
-            }).then((response) => {
-              setToken(response?.token?.id);
-            });
-          }}
-          cardStyle={{
-            textColor: "#444444",
-            fontSize: 14,
-            placeholderColor: "#aaaaaa",
-            textErrorColor: "#E64848",
-            fontFamily:
-              languageWithoutGender === "en"
-                ? "Manrope_500Medium"
-                : "IBMPlexSansArabic_400Regular",
-          }}
-          style={{
-            height: 60,
-            backgroundColor: "#f6f6f6",
-            borderRadius: 4,
-            paddingRight: 50,
-          }}
-        />
+        <View className="rounded-[4px] border-[#f6f6f6] border-[1px] bg-[#fff] p-[2px]">
+          <CardField
+            postalCodeEnabled={false}
+            onCardChange={(card) => {
+              createToken({
+                type: "Card",
+              }).then((response) => {
+                setToken(response?.token?.id);
+              });
+            }}
+            cardStyle={{
+              textColor: "#444444",
+              fontSize: 14,
+              placeholderColor: "#aaaaaa",
+              textErrorColor: "#E64848",
+              fontFamily:
+                languageWithoutGender === "en"
+                  ? "Manrope_500Medium"
+                  : "IBMPlexSansArabic_400Regular",
+            }}
+            style={{
+              height: 60,
+            }}
+          />
+        </View>
       </StripeProvider>
     </PageStructure>
   );
