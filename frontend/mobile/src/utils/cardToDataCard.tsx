@@ -24,7 +24,7 @@ const cardToDataCard = ({
   t,
 }: CardToDataCardProps): DataCardProps => {
   return {
-    primaryText: `**** **** **** ${card.last4}`,
+    primaryText: t("COMMON_END_WITH", { last4: card.last4 }),
     secondaryText: t("CARD_TO_DATA_CARD__EXPIRES_IN", {
       expMonth: card.exp_month,
       expYear: card.exp_year,
