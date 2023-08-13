@@ -228,7 +228,7 @@
   "AUTOSHIPS__CARD_PAYMENT_WARNINGS": "تتم معالجة الدفع بالبطاقة بالدولار الأمريكي\n\nسوف نقوم بخصم المبلغ قبل 24 ساعة من وقت كل شحنة، إذا فشلت المحاولة سنقوم بالمحاولة مرة أخرى قبل 12 ساعة و6 ساعات، إذا كل المحاولات فشلت سوف نقوم بتغيير الأوتوشيب لغير نشطة",
   "CREATE_AN_AUTOSHIP__TITLE": "أنشئي أوتوشيب",
   "CREATE_AN_AUTOSHIP__NAME_FILED_LABEL": "اسم الأوتوشيب",
-  "CREATE_AN_AUTOSHIP__NAME_FILED_PLACEHOLDER": "(ادخلي اسمًا مثل (أوتوشيب قطتي",
+  "CREATE_AN_AUTOSHIP__NAME_FILED_PLACEHOLDER": "ادخلي اسمًا مثل (أوتوشيب قطتي)",
   "CREATE_AN_AUTOSHIP__STEPS": {
     "WHAT": {
       "PRIMARY_TEXT": "ماذا ترغبين أن تشحني؟",

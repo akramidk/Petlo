@@ -1,5 +1,5 @@
 import { useRouter } from "expo-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { PageStructure } from "../../src/components/organisms";
 import {
   LANGUAGES_OPTIONS,
@@ -54,9 +54,6 @@ const ChangeLanguage = () => {
     }
 
     changeLanguage(selectedLanguage.id as language, true);
-
-    setRevalidateHomePageData();
-    RNRestart?.restart();
   };
 
   const adjectiveHandler = () => {
@@ -64,15 +61,17 @@ const ChangeLanguage = () => {
       `${selectedLanguage.id}_${selectedAdjective.id}` as language,
       true
     );
-
-    setRevalidateHomePageData();
-    RNRestart?.restart();
   };
 
   const cancelHandler = () => {
     changeLanguage(storedLanguage, false);
     router.back();
   };
+
+  useEffect(() => {
+    setRevalidateHomePageData();
+    RNRestart?.restart();
+  }, [storedLanguage]);
 
   if (step === 1) {
     return (
