@@ -6,6 +6,7 @@ import { Endpoints } from "../../../src/enums";
 import { APIPermissions } from "../../../src/enums";
 import {
   useAPIMutation,
+  useCustomerContext,
   useInternationalizationContext,
   useTranslationsContext,
 } from "../../../src/hooks";
@@ -24,6 +25,7 @@ const DeleteYourAccount = () => {
   const [step, setStep] = useState(1);
   const { t } = useTranslationsContext();
   const { direction } = useInternationalizationContext();
+  const { clearCustomer } = useCustomerContext();
 
   const [verificationCode, setVerificationCode] = useState<string>("");
 
@@ -51,6 +53,7 @@ const DeleteYourAccount = () => {
     method: "DELETE",
     options: {
       onSucceeded: () => {
+        clearCustomer();
         router.push("/welcome");
       },
       fireOnSucceededAfter: 2000,
