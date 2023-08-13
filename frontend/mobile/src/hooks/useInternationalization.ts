@@ -68,9 +68,6 @@ const useInternationalization = () => {
   useEffect(() => {
     //if there's a storedLanguage use it permanently
     (async () => {
-      // TODO remove it
-      await AsyncStorage.removeItem(StorageKeys.LANGUAGE);
-
       const value = (await AsyncStorage.getItem(
         StorageKeys.LANGUAGE
       )) as language;

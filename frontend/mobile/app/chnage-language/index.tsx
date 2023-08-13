@@ -39,9 +39,8 @@ const ChangeLanguage = () => {
     )
   );
 
-  const onChange = async () => {
+  const setRevalidateHomePageData = async () => {
     await AsyncStorage.setItem(StorageKeys.REVALIDATE_HOME_PAGE_DATA, "true");
-    RNRestart?.restart();
   };
 
   const languageHandler = () => {
@@ -56,7 +55,8 @@ const ChangeLanguage = () => {
 
     changeLanguage(selectedLanguage.id as language, true);
 
-    onChange();
+    setRevalidateHomePageData();
+    RNRestart?.restart();
   };
 
   const adjectiveHandler = () => {
@@ -65,7 +65,8 @@ const ChangeLanguage = () => {
       true
     );
 
-    onChange();
+    setRevalidateHomePageData();
+    RNRestart?.restart();
   };
 
   const cancelHandler = () => {
