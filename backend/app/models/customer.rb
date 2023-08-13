@@ -33,5 +33,5 @@ class Customer < ApplicationRecord
   validates :name, presence: { message: 2000002 }
   validates :country, presence: { message: 2000003 }, inclusion: { in: CONSTANTS::COUNTRIES.keys, message: 2000004 }
   validates :phone_number, presence: { message: 2000005 }
-  validates :phone_number, uniqueness: { message: 2000006 }, if: -> { self.deleted == nil }
+  validates :phone_number, uniqueness: { scope: :deleted, message: 2000006 }, if: -> { self.deleted == nil }
 end
