@@ -1,6 +1,6 @@
 module SessionsHelper::Create
   def create(phone_number:, password:, language:)
-    customer = Customer.find_by(phone_number: phone_number)
+    customer = Customer.find_by(phone_number: phone_number, deleted: nil)
 
     if customer && customer.try(:authenticate, password)
       customer_verified = customer.phone_verified?
