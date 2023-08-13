@@ -26,9 +26,6 @@ const useCustomer = () => {
 
   useEffect(() => {
     (async () => {
-      // TODO remove it
-      //await SecureStore.deleteItemAsync(StorageKeys.SESSION_TOKEN);
-
       setSessionToken(
         await SecureStore.getItemAsync(StorageKeys.SESSION_TOKEN)
       );
