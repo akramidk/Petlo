@@ -39,8 +39,9 @@ const ChangeLanguage = () => {
     )
   );
 
-  const setRevalidateHomePageData = async () => {
+  const onChange = async () => {
     await AsyncStorage.setItem(StorageKeys.REVALIDATE_HOME_PAGE_DATA, "true");
+    RNRestart?.restart();
   };
 
   const languageHandler = () => {
@@ -54,6 +55,7 @@ const ChangeLanguage = () => {
     }
 
     changeLanguage(selectedLanguage.id as language, true);
+    onChange();
   };
 
   const adjectiveHandler = () => {
@@ -61,17 +63,13 @@ const ChangeLanguage = () => {
       `${selectedLanguage.id}_${selectedAdjective.id}` as language,
       true
     );
+    onChange();
   };
 
   const cancelHandler = () => {
     changeLanguage(storedLanguage, false);
     router.back();
   };
-
-  useEffect(() => {
-    setRevalidateHomePageData();
-    RNRestart?.restart();
-  }, [storedLanguage]);
 
   if (step === 1) {
     return (
