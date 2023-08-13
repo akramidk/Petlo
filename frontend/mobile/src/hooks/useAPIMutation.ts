@@ -107,6 +107,7 @@ const useAPIMutation = <Request, Response>({
     }
 
     if (error) {
+      //don't remove it plz
       console.log("error", error.response);
 
       return {

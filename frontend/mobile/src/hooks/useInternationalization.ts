@@ -72,23 +72,28 @@ const useInternationalization = () => {
         StorageKeys.LANGUAGE
       )) as language;
 
-      setStoredLanguage(value);
+      if (
+        value === "en" ||
+        value === "ar_masculine" ||
+        value === "ar_feminine"
+      ) {
+        changeLanguage(value, true);
+      } else {
+        /**
+         * if no storedLanguage setStoredLanguage to null to hide the loading seccren
+         * and set the app language to the device language if it's one of the app languages
+         */
+        setStoredLanguage(null);
+
+        const deviceLanguage = getLocales()[0].languageCode;
+        const deviceGenderedLanguage = defaultGenderedLanguage[deviceLanguage];
+
+        if (deviceGenderedLanguage && deviceGenderedLanguage !== language) {
+          changeLanguage(deviceGenderedLanguage, false);
+          return;
+        }
+      }
     })();
-
-    if (storedLanguage && storedLanguage !== language) {
-      changeLanguage(storedLanguage, false);
-      return;
-    }
-
-    //if no storedLanguage & the deviceLanguage is one of our languages
-    //use it temporarily until the customer select a language as permanently
-    const deviceLanguage = getLocales()[0].languageCode;
-    const deviceGenderedLanguage = defaultGenderedLanguage[deviceLanguage];
-
-    if (deviceGenderedLanguage && deviceGenderedLanguage !== language) {
-      changeLanguage(deviceGenderedLanguage, false);
-      return;
-    }
   }, []);
 
   return {
