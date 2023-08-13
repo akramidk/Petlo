@@ -16,4 +16,4 @@ web-build/
 #env
 .env.development
 .env.production
-.start.sh
+development.sh
