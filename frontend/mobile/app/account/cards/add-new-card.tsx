@@ -78,6 +78,7 @@ const AddNewCard = () => {
             }}
             style={{
               height: 60,
+              paddingRight: 50,
             }}
           />
         </View>
