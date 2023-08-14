@@ -376,7 +376,9 @@ const Checkout = () => {
           <OptionsWithLabel
             label={{
               name: t("CHECKOUT__THIS_ORDER_FOR"),
-              helperText: t("CHECKOUT__MULTIPLE_CHOICE"),
+              helperText: `${(
+                t("COMMON__OPTIONAL") as string
+              ).toLowerCase()} - ${t("CHECKOUT__MULTIPLE_CHOICE")}`,
               cn: "p-0",
             }}
             options={{
