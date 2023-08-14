@@ -1,5 +1,5 @@
 import { useRouter } from "expo-router";
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { ItemsViewer, PageStructure } from "../../src/components/organisms";
 import { Endpoints } from "../../src/enums";
 import {
@@ -9,11 +9,14 @@ import {
 } from "../../src/hooks";
 import { CartItemProps, CartSummaryResponse } from "../../src/interfaces";
 import { Loading } from "../../src/components/pages";
-import Item from "./_Item";
+import Item from "./src/Item";
+import IsChangingContext from "./src/IsChangingContext";
 
 const Cart = () => {
   const router = useRouter();
   const { t } = useTranslationsContext();
+
+  const [isChanging, setIsChanging] = useState(false);
 
   const { summary, cartId, setSummary, numberofItems } = useCartStore();
   const { response: summaryResponse, setWait: summarySetWait } = useAPIFetching<
@@ -59,39 +62,44 @@ const Cart = () => {
     setSummary(summaryResponse.body ?? null);
   }, [summaryResponse]);
 
+  console.log("isChanging", isChanging);
+
   if (summary === undefined && cartId) {
     return <Loading />;
   }
 
   return (
-    <PageStructure
-      title={t("CART__TITLE")}
-      backButton={router.back}
-      button={
-        numberofItems > 0
-          ? {
-              value: t("CART__CHECKOUT_BUTTON"),
-              onClick: () => {
-                router.push(`/checkout?cartId=${cartId}`);
-              },
-            }
-          : undefined
-      }
-      helperText={
-        !items || items.length === 0 ? t("CART__CART_IS_EMPTY") : undefined
-      }
-    >
-      <ItemsViewer
-        items={items}
-        renderItem={(item) => {
-          return <Item {...item} />;
-        }}
-        detailsTranslationValue={t("CART__PAYMENT_SUMMARY")}
-        totalTranslationValue={t("CART__CART_TOTAL")}
-        amount={summary?.amount}
-        currency={summary?.currency}
-      />
-    </PageStructure>
+    <IsChangingContext.Provider value={{ isChanging, setIsChanging }}>
+      <PageStructure
+        title={t("CART__TITLE")}
+        backButton={router.back}
+        button={
+          numberofItems > 0
+            ? {
+                value: t("CART__CHECKOUT_BUTTON"),
+                onClick: () => {
+                  router.push(`/checkout?cartId=${cartId}`);
+                },
+                status: isChanging ? "inactive" : "active",
+              }
+            : undefined
+        }
+        helperText={
+          !items || items.length === 0 ? t("CART__CART_IS_EMPTY") : undefined
+        }
+      >
+        <ItemsViewer
+          items={items}
+          renderItem={(item) => {
+            return <Item {...item} />;
+          }}
+          detailsTranslationValue={t("CART__PAYMENT_SUMMARY")}
+          totalTranslationValue={t("CART__CART_TOTAL")}
+          amount={summary?.amount}
+          currency={summary?.currency}
+        />
+      </PageStructure>
+    </IsChangingContext.Provider>
   );
 };
 

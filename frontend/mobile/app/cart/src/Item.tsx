@@ -1,16 +1,20 @@
-import { Endpoints } from "../../src/enums";
-import { useAPIMutation, useCartStore } from "../../src/hooks";
+import { Endpoints } from "../../../src/enums";
+import { useAPIMutation, useCartStore } from "../../../src/hooks";
 import {
   CartAddItemRequest,
   CartAddItemResponse,
   CartItemProps,
   CartRemoveItemRequest,
   CartRemoveItemResponse,
-} from "../../src/interfaces";
-import { ItemViewer } from "../../src/components/molecules";
+} from "../../../src/interfaces";
+import { ItemViewer } from "../../../src/components/molecules";
+import { useContext, useEffect } from "react";
+import IsChangingContext from "./IsChangingContext";
 
 const Item = (props: CartItemProps) => {
   const { cartId, setSummary, setNumberofItems } = useCartStore();
+
+  const { isChanging, setIsChanging } = useContext(IsChangingContext);
 
   const {
     response: addResponse,
@@ -50,17 +54,23 @@ const Item = (props: CartItemProps) => {
     },
   });
 
+  useEffect(() => {
+    setIsChanging(addStatus === "loading" || removeStatus === "loading");
+  }, [addStatus, removeStatus]);
+
   return (
     <ItemViewer
       {...props}
       add={(itemId: string, variantId: string) => {
         addTrigger({ item_id: itemId, variant_id: variantId });
       }}
-      addStatus={addStatus}
+      addStatus={isChanging && addStatus !== "loading" ? "inactive" : addStatus}
       remove={(itemId: string, variantId: string) => {
         removeTrigger({ item_id: itemId, variant_id: variantId });
       }}
-      removeStatus={removeStatus}
+      removeStatus={
+        isChanging && removeStatus !== "loading" ? "inactive" : removeStatus
+      }
     />
   );
 };
