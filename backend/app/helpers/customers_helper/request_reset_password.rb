@@ -1,6 +1,6 @@
 module CustomersHelper::RequestResetPassword
     def request_reset_password(phone_number:, language:)
-        customer = Customer.find_by(phone_number: phone_number)
+        customer = Customer.find_by(phone_number: phone_numberو deleted: nil)
         raise(RuntimeError, 3003001) if !customer
 
         permission = ENUM::PERMISSIONS[:VERIFY_RESET_PASSWORD_REQUEST]
