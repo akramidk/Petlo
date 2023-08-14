@@ -111,7 +111,9 @@ const ChangeLanguage = () => {
           value: t("CHANGE_LANGUAGE__SAVE_BUTTON"),
           onClick: adjectiveHandler,
           status:
-            selectedAdjective !== currentLanguageGender ? "active" : "inactive",
+            selectedAdjective && selectedAdjective !== currentLanguageGender
+              ? "active"
+              : "inactive",
         }}
         link={{
           value: t("CHANGE_LANGUAGE__CANCEL_BUTTON"),
