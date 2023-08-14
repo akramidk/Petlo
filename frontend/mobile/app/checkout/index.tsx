@@ -205,7 +205,7 @@ const Checkout = () => {
     updateCheckoutAddressTrigger({
       address_id: address.id as string,
     });
-  }, [address]);
+  }, [createCheckoutResponse, address]);
 
   useEffect(() => {
     const obj = {};
@@ -230,6 +230,9 @@ const Checkout = () => {
       setData(obj);
     }
   }, [paymentMethod, card, address, selectedPets]);
+
+  console.log({ address });
+  console.log({ data });
 
   if (
     createCheckoutResponse === undefined ||
