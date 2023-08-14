@@ -62,8 +62,6 @@ const Cart = () => {
     setSummary(summaryResponse.body ?? null);
   }, [summaryResponse]);
 
-  console.log("isChanging", isChanging);
-
   if (summary === undefined && cartId) {
     return <Loading />;
   }

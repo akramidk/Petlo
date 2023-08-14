@@ -231,9 +231,6 @@ const Checkout = () => {
     }
   }, [paymentMethod, card, address, selectedPets]);
 
-  console.log({ address });
-  console.log({ data });
-
   if (
     createCheckoutResponse === undefined ||
     createCheckoutResponse.status !== "succeeded" ||
