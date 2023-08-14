@@ -1,23 +1,13 @@
-import clsx from "clsx";
 import { useRouter } from "expo-router";
-import { Fragment, useEffect, useMemo } from "react";
-import { View } from "react-native";
-import { Text } from "../../src/components/atoms";
+import { useEffect, useMemo } from "react";
 import { ItemsViewer, PageStructure } from "../../src/components/organisms";
 import { Endpoints } from "../../src/enums";
 import {
   useAPIFetching,
-  useAPIMutation,
   useCartStore,
-  useInternationalizationContext,
   useTranslationsContext,
 } from "../../src/hooks";
-import {
-  CartAddItemRequest,
-  CartAddItemResponse,
-  CartItemProps,
-  CartSummaryResponse,
-} from "../../src/interfaces";
+import { CartItemProps, CartSummaryResponse } from "../../src/interfaces";
 import { Loading } from "../../src/components/pages";
 import Item from "./_Item";
 
@@ -25,8 +15,7 @@ const Cart = () => {
   const router = useRouter();
   const { t } = useTranslationsContext();
 
-  const { summary, cartId, setSummary, setNumberofItems, numberofItems } =
-    useCartStore();
+  const { summary, cartId, setSummary, numberofItems } = useCartStore();
   const { response: summaryResponse, setWait: summarySetWait } = useAPIFetching<
     void,
     CartSummaryResponse
@@ -37,44 +26,6 @@ const Cart = () => {
     },
     options: {
       wait: true,
-    },
-  });
-
-  const {
-    response: addResponse,
-    trigger: addTrigger,
-    status: addStatus,
-  } = useAPIMutation<CartAddItemRequest, CartAddItemResponse>({
-    endpoint: Endpoints.CART_ADD_ITEM,
-    method: "POST",
-    slugs: {
-      publicId: cartId,
-    },
-    options: {
-      onSucceeded: () => {
-        setSummary(addResponse.body.cart);
-        setNumberofItems(addResponse.body.cart.number_of_items);
-      },
-      resetSucceededStatusAfter: 500,
-    },
-  });
-
-  const {
-    response: removeResponse,
-    trigger: removeTrigger,
-    status: removeStatus,
-  } = useAPIMutation<CartAddItemRequest, CartAddItemResponse>({
-    endpoint: Endpoints.CART_REMOVE_ITEM,
-    method: "DELETE",
-    slugs: {
-      publicId: cartId,
-    },
-    options: {
-      onSucceeded: () => {
-        setSummary(removeResponse.body.cart);
-        setNumberofItems(removeResponse.body.cart.number_of_items);
-      },
-      resetSucceededStatusAfter: 500,
     },
   });
 
@@ -97,7 +48,7 @@ const Cart = () => {
     });
 
     return array;
-  }, [summary, addStatus, removeStatus]);
+  }, [summary]);
 
   useEffect(() => {
     if (!summary && cartId) summarySetWait(false);
