@@ -3,8 +3,11 @@ import { Endpoints, StorageKeys } from "../enums";
 import * as SecureStore from "expo-secure-store";
 import useAPIFetching from "./useAPIFetching";
 import { CheckASessionResponse, Customer } from "../interfaces";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import useCartStore from "./useCartStore";
 
 const useCustomer = () => {
+  const { setCartId, setNumberofItems, setSummary } = useCartStore();
   const [sessionToken, setSessionToken] = useState<undefined | string>(
     undefined
   );
@@ -65,7 +68,13 @@ const useCustomer = () => {
   };
 
   const clearCustomer = async () => {
+    await AsyncStorage.removeItem(StorageKeys.CART);
     await SecureStore.deleteItemAsync(StorageKeys.SESSION_TOKEN);
+
+    setCartId(null);
+    setNumberofItems(0);
+    setSummary(undefined);
+
     setSessionToken(null);
     setCustomer(null);
   };
