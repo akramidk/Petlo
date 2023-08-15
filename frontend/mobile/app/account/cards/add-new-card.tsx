@@ -56,32 +56,32 @@ const AddNewCard = () => {
       }}
     >
       <StripeProvider publishableKey={STRIPE_PUBLISHABLE_KEY}>
-        <View className="rounded-[4px] border-[#f6f6f6] border-[1px] bg-[#fff] p-[2px]">
-          <CardField
-            postalCodeEnabled={false}
-            onCardChange={(card) => {
-              createToken({
-                type: "Card",
-              }).then((response) => {
-                setToken(response?.token?.id);
-              });
-            }}
-            cardStyle={{
-              textColor: "#444444",
-              fontSize: 14,
-              placeholderColor: "#aaaaaa",
-              textErrorColor: "#E64848",
-              fontFamily:
-                languageWithoutGender === "en"
-                  ? "Manrope_500Medium"
-                  : "IBMPlexSansArabic_400Regular",
-            }}
-            style={{
-              height: 60,
-              paddingRight: 50,
-            }}
-          />
-        </View>
+        <CardField
+          postalCodeEnabled={false}
+          onCardChange={(card) => {
+            createToken({
+              type: "Card",
+            }).then((response) => {
+              setToken(response?.token?.id);
+            });
+          }}
+          cardStyle={{
+            backgroundColor: "#f6f6f6",
+            textColor: "#444444",
+            fontSize: 14,
+            placeholderColor: "#aaaaaa",
+            textErrorColor: "#E64848",
+            fontFamily:
+              languageWithoutGender === "en"
+                ? "Manrope_500Medium"
+                : "IBMPlexSansArabic_400Regular",
+          }}
+          style={{
+            height: 60,
+            borderRadius: 4,
+            paddingRight: 50,
+          }}
+        />
       </StripeProvider>
     </PageStructure>
   );
