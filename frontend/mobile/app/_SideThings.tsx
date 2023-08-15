@@ -1,5 +1,5 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Endpoints, StorageKeys } from "../src/enums";
 import { useAPIFetching, useCartStore } from "../src/hooks";
 import { CartNumberOfItemsResponse } from "../src/interfaces";
@@ -10,11 +10,14 @@ interface SideThingsProps {
 
 const SideThings = ({ children }: SideThingsProps) => {
   const cartStore = useCartStore();
+  const [finished, setFinished] = useState(false);
+
+  //wait not working good with this case
   const { response: numberOfItemsResponse } = useAPIFetching<
     void,
     CartNumberOfItemsResponse
   >({
-    endpoint: Endpoints.CART_NUMBER_OF_ITEMS,
+    endpoint: finished ? null : Endpoints.CART_NUMBER_OF_ITEMS,
     slugs: {
       publicId: cartStore.cartId,
     },
@@ -24,7 +27,9 @@ const SideThings = ({ children }: SideThingsProps) => {
   });
 
   useEffect(() => {
-    if (numberOfItemsResponse.isFetching) return;
+    if (!numberOfItemsResponse || numberOfItemsResponse.isFetching) return;
+
+    setFinished(true);
 
     if (numberOfItemsResponse.statusCode !== 200) {
       (async () => {

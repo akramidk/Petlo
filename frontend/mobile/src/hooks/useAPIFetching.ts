@@ -36,7 +36,7 @@ const useAPIFetching = <Request, Response>({
   const [paginationRound, setPaginationRound] = useState(1);
 
   const SWREndpoint = useMemo(() => {
-    if (wait && options?.wait === true) {
+    if ((wait && options?.wait === true) || endpoint === null) {
       return null;
     }
 
