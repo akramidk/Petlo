@@ -66,6 +66,7 @@ const AddNewCard = () => {
             });
           }}
           cardStyle={{
+            borderRadius: 4,
             backgroundColor: "#f6f6f6",
             textColor: "#444444",
             fontSize: 14,
@@ -78,7 +79,6 @@ const AddNewCard = () => {
           }}
           style={{
             height: 60,
-            borderRadius: 4,
             paddingRight: 50,
           }}
         />
