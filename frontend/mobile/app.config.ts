@@ -17,6 +17,9 @@ export default {
       config: {
         googleMapsApiKey: "AIzaSyATNdeJAH58V2JuSVA2C3qL0GO1VORbLzg",
       },
+      infoPlist: {
+        NSCameraUsageDescription: "This app uses camera to scan.",
+      },
     },
     web: {
       bundler: "metro",
