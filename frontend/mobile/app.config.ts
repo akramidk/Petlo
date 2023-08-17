@@ -16,7 +16,7 @@ export default {
     },
     ios: {
       bundleIdentifier: "com.petlo",
-      buildNumber: 1.1,
+      buildNumber: "1.1.0",
       config: {
         googleMapsApiKey: "AIzaSyATNdeJAH58V2JuSVA2C3qL0GO1VORbLzg",
       },
