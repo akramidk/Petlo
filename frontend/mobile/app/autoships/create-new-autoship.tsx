@@ -379,9 +379,13 @@ const CreateNewAutoship = () => {
                   direction === "ltr" ? "flex-row" : "flex-row-reverse"
                 )}
               >
-                <Text font="semiBold" cn="text-[14px] text-[#666]">
+                <Text
+                  font="semiBold"
+                  cn="text-[14px] text-[#666] w-[40%] leading-[22px]"
+                >
                   {t("CREATE_AN_AUTOSHIP__ITEMS_AMOUNT_AFTER_DISCOUNT")}
                 </Text>
+
                 <Text font="semiBold" cn="text-[14px] text-[#666]">
                   {`${calculationResponse.body.items_amount_after_discount} ${
                     calculationResponse.body.currency
