@@ -151,7 +151,7 @@
   "ADDRESSES__ADD_NEW_BUTTON": "Add New Address",
   "ADD_NEW_ADDRESS__STEP_1_SEARCH_FILED_PLACEHOLDER": "search for a location",
   "ADD_NEW_ADDRESS__STEP_1_CONTINUE_BUTTON": "Select & Continue",
-  "ADD_NEW_ADDRESS__STEP_1_GO_TO_SETTINGS": "needs permission to use your location, please allow it from the settings.",
+  "ADD_NEW_ADDRESS__STEP_1_GO_TO_SETTINGS": "We need to access your location, please give us the permission from the settings.",
   "ADD_NEW_ADDRESS__STEP_1_GO_BACK": "Go Back",
   "ADD_NEW_ADDRESS__STEP_1_TRY_AGAIN": "Try Again",
   "ADD_NEW_ADDRESS__STEP_1_CANCEL_BUTTON": "Cancel",

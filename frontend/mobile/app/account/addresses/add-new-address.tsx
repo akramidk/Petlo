@@ -101,18 +101,12 @@ const AddNewAddress = () => {
       <View
         className={"h-full items-center justify-center p-[52px] space-y-[32px]"}
       >
-        <View
-          className={clsx(
-            "flex text-[#666] text-[16px] text-center leading-[28px]",
-            direction === "ltr" ? "flex-row" : "flex-row-reverse"
-          )}
+        <Text
+          font="medium"
+          cn="text-[#666] text-[16px] text-center leading-[28px]"
         >
-          <Logo cn="text-[18px]" />
-          <Text font="medium">
-            {" "}
-            {t("ADD_NEW_ADDRESS__STEP_1_GO_TO_SETTINGS")}
-          </Text>
-        </View>
+          {t("ADD_NEW_ADDRESS__STEP_1_GO_TO_SETTINGS")}
+        </Text>
 
         <View
           className={clsx(
