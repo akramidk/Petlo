@@ -29,7 +29,7 @@ const Section = ({ name, category, items }: SectionProps) => {
           {name}
         </Text>
 
-        {true && (
+        {items.has_more && (
           <Link
             onClick={() =>
               router.push(`/category?name=${name}&category=${category}`)
