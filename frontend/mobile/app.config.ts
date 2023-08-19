@@ -5,6 +5,12 @@ export default {
     scheme: "acme",
     icon: "./src/assets/images/icon.png",
     version: "1.1",
+    updates: {
+      url: "https://u.expo.dev/184da1b4-f7ae-47f9-84e1-695fca3a70f0",
+    },
+    runtimeVersion: {
+      policy: "sdkVersion",
+    },
     android: {
       package: "com.petlo",
       versionCode: 1.0,
