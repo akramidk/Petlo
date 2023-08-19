@@ -3561,6 +3561,11 @@ expo-eas-client@~0.5.0:
   resolved "https://registry.yarnpkg.com/expo-eas-client/-/expo-eas-client-0.5.1.tgz#3ef80dbbde13abe35be4e2a2e29b73d2f7fdf27a"
   integrity sha512-i3L/iwhI6cFhSUpVsCxSU5qehNznL/rQFYoof6qUIh3CMyijCuTEwjEhwbw2a5W6obPBzQUXbomMSFDO6D5/0Q==
 
+expo-eas-client@~0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/expo-eas-client/-/expo-eas-client-0.6.0.tgz#b722dde0de1b8b56701b282a5fdf28d3d3e79ec4"
+  integrity sha512-FSPy0ThcJBvzEzOZVhpOrYyHgQ8U1jJ4v7u7tr1x0KOVRqyf25APEQZFxxRPn3zAYW0tQ+uDTCbrwNymFqhQfw==
+
 expo-file-system@~15.2.0, expo-file-system@~15.2.2:
   version "15.2.2"
   resolved "https://registry.yarnpkg.com/expo-file-system/-/expo-file-system-15.2.2.tgz#a1ddf8aabf794f93888a146c4f5187e2004683a3"
@@ -3574,6 +3579,13 @@ expo-font@~11.1.1:
   integrity sha512-X+aICqYY69hiiDDtcNrjq8KutHrH2TrHuMqk0Rfq0P7hF6hMd+YefwLBNkvIrqrgmTAuqiLjMUwj2rHLqmgluw==
   dependencies:
     fontfaceobserver "^2.1.0"
+
+expo-insights@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/expo-insights/-/expo-insights-0.2.0.tgz#b31a1a6aee4e0f638bd097b237cf739e8dc41192"
+  integrity sha512-1TN1DALyCGXnohoxBO3hW+2T4X6h33StsmRUutw+Dp7Y4oDcrhB8ViDEhUzvVPPDWIRbYLmo6ZqzgvPltZUtJw==
+  dependencies:
+    expo-eas-client "~0.6.0"
 
 expo-json-utils@~0.5.0:
   version "0.5.1"
