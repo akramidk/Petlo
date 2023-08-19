@@ -1,4 +1,4 @@
-import { Text, View } from "react-native";
+import { View } from "react-native";
 import MapView, { PROVIDER_GOOGLE, Marker } from "react-native-maps";
 import { useEffect, useState } from "react";
 import {
@@ -7,6 +7,8 @@ import {
   Link,
   Filed,
   BottomContainer,
+  Text,
+  Logo,
 } from "../../../src/components/atoms";
 import * as Location from "expo-location";
 import { Loading } from "../../../src/components/pages";
@@ -25,6 +27,7 @@ import {
   AddNewAddressResponse,
 } from "../../../src/interfaces";
 import * as Device from "expo-device";
+import clsx from "clsx";
 
 const GOOGLE_MAP_KEY =
   Device.brand.toLowerCase() === "apple"
@@ -34,9 +37,11 @@ const GOOGLE_MAP_KEY =
 const AddNewAddress = () => {
   const router = useRouter();
   const { t } = useTranslationsContext();
+  const { direction } = useInternationalizationContext();
   const { languageWithoutGender } = useInternationalizationContext();
 
   const [loading, setLoading] = useState(true);
+  const [showGoToSettingPage, setShowGoToSettingPage] = useState(false);
   const [step, setStep] = useState(1);
   const [coordinate, setCoordinate] = useState<{
     latitude: number;
@@ -59,11 +64,19 @@ const AddNewAddress = () => {
   });
 
   useEffect(() => {
-    if (coordinate) return;
+    if (coordinate || loading === false) return;
 
     (async () => {
+      const { canAskAgain } = await Location.getForegroundPermissionsAsync();
+      if (!canAskAgain) {
+        setShowGoToSettingPage(true);
+        setLoading(false);
+        return;
+      }
+
       let { status } = await Location.requestForegroundPermissionsAsync();
       if (status !== "granted") {
+        router.back();
         return;
       }
 
@@ -77,10 +90,52 @@ const AddNewAddress = () => {
       });
       setLoading(false);
     })();
-  }, []);
+  }, [loading]);
 
   if (loading) {
     return <Loading />;
+  }
+
+  if (showGoToSettingPage) {
+    return (
+      <View
+        className={"h-full items-center justify-center p-[52px] space-y-[32px]"}
+      >
+        <View
+          className={clsx(
+            "flex text-[#666] text-[16px] text-center leading-[28px]",
+            direction === "ltr" ? "flex-row" : "flex-row-reverse"
+          )}
+        >
+          <Logo cn="text-[18px]" />
+          <Text font="medium">
+            {" "}
+            {t("ADD_NEW_ADDRESS__STEP_1_GO_TO_SETTINGS")}
+          </Text>
+        </View>
+
+        <View
+          className={clsx(
+            "flex flex-row justify-between w-[100%]",
+            direction === "ltr" ? "flex-row" : "flex-row-reverse"
+          )}
+        >
+          <Link
+            cn="text-[#222]"
+            onClick={() => router.back()}
+            value={t("ADD_NEW_ADDRESS__STEP_1_GO_BACK")}
+          />
+          <Link
+            cn="text-[#444]"
+            onClick={() => {
+              setLoading(true);
+              setShowGoToSettingPage(false);
+            }}
+            value={t("ADD_NEW_ADDRESS__STEP_1_TRY_AGAIN")}
+          />
+        </View>
+      </View>
+    );
   }
 
   if (step === 1) {
