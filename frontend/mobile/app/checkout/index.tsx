@@ -231,6 +231,16 @@ const Checkout = () => {
     }
   }, [paymentMethod, card, address, selectedPets]);
 
+  useEffect(() => {
+    if (!paymentMethod) {
+      setPaymentMethod(PAYMENT_METHODS[0]);
+    }
+
+    if (!address && addresses.length > 0) {
+      setAddress(addresses[0]);
+    }
+  }, []);
+
   if (
     createCheckoutResponse === undefined ||
     createCheckoutResponse.status !== "succeeded" ||
