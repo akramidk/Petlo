@@ -7,8 +7,8 @@ import (
 )
 
 var appVersions = map[string]string{
-	"ios":     "1.1.0",
-	"android": "1.1.0",
+	"ios":     "1.0.0",
+	"android": "1.0.0",
 }
 
 func handleCheckAppVersion(res http.ResponseWriter, req *http.Request) {
