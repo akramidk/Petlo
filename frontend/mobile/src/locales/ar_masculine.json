@@ -27,6 +27,7 @@
   "COMMON__USD": "دولار أمريكي",
   "COMMON_END_WITH": "تنتهي بـ %{last4}",
   "COMMON__COPY_PHONE_NUMBER": "نسخ رقم الهاتف",
+  "COMMON__APP_VERSION": "نسخة التطبيق %{version}",
   "ROOT_LAYOUT__NEW_UPDATE_AVAILABLE_TITLE": "تحديث جديد متوفر",
   "ROOT_LAYOUT__NEW_UPDATE_AVAILABLE_MESSAGE": "للتمكن من استخدام التطبيق، يجب عليك تحديثه.",
   "SELECT_LANGUAGE__TITLE": "لغة التطبيق",
