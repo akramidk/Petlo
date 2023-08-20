@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"net/http"
+	"os"
 )
 
 var appVersions = map[string]string{
@@ -26,6 +27,12 @@ func handleCheckAppVersion(res http.ResponseWriter, req *http.Request) {
 }
 
 func main() {
-	http.HandleFunc("/", handleCheckAppVersion)
-	http.ListenAndServe(":80", nil)
+	http.HandleFunc("/check-update", handleCheckAppVersion)
+
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "80"
+	}
+
+	http.ListenAndServe(":" + port, nil)
 }
