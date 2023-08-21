@@ -54,7 +54,7 @@ gem 'require_all'
 gem 'httparty'
 gem 'sidekiq'
 gem 'jwt'
-gem "aws-sdk-s3"
+gem "google-cloud-storage", "~> 1.11", require: false
 gem 'certified'
 gem 'active_storage_validations'
 gem 'stripe'

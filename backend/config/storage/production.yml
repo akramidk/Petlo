@@ -1,7 +1,13 @@
-digitalocean:
-  service: S3
-  endpoint: <%= ENV["DIGITALOCEAN_SPACE_ENDPOINT"] %>
-  access_key_id: <%= ENV["DIGITALOCEAN_SPACE_ACCESS_KEY"] %>
-  secret_access_key: <%= ENV["DIGITALOCEAN_SPACE_SECRET_KEY"] %>
-  bucket: <%= ENV["DIGITALOCEAN_SPACE_BUCKET"] %>
-  region: <%= ENV["DIGITALOCEAN_SPACE_REGION"] %>
+google:
+  service: GCS
+  credentials:
+    type: "service_account"
+    project_id: <%= ENV["GOOGLE_STORAGE_PROJECT_ID"] %>
+    private_key_id: <%= ENV["GOOGLE_STORAGE_PRIVATE_KEY_ID"] %>
+    private_key: <%= ENV["GOOGLE_STORAGE_PRIVATE_KEY"] %>
+    client_email: <%= ENV["GOOGLE_STORAGE_CLIENT_EMAIL"] %>
+    auth_uri: "https://accounts.google.com/o/oauth2/auth"
+    token_uri: "https://accounts.google.com/o/oauth2/token"
+    auth_provider_x509_cert_url: "https://www.googleapis.com/oauth2/v1/certs"
+  project: <%= ENV["GOOGLE_STORAGE_PROJECT"] %>
+  bucket: <%= ENV["GOOGLE_STORAGE_BUCKET"] %>
