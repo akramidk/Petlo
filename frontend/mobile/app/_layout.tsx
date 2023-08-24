@@ -18,7 +18,7 @@ import {
   IBMPlexSansArabic_700Bold,
 } from "@expo-google-fonts/ibm-plex-sans-arabic";
 import { Slot } from "expo-router";
-import { SVGLogo } from "../src/components/atoms";
+import { SVGLogo, Text, Link } from "../src/components/atoms";
 import {
   View,
   Alert,
@@ -69,7 +69,7 @@ const Layout = () => {
     NewVersionAvailableRequest,
     NewVersionAvailableResponse
   >({
-    endpoint: `https://check-update.${FUNCTIONS_URL}/?app_version=${"0.0.0"}&phone_os=${phoneOS}`,
+    endpoint: `https://check-update.${FUNCTIONS_URL}/?app_version=${appVersion}&phone_os=${phoneOS}`,
     options: {
       isFunction: true,
     },
@@ -141,12 +141,35 @@ const Layout = () => {
     cartStore.cartId === undefined
   ) {
     // TODO new design for this insted of an Alert
-    if (newVersionAvailableResponse?.body?.value) {
-      Alert.alert(
-        t("ROOT_LAYOUT__NEW_UPDATE_AVAILABLE_TITLE"),
-        t("ROOT_LAYOUT__NEW_UPDATE_AVAILABLE_MESSAGE"),
-        [],
-        { cancelable: false }
+    if (newVersionAvailableResponse?.body?.value === true) {
+      return (
+        <InternationalizationContext.Provider
+          value={{
+            language,
+            changeLanguage,
+            direction,
+            storedLanguage,
+            languageWithoutGender,
+            languageGender,
+          }}
+        >
+          <View className={"h-full items-center justify-center p-[52px]"}>
+            <Text
+              font="medium"
+              cn="text-[#666] text-[16px] text-center leading-[28px]"
+            >
+              {t("ROOT_LAYOUT__NEW_UPDATE_AVAILABLE_MESSAGE")}
+            </Text>
+
+            <Link
+              cn="text-[#222] mt-[16px]"
+              onClick={() => {
+                //
+              }}
+              value={t("ROOT_LAYOUT__NEW_UPDATE_AVAILABLE_LINK")}
+            />
+          </View>
+        </InternationalizationContext.Provider>
       );
     }
 
