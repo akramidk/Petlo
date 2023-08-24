@@ -2,4 +2,4 @@ google:
   service: GCS
   credentials: <%= Rails.root.join("gcs.keyfile") %>
   project: petlo
-  bucket: petlo-development
+  bucket: petlo
