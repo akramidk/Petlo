@@ -222,6 +222,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_26_142900) do
     t.integer "number", null: false
     t.string "language", null: false
     t.string "value", null: false
+    t.string "unit"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -230,7 +231,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_26_142900) do
     t.string "public_id", null: false
     t.bigint "item_id", null: false
     t.boolean "weighted", null: false
-    t.string "unit"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
