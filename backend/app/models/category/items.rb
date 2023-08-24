@@ -8,6 +8,14 @@ module Category::Items
 
   def items(category:, country:, language:, with_unavailable_items: false, limit: nil, offset: nil)
     @@category = Category.find_by(name: category)
+
+    if !@@category
+      return {
+        has_more: false,
+        data: []
+      }
+    end
+
     @@country = country
     @@language = language
     @@with_unavailable_items = with_unavailable_items
