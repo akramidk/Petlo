@@ -29,7 +29,7 @@
   "COMMON__COPY_PHONE_NUMBER": "نسخ رقم الهاتف",
   "COMMON__APP_VERSION": "نسخة التطبيق %{version}",
   "ROOT_LAYOUT__NEW_UPDATE_AVAILABLE_MESSAGE": "تحديث جديد متوفر، للتمكن من استخدام التطبيق، يجب عليك تحديثه.",
-  "ROOT_LAYOUT__NEW_UPDATE_AVAILABLE_LINK": "Update It Now",
+  "ROOT_LAYOUT__NEW_UPDATE_AVAILABLE_LINK": "قم بتحديثه الآن",
   "SELECT_LANGUAGE__TITLE": "لغة التطبيق",
   "SELECT_LANGUAGE__HELPER_TEXT": "الرجاء اختيار اللغة التي ترغب في استخدام التطبيق بها.",
   "SELECT_LANGUAGE__SAVE_BUTTON": "حفظ",
