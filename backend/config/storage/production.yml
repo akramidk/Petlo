@@ -1,16 +1,5 @@
 google:
   service: GCS
-  credentials:
-    type: <%= ENV["GOOGLE_STORAGE_TYPE"] %>
-    project_id: <%= ENV["GOOGLE_STORAGE_PROJECT_ID"] %>
-    private_key_id: <%= ENV["GOOGLE_STORAGE_PRIVATE_KEY_ID"] %>
-    private_key: <%= ENV["GOOGLE_STORAGE_PRIVATE_KEY"] %>
-    client_email: <%= ENV["GOOGLE_STORAGE_CLIENT_EMAIL"] %>
-    client_id: <%= ENV["GOOGLE_STORAGE_CLIENT_ID"] %>
-    auth_uri: <%= ENV["GOOGLE_STORAGE_AUTH_URI"] %>
-    token_uri: <%= ENV["GOOGLE_STORAGE_TOKEN_URI"] %>
-    auth_provider_x509_cert_url: <%= ENV["GOOGLE_STORAGE_AUTH_PROVIDER_X509_CERT_URL"] %>
-    client_x509_cert_url: <%= ENV["GOOGLE_STORAGE_CLIENT_X509_CERT_URL"] %>
-    universe_domain: <%= ENV["GOOGLE_STORAGE_UNIVERSE_DOMAIN"] %>
-  project: <%= ENV["GOOGLE_STORAGE_PROJECT"] %>
-  bucket: <%= ENV["GOOGLE_STORAGE_BUCKET"] %>
+  credentials: <%= Rails.root.join("gcs.keyfile") %>
+  project: petlo
+  bucket: petlo-development
