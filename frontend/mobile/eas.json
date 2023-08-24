@@ -9,7 +9,7 @@
         "buildType": "apk"
       },
       "env": {
-        "API_URL": "https://api.dev.petlo.co",
+        "API_URL": "https://dev.rapi.petlo.co",
         "STRIPE_PUBLISHABLE_KEY": "pk_test_51MLCpbBOEiCvkdTpNPVHQTabYpsAlE2aOm3lH4P6CgOhdYWVDBZs7bpDGHR5ewLjia5eii60w78ZkACtudbrWEun00gDTjfPaX",
         "GOOGLE_ANDROID_MAP_KEY": "AIzaSyDhKNoKaPUu1mso9dHn3lkQTR8HKeDOwTs",
         "GOOGLE_IOS_MAP_KEY": "AIzaSyBtQ-n9_sWD8JuYBuwwdVTw97AIir0296g"
@@ -17,7 +17,7 @@
     },
     "preview": {
       "env": {
-        "API_URL": "https://api.dev.petlo.co",
+        "API_URL": "https://dev.rapi.petlo.co",
         "STRIPE_PUBLISHABLE_KEY": "pk_test_51MLCpbBOEiCvkdTpNPVHQTabYpsAlE2aOm3lH4P6CgOhdYWVDBZs7bpDGHR5ewLjia5eii60w78ZkACtudbrWEun00gDTjfPaX",
         "GOOGLE_ANDROID_MAP_KEY": "AIzaSyDhKNoKaPUu1mso9dHn3lkQTR8HKeDOwTs",
         "GOOGLE_IOS_MAP_KEY": "AIzaSyBtQ-n9_sWD8JuYBuwwdVTw97AIir0296g"
@@ -25,7 +25,7 @@
     },
     "production": {
       "env": {
-        "API_URL": "https://api.petlo.co",
+        "API_URL": "https://rapi.petlo.co",
         "STRIPE_PUBLISHABLE_KEY": "pk_live_51MLCpbBOEiCvkdTpwSNodwH2qAXbBB26zXu7mZJFRJSKMe7NHheEDh78Mqk8YD3uJZ4r2OPtXpB4PnAdlIqLwAm700ebGaLL57",
         "GOOGLE_ANDROID_MAP_KEY": "AIzaSyDhKNoKaPUu1mso9dHn3lkQTR8HKeDOwTs",
         "GOOGLE_IOS_MAP_KEY": "AIzaSyBtQ-n9_sWD8JuYBuwwdVTw97AIir0296g"
