@@ -7,7 +7,7 @@ import { Endpoints } from "../enums";
 import { ErrorResponse } from "../interfaces";
 
 interface useAPIFetchingProps<Request> {
-  endpoint: Endpoints | null;
+  endpoint: Endpoints | null | string;
   body?: Request;
   slugs?: { [key: string]: string };
   SWROptions?: SWRConfiguration;
@@ -15,6 +15,7 @@ interface useAPIFetchingProps<Request> {
     wait?: boolean;
     overwriteSessionToken?: string;
     withPagination?: boolean;
+    isFunction?: boolean;
   };
 }
 
@@ -38,6 +39,10 @@ const useAPIFetching = <Request, Response>({
   const SWREndpoint = useMemo(() => {
     if ((wait && options?.wait === true) || endpoint === null) {
       return null;
+    }
+
+    if (options?.isFunction) {
+      return endpoint;
     }
 
     let endpointWithSlugs = endpoint as string;
@@ -79,7 +84,7 @@ const useAPIFetching = <Request, Response>({
   const fetcher = async () => {
     return await axios({
       method: "GET",
-      url: URI,
+      url: options?.isFunction ? SWREndpoint : URI,
       headers: {
         Authorization: `bearer ${sessionToken}`,
       },

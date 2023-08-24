@@ -54,6 +54,9 @@ import { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import SideThings from "./_SideThings";
 import { BottomSheetOptions } from "../src/components/molecules";
+import Constants from "expo-constants";
+
+const FUNCTIONS_URL = Constants.expoConfig.extra.FUNCTIONS_URL;
 
 const Layout = () => {
   // TODO handled if no network
@@ -66,10 +69,9 @@ const Layout = () => {
     NewVersionAvailableRequest,
     NewVersionAvailableResponse
   >({
-    endpoint: Endpoints.NEW_VERSION_AVAILABLE,
-    body: {
-      app_version: appVersion,
-      phone_os: phoneOS,
+    endpoint: `https://check-update.${FUNCTIONS_URL}/?app_version=${"0.0.0"}&phone_os=${phoneOS}`,
+    options: {
+      isFunction: true,
     },
   });
 

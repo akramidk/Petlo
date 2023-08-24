@@ -38,6 +38,7 @@ export default {
         projectId: "184da1b4-f7ae-47f9-84e1-695fca3a70f0",
       },
       API_URL: process.env.API_URL,
+      FUNCTIONS_URL: process.env.FUNCTIONS_URL,
       STRIPE_PUBLISHABLE_KEY: process.env.STRIPE_PUBLISHABLE_KEY,
       GOOGLE_ANDROID_MAP_KEY: process.env.GOOGLE_ANDROID_MAP_KEY,
       GOOGLE_IOS_MAP_KEY: process.env.GOOGLE_IOS_MAP_KEY,
