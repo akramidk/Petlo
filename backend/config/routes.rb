@@ -47,7 +47,7 @@ Rails.application.routes.draw do
       get "banners", to: "banners#index"
 
       #categories
-      get "categories/:category/items", to: "categories#category_items"
+      get "categories/:public_id/items", to: "categories#category_items"
 
       #items
       get "items/:public_id", to: "items#show"

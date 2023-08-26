@@ -7,14 +7,14 @@ module SectionsHelper::All
         "ar" => "طعام كلاب",
         "en" => "Dog Food"
       },
-      category: "dogs-food"
+      category_public_id: "rsyrJHUiDdZmAoFU"
     },
     {
       name: {
         "ar" => "طعام قطط",
         "en" => "Cat Food"
       },
-      category: "cats-food"
+      category_public_id: "cats-food"
     }
   ]
   
@@ -24,7 +24,7 @@ module SectionsHelper::All
     begin
       SECTIONS.each do |section|
         items = Category.items(
-          category: section[:category],
+          category: section[:category_public_id],
           country: customer.country,
           language: language,
           limit: (limit || DEFAULT_LIMIT)
@@ -33,7 +33,7 @@ module SectionsHelper::All
         next if items[:data].length == 0
         sections << {
           name: section[:name][language],
-          category: section[:category],
+          category: section[:category_public_id],
           items: {
             has_more: items[:has_more],
             data: items[:data]

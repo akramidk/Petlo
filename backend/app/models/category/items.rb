@@ -7,7 +7,7 @@ module Category::Items
   @@offset = nil
 
   def items(category:, country:, language:, with_unavailable_items: false, limit: nil, offset: nil)
-    @@category = Category.find_by(name: category)
+    @@category = Category.find_by(public_id: category)
 
     if !@@category
       return {

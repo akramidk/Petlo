@@ -6,7 +6,7 @@ module V1
 
     def category_items
       response = CategoriesHelper.items(
-        category: params[:category],
+        category_public_id: params[:public_id],
         country: @customer.country,
         language: params[:locale],
         page: params[:page].to_i
