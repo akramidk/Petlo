@@ -101,6 +101,8 @@ export const COUNTIES_PHONE_CODE_OPTIONS: BaseOption[] = [
   {
     id: 25,
     value: "+20",
+    disable: true,
+    helperText: "COMMON__UNABLE_TO_SEND_SMS",
   },
   {
     id: 26,
@@ -181,6 +183,8 @@ export const COUNTIES_PHONE_CODE_OPTIONS: BaseOption[] = [
   {
     id: 45,
     value: "+234",
+    disable: true,
+    helperText: "COMMON__UNABLE_TO_SEND_SMS",
   },
   {
     id: 46,
@@ -257,10 +261,14 @@ export const COUNTIES_PHONE_CODE_OPTIONS: BaseOption[] = [
   {
     id: 64,
     value: "+254",
+    disable: true,
+    helperText: "COMMON__UNABLE_TO_SEND_SMS",
   },
   {
     id: 65,
     value: "+255",
+    disable: true,
+    helperText: "COMMON__UNABLE_TO_SEND_SMS",
   },
   {
     id: 66,
@@ -433,6 +441,8 @@ export const COUNTIES_PHONE_CODE_OPTIONS: BaseOption[] = [
   {
     id: 108,
     value: "+375",
+    disable: true,
+    helperText: "COMMON__UNABLE_TO_SEND_SMS",
   },
   {
     id: 109,
@@ -493,6 +503,8 @@ export const COUNTIES_PHONE_CODE_OPTIONS: BaseOption[] = [
   {
     id: 123,
     value: "+420",
+    disable: true,
+    helperText: "COMMON__UNABLE_TO_SEND_SMS",
   },
   {
     id: 124,
@@ -601,6 +613,8 @@ export const COUNTIES_PHONE_CODE_OPTIONS: BaseOption[] = [
   {
     id: 150,
     value: "+53",
+    disable: true,
+    helperText: "COMMON__UNABLE_TO_SEND_SMS",
   },
   {
     id: 151,
@@ -689,10 +703,14 @@ export const COUNTIES_PHONE_CODE_OPTIONS: BaseOption[] = [
   {
     id: 172,
     value: "+62",
+    disable: true,
+    helperText: "COMMON__UNABLE_TO_SEND_SMS",
   },
   {
     id: 173,
     value: "+63",
+    disable: true,
+    helperText: "COMMON__UNABLE_TO_SEND_SMS",
   },
   {
     id: 174,
@@ -705,6 +723,8 @@ export const COUNTIES_PHONE_CODE_OPTIONS: BaseOption[] = [
   {
     id: 176,
     value: "+66",
+    disable: true,
+    helperText: "COMMON__UNABLE_TO_SEND_SMS",
   },
   {
     id: 177,
@@ -797,6 +817,8 @@ export const COUNTIES_PHONE_CODE_OPTIONS: BaseOption[] = [
   {
     id: 199,
     value: "+7",
+    disable: true,
+    helperText: "COMMON__UNABLE_TO_SEND_SMS",
   },
   {
     id: 200,
@@ -805,6 +827,8 @@ export const COUNTIES_PHONE_CODE_OPTIONS: BaseOption[] = [
   {
     id: 201,
     value: "+81",
+    disable: true,
+    helperText: "COMMON__UNABLE_TO_SEND_SMS",
   },
   {
     id: 202,
@@ -813,6 +837,8 @@ export const COUNTIES_PHONE_CODE_OPTIONS: BaseOption[] = [
   {
     id: 203,
     value: "+84",
+    disable: true,
+    helperText: "COMMON__UNABLE_TO_SEND_SMS",
   },
   {
     id: 204,
@@ -853,10 +879,14 @@ export const COUNTIES_PHONE_CODE_OPTIONS: BaseOption[] = [
   {
     id: 213,
     value: "+90",
+    disable: true,
+    helperText: "COMMON__UNABLE_TO_SEND_SMS",
   },
   {
     id: 214,
     value: "+91",
+    disable: true,
+    helperText: "COMMON__UNABLE_TO_SEND_SMS",
   },
   {
     id: 215,
@@ -897,6 +927,8 @@ export const COUNTIES_PHONE_CODE_OPTIONS: BaseOption[] = [
   {
     id: 224,
     value: "+965",
+    disable: true,
+    helperText: "COMMON__UNABLE_TO_SEND_SMS",
   },
   {
     id: 225,
@@ -911,14 +943,20 @@ export const COUNTIES_PHONE_CODE_OPTIONS: BaseOption[] = [
   {
     id: 227,
     value: "+968",
+    disable: true,
+    helperText: "COMMON__UNABLE_TO_SEND_SMS",
   },
   {
     id: 228,
     value: "+970",
+    disable: true,
+    helperText: "COMMON__UNABLE_TO_SEND_SMS",
   },
   {
     id: 229,
     value: "+971",
+    disable: true,
+    helperText: "COMMON__UNABLE_TO_SEND_SMS",
   },
   {
     id: 230,
@@ -927,6 +965,8 @@ export const COUNTIES_PHONE_CODE_OPTIONS: BaseOption[] = [
   {
     id: 231,
     value: "+974",
+    disable: true,
+    helperText: "COMMON__UNABLE_TO_SEND_SMS",
   },
   {
     id: 232,
