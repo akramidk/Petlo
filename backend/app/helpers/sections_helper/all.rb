@@ -7,7 +7,8 @@ module SectionsHelper::All
         "ar" => "طعام كلاب",
         "en" => "Dog Food"
       },
-      category_public_id: "rsyrJHUiDdZmAoFU"
+      category_public_id: "CYoMgVI6e1umQCvZ",
+      brand_public_id: "Hpr5okgtoJqNUXfw"
     },
     {
       name: {
@@ -27,13 +28,15 @@ module SectionsHelper::All
           category: section[:category_public_id],
           country: customer.country,
           language: language,
-          limit: (limit || DEFAULT_LIMIT)
+          limit: (limit || DEFAULT_LIMIT),
+          brand_public_id: section[:brand_public_id],
         )
 
         next if items[:data].length == 0
         sections << {
           name: section[:name][language],
           category: section[:category_public_id],
+          brand_public_id: section[:brand_public_id],
           items: {
             has_more: items[:has_more],
             data: items[:data]
