@@ -9,7 +9,7 @@ import { Loading } from "../../src/components/pages";
 
 const Category = () => {
   const router = useRouter();
-  const { name, category } = useSearchParams();
+  const { name, category, brand_public_id } = useSearchParams();
   const { response } = useAPIFetching<CategoriesRequest, CategoriesResponse>({
     endpoint: Endpoints.CATEGORIES,
     slugs: {
@@ -20,6 +20,9 @@ const Category = () => {
     },
     options: {
       withPagination: true,
+    },
+    body: {
+      brand_public_id: brand_public_id,
     },
   });
 

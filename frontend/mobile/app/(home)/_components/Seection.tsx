@@ -11,11 +11,13 @@ import {
 import { Section as SectionProps } from "../../../src/interfaces";
 import { Item } from "../../../src/components/molecules";
 
-const Section = ({ name, category, items }: SectionProps) => {
+const Section = ({ name, category, brand_public_id, items }: SectionProps) => {
   const router = useRouter();
   const { t } = useTranslationsContext();
   const { direction } = useInternationalizationContext();
   const scrollViewRef = useRef<ScrollView>();
+
+  const sectionPath = `/category?name=${name}&category=${category}&brand_public_id=${brand_public_id}`;
 
   return (
     <View className="space-y-[12px] p-[0px]">
@@ -31,9 +33,7 @@ const Section = ({ name, category, items }: SectionProps) => {
 
         {items.has_more && (
           <Link
-            onClick={() =>
-              router.push(`/category?name=${name}&category=${category}`)
-            }
+            onClick={() => router.push(sectionPath)}
             value={t("HOME__SECTION_SHOW_ALL_BUTTON")}
             valueCN="text-[14px] text-[#777]"
             font="bold"
@@ -73,7 +73,7 @@ const Section = ({ name, category, items }: SectionProps) => {
         {items.has_more && (
           <BaseButton
             className="w-[200px] h-[325] rounded-[4px] border-[1px] border-[#f6f6f6] items-center justify-center space-y-[8px]"
-            onClick={() => router.push(`/category?name=${category}`)}
+            onClick={() => router.push(sectionPath)}
           >
             <Icon
               name={

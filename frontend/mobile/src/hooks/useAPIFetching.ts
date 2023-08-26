@@ -8,7 +8,7 @@ import { ErrorResponse } from "../interfaces";
 
 interface useAPIFetchingProps<Request> {
   endpoint: Endpoints | null | string;
-  body?: Request;
+  body?: Partial<Request>;
   slugs?: { [key: string]: string };
   SWROptions?: SWRConfiguration;
   options?: {
