@@ -69,6 +69,8 @@ const Options = <T extends BaseOptionProps>({
               value={translate ? t(option.value) : option.value}
               valueCn={optionValueCn}
               valueFont={optionValueFont}
+              disable={option?.disable}
+              helperText={option?.helperText}
             />
           </View>
         );

@@ -28,6 +28,7 @@
   "COMMON__COPY_PHONE_NUMBER": "نسخ رقم الهاتف",
   "COMMON_END_WITH": "تنتهي بـ %{last4}",
   "COMMON__APP_VERSION": "نسخة التطبيق %{version}",
+  "COMMON__UNABLE_TO_SEND_SMS": "لا نستطيع حاليًا إرسال رسائل نصية قصيرة إلى هذا البلد.",
   "ROOT_LAYOUT__NEW_UPDATE_AVAILABLE_MESSAGE": "تحديث جديد متوفر، للتمكن من استخدام التطبيق، يجب عليكِ تحديثه.",
   "ROOT_LAYOUT__NEW_UPDATE_AVAILABLE_LINK": "قومي بتحديثه الآن",
   "SELECT_LANGUAGE__TITLE": "لغة التطبيق",

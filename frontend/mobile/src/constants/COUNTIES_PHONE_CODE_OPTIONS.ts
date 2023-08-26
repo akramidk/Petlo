@@ -901,6 +901,8 @@ export const COUNTIES_PHONE_CODE_OPTIONS: BaseOption[] = [
   {
     id: 225,
     value: "+966",
+    disable: true,
+    helperText: "COMMON__UNABLE_TO_SEND_SMS",
   },
   {
     id: 226,
