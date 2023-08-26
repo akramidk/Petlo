@@ -4,6 +4,7 @@ class StripeLib
 
         def create_a_customer(data:)
             customer = Stripe::Customer.create({
+                name: data[:name],
                 metadata: {
                     public_id: data[:public_id]
                 }

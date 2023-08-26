@@ -34,6 +34,7 @@ module CardsHelper::Create
     stripe_id = GatewayLib.create_a_customer(
       processor: PROCESSOR,
       data: {
+        name: @@customer.name,
         public_id: @@customer.public_id
       }
     )
