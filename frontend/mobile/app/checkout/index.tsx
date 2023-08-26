@@ -236,7 +236,7 @@ const Checkout = () => {
       setPaymentMethod(PAYMENT_METHODS[0]);
     }
 
-    if (!address && addresses.length > 0) {
+    if (!address && addresses && addresses.length > 0) {
       setAddress(addresses[0]);
     }
   }, []);
