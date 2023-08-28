@@ -319,5 +319,11 @@
   "HOME__WARNING_1_FIRST_TEXT": "Can't find the items you want?",
   "HOME__WARNING_1_SECOND_TEXT": "Click here to request items.",
   "HOME__WARNING_2_FIRST_TEXT": "Need help or have feedbacks?",
-  "HOME__WARNING_2_SECOND_TEXT": "Click here to know more."
+  "HOME__WARNING_2_SECOND_TEXT": "Click here to know more.",
+  "ABOUT_AUTOSHIP__TITLE": "Schedule Your Pets'\nNeeds.",
+  "ABOUT_AUTOSHIP__POINTS": {
+    "1": "5% off on Autoship items amount",
+    "2": "Set the date that fits you",
+    "3": "Change, skip, or cancel anytime"
+  }
 }
