@@ -11,6 +11,7 @@ import {
   EllipsisHorizontalIcon as MoreHorizontal,
   XCircleIcon as CloseCircle,
   HandRaisedIcon as HandRaised,
+  CheckCircleIcon as CheckCircle,
 } from "react-native-heroicons/solid";
 
 import {
@@ -95,6 +96,9 @@ const Icon = ({
     },
     checkMark: {
       outline: <CheckMark {...props} />,
+    },
+    checkCircle: {
+      solid: <CheckCircle {...props} />,
     },
   };
 

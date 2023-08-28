@@ -13,6 +13,7 @@ import { DataCardProps } from "../../src/interfaces";
 import { AutoshipsResponse } from "../../src/interfaces/Endpoints/Autoships";
 import { Loading } from "../../src/components/pages";
 import NextShipment from "./interfaces/NextShipment";
+import { AboutAutoship } from "./components/AboutAutoship";
 
 const Autoships = () => {
   const router = useRouter();
@@ -181,7 +182,7 @@ const Autoships = () => {
 
   return (
     <PageStructure
-      title={t("AUTOSHIPS__TITLE")}
+      title={autoships.length === 0 ? undefined : t("AUTOSHIPS__TITLE")}
       floatingElement={
         <BaseButton
           cn="bg-[#6BADAE] px-[32px] py-[20px] rounded-full shadow-lg"
@@ -192,8 +193,13 @@ const Autoships = () => {
           </Text>
         </BaseButton>
       }
+      viewCN={autoships.length === 0 ? "p-[12px]" : undefined}
     >
-      <DataCards data={autoships} />
+      {autoships.length === 0 ? (
+        <AboutAutoship />
+      ) : (
+        <DataCards data={autoships} />
+      )}
     </PageStructure>
   );
 };

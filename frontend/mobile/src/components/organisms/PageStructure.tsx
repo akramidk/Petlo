@@ -37,19 +37,21 @@ const PageStructure = ({
 
   return (
     <View className="flex flex-1 relative bg-[#fff]">
-      <View className="p-[28px] space-y-[12px]">
-        {backButton && <BackButton onClick={backButton} />}
-        {title && (
-          <Text cn="text-[28px] text-[#0E333C]" font="extraBold">
-            {title}
-          </Text>
-        )}
-        {helperText && (
-          <Text cn="text-[15.5px] text-[#888] leading-[28px]" font="medium">
-            {helperText}
-          </Text>
-        )}
-      </View>
+      {(title || helperText || backButton) && (
+        <View className="p-[28px] space-y-[12px]">
+          {backButton && <BackButton onClick={backButton} />}
+          {title && (
+            <Text cn="text-[28px] text-[#0E333C]" font="extraBold">
+              {title}
+            </Text>
+          )}
+          {helperText && (
+            <Text cn="text-[15.5px] text-[#888] leading-[28px]" font="medium">
+              {helperText}
+            </Text>
+          )}
+        </View>
+      )}
 
       <KeyboardAwareScrollView>
         <View className={clsx("px-[28px] pb-[28px]", viewCN)}>{children}</View>
