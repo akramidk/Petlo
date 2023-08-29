@@ -9,6 +9,7 @@ import {
   useTranslationsContext,
 } from "../../hooks";
 import { BriefItem } from "../../interfaces";
+import reactStringReplace from "react-string-replace";
 
 interface ItemProps {
   variant: "small" | "large";
@@ -66,6 +67,20 @@ const Item = ({ variant, data, onClick }: ItemProps) => {
     return variants[variant];
   }, [variant]);
 
+  const itemName = useMemo(() => {
+    return (
+      <Text
+        font="semiBold"
+        cn={clsx("text-[#0E333C]", variantsStyles.titleText)}
+        numberOfLines={3}
+      >
+        {reactStringReplace(data.name, data.brand, (match, i) => (
+          <Text font="extraBold">{match}</Text>
+        ))}
+      </Text>
+    );
+  }, [data.name, data.brand]);
+
   return (
     <BaseButton
       className={clsx(
@@ -99,15 +114,7 @@ const Item = ({ variant, data, onClick }: ItemProps) => {
       </View>
 
       <View className="p-[16px] flex-1 justify-between space-y-[20px]">
-        <Text
-          cn={clsx("text-[#0E333C]", variantsStyles.titleText)}
-          numberOfLines={3}
-        >
-          <Text font="extraBold">{data.brand}</Text>{" "}
-          <Text font="semiBold" cn="text-[#0E333C]">
-            {data.name}
-          </Text>
-        </Text>
+        {itemName}
 
         <Text
           font="extraBold"
