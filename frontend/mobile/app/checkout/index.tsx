@@ -1,4 +1,4 @@
-import { useRouter, useSearchParams } from "expo-router";
+import { useRouter, useLocalSearchParams } from "expo-router";
 import { useEffect, useMemo, useState } from "react";
 import { View } from "react-native";
 import { PageStructure } from "../../src/components/organisms";
@@ -40,7 +40,7 @@ const Checkout = () => {
   const router = useRouter();
   const { t } = useTranslationsContext();
   const { direction } = useInternationalizationContext();
-  const { cartId } = useSearchParams();
+  const { cartId } = useLocalSearchParams<{ cartId: string }>();
 
   const { data, setData } = useDataContext();
 

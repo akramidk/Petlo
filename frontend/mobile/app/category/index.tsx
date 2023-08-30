@@ -1,4 +1,4 @@
-import { useRouter, useSearchParams } from "expo-router";
+import { useRouter, useLocalSearchParams } from "expo-router";
 import { View } from "react-native";
 import { Item } from "../../src/components/molecules";
 import { PageStructure } from "../../src/components/organisms";
@@ -9,7 +9,11 @@ import { Loading } from "../../src/components/pages";
 
 const Category = () => {
   const router = useRouter();
-  const { name, category, brand_public_id } = useSearchParams();
+  const { name, category, brand_public_id } = useLocalSearchParams<{
+    name: string;
+    category: string;
+    brand_public_id: string;
+  }>();
   const { response } = useAPIFetching<CategoriesRequest, CategoriesResponse>({
     endpoint: Endpoints.CATEGORIES,
     slugs: {

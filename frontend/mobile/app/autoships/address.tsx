@@ -1,4 +1,4 @@
-import { useRouter, useSearchParams } from "expo-router";
+import { useRouter, useLocalSearchParams } from "expo-router";
 import React, { useEffect, useMemo, useState } from "react";
 import { Link, OptionsWithLabel, Text } from "../../src/components/atoms";
 import { DataCard } from "../../src/components/molecules";
@@ -29,7 +29,10 @@ const Address = () => {
   const router = useRouter();
   const { t } = useTranslationsContext();
   const { data, setData } = useDataContext();
-  const { type, publicId } = useSearchParams();
+  const { type, publicId } = useLocalSearchParams<{
+    type: string;
+    publicId: string;
+  }>();
   const { direction } = useInternationalizationContext();
 
   const isChange = type === "change";

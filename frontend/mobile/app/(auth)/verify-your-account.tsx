@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { useRouter, useSearchParams } from "expo-router";
+import { useRouter, useLocalSearchParams } from "expo-router";
 import { useState } from "react";
 import { View } from "react-native";
 import { Filed, Link } from "../../src/components/atoms";
@@ -24,7 +24,8 @@ const VerifyYourAccount = () => {
   const { direction } = useInternationalizationContext();
   const { setCustomerWithSessionToken } = useCustomerContext();
 
-  const { phoneNumber, sessionToken: sessionTokenParam } = useSearchParams();
+  const { phoneNumber, sessionToken: sessionTokenParam } =
+    useLocalSearchParams<{ phoneNumber: string; sessionToken: string }>();
   const [sessionToken, setSessionToken] = useState(sessionTokenParam);
 
   const [verificationCode, setVerificationCode] = useState<string>();

@@ -1,4 +1,4 @@
-import { useRouter, useSearchParams } from "expo-router";
+import { useRouter, useLocalSearchParams } from "expo-router";
 import { PageStructure } from "../../src/components/organisms";
 import { Loading } from "../../src/components/pages";
 import { Endpoints } from "../../src/enums";
@@ -11,7 +11,7 @@ import { NextShipmentDateAfterTheSkipResponse } from "../../src/interfaces";
 
 const Skip = () => {
   const router = useRouter();
-  const { publicId } = useSearchParams();
+  const { publicId } = useLocalSearchParams<{ publicId: string }>();
   const { t } = useTranslationsContext();
 
   const { response } = useAPIFetching<

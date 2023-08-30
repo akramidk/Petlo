@@ -1,4 +1,4 @@
-import { useRouter, useSearchParams } from "expo-router";
+import { useRouter, useLocalSearchParams } from "expo-router";
 import { useEffect, useMemo, useState } from "react";
 import { PageStructure } from "../../src/components/organisms";
 import { PAYMENT_METHODS } from "../../src/constants";
@@ -32,7 +32,10 @@ const Payment = () => {
   const { t } = useTranslationsContext();
   const { data, setData } = useDataContext();
   const { direction } = useInternationalizationContext();
-  const { type, publicId } = useSearchParams();
+  const { type, publicId } = useLocalSearchParams<{
+    type: string;
+    publicId: string;
+  }>();
 
   const isChange = type === "change";
 

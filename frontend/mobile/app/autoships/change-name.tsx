@@ -1,4 +1,4 @@
-import { useRouter, useSearchParams } from "expo-router";
+import { useRouter, useLocalSearchParams } from "expo-router";
 import { PageStructure } from "../../src/components/organisms";
 import { useAPIMutation, useTranslationsContext } from "../../src/hooks";
 import { Filed } from "../../src/components/atoms";
@@ -12,7 +12,7 @@ import {
 const ChangeName = () => {
   const router = useRouter();
   const { t } = useTranslationsContext();
-  const { publicId } = useSearchParams();
+  const { publicId } = useLocalSearchParams<{ publicId: string }>();
 
   const [name, setName] = useState("");
   const { trigger, status } = useAPIMutation<

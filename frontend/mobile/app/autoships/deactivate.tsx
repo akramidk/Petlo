@@ -1,11 +1,11 @@
-import { useRouter, useSearchParams } from "expo-router";
+import { useRouter, useLocalSearchParams } from "expo-router";
 import { PageStructure } from "../../src/components/organisms";
 import { Endpoints } from "../../src/enums";
 import { useAPIMutation, useTranslationsContext } from "../../src/hooks";
 
 const Deactivate = () => {
   const router = useRouter();
-  const { publicId } = useSearchParams();
+  const { publicId } = useLocalSearchParams<{ publicId: string }>();
   const { t } = useTranslationsContext();
 
   const { trigger, status } = useAPIMutation<void, void>({

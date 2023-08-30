@@ -5,7 +5,7 @@ import {
   useInternationalizationContext,
   useTranslationsContext,
 } from "../../src/hooks";
-import { useRouter, useSearchParams } from "expo-router";
+import { useRouter, useLocalSearchParams } from "expo-router";
 import { useState } from "react";
 import SelectNextShipment from "./components/SelectNextShipment";
 import NextShipment from "./interfaces/NextShipment";
@@ -30,7 +30,10 @@ const Date = () => {
   const router = useRouter();
   const { t } = useTranslationsContext();
   const { data, setData } = useDataContext();
-  const { type, publicId } = useSearchParams();
+  const { type, publicId } = useLocalSearchParams<{
+    type: string;
+    publicId: string;
+  }>();
   const { direction } = useInternationalizationContext();
 
   const isReactivate = type === "reactivate";

@@ -1,4 +1,4 @@
-import { useRouter, useSearchParams } from "expo-router";
+import { useRouter, useLocalSearchParams } from "expo-router";
 import { PageStructure } from "../../src/components/organisms";
 import { useAPIMutation, useTranslationsContext } from "../../src/hooks";
 import { FiledWithSelector } from "../../src/components/atoms";
@@ -14,7 +14,7 @@ import { Endpoints } from "../../src/enums";
 const EditPhoneNumber = () => {
   const { t } = useTranslationsContext();
   const router = useRouter();
-  const { sessionToken } = useSearchParams();
+  const { sessionToken } = useLocalSearchParams<{ sessionToken: string }>();
 
   const [countryCode, setCountryCode] = useState<BaseOption>(
     COUNTIES_PHONE_CODE_OPTIONS.find((code) => code.value === "+962")

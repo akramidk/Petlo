@@ -1,4 +1,4 @@
-import { useRouter, useSearchParams } from "expo-router";
+import { useRouter } from "expo-router";
 import { useMemo, useState } from "react";
 import { Filed, Selector, FiledWithSelector } from "../../src/components/atoms";
 import { PageStructure } from "../../src/components/organisms";

@@ -1,6 +1,6 @@
 import { PageStructure } from "../../src/components/organisms";
 import { Link, OptionsWithLabel, Text } from "../../src/components/atoms";
-import { useRouter, useSearchParams } from "expo-router";
+import { useRouter, useLocalSearchParams } from "expo-router";
 import {
   useAPIFetching,
   useAPIMutation,
@@ -27,7 +27,10 @@ const Pets = () => {
   const router = useRouter();
   const { t } = useTranslationsContext();
   const { data, setData } = useDataContext();
-  const { type, publicId } = useSearchParams();
+  const { type, publicId } = useLocalSearchParams<{
+    type: string;
+    publicId: string;
+  }>();
 
   const isChange = type === "change";
 

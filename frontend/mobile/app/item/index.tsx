@@ -1,5 +1,5 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useRouter, useSearchParams } from "expo-router";
+import { useRouter, useLocalSearchParams } from "expo-router";
 import React, { useCallback } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Endpoints, StorageKeys } from "../../src/enums";
@@ -18,7 +18,7 @@ import { ItemPreview } from "../../src/components/pages";
 const Item = () => {
   const router = useRouter();
   const { t } = useTranslationsContext();
-  const { publicId } = useSearchParams();
+  const { publicId } = useLocalSearchParams<{ publicId: string }>();
 
   const cartStore = useCartStore();
   const {

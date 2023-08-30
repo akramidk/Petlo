@@ -1,4 +1,4 @@
-import { useSearchParams } from "expo-router";
+import { useLocalSearchParams } from "expo-router";
 import { useState } from "react";
 import { View } from "react-native";
 import { PageStructure } from "../../src/components/organisms";
@@ -23,7 +23,8 @@ const VerifySignIn = () => {
   const { direction } = useInternationalizationContext();
   const { setCustomerWithSessionToken } = useCustomerContext();
 
-  const { phoneNumber, sessionToken: sessionTokenParam } = useSearchParams();
+  const { phoneNumber, sessionToken: sessionTokenParam } =
+    useLocalSearchParams<{ phoneNumber: string; sessionToken: string }>();
   const [sessionToken, setSessionToken] = useState(sessionTokenParam);
 
   const [verificationCode, setVerificationCode] = useState<string>("");
