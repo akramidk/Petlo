@@ -103,7 +103,7 @@ const ItemPreview = ({
         <BackButton
           onClick={onBack}
           cn={clsx(
-            "absolute bg-[#eee] mt-[12px]",
+            "absolute bg-[#eee] mt-[12px] z-10",
             direction === "ltr" ? "ml-[12px] left-0" : "mr-[12px] right-0"
           )}
         />
