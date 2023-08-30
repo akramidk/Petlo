@@ -49,7 +49,7 @@ const ItemViewer = ({
         <Image
           style={{
             flex: 1,
-            resizeMode: "contain",
+            resizeMode: "cover",
           }}
           source={{
             uri: image,

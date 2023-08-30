@@ -52,13 +52,13 @@ const Item = ({ variant, data, onClick }: ItemProps) => {
     const variants = {
       small: {
         measurements: "w-[200px] h-[312]",
-        imageMeasurements: "h-[172px] p-[28px]",
+        imageMeasurements: "h-[172px]",
         titleText: "text-[14px] leading-[22px]",
         priceText: "text-[16px]",
       },
       large: {
         measurements: "w-[100%]",
-        imageMeasurements: "h-[216px] p-[32px]",
+        imageMeasurements: "h-[216px]",
         titleText: "text-[16px] leading-[26px]",
         priceText: "text-[16px]",
       },
@@ -89,11 +89,11 @@ const Item = ({ variant, data, onClick }: ItemProps) => {
       )}
       onClick={onClick}
     >
-      <View className={clsx("bg-[#F9F9F9]", variantsStyles.imageMeasurements)}>
+      <View className={clsx("bg-[#f6f6f6]", variantsStyles.imageMeasurements)}>
         <Image
           style={{
             flex: 1,
-            resizeMode: "contain",
+            resizeMode: "cover",
           }}
           source={{
             uri: data.image,
