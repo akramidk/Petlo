@@ -75,7 +75,9 @@ const Item = ({ variant, data, onClick }: ItemProps) => {
         numberOfLines={3}
       >
         {reactStringReplace(data.name, data.brand, (match, i) => (
-          <Text font="extraBold">{match}</Text>
+          <Text key={i} font="extraBold">
+            {match}
+          </Text>
         ))}
       </Text>
     );
