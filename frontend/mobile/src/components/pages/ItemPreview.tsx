@@ -99,7 +99,7 @@ const ItemPreview = ({
 
   return (
     <>
-      <View className="h-[306px] p-[56px] bg-[#f6f6f6]">
+      <View className="h-[306px] bg-[#f6f6f6]">
         <BackButton
           onClick={onBack}
           cn={clsx(
@@ -111,7 +111,7 @@ const ItemPreview = ({
         <Image
           style={{
             flex: 1,
-            resizeMode: "contain",
+            resizeMode: "cover",
           }}
           source={{
             uri: item.image,
