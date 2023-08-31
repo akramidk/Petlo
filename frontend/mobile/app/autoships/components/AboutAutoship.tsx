@@ -71,7 +71,7 @@ export const AboutAutoship = () => {
       </View>
 
       <View className="bg-[#E7E3D8] rounded-[4px] p-[32]">
-        <Text font="extraBold" cn="text-[#363636] text-[16px] mb-[16px]">
+        <Text font="extraBold" cn="text-[#363636] text-[16px] mb-[8px]">
           Common Questions
         </Text>
 
@@ -80,7 +80,7 @@ export const AboutAutoship = () => {
             return (
               <View
                 key={index}
-                className="py-[16px] border-b border-b-[#cfcbbf] space-y-[12px]"
+                className="py-[20px] border-b border-b-[#cfcbbf] space-y-[12px]"
               >
                 <BaseButton
                   cn="flex flex-row justify-between items-center"
