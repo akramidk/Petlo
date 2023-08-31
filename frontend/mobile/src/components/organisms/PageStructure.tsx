@@ -60,7 +60,7 @@ const PageStructure = ({
       {floatingElement && (
         <View
           className={clsx(
-            "absolute bottom-[16px] self-center bg-[#fff]",
+            "absolute bottom-[16px] self-center",
             floatingElementCN
           )}
         >

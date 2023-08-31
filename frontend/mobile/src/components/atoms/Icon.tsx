@@ -19,6 +19,8 @@ import {
   ArrowLeftCircleIcon,
   ClipboardIcon as Clipboard,
   CheckIcon as CheckMark,
+  ChevronDownIcon as ChevronDown,
+  ChevronUpIcon as ChevronUp,
 } from "react-native-heroicons/outline";
 
 // TODO add all the icons here
@@ -99,6 +101,12 @@ const Icon = ({
     },
     checkCircle: {
       solid: <CheckCircle {...props} />,
+    },
+    chevronDown: {
+      outline: <ChevronDown {...props} />,
+    },
+    chevronUp: {
+      outline: <ChevronUp {...props} />,
     },
   };
 

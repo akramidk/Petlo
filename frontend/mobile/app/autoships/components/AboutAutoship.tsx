@@ -1,6 +1,8 @@
 import clsx from "clsx";
+import { useState } from "react";
 import { View, Text as ReactText } from "react-native";
 import { Icon, Text } from "../../../src/components/atoms";
+import { BaseButton } from "../../../src/components/bases";
 import {
   useInternationalizationContext,
   useTranslationsContext,
@@ -13,6 +15,8 @@ export const AboutAutoship = () => {
   const points: string[] = Object.keys(t("ABOUT_AUTOSHIP__POINTS")).map(
     (key) => t("ABOUT_AUTOSHIP__POINTS")[key]
   );
+
+  const [openedQuestionIndex, setOpenedQuestionIndex] = useState<number>();
 
   return (
     <View className="space-y-[4px]">
@@ -67,9 +71,54 @@ export const AboutAutoship = () => {
       </View>
 
       <View className="bg-[#E7E3D8] rounded-[4px] p-[32]">
-        <Text font="extraBold" cn="text-[#363636] text-[16px]">
+        <Text font="extraBold" cn="text-[#363636] text-[16px] mb-[16px]">
           Common Questions
         </Text>
+
+        <View>
+          {t("ABOUT_AUTOSHIP__Q_AND_A").map((item, index) => {
+            return (
+              <View
+                key={index}
+                className="py-[16px] border-b border-b-[#cfcbbf] space-y-[12px]"
+              >
+                <BaseButton
+                  cn="flex flex-row justify-between items-center"
+                  onClick={() => {
+                    if (index === openedQuestionIndex) {
+                      setOpenedQuestionIndex(undefined);
+                    } else {
+                      setOpenedQuestionIndex(index);
+                    }
+                  }}
+                >
+                  <Text font="bold" cn="text-[#444] text-[14px]">
+                    {item.q}
+                  </Text>
+                  <Icon
+                    solid={false}
+                    name={
+                      openedQuestionIndex === index
+                        ? "chevronUp"
+                        : "chevronDown"
+                    }
+                    color="#444"
+                    strokeWidth={2.8}
+                  />
+                </BaseButton>
+
+                {openedQuestionIndex === index && (
+                  <Text
+                    font="medium"
+                    cn="text-[14px] text-[#666] leading-[24px]"
+                  >
+                    {item.a}
+                  </Text>
+                )}
+              </View>
+            );
+          })}
+        </View>
       </View>
     </View>
   );
