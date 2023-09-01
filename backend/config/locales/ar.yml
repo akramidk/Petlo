@@ -1,7 +1,8 @@
 ar:
   delivery_estimation:
-    today: "اليوم (خلال ساعة)"
-    tomorrow: "غداً"
+    today_1: "اليوم (بعد الـ 10 صباحًا)"
+    today_2: "اليوم (خلال ساعة)"
+    tomorrow: "غداً (بعد الـ 10 صباحًا)"
 
   #The first number define the error type (common: 1, models: 2, helpers: 3, controllers: 4)
   #The next 3 numbers define the class (common errors always 000)

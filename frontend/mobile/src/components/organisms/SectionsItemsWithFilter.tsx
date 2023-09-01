@@ -38,7 +38,7 @@ const SectionsItemsWithFilter = ({
   }
 
   return (
-    <View className="py-[28px] space-y-[16px]">
+    <View className="h-full py-[28px] space-y-[16px]">
       <ScrollView
         className={direction === "ltr" ? "self-start" : "self-end"}
         ref={scrollViewRef}
@@ -81,7 +81,7 @@ const SectionsItemsWithFilter = ({
         </View>
       </ScrollView>
 
-      <ScrollView className="grow px-[28px]">
+      <ScrollView className="grow px-[28px] space-y-[12px]">
         {selectedSection?.items?.data?.map?.((item, index) => {
           return (
             <View key={index}>

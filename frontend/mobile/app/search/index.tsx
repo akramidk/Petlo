@@ -30,7 +30,7 @@ const Search = () => {
   });
 
   return (
-    <View className="h-full flex flex-col">
+    <View className="h-full flex flex-col pb-[16px]">
       <SearchFiled
         searchValue={searchValue}
         setSearchValue={setSearchValue}

@@ -1,7 +1,8 @@
 en:
   delivery_estimation:
-    today: "Today (in 1 hour)"
-    tomorrow: "Tomorrow"
+    today_1: "Today (After 10 am)"
+    today_2: "Today (in 1 hour)"
+    tomorrow: "Tomorrow (After 10 am)"
 
   #The first number define the error type (common: 1, models: 2, helpers: 3, controllers: 4)
   #The next 3 numbers define the class (common errors always 000)
