@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { View, Text as ReactText } from "react-native";
 import { Icon, Text } from "../../../src/components/atoms";
 import { BaseButton } from "../../../src/components/bases";
@@ -7,6 +7,9 @@ import {
   useInternationalizationContext,
   useTranslationsContext,
 } from "../../../src/hooks";
+import * as Clipboard from "expo-clipboard";
+
+const PHONE_NUMBER = "+962790119952";
 
 export const AboutAutoship = () => {
   const { t } = useTranslationsContext();
@@ -18,8 +21,52 @@ export const AboutAutoship = () => {
 
   const [openedQuestionIndex, setOpenedQuestionIndex] = useState<number>();
 
+  const [clipboardClicked, setClipboardClicked] = useState(false);
+
+  useEffect(() => {
+    if (clipboardClicked === false) return;
+    const timeout = setTimeout(() => setClipboardClicked(false), 1000);
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [clipboardClicked]);
+
   return (
     <View className="space-y-[4px]">
+      <BaseButton
+        onClick={async () => {
+          setClipboardClicked(true);
+          await Clipboard.setStringAsync(PHONE_NUMBER);
+        }}
+        cn={clsx(
+          "flex bg-[#f6f6f6] h-[44px] justify-center items-center rounded-[4px]",
+          direction === "ltr" ? "flex-row" : "flex-row-reverse"
+        )}
+      >
+        <Text font="semiBold" cn="text-[14px] text-[#666]">
+          {t("ABOUT_AUTOSHIP__COMMON_QUESTIONS_SUPPORT")}{" "}
+        </Text>
+
+        {clipboardClicked ? (
+          <Icon
+            name="checkMark"
+            solid={false}
+            size={16}
+            color="#4A956D"
+            strokeWidth={3.4}
+          />
+        ) : (
+          <Icon
+            name="clipboard"
+            strokeWidth={2.2}
+            solid={false}
+            size={16}
+            color="#666"
+          />
+        )}
+      </BaseButton>
+
       <View className="bg-[#E7E3D8] rounded-[4px] p-[32]">
         <View className="space-y-[20px]">
           <View className={"space-y-[8px]"}>
