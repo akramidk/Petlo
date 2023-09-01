@@ -80,7 +80,7 @@ export const AboutAutoship = () => {
             return (
               <View
                 key={index}
-                className="py-[20px] border-b border-b-[#cfcbbf] space-y-[12px]"
+                className="py-[20px] border-b border-b-[#cfcbbf] space-y-[16px]"
               >
                 <BaseButton
                   cn={clsx(
@@ -95,7 +95,10 @@ export const AboutAutoship = () => {
                     }
                   }}
                 >
-                  <Text font="bold" cn="text-[#444] text-[14px]">
+                  <Text
+                    font="bold"
+                    cn="text-[#444] text-[14px] w-[80%] leading-[24px]"
+                  >
                     {item.question}
                   </Text>
                   <Icon
