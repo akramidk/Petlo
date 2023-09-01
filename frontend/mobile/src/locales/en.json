@@ -348,6 +348,46 @@
     {
       "question": "Can I cancel the Autoship?",
       "answer": "Yes, absolutely. When you already have an Autoship, you will see all the Autoships that you previously created. Click on the three dots icon, then choose 'Deactivate Autoship' and then press the confirmation button to complete the process of canceling the Autoship.\n\nNote: You can reactivate the Autoship at any time you want, just by clicking on the 'Reactivate' button and then choosing the date of the next shipment and when it should recur."
+    },
+    {
+      "question": "Can I change the scheduling date?",
+      "answer": "Yes, absolutely. When you already have an Autoship, you will see all the Autoships that you have previously created. Click on the three dots icon, then choose 'Change Shipments Dates' and then you can change the scheduling information and the date of the next shipment."
+    },
+    {
+      "question": "Can I skip the Autoship shipment?",
+      "answer": "Of course, you can, When you already have an Autoship, you will see all the Autoships that you have previously created. Click on the three dots icon, then choose 'Skip Next Shipment' and then press the confirmation button to skip the shipment.\n\nFor example, if your next shipment is on the 8th and the recurrence period is every 10 days, the shipment on the 8th will be skipped and become on the 18th."
+    },
+    {
+      "question": "Can I change the Autoship items?",
+      "answer": "Of course, when you already have Autoship, you will see all the Autoships that you previously created. Click on the three dots icon, then choose 'Change Items', after which you can remove or add any item you want, and the new price for the added items will appear before confirming the change."
+    },
+    {
+      "question": "How can I pay?",
+      "answer": "You can pay with Cash on Delivery, or by using a Card."
+    },
+    {
+      "question": "Can I change my payment method?",
+      "answer": "Yes, you can always change the payment method to (Cash on Delivery, or Card) or you can change or add a new Card to use.\n\nWhen you already have Autoship, you will see all the Autoships that you previously created. Click on the three dots icon, then choose 'Change Payment Method' and then you can change and save the changes."
+    },
+    {
+      "question": "Can I change the shipping address?",
+      "answer": "Yes, of course, you can change your shipping address or add a new address to ship shipments to it.\n\nWhen you already have an Autoship, you will see all the Autoships that you previously created. Click on the three dots icon, then choose 'Change Shipping Address' and then you can change and save the changes."
+    },
+    {
+      "question": "Can I cancel the Autoship shipment before it arrives?",
+      "answer": "Of course, if you no longer need the order on the day specified for the shipment to arrive, don’t worry. A Petlo representative will contact you and you can inform him of this before delivery."
+    },
+    {
+      "question": "When will my shipment arrive?",
+      "answer": "On the same day that was specified, a Petlo representative will contact you to confirm and choose the appropriate hour for delivery."
+    },
+    {
+      "question": "Where can I track the shipping status?",
+      "answer": "You can always see the autoship information and the date of the next shipment from the 'Autoships' page.\n\nYou can track the status of the shipment on the day specified for shipment from the 'Orders' page."
+    },
+    {
+      "question": "How many Autoships can I create?",
+      "answer": "You can create an unlimited number of Autoships, you can also add all your pet’s items in one Autoship, or you can customize each Autoship for a pet, it's up to you."
     }
   ]
 }
