@@ -339,6 +339,10 @@
     {
       "question": "What are the benefits of Autoship?",
       "answer": "Any Autoship you create will give you a 5% discount on the total amount of all the items you added to the Autoship.\n\nNote: The discount includes the total items cost, and does not include the delivery cost."
+    },
+    {
+      "question": "Are there any fees?",
+      "answer": "No, scheduling your pets’ needs is completely free, and you can stop the Autoship whenever you want."
     }
   ]
 }
