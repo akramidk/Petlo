@@ -239,7 +239,7 @@ const Checkout = () => {
     if (!address && addresses && addresses.length > 0) {
       setAddress(addresses[0]);
     }
-  }, []);
+  }, [addresses]);
 
   if (
     createCheckoutResponse === undefined ||
@@ -306,7 +306,7 @@ const Checkout = () => {
 
           {paymentMethod?.id === "card" && (
             <View className="mt-[16px]">
-              <OptionsWithLabel
+              <OptionsWithLabel<BaseOption>
                 label={{
                   name: t("CHECKOUT__SELECT_A_CARD"),
                   bottomHelperElement: (
@@ -346,7 +346,7 @@ const Checkout = () => {
         />
 
         <View>
-          <OptionsWithLabel
+          <OptionsWithLabel<BaseOption>
             label={{
               name: t("CHECKOUT__SELECT_AN_ADDRESS"),
               cn: "p-0",
@@ -383,7 +383,7 @@ const Checkout = () => {
         />
 
         <View>
-          <OptionsWithLabel
+          <OptionsWithLabel<BaseOption>
             label={{
               name: t("CHECKOUT__THIS_ORDER_FOR"),
               helperText: `${(
