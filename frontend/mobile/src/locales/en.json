@@ -335,6 +335,10 @@
     {
       "question": "How do I create an Autoship so that I can receive recurring shipments?",
       "answer": "1. Click on the 'Create an Autoship' button.\n\n2. Add the name of the Autoship so that you can distinguish it, choose the products that you want to schedule, then choose your preferred payment method, and then you have to choose the date of the first shipment and when it should be recurring after that, and you can also add the names of the pets for which this Autoship is created if you wish.\n\n3. After filling out the information, you can create your first Autoship, and wait for your shipments to arrive."
+    },
+    {
+      "question": "What are the benefits of Autoship?",
+      "answer": "Any Autoship you create will give you a 5% discount on the total amount of all the items you added to the Autoship.\n\nNote: The discount includes the total items cost, and does not include the delivery cost."
     }
   ]
 }
