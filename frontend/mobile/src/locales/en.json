@@ -8,7 +8,7 @@
   "COMMON__MORE": "More",
   "COMMON__MALE": "Male",
   "COMMON__FEMALE": "Female",
-  "COMMON__CASH": "Cash",
+  "COMMON__CASH": "Cash on Delivery",
   "COMMON__CARD": "Card",
   "COMMON__SELECT": "Select",
   "COMMON__SAVE": "Save",
@@ -213,9 +213,9 @@
   "AUTOSHIPS__PAYMENT_ERROR": "Card payment failed 3 times",
   "AUTOSHIPS__ACTIONS": {
     "CHANGE_NAME": "Change Name",
-    "CHANGE_ADDRESS": "Change Address",
+    "CHANGE_ADDRESS": "Change Shipping Address",
     "CHANGE_ITEMS": "Change Items",
-    "CHANGE_PAYMENT_INFORMATION": "Change Payment Information",
+    "CHANGE_PAYMENT_INFORMATION": "Change Payment Method",
     "CHANGE_PETS": "Change Pets",
     "ADD_PETS": "Add Pets",
     "CHANGE_SHIPMENTS_DATES": "Change Shipments Dates",
@@ -247,7 +247,7 @@
       "SECONDARY_TEXT": {
         "WITHOUT_DATA": "Select how you will pay",
         "WITH_DATA": {
-          "CASH": "Cash",
+          "CASH": "Cash on Delivery",
           "CARD": "The card that ends with %{last4}"
         }
       }
@@ -330,7 +330,7 @@
   "ABOUT_AUTOSHIP__COMMON_QUESTIONS": [
     {
       "question": "What is Autoship?",
-      "answer": "Autoship, enables you to schedule your pets’ needs and ship them on a regular basis, so you will never run out of pet food or other essentials like litter and treats again."
+      "answer": "Autoship enables you to schedule your pets’ needs and ship them on a regular basis, so you will never run out of pet food or other essentials like litter and treats again."
     }
   ]
 }
