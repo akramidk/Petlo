@@ -14,7 +14,8 @@
         "STRIPE_PUBLISHABLE_KEY": "pk_test_51MLCpbBOEiCvkdTpNPVHQTabYpsAlE2aOm3lH4P6CgOhdYWVDBZs7bpDGHR5ewLjia5eii60w78ZkACtudbrWEun00gDTjfPaX",
         "GOOGLE_ANDROID_MAP_KEY": "AIzaSyDhKNoKaPUu1mso9dHn3lkQTR8HKeDOwTs",
         "GOOGLE_IOS_MAP_KEY": "AIzaSyBtQ-n9_sWD8JuYBuwwdVTw97AIir0296g"
-      }
+      },
+      "channel": "development"
     },
     "preview": {
       "env": {
@@ -23,7 +24,8 @@
         "STRIPE_PUBLISHABLE_KEY": "pk_test_51MLCpbBOEiCvkdTpNPVHQTabYpsAlE2aOm3lH4P6CgOhdYWVDBZs7bpDGHR5ewLjia5eii60w78ZkACtudbrWEun00gDTjfPaX",
         "GOOGLE_ANDROID_MAP_KEY": "AIzaSyDhKNoKaPUu1mso9dHn3lkQTR8HKeDOwTs",
         "GOOGLE_IOS_MAP_KEY": "AIzaSyBtQ-n9_sWD8JuYBuwwdVTw97AIir0296g"
-      }
+      },
+      "channel": "preview"
     },
     "production": {
       "env": {
@@ -32,7 +34,8 @@
         "STRIPE_PUBLISHABLE_KEY": "pk_live_51MLCpbBOEiCvkdTpwSNodwH2qAXbBB26zXu7mZJFRJSKMe7NHheEDh78Mqk8YD3uJZ4r2OPtXpB4PnAdlIqLwAm700ebGaLL57",
         "GOOGLE_ANDROID_MAP_KEY": "AIzaSyDhKNoKaPUu1mso9dHn3lkQTR8HKeDOwTs",
         "GOOGLE_IOS_MAP_KEY": "AIzaSyBtQ-n9_sWD8JuYBuwwdVTw97AIir0296g"
-      }
+      },
+      "channel": "production"
     }
   },
   "submit": {
