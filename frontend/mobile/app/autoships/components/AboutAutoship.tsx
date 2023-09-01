@@ -72,7 +72,7 @@ export const AboutAutoship = () => {
 
       <View className="bg-[#E7E3D8] rounded-[4px] p-[32]">
         <Text font="extraBold" cn="text-[#363636] text-[16px] mb-[8px]">
-          Common Questions
+          {t("ABOUT_AUTOSHIP__COMMON_QUESTIONS_TITLE")}
         </Text>
 
         <View>
@@ -83,7 +83,10 @@ export const AboutAutoship = () => {
                 className="py-[20px] border-b border-b-[#cfcbbf] space-y-[12px]"
               >
                 <BaseButton
-                  cn="flex flex-row justify-between items-center"
+                  cn={clsx(
+                    "flex  justify-between items-center",
+                    direction === "ltr" ? "flex-row" : "flex-row-reverse"
+                  )}
                   onClick={() => {
                     if (index === openedQuestionIndex) {
                       setOpenedQuestionIndex(undefined);
