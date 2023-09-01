@@ -71,7 +71,7 @@ export const AboutAutoship = () => {
       </View>
 
       <View className="bg-[#E7E3D8] rounded-[4px] p-[32]">
-        <Text font="extraBold" cn="text-[#363636] text-[16px] mb-[8px]">
+        <Text font="extraBold" cn="text-[#363636] text-[18px] mb-[4px]">
           {t("ABOUT_AUTOSHIP__COMMON_QUESTIONS_TITLE")}
         </Text>
 
