@@ -76,7 +76,7 @@ export const AboutAutoship = () => {
         </Text>
 
         <View>
-          {t("ABOUT_AUTOSHIP__Q_AND_A").map((item, index) => {
+          {t("ABOUT_AUTOSHIP__COMMON_QUESTIONS").map((item, index) => {
             return (
               <View
                 key={index}
@@ -93,7 +93,7 @@ export const AboutAutoship = () => {
                   }}
                 >
                   <Text font="bold" cn="text-[#444] text-[14px]">
-                    {item.q}
+                    {item.question}
                   </Text>
                   <Icon
                     solid={false}
@@ -112,7 +112,7 @@ export const AboutAutoship = () => {
                     font="medium"
                     cn="text-[14px] text-[#666] leading-[24px]"
                   >
-                    {item.a}
+                    {item.answer}
                   </Text>
                 )}
               </View>

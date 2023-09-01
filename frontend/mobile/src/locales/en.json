@@ -326,10 +326,10 @@
     "2": "Set the date that fits you",
     "3": "Change, skip, or cancel anytime"
   },
-  "ABOUT_AUTOSHIP__Q_AND_A": [
+  "ABOUT_AUTOSHIP__COMMON_QUESTIONS": [
     {
-      "q": "What is Autoship?",
-      "a": "Autoship, enables you to schedule your animals' needs and ship them on a regular basis, so you will never run out of pet food or other essentials like litter and treats again."
+      "question": "What is Autoship?",
+      "answer": "Autoship, enables you to schedule your pets’ needs and ship them on a regular basis, so you will never run out of pet food or other essentials like litter and treats again."
     }
   ]
 }
