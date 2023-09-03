@@ -2,15 +2,18 @@ module Jobs
   class AutoshipsController < ApplicationController
     before_action :check_jobs_key
 
+    PROCESSOR = "Stripe"
 
     def charge
       round = params[:round]
       country = params[:country]
-      autoships = round == 1 ? cash_autoships(country: country) : cash_autoships(country: country)
+      autoships = round == 1 ? cash_autoships + card_autoships : card_autoships
 
       autoships.each do |autoship|
         items_for_calculation = []
         items_for_order = []
+        payment_response = nil
+        card = nil
 
         autoship.items.each do |auto_item|
           item = Item.find_by(id: auto_item.item_id)
@@ -37,6 +40,25 @@ module Jobs
         delivery_amount = CONSTANTS::DELIVERY_COSTS[country]
         amount = cart_amount + delivery_amount
         currency  = CONSTANTS::COUNTRIES_CURRENCIES[country]["en"]
+
+        if autoship.payment_method == "card"
+          card = Card.find_by(id: autoship.payment_card_id)
+
+          begin
+              payment_response = GatewayLib.make_payment(
+                  processor: PROCESSOR,
+                  data: {
+                      amount: amount,
+                      currency: CONSTANTS::COUNTRIES_CURRENCIES[country]["en"].downcase,
+                      source: card.processor_card_id,
+                      customer_id: autoship.customer.stripe_id
+                  }
+              )
+            rescue
+              autoship.update(next_shipment_collect_payment_attempts: round)
+              next
+          end
+        end
 
         order = Order.create!(
           customer_id: autoship.customer_id,
@@ -72,14 +94,14 @@ module Jobs
           method: autoship.payment_method
         )
 
-        #if autoship.payment_method == "card"
-        #  CardPayment.create!(
-        #    payment_id: payment.id,
-        #    card_id: @card.id,
-        #    processed_by: PROCESSOR,
-        #    processor_payment_id: @payment_response[:processor_payment_id]
-        #  )
-        #end
+        if autoship.payment_method == "card"
+          CardPayment.create!(
+            payment_id: payment.id,
+            card_id: card.id,
+            processed_by: PROCESSOR,
+            processor_payment_id: payment_response[:processor_payment_id]
+          )
+        end
 
         #TODO you should rename autoship_date_after_the_skip to somthing generic
         next_shipment_on = Utils.autoship_date_after_the_skip(
@@ -95,10 +117,14 @@ module Jobs
     end
 
     private
-
-    def cash_autoships(country:)
+    def cash_autoships
       next_shipment_on = next_shipment_on(payment_method: "cash")
       Autoship.where(status: "active", payment_method: "cash", next_shipment_on: next_shipment_on)
+    end
+
+    def card_autoships
+      next_shipment_on = next_shipment_on(payment_method: "card")
+      Autoship.where(status: "active", payment_method: "card", next_shipment_on: next_shipment_on)
     end
 
     def next_shipment_on(payment_method:)
