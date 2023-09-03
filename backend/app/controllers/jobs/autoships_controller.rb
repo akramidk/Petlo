@@ -80,6 +80,15 @@ module Jobs
         #    processor_payment_id: @payment_response[:processor_payment_id]
         #  )
         #end
+
+        #TODO you should rename autoship_date_after_the_skip to somthing generic
+        next_shipment_on = Utils.autoship_date_after_the_skip(
+          next_shipment_on: autoship.next_shipment_on,
+          recurring_interval: autoship.recurring_interval,
+          recurring_interval_count: autoship.recurring_interval_count
+        )
+
+        autoship.update(next_shipment_on: next_shipment_on)
       end
 
       render json: { status: "succeeded" }, status: 200
