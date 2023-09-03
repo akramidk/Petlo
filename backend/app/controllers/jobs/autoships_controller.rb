@@ -110,7 +110,7 @@ module Jobs
           recurring_interval_count: autoship.recurring_interval_count
         )
 
-        autoship.update(next_shipment_on: next_shipment_on)
+        autoship.update(next_shipment_on: next_shipment_on, next_shipment_collect_payment_attempts: nil)
       end
 
       render json: { status: "succeeded" }, status: 200
