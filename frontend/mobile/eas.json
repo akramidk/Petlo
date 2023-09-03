@@ -18,6 +18,7 @@
       "channel": "development"
     },
     "preview": {
+      "distribution": "internal",
       "env": {
         "API_URL": "https://dev.rapi.petlo.co",
         "FUNCTIONS_URL": "functions.petlo.co",

@@ -4,7 +4,7 @@ export default {
     slug: "Petlo",
     scheme: "acme",
     icon: "./src/assets/images/icon.png",
-    version: "1.2",
+    version: "1.0.0",
     updates: {
       url: "https://u.expo.dev/184da1b4-f7ae-47f9-84e1-695fca3a70f0",
     },
@@ -13,18 +13,18 @@ export default {
     },
     android: {
       package: "com.petlo",
-      versionCode: 1.2,
+      versionCode: 1.0,
       config: {
         googleMaps: {
-          apiKey: "AIzaSyAhFzvU4bnxroW_qaIDBDbjsVfVmx1AtrE",
+          apiKey: process.env.GOOGLE_ANDROID_MAP_KEY,
         },
       },
     },
     ios: {
       bundleIdentifier: "com.petlo",
-      buildNumber: "1.2.0",
+      buildNumber: "1.4.0",
       config: {
-        googleMapsApiKey: "AIzaSyATNdeJAH58V2JuSVA2C3qL0GO1VORbLzg",
+        googleMapsApiKey: process.env.GOOGLE_IOS_MAP_KEY,
       },
       infoPlist: {
         NSCameraUsageDescription: "This app uses camera to scan.",
