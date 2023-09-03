@@ -123,5 +123,10 @@ Rails.application.routes.draw do
       post "items", to: "items#create"
       post "items/variants", to: "items#variants"
     end
+    
+    namespace :jobs do
+      #autoships
+      post "autoships/charge", to: "autoships#charge"
+    end
   end
 end
