@@ -54,6 +54,7 @@ const Section = ({ name, category, brand_public_id, items }: SectionProps) => {
             : undefined
         }
         horizontal
+        showsHorizontalScrollIndicator={false}
       >
         {items.data.map((item, i) => {
           return (

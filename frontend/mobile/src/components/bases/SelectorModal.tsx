@@ -66,7 +66,7 @@ const SelectorModal = <T extends BaseOption>({
           onCancel={onCancel}
         />
 
-        <ScrollView className="grow">
+        <ScrollView className="grow" showsVerticalScrollIndicator={false}>
           <Options<T>
             cn="py-[28px]"
             optionCN="px-[28px]"

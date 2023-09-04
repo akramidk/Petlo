@@ -8,7 +8,7 @@ interface ScrollableProps {
 
 const Scrollable = ({ children, cn }: ScrollableProps) => {
   return (
-    <ScrollView className="grow">
+    <ScrollView className="grow" showsVerticalScrollIndicator={false}>
       <Viewable cn={cn}>{children}</Viewable>
     </ScrollView>
   );

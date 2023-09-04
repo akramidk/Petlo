@@ -46,7 +46,10 @@ const Search = () => {
       {response?.isFetching ? (
         <Loading />
       ) : (
-        <ScrollView className="grow px-[28px]">
+        <ScrollView
+          className="grow px-[28px]"
+          showsVerticalScrollIndicator={false}
+        >
           <View className="py-[28px] space-y-[12px]">
             {searchValue.trim().length > 0 &&
             response?.body?.data?.length === 0 ? (

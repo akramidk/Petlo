@@ -54,6 +54,7 @@ const SectionsItemsWithFilter = ({
             : undefined
         }
         horizontal
+        showsHorizontalScrollIndicator={false}
       >
         <View className="px-[28px] flex flex-row">
           {response.body.data.map((section, index) => {
@@ -81,7 +82,10 @@ const SectionsItemsWithFilter = ({
         </View>
       </ScrollView>
 
-      <ScrollView className="grow px-[28px] space-y-[12px]">
+      <ScrollView
+        className="grow px-[28px] space-y-[12px]"
+        showsVerticalScrollIndicator={false}
+      >
         {selectedSection?.items?.data?.map?.((item, index) => {
           return (
             <View key={index}>

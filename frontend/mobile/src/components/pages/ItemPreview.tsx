@@ -119,7 +119,7 @@ const ItemPreview = ({
         />
       </View>
 
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <View className="p-[28px]">
           <View className="space-y-[12px] mb-[16]">
             <View className="space-y-[6px]">
@@ -161,6 +161,7 @@ const ItemPreview = ({
                         : undefined
                     }
                     horizontal
+                    showsHorizontalScrollIndicator={false}
                   >
                     {option.values.map((value, y) => {
                       return (
