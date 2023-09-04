@@ -139,7 +139,7 @@
   "ADD_NEW_CARD__ADD_BUTTON": "إضافة",
   "ADD_NEW_CARD__CANCEL_BUTTON": "إلغاء",
   "SUPPORT_AND_FEEDBACKS__TITLE": "الدعم والاقتراحات",
-  "SUPPORT_AND_FEEDBACKS__HELPER_TEXT": "يسعدنا تقديم الدعم أو معرفة اقتراحاتكِ لنا عن طريق إرسال رسالة على واتساب إلى رقم هاتفنا 962790119952+.",
+  "SUPPORT_AND_FEEDBACKS__HELPER_TEXT": "يسعدنا تقديم الدعم أو معرفة اقتراحاتكِ لنا عن طريق إرسال رسالة على واتساب إلى رقم هاتفنا 962790174799+.",
   "PETS__TITLE": "حيواناتك",
   "PETS__ADD_NEW_BUTTON": "أضيفي حيوان جديد",
   "ADD_NEW_PET__TITLE": "أضيفي حيوان جديد",
@@ -323,7 +323,7 @@
   "SKIP_AUTOSHIP__HELPER_TEXT": "سيتم تخطي الشحنة القادمة لـ %{date}، هل أنتِ متاكدة من ذلك؟",
   "SKIP_AUTOSHIP__BUTTON": "نعم أنا متاكدة",
   "REQUEST_A_PRODUCT__TITLE": "طلب إضافة منتجات",
-  "REQUEST_A_PRODUCT__HELPER_TEXT": "إذا لم تتمكني من إيجاد المنتجات التي تحتاجين إليها، يمكنك إرسال صورة لها عن طريق واتساب الى الرقم +962790119952.",
+  "REQUEST_A_PRODUCT__HELPER_TEXT": "إذا لم تتمكني من إيجاد المنتجات التي تحتاجين إليها، يمكنك إرسال صورة لها عن طريق واتساب الى الرقم +962790174799.",
   "HOME__WARNING_1_FIRST_TEXT": "لم تتمكني من العثور على المنتجات التي ترغبين بها؟",
   "HOME__WARNING_1_SECOND_TEXT": "اضغطي هنا لطلب إضافة هذه المنتجات.",
   "HOME__WARNING_2_FIRST_TEXT": "هل ترغبين في المساعدة أو لديك أي اقتراحات؟",
@@ -334,7 +334,7 @@
     "2": "حددي التاريخ الذي يناسبك",
     "3": "يمكنكِ التغيير، التخطي، أو الإلغاء في أي وقت"
   },
-  "ABOUT_AUTOSHIP__COMMON_QUESTIONS_SUPPORT": "الدعم عن طريق واتساب 962790119952+",
+  "ABOUT_AUTOSHIP__COMMON_QUESTIONS_SUPPORT": "الدعم عن طريق واتساب 962790174799+",
   "ABOUT_AUTOSHIP__COMMON_QUESTIONS_TITLE": "اﻷسئلة الشائعة",
   "ABOUT_AUTOSHIP__COMMON_QUESTIONS": [
     {

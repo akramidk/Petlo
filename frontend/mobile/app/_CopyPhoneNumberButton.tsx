@@ -9,7 +9,7 @@ import { View } from "react-native";
 import { useEffect, useState } from "react";
 import clsx from "clsx";
 
-const PHONE_NUMBER = "+962790119952";
+const PHONE_NUMBER = "+962790174799";
 
 export const CopyPhoneNumberButton = () => {
   const { t } = useTranslationsContext();

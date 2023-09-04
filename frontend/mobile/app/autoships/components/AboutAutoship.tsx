@@ -9,7 +9,7 @@ import {
 } from "../../../src/hooks";
 import * as Clipboard from "expo-clipboard";
 
-const PHONE_NUMBER = "+962790119952";
+const PHONE_NUMBER = "+962790174799";
 
 export const AboutAutoship = () => {
   const { t } = useTranslationsContext();
