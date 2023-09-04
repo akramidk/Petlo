@@ -4,18 +4,11 @@ module SectionsHelper::All
   SECTIONS = [
     {
       name: {
-        "ar" => "طعام كلاب",
-        "en" => "Dog Food"
+        "ar" => "رويال كانين طعام جاف للقطط",
+        "en" => "Royal Canin Cat Dry Food"
       },
-      category_public_id: "CYoMgVI6e1umQCvZ",
-      brand_public_id: "Hpr5okgtoJqNUXfw"
-    },
-    {
-      name: {
-        "ar" => "طعام قطط",
-        "en" => "Cat Food"
-      },
-      category_public_id: "cats-food"
+      category_public_id: "jsKVEGhNf9sCOoHv",
+      brand_public_id: "f6jYP3jTW8YBYhLo"
     }
   ]
   
