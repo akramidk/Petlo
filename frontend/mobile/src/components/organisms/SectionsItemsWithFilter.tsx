@@ -38,7 +38,7 @@ const SectionsItemsWithFilter = ({
   }
 
   return (
-    <View className="h-full py-[28px] space-y-[16px]">
+    <View className="h-full pt-[28px] pb-[72px] space-y-[16px]">
       <ScrollView
         className={direction === "ltr" ? "self-start" : "self-end"}
         ref={scrollViewRef}
