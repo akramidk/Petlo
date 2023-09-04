@@ -22,7 +22,7 @@ export default {
     },
     ios: {
       bundleIdentifier: "com.petlo",
-      buildNumber: "1.4.0",
+      buildNumber: "1.5.0",
       config: {
         googleMapsApiKey: process.env.GOOGLE_IOS_MAP_KEY,
       },
