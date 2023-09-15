@@ -13,7 +13,7 @@ export default {
     },
     android: {
       package: "com.petlo",
-      versionCode: 1.0,
+      versionCode: 2.0,
       config: {
         googleMaps: {
           apiKey: process.env.GOOGLE_ANDROID_MAP_KEY,
