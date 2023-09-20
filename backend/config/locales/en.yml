@@ -164,6 +164,7 @@ en:
     3003001: "The entered phone number isn't correct."
     3003002: "The entered password isn't correct."
     3003003: "The entered phone number is matches your current one."
+    3003004: "Invalid phone number or password."
 
     #carts helper: 004
     3004000: "Cart not found."

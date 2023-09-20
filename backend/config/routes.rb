@@ -30,6 +30,8 @@ Rails.application.routes.draw do
       post "customers/resend-reset-password-code", to: "customers#resend_reset_password_code"
       post "customers/verify-reset-password-request", to: "customers#verify_reset_password_request"
       patch "customers/reset-password", to: "customers#reset_password"
+      post "customers/request-deleting-the-account-with-credentials", to: "customers#request_deleting_the_account_with_credentials"
+      delete "customers/delete-for-credentials-method", to: "customers#delete_for_credentials_method"
       
       #sessions
       get "sessions", to: "sessions#index"

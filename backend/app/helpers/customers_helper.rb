@@ -12,4 +12,5 @@ module CustomersHelper
   extend VerifyRequestedPermissionWithOtp
   extend ChangePassword
   extend ResendResetPasswordCode
+  extend RequestDeletingTheAccountWithCredentials
 end

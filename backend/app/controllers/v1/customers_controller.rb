@@ -31,6 +31,11 @@ module V1
       verified: true
     )}, only: [:change_password]
 
+    before_action -> { current_customer(
+      permission: ENUM::PERMISSIONS[:DELETE_CUSTOMER],
+      verified: [true, false] 
+    )}, only: [:delete_for_credentials_method]
+
     def index
       response = CustomersHelper.index(
         customer: @customer,
@@ -154,6 +159,25 @@ module V1
       )
 
       render json: { status: "succeeded", customer: response[:customer] }, status: 200
+    end
+
+    def request_deleting_the_account_with_credentials
+      response = CustomersHelper.request_deleting_the_account_with_credentials(
+        phone_number: params[:phone_number],
+        password: params[:password],
+        language: params[:locale]
+      )
+
+      render json: { status: "succeeded", customer: { session_token: response } }, status: 200
+    end
+
+    def delete_for_credentials_method
+      response = CustomersHelper.delete(
+        customer: @customer,
+        verification_code: params[:verification_code]
+      )
+
+      render json: { status: "succeeded" }, status: 200
     end
   end
 end
