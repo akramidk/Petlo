@@ -55,49 +55,63 @@ const DeleteYourAccount = () => {
   if (step === 1) {
     return (
       <div className="bg-[#fff] p-[28px] md:p-[0px] md:h-screen md:flex md:justify-center md:items-center">
-        <div className="md:w-[372px] md:py-[72px] space-y-[20px]">
-          <div className="space-y-[8px]">
-            <div>
-              <div className="font-bold text-[14px] text-[#222]">
-                Phone Number
-              </div>
-              <div className="font-medium text-[14px] text-[#666]">
-                with country code for example +962
-              </div>
+        <div className="md:w-[372px] md:py-[72px]">
+          <div className="mb-[32px]">
+            <div className="font-extrabold text-[24px] text-[#222] mb-[4px]">
+              Delete Your Account
             </div>
 
-            <input
-              className={filed}
-              placeholder="enter your phone number"
-              onChange={(e) => setPhoneNumber(e.target.value)}
-              value={phoneNumber}
-            />
+            <div className="font-medium text-[16px] text-[#666]">
+              You can not use or recover your petlo account after you delete it.
+            </div>
           </div>
 
-          <div className="space-y-[8px]">
-            <div className="font-bold text-[14px] text-[#222]">Password</div>
-            <input
-              className={filed}
-              placeholder="enter your password"
-              type="password"
-              onChange={(e) => setPassword(e.target.value)}
-              value={password}
-            />
-          </div>
+          <div className="space-y-[20px]">
+            <div className="space-y-[8px]">
+              <div>
+                <div className="font-bold text-[14px] text-[#222]">
+                  Phone Number
+                </div>
+                <div className="font-medium text-[14px] text-[#666]">
+                  with country code for example +962
+                </div>
+              </div>
 
-          <div
-            className={isFirstStepInfoCompleted ? activeButton : inactiveButton}
-            onClick={
-              isFirstStepInfoCompleted && isLoading === false
-                ? firstStepHandler
-                : undefined
-            }
-          >
-            {isLoading ? (
-              <UseAnimations animation={loading} size={24} color="222" />
-            ) : (
-              "Continue"
-            )}
+              <input
+                className={filed}
+                placeholder="enter your phone number"
+                onChange={(e) => setPhoneNumber(e.target.value)}
+                value={phoneNumber}
+              />
+            </div>
+
+            <div className="space-y-[8px]">
+              <div className="font-bold text-[14px] text-[#222]">Password</div>
+              <input
+                className={filed}
+                placeholder="enter your password"
+                type="password"
+                onChange={(e) => setPassword(e.target.value)}
+                value={password}
+              />
+            </div>
+
+            <div
+              className={
+                isFirstStepInfoCompleted ? activeButton : inactiveButton
+              }
+              onClick={
+                isFirstStepInfoCompleted && isLoading === false
+                  ? firstStepHandler
+                  : undefined
+              }
+            >
+              {isLoading ? (
+                <UseAnimations animation={loading} size={24} color="222" />
+              ) : (
+                "Continue"
+              )}
+            </div>
           </div>
         </div>
       </div>
