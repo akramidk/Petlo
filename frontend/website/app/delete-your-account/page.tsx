@@ -2,6 +2,9 @@
 
 import { useState } from "react";
 import axios from "axios";
+import UseAnimations from "react-useanimations";
+import loading from "react-useanimations/lib/loading";
+import { useSnackbar } from "notistack";
 
 const filed =
   "w-[100%] bg-[#F6F6F6] h-[60px] rounded-[4px] px-[20px] border-[1px] border-[#F6F6F6] focus:border-[#eee] text-[14px] text-[#444]";
@@ -22,10 +25,11 @@ const DeleteYourAccount = () => {
 
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const { enqueueSnackbar } = useSnackbar();
 
   const firstStepHandler = async () => {
-    setLoading(true);
+    setIsLoading(true);
 
     await axios
       .post(
@@ -36,12 +40,12 @@ const DeleteYourAccount = () => {
         }
       )
       .then(() => {
-        setLoading(false);
+        setIsLoading(false);
         setStep(2);
       })
       .catch((error) => {
-        setLoading(false);
-        console.log(error);
+        setIsLoading(false);
+        enqueueSnackbar(error.response.data.error.message);
       });
   };
 
@@ -84,12 +88,16 @@ const DeleteYourAccount = () => {
           <div
             className={isFirstStepInfoCompleted ? activeButton : inactiveButton}
             onClick={
-              isFirstStepInfoCompleted && loading === false
+              isFirstStepInfoCompleted && isLoading === false
                 ? firstStepHandler
                 : undefined
             }
           >
-            {loading ? "Loading" : "Continue"}
+            {isLoading ? (
+              <UseAnimations animation={loading} size={24} color="222" />
+            ) : (
+              "Continue"
+            )}
           </div>
         </div>
       </div>
