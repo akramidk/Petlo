@@ -197,7 +197,7 @@ const DeleteYourAccount = () => {
 
   if (step === 3) {
     return (
-      <div className="bg-[#fff] flex h-screen items-center text-center">
+      <div className="bg-[#fff] flex h-screen justify-center items-center text-center">
         <div className="font-extrabold text-[24px] text-[#222]">
           Your account has been successfully deleted
         </div>
