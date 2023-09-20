@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import axios from "axios";
 
 const filed =
   "w-[100%] bg-[#F6F6F6] h-[60px] rounded-[4px] px-[20px] border-[1px] border-[#F6F6F6] focus:border-[#eee] text-[14px] text-[#444]";
@@ -11,11 +12,41 @@ const activeButton =
 const inactiveButton =
   "w-[100%] bg-[#f6f6f6] h-[60px] rounded-[4px] flex justify-center items-center font-bold text-[#888] text-[14px] cursor-not-allowed";
 
+const API_URL =
+  process.env.NODE_ENV === "development"
+    ? "https://dev.rapi.petlo.co/en/v1"
+    : "https://rapi.petlo.co/en/v1";
+
 const DeleteYourAccount = () => {
   const [step, setStep] = useState(1);
 
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const firstStepHandler = async () => {
+    setLoading(true);
+
+    await axios
+      .post(
+        `${API_URL}/customers/request-deleting-the-account-with-credentials`,
+        {
+          phone_number: phoneNumber,
+          password: password,
+        }
+      )
+      .then(() => {
+        setLoading(false);
+        setStep(2);
+      })
+      .catch((error) => {
+        setLoading(false);
+        console.log(error);
+      });
+  };
+
+  const isFirstStepInfoCompleted =
+    phoneNumber.trim().length > 0 && password.trim().length > 0;
 
   if (step === 1) {
     return (
@@ -51,17 +82,22 @@ const DeleteYourAccount = () => {
           </div>
 
           <div
-            className={
-              phoneNumber.trim().length > 0 && password.trim().length > 0
-                ? activeButton
-                : inactiveButton
+            className={isFirstStepInfoCompleted ? activeButton : inactiveButton}
+            onClick={
+              isFirstStepInfoCompleted && loading === false
+                ? firstStepHandler
+                : undefined
             }
           >
-            Continue
+            {loading ? "Loading" : "Continue"}
           </div>
         </div>
       </div>
     );
+  }
+
+  if (step === 2) {
+    return <></>;
   }
 };
 
