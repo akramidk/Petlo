@@ -1,8 +1,12 @@
 module Customer::Verification
   require 'securerandom'
 
+  FIXED_CODE = "238766"
+
   def generate_verification_code(permission:)
-    code = SecureRandom.random_number(100000..999999).to_s
+    #Apple & Google need a phone number with a fixed OTP to test the app
+    #so if the customer phone number is the same as stores phone number use the FIXED_CODE
+    code = self.phone_number == CONSTANTS::STORES_PHONE_NUMBER ? FIXED_CODE : SecureRandom.random_number(100000..999999).to_s
 
     self.update!(
       verification_code: code,

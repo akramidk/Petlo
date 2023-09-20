@@ -34,6 +34,8 @@ class Customer::VerificationJob
     code = customer.generate_verification_code(permission: permission)
     message_content = "#{MESSAGES[permission][language]} #{code}"
 
-    SMSMessage.send(to: customer.phone_number, content: message_content)
+    #stores phone number is an account used by Apple & Google, to test the app
+    #so no need to send an OTP because we should have a fixed OTP
+    SMSMessage.send(to: customer.phone_number, content: message_content) if customer.phone_number != CONSTANTS::STORES_PHONE_NUMBER
   end
 end
