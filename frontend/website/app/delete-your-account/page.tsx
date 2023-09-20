@@ -76,7 +76,7 @@ const DeleteYourAccount = () => {
   const isFirstStepInfoCompleted =
     phoneNumber.trim().length > 0 && password.trim().length > 0;
 
-  const isSecondStepInfoCompleted = verificationCode.trim().length > 0;
+  const isSecondStepInfoCompleted = verificationCode.trim().length === 6;
 
   if (step === 1) {
     return (
@@ -169,6 +169,7 @@ const DeleteYourAccount = () => {
                 placeholder="enter the verification code"
                 onChange={(e) => setVerificationCode(e.target.value)}
                 value={verificationCode}
+                maxLength={6}
               />
             </div>
 
@@ -196,7 +197,7 @@ const DeleteYourAccount = () => {
 
   if (step === 3) {
     return (
-      <div className="bg-[#fff] h-screen flex justify-center items-center">
+      <div className="bg-[#fff] flex h-screen items-center text-center">
         <div className="font-extrabold text-[24px] text-[#222]">
           Your account has been successfully deleted
         </div>
