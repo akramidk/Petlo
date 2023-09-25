@@ -4,10 +4,12 @@ module Jobs
 
     PROCESSOR = "Stripe"
 
+    @@round = nil
+
     def charge
-      round = params[:round]
+      @@round = params[:round]
       country = params[:country]
-      autoships = round == 1 ? cash_autoships + card_autoships : card_autoships
+      autoships = @@round == 1 ? cash_autoships + card_autoships : card_autoships
 
       autoships.each do |autoship|
         items_for_calculation = []
@@ -55,7 +57,14 @@ module Jobs
                   }
               )
             rescue
-              autoship.update(next_shipment_collect_payment_attempts: round)
+              collect_payment_attempts = autoship.next_shipment_collect_payment_attempts ? autoship.next_shipment_collect_payment_attempts + 1 : 1
+
+              if collect_payment_attempts > 2
+                autoship.update(status: "inactive", next_shipment_collect_payment_attempts: collect_payment_attempts)
+              else
+                autoship.update(next_shipment_collect_payment_attempts: collect_payment_attempts)
+              end
+
               next
           end
         end
@@ -128,8 +137,21 @@ module Jobs
     end
 
     def next_shipment_on(payment_method:)
-      current_time = payment_method == "card" ? Time.now + 24.hour : Time.now
-      Date.new(current_time.year, current_time.month, current_time.day)
+      today_time = Time.now
+      today_date = Date.new(today_time.year, today_time.month, today_time.day)
+
+      if payment_method == "card"
+        tomorrow_time = today_time + 24.hour
+        tomorrow_date = Date.new(tomorrow_time.year, tomorrow_time.month, tomorrow_time.day)
+
+        if @@round == 1
+          [today_date, tomorrow_date]
+        else
+          tomorrow_date
+        end
+      else
+        today_date
+      end
     end
   end
 end

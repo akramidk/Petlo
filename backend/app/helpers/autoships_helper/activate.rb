@@ -15,7 +15,8 @@ module AutoshipsHelper::Activate
       status: "active",
       recurring_interval: recurring_interval,
       recurring_interval_count: recurring_interval_count,
-      next_shipment_on: next_shipment_on
+      next_shipment_on: next_shipment_on,
+      next_shipment_collect_payment_attempts: nil
     )
   end
 end
