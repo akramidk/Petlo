@@ -223,7 +223,7 @@
     "SKIP": "Skip Next Shipment",
     "REACTIVATE": "Reactivate"
   },
-  "AUTOSHIPS__CARD_PAYMENT_WARNINGS": "Card payment is processed in United States Dollar.\n\nWe will try to deduct the amount from a card before 24h of the shipping date. If failed, we try again before 12h and 6h. If all attempts fail, we make the Autoship inactive.",
+  "AUTOSHIPS__CARD_PAYMENT_WARNINGS": "Card payment is processed in United States Dollar.\n\nWe will try to deduct the amount from a card before 24h of the shipping date. If failed, we try again before 12h and then on the same day of shipping. If all attempts fail, we make the Autoship inactive.",
   "CREATE_AN_AUTOSHIP__TITLE": "Create An Autoship",
   "CREATE_AN_AUTOSHIP__NAME_FILED_LABEL": "Autoship Name",
   "CREATE_AN_AUTOSHIP__NAME_FILED_PLACEHOLDER": "enter a name like (My Cat Autoship)",
