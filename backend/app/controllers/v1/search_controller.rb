@@ -1,12 +1,10 @@
 module V1
-  class SearchController < ApplicationController
-    before_action -> { current_customer(verified: true) }
-    
+  class SearchController < ApplicationController    
     include SearchHelper
 
     def index
       response = SearchHelper.items(
-        country: @customer.country,
+        country: "JO",
         language: params[:locale],
         value: params[:value]
       )
