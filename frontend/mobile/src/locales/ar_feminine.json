@@ -173,6 +173,8 @@
   "ITEM_PREVIEW__BY": "من",
   "ITEM_PREVIEW__ADD_TO_CART_VARIANT_NOT_AVAILABLE_BUTTON": "هذا الصنف غير متوفر حاليًا",
   "ITEM__ADD_TO_CART_BUTTON": "أضيفي إلى السلة",
+  "ITEM__NO_CUSTOMER_WARNING_1": "يجب إنشاء حساب أو تسجيل الدخول للإضافة للسلة",
+  "ITEM__NO_CUSTOMER_WARNING_2": "إضغظي هنا لإنشاء حساب أو تسجيل الدخول",
   "CART__TITLE": "السلة",
   "CART__CHECKOUT_BUTTON": "تنفيذ الطلب",
   "CART__PAYMENT_SUMMARY": "ملخص الدفع",

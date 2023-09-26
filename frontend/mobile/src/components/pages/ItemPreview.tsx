@@ -21,6 +21,8 @@ interface ItemPreviewProps {
   addStatus?: buttonStatus;
   addTranslationValue: string;
   bottomContainerCN?: string;
+  addButtonDisabled?: boolean;
+  bottomContainerElement?: React.ReactNode;
 }
 
 const ItemPreview = ({
@@ -30,6 +32,8 @@ const ItemPreview = ({
   addStatus,
   addTranslationValue,
   bottomContainerCN,
+  addButtonDisabled,
+  bottomContainerElement,
 }: ItemPreviewProps) => {
   const { t } = useTranslationsContext();
   const { direction } = useInternationalizationContext();
@@ -200,6 +204,8 @@ const ItemPreview = ({
       </ScrollView>
 
       <BottomContainer cn={clsx("pb-[8px]", bottomContainerCN)}>
+        {bottomContainerElement}
+
         <Button
           value={
             variant.available
@@ -207,7 +213,11 @@ const ItemPreview = ({
               : t("ITEM_PREVIEW__ADD_TO_CART_VARIANT_NOT_AVAILABLE_BUTTON")
           }
           onClick={() => onAdd(item.public_id, variant.public_id)}
-          status={addStatus ?? (variant.available ? "active" : "inactive")}
+          status={
+            addButtonDisabled
+              ? "inactive"
+              : addStatus ?? (variant.available ? "active" : "inactive")
+          }
         />
       </BottomContainer>
     </>

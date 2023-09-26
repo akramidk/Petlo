@@ -6,6 +6,7 @@ import { Endpoints, StorageKeys } from "../../src/enums";
 import {
   useAPIMutation,
   useCartStore,
+  useCustomerContext,
   useTranslationsContext,
 } from "../../src/hooks";
 import {
@@ -14,11 +15,14 @@ import {
   CreateNewCartResponse,
 } from "../../src/interfaces";
 import { ItemPreview } from "../../src/components/pages";
+import { Pressable, View } from "react-native";
+import { Text } from "../../src/components/atoms";
 
 const Item = () => {
   const router = useRouter();
   const { t } = useTranslationsContext();
   const { publicId } = useLocalSearchParams<{ publicId: string }>();
+  const { customer } = useCustomerContext();
 
   const cartStore = useCartStore();
   const {
@@ -81,6 +85,25 @@ const Item = () => {
       addStatus={addStatus ?? createStatus}
       onBack={router.back}
       addTranslationValue={t("ITEM__ADD_TO_CART_BUTTON")}
+      addButtonDisabled={customer === null}
+      bottomContainerElement={
+        customer === null ? (
+          <Pressable
+            className="items-center pb-[16px] space-y-[4px]"
+            onPress={() => {
+              router.push("/welcome");
+            }}
+          >
+            <Text font="semiBold" cn="text-[14px] text-[#444]">
+              {t("ITEM__NO_CUSTOMER_WARNING_1")}
+            </Text>
+
+            <Text font="bold" cn="text-[14px] text-[222]">
+              {t("ITEM__NO_CUSTOMER_WARNING_2")}
+            </Text>
+          </Pressable>
+        ) : undefined
+      }
     />
   );
 };
