@@ -1,13 +1,12 @@
 module V1
   class ItemsController < ApplicationController
-    before_action -> { current_customer(verified: true) }
-
     include ItemsHelper
 
     def show
+      #TODO I did the country thingy becuse of Apple, we'll handle it in the future
       response = ItemsHelper.index(
         public_id: params[:public_id],
-        country: @customer.country,
+        country: "JO",
         language: params[:locale]
       )
 
