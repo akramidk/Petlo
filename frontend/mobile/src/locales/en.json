@@ -27,6 +27,7 @@
   "COMMON_END_WITH": "Ends  with %{last4}",
   "COMMON__APP_VERSION": "App Version %{version}",
   "COMMON__UNABLE_TO_SEND_SMS": "We are presently unable to send SMS to this country.",
+  "COMMON__OR_OPEN_IN_WHATSAPP": "or open in WhatsApp",
   "ROOT_LAYOUT__NEW_UPDATE_AVAILABLE_MESSAGE": "New Update Available, You should update the app before using it.",
   "ROOT_LAYOUT__NEW_UPDATE_AVAILABLE_LINK": "Update It Now",
   "SELECT_LANGUAGE__TITLE": "App Language",
