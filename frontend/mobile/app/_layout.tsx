@@ -55,6 +55,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import SideThings from "./_SideThings";
 import { BottomSheetOptions } from "../src/components/molecules";
 import Constants from "expo-constants";
+import * as Linking from "expo-linking";
 
 const FUNCTIONS_URL = Constants.expoConfig.extra.FUNCTIONS_URL;
 
@@ -140,7 +141,6 @@ const Layout = () => {
     customer === undefined ||
     cartStore.cartId === undefined
   ) {
-    // TODO new design for this insted of an Alert
     if (newVersionAvailableResponse?.body?.value === true) {
       return (
         <InternationalizationContext.Provider
@@ -164,7 +164,12 @@ const Layout = () => {
             <Link
               cn="text-[#222] mt-[16px]"
               onClick={() => {
-                //
+                const link =
+                  phoneOS === "ios"
+                    ? "itms-apps://apps.apple.com/id/app/id6462346697"
+                    : "market://details?id=com.petlo";
+
+                Linking.openURL(link);
               }}
               value={t("ROOT_LAYOUT__NEW_UPDATE_AVAILABLE_LINK")}
             />
