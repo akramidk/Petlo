@@ -1,12 +1,11 @@
 module V1
     class BannersController < ApplicationController
-        before_action -> { current_customer(verified: true) }
-
         include BannersHelper
 
         def index
+            #TODO I did the country thingy becuse of Apple, we'll handle it in the future
             response = BannersHelper.all(
-                country: @customer.country,
+                country: "JO",
                 language: params[:locale],
                 variant: params[:variant]
             )
