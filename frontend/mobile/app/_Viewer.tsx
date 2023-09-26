@@ -2,6 +2,7 @@ import { usePathname } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Header, Menu } from "../src/components/molecules";
 import { HEDER_PATHS, MENU_PATHS } from "../src/constants";
+import { useCustomerContext } from "../src/hooks";
 
 interface ViewerProps {
   children: React.ReactNode;
@@ -9,6 +10,7 @@ interface ViewerProps {
 
 const Viewer = ({ children }: ViewerProps) => {
   const pathname = usePathname();
+  const { customer } = useCustomerContext();
   const hideHeder = HEDER_PATHS.includes(pathname);
   const showMenuAndIcons = (MENU_PATHS as ReadonlyArray<string>).includes(
     pathname
@@ -28,11 +30,13 @@ const Viewer = ({ children }: ViewerProps) => {
         <Header
           activePath={pathname}
           showSearchIcon={showMenuAndIcons}
-          showCartIcon={showMenuAndIcons || pathname === "/item"}
+          showCartIcon={customer && (showMenuAndIcons || pathname === "/item")}
         />
       )}
       {children}
-      {showMenuAndIcons && <Menu activePath={pathname} />}
+      {showMenuAndIcons && (
+        <Menu activePath={pathname} isCustomer={!!customer} />
+      )}
     </SafeAreaView>
   );
 };

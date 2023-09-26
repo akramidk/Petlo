@@ -12,9 +12,10 @@ import * as Device from "expo-device";
 
 interface MenuProps {
   activePath: string;
+  isCustomer: boolean;
 }
 
-const Menu = ({ activePath }: MenuProps) => {
+const Menu = ({ activePath, isCustomer }: MenuProps) => {
   const router = useRouter();
   const { t } = useTranslationsContext();
   const { direction } = useInternationalizationContext();
@@ -28,16 +29,18 @@ const Menu = ({ activePath }: MenuProps) => {
         isIOS ? "pt-[16px]" : "py-[16px]"
       )}
     >
-      {MENU_TABS.map((tap, i) => (
-        <Fragment key={i}>
-          <MenuTabButton
-            icon={tap.id}
-            value={t(tap.value)}
-            selected={activePath === tap.path}
-            onClick={() => router.replace(tap.path)}
-          />
-        </Fragment>
-      ))}
+      {MENU_TABS.filter((tap) => !isCustomer && !tap.hideIfNoCustomer).map(
+        (tap, i) => (
+          <Fragment key={i}>
+            <MenuTabButton
+              icon={tap.id}
+              value={t(tap.value)}
+              selected={activePath === tap.path}
+              onClick={() => router.replace(tap.path)}
+            />
+          </Fragment>
+        )
+      )}
     </View>
   );
 };

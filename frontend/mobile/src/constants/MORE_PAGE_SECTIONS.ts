@@ -4,10 +4,13 @@ export const MORE_PAGE_SECTIONS: {
     icon: string;
     name: string;
     path: string;
+    hideIfNoCustomer?: boolean;
   }[];
+  hideIfNoCustomer: boolean;
 }[] = [
   {
     title: "MORE__ACCOUNT_SECTION_TITLE",
+    hideIfNoCustomer: true,
     options: [
       {
         icon: "person",
@@ -33,6 +36,7 @@ export const MORE_PAGE_SECTIONS: {
   },
   {
     title: "MORE__APP_SECTION_TITLE",
+    hideIfNoCustomer: false,
     options: [
       {
         icon: "language",
@@ -43,6 +47,7 @@ export const MORE_PAGE_SECTIONS: {
   },
   {
     title: "MORE__OTHERS_SECTION_TITLE",
+    hideIfNoCustomer: false,
     options: [
       {
         icon: "handRaised",
@@ -58,6 +63,7 @@ export const MORE_PAGE_SECTIONS: {
         icon: "arrowUturnDown",
         name: "MORE__OTHERS_SIGN_OUT",
         path: "/sign-out",
+        hideIfNoCustomer: true,
       },
     ],
   },
