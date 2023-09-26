@@ -29,7 +29,7 @@ const Menu = ({ activePath, isCustomer }: MenuProps) => {
         isIOS ? "pt-[16px]" : "py-[16px]"
       )}
     >
-      {MENU_TABS.filter((tap) => !isCustomer && !tap.hideIfNoCustomer).map(
+      {MENU_TABS.filter((tap) => isCustomer || !tap.hideIfNoCustomer).map(
         (tap, i) => (
           <Fragment key={i}>
             <MenuTabButton

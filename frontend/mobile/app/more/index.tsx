@@ -6,7 +6,7 @@ import { Icon, Text } from "../../src/components/atoms";
 import { BaseButton } from "../../src/components/bases";
 import { MORE_PAGE_SECTIONS } from "../../src/constants";
 import {
-  useCustomer,
+  useCustomerContext,
   useInternationalizationContext,
   useTranslationsContext,
 } from "../../src/hooks";
@@ -16,7 +16,7 @@ import * as Application from "expo-application";
 const More = () => {
   const router = useRouter();
   const { t } = useTranslationsContext();
-  const { customer } = useCustomer();
+  const { customer } = useCustomerContext();
   const { direction } = useInternationalizationContext();
   const version = Application.nativeApplicationVersion;
 
@@ -24,7 +24,7 @@ const More = () => {
     <Scrollable cn="abg-[#fff]">
       <View className="space-y-[28px]">
         {MORE_PAGE_SECTIONS.filter(
-          (section) => !section.hideIfNoCustomer && !customer
+          (section) => !!customer || !section.hideIfNoCustomer
         ).map((section, i) => {
           return (
             <View key={i}>
@@ -34,7 +34,7 @@ const More = () => {
 
               <View>
                 {section.options
-                  .filter((option) => !option.hideIfNoCustomer && !customer)
+                  .filter((option) => !!customer || !option.hideIfNoCustomer)
                   .map((option, i) => {
                     return (
                       <Fragment key={i}>
