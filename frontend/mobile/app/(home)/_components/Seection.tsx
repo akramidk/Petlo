@@ -27,7 +27,7 @@ const Section = ({ name, category, brand_public_id, items }: SectionProps) => {
           direction === "ltr" ? "flex-row" : "flex-row-reverse"
         )}
       >
-        <Text cn="text-[22px] text-[#0E333C]" font="extraBold">
+        <Text cn="text-[22px] text-[#0E333C] w-[75%]" font="extraBold">
           {name}
         </Text>
 
