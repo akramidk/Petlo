@@ -28,7 +28,7 @@ export default {
       },
       infoPlist: {
         NSCameraUsageDescription: "This app uses camera to scan.",
-        LSApplicationQueriesSchemes: ["itms-apps"],
+        LSApplicationQueriesSchemes: ["itms-apps", "whatsapp"],
       },
     },
     web: {
