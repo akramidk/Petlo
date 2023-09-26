@@ -1,14 +1,13 @@
 module V1
-  class CategoriesController < ApplicationController
-    before_action -> { current_customer(verified: true) }
-    
+  class CategoriesController < ApplicationController    
     include CategoriesHelper
 
     def category_items
+      #TODO I did the country thingy becuse of Apple, we'll handle it in the future
       response = CategoriesHelper.items(
         category_public_id: params[:public_id],
         brand_public_id: params[:brand_public_id],
-        country: @customer.country,
+        country: "JO",
         language: params[:locale],
         page: params[:page].to_i
       )

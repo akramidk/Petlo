@@ -3,6 +3,7 @@ module V1
     include SearchHelper
 
     def index
+      #TODO I did the country thingy becuse of Apple, we'll handle it in the future
       response = SearchHelper.items(
         country: "JO",
         language: params[:locale],
