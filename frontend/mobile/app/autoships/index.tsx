@@ -6,6 +6,7 @@ import { DataCards, PageStructure } from "../../src/components/organisms";
 import { Endpoints } from "../../src/enums";
 import {
   useAPIFetching,
+  useCustomerContext,
   useDataContext,
   useTranslationsContext,
 } from "../../src/hooks";
@@ -17,17 +18,19 @@ import { AboutAutoship } from "./components/AboutAutoship";
 
 const Autoships = () => {
   const router = useRouter();
+  const { customer } = useCustomerContext();
   const { t } = useTranslationsContext();
   const { data, setData } = useDataContext();
   const { response } = useAPIFetching<void, AutoshipsResponse>({
     endpoint: Endpoints.AUTOSHIPS,
     options: {
       withPagination: true,
+      wait: customer === null,
     },
   });
 
   const autoships: DataCardProps[] = useMemo(() => {
-    if (response.isFetching) return [];
+    if (customer === null || response.isFetching) return [];
 
     return response.body.data.map((autoship) => {
       const actions = [];
@@ -176,7 +179,7 @@ const Autoships = () => {
     });
   }, [response]);
 
-  if (response === undefined || response.isFetching) {
+  if (customer && (response === undefined || response.isFetching)) {
     return <Loading />;
   }
 
@@ -186,10 +189,16 @@ const Autoships = () => {
       floatingElement={
         <BaseButton
           cn="bg-[#6BADAE] px-[32px] py-[20px] rounded-full shadow-lg"
-          onClick={() => router.push("/autoships/create-new-autoship")}
+          onClick={() =>
+            router.push(customer ? "/autoships/create-new-autoship" : "welcome")
+          }
         >
           <Text font="bold" cn="text-[#fff] text-[14px]">
-            {t("AUTOSHIPS__CREATE_AN_AUTOSHIP")}
+            {t(
+              customer
+                ? "AUTOSHIPS__CREATE_AN_AUTOSHIP"
+                : "AUTOSHIPS__NO_CUSTOMER_CREATE_AN_AUTOSHIP"
+            )}
           </Text>
         </BaseButton>
       }

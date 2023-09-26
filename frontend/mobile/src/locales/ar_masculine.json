@@ -221,6 +221,7 @@
   "AUTOSHIPS__INACTIVE": "غير نشط",
   "AUTOSHIPS__PAYMENT_ERROR": "فشل الدفع بالبطاقة 3 مرات",
   "AUTOSHIPS__TITLE": "أوتوشيب",
+  "AUTOSHIPS__NO_CUSTOMER_CREATE_AN_AUTOSHIP": "انشئ حساب أو سجل الدخول ﻹنشاء أوتوشيب",
   "AUTOSHIPS__CREATE_AN_AUTOSHIP": "أنشئ أوتوشيب",
   "AUTOSHIPS__NEXT_SHIPMENT_ON": "الشحنة القادمة يوم",
   "AUTOSHIPS__ACTIONS": {

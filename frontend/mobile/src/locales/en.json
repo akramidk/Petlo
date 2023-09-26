@@ -210,6 +210,7 @@
     "canceled": "Order Was Canceled"
   },
   "AUTOSHIPS__TITLE": "Autoships",
+  "AUTOSHIPS__NO_CUSTOMER_CREATE_AN_AUTOSHIP": "Sign Up or Sing In to Create an Autoship",
   "AUTOSHIPS__CREATE_AN_AUTOSHIP": "Create an Autoship",
   "AUTOSHIPS__NEXT_SHIPMENT_ON": "Next shipment on",
   "AUTOSHIPS__DEACTIVATED": "Deactivated",
