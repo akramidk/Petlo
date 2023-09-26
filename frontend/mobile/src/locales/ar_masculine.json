@@ -188,6 +188,7 @@
   "WELCOME__TITLE": "مرحبًا في",
   "WELCOME__SIGN_UP_BUTTON": "إنشاء حساب",
   "WELCOME__SIGN_IN_BUTTON": "تسجيل الدخول",
+  "WELCOME__CONTINUE_WITHOUT_ACCOUNT": "أكمل بدون حساب",
   "CARD_TO_DATA_CARD__EXPIRES_IN": "تنتهي في %{expYear}/%{expMonth}",
   "CHECKOUT__TITLE": "تنفيذ الطلب",
   "CHECKOUT__BUTTON": "تأكيد الطلب",

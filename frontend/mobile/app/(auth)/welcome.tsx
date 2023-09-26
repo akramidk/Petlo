@@ -37,30 +37,47 @@ const Welcome = () => {
       </View>
 
       <View
-        className={clsx(
-          "absolute bottom-0 mb-[52px] px-[36px] space-x-[6px]",
-          direction === "ltr" ? "flex-row" : "flex-row-reverse"
-        )}
+        className={
+          "absolute bottom-0 mb-[52px] px-[36px] w-[100%] items-center"
+        }
       >
-        <BaseButton
-          onClick={() => {
-            router.push("/sign-up");
-          }}
-          cn="grow h-[52px] bg-[#0E333C] rounded-[4px] items-center justify-center"
+        <View
+          className={clsx(
+            "space-x-[6px]",
+            direction === "ltr" ? "flex-row" : "flex-row-reverse"
+          )}
         >
-          <Text font="semiBold" cn="text-[#eee] text-[14px]">
-            {t("WELCOME__SIGN_UP_BUTTON")}
-          </Text>
-        </BaseButton>
+          <BaseButton
+            onClick={() => {
+              router.push("/sign-up");
+            }}
+            cn="grow h-[52px] bg-[#0E333C] rounded-[4px] items-center justify-center"
+          >
+            <Text font="semiBold" cn="text-[#eee] text-[14px]">
+              {t("WELCOME__SIGN_UP_BUTTON")}
+            </Text>
+          </BaseButton>
+
+          <BaseButton
+            onClick={() => {
+              router.push("/sign-in");
+            }}
+            cn="grow h-[52px] border-[1px] border-[#0E333C] rounded-[4px] items-center justify-center"
+          >
+            <Text font="semiBold" cn="text-[#0E333C] text-[14px]">
+              {t("WELCOME__SIGN_IN_BUTTON")}
+            </Text>
+          </BaseButton>
+        </View>
 
         <BaseButton
           onClick={() => {
-            router.push("/sign-in");
+            router.push("/");
           }}
-          cn="grow h-[52px] border-[1px] border-[#0E333C] rounded-[4px] items-center justify-center"
+          cn="p-[20px]"
         >
-          <Text font="semiBold" cn="text-[#0E333C] text-[14px]">
-            {t("WELCOME__SIGN_IN_BUTTON")}
+          <Text font="bold" cn="text-[15px] text-[#666]">
+            {t("WELCOME__CONTINUE_WITHOUT_ACCOUNT")}
           </Text>
         </BaseButton>
       </View>

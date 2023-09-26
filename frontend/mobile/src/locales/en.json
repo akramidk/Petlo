@@ -180,6 +180,7 @@
   "WELCOME__TITLE": "Welcome to",
   "WELCOME__SIGN_UP_BUTTON": "Sign Up",
   "WELCOME__SIGN_IN_BUTTON": "Sign In",
+  "WELCOME__CONTINUE_WITHOUT_ACCOUNT": "Continue Without Account",
   "CARD_TO_DATA_CARD__EXPIRES_IN": "Expires in %{expMonth}/%{expYear}",
   "CHECKOUT__TITLE": "Checkout",
   "CHECKOUT__BUTTON": "Place Order",
