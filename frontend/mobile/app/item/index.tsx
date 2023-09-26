@@ -22,7 +22,7 @@ const Item = () => {
   const router = useRouter();
   const { t } = useTranslationsContext();
   const { publicId } = useLocalSearchParams<{ publicId: string }>();
-  const { customer } = useCustomerContext();
+  const { customer, setSkipCustomer } = useCustomerContext();
 
   const cartStore = useCartStore();
   const {
@@ -91,7 +91,7 @@ const Item = () => {
           <Pressable
             className="items-center pb-[16px] space-y-[4px]"
             onPress={() => {
-              router.push("/welcome");
+              setSkipCustomer(false);
             }}
           >
             <Text font="semiBold" cn="text-[14px] text-[#444]">

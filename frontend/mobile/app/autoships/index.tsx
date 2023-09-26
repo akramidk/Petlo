@@ -18,7 +18,7 @@ import { AboutAutoship } from "./components/AboutAutoship";
 
 const Autoships = () => {
   const router = useRouter();
-  const { customer } = useCustomerContext();
+  const { customer, setSkipCustomer } = useCustomerContext();
   const { t } = useTranslationsContext();
   const { data, setData } = useDataContext();
   const { response } = useAPIFetching<void, AutoshipsResponse>({
@@ -189,9 +189,13 @@ const Autoships = () => {
       floatingElement={
         <BaseButton
           cn="bg-[#6BADAE] px-[32px] py-[20px] rounded-full shadow-lg"
-          onClick={() =>
-            router.push(customer ? "/autoships/create-new-autoship" : "welcome")
-          }
+          onClick={() => {
+            if (customer) {
+              router.push("/autoships/create-new-autoship");
+            } else {
+              setSkipCustomer(false);
+            }
+          }}
         >
           <Text font="bold" cn="text-[#fff] text-[14px]">
             {t(

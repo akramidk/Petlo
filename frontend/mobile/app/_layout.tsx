@@ -101,6 +101,8 @@ const Layout = () => {
     setCustomerWithSessionToken,
     sessionToken,
     clearCustomer,
+    skipCustomer,
+    setSkipCustomer,
   } = useCustomer();
   const {
     language,
@@ -194,6 +196,8 @@ const Layout = () => {
           setCustomerWithSessionToken,
           sessionToken,
           clearCustomer,
+          skipCustomer,
+          setSkipCustomer,
         }}
       >
         <InternationalizationContext.Provider

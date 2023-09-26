@@ -4,6 +4,7 @@ import { View, Image } from "react-native";
 import { Button, Logo, Text } from "../../src/components/atoms";
 import { BaseButton } from "../../src/components/bases";
 import {
+  useCustomerContext,
   useInternationalizationContext,
   useTranslationsContext,
 } from "../../src/hooks";
@@ -11,6 +12,7 @@ import {
 const Welcome = () => {
   const router = useRouter();
   const { t } = useTranslationsContext();
+  const { setSkipCustomer } = useCustomerContext();
   const { direction } = useInternationalizationContext();
 
   return (
@@ -72,7 +74,7 @@ const Welcome = () => {
 
         <BaseButton
           onClick={() => {
-            router.push("/");
+            setSkipCustomer(true);
           }}
           cn="p-[20px]"
         >

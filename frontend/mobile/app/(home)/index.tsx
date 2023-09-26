@@ -23,7 +23,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 const Home = () => {
   const router = useRouter();
   const { t } = useTranslationsContext();
-  const { customer } = useCustomerContext();
+  const { customer, skipCustomer } = useCustomerContext();
   const { storedLanguage, languageGender } = useInternationalizationContext();
 
   const [isCheckingRevalidationFinished, setIsCheckingRevalidationFinished] =
@@ -46,7 +46,7 @@ const Home = () => {
       // this should be fix
       wait:
         !storedLanguage ||
-        !customer ||
+        (!customer && !skipCustomer) ||
         (!languageGender && storedLanguage === "ar"),
     },
   });
@@ -63,7 +63,7 @@ const Home = () => {
       // TODO ther's a problem that the home page is rendered then
       // the user got redirct to right page by RoutesRestrictor
       // this should be fix
-      wait: !storedLanguage || !customer,
+      wait: !storedLanguage || (!customer && !skipCustomer),
     },
   });
 
@@ -85,7 +85,7 @@ const Home = () => {
 
   if (
     !storedLanguage ||
-    !customer ||
+    (!customer && !skipCustomer) ||
     bannersResponse === undefined ||
     bannersResponse.isFetching ||
     sectionsResponse === undefined ||

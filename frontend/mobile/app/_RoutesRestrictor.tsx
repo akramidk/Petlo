@@ -12,20 +12,20 @@ interface RoutesRestrictorProps {
 
 const RoutesRestrictor = ({ children }: RoutesRestrictorProps) => {
   const router = useRouter();
-  const { customer } = useCustomerContext();
+  const { customer, skipCustomer } = useCustomerContext();
   const { storedLanguage } = useInternationalizationContext();
 
   useEffect(() => {
     if (storedLanguage === null) {
       router.replace("/select-language");
     } else {
-      if (customer === null) {
+      if (customer === null && !skipCustomer) {
         router.replace("/welcome");
       } else {
         router.replace("/");
       }
     }
-  }, [storedLanguage, customer]);
+  }, [storedLanguage, customer, skipCustomer]);
 
   return <>{children}</>;
 };

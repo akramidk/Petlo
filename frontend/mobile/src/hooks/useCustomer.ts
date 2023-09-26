@@ -12,6 +12,7 @@ const useCustomer = () => {
     undefined
   );
   const [customer, setCustomer] = useState<Customer>();
+  const [skipCustomer, setSkipCustomer] = useState<boolean>(false);
 
   const { response, setWait } = useAPIFetching<
     undefined,
@@ -65,6 +66,10 @@ const useCustomer = () => {
     );
 
     setCustomer(customer);
+
+    if (skipCustomer) {
+      setSkipCustomer(false);
+    }
   };
 
   const clearCustomer = async () => {
@@ -85,6 +90,8 @@ const useCustomer = () => {
     setCustomerWithSessionToken,
     sessionToken,
     clearCustomer,
+    skipCustomer,
+    setSkipCustomer,
   };
 };
 
