@@ -1,11 +1,10 @@
 module V1
   class SectionsController < ApplicationController
-    before_action -> { current_customer(verified: true) }
-
     include SectionsHelper
 
     def index
-      response = SectionsHelper.all(customer: @customer, language: params[:locale], limit: params[:limit])
+      #TODO Akram did the country thingy becuse of Apple, we'll handle it in the future
+      response = SectionsHelper.all(country: "JO", language: params[:locale], limit: params[:limit])
       render json: { data: response[:data] }, status: 200
     end
   end

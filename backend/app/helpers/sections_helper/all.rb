@@ -12,14 +12,14 @@ module SectionsHelper::All
     }
   ]
   
-  def all(customer:, language:, limit:)
+  def all(country:, language:, limit:)
     sections = []
   
     begin
       SECTIONS.each do |section|
         items = Category.items(
           category: section[:category_public_id],
-          country: customer.country,
+          country: country,
           language: language,
           limit: (limit || DEFAULT_LIMIT),
           brand_public_id: section[:brand_public_id],
