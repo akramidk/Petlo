@@ -13,7 +13,7 @@ export default {
     },
     android: {
       package: "com.petlo",
-      versionCode: 2.0,
+      versionCode: 3.0,
       config: {
         googleMaps: {
           apiKey: process.env.GOOGLE_ANDROID_MAP_KEY,
@@ -22,7 +22,7 @@ export default {
     },
     ios: {
       bundleIdentifier: "com.petlo",
-      buildNumber: "1.7.0",
+      buildNumber: "1.8.0",
       config: {
         googleMapsApiKey: process.env.GOOGLE_IOS_MAP_KEY,
       },
