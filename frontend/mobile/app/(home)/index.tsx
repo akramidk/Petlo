@@ -23,7 +23,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 const Home = () => {
   const router = useRouter();
   const { t } = useTranslationsContext();
-  const { customer, skipCustomer } = useCustomerContext();
+  const { customer, skipCustomer, setSkipCustomer } = useCustomerContext();
   const { storedLanguage, languageGender } = useInternationalizationContext();
 
   const [isCheckingRevalidationFinished, setIsCheckingRevalidationFinished] =
@@ -97,9 +97,22 @@ const Home = () => {
 
   return (
     <Scrollable cn="px-[0px] space-y-[28px] bg-[#fff]">
-      {bannersResponse.body.data.length > 0 && (
-        <Banners data={bannersResponse.body.data} />
-      )}
+      <View>
+        {customer === null && (
+          <View className="mx-[28px]">
+            <Warning
+              secondText={t("COMMON__NO_CUSTOMER_WARNING")}
+              onClick={() => setSkipCustomer(false)}
+            />
+          </View>
+        )}
+
+        <View className="h-[4px]" />
+
+        {bannersResponse.body.data.length > 0 && (
+          <Banners data={bannersResponse.body.data} />
+        )}
+      </View>
 
       <View className="mx-[28px]">
         <Warning

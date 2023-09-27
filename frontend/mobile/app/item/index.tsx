@@ -99,7 +99,7 @@ const Item = () => {
             </Text>
 
             <Text font="bold" cn="text-[14px] text-[222]">
-              {t("ITEM__NO_CUSTOMER_WARNING_2")}
+              {t("COMMON__NO_CUSTOMER_WARNING")}
             </Text>
           </Pressable>
         ) : undefined
