@@ -99,15 +99,13 @@ const Home = () => {
     <Scrollable cn="px-[0px] space-y-[28px] bg-[#fff]">
       <View>
         {customer === null && (
-          <View className="mx-[28px]">
-            <Warning
-              secondText={t("COMMON__NO_CUSTOMER_WARNING")}
-              onClick={() => setSkipCustomer(false)}
-            />
-          </View>
+          <Warning
+            secondText={t("COMMON__NO_CUSTOMER_WARNING")}
+            onClick={() => setSkipCustomer(false)}
+            containerCN="mb-[4px] mx-[28px] justify-center"
+            viewCN="items-center"
+          />
         )}
-
-        <View className="h-[4px]" />
 
         {bannersResponse.body.data.length > 0 && (
           <Banners data={bannersResponse.body.data} />

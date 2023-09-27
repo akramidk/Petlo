@@ -17,6 +17,7 @@ import {
 import { ItemPreview } from "../../src/components/pages";
 import { Pressable, View } from "react-native";
 import { Text } from "../../src/components/atoms";
+import { Warning } from "../../src/components/molecules";
 
 const Item = () => {
   const router = useRouter();
@@ -88,20 +89,15 @@ const Item = () => {
       addButtonDisabled={customer === null}
       bottomContainerElement={
         customer === null ? (
-          <Pressable
-            className="items-center pb-[16px] space-y-[4px]"
-            onPress={() => {
+          <Warning
+            onClick={() => {
               setSkipCustomer(false);
             }}
-          >
-            <Text font="semiBold" cn="text-[14px] text-[#444]">
-              {t("ITEM__NO_CUSTOMER_WARNING_1")}
-            </Text>
-
-            <Text font="bold" cn="text-[14px] text-[222]">
-              {t("COMMON__NO_CUSTOMER_WARNING")}
-            </Text>
-          </Pressable>
+            firstText={t("ITEM__NO_CUSTOMER_WARNING_1")}
+            secondText={t("COMMON__NO_CUSTOMER_WARNING")}
+            containerCN="mb-[12px] justify-center"
+            viewCN="items-center"
+          />
         ) : undefined
       }
     />
