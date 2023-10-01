@@ -6,7 +6,7 @@ module V1
       #TODO I did the country thingy becuse of Apple, we'll handle it in the future
       response = CategoriesHelper.items(
         category_public_id: params[:public_id],
-        brand_public_id: params[:brand_public_id],
+        brand_public_id: params[:brand_public_id] == "nil" || params[:brand_public_id] == "null" ? nil : params[:brand_public_id],
         country: "JO",
         language: params[:locale],
         page: params[:page].to_i
