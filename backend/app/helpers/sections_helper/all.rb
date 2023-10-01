@@ -5,9 +5,17 @@ module SectionsHelper::All
     {
       name: {
         "ar" => "رويال كانين طعام جاف للقطط",
-        "en" => "Royal Canin Cat Dry Food"
+        "en" => "Royal Canin Dry Cat Food"
       },
       category_public_id: "jsKVEGhNf9sCOoHv",
+      brand_public_id: "f6jYP3jTW8YBYhLo"
+    },
+    {
+      name: {
+        "ar" => "رويال كانين طعام رطب للقطط",
+        "en" => "Royal Canin Wet Cat Food"
+      },
+      category_public_id: "98DFFK9P0Y7o0uoZ",
       brand_public_id: "f6jYP3jTW8YBYhLo"
     }
   ]
