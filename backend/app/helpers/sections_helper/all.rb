@@ -24,6 +24,13 @@ module SectionsHelper::All
         "en" => "Milk Supplement for Cats"
       },
       category_public_id: "6Xm9NXKuNoNAdcBH"
+    },
+    {
+      name: {
+        "ar" => "رمل لفضلات القطط",
+        "en" => "Cat Litters"
+      },
+      category_public_id: "flzjBzerYYdaO8Dx"
     }
   ]
   
