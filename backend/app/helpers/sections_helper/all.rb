@@ -17,6 +17,13 @@ module SectionsHelper::All
       },
       category_public_id: "98DFFK9P0Y7o0uoZ",
       brand_public_id: "f6jYP3jTW8YBYhLo"
+    },
+    {
+      name: {
+        "ar" => "مكمل الحليب للقطط",
+        "en" => "Milk Supplement for Cats"
+      },
+      category_public_id: "6Xm9NXKuNoNAdcBH"
     }
   ]
   
