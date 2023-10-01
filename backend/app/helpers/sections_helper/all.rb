@@ -31,6 +31,13 @@ module SectionsHelper::All
         "en" => "Cat Litters"
       },
       category_public_id: "flzjBzerYYdaO8Dx"
+    },
+    {
+      name: {
+        "ar" => "مكافات للقطط",
+        "en" => "Cat Treats"
+      },
+      category_public_id: "vLUgz0YK8rxiXwSa"
     }
   ]
   
