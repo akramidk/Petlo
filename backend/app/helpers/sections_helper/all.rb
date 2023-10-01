@@ -20,6 +20,22 @@ module SectionsHelper::All
     },
     {
       name: {
+        "ar" => "فيليسيا طعام جاف للقطط",
+        "en" => "Felicia Dry Cat Food"
+      },
+      category_public_id: "jsKVEGhNf9sCOoHv",
+      brand_public_id: "WkwvH3KPMlsCTjqG"
+    },
+    {
+      name: {
+        "ar" => "فيليسيا طعام رطب للقطط",
+        "en" => "Felicia Wet Cat Food"
+      },
+      category_public_id: "98DFFK9P0Y7o0uoZ",
+      brand_public_id: "WkwvH3KPMlsCTjqG"
+    },
+    {
+      name: {
         "ar" => "مكمل الحليب للقطط",
         "en" => "Milk Supplement for Cats"
       },
