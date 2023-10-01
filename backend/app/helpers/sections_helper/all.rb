@@ -1,5 +1,5 @@
 module SectionsHelper::All
-  DEFAULT_LIMIT = 8
+  DEFAULT_LIMIT = 4
   
   SECTIONS = [
     {
