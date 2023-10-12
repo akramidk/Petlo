@@ -150,23 +150,11 @@ const ItemPreview = ({
                     {option.name}
                   </Text>
 
-                  <ScrollView
-                    className={direction === "ltr" ? "self-start" : "self-end"}
-                    ref={scrollViewRef}
-                    contentContainerStyle={{
-                      flexDirection:
-                        direction === "ltr" ? "row" : "row-reverse",
-                    }}
-                    onContentSizeChange={
-                      direction === "rtl"
-                        ? () =>
-                            scrollViewRef.current?.scrollToEnd({
-                              animated: false,
-                            })
-                        : undefined
-                    }
-                    horizontal
-                    showsHorizontalScrollIndicator={false}
+                  <View
+                    className={clsx(
+                      "flex flex-wrap gap-[4px]",
+                      direction === "ltr" ? "flex-row" : "flex-row-reverse"
+                    )}
                   >
                     {option.values.map((value, y) => {
                       return (
@@ -180,7 +168,6 @@ const ItemPreview = ({
                             }}
                             cn={clsx(
                               "px-[28px] py-[8px] border-[1.4px] rounded-[4px]",
-                              direction === "ltr" ? "mr-[4px]" : "ml-[4px]",
                               value.value === selectedOptions[i]
                                 ? "border-[#0E333C]"
                                 : "border-[#f6f6f6]"
@@ -196,7 +183,7 @@ const ItemPreview = ({
                         </View>
                       );
                     })}
-                  </ScrollView>
+                  </View>
                 </View>
               );
             })}
