@@ -1,10 +1,11 @@
 import clsx from "clsx";
 import React from "react";
-import { View, Image } from "react-native";
+import { View } from "react-native";
 import { useInternationalizationContext } from "../../hooks";
 import { CartItemProps } from "../../interfaces";
 import { buttonStatus } from "../../types";
 import { Text, Link } from "../atoms";
+import { Image } from "expo-image";
 
 interface IItem {
   itemId: string;
@@ -49,11 +50,11 @@ const ItemViewer = ({
         <Image
           style={{
             flex: 1,
-            resizeMode: "cover",
           }}
           source={{
             uri: image,
           }}
+          contentFit="cover"
         />
       </View>
 

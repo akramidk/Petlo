@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import { useRouter } from "expo-router";
-import { View, Image } from "react-native";
+import { View } from "react-native";
 import { Button, Logo, Text } from "../../src/components/atoms";
 import { BaseButton } from "../../src/components/bases";
 import {
@@ -8,6 +8,7 @@ import {
   useInternationalizationContext,
   useTranslationsContext,
 } from "../../src/hooks";
+import { Image } from "expo-image";
 
 const Welcome = () => {
   const router = useRouter();

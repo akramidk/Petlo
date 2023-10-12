@@ -1,11 +1,12 @@
 import Swipeable from "react-native-gesture-handler/Swipeable";
 import { Banner } from "../../../src/interfaces";
-import { Image, Text, View } from "react-native";
+import { Text, View } from "react-native";
 import { useCallback, useState } from "react";
 import { StyleSheet, StyleProp } from "react-native";
 import clsx from "clsx";
 import { BaseButton } from "../../../src/components/bases";
 import { useRouter } from "expo-router";
+import { Image } from "expo-image";
 
 interface BannersProps {
   data: Banner[];
@@ -21,7 +22,6 @@ const Banners = ({ data }: BannersProps) => {
   const imageProps = {
     style: {
       flex: 1,
-      resizeMode: "cover",
       borderRadius: 4,
     } as StyleProp<any>,
   };
@@ -36,6 +36,7 @@ const Banners = ({ data }: BannersProps) => {
           source={{
             uri: data[index].image,
           }}
+          contentFit="cover"
           {...imageProps}
         />
       </BaseButton>

@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { View, Image } from "react-native";
+import { View } from "react-native";
 import {
   useAPIFetching,
   useInternationalizationContext,
@@ -13,6 +13,7 @@ import { BaseButton } from "../bases";
 import { buttonStatus } from "../../types";
 import { Endpoints } from "../../enums";
 import Loading from "./Loading";
+import { Image } from "expo-image";
 
 interface ItemPreviewProps {
   publicId: string;
@@ -115,11 +116,11 @@ const ItemPreview = ({
         <Image
           style={{
             flex: 1,
-            resizeMode: "cover",
           }}
           source={{
             uri: item.image,
           }}
+          contentFit="cover"
         />
       </View>
 

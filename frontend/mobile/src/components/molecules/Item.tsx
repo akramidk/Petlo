@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import { useRouter } from "expo-router";
 import { useMemo } from "react";
-import { Image, View } from "react-native";
+import { View } from "react-native";
 import { Text } from "../atoms";
 import { BaseButton } from "../bases";
 import {
@@ -10,6 +10,7 @@ import {
 } from "../../hooks";
 import { BriefItem } from "../../interfaces";
 import reactStringReplace from "react-string-replace";
+import { Image } from "expo-image";
 
 interface ItemProps {
   variant: "small" | "large";
@@ -95,11 +96,11 @@ const Item = ({ variant, data, onClick }: ItemProps) => {
         <Image
           style={{
             flex: 1,
-            resizeMode: "cover",
           }}
           source={{
             uri: data.image,
           }}
+          contentFit="cover"
         />
         {data.variants.number > 1 && (
           <View
