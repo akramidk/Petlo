@@ -8,7 +8,7 @@ module Jobs
 
     def charge
       @@round = params[:round]
-      country = params[:country]
+      @@country = params[:country]
       autoships = @@round == 1 ? cash_autoships + card_autoships : card_autoships
 
       autoships.each do |autoship|
@@ -20,7 +20,7 @@ module Jobs
         autoship.items.each do |auto_item|
           item = Item.find_by(id: auto_item.item_id)
           variant = Variant.find_by(id: auto_item.variant_id)
-          price = variant.prices.find_by(country: country).value
+          price = variant.prices.find_by(country: @@country).value
 
           items_for_calculation << {
             item_id: item.public_id,
@@ -37,11 +37,11 @@ module Jobs
           }
         end
 
-        items_calculation = Utils.autoship_items_calculation(country: country, data: items_for_calculation, language: "en")
+        items_calculation = Utils.autoship_items_calculation(country: @@country, data: items_for_calculation, language: "en")
         cart_amount = items_calculation[:amount_after_discount]
-        delivery_amount = CONSTANTS::DELIVERY_COSTS[country]
+        delivery_amount = CONSTANTS::DELIVERY_COSTS[@@country]
         amount = cart_amount + delivery_amount
-        currency  = CONSTANTS::COUNTRIES_CURRENCIES[country]["en"]
+        currency  = CONSTANTS::COUNTRIES_CURRENCIES[@@country]["en"]
 
         if autoship.payment_method == "card"
           card = Card.find_by(id: autoship.payment_card_id)
@@ -51,7 +51,7 @@ module Jobs
                   processor: PROCESSOR,
                   data: {
                       amount: amount,
-                      currency: CONSTANTS::COUNTRIES_CURRENCIES[country]["en"].downcase,
+                      currency: CONSTANTS::COUNTRIES_CURRENCIES[@@country]["en"].downcase,
                       source: card.processor_card_id,
                       customer_id: autoship.customer.stripe_id
                   }
@@ -137,7 +137,7 @@ module Jobs
     end
 
     def next_shipment_on(payment_method:)
-      today_time = Time.now
+      today_time = Utils.utc_to_local_time(country: @@country)
       today_date = Date.new(today_time.year, today_time.month, today_time.day)
 
       if payment_method == "card"
