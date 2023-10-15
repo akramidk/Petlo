@@ -8,7 +8,7 @@ module SectionsHelper::All
         "en" => "Royal Canin Dry Cat Food"
       },
       category_public_id: "jsKVEGhNf9sCOoHv",
-      brand_public_id: "f6jYP3jTW8YBYhLo"
+      brands: "f6jYP3jTW8YBYhLo"
     },
     {
       name: {
@@ -16,7 +16,7 @@ module SectionsHelper::All
         "en" => "Royal Canin Wet Cat Food"
       },
       category_public_id: "98DFFK9P0Y7o0uoZ",
-      brand_public_id: "f6jYP3jTW8YBYhLo"
+      brands: "f6jYP3jTW8YBYhLo"
     },
     {
       name: {
@@ -24,7 +24,7 @@ module SectionsHelper::All
         "en" => "Royal Canin Dry Dog Food"
       },
       category_public_id: "OCqWuzle8HRKChzL",
-      brand_public_id: "f6jYP3jTW8YBYhLo"
+      brands: "f6jYP3jTW8YBYhLo"
     },
     {
       name: {
@@ -32,7 +32,7 @@ module SectionsHelper::All
         "en" => "Royal Canin Wet Dog Food"
       },
       category_public_id: "HHUdNHbdKCuhJIN2",
-      brand_public_id: "f6jYP3jTW8YBYhLo"
+      brands: "f6jYP3jTW8YBYhLo"
     },
     {
       name: {
@@ -40,7 +40,7 @@ module SectionsHelper::All
         "en" => "Nature's Protection Dry Cat Food"
       },
       category_public_id: "jsKVEGhNf9sCOoHv",
-      brand_public_id: "jTgSswhfAGnTDWnT"
+      brands: "jTgSswhfAGnTDWnT"
     },
     {
       name: {
@@ -48,7 +48,7 @@ module SectionsHelper::All
         "en" => "Nature's Protection Wet Cat Food"
       },
       category_public_id: "98DFFK9P0Y7o0uoZ",
-      brand_public_id: "jTgSswhfAGnTDWnT"
+      brands: "jTgSswhfAGnTDWnT"
     },
     {
       name: {
@@ -56,7 +56,7 @@ module SectionsHelper::All
         "en" => "Nature's Protection Dry Dog Food"
       },
       category_public_id: "OCqWuzle8HRKChzL",
-      brand_public_id: "jTgSswhfAGnTDWnT"
+      brands: "jTgSswhfAGnTDWnT"
     },
     {
       name: {
@@ -64,7 +64,7 @@ module SectionsHelper::All
         "en" => "Felicia Dry Cat Food"
       },
       category_public_id: "jsKVEGhNf9sCOoHv",
-      brand_public_id: "WkwvH3KPMlsCTjqG"
+      brands: "WkwvH3KPMlsCTjqG"
     },
     {
       name: {
@@ -72,7 +72,7 @@ module SectionsHelper::All
         "en" => "Felicia Wet Cat Food"
       },
       category_public_id: "98DFFK9P0Y7o0uoZ",
-      brand_public_id: "WkwvH3KPMlsCTjqG"
+      brands: "WkwvH3KPMlsCTjqG"
     },
     {
       name: {
@@ -80,7 +80,15 @@ module SectionsHelper::All
         "en" => "Felicia Dry Dog Food"
       },
       category_public_id: "OCqWuzle8HRKChzL",
-      brand_public_id: "WkwvH3KPMlsCTjqG"
+      brands: "WkwvH3KPMlsCTjqG"
+    },
+    {
+      name: {
+        "ar" => "المزيد من الطعام الجاف للكلاب",
+        "en" => "More Dry Dog Food"
+      },
+      category_public_id: "OCqWuzle8HRKChzL",
+      brands: ["xck5wT1zNH3gjMUC", "Gk79Bwd3dTH6kOoj"]
     },
     {
       name: {
@@ -88,7 +96,7 @@ module SectionsHelper::All
         "en" => "Molly Dry Cat Food"
       },
       category_public_id: "jsKVEGhNf9sCOoHv",
-      brand_public_id: "7fzwzmgVPOHlBAdn"
+      brands: "7fzwzmgVPOHlBAdn"
     },
     {
       name: {
@@ -96,7 +104,7 @@ module SectionsHelper::All
         "en" => "Reflex Dry Cat Food"
       },
       category_public_id: "jsKVEGhNf9sCOoHv",
-      brand_public_id: "Q002zrwi0U2aCNkI"
+      brands: "Q002zrwi0U2aCNkI"
     },
     {
       name: {
@@ -104,6 +112,13 @@ module SectionsHelper::All
         "en" => "Milk Supplement for Cats"
       },
       category_public_id: "6Xm9NXKuNoNAdcBH"
+    },
+    {
+      name: {
+        "ar" => "مكمل الحليب للكلاب",
+        "en" => "Milk Supplement for Dogs"
+      },
+      category_public_id: "C1oGvzcmENuIMkur"
     },
     {
       name: {
@@ -131,14 +146,14 @@ module SectionsHelper::All
           country: country,
           language: language,
           limit: (limit || DEFAULT_LIMIT),
-          brand_public_id: section[:brand_public_id],
+          brands: section[:brands],
         )
 
         next if items[:data].length == 0
         sections << {
           name: section[:name][language],
           category: section[:category_public_id],
-          brand_public_id: section[:brand_public_id],
+          brands: section[:brands],
           items: {
             has_more: items[:has_more],
             data: items[:data]

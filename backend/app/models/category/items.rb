@@ -5,9 +5,9 @@ module Category::Items
   @@with_unavailable_items = nil
   @@limit = nil
   @@offset = nil
-  @@brand_public_id = nil
+  @@brands = nil
 
-  def items(category:, country:, language:, with_unavailable_items: false, limit: nil, offset: nil, brand_public_id: nil)
+  def items(category:, country:, language:, with_unavailable_items: false, limit: nil, offset: nil, brands: nil)
     @@category = Category.find_by(public_id: category)
 
     if !@@category
@@ -22,7 +22,7 @@ module Category::Items
     @@with_unavailable_items = with_unavailable_items
     @@limit = limit
     @@offset = offset
-    @@brand_public_id = brand_public_id
+    @@brands = brands
 
     items = {
       has_more: @@limit || @@offset ? retrieve_items(limit: 1, offset: @@offset.to_i + @@limit.to_i).exists? : false,
@@ -35,7 +35,7 @@ module Category::Items
 
   private
   def retrieve_items(limit: nil, offset: nil)
-    if @@brand_public_id
+    if @@brands
       @@category.items.joins(:availabilities, :brand).where(
         availabilities: {
           country: @@country,
@@ -43,7 +43,7 @@ module Category::Items
         }
       ).where(
         brand: {
-          public_id: @@brand_public_id
+          public_id: @@brands
         }
       ).limit(limit).offset(offset)
     else
