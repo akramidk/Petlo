@@ -20,6 +20,46 @@ module SectionsHelper::All
     },
     {
       name: {
+        "ar" => "رويال كانين طعام جاف للكلاب",
+        "en" => "Royal Canin Dry Dog Food"
+      },
+      category_public_id: "OCqWuzle8HRKChzL",
+      brand_public_id: "f6jYP3jTW8YBYhLo"
+    },
+    {
+      name: {
+        "ar" => "رويال كانين طعام رطب للكلاب",
+        "en" => "Royal Canin Wet Dog Food"
+      },
+      category_public_id: "HHUdNHbdKCuhJIN2",
+      brand_public_id: "f6jYP3jTW8YBYhLo"
+    },
+    {
+      name: {
+        "ar" => "نيتشر بروتكشن طعام جاف للقطط",
+        "en" => "Nature's Protection Dry Cat Food"
+      },
+      category_public_id: "jsKVEGhNf9sCOoHv",
+      brand_public_id: "jTgSswhfAGnTDWnT"
+    },
+    {
+      name: {
+        "ar" => "نيتشر بروتكشن طعام رطب للقطط",
+        "en" => "Nature's Protection Wet Cat Food"
+      },
+      category_public_id: "98DFFK9P0Y7o0uoZ",
+      brand_public_id: "jTgSswhfAGnTDWnT"
+    },
+    {
+      name: {
+        "ar" => "نيتشر بروتكشن طعام جاف للكلاب",
+        "en" => "Nature's Protection Dry Dog Food"
+      },
+      category_public_id: "OCqWuzle8HRKChzL",
+      brand_public_id: "jTgSswhfAGnTDWnT"
+    },
+    {
+      name: {
         "ar" => "فيليسيا طعام جاف للقطط",
         "en" => "Felicia Dry Cat Food"
       },
@@ -33,6 +73,30 @@ module SectionsHelper::All
       },
       category_public_id: "98DFFK9P0Y7o0uoZ",
       brand_public_id: "WkwvH3KPMlsCTjqG"
+    },
+    {
+      name: {
+        "ar" => "فيليسيا طعام جاف للكلاب",
+        "en" => "Felicia Dry Dog Food"
+      },
+      category_public_id: "OCqWuzle8HRKChzL",
+      brand_public_id: "WkwvH3KPMlsCTjqG"
+    },
+    {
+      name: {
+        "ar" => "مولي طعام جاف للقطط",
+        "en" => "Molly Dry Cat Food"
+      },
+      category_public_id: "jsKVEGhNf9sCOoHv",
+      brand_public_id: "7fzwzmgVPOHlBAdn"
+    },
+    {
+      name: {
+        "ar" => "ريفلكس طعام جاف للقطط",
+        "en" => "Reflex Dry Cat Food"
+      },
+      category_public_id: "jsKVEGhNf9sCOoHv",
+      brand_public_id: "Q002zrwi0U2aCNkI"
     },
     {
       name: {
