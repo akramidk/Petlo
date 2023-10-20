@@ -3,3 +3,4 @@ google:
   credentials: <%= Rails.root.join("gcs.keyfile") %>
   project: petlo
   bucket: petlo
+  public: true
