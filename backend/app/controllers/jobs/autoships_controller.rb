@@ -1,3 +1,8 @@
+=begin
+ 1. round 1 will charge the today autoships cash/card and the tomorrow card autoships
+ 2. round 2 will charge the today card autoships
+=end
+
 module Jobs
   class AutoshipsController < ApplicationController
     before_action :check_jobs_key
@@ -5,7 +10,7 @@ module Jobs
     PROCESSOR = "Stripe"
 
     @@round = nil
-
+    
     def charge
       @@round = params[:round]
       @@country = params[:country]
