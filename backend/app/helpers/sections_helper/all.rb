@@ -8,7 +8,7 @@ module SectionsHelper::All
         "en" => "Royal Canin Dry Cat Food"
       },
       category_public_id: "jsKVEGhNf9sCOoHv",
-      brands: "f6jYP3jTW8YBYhLo"
+      brand_public_id: "f6jYP3jTW8YBYhLo"
     },
     {
       name: {
@@ -16,7 +16,7 @@ module SectionsHelper::All
         "en" => "Royal Canin Wet Cat Food"
       },
       category_public_id: "98DFFK9P0Y7o0uoZ",
-      brands: "f6jYP3jTW8YBYhLo"
+      brand_public_id: "f6jYP3jTW8YBYhLo"
     },
     {
       name: {
@@ -24,7 +24,7 @@ module SectionsHelper::All
         "en" => "Royal Canin Dry Dog Food"
       },
       category_public_id: "OCqWuzle8HRKChzL",
-      brands: "f6jYP3jTW8YBYhLo"
+      brand_public_id: "f6jYP3jTW8YBYhLo"
     },
     {
       name: {
@@ -32,7 +32,7 @@ module SectionsHelper::All
         "en" => "Royal Canin Wet Dog Food"
       },
       category_public_id: "HHUdNHbdKCuhJIN2",
-      brands: "f6jYP3jTW8YBYhLo"
+      brand_public_id: "f6jYP3jTW8YBYhLo"
     },
     {
       name: {
@@ -40,7 +40,7 @@ module SectionsHelper::All
         "en" => "Nature's Protection Dry Cat Food"
       },
       category_public_id: "jsKVEGhNf9sCOoHv",
-      brands: "jTgSswhfAGnTDWnT"
+      brand_public_id: "jTgSswhfAGnTDWnT"
     },
     {
       name: {
@@ -48,7 +48,7 @@ module SectionsHelper::All
         "en" => "Nature's Protection Wet Cat Food"
       },
       category_public_id: "98DFFK9P0Y7o0uoZ",
-      brands: "jTgSswhfAGnTDWnT"
+      brand_public_id: "jTgSswhfAGnTDWnT"
     },
     {
       name: {
@@ -56,7 +56,7 @@ module SectionsHelper::All
         "en" => "Nature's Protection Dry Dog Food"
       },
       category_public_id: "OCqWuzle8HRKChzL",
-      brands: "jTgSswhfAGnTDWnT"
+      brand_public_id: "jTgSswhfAGnTDWnT"
     },
     {
       name: {
@@ -64,7 +64,7 @@ module SectionsHelper::All
         "en" => "Felicia Dry Cat Food"
       },
       category_public_id: "jsKVEGhNf9sCOoHv",
-      brands: "WkwvH3KPMlsCTjqG"
+      brand_public_id: "WkwvH3KPMlsCTjqG"
     },
     {
       name: {
@@ -72,7 +72,7 @@ module SectionsHelper::All
         "en" => "Felicia Wet Cat Food"
       },
       category_public_id: "98DFFK9P0Y7o0uoZ",
-      brands: "WkwvH3KPMlsCTjqG"
+      brand_public_id: "WkwvH3KPMlsCTjqG"
     },
     {
       name: {
@@ -80,7 +80,7 @@ module SectionsHelper::All
         "en" => "Felicia Dry Dog Food"
       },
       category_public_id: "OCqWuzle8HRKChzL",
-      brands: "WkwvH3KPMlsCTjqG"
+      brand_public_id: "WkwvH3KPMlsCTjqG"
     },
     {
       name: {
@@ -88,7 +88,7 @@ module SectionsHelper::All
         "en" => "More Dry Dog Food"
       },
       category_public_id: "OCqWuzle8HRKChzL",
-      brands: ["xck5wT1zNH3gjMUC", "Gk79Bwd3dTH6kOoj"]
+      brand_public_id: ["xck5wT1zNH3gjMUC", "Gk79Bwd3dTH6kOoj"]
     },
     {
       name: {
@@ -96,7 +96,7 @@ module SectionsHelper::All
         "en" => "Molly Dry Cat Food"
       },
       category_public_id: "jsKVEGhNf9sCOoHv",
-      brands: "7fzwzmgVPOHlBAdn"
+      brand_public_id: "7fzwzmgVPOHlBAdn"
     },
     {
       name: {
@@ -104,7 +104,7 @@ module SectionsHelper::All
         "en" => "Reflex Dry Cat Food"
       },
       category_public_id: "jsKVEGhNf9sCOoHv",
-      brands: "Q002zrwi0U2aCNkI"
+      brand_public_id: "Q002zrwi0U2aCNkI"
     },
     {
       name: {
@@ -146,14 +146,14 @@ module SectionsHelper::All
           country: country,
           language: language,
           limit: (limit || DEFAULT_LIMIT),
-          brands: section[:brands],
+          brands: section[:brand_public_id],
         )
 
         next if items[:data].length == 0
         sections << {
           name: section[:name][language],
           category: section[:category_public_id],
-          brands: section[:brands],
+          brands: section[:brand_public_id],
           items: {
             has_more: items[:has_more],
             data: items[:data]
