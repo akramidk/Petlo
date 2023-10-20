@@ -153,7 +153,7 @@ module SectionsHelper::All
         sections << {
           name: section[:name][language],
           category: section[:category_public_id],
-          brands: section[:brand_public_id],
+          brand_public_id: section[:brand_public_id],
           items: {
             has_more: items[:has_more],
             data: items[:data]
