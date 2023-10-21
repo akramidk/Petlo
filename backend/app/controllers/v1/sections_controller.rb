@@ -10,7 +10,7 @@ module V1
 
       if response == nil
         response = SectionsHelper.all(country: "JO", language: params[:locale], limit: params[:limit])
-        Rails.cache.write(caching_key, response, expires_in: 3.hour)
+        Rails.cache.write(caching_key, response, expires_in: 10800.seconds)
       end
       
       render json: { data: response[:data] }, status: 200
