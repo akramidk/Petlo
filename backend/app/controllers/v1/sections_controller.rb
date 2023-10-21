@@ -5,7 +5,7 @@ module V1
     def index
       #caching is not the best but it's fine for now
       #TODO I did the country thingy becuse of Apple, we'll handle it in the future
-      caching_key = `jo_sections_#{params[:locale]}_#{params[:limit]}`
+      caching_key = "jo_sections_#{params[:locale]}_#{params[:limit]}"
       response = Rails.cache.read(caching_key)
 
       if response == nil
