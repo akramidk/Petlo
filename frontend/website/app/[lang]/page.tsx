@@ -11,8 +11,7 @@ const Home = async ({
   return (
     <div>
       <div>
-        <Hero />
-        <div>{t["HOME.CHANGE_LANG"]}</div>
+        <Hero t={t} />
       </div>
     </div>
   );
