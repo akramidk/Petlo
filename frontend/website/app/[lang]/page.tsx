@@ -10,9 +10,7 @@ const Home = async ({
 
   return (
     <div>
-      <div>
-        <Hero t={t} />
-      </div>
+      <Hero t={t} />
     </div>
   );
 };
