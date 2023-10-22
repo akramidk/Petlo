@@ -1,5 +1,4 @@
 import { Analytics } from "@vercel/analytics/react";
-
 import "./globals.css";
 import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
