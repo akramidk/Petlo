@@ -67,7 +67,9 @@ const SectionsItemsWithFilter = ({
                   cn={clsx(
                     "px-[28px] py-[8px] border-[1.4px] rounded-[4px]",
                     direction === "ltr" ? "mr-[4px]" : "ml-[4px]",
-                    section.category === selectedSection?.category
+                    section.category === selectedSection?.category &&
+                      section?.brand_public_id ===
+                        selectedSection?.brand_public_id
                       ? "border-[#0E333C]"
                       : "border-[#f6f6f6]"
                   )}
