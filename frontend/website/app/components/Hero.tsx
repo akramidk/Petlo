@@ -2,9 +2,14 @@ import { Logo } from "./Logo";
 
 export const Hero = ({ t }: { t: { [key: string]: string } }) => {
   return (
-    <div className="bg-[#E7E3D8] p-[20px] pb-[0px]">
+    <div
+      dir="ltr"
+      className="flex flex-row justify-between items-center bg-[#E7E3D8] p-[20px] pb-[0px]"
+    >
       <Logo />
-      <div>{t["HOME.CHANGE_LANG"]}</div>
+      <div className="text-[#444] text-[14px] font-semibold">
+        {t["HOME.CHANGE_LANG"]}
+      </div>
     </div>
   );
 };
