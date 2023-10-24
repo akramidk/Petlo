@@ -1,6 +1,6 @@
 google:
   service: GCS
   credentials: <%= Rails.root.join("gcs.keyfile") %>
-  project: petlo
-  bucket: petlo-development
+  project: <%= ENV["STORAGE_PROJECT"] %>
+  bucket: <%= ENV["STORAGE_BUCKET"] %>
   public: true
