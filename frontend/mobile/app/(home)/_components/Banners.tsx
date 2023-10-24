@@ -37,6 +37,7 @@ const Banners = ({ data }: BannersProps) => {
             uri: data[index].image,
           }}
           contentFit="cover"
+          priority="high"
           {...imageProps}
         />
       </BaseButton>
