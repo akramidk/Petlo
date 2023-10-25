@@ -4,7 +4,7 @@ export default {
     slug: "Petlo",
     scheme: "acme",
     icon: "./src/assets/images/icon.png",
-    version: "1.0.0",
+    version: "1.1.0",
     updates: {
       url: "https://u.expo.dev/184da1b4-f7ae-47f9-84e1-695fca3a70f0",
     },
@@ -13,7 +13,7 @@ export default {
     },
     android: {
       package: "com.petlo",
-      versionCode: 4.0,
+      versionCode: 5.0,
       config: {
         googleMaps: {
           apiKey: process.env.GOOGLE_ANDROID_MAP_KEY,
@@ -22,7 +22,7 @@ export default {
     },
     ios: {
       bundleIdentifier: "com.petlo",
-      buildNumber: "1.9.0",
+      buildNumber: "1.10.0",
       config: {
         googleMapsApiKey: process.env.GOOGLE_IOS_MAP_KEY,
       },
