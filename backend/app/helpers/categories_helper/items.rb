@@ -6,7 +6,7 @@ module CategoriesHelper::Items
 
     items = Category.items(
       category: category_public_id,
-      brands: brand_public_id.split(","),
+      brands: brand_public_id ? brand_public_id.split(",") : nil,
       country: country,
       language: language,
       limit: (LIMIT),
