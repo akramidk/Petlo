@@ -36,16 +36,13 @@ export const Hero = ({
         </Link>
       </div>
 
-      <div
-        className="space-y-[16px] mt-[52px] mb-[36px]"
-        style={{ textAlign: "-webkit-center" }}
-      >
-        <div className="text-[#0E333C] text-[30px] md:text-[36px] font-extrabold text-center justify-center">
-          {reactStringReplace(t[heroTextKey], "br", (_, i) => (
-            <br key={i} />
-          ))}
-        </div>
+      <div className="text-[#0E333C] text-[30px] md:text-[36px] font-extrabold text-center justify-center mt-[52px] mb-[16px]">
+        {reactStringReplace(t[heroTextKey], "br", (_, i) => (
+          <br key={i} />
+        ))}
+      </div>
 
+      <div className="inline-block mb-[36px]">
         {isAndroid || isiPhone ? (
           <DownloadButton
             type={isAndroid ? "android" : "ios"}
