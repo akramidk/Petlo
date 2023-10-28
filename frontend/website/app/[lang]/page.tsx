@@ -1,7 +1,6 @@
 import { Hero } from "../components/Hero";
+import { Sections } from "../components/Sections";
 import { getTranslation } from "../utils/getTranslation";
-import { ArrowUpRightIcon } from "@heroicons/react/24/outline";
-import Link from "next/link";
 
 const Home = async ({
   params: { lang },
@@ -13,58 +12,14 @@ const Home = async ({
   return (
     <div>
       <Hero lang={lang} t={t} heroTextKey="HOME.HERO_TEXT" />
-
-      <div className="md:grid md:grid-cols-2">
-        {data.map((item, index) => {
-          return (
-            <div
-              className="py-[32px] px-[32px] md:p-[36px] lg:p-[52px] space-y-[16px] lg:space-y-[32px]"
-              style={{ backgroundColor: item.bgColor }}
-              key={index}
-            >
-              <div
-                className="w-[100%] h-[200px] lg:h-[400px] rounded-[4px]"
-                style={{ backgroundColor: item.imgBgColor }}
-              ></div>
-
-              <div className="space-y-[8px]">
-                <div
-                  className="font-bold text-[20px] lg:text-[22px]"
-                  style={{ color: item.titleColor }}
-                >
-                  {item.title}
-                </div>
-
-                <div
-                  className="font-medium text-[14px] leading-[24px] lg:text-[16px] lg:leading-[30px]"
-                  style={{ color: item.descriptionColor }}
-                >
-                  {item.description}
-                </div>
-              </div>
-
-              {item?.link && (
-                <Link
-                  href="/autoship"
-                  className="flex underline items-center space-x-[4px]"
-                >
-                  <div className="font-bold text-[#444] text-[15px]">
-                    {item?.link}
-                  </div>
-                  <ArrowUpRightIcon width={14} strokeWidth={3} color="#444" />
-                </Link>
-              )}
-            </div>
-          );
-        })}
-      </div>
+      <Sections data={sections} />
     </div>
   );
 };
 
 export default Home;
 
-const data = [
+const sections = [
   {
     title: "The new way bla bla bla bla with Autoship.",
     description:
