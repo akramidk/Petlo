@@ -1,5 +1,7 @@
 import { Hero } from "../components/Hero";
 import { getTranslation } from "../utils/getTranslation";
+import { ArrowUpRightIcon } from "@heroicons/react/24/outline";
+import Link from "next/link";
 
 const Home = async ({
   params: { lang },
@@ -12,7 +14,7 @@ const Home = async ({
     <div>
       <Hero lang={lang} t={t} />
 
-      <div className="lg:grid lg:grid-cols-2">
+      <div className="md:grid md:grid-cols-2">
         {data.map((item, index) => {
           return (
             <div
@@ -27,19 +29,31 @@ const Home = async ({
 
               <div className="space-y-[8px]">
                 <div
-                  className="font-bold text-[20px]"
+                  className="font-bold text-[20px] lg:text-[22px]"
                   style={{ color: item.titleColor }}
                 >
                   {item.title}
                 </div>
 
                 <div
-                  className="font-medium text-[14px] leading-[24px]"
+                  className="font-medium text-[14px] leading-[24px] lg:text-[16px] lg:leading-[30px]"
                   style={{ color: item.descriptionColor }}
                 >
                   {item.description}
                 </div>
               </div>
+
+              {item?.link && (
+                <Link
+                  href="/autoship"
+                  className="flex underline items-center space-x-[4px]"
+                >
+                  <div className="font-bold text-[#444] text-[15px]">
+                    {item?.link}
+                  </div>
+                  <ArrowUpRightIcon width={14} strokeWidth={3} color="#444" />
+                </Link>
+              )}
             </div>
           );
         })}

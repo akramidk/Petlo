@@ -39,8 +39,6 @@ export function middleware(request) {
 
   // Redirect if there is no locale
   const locale = getLocale(request);
-  console.log("locale", locale);
-
   return NextResponse.redirect(
     new URL(`/${locale}${pathname}`, request.nextUrl)
   );
