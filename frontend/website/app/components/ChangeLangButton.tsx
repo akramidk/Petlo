@@ -8,7 +8,7 @@ export const ChangeLangButton = ({
   t,
 }: {
   lang: "en" | "ar";
-  t: { [key: string]: string };
+  t: any;
 }) => {
   const pathname = usePathname();
   const newPathname = pathname.includes("/en")

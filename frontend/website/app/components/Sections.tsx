@@ -19,7 +19,7 @@ interface Sections {
   }[];
   filpOrder?: boolean;
   lang: "en" | "ar";
-  t: { [key: string]: string };
+  t: any;
 }
 
 export const Sections = ({ data, filpOrder, lang, t }: Sections) => {

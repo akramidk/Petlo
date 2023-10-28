@@ -11,7 +11,7 @@ export const Hero = ({
   heroTextKey,
   img,
 }: {
-  t: { [key: string]: string };
+  t: any;
   lang: "en" | "ar";
   heroTextKey: string;
   img: string;
