@@ -68,10 +68,7 @@ export const Hero = ({
         )}
       </div>
 
-      <div
-        className="h-[400px] overflow-hidden"
-        style={{ textAlign: "-webkit-center" }}
-      >
+      <div className="h-[400px] overflow-hidden grid justify-center">
         <Image
           src={`/${lang}-screenshot.png`}
           width={250}
