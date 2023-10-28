@@ -34,7 +34,7 @@ export const Hero = ({
       </div>
 
       <div className="text-[#0E333C] text-[30px] md:text-[36px] font-extrabold text-center justify-center mb-[32px]">
-        {reactStringReplace(t[heroTextKey], "br", (_, i) => (
+        {reactStringReplace(t[heroTextKey], "{{br}}", (_, i) => (
           <br key={i} />
         ))}
       </div>

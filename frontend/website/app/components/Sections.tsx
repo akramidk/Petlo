@@ -14,6 +14,7 @@ interface Sections {
     titleColor: string;
     descriptionColor: string;
     imgBgColor?: string;
+    img?: string;
   }[];
   filpOrder?: boolean;
   lang: "en" | "ar";
@@ -38,10 +39,12 @@ export const Sections = ({ data, filpOrder, lang, t }: Sections) => {
             style={{ backgroundColor: item.bgColor, order: order }}
             key={index}
           >
-            <div
-              className="w-[100%] h-[200px] lg:h-[400px] rounded-[4px]"
-              style={{ backgroundColor: item.imgBgColor }}
-            ></div>
+            {item?.img && (
+              <div
+                className="w-[100%] h-[200px] lg:h-[400px] rounded-[4px]"
+                style={{ backgroundColor: item.imgBgColor }}
+              ></div>
+            )}
 
             <div className="space-y-[16px]">
               <div

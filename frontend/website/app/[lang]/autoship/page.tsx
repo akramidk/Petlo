@@ -12,7 +12,7 @@ const Autoship = async ({
 
   return (
     <div>
-      <Hero lang={lang} t={t} heroTextKey="HOME.HERO_TEXT" />
+      <Hero lang={lang} t={t} heroTextKey="AUTOSHIP.HERO_TEXT" />
       <Sections data={sections} filpOrder lang={lang} t={t} />
 
       <div className="bg-[#f9f9f9] items-center justify-center text-center px-[20px] py-[32px] md:p-[32px] lg:p-[52px] text-[#222]">
@@ -38,35 +38,31 @@ export default Autoship;
 
 const sections = [
   {
-    title: "HOME.SECTION_1_TITLE",
-    description: "HOME.SECTION_1_DESCRIPTION",
+    title: "AUTOSHIP.SECTION_1_TITLE",
+    description: "AUTOSHIP.SECTION_1_DESCRIPTION",
     bgColor: "#fff",
     titleColor: "#222",
     descriptionColor: "#666",
-    imgBgColor: "#f8f8f8",
   },
   {
-    title: "HOME.SECTION_1_TITLE",
-    description: "HOME.SECTION_1_DESCRIPTION",
+    title: "AUTOSHIP.SECTION_2_TITLE",
+    description: "AUTOSHIP.SECTION_2_DESCRIPTION",
     bgColor: "#000",
     titleColor: "#fff",
     descriptionColor: "#888",
-    imgBgColor: "#0c0c0c",
   },
   {
-    title: "HOME.SECTION_1_TITLE",
-    description: "HOME.SECTION_1_DESCRIPTION",
+    title: "AUTOSHIP.SECTION_3_TITLE",
+    description: "AUTOSHIP.SECTION_3_DESCRIPTION",
     bgColor: "#fff",
     titleColor: "#222",
     descriptionColor: "#666",
-    imgBgColor: "#f8f8f8",
   },
   {
-    title: "HOME.SECTION_1_TITLE",
-    description: "HOME.SECTION_1_DESCRIPTION",
+    title: "AUTOSHIP.SECTION_4_TITLE",
+    description: "AUTOSHIP.SECTION_4_DESCRIPTION",
     bgColor: "#000",
     titleColor: "#fff",
     descriptionColor: "#888",
-    imgBgColor: "#0c0c0c",
   },
 ];
