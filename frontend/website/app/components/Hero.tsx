@@ -20,7 +20,7 @@ export const Hero = ({
   return (
     <div
       dir="ltr"
-      className="bg-[#E7E3D8] p-[20px] pb-[0px] space-y-[32px] text-center"
+      className="bg-[#E7E3D8] p-[20px] md:p-[32px] pb-[0px] md:pb-[0px] space-y-[32px] text-center"
     >
       <div className="flex flex-row justify-between items-center">
         <Logo />
@@ -35,7 +35,7 @@ export const Hero = ({
       </div>
 
       <div className="space-y-[16px]" style={{ textAlign: "-webkit-center" }}>
-        <div className="text-[#0E333C] text-[24px] font-extrabold text-center justify-center">
+        <div className="text-[#0E333C] text-[24px] md:text-[36px] font-extrabold text-center justify-center">
           {reactStringReplace(t["HOME.HERO_TEXT"], "br", (_, i) => (
             <br key={i} />
           ))}
@@ -48,7 +48,7 @@ export const Hero = ({
             lang={lang}
           />
         ) : (
-          <div>
+          <div className="space-y-[8px] md:flex md:space-x-[8px] md:space-y-[0px] place-content-center">
             <DownloadButton
               type="ios"
               text={t["COMMON.DOWNLOAD_NOW"]}
