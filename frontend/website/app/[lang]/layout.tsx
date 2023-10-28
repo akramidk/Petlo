@@ -14,7 +14,8 @@ const ibm = IBM_Plex_Sans_Arabic({
 });
 
 export const metadata: Metadata = {
-  title: "Petlo",
+  title: "Petlo - Buy or Schedule Your Pets' Needs.",
+  description: "Buy or Schedule Your Pets' Needs.",
 };
 
 export default function RootLayout({

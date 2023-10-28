@@ -41,7 +41,9 @@ export function middleware(request) {
     pathname.startsWith(`/ar-autoship.png/`) ||
     pathname === `/ar-autoship.png` ||
     pathname.startsWith(`/ar-item.png/`) ||
-    pathname === `/ar-item.png`
+    pathname === `/ar-item.png` ||
+    pathname.startsWith(`/favicon.ico/`) ||
+    pathname === `/favicon.ico`
   )
     return;
 
