@@ -1,0 +1,83 @@
+{
+  "COMMON.DOWNLOAD_NOW": "Download Now",
+  "COMMON.JORDAN_ONLY": "Available in Jordan Only",
+  "HOME.CHANGE_LANG": "العربية",
+  "HOME.HERO_TEXT": "Buy or Schedule {{br}} Your Pets' Needs.",
+  "HOME.SECTION_1_TITLE": "Schedule Your Pets' Needs with Autoship.",
+  "HOME.SECTION_1_DESCRIPTION": "Ease your mind with Petlo Autoship. Schedule your pet's needs, and don't worry about running out of your pet's necessities or going to the regular pet store.{{br}}With Petlo Autoship get a 5% discount on your added products, with the ability to change the shipping date, add/remove products, and skip a shipment easily.{{br}}And at any moment you can stop the Autoship completely with just 3 button clicks.",
+  "HOME.SECTION_1_LINK": "Learn More About Autoship",
+  "HOME.SECTION_2_TITLE": "Are There Options Other than Autoship?",
+  "HOME.SECTION_2_DESCRIPTION": "Yes, of course. You can order normally without scheduling at any time, and your shipment will arrive right away.",
+  "AUTOSHIP.HERO_TEXT": "Schedule Your Pets' Needs {{br}} with Autoship.",
+  "AUTOSHIP.SECTION_1_TITLE": "5% Discount on Items Cost",
+  "AUTOSHIP.SECTION_1_DESCRIPTION": "With Petlo Autoship get a 5% discount on your scheduled items cost.",
+  "AUTOSHIP.SECTION_2_TITLE": "Ability to Change Items",
+  "AUTOSHIP.SECTION_2_DESCRIPTION": "Whatever the reason, you can add new items to your Autoship, or even remove items that you no longer need.",
+  "AUTOSHIP.SECTION_3_TITLE": "Skip the Next Shipment or Reschedule the Delivery Date",
+  "AUTOSHIP.SECTION_3_DESCRIPTION": "Easley if you no longer need the next shipment at the time you picked beforehand, you can skip it or change the delivery time to something suitable.",
+  "AUTOSHIP.SECTION_4_TITLE": "Cancel the Autoship with 3 Clicks",
+  "AUTOSHIP.SECTION_4_DESCRIPTION": "Whatever the reason, you can cancel your Autoship at any moment with just 3 clicks.",
+  "AUTOSHIP.COMMON_QUESTIONS_TITLE": "Common Questions",
+  "AUTOSHIP.COMMON_QUESTIONS": [
+    {
+      "question": "What is Autoship?",
+      "answer": "Autoship enables you to schedule your pets’ needs and ship them on a regular basis, so you will never run out of pet food or other essentials like litter and treats again."
+    },
+    {
+      "question": "How do I create an Autoship so that I can receive recurring shipments?",
+      "answer": "1. Click on the 'Create an Autoship' button.{{br}}2. Add the name of the Autoship so that you can distinguish it, choose the products that you want to schedule, then choose your preferred payment method, and then you have to choose the date of the first shipment and when it should recur after that, and you can also add the names of the pets for which this Autoship is created if you wish.{{br}}3. After filling out the information, you can create your first Autoship, and wait for your shipments to arrive."
+    },
+    {
+      "question": "What are the benefits of Autoship?",
+      "answer": "Any Autoship you create will give you a 5% discount on the total amount of all the items you added to the Autoship.{{br}}Note: The discount includes the total items cost, and does not include the delivery cost."
+    },
+    {
+      "question": "Are there any fees?",
+      "answer": "No, scheduling your pets’ needs is completely free, and you can stop the Autoship whenever you want."
+    },
+    {
+      "question": "Can I cancel the Autoship?",
+      "answer": "Yes, absolutely. When you already have an Autoship, you will see all the Autoships that you previously created. Click on the three dots icon, then choose 'Deactivate Autoship' and then press the confirmation button to complete the process of canceling the Autoship.{{br}}Note: You can reactivate the Autoship at any time you want, just by clicking on the 'Reactivate' button and then choosing the date of the next shipment and when it should recur."
+    },
+    {
+      "question": "Can I change the scheduling date?",
+      "answer": "Yes, absolutely. When you already have an Autoship, you will see all the Autoships that you have previously created. Click on the three dots icon, then choose 'Change Shipments Dates' and then you can change the scheduling information and the date of the next shipment."
+    },
+    {
+      "question": "Can I skip the Autoship shipment?",
+      "answer": "Of course, you can, When you already have an Autoship, you will see all the Autoships that you have previously created. Click on the three dots icon, then choose 'Skip Next Shipment' and then press the confirmation button to skip the shipment.{{br}}For example, if your next shipment is on the 8th and the recurrence period is every 10 days, the shipment on the 8th will be skipped and become on the 18th."
+    },
+    {
+      "question": "Can I change the Autoship items?",
+      "answer": "Of course, when you already have Autoship, you will see all the Autoships that you previously created. Click on the three dots icon, then choose 'Change Items', after which you can remove or add any item you want, and the new price for the added items will appear before confirming the change."
+    },
+    {
+      "question": "How can I pay?",
+      "answer": "You can pay with Cash on Delivery, or by using a Card."
+    },
+    {
+      "question": "Can I change my payment method?",
+      "answer": "Yes, you can always change the payment method to (Cash on Delivery, or Card) or you can change or add a new Card to use.{{br}}When you already have Autoship, you will see all the Autoships that you previously created. Click on the three dots icon, then choose 'Change Payment Method' and then you can change and save the changes."
+    },
+    {
+      "question": "Can I change the shipping address?",
+      "answer": "Yes, of course, you can change your shipping address or add a new address to ship shipments to it.{{br}}When you already have an Autoship, you will see all the Autoships that you previously created. Click on the three dots icon, then choose 'Change Shipping Address' and then you can change and save the changes."
+    },
+    {
+      "question": "Can I cancel the Autoship shipment before it arrives?",
+      "answer": "Of course, if you no longer need the order on the day specified for the shipment to arrive, don’t worry. A Petlo representative will contact you and you can inform him of this before delivery."
+    },
+    {
+      "question": "When will my shipment arrive?",
+      "answer": "On the same day that was specified, a Petlo representative will contact you to confirm and choose the appropriate hour for delivery."
+    },
+    {
+      "question": "Where can I track the shipping status?",
+      "answer": "You can always see the autoship information and the date of the next shipment from the 'Autoships' page.{{br}}You can track the status of the shipment on the day specified for shipment from the 'Orders' page."
+    },
+    {
+      "question": "How many Autoships can I create?",
+      "answer": "You can create an unlimited number of Autoships, you can also add all your pet’s items in one Autoship, or you can customize each Autoship for a pet, it's up to you."
+    }
+  ]
+}
