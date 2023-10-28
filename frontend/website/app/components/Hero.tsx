@@ -20,7 +20,7 @@ export const Hero = ({
   return (
     <div
       dir="ltr"
-      className="bg-[#E7E3D8] p-[20px] md:p-[32px] pb-[0px] md:pb-[0px] text-center"
+      className="bg-[#E7E3D8] p-[20px] md:p-[32px] lg:px-[52px] pb-[0px] md:pb-[0px] text-center"
     >
       <div className="flex flex-row justify-between items-center">
         <Logo />

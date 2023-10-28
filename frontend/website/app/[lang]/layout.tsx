@@ -43,7 +43,7 @@ export default function RootLayout({
           {children}
           <div
             className={clsx(
-              "bg-[#E7E3D8] p-[52px] md:p-[20px] md:flex md:justify-between md:items-center text-center space-y-[12px]",
+              "bg-[#E7E3D8] p-[32px] md:px-[36px] lg:px-[52px] md:flex md:justify-between md:items-center text-center space-y-[12px]",
               manrope.className
             )}
             dir="ltr"
