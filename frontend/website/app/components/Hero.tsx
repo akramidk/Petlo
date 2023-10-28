@@ -26,11 +26,14 @@ export const Hero = ({
     >
       <div className="flex flex-row justify-between items-center">
         <Logo />
-
         <ChangeLangButton lang={lang} t={t} />
       </div>
 
-      <div className="text-[#0E333C] text-[30px] md:text-[36px] font-extrabold text-center justify-center mt-[52px] mb-[16px]">
+      <div className="bg-[#edf9fe] py-[10px] px-[18px] mt-[36px] rounded-full inline-block font-bold lg:font-extrabold text-[12px] text-[#444] mb-[8px]">
+        {t["COMMON.JORDAN_ONLY"]}
+      </div>
+
+      <div className="text-[#0E333C] text-[30px] md:text-[36px] font-extrabold text-center justify-center mb-[32px]">
         {reactStringReplace(t[heroTextKey], "br", (_, i) => (
           <br key={i} />
         ))}
