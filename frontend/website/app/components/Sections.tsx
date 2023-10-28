@@ -6,15 +6,17 @@ interface Sections {
     title: string;
     description: string;
     link?: string;
+    linkText?: string;
     bgColor: string;
     titleColor: string;
     descriptionColor: string;
     imgBgColor?: string;
   }[];
   filpOrder?: boolean;
+  lang: "en" | "ar";
 }
 
-export const Sections = ({ data, filpOrder }: Sections) => {
+export const Sections = ({ data, filpOrder, lang }: Sections) => {
   return (
     <div className="md:grid md:grid-cols-2">
       {data.map((item, index) => {
@@ -55,11 +57,11 @@ export const Sections = ({ data, filpOrder }: Sections) => {
 
             {item?.link && (
               <Link
-                href="/autoship"
+                href={`/${lang}/${item.link}`}
                 className="flex underline items-center space-x-[4px]"
               >
                 <div className="font-bold text-[#444] text-[15px]">
-                  {item?.link}
+                  {item?.linkText}
                 </div>
                 <ArrowUpRightIcon width={14} strokeWidth={3} color="#444" />
               </Link>

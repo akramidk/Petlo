@@ -1,9 +1,9 @@
 import { Logo } from "./Logo";
-import Link from "next/link";
 import { DownloadButton } from "./DownloadButton";
 import { headers } from "next/headers";
 import Image from "next/image";
 import reactStringReplace from "react-string-replace";
+import { ChangeLangButton } from "./ChangeLangButton";
 
 export const Hero = ({
   t,
@@ -27,13 +27,7 @@ export const Hero = ({
       <div className="flex flex-row justify-between items-center">
         <Logo />
 
-        <Link
-          href={lang === "en" ? "/ar" : "/en"}
-          className="text-[#444] text-[14px] font-semibold"
-          replace
-        >
-          {t["HOME.CHANGE_LANG"]}
-        </Link>
+        <ChangeLangButton lang={lang} t={t} />
       </div>
 
       <div className="text-[#0E333C] text-[30px] md:text-[36px] font-extrabold text-center justify-center mt-[52px] mb-[16px]">

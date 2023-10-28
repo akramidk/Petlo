@@ -12,7 +12,7 @@ const Home = async ({
   return (
     <div>
       <Hero lang={lang} t={t} heroTextKey="HOME.HERO_TEXT" />
-      <Sections data={sections} />
+      <Sections data={sections} lang={lang} />
     </div>
   );
 };
@@ -24,7 +24,8 @@ const sections = [
     title: "The new way bla bla bla bla with Autoship.",
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-    link: "Learn More About Autoship",
+    link: "autoship",
+    linkText: "Learn More About Autoship",
     bgColor: "#fff",
     titleColor: "#222",
     descriptionColor: "#666",
