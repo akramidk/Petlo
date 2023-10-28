@@ -18,8 +18,6 @@ export const Sections = ({ data, filpOrder }: Sections) => {
   return (
     <div className="md:grid md:grid-cols-2">
       {data.map((item, index) => {
-        console.log("index", index);
-
         const order = filpOrder
           ? index < 2
             ? index
