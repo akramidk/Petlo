@@ -28,6 +28,7 @@ const Autoship = async ({
               answer: string;
             }[]
           }
+          lang={lang}
         />
       </div>
     </div>

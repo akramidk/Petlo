@@ -1,16 +1,19 @@
 "use client";
 
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
+import clsx from "clsx";
 import { Fragment, useState } from "react";
 import reactStringReplace from "react-string-replace";
 
 export const Accordion = ({
   items,
+  lang,
 }: {
   items: {
     question: string;
     answer: string;
   }[];
+  lang: "en" | "ar";
 }) => {
   const [openedIndex, setOpenedIndex] = useState<number>();
 
@@ -23,7 +26,10 @@ export const Accordion = ({
         return (
           <div
             key={index}
-            className="text-left py-[20px] border-b border-b-[#ddd] cursor-pointer lg:w-[800px]"
+            className={clsx(
+              "py-[20px] border-b border-b-[#ddd] cursor-pointer lg:w-[800px]",
+              lang === "en" ? "text-left" : "text-right"
+            )}
             onClick={() => setOpenedIndex(opened ? undefined : index)}
           >
             <div className="flex justify-between">
