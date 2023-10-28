@@ -10,7 +10,7 @@ const Autoship = async ({
 
   return (
     <div>
-      <Hero lang={lang} t={t} />
+      <Hero lang={lang} t={t} heroTextKey="HOME.HERO_TEXT" />
       <div>vbla</div>
     </div>
   );

@@ -12,7 +12,7 @@ const Home = async ({
 
   return (
     <div>
-      <Hero lang={lang} t={t} />
+      <Hero lang={lang} t={t} heroTextKey="HOME.HERO_TEXT" />
 
       <div className="md:grid md:grid-cols-2">
         {data.map((item, index) => {

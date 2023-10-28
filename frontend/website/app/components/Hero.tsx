@@ -8,9 +8,11 @@ import reactStringReplace from "react-string-replace";
 export const Hero = ({
   t,
   lang,
+  heroTextKey,
 }: {
   t: { [key: string]: string };
   lang: "en" | "ar";
+  heroTextKey: string;
 }) => {
   const headersList = headers();
   const userAgent = headersList.get("user-agent");
@@ -39,7 +41,7 @@ export const Hero = ({
         style={{ textAlign: "-webkit-center" }}
       >
         <div className="text-[#0E333C] text-[30px] md:text-[36px] font-extrabold text-center justify-center">
-          {reactStringReplace(t["HOME.HERO_TEXT"], "br", (_, i) => (
+          {reactStringReplace(t[heroTextKey], "br", (_, i) => (
             <br key={i} />
           ))}
         </div>
