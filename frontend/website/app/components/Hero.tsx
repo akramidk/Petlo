@@ -9,10 +9,12 @@ export const Hero = ({
   t,
   lang,
   heroTextKey,
+  img,
 }: {
   t: { [key: string]: string };
   lang: "en" | "ar";
   heroTextKey: string;
+  img: string;
 }) => {
   const headersList = headers();
   const userAgent = headersList.get("user-agent");
@@ -64,7 +66,7 @@ export const Hero = ({
 
       <div className="h-[400px] overflow-hidden grid justify-center">
         <Image
-          src={`/${lang}-screenshot.png`}
+          src={`/${lang}-${img}.png`}
           width={250}
           height={505}
           alt="Screenshot of Petlo"

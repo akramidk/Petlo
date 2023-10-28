@@ -12,7 +12,7 @@ const Autoship = async ({
 
   return (
     <div>
-      <Hero lang={lang} t={t} heroTextKey="AUTOSHIP.HERO_TEXT" />
+      <Hero lang={lang} t={t} heroTextKey="AUTOSHIP.HERO_TEXT" img="autoship" />
       <Sections data={sections} filpOrder lang={lang} t={t} />
 
       <div className="bg-[#f9f9f9] items-center justify-center text-center px-[20px] py-[32px] md:p-[32px] lg:p-[52px] text-[#222]">

@@ -3,6 +3,7 @@ import clsx from "clsx";
 import Link from "next/link";
 import { Fragment } from "react";
 import reactStringReplace from "react-string-replace";
+import Image from "next/image";
 
 interface Sections {
   data: {
@@ -41,9 +42,17 @@ export const Sections = ({ data, filpOrder, lang, t }: Sections) => {
           >
             {item?.img && (
               <div
-                className="w-[100%] h-[200px] lg:h-[400px] rounded-[4px]"
+                className="w-[100%] h-[400px] lg:h-[400px] rounded-[4px] overflow-hidden p-[36px] text-center"
                 style={{ backgroundColor: item.imgBgColor }}
-              ></div>
+              >
+                <Image
+                  src={`/${lang}-${item.img}.png`}
+                  width={250}
+                  height={505}
+                  alt="Screenshot of Petlo"
+                  className="inline-block"
+                />
+              </div>
             )}
 
             <div className="space-y-[16px]">

@@ -33,7 +33,15 @@ export function middleware(request) {
     pathname.startsWith(`/vercel.svg/`) ||
     pathname === `/vercel.svg` ||
     pathname.startsWith(`/ar-screenshot.png/`) ||
-    pathname === `/ar-screenshot.png`
+    pathname === `/ar-screenshot.png` ||
+    pathname.startsWith(`/en-autoship.png/`) ||
+    pathname === `/en-autoship.png` ||
+    pathname.startsWith(`/en-item.png/`) ||
+    pathname === `/en-item.png` ||
+    pathname.startsWith(`/ar-autoship.png/`) ||
+    pathname === `/ar-autoship.png` ||
+    pathname.startsWith(`/ar-item.png/`) ||
+    pathname === `/ar-item.png`
   )
     return;
 
