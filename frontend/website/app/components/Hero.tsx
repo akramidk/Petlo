@@ -20,7 +20,7 @@ export const Hero = ({
   return (
     <div
       dir="ltr"
-      className="bg-[#E7E3D8] p-[20px] md:p-[32px] pb-[0px] md:pb-[0px] space-y-[32px] text-center"
+      className="bg-[#E7E3D8] p-[20px] md:p-[32px] pb-[0px] md:pb-[0px] text-center"
     >
       <div className="flex flex-row justify-between items-center">
         <Logo />
@@ -34,8 +34,11 @@ export const Hero = ({
         </Link>
       </div>
 
-      <div className="space-y-[16px]" style={{ textAlign: "-webkit-center" }}>
-        <div className="text-[#0E333C] text-[24px] md:text-[36px] font-extrabold text-center justify-center">
+      <div
+        className="space-y-[16px] mt-[52px] mb-[36px]"
+        style={{ textAlign: "-webkit-center" }}
+      >
+        <div className="text-[#0E333C] text-[30px] md:text-[36px] font-extrabold text-center justify-center">
           {reactStringReplace(t["HOME.HERO_TEXT"], "br", (_, i) => (
             <br key={i} />
           ))}
