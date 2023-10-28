@@ -3,6 +3,8 @@ import "../globals.css";
 import type { Metadata } from "next";
 import { Manrope, IBM_Plex_Sans_Arabic } from "next/font/google";
 import { SnackbarProvider } from "../SnackbarProvider";
+import clsx from "clsx";
+import { Logo } from "../components/Logo";
 
 const manrope = Manrope({ subsets: ["latin"] });
 const ibm = IBM_Plex_Sans_Arabic({
@@ -39,6 +41,17 @@ export default function RootLayout({
       <body>
         <SnackbarProvider>
           {children}
+          <div
+            className={clsx(
+              "bg-[#E7E3D8] p-[52px] md:p-[20px] md:flex md:justify-between md:items-center text-center space-y-[16px]",
+              manrope.className
+            )}
+          >
+            <div className="text-[#444] font-semibold text-[14px]">
+              support@petlo.co | +962790174799
+            </div>
+            <Logo />
+          </div>
           <Analytics />
         </SnackbarProvider>
       </body>
