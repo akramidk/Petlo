@@ -1,5 +1,8 @@
 import { ArrowUpRightIcon } from "@heroicons/react/24/outline";
+import clsx from "clsx";
 import Link from "next/link";
+import { Fragment } from "react";
+import reactStringReplace from "react-string-replace";
 
 interface Sections {
   data: {
@@ -14,9 +17,10 @@ interface Sections {
   }[];
   filpOrder?: boolean;
   lang: "en" | "ar";
+  t: { [key: string]: string };
 }
 
-export const Sections = ({ data, filpOrder, lang }: Sections) => {
+export const Sections = ({ data, filpOrder, lang, t }: Sections) => {
   return (
     <div className="md:grid md:grid-cols-2">
       {data.map((item, index) => {
@@ -39,29 +43,39 @@ export const Sections = ({ data, filpOrder, lang }: Sections) => {
               style={{ backgroundColor: item.imgBgColor }}
             ></div>
 
-            <div className="space-y-[8px]">
+            <div className="space-y-[16px]">
               <div
                 className="font-bold text-[20px] lg:text-[22px]"
                 style={{ color: item.titleColor }}
               >
-                {item.title}
+                {t[item.title]}
               </div>
 
               <div
                 className="font-medium text-[14px] leading-[24px] lg:text-[16px] lg:leading-[30px]"
                 style={{ color: item.descriptionColor }}
               >
-                {item.description}
+                {reactStringReplace(t[item.description], "{{br}}", (_, i) => (
+                  <Fragment key={index}>
+                    <br />
+                    <br />
+                  </Fragment>
+                ))}
               </div>
             </div>
 
             {item?.link && (
               <Link
                 href={`/${lang}/${item.link}`}
-                className="flex underline items-center space-x-[4px]"
+                className="flex underline items-center"
               >
-                <div className="font-bold text-[#444] text-[15px]">
-                  {item?.linkText}
+                <div
+                  className={clsx(
+                    "font-bold text-[#444] text-[15px]",
+                    lang === "en" ? "mr-[4px]" : "ml-[4px]"
+                  )}
+                >
+                  {item?.linkText ? t[item?.linkText] : ""}
                 </div>
                 <ArrowUpRightIcon width={14} strokeWidth={3} color="#444" />
               </Link>

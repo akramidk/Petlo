@@ -3,6 +3,11 @@
   "COMMON.JORDAN_ONLY": "Available in Jordan Only",
   "HOME.CHANGE_LANG": "العربية",
   "HOME.HERO_TEXT": "Buy or Schedule br Your Pets' Needs.",
+  "HOME.SECTION_1_TITLE": "Schedule Your Pets' Needs with Autoship.",
+  "HOME.SECTION_1_DESCRIPTION": "Ease your mind with Petlo Autoship. Schedule your pet's needs, and don't worry about running out of your pet's necessities or going to the regular pet store.{{br}}With Petlo Autoship get a 5% discount on your added products, with the ability to change the shipping date, add/remove products, and skip a shipment easily.{{br}}And at any moment you can stop the Autoship completely with just 3 button clicks.",
+  "HOME.SECTION_1_LINK": "Learn More About Autoship",
+  "HOME.SECTION_2_TITLE": "Are There Options Other than Autoship?",
+  "HOME.SECTION_2_DESCRIPTION": "Yes, of course. You can order normally without scheduling at any time, and your shipment will arrive right away.",
   "AUTOSHIP.COMMON_QUESTIONS_TITLE": "Common Questions",
   "AUTOSHIP.COMMON_QUESTIONS": [
     {

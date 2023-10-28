@@ -12,7 +12,7 @@ const Home = async ({
   return (
     <div>
       <Hero lang={lang} t={t} heroTextKey="HOME.HERO_TEXT" />
-      <Sections data={sections} lang={lang} />
+      <Sections data={sections} lang={lang} t={t} />
     </div>
   );
 };
@@ -21,20 +21,18 @@ export default Home;
 
 const sections = [
   {
-    title: "The new way bla bla bla bla with Autoship.",
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+    title: "HOME.SECTION_1_TITLE",
+    description: "HOME.SECTION_1_DESCRIPTION",
     link: "autoship",
-    linkText: "Learn More About Autoship",
+    linkText: "HOME.SECTION_1_LINK",
     bgColor: "#fff",
     titleColor: "#222",
     descriptionColor: "#666",
     imgBgColor: "#f8f8f8",
   },
   {
-    title: "Want somthing without wating?",
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+    title: "HOME.SECTION_2_TITLE",
+    description: "HOME.SECTION_2_DESCRIPTION",
     bgColor: "#000",
     titleColor: "#fff",
     descriptionColor: "#888",
