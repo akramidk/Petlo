@@ -45,7 +45,7 @@ export default function RootLayout({
             href="https://wa.me/message/5GNHRB37TEZ3K1"
             className="bg-[#edf9fe] p-[16px] font-medium text-[14px] text-[#444] underline block"
           >
-            <div className="flex space-x-[6px] items-center place-content-center">
+            <div className="flex items-center place-content-center">
               <svg
                 width="14"
                 height="14"
@@ -59,7 +59,11 @@ export default function RootLayout({
                 />
               </svg>
 
-              <div>Support via WhatsApp +962790174799</div>
+              <div className={lang === "en" ? "ml-[6px]" : "mr-[6px]"}>
+                {lang === "en"
+                  ? "Support via WhatsApp +962790174799"
+                  : "الدعم عن طريق واتساب 962790174799+"}
+              </div>
             </div>
           </Link>
 
