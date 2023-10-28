@@ -1,6 +1,13 @@
 import { Logo } from "./Logo";
+import Link from "next/link";
 
-export const Hero = ({ t }: { t: { [key: string]: string } }) => {
+export const Hero = ({
+  t,
+  lang,
+}: {
+  t: { [key: string]: string };
+  lang: "en" | "ar";
+}) => {
   return (
     <div
       dir="ltr"
@@ -8,13 +15,18 @@ export const Hero = ({ t }: { t: { [key: string]: string } }) => {
     >
       <div className="flex flex-row justify-between items-center">
         <Logo />
-        <div className="text-[#444] text-[14px] font-semibold">
+
+        <Link
+          href={lang === "en" ? "/ar" : "/en"}
+          className="text-[#444] text-[14px] font-semibold"
+          replace
+        >
           {t["HOME.CHANGE_LANG"]}
-        </div>
+        </Link>
       </div>
 
-      <div className="text-[#222] text-[24px] font-extrabold">
-        Buy or Schedule Your <br /> Pets&apos; Needs
+      <div className="text-[#0E333C] text-[24px] font-extrabold px-[32px] leading-[40px]">
+        {t["HOME.HERO_TEXT"]}
       </div>
     </div>
   );

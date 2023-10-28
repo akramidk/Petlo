@@ -10,7 +10,7 @@ const Home = async ({
 
   return (
     <div>
-      <Hero t={t} />
+      <Hero lang={lang} t={t} />
     </div>
   );
 };
