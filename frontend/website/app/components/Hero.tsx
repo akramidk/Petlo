@@ -3,6 +3,7 @@ import Link from "next/link";
 import { DownloadButton } from "./DownloadButton";
 import { headers } from "next/headers";
 import Image from "next/image";
+import reactStringReplace from "react-string-replace";
 
 export const Hero = ({
   t,
@@ -34,8 +35,10 @@ export const Hero = ({
       </div>
 
       <div className="space-y-[16px]" style={{ textAlign: "-webkit-center" }}>
-        <div className="text-[#0E333C] text-[24px] font-extrabold px-[32px] leading-[px]">
-          {t["HOME.HERO_TEXT"]}
+        <div className="text-[#0E333C] text-[24px] font-extrabold text-center justify-center">
+          {reactStringReplace(t["HOME.HERO_TEXT"], "br", (_, i) => (
+            <br key={i} />
+          ))}
         </div>
 
         {isAndroid || isiPhone ? (
