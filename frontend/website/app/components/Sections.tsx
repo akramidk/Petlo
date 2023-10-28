@@ -28,7 +28,7 @@ export const Sections = ({ data, filpOrder }: Sections) => {
 
         return (
           <div
-            className="py-[32px] px-[32px] md:p-[36px] lg:p-[52px] space-y-[16px] lg:space-y-[32px]"
+            className="py-[32px] px-[20px] md:p-[36px] lg:p-[52px] space-y-[16px] lg:space-y-[32px]"
             style={{ backgroundColor: item.bgColor, order: order }}
             key={index}
           >

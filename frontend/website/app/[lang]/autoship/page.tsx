@@ -1,6 +1,8 @@
 import { Hero } from "@/app/components/Hero";
 import { Sections } from "@/app/components/Sections";
+import { Accordion } from "@/app/components/Accordion";
 import { getTranslation } from "@/app/utils/getTranslation";
+import { ChevronDownIcon } from "@heroicons/react/24/outline";
 
 const Autoship = async ({
   params: { lang },
@@ -15,11 +17,18 @@ const Autoship = async ({
       <Sections data={sections} filpOrder />
 
       <div className="bg-[#f9f9f9] items-center justify-center text-center px-[20px] py-[32px] md:p-[32px] lg:p-[52px] text-[#222]">
-        <div className="font-bold text-[20px]">
-          {t["AUTOSHIP_COMMON_QUESTIONS"]}
+        <div className="font-bold text-[20px] mb-[32px]">
+          {t["AUTOSHIP.COMMON_QUESTIONS_TITLE"]}
         </div>
 
-        <div></div>
+        <Accordion
+          items={
+            t["AUTOSHIP.COMMON_QUESTIONS"] as {
+              question: string;
+              answer: string;
+            }[]
+          }
+        />
       </div>
     </div>
   );
