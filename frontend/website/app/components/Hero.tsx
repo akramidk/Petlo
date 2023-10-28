@@ -1,5 +1,7 @@
 import { Logo } from "./Logo";
 import Link from "next/link";
+import { DownloadButton } from "./DownloadButton";
+import { headers } from "next/headers";
 
 export const Hero = ({
   t,
@@ -8,6 +10,11 @@ export const Hero = ({
   t: { [key: string]: string };
   lang: "en" | "ar";
 }) => {
+  const headersList = headers();
+  const userAgent = headersList.get("user-agent");
+  const isAndroid = userAgent?.includes("Android");
+  const isiPhone = userAgent?.includes("iPhone");
+
   return (
     <div
       dir="ltr"
@@ -25,8 +32,31 @@ export const Hero = ({
         </Link>
       </div>
 
-      <div className="text-[#0E333C] text-[24px] font-extrabold px-[32px] leading-[40px]">
-        {t["HOME.HERO_TEXT"]}
+      <div className="space-y-[16px]" style={{ textAlign: "-webkit-center" }}>
+        <div className="text-[#0E333C] text-[24px] font-extrabold px-[32px] leading-[px]">
+          {t["HOME.HERO_TEXT"]}
+        </div>
+
+        {isAndroid || isiPhone ? (
+          <DownloadButton
+            type={isAndroid ? "android" : "ios"}
+            text={t["COMMON.DOWNLOAD_NOW"]}
+            lang={lang}
+          />
+        ) : (
+          <div>
+            <DownloadButton
+              type="ios"
+              text={t["COMMON.DOWNLOAD_NOW"]}
+              lang={lang}
+            />
+            <DownloadButton
+              type="android"
+              text={t["COMMON.DOWNLOAD_NOW"]}
+              lang={lang}
+            />
+          </div>
+        )}
       </div>
     </div>
   );
