@@ -68,7 +68,7 @@ export const Hero = ({
           src={`/${lang}-screenshot.png`}
           width={250}
           height={505}
-          alt="Picture of the author"
+          alt="Screenshot of Petlo"
         />
       </div>
     </div>
