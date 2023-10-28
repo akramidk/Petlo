@@ -14,13 +14,14 @@ export const DownloadButton = ({
     <Link
       href={
         type === "ios"
-          ? "https://apps.apple.com/us/appid6462346697"
+          ? "https://apps.apple.com/us/app/id6462346697"
           : "https://play.google.com/store/apps/details?id=com.petlo"
       }
       className={clsx(
         "bg-[#000] w-[192px] h-[52px] text-[#fff] flex  justify-center items-center text-[13px] font-bold rounded-[4px] bg-gradient-to-b from-[#222] to-[#604B9A]",
         lang === "en" ? "flex-row" : "flex-row-reverse"
       )}
+      target="_blank"
     >
       <div>{type === "ios" ? <IOSIcon /> : <AndroidIcon />}</div>
       <div
