@@ -2,6 +2,7 @@ import { Logo } from "./Logo";
 import Link from "next/link";
 import { DownloadButton } from "./DownloadButton";
 import { headers } from "next/headers";
+import Image from "next/image";
 
 export const Hero = ({
   t,
@@ -57,6 +58,18 @@ export const Hero = ({
             />
           </div>
         )}
+      </div>
+
+      <div
+        className="h-[400px] overflow-hidden"
+        style={{ textAlign: "-webkit-center" }}
+      >
+        <Image
+          src={`/${lang}-screenshot.png`}
+          width={250}
+          height={505}
+          alt="Picture of the author"
+        />
       </div>
     </div>
   );

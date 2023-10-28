@@ -24,7 +24,18 @@ export function middleware(request) {
     (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
   );
 
-  if (pathnameHasLocale) return;
+  if (
+    pathnameHasLocale ||
+    pathname.startsWith(`/en-screenshot.png/`) ||
+    pathname === `/en-screenshot.png` ||
+    pathname.startsWith(`/next.svg/`) ||
+    pathname === `/next.svg` ||
+    pathname.startsWith(`/vercel.svg/`) ||
+    pathname === `/vercel.svg` ||
+    pathname.startsWith(`/ar-screenshot.png/`) ||
+    pathname === `/ar-screenshot.png`
+  )
+    return;
 
   // Redirect if there is no locale
   const locale = getLocale(request);
