@@ -43,14 +43,16 @@ export default function RootLayout({
           {children}
           <div
             className={clsx(
-              "bg-[#E7E3D8] p-[52px] md:p-[20px] md:flex md:justify-between md:items-center text-center space-y-[16px]",
+              "bg-[#E7E3D8] p-[52px] md:p-[20px] md:flex md:justify-between md:items-center text-center space-y-[12px]",
               manrope.className
             )}
+            dir="ltr"
           >
+            <Logo />
+
             <div className="text-[#444] font-semibold text-[14px]">
               support@petlo.co | +962790174799
             </div>
-            <Logo />
           </div>
           <Analytics />
         </SnackbarProvider>
