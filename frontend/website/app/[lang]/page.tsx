@@ -12,7 +12,10 @@ const Home = async ({
     <div>
       <Hero lang={lang} t={t} />
 
-      <div></div>
+      <div className="lg:grid lg:grid-cols-2">
+        <div className="bg-[#888]">dddddddddd</div>
+        <div className="bg-[#000]">cccccccccccc</div>
+      </div>
     </div>
   );
 };
