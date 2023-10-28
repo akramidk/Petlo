@@ -1,7 +1,8 @@
 "use client";
 
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
-import { useState } from "react";
+import { Fragment, useState } from "react";
+import reactStringReplace from "react-string-replace";
 
 export const Accordion = ({
   items,
@@ -34,7 +35,12 @@ export const Accordion = ({
 
             {opened && (
               <div className="mt-[20px] text-[14px] text-[#666]">
-                {item.answer}
+                {reactStringReplace(item.answer, "{{br}}", (_, i) => (
+                  <Fragment key={index}>
+                    <br />
+                    <br />
+                  </Fragment>
+                ))}
               </div>
             )}
           </div>
