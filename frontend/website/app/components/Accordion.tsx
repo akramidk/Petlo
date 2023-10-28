@@ -18,7 +18,7 @@ export const Accordion = ({
   const [openedIndex, setOpenedIndex] = useState<number>();
 
   return (
-    <div style={{ textAlign: "-webkit-center" }}>
+    <div className="inline-block items-center">
       {items.map((item, index) => {
         const opened = openedIndex === index;
         const Icon = openedIndex === index ? ChevronUpIcon : ChevronDownIcon;
