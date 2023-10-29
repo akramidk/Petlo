@@ -1,5 +1,8 @@
+"use client";
+
 import clsx from "clsx";
 import Link from "next/link";
+import ReactPixel from "react-facebook-pixel";
 
 export const DownloadButton = ({
   type,
@@ -22,6 +25,9 @@ export const DownloadButton = ({
         lang === "en" ? "flex-row" : "flex-row-reverse"
       )}
       target="_blank"
+      onClick={() => {
+        ReactPixel.track("Lead");
+      }}
     >
       <div>{type === "ios" ? <IOSIcon /> : <AndroidIcon />}</div>
       <div

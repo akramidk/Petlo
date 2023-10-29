@@ -6,6 +6,8 @@ import { SnackbarProvider } from "../SnackbarProvider";
 import clsx from "clsx";
 import { Logo } from "../components/Logo";
 import Link from "next/link";
+import ReactPixel from "react-facebook-pixel";
+import { FacebookPixel } from "../FacebookPixel";
 
 const manrope = Manrope({ subsets: ["latin"] });
 const ibm = IBM_Plex_Sans_Arabic({
@@ -84,6 +86,7 @@ export default function RootLayout({
             </div>
           </div>
           <Analytics />
+          <FacebookPixel />
         </SnackbarProvider>
       </body>
     </html>
