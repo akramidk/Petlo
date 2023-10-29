@@ -1,8 +1,8 @@
 module Dashboard
   class OverviewController < ApplicationController
-    before_action :check_dashboard_key
-    
     def index
+      raise("1000000") if params[:passcode] != "it'smebaby"
+
       customers = Customer.all.length
       orders = Order.where(status: "preparing").length
       autoships = Autoship.all.length
