@@ -28,7 +28,7 @@ export const DownloadButton = ({
       target="_blank"
       onClick={() => {
         ReactPixel.track("Lead");
-        track("Lead");
+        track("DownloadButton");
       }}
     >
       <div>{type === "ios" ? <IOSIcon /> : <AndroidIcon />}</div>
