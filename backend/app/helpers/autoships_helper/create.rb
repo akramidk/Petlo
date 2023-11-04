@@ -1,5 +1,5 @@
 module AutoshipsHelper::Create
-  def create(customer:, name:, recurring_interval:, recurring_interval_count:, next_shipment_on:, items:, address_id:, payment:, pets:)
+  def create(customer:, name:, recurring_interval:, recurring_interval_count:, next_shipment_on:, items:, address_id:, payment:, pets:, request:)
     splitted_next_shipment_on = next_shipment_on.split("-")
     next_shipment_on = Date.new(
       splitted_next_shipment_on[0].to_i,
@@ -73,5 +73,13 @@ module AutoshipsHelper::Create
     pets_id.each do |id|
       AutoshipPet.create!(autoship_id: autoship.id, pet_id: id)
     end
+
+    TrackingJob.perform_async(
+      "Subscribe",
+      request.user_agent,
+      request.remote_ip,
+      customer.public_id,
+      customer.phone_number
+    )
   end
 end

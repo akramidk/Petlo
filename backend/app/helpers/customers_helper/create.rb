@@ -1,5 +1,5 @@
 module CustomersHelper::Create
-  def create(name:, country:, phone_number:, password:, language:)
+  def create(name:, country:, phone_number:, password:, language:, request:)
     Customer.validates_password(password: password)
 
     customer = Customer.create!(
@@ -20,6 +20,14 @@ module CustomersHelper::Create
       customer.public_id,
       ENUM::PERMISSIONS[:CUSTOMER_VERIFICATION],
       language
+    )
+
+    TrackingJob.perform_async(
+      "Registration",
+      request.user_agent,
+      request.remote_ip,
+      customer.public_id,
+      customer.phone_number
     )
     
     { customer: { session_token: session_token } }

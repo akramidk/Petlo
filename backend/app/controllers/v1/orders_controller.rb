@@ -19,7 +19,8 @@ module V1
                 customer: @customer,
                 checkout_id: params[:checkout_id],
                 payment: params[:payment],
-                pets: params[:pets]
+                pets: params[:pets],
+                request: request
             )
 
             render json: { status: "succeeded" }, status: 200

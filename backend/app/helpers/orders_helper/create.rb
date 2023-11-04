@@ -1,7 +1,7 @@
 module OrdersHelper::Create
     PROCESSOR = "Stripe"
 
-    def create(customer:, checkout_id:, payment:, pets:)
+    def create(customer:, checkout_id:, payment:, pets:, request:)
         checkout = customer.checkouts.find_by(public_id: checkout_id)
         raise(RuntimeError, 3006000) if !checkout
         raise(RuntimeError, 3006001) if checkout.used?
@@ -90,5 +90,13 @@ module OrdersHelper::Create
 
         cart.used!
         checkout.used!
+
+        TrackingJob.perform_async(
+            "Purchase",
+            request.user_agent,
+            request.remote_ip,
+            customer.public_id,
+            customer.phone_number
+        )
     end
 end

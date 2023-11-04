@@ -14,7 +14,8 @@ module V1
     def verify
       response = VerificationsHelper.verify(
         customer: @customer,
-        verification_code: params[:verification_code]
+        verification_code: params[:verification_code],
+        request: request
       )
       
       render json: { status: "succeeded", customer: response[:customer] }, status: 200

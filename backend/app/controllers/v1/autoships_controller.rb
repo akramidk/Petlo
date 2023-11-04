@@ -23,7 +23,8 @@ module V1
         items: params[:items],
         address_id: params[:address_id],
         payment: params[:payment],
-        pets: params[:pets]
+        pets: params[:pets],
+        request: request
       )
 
       render json: { status: "succeeded" }, status: 200
