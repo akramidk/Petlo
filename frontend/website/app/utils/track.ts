@@ -14,6 +14,13 @@ const origin =
     : "https://petlo.co";
 
 export const track = async (event: event) => {
+  console.log({
+    url: window.location.href,
+    fbp: Cookies.get("_fbp"),
+    fbc: Cookies.get("_fbc"),
+    userAgent: navigator.userAgent,
+  });
+
   fetch(`${origin}${eventPath[event]}`, {
     method: "POST",
     headers: {
