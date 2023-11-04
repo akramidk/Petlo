@@ -3,7 +3,7 @@ class Tracking::TrackingJob
 
   require 'facebookbusiness'
 
-  def perform(event, user_agent, ip, customer_public_id, customer_phone_number)
+  def perform(event, user_agent, ip, customer_public_id, customer_phone_number, custom_data)
     access_token = ENV["FACEBOOK_ADS_ACCESS_TOKEN"]
     pixel_id = ENV["FACEBOOK_ADS_PIXEL_ID"]
 
@@ -18,12 +18,18 @@ class Tracking::TrackingJob
       client_ip_address: ip
     )
 
-    event = FacebookAds::ServerSide::Event.new(
+    event_data = {
       event_name: event,
       event_time: Time.now.to_i,
       user_data: user_data,
       action_source: 'system_generated'
-    )
+    }
+
+    if(custom_data){
+      event_data["custom_data"] = FacebookAds::ServerSide::CustomData.new(*custom_data)
+    }
+
+    event = FacebookAds::ServerSide::Event.new(*event_data)
 
     request = FacebookAds::ServerSide::EventRequest.new(
       pixel_id: pixel_id,

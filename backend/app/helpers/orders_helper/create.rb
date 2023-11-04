@@ -96,7 +96,14 @@ module OrdersHelper::Create
             request.user_agent,
             request.remote_ip,
             customer.public_id,
-            customer.phone_number
+            customer.phone_number,
+            {
+                currency: CONSTANTS::COUNTRIES_CURRENCIES[customer.country]["en"].downcase,
+                value: Utils.number_to_currency(
+                    country: customer.country,
+                    number: checkout.cart_amount + checkout.delivery_amount
+                )
+            }
         )
     end
 end
