@@ -25,9 +25,9 @@ class Tracking::TrackingJob
       action_source: 'system_generated'
     }
 
-    if(custom_data){
+    if custom_data
       event_data["custom_data"] = FacebookAds::ServerSide::CustomData.new(*custom_data)
-    }
+    end
 
     event = FacebookAds::ServerSide::Event.new(*event_data)
 
