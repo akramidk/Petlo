@@ -43,7 +43,8 @@ export function middleware(request) {
     pathname.startsWith(`/ar-item.png/`) ||
     pathname === `/ar-item.png` ||
     pathname.startsWith(`/favicon.ico/`) ||
-    pathname === `/favicon.ico`
+    pathname === `/favicon.ico` ||
+    pathname.startsWith("/api/")
   )
     return;
 

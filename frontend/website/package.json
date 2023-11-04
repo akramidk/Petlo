@@ -21,6 +21,8 @@
     "clsx": "^2.0.0",
     "eslint": "8.48.0",
     "eslint-config-next": "13.4.19",
+    "facebook-nodejs-business-sdk": "^18.0.2",
+    "js-cookie": "^3.0.5",
     "negotiator": "^0.6.3",
     "next": "13.4.19",
     "notistack": "^3.0.1",
@@ -32,5 +34,8 @@
     "react-useanimations": "^2.10.0",
     "tailwindcss": "3.3.3",
     "typescript": "5.2.2"
+  },
+  "devDependencies": {
+    "@types/js-cookie": "^3.0.5"
   }
 }
