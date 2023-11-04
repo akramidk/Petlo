@@ -102,7 +102,7 @@ module OrdersHelper::Create
                 value: Utils.number_to_currency(
                     country: customer.country,
                     number: checkout.cart_amount + checkout.delivery_amount
-                )
+                ).to_f
             }
         )
     end

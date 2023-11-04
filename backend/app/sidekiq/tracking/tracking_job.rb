@@ -26,10 +26,10 @@ class Tracking::TrackingJob
     }
 
     if custom_data
-      event_data["custom_data"] = FacebookAds::ServerSide::CustomData.new(*custom_data)
+      event_data["custom_data"] = FacebookAds::ServerSide::CustomData.new(**custom_data)
     end
 
-    event = FacebookAds::ServerSide::Event.new(*event_data)
+    event = FacebookAds::ServerSide::Event.new(**event_data)
 
     request = FacebookAds::ServerSide::EventRequest.new(
       pixel_id: pixel_id,
