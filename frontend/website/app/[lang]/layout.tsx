@@ -6,7 +6,7 @@ import { SnackbarProvider } from "../SnackbarProvider";
 import clsx from "clsx";
 import { Logo } from "../components/Logo";
 import Link from "next/link";
-import { track } from "../utils/track";
+import { TrackingProvider } from "./TrackingProvider";
 
 const manrope = Manrope({ subsets: ["latin"] });
 const ibm = IBM_Plex_Sans_Arabic({
@@ -38,8 +38,6 @@ export default function RootLayout({
           lang: "en",
           className: manrope.className,
         };
-
-  track("pageView");
 
   return (
     <html {...config}>
@@ -86,6 +84,7 @@ export default function RootLayout({
               support@petlo.co | +962790174799
             </div>
           </div>
+          <TrackingProvider />
           <Analytics />
         </SnackbarProvider>
       </body>

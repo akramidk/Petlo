@@ -1,5 +1,6 @@
-import { cookies } from "next/headers";
-import { headers } from "next/headers";
+"use client";
+
+import Cookies from "js-cookie";
 
 type event = "pageView";
 const eventPath: { [key in event]: string } = {
@@ -11,19 +12,17 @@ const origin =
     ? "http://localhost:3000"
     : "https://petlo.co";
 
-export const track = (event: event) => {
-  const cookieStore = cookies();
-  const headersList = headers();
-
+export const track = async (event: event) => {
   fetch(`${origin}${eventPath[event]}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      fbp: cookieStore.get("_fbp")?.value,
-      fbc: cookieStore.get("_fbc")?.value,
-      userAgent: headersList.get("user-agent"),
+      url: window.location.href,
+      fbp: Cookies.get("_fbp"),
+      fbc: Cookies.get("_fbc"),
+      userAgent: navigator.userAgent,
     }),
   });
 };
