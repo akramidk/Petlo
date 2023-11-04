@@ -2,9 +2,10 @@
 
 import Cookies from "js-cookie";
 
-type event = "pageView";
+type event = "pageView" | "downloadButtonClick";
 const eventPath: { [key in event]: string } = {
   pageView: "/api/tracking/page-view",
+  downloadButtonClick: "/api/tracking/download-button-click",
 };
 
 const origin =

@@ -2,7 +2,8 @@
 
 import clsx from "clsx";
 import Link from "next/link";
-import { track } from "@vercel/analytics";
+import { track as vercelTrack } from "@vercel/analytics";
+import { track } from "../utils/track";
 
 export const DownloadButton = ({
   type,
@@ -26,7 +27,8 @@ export const DownloadButton = ({
       )}
       target="_blank"
       onClick={() => {
-        track("DownloadButtonClick");
+        track("downloadButtonClick");
+        vercelTrack("DownloadButtonClick");
       }}
     >
       <div>{type === "ios" ? <IOSIcon /> : <AndroidIcon />}</div>
