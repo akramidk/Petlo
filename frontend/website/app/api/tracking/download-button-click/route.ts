@@ -25,9 +25,9 @@ export async function POST(request: Request) {
     .setActionSource("website");
 
   const eventsData = [serverEvent];
-  const eventRequest = new EventRequest(access_token, pixel_id)
-    .setTestEventCode("TEST58553")
-    .setEvents(eventsData);
+  const eventRequest = new EventRequest(access_token, pixel_id).setEvents(
+    eventsData
+  );
 
   eventRequest.execute();
 
