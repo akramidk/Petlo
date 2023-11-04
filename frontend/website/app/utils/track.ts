@@ -32,5 +32,5 @@ export const track = async (event: event) => {
       fbc: Cookies.get("_fbc"),
       userAgent: navigator.userAgent,
     }),
-  });
+  }).catch((error) => console.log(error));
 };
