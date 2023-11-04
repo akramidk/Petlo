@@ -26,7 +26,7 @@ export const DownloadButton = ({
       )}
       target="_blank"
       onClick={() => {
-        track("DownloadButton");
+        track("DownloadButtonClick");
       }}
     >
       <div>{type === "ios" ? <IOSIcon /> : <AndroidIcon />}</div>
