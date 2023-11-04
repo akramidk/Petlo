@@ -21,11 +21,9 @@ export const track = (event: event) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      url: `${origin}${headersList.get("x-invoke-path")}`,
       fbp: cookieStore.get("_fbp")?.value,
       fbc: cookieStore.get("_fbc")?.value,
       userAgent: headersList.get("user-agent"),
-      ipAddress: headersList.get("x-forwarded-for"),
     }),
   });
 };

@@ -21,7 +21,6 @@ export async function POST(request: Request) {
     .setEventName("PageView")
     .setEventTime(current_timestamp)
     .setUserData(userData)
-    .setEventSourceUrl(body.url)
     .setActionSource("website");
 
   const eventsData = [serverEvent];
