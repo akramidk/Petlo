@@ -6,7 +6,7 @@ import { SnackbarProvider } from "../SnackbarProvider";
 import clsx from "clsx";
 import { Logo } from "../components/Logo";
 import Link from "next/link";
-import { FacebookPixel } from "../FacebookPixel";
+import { track } from "../utils/track";
 
 const manrope = Manrope({ subsets: ["latin"] });
 const ibm = IBM_Plex_Sans_Arabic({
@@ -38,6 +38,8 @@ export default function RootLayout({
           lang: "en",
           className: manrope.className,
         };
+
+  track("pageView");
 
   return (
     <html {...config}>
@@ -85,7 +87,6 @@ export default function RootLayout({
             </div>
           </div>
           <Analytics />
-          <FacebookPixel />
         </SnackbarProvider>
       </body>
     </html>

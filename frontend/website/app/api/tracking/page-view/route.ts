@@ -13,7 +13,7 @@ export async function POST(request: Request) {
 
   let current_timestamp = Math.floor(Date.now() / 1000);
 
-  const userData = new UserData();
+  const userData = new UserData().setClientUserAgent(body.userAgent);
   if (body.fbp) userData.setFbp(body.fbp);
   if (body.fbc) userData.setFbc(body.fbc);
 
@@ -31,7 +31,7 @@ export async function POST(request: Request) {
 
   eventRequest.execute();
 
-  return new Response(body.fbp, {
+  return new Response(undefined, {
     status: 200,
     headers: {
       "Access-Control-Allow-Origin": "petlo.co",
