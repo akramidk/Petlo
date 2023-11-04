@@ -22,7 +22,7 @@ module CustomersHelper::Create
       language
     )
 
-    TrackingJob.perform_async(
+    Tracking::TrackingJob.perform_async(
       "Registration",
       request.user_agent,
       request.remote_ip,

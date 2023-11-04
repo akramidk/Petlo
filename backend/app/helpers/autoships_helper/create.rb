@@ -74,7 +74,7 @@ module AutoshipsHelper::Create
       AutoshipPet.create!(autoship_id: autoship.id, pet_id: id)
     end
 
-    TrackingJob.perform_async(
+    Tracking::TrackingJob.perform_async(
       "Subscribe",
       request.user_agent,
       request.remote_ip,

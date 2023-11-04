@@ -12,7 +12,7 @@ module VerificationsHelper::Verify
         phone_number: customer.phone_number
       )
 
-      TrackingJob.perform_async(
+      Tracking::TrackingJob.perform_async(
         "CompleteRegistration",
         request.user_agent,
         request.remote_ip,

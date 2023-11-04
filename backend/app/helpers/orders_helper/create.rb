@@ -91,7 +91,7 @@ module OrdersHelper::Create
         cart.used!
         checkout.used!
 
-        TrackingJob.perform_async(
+        Tracking::TrackingJob.perform_async(
             "Purchase",
             request.user_agent,
             request.remote_ip,
