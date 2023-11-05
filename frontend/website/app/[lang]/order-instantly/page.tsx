@@ -43,11 +43,11 @@ const OrderInstantly = async ({
 const WAYS = [
   {
     title: "ORDER_INSTANTLY.WAY_1",
-    link: "https://www.facebook.com/petloHQ",
+    link: "https://www.instagram.com/petlohq",
   },
   {
     title: "ORDER_INSTANTLY.WAY_2",
-    link: "https://www.instagram.com/petlohq",
+    link: "https://www.facebook.com/petloHQ",
   },
   {
     title: "ORDER_INSTANTLY.WAY_3",
