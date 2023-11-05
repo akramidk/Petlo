@@ -3,7 +3,7 @@ class Tracking::TrackingJob
 
   require 'facebookbusiness'
 
-  def perform(event, user_agent, ip, customer_public_id, customer_phone_number, custom_data)    
+  def perform(event, user_agent, ip, customer_public_id, customer_phone_number, custom_data=nil)    
     access_token = ENV["FACEBOOK_ADS_ACCESS_TOKEN"]
     pixel_id = ENV["FACEBOOK_ADS_PIXEL_ID"]
 
