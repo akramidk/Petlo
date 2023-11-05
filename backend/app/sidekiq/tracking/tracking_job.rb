@@ -36,8 +36,7 @@ class Tracking::TrackingJob
 
     request = FacebookAds::ServerSide::EventRequest.new(
       pixel_id: pixel_id,
-      events: [event],
-      test_event_code: "TEST67487"
+      events: [event]
     )
 
     request.execute
