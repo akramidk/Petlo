@@ -3,7 +3,7 @@ class Tracking::TrackingJob
 
   require 'facebookbusiness'
 
-  def perform(event, user_agent, ip, customer_public_id, customer_phone_number, custom_data)
+  def perform(event, user_agent, ip, customer_public_id, customer_phone_number, custom_data)    
     access_token = ENV["FACEBOOK_ADS_ACCESS_TOKEN"]
     pixel_id = ENV["FACEBOOK_ADS_PIXEL_ID"]
 
@@ -25,8 +25,11 @@ class Tracking::TrackingJob
       action_source: 'system_generated'
     }
 
-    if custom_data
-      event_data["custom_data"] = FacebookAds::ServerSide::CustomData.new(**custom_data)
+    if event == "Purchase"
+      event_data[:custom_data] = FacebookAds::ServerSide::CustomData.new(
+        currency: custom_data["currency"],
+        value: custom_data["value"]
+      )
     end
 
     event = FacebookAds::ServerSide::Event.new(**event_data)
