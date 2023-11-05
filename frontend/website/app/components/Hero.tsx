@@ -4,6 +4,7 @@ import { headers } from "next/headers";
 import Image from "next/image";
 import reactStringReplace from "react-string-replace";
 import { ChangeLangButton } from "./ChangeLangButton";
+import Link from "next/link";
 
 export const Hero = ({
   t,
@@ -41,7 +42,7 @@ export const Hero = ({
         ))}
       </div>
 
-      <div className="inline-block mb-[36px]">
+      <div className="inline-block mb-[12px]">
         {isAndroid || isiPhone ? (
           <DownloadButton
             type={isAndroid ? "android" : "ios"}
@@ -62,6 +63,15 @@ export const Hero = ({
             />
           </div>
         )}
+      </div>
+
+      <div className="mb-[36px]">
+        <Link
+          href={`${lang}/order-instantly`}
+          className="underline font-semibold text-[15px] text-[#444]"
+        >
+          {t["COMMON.ORDER_INSTANTLY_BUTTON"]}
+        </Link>
       </div>
 
       <div className="h-[400px] overflow-hidden grid justify-center">
