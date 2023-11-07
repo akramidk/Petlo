@@ -88,7 +88,7 @@ module SectionsHelper::All
         "en" => "More Dry Dog Food"
       },
       category_public_id: "OCqWuzle8HRKChzL",
-      brand_public_id: ["xck5wT1zNH3gjMUC", "Gk79Bwd3dTH6kOoj"]
+      brand_public_id: ["Z1ikn0wfAw0vqN4h", "xck5wT1zNH3gjMUC", "Gk79Bwd3dTH6kOoj"]
     },
     {
       name: {
