@@ -3,13 +3,15 @@ import { DateTime } from "luxon";
 import BaseSelector from "../../../src/components/bases/BaseSelector";
 import { View } from "react-native";
 import BaseLabel from "../../../src/components/bases/BaseLabel";
-import Popover from "react-native-popover-view";
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import NextShipment from "../interfaces/NextShipment";
 import {
   useInternationalizationContext,
   useTranslationsContext,
 } from "../../../src/hooks";
+import Modal from "react-native-modal";
+import * as Device from "expo-device";
+import clsx from "clsx";
 
 interface SelectNextShipment {
   value: NextShipment;
@@ -26,14 +28,26 @@ const SelectNextShipment = ({
   const { languageWithoutGender } = useInternationalizationContext();
 
   const luxonDate = DateTime.now();
-  const JSDate = luxonDate.toJSDate();
   const value = selectedValue
     ? DateTime.fromObject(selectedValue).toJSDate()
-    : JSDate;
-  const minimumDate = JSDate;
+    : luxonDate.plus({ day: 1 }).toJSDate();
+  const minimumDate = luxonDate.plus({ day: 1 }).toJSDate();
   const maximumDate = luxonDate.plus({ month: 3 }).toJSDate();
 
   const [isVisible, setIsVisible] = useState(false);
+
+  const isIOS = Device.brand.toLowerCase() === "apple";
+
+  useEffect(() => {
+    if (selectedValue) return;
+
+    const date = luxonDate.plus({ day: 1 });
+    setValue({
+      day: date.day,
+      month: date.month,
+      year: date.year,
+    });
+  }, []);
 
   return (
     <>
@@ -48,25 +62,25 @@ const SelectNextShipment = ({
         />
 
         <View>
-          <Popover
-            isVisible={isVisible}
-            onRequestClose={() => setIsVisible(false)}
-            from={
-              <View>
-                <BaseSelector
-                  placeholder={t(
-                    "CREATE_AN_AUTOSHIP__SHIPMENT_DATE_FILED_PLACEHOLDER"
-                  )}
-                  value={
-                    selectedValue
-                      ? `${selectedValue.day}/${selectedValue.month}/${selectedValue.year}`
-                      : undefined
-                  }
-                  onClick={() => setIsVisible(true)}
-                />
-              </View>
+          <BaseSelector
+            placeholder={t(
+              "CREATE_AN_AUTOSHIP__SHIPMENT_DATE_FILED_PLACEHOLDER"
+            )}
+            value={
+              selectedValue
+                ? `${selectedValue.day}/${selectedValue.month}/${selectedValue.year}`
+                : undefined
             }
-            popoverStyle={{ padding: 12 }}
+            onClick={() => setIsVisible(true)}
+          />
+        </View>
+
+        <Modal
+          isVisible={isVisible}
+          onBackdropPress={() => setIsVisible(false)}
+        >
+          <View
+            className={clsx({ ["bg-[#ffffff] p-[12px] rounded-[4px]"]: isIOS })}
           >
             <DateTimePicker
               value={value}
@@ -91,8 +105,8 @@ const SelectNextShipment = ({
               }}
               locale={languageWithoutGender}
             />
-          </Popover>
-        </View>
+          </View>
+        </Modal>
       </View>
     </>
   );

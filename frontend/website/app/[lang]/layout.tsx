@@ -7,6 +7,7 @@ import clsx from "clsx";
 import { Logo } from "../components/Logo";
 import Link from "next/link";
 import { TrackingProvider } from "./TrackingProvider";
+import { HotjarProvider } from "../HotjarProvider";
 
 const manrope = Manrope({ subsets: ["latin"] });
 const ibm = IBM_Plex_Sans_Arabic({
@@ -84,6 +85,7 @@ export default function RootLayout({
               support@petlo.co | +962790174799
             </div>
           </div>
+          <HotjarProvider />
           <TrackingProvider />
           <Analytics />
         </SnackbarProvider>

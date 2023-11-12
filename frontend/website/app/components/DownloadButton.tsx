@@ -4,6 +4,7 @@ import clsx from "clsx";
 import Link from "next/link";
 import { track as vercelTrack } from "@vercel/analytics";
 import { track } from "../utils/track";
+import ReactPixel from "react-facebook-pixel";
 
 export const DownloadButton = ({
   type,
@@ -27,7 +28,8 @@ export const DownloadButton = ({
       )}
       target="_blank"
       onClick={() => {
-        track("downloadButtonClick");
+        ReactPixel.track("Lead");
+        ReactPixel.trackCustom("DownloadButtonClick");
         vercelTrack("DownloadButtonClick");
       }}
     >
