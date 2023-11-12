@@ -39,6 +39,7 @@ module Dashboard
         items << {
           public_id: item[:public_id],
           brand: brand,
+          categories: item.categories,
           price: order_item[:price],
           options: options,
           quantity: order_item[:quantity],
