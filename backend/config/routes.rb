@@ -127,6 +127,9 @@ Rails.application.routes.draw do
 
       #overview
       get "overview", to: "overview#index"
+      get "overview/orders", to: "overview#orders"
+      get "overview/order/:public_id", to: "overview#order"
+      get "overview/autoships", to: "overview#autoships"
     end
     
     namespace :jobs do
