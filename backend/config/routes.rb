@@ -102,6 +102,9 @@ Rails.application.routes.draw do
       # TODO should get not post but akram used post to use useAPIMutation
       post "autoships/items-calculation", to: "autoships#items_calculation"
       post "autoships/calculation", to: "autoships#calculation"
+
+      #track
+      post "track/app-download", to: "track#app_download"
     end
 
     namespace :dashboard do
