@@ -102,11 +102,10 @@ const Home = () => {
             return (
               <BaseButton
                 key={index}
-                style={{ backgroundColor: item.bgColor }}
                 onClick={() => {
                   router.push(item.path);
                 }}
-                cn="rounded-[4px] p-[24px]"
+                cn="rounded-[4px] p-[24px] border-[#f6f6f6] border-[1px]"
               >
                 <View>
                   <View
@@ -118,25 +117,17 @@ const Home = () => {
                     <Icon
                       name={item.icon}
                       size={24}
-                      color={item.iconColor}
+                      color="#0E333C"
                       solid={false}
                       strokeWidth={2}
                     />
                   </View>
 
-                  <Text
-                    font="bold"
-                    cn="text-[16px] mb-[4px]"
-                    style={{ color: item.titleColor }}
-                  >
+                  <Text font="bold" cn="text-[16px] mb-[8px] text-[#0E333C]">
                     {t(item.title)}
                   </Text>
 
-                  <Text
-                    font="medium"
-                    cn="text-[15px]"
-                    style={{ color: item.descriptionColor }}
-                  >
+                  <Text font="medium" cn="text-[15px] text-[#666]">
                     {t(item.description)}
                   </Text>
                 </View>
@@ -153,23 +144,13 @@ const DATA = [
   {
     title: "HOME__PETLO_AUTOSHIP",
     description: "HOME__PETLO_AUTOSHIP_DESCRIPTION",
-    titleColor: "#ffffff",
-    descriptionColor: "#cccccc",
-    bgColor: "#164863",
-    arrowColor: "#ffffff",
     icon: "clock",
-    iconColor: "#ffffff",
     path: "/autoships",
   },
   {
     title: "HOME__PETLO_SHOP",
     description: "HOME__PETLO_SHOP_DESCRIPTION",
-    titleColor: "#0E333C",
-    descriptionColor: "#555555",
-    bgColor: "#F2E4E4",
-    arrowColor: "#0E333C",
     icon: "shoppingBag",
-    iconColor: "#0E333C",
     path: "/shop",
   },
 ];
