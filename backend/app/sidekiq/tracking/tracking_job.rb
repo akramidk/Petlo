@@ -40,11 +40,16 @@ class Tracking::TrackingJob
 
     event = FacebookAds::ServerSide::Event.new(**event_data)
 
-    request = FacebookAds::ServerSide::EventRequest.new(
+    request_data = {
       pixel_id: pixel_id,
-      events: [event],
-      test_event_code: "TEST39693"
-    )
+      events: [event]
+    }
+
+    if ENV['RAILS_ENV'] === "development"
+      request_data[:test_event_code] = "TEST39693"
+    end
+
+    request = FacebookAds::ServerSide::EventRequest.new(**request_data)
 
     request.execute
   end
