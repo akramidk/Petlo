@@ -16,12 +16,14 @@ import { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Icon, Text } from "../../src/components/atoms";
 import { BaseButton } from "../../src/components/bases";
+import clsx from "clsx";
 
 const Home = () => {
   const router = useRouter();
   const { t } = useTranslationsContext();
   const { customer, skipCustomer, setSkipCustomer } = useCustomerContext();
-  const { storedLanguage, languageGender } = useInternationalizationContext();
+  const { storedLanguage, languageGender, direction } =
+    useInternationalizationContext();
 
   const [isCheckingRevalidationFinished, setIsCheckingRevalidationFinished] =
     useState(false);
@@ -104,46 +106,39 @@ const Home = () => {
                 onClick={() => {
                   router.push(item.path);
                 }}
-                cn="rounded-[4px]"
+                cn="rounded-[4px] p-[24px]"
               >
-                <View className="flex flex-row">
-                  <View className="w-[75%] p-[24px]">
-                    <View className="mb-[8px]">
-                      <Icon
-                        name={item.icon}
-                        size={24}
-                        color={item.iconColor}
-                        solid={false}
-                        strokeWidth={2}
-                      />
-                    </View>
-
-                    <Text
-                      font="bold"
-                      cn="text-[16px] mb-[6px]"
-                      style={{ color: item.titleColor }}
-                    >
-                      {item.title}
-                    </Text>
-
-                    <Text
-                      font="medium"
-                      cn="text-[15px]"
-                      style={{ color: item.descriptionColor }}
-                    >
-                      {item.description}
-                    </Text>
-                  </View>
-
-                  <View className="flex items-center justify-center w-[25%] p-[24px]">
+                <View>
+                  <View
+                    className={clsx(
+                      "mb-[16px]",
+                      direction === "rtl" ? "flex-row-reverse" : "flex-row"
+                    )}
+                  >
                     <Icon
-                      name="arrowSmallRight"
-                      color={item.arrowColor}
+                      name={item.icon}
                       size={24}
+                      color={item.iconColor}
                       solid={false}
                       strokeWidth={2}
                     />
                   </View>
+
+                  <Text
+                    font="bold"
+                    cn="text-[16px] mb-[4px]"
+                    style={{ color: item.titleColor }}
+                  >
+                    {t(item.title)}
+                  </Text>
+
+                  <Text
+                    font="medium"
+                    cn="text-[15px]"
+                    style={{ color: item.descriptionColor }}
+                  >
+                    {t(item.description)}
+                  </Text>
                 </View>
               </BaseButton>
             );
@@ -156,9 +151,8 @@ const Home = () => {
 
 const DATA = [
   {
-    title: "Petlo Autoship",
-    description:
-      "Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla",
+    title: "HOME__PETLO_AUTOSHIP",
+    description: "HOME__PETLO_AUTOSHIP_DESCRIPTION",
     titleColor: "#ffffff",
     descriptionColor: "#cccccc",
     bgColor: "#164863",
@@ -168,9 +162,8 @@ const DATA = [
     path: "/autoships",
   },
   {
-    title: "Petlo Shop",
-    description:
-      "Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla",
+    title: "HOME__PETLO_SHOP",
+    description: "HOME__PETLO_SHOP_DESCRIPTION",
     titleColor: "#0E333C",
     descriptionColor: "#555555",
     bgColor: "#F2E4E4",
