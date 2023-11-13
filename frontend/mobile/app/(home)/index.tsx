@@ -94,7 +94,7 @@ const Home = () => {
 
       <View className="px-[28px]">
         <Text font="extraBold" cn="text-[#333] text-[16px]">
-          What do you want today?
+          {t("HOME__WHAT_DO_YOU_WANT_TODAY")}
         </Text>
 
         <View className="mt-[12px] space-y-[8px]">
