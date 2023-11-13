@@ -28,6 +28,7 @@ import {
 } from "react-native";
 import {
   useAPIFetching,
+  useAPIMutation,
   useCartStore,
   useInternationalization,
 } from "../src/hooks";
@@ -56,6 +57,7 @@ import SideThings from "./_SideThings";
 import { BottomSheetOptions } from "../src/components/molecules";
 import Constants from "expo-constants";
 import * as Linking from "expo-linking";
+import { TrackDownloadResponse } from "../src/interfaces";
 
 const FUNCTIONS_URL = Constants.expoConfig.extra.FUNCTIONS_URL;
 
@@ -75,6 +77,17 @@ const Layout = () => {
       isFunction: true,
     },
   });
+
+  const { response: trackDownloadResponse, trigger: trackDownloadTrigger } =
+    useAPIMutation<unknown, TrackDownloadResponse>({
+      endpoint: Endpoints.TRACK_APP_DOWNLOAD,
+      method: "POST",
+      options: {
+        onSucceeded: async () => {
+          await AsyncStorage.setItem(StorageKeys.DOWNLOADED, "true");
+        },
+      },
+    });
 
   //load fonts
   const [fontsLoaded] = useFonts({
@@ -132,6 +145,17 @@ const Layout = () => {
       () => true
     );
     return () => backHandler.remove();
+  }, []);
+
+  //track download
+  useEffect(() => {
+    (async () => {
+      const value = await AsyncStorage.getItem(StorageKeys.DOWNLOADED);
+
+      if (!value && __DEV__) {
+        trackDownloadTrigger(undefined);
+      }
+    })();
   }, []);
 
   if (

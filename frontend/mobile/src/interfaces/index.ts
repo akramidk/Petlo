@@ -175,6 +175,7 @@ import {
   UpdateAutoshipDateResponse,
 } from "./Endpoints/UpdateAutoshipDate";
 import { NextShipmentDateAfterTheSkipResponse } from "./Endpoints/NextShipmentDateAfterTheSkip";
+import { TrackDownloadResponse } from "./Endpoints/TrackDownload";
 
 //entities interfaces
 import { Customer } from "./Entities/Customer";
@@ -294,6 +295,7 @@ export {
   AutoshipCalculationRequest,
   AutoshipCalculationResponse,
   NextShipmentDateAfterTheSkipResponse,
+  TrackDownloadResponse,
   Customer,
   Cart,
   DataCardProps,
