@@ -21,6 +21,9 @@ import {
   CheckIcon as CheckMark,
   ChevronDownIcon as ChevronDown,
   ChevronUpIcon as ChevronUp,
+  ArrowSmallRightIcon as ArrowSmallRight,
+  ClockIcon as Clock,
+  ShoppingBagIcon as ShoppingBag,
 } from "react-native-heroicons/outline";
 
 // TODO add all the icons here
@@ -107,6 +110,15 @@ const Icon = ({
     },
     chevronUp: {
       outline: <ChevronUp {...props} />,
+    },
+    arrowSmallRight: {
+      outline: <ArrowSmallRight {...props} />,
+    },
+    clock: {
+      outline: <Clock {...props} />,
+    },
+    shoppingBag: {
+      outline: <ShoppingBag {...props} />,
     },
   };
 
