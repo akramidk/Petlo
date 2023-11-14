@@ -19,7 +19,8 @@ module V1
         brand_public_id: params[:brand_public_id] == "nil" || params[:brand_public_id] == "null" ? nil : params[:brand_public_id],
         country: "JO",
         language: params[:locale],
-        page: params[:page].to_i
+        page: params[:page].to_i,
+        limit: params[:limit].to_i
       )
 
       render json: { has_more: response[:has_more], data: response[:data] }, status: 200
