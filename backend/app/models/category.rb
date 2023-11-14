@@ -2,6 +2,8 @@ class Category < ApplicationRecord
   include PublicIdGenerator
   extend Items
 
+  has_one_attached :image
+
   has_many :relations 
   has_many :items, through: :relations
   has_many :names, class_name: "CategoryName"

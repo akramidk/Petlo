@@ -2,6 +2,16 @@ module V1
   class CategoriesController < ApplicationController    
     include CategoriesHelper
 
+    def index
+      response = CategoriesHelper.index(
+        #TODO I did the country thingy becuse of Apple, we'll handle it in the future
+        country: "JO",
+        language: params[:locale],
+      )
+
+      render json: { data: response }, status: 200
+    end
+
     def category_items
       #TODO I did the country thingy becuse of Apple, we'll handle it in the future
       response = CategoriesHelper.items(

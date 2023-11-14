@@ -50,6 +50,7 @@ Rails.application.routes.draw do
 
       #categories
       get "categories/:public_id/items", to: "categories#category_items"
+      get "categories", to: "categories#index"
 
       #items
       get "items/:public_id", to: "items#show"
