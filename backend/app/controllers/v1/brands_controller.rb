@@ -4,6 +4,7 @@ module V1
 
     def index
       response = BrandsHelper.index(
+        #TODO I did the country thingy becuse of Apple, we'll handle it in the future
         country: "JO",
         language: params[:locale],
         featured: params[:featured],
@@ -12,6 +13,17 @@ module V1
       )
 
       render json: response, status: 200
+    end
+
+    def search
+      response = BrandsHelper.search(
+        #TODO I did the country thingy becuse of Apple, we'll handle it in the future
+        country: "JO",
+        language: params[:locale],
+        value: params[:value]
+      )
+
+      render json: { data: response }, status: 200
     end
   end
 end

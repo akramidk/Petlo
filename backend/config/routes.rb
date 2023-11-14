@@ -108,6 +108,7 @@ Rails.application.routes.draw do
 
       #brands
       get "brands", to: "brands#index"
+      get "brands/search", to: "brands#search"
     end
 
     namespace :dashboard do
