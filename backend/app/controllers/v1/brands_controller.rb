@@ -25,5 +25,16 @@ module V1
 
       render json: { data: response }, status: 200
     end
+
+    def categories
+      response = BrandsHelper.categories(
+        #TODO I did the country thingy becuse of Apple, we'll handle it in the future
+        country: "JO",
+        language: params[:locale],
+        public_id: params[:public_id]
+      )
+
+      render json: { data: response }, status: 200
+    end
   end
 end

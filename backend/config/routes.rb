@@ -109,6 +109,7 @@ Rails.application.routes.draw do
       #brands
       get "brands", to: "brands#index"
       get "brands/search", to: "brands#search"
+      get "brands/:public_id/categories", to: "brands#categories"
     end
 
     namespace :dashboard do
