@@ -105,6 +105,9 @@ Rails.application.routes.draw do
 
       #track
       post "track/app-download", to: "track#app_download"
+
+      #brands
+      get "brands", to: "brands#index"
     end
 
     namespace :dashboard do
