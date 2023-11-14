@@ -9,7 +9,7 @@ module BrandsHelper::Categories
             
             brand_categories << {
                 public_id: category.public_id,
-                name: category.name
+                name: category.names.find_by(language: language)&.value
             } if items.length > 0
         end
 
