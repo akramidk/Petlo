@@ -10,7 +10,7 @@ const Shop = () => {
 
   return (
     <PageStructure title="Shop" backButton={router.back}>
-      <BrandsList />
+      <BrandsList limit={6} fetchMore={false} />
     </PageStructure>
   );
 };

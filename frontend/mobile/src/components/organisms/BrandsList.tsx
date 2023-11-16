@@ -7,19 +7,25 @@ import { Endpoints } from "../../enums";
 import { BrandsResponse } from "../../interfaces";
 import { BrandsRequest } from "../../interfaces/Endpoints/Brands";
 
-const BrandsList = () => {
+interface BrandsList {
+  limit: number;
+  fetchMore?: boolean;
+}
+
+const BrandsList = ({ limit, fetchMore = true }: BrandsList) => {
   const { height } = useWindowDimensions();
-  const { response, fetchMore } = useAPIFetching<BrandsRequest, BrandsResponse>(
-    {
-      endpoint: Endpoints.BRANDS,
-      options: {
-        withPagination: true,
-      },
-      body: {
-        limit: 12,
-      },
-    }
-  );
+  const { response, fetchMore: fetchMoreHandler } = useAPIFetching<
+    BrandsRequest,
+    BrandsResponse
+  >({
+    endpoint: Endpoints.BRANDS,
+    options: {
+      withPagination: true,
+    },
+    body: {
+      limit: limit,
+    },
+  });
 
   return (
     <View style={{ height: height - 300 }}>
@@ -33,12 +39,8 @@ const BrandsList = () => {
             </View>
           );
         }}
-        numColumns={1}
-        onEndReached={() => {
-          if (response.isFetching === false && response.body?.has_more) {
-            fetchMore();
-          }
-        }}
+        numColumns={2}
+        onEndReached={fetchMore ? fetchMoreHandler : undefined}
       />
     </View>
   );
