@@ -20,7 +20,7 @@ const PetsList = ({ title }: PetsList) => {
   return (
     <View>
       {title && (
-        <Text cn="text-[15px] text-[#0E333C] mb-[12px]" font="extraBold">
+        <Text cn="text-[15px] text-[#0E333C] mb-[8px]" font="extraBold">
           {title}
         </Text>
       )}

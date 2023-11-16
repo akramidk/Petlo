@@ -1,7 +1,7 @@
 import { useRouter } from "expo-router";
 import { View } from "react-native";
 import {
-  BrandsList,
+  BrandsAndPetsList,
   PageStructure,
   PetsList,
 } from "../../src/components/organisms";
@@ -14,14 +14,7 @@ const Shop = () => {
 
   return (
     <PageStructure title="Shop" backButton={router.back}>
-      <BrandsList
-        limit={6}
-        fetchMore={false}
-        title="Shop by Brand"
-        showAllButton
-      />
-      <View className="mb-[28px]"></View>
-      <PetsList title="Shop by Pet" />
+      <BrandsAndPetsList />
     </PageStructure>
   );
 };

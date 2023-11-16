@@ -2,11 +2,16 @@ import { View } from "react-native";
 import { Text, Link } from "../atoms";
 import { FlashList } from "@shopify/flash-list";
 import { useWindowDimensions } from "react-native";
-import { useAPIFetching, useInternationalizationContext } from "../../hooks";
+import {
+  useAPIFetching,
+  useInternationalizationContext,
+  useTranslationsContext,
+} from "../../hooks";
 import { Endpoints } from "../../enums";
 import { BrandsResponse } from "../../interfaces";
 import { BrandsRequest } from "../../interfaces/Endpoints/Brands";
 import clsx from "clsx";
+import { BaseButton } from "../bases";
 
 interface BrandsList {
   limit: number;
@@ -26,6 +31,7 @@ const BrandsList = ({
   title,
   onShowAllButtonClick,
 }: BrandsList) => {
+  const { t } = useTranslationsContext();
   const { height } = useWindowDimensions();
   const { direction } = useInternationalizationContext();
   const { response, fetchMore: fetchMoreHandler } = useAPIFetching<
@@ -42,29 +48,11 @@ const BrandsList = ({
   });
 
   return (
-    <View>
-      {(showAllButton || title) && (
-        <View
-          className={clsx(
-            "justify-between items-center mb-[12px]",
-            direction === "ltr" ? "flex-row" : "flex-row-reverse"
-          )}
-        >
-          {title && (
-            <Text cn="text-[15px] text-[#0E333C] w-[75%]" font="extraBold">
-              {title}
-            </Text>
-          )}
-
-          {showAllButton && (
-            <Link
-              onClick={onShowAllButtonClick}
-              value="Show All"
-              valueCN="text-[14px] text-[#777]"
-              font="semiBold"
-            />
-          )}
-        </View>
+    <View className="space-y-[8px]">
+      {title && (
+        <Text cn="text-[15px] text-[#0E333C]" font="extraBold">
+          {title}
+        </Text>
       )}
 
       <View
@@ -87,6 +75,15 @@ const BrandsList = ({
           scrollEnabled={fetchMore}
         />
       </View>
+
+      <BaseButton
+        cn="w-[100%] bg-[#f6f6f6] rounded-[4px] items-center justify-center p-[12px]"
+        onClick={onShowAllButtonClick}
+      >
+        <Text cn="text-[14px] text-[#333]" font="bold">
+          {t("BRANDS_LIST__SHOW_ALL_BRANDS")}
+        </Text>
+      </BaseButton>
     </View>
   );
 };
