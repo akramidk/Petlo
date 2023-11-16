@@ -4,4 +4,5 @@ export interface BrandsListProps {
   title?: string;
   showAllButton?: Boolean;
   onShowAllButtonClick?: () => void;
+  onBrandClick: (public_id: string) => void;
 }

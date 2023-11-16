@@ -21,6 +21,7 @@ const Shop = () => {
           title: t("BRANDS_AND_PETS_LIST__SHOP_BY_BRAND"),
           showAllButton: true,
           onShowAllButtonClick: () => router.push("/brands"),
+          onBrandClick: (public_id) => router.push(`/brands/${public_id}`),
         }}
       />
     </PageStructure>

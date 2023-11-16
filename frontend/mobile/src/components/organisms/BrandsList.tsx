@@ -22,6 +22,7 @@ const BrandsList = ({
   showAllButton,
   title,
   onShowAllButtonClick,
+  onBrandClick,
 }: BrandsListProps) => {
   const { t } = useTranslationsContext();
   const { height } = useWindowDimensions();
@@ -56,9 +57,12 @@ const BrandsList = ({
           estimatedItemSize={ITEM_SIZE}
           renderItem={(item) => {
             return (
-              <View className="border-[#f6f6f6] border-[1px] min-w-[50%] h-[92px] flex-auto m-[4px] rounded-[4px]">
+              <BaseButton
+                className="border-[#f6f6f6] border-[1px] min-w-[50%] h-[92px] flex-auto m-[4px] rounded-[4px]"
+                onClick={() => onBrandClick(item.item.public_id)}
+              >
                 <Text>{item.item.name}</Text>
-              </View>
+              </BaseButton>
             );
           }}
           numColumns={NUM_COLUMNS}

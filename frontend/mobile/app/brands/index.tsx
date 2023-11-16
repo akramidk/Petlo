@@ -10,7 +10,10 @@ const Brands = () => {
       backButton={router.back}
       scrollEnabled={false}
     >
-      <BrandsList limit={12} />
+      <BrandsList
+        limit={12}
+        onBrandClick={(public_id) => router.push(`/brands/${public_id}`)}
+      />
     </PageStructure>
   );
 };
