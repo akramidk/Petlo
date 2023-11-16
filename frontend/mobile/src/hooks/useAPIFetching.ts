@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import useSWR from "swr";
 import axios from "axios";
 import useRequestBuilder from "./useRequestBuilder";
@@ -91,39 +91,87 @@ const useAPIFetching = <Request, Response>({
     }).then((res) => res);
   };
 
-  const { data, error, isLoading, isValidating, mutate } = useSWR(
-    SWREndpoint,
-    fetcher,
-    SWROptions
-  );
+  const {
+    data: swrResponse,
+    error,
+    isLoading,
+    isValidating,
+    mutate,
+  } = useSWR(SWREndpoint, fetcher, SWROptions);
 
   const fetchMore = () => {
     setPaginationRound(paginationRound + 1);
   };
 
-  const response: useAPIFetchingResponse<Response> = useMemo(() => {
+  const savedResponse = useRef({} as useAPIFetchingResponse<Response>);
+  const onlyValidating = useRef(false);
+  const response = useMemo(() => {
+    let newResponse;
+    let previousResponseBody = (
+      options?.withPagination ? savedResponse.current?.body : undefined
+    ) as {
+      data: unknown[];
+    };
+
     if (isLoading || isValidating) {
-      return { isFetching: true };
-    }
-
-    if (data) {
-      return {
-        isFetching: false,
-        statusCode: data.status,
-        body: { ...response?.body, ...data.data },
+      const _response = {
+        isFetching: true,
       };
-    }
 
-    if (error) {
-      return {
+      if (previousResponseBody) {
+        _response["body"] = {
+          ...previousResponseBody,
+          data: previousResponseBody?.data,
+        };
+      }
+
+      newResponse = _response;
+      onlyValidating.current = isValidating && !isLoading;
+    } else if (swrResponse) {
+      const common = {
+        isFetching: false,
+        statusCode: swrResponse.status,
+      };
+
+      newResponse = {
+        ...common,
+        body: previousResponseBody
+          ? {
+              ...swrResponse.data,
+              data: [...previousResponseBody?.data, ...swrResponse.data?.data],
+            }
+          : swrResponse.data,
+      };
+    } else if (error) {
+      newResponse = {
         isFetching: false,
         statusCode: error.response.status,
         error: error.response.data,
       };
     }
-  }, [isLoading, isValidating, data, error]);
 
-  return { response, setWait, fetchMore, round: paginationRound, mutate };
+    savedResponse.current = onlyValidating.current
+      ? savedResponse.current
+      : newResponse;
+
+    if (
+      isLoading === false &&
+      isValidating === false &&
+      onlyValidating.current
+    ) {
+      onlyValidating.current = false;
+    }
+
+    return savedResponse.current;
+  }, [isLoading, isValidating, swrResponse, error]);
+
+  return {
+    response,
+    setWait,
+    fetchMore,
+    round: paginationRound,
+    mutate,
+  };
 };
 
 export default useAPIFetching;

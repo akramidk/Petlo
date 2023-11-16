@@ -56,4 +56,5 @@ export enum Endpoints {
   SKIP_AUTOSHIP = "/v1/autoships/${publicId}/skip",
   NEXT_SHIPMENT_DATE_AFTER_THE_SKIP = "/v1/autoships/${publicId}/next-shipment-date-after-the-skip",
   TRACK_APP_DOWNLOAD = "/v1/track/app-download",
+  BRANDS = "/v1/brands",
 }
