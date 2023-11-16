@@ -14,8 +14,14 @@ const Shop = () => {
 
   return (
     <PageStructure title="Shop" backButton={router.back}>
-      <BrandsList limit={6} fetchMore={false} />
-      <PetsList />
+      <BrandsList
+        limit={6}
+        fetchMore={false}
+        title="Shop by Brand"
+        showAllButton
+      />
+      <View className="mb-[28px]"></View>
+      <PetsList title="Shop by Pet" />
     </PageStructure>
   );
 };
