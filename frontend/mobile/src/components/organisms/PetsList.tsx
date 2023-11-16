@@ -2,7 +2,6 @@ import { View, ScrollView } from "react-native";
 import { Text } from "../atoms";
 import { useAPIFetching, useInternationalizationContext } from "../../hooks";
 import { Endpoints } from "../../enums";
-import { BrandsResponse } from "../../interfaces";
 import { CategoriesResponse } from "../../interfaces";
 import { useRef } from "react";
 import clsx from "clsx";
@@ -16,10 +15,12 @@ const PetsList = () => {
 
   return (
     <ScrollView
-      className={direction === "ltr" ? "self-start" : "self-end"}
+      className={clsx(
+        "rounded-[4px]",
+        direction === "ltr" ? "self-start" : "self-end"
+      )}
       ref={scrollViewRef}
       contentContainerStyle={{
-        paddingHorizontal: 28,
         flexDirection: direction === "ltr" ? "row" : "row-reverse",
       }}
       onContentSizeChange={
