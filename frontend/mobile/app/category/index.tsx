@@ -4,7 +4,7 @@ import { Item } from "../../src/components/molecules";
 import { PageStructure } from "../../src/components/organisms";
 import { Endpoints } from "../../src/enums";
 import { useAPIFetching } from "../../src/hooks";
-import { CategoriesRequest, CategoriesResponse } from "../../src/interfaces";
+import { CategoryRequest, CategoryResponse } from "../../src/interfaces";
 import { Loading } from "../../src/components/pages";
 
 const Category = () => {
@@ -14,8 +14,8 @@ const Category = () => {
     category: string;
     brand_public_id: string;
   }>();
-  const { response } = useAPIFetching<CategoriesRequest, CategoriesResponse>({
-    endpoint: Endpoints.CATEGORIES,
+  const { response } = useAPIFetching<CategoryRequest, CategoryResponse>({
+    endpoint: Endpoints.CATEGORY,
     slugs: {
       category,
     },

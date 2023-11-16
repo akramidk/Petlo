@@ -1,26 +1,17 @@
 import { View, ScrollView } from "react-native";
 import { Text } from "../atoms";
-import { FlashList } from "@shopify/flash-list";
-import { useWindowDimensions } from "react-native";
 import { useAPIFetching, useInternationalizationContext } from "../../hooks";
 import { Endpoints } from "../../enums";
 import { BrandsResponse } from "../../interfaces";
-import { BrandsRequest } from "../../interfaces/Endpoints/Brands";
+import { CategoriesResponse } from "../../interfaces";
 import { useRef } from "react";
 import clsx from "clsx";
 
 const PetsList = () => {
-  const { width } = useWindowDimensions();
   const { direction } = useInternationalizationContext();
   const scrollViewRef = useRef<ScrollView>();
-  const { response } = useAPIFetching<BrandsRequest, BrandsResponse>({
-    endpoint: Endpoints.BRANDS,
-    options: {
-      withPagination: true,
-    },
-    body: {
-      limit: 8,
-    },
+  const { response } = useAPIFetching<unknown, CategoriesResponse>({
+    endpoint: Endpoints.CATEGORIES,
   });
 
   return (
@@ -39,19 +30,21 @@ const PetsList = () => {
       horizontal
       showsHorizontalScrollIndicator={false}
     >
-      {response?.body?.data?.map((pet, index) => {
-        return (
-          <View
-            key={index}
-            className={clsx(
-              "bg-[#fff] border-[1px] border-[#f6f6f6] w-[200px] h-[312px]",
-              direction === "ltr" ? "mr-[8px]" : "ml-[8px]"
-            )}
-          >
-            <Text>{pet.name}</Text>
-          </View>
-        );
-      })}
+      {response?.body?.data
+        ?.filter((pet) => pet.parent_public_id === null)
+        ?.map((pet, index) => {
+          return (
+            <View
+              key={index}
+              className={clsx(
+                "bg-[#fff] border-[1px] border-[#f6f6f6] w-[200px] h-[312px]",
+                direction === "ltr" ? "mr-[8px]" : "ml-[8px]"
+              )}
+            >
+              <Text>{pet.name ?? index}</Text>
+            </View>
+          );
+        })}
     </ScrollView>
   );
 };

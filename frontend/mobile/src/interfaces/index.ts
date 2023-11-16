@@ -105,7 +105,7 @@ import {
 } from "./Endpoints/CustomerAddresses";
 import { SectionsResponse } from "./Endpoints/Sections";
 import { SearchRequest, SearchResponse } from "./Endpoints/Search";
-import { CategoriesRequest, CategoriesResponse } from "./Endpoints/Categories";
+import { CategoryRequest, CategoryResponse } from "./Endpoints/Category";
 import { ItemResponse } from "./Endpoints/Item";
 import { CreateNewCartResponse } from "./Endpoints/CreateNewCart";
 import {
@@ -177,6 +177,7 @@ import {
 import { NextShipmentDateAfterTheSkipResponse } from "./Endpoints/NextShipmentDateAfterTheSkip";
 import { TrackDownloadResponse } from "./Endpoints/TrackDownload";
 import { BrandsResponse } from "./Endpoints/Brands";
+import { CategoriesResponse } from "./Endpoints/Categories";
 
 //entities interfaces
 import { Customer } from "./Entities/Customer";
@@ -260,8 +261,8 @@ export {
   SectionsResponse,
   SearchRequest,
   SearchResponse,
-  CategoriesRequest,
-  CategoriesResponse,
+  CategoryRequest,
+  CategoryResponse,
   ItemResponse,
   CreateNewCartResponse,
   CartAddItemRequest,
@@ -298,6 +299,7 @@ export {
   NextShipmentDateAfterTheSkipResponse,
   TrackDownloadResponse,
   BrandsResponse,
+  CategoriesResponse,
   Customer,
   Cart,
   DataCardProps,
