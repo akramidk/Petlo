@@ -99,11 +99,17 @@ const useAPIFetching = <Request, Response>({
     mutate,
   } = useSWR(SWREndpoint, fetcher, SWROptions);
 
+  const savedResponse = useRef({} as useAPIFetchingResponse<Response>);
   const fetchMore = () => {
-    setPaginationRound(paginationRound + 1);
+    if (
+      options?.withPagination &&
+      savedResponse.current.isFetching === false &&
+      (savedResponse.current.body as { has_more: boolean }).has_more
+    ) {
+      setPaginationRound(paginationRound + 1);
+    }
   };
 
-  const savedResponse = useRef({} as useAPIFetchingResponse<Response>);
   const onlyValidating = useRef(false);
   const response = useMemo(() => {
     let newResponse;

@@ -12,6 +12,7 @@ import { LinkProps } from "./LinkProps";
 import { CartItemProps } from "./CartItemProps";
 import { RecurringInterval } from "./RecurringInterval";
 import { Item } from "./Entities/Item";
+import { BrandsListProps } from "./BrandsListProps";
 
 //endpoinds interfaces
 import {
@@ -207,6 +208,7 @@ export {
   BaseButtonProps,
   RecurringInterval,
   Item,
+  BrandsListProps,
   AutoshipItemsCalculation,
   ErrorResponse,
   CreateNewCustomerRequest,

@@ -14,7 +14,15 @@ const Shop = () => {
 
   return (
     <PageStructure title="Shop" backButton={router.back}>
-      <BrandsAndPetsList />
+      <BrandsAndPetsList
+        brandsList={{
+          limit: 6,
+          fetchMore: false,
+          title: t("BRANDS_AND_PETS_LIST__SHOP_BY_BRAND"),
+          showAllButton: true,
+          onShowAllButtonClick: () => router.push("/brands"),
+        }}
+      />
     </PageStructure>
   );
 };

@@ -8,18 +8,10 @@ import {
   useTranslationsContext,
 } from "../../hooks";
 import { Endpoints } from "../../enums";
-import { BrandsResponse } from "../../interfaces";
+import { BrandsListProps, BrandsResponse } from "../../interfaces";
 import { BrandsRequest } from "../../interfaces/Endpoints/Brands";
 import clsx from "clsx";
 import { BaseButton } from "../bases";
-
-interface BrandsList {
-  limit: number;
-  fetchMore?: boolean;
-  title?: string;
-  showAllButton?: Boolean;
-  onShowAllButtonClick?: () => void;
-}
 
 const ITEM_SIZE = 99;
 const NUM_COLUMNS = 2;
@@ -30,10 +22,9 @@ const BrandsList = ({
   showAllButton,
   title,
   onShowAllButtonClick,
-}: BrandsList) => {
+}: BrandsListProps) => {
   const { t } = useTranslationsContext();
   const { height } = useWindowDimensions();
-  const { direction } = useInternationalizationContext();
   const { response, fetchMore: fetchMoreHandler } = useAPIFetching<
     BrandsRequest,
     BrandsResponse
@@ -76,14 +67,16 @@ const BrandsList = ({
         />
       </View>
 
-      <BaseButton
-        cn="w-[100%] bg-[#f6f6f6] rounded-[4px] items-center justify-center p-[12px]"
-        onClick={onShowAllButtonClick}
-      >
-        <Text cn="text-[14px] text-[#333]" font="bold">
-          {t("BRANDS_LIST__SHOW_ALL_BRANDS")}
-        </Text>
-      </BaseButton>
+      {showAllButton && (
+        <BaseButton
+          cn="w-[100%] bg-[#f6f6f6] rounded-[4px] items-center justify-center p-[12px]"
+          onClick={onShowAllButtonClick}
+        >
+          <Text cn="text-[14px] text-[#333]" font="bold">
+            {t("BRANDS_LIST__SHOW_ALL_BRANDS")}
+          </Text>
+        </BaseButton>
+      )}
     </View>
   );
 };
