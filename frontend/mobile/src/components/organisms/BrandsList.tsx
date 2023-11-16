@@ -12,6 +12,9 @@ interface BrandsList {
   fetchMore?: boolean;
 }
 
+const ITEM_SIZE = 99;
+const NUM_COLUMNS = 2;
+
 const BrandsList = ({ limit, fetchMore = true }: BrandsList) => {
   const { height } = useWindowDimensions();
   const { response, fetchMore: fetchMoreHandler } = useAPIFetching<
@@ -28,10 +31,14 @@ const BrandsList = ({ limit, fetchMore = true }: BrandsList) => {
   });
 
   return (
-    <View style={{ height: height - 300 }}>
+    <View
+      style={{
+        height: fetchMore ? height - 300 : (ITEM_SIZE / NUM_COLUMNS) * limit,
+      }}
+    >
       <FlashList
         data={response.body?.data}
-        estimatedItemSize={92}
+        estimatedItemSize={ITEM_SIZE}
         renderItem={(item) => {
           return (
             <View className="border-[#f6f6f6] border-[1px] min-w-[50%] h-[92px] flex-auto m-[4px] rounded-[4px]">
@@ -39,8 +46,9 @@ const BrandsList = ({ limit, fetchMore = true }: BrandsList) => {
             </View>
           );
         }}
-        numColumns={2}
+        numColumns={NUM_COLUMNS}
         onEndReached={fetchMore ? fetchMoreHandler : undefined}
+        scrollEnabled={fetchMore}
       />
     </View>
   );
