@@ -15,10 +15,7 @@ const PetsList = () => {
 
   return (
     <ScrollView
-      className={clsx(
-        "rounded-[4px]",
-        direction === "ltr" ? "self-start" : "self-end"
-      )}
+      className={clsx(direction === "ltr" ? "self-start" : "self-end")}
       ref={scrollViewRef}
       contentContainerStyle={{
         flexDirection: direction === "ltr" ? "row" : "row-reverse",
@@ -38,7 +35,7 @@ const PetsList = () => {
             <View
               key={index}
               className={clsx(
-                "bg-[#fff] border-[1px] border-[#f6f6f6] w-[200px] h-[312px]",
+                "bg-[#fff] border-[1px] border-[#f6f6f6] w-[200px] h-[312px] rounded-[4px]",
                 direction === "ltr" ? "mr-[8px]" : "ml-[8px]"
               )}
             >
