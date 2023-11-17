@@ -59,4 +59,5 @@ export enum Endpoints {
   TRACK_APP_DOWNLOAD = "/v1/track/app-download",
   BRANDS = "/v1/brands",
   BRAND_CATEGORIES = "/v1/brands/${publicId}/categories",
+  BRAND_ITEMS = "/v1/brands/${publicId}/items",
 }

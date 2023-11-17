@@ -180,6 +180,7 @@ import { TrackDownloadResponse } from "./Endpoints/TrackDownload";
 import { BrandsResponse } from "./Endpoints/Brands";
 import { CategoriesResponse } from "./Endpoints/Categories";
 import { BrandCategoriesResponse } from "./Endpoints/BrandCategories";
+import { BrandItemsResponse, BrandItemsRequest } from "./Endpoints/BrandItems";
 
 //entities interfaces
 import { Customer } from "./Entities/Customer";
@@ -304,6 +305,8 @@ export {
   BrandsResponse,
   CategoriesResponse,
   BrandCategoriesResponse,
+  BrandItemsResponse,
+  BrandItemsRequest,
   Customer,
   Cart,
   DataCardProps,

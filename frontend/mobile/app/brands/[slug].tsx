@@ -3,7 +3,11 @@ import { useLocalSearchParams, useRouter } from "expo-router";
 import { Tabs } from "../../src/components/organisms";
 import { useMemo, useState } from "react";
 import { useAPIFetching } from "../../src/hooks";
-import { BrandCategoriesResponse } from "../../src/interfaces";
+import {
+  BrandCategoriesResponse,
+  BrandItemsRequest,
+  BrandItemsResponse,
+} from "../../src/interfaces";
 import { Endpoints } from "../../src/enums";
 
 const ALL_CATEGORY = {
@@ -23,6 +27,24 @@ const brand = () => {
     slugs: {
       publicId: slug,
     },
+  });
+
+  const filterByCategoryId =
+    selectedCategory.public_id === "ALL"
+      ? undefined
+      : {
+          category_public_id: selectedCategory.public_id,
+        };
+
+  const { response: itemsResponse } = useAPIFetching<
+    BrandItemsRequest,
+    BrandItemsResponse
+  >({
+    endpoint: Endpoints.BRAND_ITEMS,
+    slugs: {
+      publicId: slug,
+    },
+    body: filterByCategoryId,
   });
 
   const categoriesData = useMemo(() => {
