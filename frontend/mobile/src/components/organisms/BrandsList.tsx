@@ -12,6 +12,7 @@ import { BrandsListProps, BrandsResponse } from "../../interfaces";
 import { BrandsRequest } from "../../interfaces/Endpoints/Brands";
 import clsx from "clsx";
 import { BaseButton } from "../bases";
+import { Skeleton as MotiSkeleton } from "moti/skeleton";
 
 const ITEM_SIZE = 99;
 const NUM_COLUMNS = 2;
@@ -38,6 +39,8 @@ const BrandsList = ({
       limit: limit,
     },
   });
+
+  const isFetchingMore = response.body?.data && response.isFetching;
 
   return (
     <View className="space-y-[8px]">
@@ -68,6 +71,24 @@ const BrandsList = ({
           numColumns={NUM_COLUMNS}
           onEndReached={fetchMore ? fetchMoreHandler : undefined}
           scrollEnabled={fetchMore}
+          ListEmptyComponent={
+            <View className="space-y-[8px]">
+              {[...Array(limit / NUM_COLUMNS)].map((_, index) => {
+                return (
+                  <View key={index}>
+                    <Skeleton />
+                  </View>
+                );
+              })}
+            </View>
+          }
+          ListFooterComponent={
+            isFetchingMore ? (
+              <View className="mt-[8px]">
+                <Skeleton />
+              </View>
+            ) : undefined
+          }
         />
       </View>
 
@@ -81,6 +102,42 @@ const BrandsList = ({
           </Text>
         </BaseButton>
       )}
+    </View>
+  );
+};
+
+const Skeleton = () => {
+  return (
+    <View className="flex flex-row justify-between">
+      <View className="w-[49%]">
+        <MotiSkeleton
+          show
+          height={92}
+          colorMode="light"
+          radius={4}
+          transition={{
+            type: "timing",
+            duration: 3000,
+          }}
+          backgroundColor="#f9f9f9"
+          width="100%"
+        />
+      </View>
+
+      <View className="w-[49%]">
+        <MotiSkeleton
+          show
+          height={92}
+          colorMode="light"
+          radius={4}
+          transition={{
+            type: "timing",
+            duration: 3000,
+          }}
+          backgroundColor="#f9f9f9"
+          width="100%"
+        />
+      </View>
     </View>
   );
 };
