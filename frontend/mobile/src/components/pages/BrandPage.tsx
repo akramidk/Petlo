@@ -8,6 +8,7 @@ import {
 } from "../../interfaces";
 import PageStructure from "../organisms/PageStructure";
 import Tabs from "../organisms/Tabs";
+import ItemsList from "./ItemsList";
 
 interface BrandPage {
   publicId: string;
@@ -39,7 +40,7 @@ const BrandPage = ({ publicId, name, backButton }) => {
           category_public_id: selectedCategory.public_id,
         };
 
-  const { response: itemsResponse } = useAPIFetching<
+  const { response: itemsResponse, fetchMore } = useAPIFetching<
     BrandItemsRequest,
     BrandItemsResponse
   >({
@@ -47,7 +48,13 @@ const BrandPage = ({ publicId, name, backButton }) => {
     slugs: {
       publicId: publicId,
     },
-    body: filterByCategoryId,
+    body: {
+      limit: 6,
+      ...filterByCategoryId,
+    },
+    options: {
+      withPagination: true,
+    },
   });
 
   const categoriesData = useMemo(() => {
@@ -56,14 +63,27 @@ const BrandPage = ({ publicId, name, backButton }) => {
   }, [categoriesResponse]);
 
   return (
-    <PageStructure title={name} backButton={backButton}>
-      <Tabs
-        data={categoriesData}
-        showSkeleton={categoriesData.length === 0}
-        selectedTab={selectedCategory}
-        onTabClick={(tab) => {
-          setSelectedCategory(tab);
+    <PageStructure
+      title={name}
+      backButton={backButton}
+      HelperComponent={
+        <Tabs
+          data={categoriesData}
+          showSkeleton={categoriesData.length === 0}
+          selectedTab={selectedCategory}
+          onTabClick={(tab) => {
+            setSelectedCategory(tab);
+          }}
+        />
+      }
+    >
+      <ItemsList
+        data={itemsResponse?.body?.data}
+        fetchMore={fetchMore}
+        onItemClick={(item) => {
+          console.log(item);
         }}
+        isFetching={itemsResponse.isFetching}
       />
     </PageStructure>
   );

@@ -19,6 +19,7 @@ interface PageStructureProps {
   viewCN?: string;
   floatingElementCN?: string;
   scrollEnabled?: boolean;
+  HelperComponent?: React.ReactNode;
 }
 
 const PageStructure = ({
@@ -32,6 +33,7 @@ const PageStructure = ({
   viewCN,
   floatingElementCN,
   scrollEnabled = true,
+  HelperComponent,
 }: PageStructureProps) => {
   const isIOS = Device.brand.toLowerCase() === "apple";
   const linkProps = {
@@ -56,6 +58,7 @@ const PageStructure = ({
                 {helperText}
               </Text>
             )}
+            {HelperComponent && <View>{HelperComponent}</View>}
           </View>
         )}
 
