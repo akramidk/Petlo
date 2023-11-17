@@ -5,6 +5,7 @@ import {
   BrandCategoriesResponse,
   BrandItemsRequest,
   BrandItemsResponse,
+  BriefItem,
 } from "../../interfaces";
 import PageStructure from "../organisms/PageStructure";
 import Tabs from "../organisms/Tabs";
@@ -14,6 +15,7 @@ interface BrandPage {
   publicId: string;
   name: string;
   backButton: () => void;
+  onItemClick: (item: BriefItem) => void;
 }
 
 const ALL_CATEGORY = {
@@ -21,7 +23,7 @@ const ALL_CATEGORY = {
   public_id: "ALL",
 };
 
-const BrandPage = ({ publicId, name, backButton }) => {
+const BrandPage = ({ publicId, name, backButton, onItemClick }) => {
   const [selectedCategory, setSelectedCategory] = useState(ALL_CATEGORY);
   const { response: categoriesResponse } = useAPIFetching<
     unknown,
@@ -83,9 +85,7 @@ const BrandPage = ({ publicId, name, backButton }) => {
       <ItemsList
         data={itemsResponse?.body?.data}
         fetchMore={fetchMore}
-        onItemClick={(item) => {
-          console.log(item);
-        }}
+        onItemClick={onItemClick}
         isFetching={itemsResponse.isFetching}
       />
     </PageStructure>
