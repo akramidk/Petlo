@@ -1,22 +1,17 @@
 import { BrandsList, PageStructure } from "../../src/components/organisms";
 import { useRouter } from "expo-router";
+import { BrandsPage } from "../../src/components/pages";
 
 const Brands = () => {
   const router = useRouter();
 
   return (
-    <PageStructure
-      title="Brands"
+    <BrandsPage
       backButton={router.back}
-      scrollEnabled={false}
-    >
-      <BrandsList
-        limit={12}
-        onBrandClick={(brand) =>
-          router.push(`/brands/${brand.public_id}?name=${brand.name}`)
-        }
-      />
-    </PageStructure>
+      onBrandClick={(brand) =>
+        router.push(`/brands/${brand.public_id}?name=${brand.name}`)
+      }
+    />
   );
 };
 
