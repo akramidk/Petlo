@@ -13,7 +13,7 @@ const Shop = () => {
   const { t } = useTranslationsContext();
 
   return (
-    <PageStructure title="Shop" backButton={router.back}>
+    <PageStructure title={t("SHOP__TITLE")} backButton={router.back}>
       <BrandsAndPetsList
         brandsList={{
           limit: 6,
