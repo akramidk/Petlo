@@ -5,6 +5,7 @@ import { Endpoints } from "../../enums";
 import { CategoriesResponse } from "../../interfaces";
 import { useRef } from "react";
 import clsx from "clsx";
+import { Skeleton } from "moti/skeleton";
 
 interface PetsList {
   title?: string;
@@ -51,6 +52,32 @@ const PetsList = ({ title }: PetsList) => {
                 )}
               >
                 <Text>{pet.name ?? index}</Text>
+              </View>
+            );
+          })}
+
+        {!response?.body?.data &&
+          [...Array(2)].map((_, index) => {
+            return (
+              <View
+                className={clsx(
+                  "w-[200px] h-[312px] rounded-[4px]",
+                  direction === "ltr" ? "mr-[8px]" : "ml-[8px]"
+                )}
+                key={index}
+              >
+                <Skeleton
+                  show={true}
+                  height="100%"
+                  colorMode="light"
+                  radius={4}
+                  transition={{
+                    type: "timing",
+                    duration: 3000,
+                  }}
+                  backgroundColor="#f9f9f9"
+                  width="100%"
+                />
               </View>
             );
           })}
