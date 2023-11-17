@@ -15,7 +15,7 @@ const ALL_CATEGORY = {
   public_id: "ALL",
 };
 
-const brand = () => {
+const Brand = () => {
   const router = useRouter();
   const { slug, name } = useLocalSearchParams();
   const [selectedCategory, setSelectedCategory] = useState(ALL_CATEGORY);
@@ -66,4 +66,4 @@ const brand = () => {
   );
 };
 
-export default brand;
+export default Brand;
