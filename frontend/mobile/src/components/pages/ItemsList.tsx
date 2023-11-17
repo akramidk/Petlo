@@ -35,7 +35,7 @@ const ItemsList = ({ data, onItemClick, fetchMore, isFetching }: ItemsList) => {
         <FlashList
           ref={ref}
           data={data}
-          estimatedItemSize={216}
+          estimatedItemSize={224}
           renderItem={(item) => {
             return (
               <View key={item.index} className="mb-[8px]">
