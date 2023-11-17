@@ -9,6 +9,7 @@ import useCustomerContext from "./useCustomerContext";
 import useAlertContext from "./useAlertContext";
 import useCartStore from "./useCartStore";
 import useDataContext from "./useDataContext";
+import usePageStructureLayout from "./usePageStructureLayout";
 
 export {
   useAPIFetching,
@@ -22,4 +23,5 @@ export {
   useAlertContext,
   useCartStore,
   useDataContext,
+  usePageStructureLayout,
 };

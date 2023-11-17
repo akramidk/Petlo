@@ -5,6 +5,8 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 import clsx from "clsx";
 import * as Device from "expo-device";
 import { BaseButton } from "../bases";
+import { useState } from "react";
+import { PageStructureLayoutContext } from "../../contexts";
 
 interface PageStructureProps {
   title?: string;
@@ -37,46 +39,58 @@ const PageStructure = ({
     cn: clsx("py-[14px] items-center justify-center", link?.cn),
   };
 
+  const [layout, setLayout] = useState({ height: null });
   return (
-    <View className="flex flex-1 relative bg-[#fff]">
-      {(title || helperText || backButton) && (
-        <View className="p-[28px] space-y-[12px]">
-          {backButton && <BackButton onClick={backButton} />}
-          {title && (
-            <Text cn="text-[28px] text-[#0E333C]" font="extraBold">
-              {title}
-            </Text>
-          )}
-          {helperText && (
-            <Text cn="text-[15.5px] text-[#888] leading-[28px]" font="medium">
-              {helperText}
-            </Text>
-          )}
-        </View>
-      )}
+    <PageStructureLayoutContext.Provider value={{ height: layout.height }}>
+      <View className="flex flex-1 relative bg-[#fff]">
+        {(title || helperText || backButton) && (
+          <View className="p-[28px] space-y-[12px]">
+            {backButton && <BackButton onClick={backButton} />}
+            {title && (
+              <Text cn="text-[28px] text-[#0E333C]" font="extraBold">
+                {title}
+              </Text>
+            )}
+            {helperText && (
+              <Text cn="text-[15.5px] text-[#888] leading-[28px]" font="medium">
+                {helperText}
+              </Text>
+            )}
+          </View>
+        )}
 
-      <KeyboardAwareScrollView scrollEnabled={scrollEnabled}>
-        <View className={clsx("px-[28px] pb-[28px]", viewCN)}>{children}</View>
-      </KeyboardAwareScrollView>
-
-      {floatingElement && (
-        <View
-          className={clsx(
-            "absolute bottom-[16px] self-center",
-            floatingElementCN
-          )}
+        <KeyboardAwareScrollView
+          scrollEnabled={scrollEnabled}
+          onLayout={(event) => {
+            setLayout({
+              height: event.nativeEvent.layout.height,
+            });
+          }}
         >
-          {floatingElement}
-        </View>
-      )}
+          <View className={clsx("px-[28px] pb-[28px]", viewCN)}>
+            {children}
+          </View>
+        </KeyboardAwareScrollView>
 
-      {(button || link) && (
-        <BottomContainer cn={!isIOS && !link && "pb-[8px]"}>
-          {button && <Button {...button} />}
-          {link && <Link {...linkProps} />}
-        </BottomContainer>
-      )}
-    </View>
+        {floatingElement && (
+          <View
+            className={clsx(
+              "absolute bottom-[16px] self-center",
+              floatingElementCN
+            )}
+          >
+            {floatingElement}
+          </View>
+        )}
+
+        {(button || link) && (
+          <BottomContainer cn={!isIOS && !link && "pb-[8px]"}>
+            {button && <Button {...button} />}
+            {link && <Link {...linkProps} />}
+          </BottomContainer>
+        )}
+      </View>
+    </PageStructureLayoutContext.Provider>
   );
 };
 
