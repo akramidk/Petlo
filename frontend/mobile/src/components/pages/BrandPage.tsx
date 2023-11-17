@@ -40,10 +40,11 @@ const BrandPage = ({ publicId, name, backButton }) => {
           category_public_id: selectedCategory.public_id,
         };
 
-  const { response: itemsResponse, fetchMore } = useAPIFetching<
-    BrandItemsRequest,
-    BrandItemsResponse
-  >({
+  const {
+    response: itemsResponse,
+    fetchMore,
+    reset,
+  } = useAPIFetching<BrandItemsRequest, BrandItemsResponse>({
     endpoint: Endpoints.BRAND_ITEMS,
     slugs: {
       publicId: publicId,
@@ -73,9 +74,11 @@ const BrandPage = ({ publicId, name, backButton }) => {
           selectedTab={selectedCategory}
           onTabClick={(tab) => {
             setSelectedCategory(tab);
+            reset();
           }}
         />
       }
+      scrollEnabled={false}
     >
       <ItemsList
         data={itemsResponse?.body?.data}

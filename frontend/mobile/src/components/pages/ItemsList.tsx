@@ -1,5 +1,6 @@
 import { FlashList } from "@shopify/flash-list";
 import { Skeleton as MotiSkeleton } from "moti/skeleton";
+import { useEffect, useRef } from "react";
 import { View } from "react-native";
 import { usePageStructureLayout } from "../../hooks";
 import { BriefItem } from "../../interfaces";
@@ -13,12 +14,26 @@ interface ItemsList {
 }
 
 const ItemsList = ({ data, onItemClick, fetchMore, isFetching }: ItemsList) => {
+  const ref = useRef({} as FlashList<BriefItem>);
+  const scrollToTop = useRef(false);
   const layout = usePageStructureLayout();
+
+  useEffect(() => {
+    if (!data) scrollToTop.current = true;
+
+    if (data && scrollToTop.current) {
+      ref?.current?.scrollToIndex({
+        index: 0,
+      });
+      scrollToTop.current = false;
+    }
+  }, [data]);
 
   return (
     <View style={{ height: layout?.height }}>
       {layout?.height && (
         <FlashList
+          ref={ref}
           data={data}
           estimatedItemSize={216}
           renderItem={(item) => {

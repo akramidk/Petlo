@@ -35,6 +35,8 @@ const useAPIFetching = <Request, Response>({
 }: useAPIFetchingProps<Request>) => {
   const [wait, setWait] = useState<boolean>(options?.wait);
   const [paginationRound, setPaginationRound] = useState(1);
+  const savedResponse = useRef({} as useAPIFetchingResponse<Response>);
+  const onlyValidating = useRef(false);
 
   const SWREndpoint = useMemo(() => {
     if ((wait && options?.wait === true) || endpoint === null) {
@@ -91,6 +93,12 @@ const useAPIFetching = <Request, Response>({
     }).then((res) => res);
   };
 
+  const reset = () => {
+    savedResponse.current = {};
+    onlyValidating.current = false;
+    setPaginationRound(1);
+  };
+
   const {
     data: swrResponse,
     error,
@@ -99,7 +107,6 @@ const useAPIFetching = <Request, Response>({
     mutate,
   } = useSWR(SWREndpoint, fetcher, SWROptions);
 
-  const savedResponse = useRef({} as useAPIFetchingResponse<Response>);
   const fetchMore = () => {
     if (
       options?.withPagination &&
@@ -110,7 +117,6 @@ const useAPIFetching = <Request, Response>({
     }
   };
 
-  const onlyValidating = useRef(false);
   const response = useMemo(() => {
     let newResponse;
     let previousResponseBody = (
@@ -177,6 +183,7 @@ const useAPIFetching = <Request, Response>({
     fetchMore,
     round: paginationRound,
     mutate,
+    reset,
   };
 };
 
