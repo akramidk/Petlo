@@ -5,6 +5,7 @@ import SectionsItemsWithFilter from "./SectionsItemsWithFilter";
 import BrandsList from "./BrandsList";
 import PetsList from "./PetsList";
 import BrandsAndPetsList from "./BrandsAndPetsList";
+import Tabs from "./Tabs";
 
 export {
   PageStructure,
@@ -14,4 +15,5 @@ export {
   BrandsList,
   PetsList,
   BrandsAndPetsList,
+  Tabs,
 };

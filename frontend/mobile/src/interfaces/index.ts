@@ -179,6 +179,7 @@ import { NextShipmentDateAfterTheSkipResponse } from "./Endpoints/NextShipmentDa
 import { TrackDownloadResponse } from "./Endpoints/TrackDownload";
 import { BrandsResponse } from "./Endpoints/Brands";
 import { CategoriesResponse } from "./Endpoints/Categories";
+import { BrandCategoriesResponse } from "./Endpoints/BrandCategories";
 
 //entities interfaces
 import { Customer } from "./Entities/Customer";
@@ -302,6 +303,7 @@ export {
   TrackDownloadResponse,
   BrandsResponse,
   CategoriesResponse,
+  BrandCategoriesResponse,
   Customer,
   Cart,
   DataCardProps,
