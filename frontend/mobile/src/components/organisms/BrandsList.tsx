@@ -63,7 +63,7 @@ const BrandsList = ({
               return (
                 <BaseButton
                   className="border-[#f6f6f6] border-[1px] min-w-[50%] h-[92px] flex-auto m-[4px] rounded-[4px]"
-                  onClick={() => onBrandClick(item.item.public_id)}
+                  onClick={() => onBrandClick(item.item)}
                 >
                   <Text>{item.item.name}</Text>
                 </BaseButton>

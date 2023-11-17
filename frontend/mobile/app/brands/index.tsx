@@ -12,7 +12,9 @@ const Brands = () => {
     >
       <BrandsList
         limit={12}
-        onBrandClick={(public_id) => router.push(`/brands/${public_id}`)}
+        onBrandClick={(brand) =>
+          router.push(`/brands/${brand.public_id}?name=${brand.name}`)
+        }
       />
     </PageStructure>
   );

@@ -4,11 +4,9 @@ import { useLocalSearchParams, useRouter } from "expo-router";
 
 const brand = () => {
   const router = useRouter();
-  const { slug } = useLocalSearchParams();
+  const { slug, name } = useLocalSearchParams();
 
-  console.log(slug);
-
-  return <PageStructure title={slug} backButton={router.back}></PageStructure>;
+  return <PageStructure title={name} backButton={router.back}></PageStructure>;
 };
 
 export default brand;
