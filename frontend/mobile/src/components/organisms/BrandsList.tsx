@@ -70,7 +70,7 @@ const BrandsList = ({
     }
 
     return undefined;
-  }, [response, fetchMoreHandler]);
+  }, [response, fetchMoreHandler, fetchMore]);
 
   return (
     <View className="space-y-[8px]">
