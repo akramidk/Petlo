@@ -90,6 +90,7 @@ const BrandsList = ({
                 </View>
               ) : undefined
             }
+            onEndReachedThreshold={0.5}
           />
         )}
       </View>
