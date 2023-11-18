@@ -92,7 +92,7 @@ const Item = ({ variant, data, onClick }: ItemProps) => {
       )}
       onClick={onClick}
     >
-      <View className={clsx("bg-[#f6f6f6]", variantsStyles.imageMeasurements)}>
+      <View className={clsx("bg-[#f9f9f9]", variantsStyles.imageMeasurements)}>
         <Image
           style={{
             flex: 1,
@@ -100,7 +100,7 @@ const Item = ({ variant, data, onClick }: ItemProps) => {
           source={{
             uri: data.image,
           }}
-          contentFit="cover"
+          contentFit="contain"
         />
         {data.variants.number > 1 && (
           <View
