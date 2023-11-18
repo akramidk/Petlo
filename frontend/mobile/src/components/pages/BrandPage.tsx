@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from "react";
 import { Endpoints } from "../../enums";
-import { useAPIFetching } from "../../hooks";
+import { useAPIFetching, useTranslationsContext } from "../../hooks";
 import {
   BrandCategoriesResponse,
   BrandItemsRequest,
@@ -19,11 +19,12 @@ interface BrandPage {
 }
 
 const ALL_CATEGORY = {
-  name: "All",
+  name: "COMMON_ALL",
   public_id: "ALL",
 };
 
 const BrandPage = ({ publicId, name, backButton, onItemClick }) => {
+  const { t } = useTranslationsContext();
   const [selectedCategory, setSelectedCategory] = useState(ALL_CATEGORY);
   const { response: categoriesResponse } = useAPIFetching<
     unknown,
@@ -62,7 +63,10 @@ const BrandPage = ({ publicId, name, backButton, onItemClick }) => {
 
   const categoriesData = useMemo(() => {
     if (!categoriesResponse?.body?.data) return [];
-    return [ALL_CATEGORY, ...categoriesResponse.body.data];
+    return [
+      { name: t(ALL_CATEGORY.name), public_id: ALL_CATEGORY.public_id },
+      ...categoriesResponse.body.data,
+    ];
   }, [categoriesResponse]);
 
   return (

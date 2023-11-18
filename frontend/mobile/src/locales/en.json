@@ -29,6 +29,8 @@
   "COMMON__UNABLE_TO_SEND_SMS": "We are presently unable to send SMS to this country.",
   "COMMON__OR_OPEN_IN_WHATSAPP": "or open in WhatsApp",
   "COMMON__NO_CUSTOMER_WARNING": "Click Here to Sign up or Sign In",
+  "COMMON__BRANDS": "Brands",
+  "COMMON_ALL": "All",
   "ROOT_LAYOUT__NEW_UPDATE_AVAILABLE_MESSAGE": "New Update Available, You should update the app before using it.",
   "ROOT_LAYOUT__NEW_UPDATE_AVAILABLE_LINK": "Update It Now",
   "SELECT_LANGUAGE__TITLE": "App Language",

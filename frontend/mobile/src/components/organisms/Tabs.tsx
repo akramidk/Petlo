@@ -41,7 +41,12 @@ const Tabs = ({ data, showSkeleton, onTabClick, selectedTab }: Tabs) => {
       horizontal
       showsHorizontalScrollIndicator={false}
     >
-      <View className="flex flex-row">
+      <View
+        className={clsx(
+          "flex",
+          direction === "ltr" ? "flex-row" : "flex-row-reverse"
+        )}
+      >
         {data?.map((tab, index) => {
           return (
             <View key={index}>
