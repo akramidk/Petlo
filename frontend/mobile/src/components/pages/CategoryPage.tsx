@@ -1,10 +1,14 @@
-import { useEffect, useMemo, useState } from "react";
-import { View } from "react-native";
+import React, { useEffect, useMemo, useState } from "react";
 import { Endpoints } from "../../enums";
 import { useAPIFetching } from "../../hooks";
-import { CategoriesResponse, Category } from "../../interfaces";
+import {
+  CategoriesResponse,
+  CategoryItemsRequest,
+  CategoryItemsResponse,
+} from "../../interfaces";
 import PageStructure from "../organisms/PageStructure";
 import Tabs from "../organisms/Tabs";
+import ItemsList from "./ItemsList";
 
 interface CategoryPage {
   publicId: string;
@@ -34,11 +38,15 @@ const CategoryPage = ({ publicId, name, backButton }: CategoryPage) => {
     response: itemsResponse,
     fetchMore,
     reset,
-  } = useAPIFetching<unknown, unknown>({
+  } = useAPIFetching<CategoryItemsRequest, CategoryItemsResponse>({
     endpoint: Endpoints.CATEGORY,
     slugs: slugs,
     options: {
       wait: !selectedCategory,
+      withPagination: true,
+    },
+    body: {
+      limit: 6,
     },
   });
 
@@ -67,11 +75,21 @@ const CategoryPage = ({ publicId, name, backButton }: CategoryPage) => {
           selectedTab={selectedCategory}
           onTabClick={(tab) => {
             setSelectedCategory(tab);
-            //reset();
+            reset();
           }}
         />
       }
-    ></PageStructure>
+      scrollEnabled={false}
+    >
+      <ItemsList
+        data={itemsResponse?.body?.data}
+        fetchMore={fetchMore}
+        onItemClick={() => {
+          //
+        }}
+        isFetching={itemsResponse?.isFetching ?? true}
+      />
+    </PageStructure>
   );
 };
 

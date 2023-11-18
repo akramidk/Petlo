@@ -22,7 +22,7 @@ const ItemsList = ({ data, onItemClick, fetchMore, isFetching }: ItemsList) => {
     if (!data) scrollToTop.current = true;
 
     if (data && scrollToTop.current) {
-      ref?.current?.scrollToIndex({
+      ref?.current?.scrollToIndex?.({
         index: 0,
       });
       scrollToTop.current = false;

@@ -182,6 +182,10 @@ import { BrandsResponse } from "./Endpoints/Brands";
 import { CategoriesResponse } from "./Endpoints/Categories";
 import { BrandCategoriesResponse } from "./Endpoints/BrandCategories";
 import { BrandItemsResponse, BrandItemsRequest } from "./Endpoints/BrandItems";
+import {
+  CategoryItemsResponse,
+  CategoryItemsRequest,
+} from "./Endpoints/CategoryItems";
 
 //entities interfaces
 import { Customer } from "./Entities/Customer";
@@ -310,6 +314,8 @@ export {
   BrandCategoriesResponse,
   BrandItemsResponse,
   BrandItemsRequest,
+  CategoryItemsResponse,
+  CategoryItemsRequest,
   Customer,
   Cart,
   DataCardProps,
