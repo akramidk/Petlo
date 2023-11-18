@@ -12,6 +12,7 @@ import { BrandsListProps, BrandsResponse } from "../../interfaces";
 import { BrandsRequest } from "../../interfaces/Endpoints/Brands";
 import { BaseButton } from "../bases";
 import { Skeleton as MotiSkeleton } from "moti/skeleton";
+import { useMemo } from "react";
 
 const ITEM_SIZE = 99;
 const NUM_COLUMNS = 2;
@@ -48,7 +49,28 @@ const BrandsList = ({
   });
 
   const height = fetchMore ? layout?.height : (ITEM_SIZE / NUM_COLUMNS) * limit;
-  const isFetchingMore = response.body?.data && response.isFetching;
+
+  const renderFooterComponent = useMemo(() => {
+    if (!response.body?.data) return undefined;
+    if (response.isFetching) {
+      return (
+        <View className="mt-[8px]">
+          <Skeleton />
+        </View>
+      );
+    }
+    if (response.body?.has_more && fetchMore) {
+      return (
+        <MoreButton
+          onClick={fetchMoreHandler}
+          value="Load More"
+          cn="mb-[8px]"
+        />
+      );
+    }
+
+    return undefined;
+  }, [response, fetchMoreHandler]);
 
   return (
     <View className="space-y-[8px]">
@@ -91,13 +113,7 @@ const BrandsList = ({
                 })}
               </View>
             }
-            ListFooterComponent={
-              isFetchingMore ? (
-                <View className="mt-[8px]">
-                  <Skeleton />
-                </View>
-              ) : undefined
-            }
+            ListFooterComponent={renderFooterComponent}
             onEndReachedThreshold={0.5}
           />
         )}
