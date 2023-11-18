@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { Endpoints } from "../../enums";
 import { useAPIFetching } from "../../hooks";
 import {
+  BriefItem,
   CategoriesResponse,
   CategoryItemsRequest,
   CategoryItemsResponse,
@@ -14,9 +15,15 @@ interface CategoryPage {
   publicId: string;
   name: string;
   backButton: () => void;
+  onItemClick: (item: BriefItem) => void;
 }
 
-const CategoryPage = ({ publicId, name, backButton }: CategoryPage) => {
+const CategoryPage = ({
+  publicId,
+  name,
+  backButton,
+  onItemClick,
+}: CategoryPage) => {
   const [selectedCategory, setSelectedCategory] = useState<{
     public_id: string;
     name: string;
@@ -84,9 +91,7 @@ const CategoryPage = ({ publicId, name, backButton }: CategoryPage) => {
       <ItemsList
         data={itemsResponse?.body?.data}
         fetchMore={fetchMore}
-        onItemClick={() => {
-          //
-        }}
+        onItemClick={onItemClick}
         isFetching={itemsResponse?.isFetching ?? true}
       />
     </PageStructure>
