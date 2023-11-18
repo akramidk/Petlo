@@ -87,6 +87,7 @@ const BrandPage = ({ publicId, name, backButton, onItemClick }) => {
         fetchMore={fetchMore}
         onItemClick={onItemClick}
         isFetching={itemsResponse.isFetching}
+        has_more={itemsResponse?.body?.has_more}
       />
     </PageStructure>
   );

@@ -93,6 +93,7 @@ const CategoryPage = ({
         fetchMore={fetchMore}
         onItemClick={onItemClick}
         isFetching={itemsResponse?.isFetching ?? true}
+        has_more={itemsResponse?.body?.has_more}
       />
     </PageStructure>
   );

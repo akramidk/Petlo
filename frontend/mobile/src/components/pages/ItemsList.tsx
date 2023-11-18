@@ -1,22 +1,34 @@
 import { FlashList } from "@shopify/flash-list";
+import { useRouter } from "expo-router";
 import { Skeleton as MotiSkeleton } from "moti/skeleton";
 import { useEffect, useRef } from "react";
 import { View } from "react-native";
-import { usePageStructureLayout } from "../../hooks";
+import { usePageStructureLayout, useTranslationsContext } from "../../hooks";
 import { BriefItem } from "../../interfaces";
 import Item from "../molecules/Item";
+import Warning from "../molecules/Warning";
 
 interface ItemsList {
   data: BriefItem[] | undefined;
   onItemClick: (item: BriefItem) => void;
   fetchMore: () => void;
   isFetching: boolean;
+  has_more: boolean;
 }
 
-const ItemsList = ({ data, onItemClick, fetchMore, isFetching }: ItemsList) => {
+const ItemsList = ({
+  data,
+  onItemClick,
+  fetchMore,
+  isFetching,
+  has_more,
+}: ItemsList) => {
   const ref = useRef({} as FlashList<BriefItem>);
   const scrollToTop = useRef(false);
   const layout = usePageStructureLayout();
+
+  const router = useRouter();
+  const { t } = useTranslationsContext();
 
   useEffect(() => {
     if (!data) scrollToTop.current = true;
@@ -59,7 +71,20 @@ const ItemsList = ({ data, onItemClick, fetchMore, isFetching }: ItemsList) => {
               })}
             </View>
           }
-          ListFooterComponent={isFetching && data ? Skeleton : undefined}
+          ListFooterComponent={
+            data ? (
+              isFetching ? (
+                Skeleton
+              ) : !has_more ? (
+                <Warning
+                  firstText={t("HOME__WARNING_1_FIRST_TEXT")}
+                  secondText={t("HOME__WARNING_1_SECOND_TEXT")}
+                  onClick={() => router.push("/request-a-product")}
+                  containerCN="mb-[8px]"
+                />
+              ) : undefined
+            ) : undefined
+          }
         />
       )}
     </View>
