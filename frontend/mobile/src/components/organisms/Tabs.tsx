@@ -15,7 +15,7 @@ interface Tabs {
   data: Tab[] | undefined;
   showSkeleton: boolean;
   onTabClick: (tab: Tab) => void;
-  selectedTab: Tab;
+  selectedTab: Tab | undefined;
 }
 
 const Tabs = ({ data, showSkeleton, onTabClick, selectedTab }: Tabs) => {
@@ -52,7 +52,7 @@ const Tabs = ({ data, showSkeleton, onTabClick, selectedTab }: Tabs) => {
                 cn={clsx(
                   "px-[28px] py-[8px] border-[1.4px] rounded-[4px]",
                   direction === "ltr" ? "mr-[4px]" : "ml-[4px]",
-                  tab.public_id === selectedTab.public_id
+                  tab.public_id === selectedTab?.public_id
                     ? "border-[#0E333C]"
                     : "border-[#f6f6f6]"
                 )}

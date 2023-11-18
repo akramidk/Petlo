@@ -1,8 +1,8 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { View } from "react-native";
 import { Endpoints } from "../../enums";
 import { useAPIFetching } from "../../hooks";
-import { CategoriesResponse } from "../../interfaces";
+import { CategoriesResponse, Category } from "../../interfaces";
 import PageStructure from "../organisms/PageStructure";
 import Tabs from "../organisms/Tabs";
 
@@ -12,13 +12,11 @@ interface CategoryPage {
   backButton: () => void;
 }
 
-const ALL_CATEGORY = {
-  name: "All",
-  public_id: "ALL",
-};
-
 const CategoryPage = ({ publicId, name, backButton }: CategoryPage) => {
-  const [selectedCategory, setSelectedCategory] = useState(ALL_CATEGORY);
+  const [selectedCategory, setSelectedCategory] = useState<{
+    public_id: string;
+    name: string;
+  }>();
   const { response: categoriesResponse } = useAPIFetching<
     unknown,
     CategoriesResponse
@@ -26,16 +24,37 @@ const CategoryPage = ({ publicId, name, backButton }: CategoryPage) => {
     endpoint: Endpoints.CATEGORIES,
   });
 
+  const slugs = selectedCategory
+    ? {
+        category: selectedCategory.public_id,
+      }
+    : undefined;
+
+  const {
+    response: itemsResponse,
+    fetchMore,
+    reset,
+  } = useAPIFetching<unknown, unknown>({
+    endpoint: Endpoints.CATEGORY,
+    slugs: slugs,
+    options: {
+      wait: !selectedCategory,
+    },
+  });
+
   const categoriesData = useMemo(() => {
     if (!categoriesResponse?.body?.data) return [];
 
-    return [
-      ALL_CATEGORY,
-      ...categoriesResponse.body.data.filter(
-        (category) => category.parent_public_id === publicId
-      ),
-    ];
+    return categoriesResponse.body.data.filter(
+      (category) => category.parent_public_id === publicId
+    );
   }, [categoriesResponse]);
+
+  useEffect(() => {
+    if (categoriesData.length === 0) return;
+
+    setSelectedCategory(categoriesData[0]);
+  }, [categoriesData]);
 
   return (
     <PageStructure
