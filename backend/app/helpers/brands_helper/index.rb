@@ -23,6 +23,7 @@ module BrandsHelper::Index
                 public_id: brand.public_id,
                 name: name,
                 logo: brand.logo.url
+                featured: featured || BrandCountrySetting.find_by(brand_id: brand.id, country: country)&.featured
             }
         end
 
