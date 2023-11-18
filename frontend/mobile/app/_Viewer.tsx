@@ -12,9 +12,10 @@ const Viewer = ({ children }: ViewerProps) => {
   const pathname = usePathname();
   const { customer } = useCustomerContext();
   const hideHeder = HEDER_PATHS.includes(pathname);
-  const showMenuAndIcons = (MENU_PATHS as ReadonlyArray<string>).includes(
-    pathname
-  );
+  const showMenuAndIcons =
+    (MENU_PATHS as ReadonlyArray<string>).includes(pathname) ||
+    pathname.includes("/brands/") ||
+    pathname.includes("/categories/");
 
   if (pathname === "/welcome") {
     return <>{children}</>;
