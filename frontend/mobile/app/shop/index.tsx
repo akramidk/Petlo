@@ -21,6 +21,7 @@ const Shop = () => {
           onShowAllButtonClick: () => router.push("/brands"),
           onBrandClick: (brand) =>
             router.push(`/brands/${brand.public_id}?name=${brand.name}`),
+          featuredBrandsOnly: true,
         }}
         petsList={{
           title: t("BRANDS_AND_PETS_LIST__SHOP_BY_PET"),

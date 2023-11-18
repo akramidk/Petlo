@@ -23,9 +23,16 @@ const BrandsList = ({
   title,
   onShowAllButtonClick,
   onBrandClick,
+  featuredBrandsOnly,
 }: BrandsListProps) => {
   const { t } = useTranslationsContext();
   const layout = usePageStructureLayout();
+
+  const filterByFeaturedBrands = featuredBrandsOnly
+    ? {
+        featured: true,
+      }
+    : undefined;
   const { response, fetchMore: fetchMoreHandler } = useAPIFetching<
     BrandsRequest,
     BrandsResponse
@@ -36,6 +43,7 @@ const BrandsList = ({
     },
     body: {
       limit: limit,
+      ...filterByFeaturedBrands,
     },
   });
 

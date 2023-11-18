@@ -85,6 +85,7 @@ const SearchAndSelectItems = ({
                     onBrandClick: (brand) => {
                       setPage({ type: "brand", data: brand });
                     },
+                    featuredBrandsOnly: true,
                   }}
                   petsList={{
                     title: t("BRANDS_AND_PETS_LIST__ITEMS_BY_PET"),

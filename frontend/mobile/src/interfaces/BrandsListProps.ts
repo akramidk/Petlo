@@ -7,4 +7,5 @@ export interface BrandsListProps {
   showAllButton?: Boolean;
   onShowAllButtonClick?: () => void;
   onBrandClick: (brand: Brand) => void;
+  featuredBrandsOnly?: boolean;
 }
