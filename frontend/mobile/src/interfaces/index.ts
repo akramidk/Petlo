@@ -13,6 +13,7 @@ import { CartItemProps } from "./CartItemProps";
 import { RecurringInterval } from "./RecurringInterval";
 import { Item } from "./Entities/Item";
 import { BrandsListProps } from "./BrandsListProps";
+import { PetsListProps } from "./PetsListProps";
 
 //endpoinds interfaces
 import {
@@ -194,6 +195,7 @@ import { Order } from "./Entities/Order";
 import { Address } from "./Entities/Address";
 import { Payment } from "./Entities/Payment";
 import { Pet } from "./Entities/Pet";
+import { Category } from "./Entities/Category";
 
 export {
   NewVersionAvailableRequest,
@@ -211,6 +213,7 @@ export {
   RecurringInterval,
   Item,
   BrandsListProps,
+  PetsListProps,
   AutoshipItemsCalculation,
   ErrorResponse,
   CreateNewCustomerRequest,
@@ -321,4 +324,5 @@ export {
   Address,
   Payment,
   Pet,
+  Category,
 };

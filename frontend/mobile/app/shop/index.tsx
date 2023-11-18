@@ -1,12 +1,10 @@
 import { useRouter } from "expo-router";
-import { View } from "react-native";
 import {
   BrandsAndPetsList,
   PageStructure,
   PetsList,
 } from "../../src/components/organisms";
 import { useTranslationsContext } from "../../src/hooks";
-import { CopyPhoneNumberButton } from "../_CopyPhoneNumberButton";
 
 const Shop = () => {
   const router = useRouter();
@@ -23,6 +21,11 @@ const Shop = () => {
           onShowAllButtonClick: () => router.push("/brands"),
           onBrandClick: (brand) =>
             router.push(`/brands/${brand.public_id}?name=${brand.name}`),
+        }}
+        petsList={{
+          title: t("BRANDS_AND_PETS_LIST__SHOP_BY_PET"),
+          onPetClick: (pet) =>
+            router.push(`/categories/${pet.public_id}?name=${pet.name}`),
         }}
       />
     </PageStructure>

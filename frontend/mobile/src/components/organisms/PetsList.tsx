@@ -1,17 +1,14 @@
 import { View, ScrollView } from "react-native";
-import { Text, Link } from "../atoms";
+import { Text } from "../atoms";
 import { useAPIFetching, useInternationalizationContext } from "../../hooks";
 import { Endpoints } from "../../enums";
-import { CategoriesResponse } from "../../interfaces";
+import { CategoriesResponse, PetsListProps } from "../../interfaces";
 import { useRef } from "react";
 import clsx from "clsx";
 import { Skeleton } from "moti/skeleton";
+import BaseButton from "../bases/BaseButton";
 
-interface PetsList {
-  title?: string;
-}
-
-const PetsList = ({ title }: PetsList) => {
+const PetsList = ({ title, onPetClick }: PetsListProps) => {
   const { direction } = useInternationalizationContext();
   const scrollViewRef = useRef<ScrollView>();
   const { response } = useAPIFetching<unknown, CategoriesResponse>({
@@ -44,15 +41,16 @@ const PetsList = ({ title }: PetsList) => {
           ?.filter((pet) => pet.parent_public_id === null)
           ?.map((pet, index) => {
             return (
-              <View
+              <BaseButton
                 key={index}
                 className={clsx(
                   "bg-[#fff] border-[1px] border-[#f6f6f6] w-[200px] h-[312px] rounded-[4px]",
                   direction === "ltr" ? "mr-[8px]" : "ml-[8px]"
                 )}
+                onClick={() => onPetClick(pet)}
               >
                 <Text>{pet.name ?? index}</Text>
-              </View>
+              </BaseButton>
             );
           })}
 
