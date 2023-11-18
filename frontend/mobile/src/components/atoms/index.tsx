@@ -15,6 +15,7 @@ import SmallButton from "./SmallButton";
 import SearchFiled from "./SearchFiled";
 import BottomContainer from "./BottomContainer";
 import OptionsWithLabel from "./OptionsWithLabel";
+import MoreButton from "./MoreButton";
 
 export {
   SVGLogo,
@@ -34,4 +35,5 @@ export {
   SearchFiled,
   BottomContainer,
   OptionsWithLabel,
+  MoreButton,
 };

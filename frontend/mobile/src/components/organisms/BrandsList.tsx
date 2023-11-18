@@ -1,5 +1,5 @@
 import { View } from "react-native";
-import { Text, Link } from "../atoms";
+import { Text, Link, MoreButton } from "../atoms";
 import { FlashList } from "@shopify/flash-list";
 import { useWindowDimensions } from "react-native";
 import {
@@ -104,14 +104,10 @@ const BrandsList = ({
       </View>
 
       {showAllButton && (
-        <BaseButton
-          cn="w-[100%] bg-[#f6f6f6] rounded-[4px] items-center justify-center p-[12px]"
+        <MoreButton
           onClick={onShowAllButtonClick}
-        >
-          <Text cn="text-[14px] text-[#333]" font="bold">
-            {t("BRANDS_LIST__SHOW_ALL_BRANDS")}
-          </Text>
-        </BaseButton>
+          value={t("BRANDS_LIST__SHOW_ALL_BRANDS")}
+        />
       )}
     </View>
   );
