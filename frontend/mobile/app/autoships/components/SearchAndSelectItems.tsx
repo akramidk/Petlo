@@ -13,6 +13,8 @@ import { Endpoints } from "../../../src/enums";
 import { View } from "react-native";
 import { Item } from "../../../src/components/molecules";
 import {
+  BrandPage,
+  BrandsPage,
   CategoryPage,
   ItemPreview,
   Loading,
@@ -54,8 +56,8 @@ const SearchAndSelectItems = ({
 
   const [openedItemPublicId, setOpendItemPublicId] = useState<string>();
   const [page, setPage] = useState<{
-    type: "pet" | "brands";
-    data: Brand | Category;
+    type: "pet" | "brands" | "brand";
+    data?: Brand | Category;
   }>();
 
   const renderPage = useMemo(() => {
@@ -78,10 +80,10 @@ const SearchAndSelectItems = ({
                     title: t("BRANDS_AND_PETS_LIST__SHOP_BY_BRAND"),
                     showAllButton: true,
                     onShowAllButtonClick: () => {
-                      //
+                      setPage({ type: "brands" });
                     },
                     onBrandClick: (brand) => {
-                      //
+                      setPage({ type: "brand", data: brand });
                     },
                   }}
                   petsList={{
@@ -138,7 +140,20 @@ const SearchAndSelectItems = ({
 
     if (page.type === "brands") {
       return (
-        <CategoryPage
+        <BrandsPage
+          backButton={() => {
+            setPage(undefined);
+          }}
+          onBrandClick={(brand) => {
+            setPage({ type: "brand", data: brand });
+          }}
+        />
+      );
+    }
+
+    if (page.type === "brand") {
+      return (
+        <BrandPage
           publicId={page.data.public_id}
           name={page.data.name}
           backButton={() => {
