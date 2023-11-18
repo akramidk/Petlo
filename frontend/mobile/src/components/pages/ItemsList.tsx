@@ -41,8 +41,6 @@ const ItemsList = ({
     }
   }, [data]);
 
-  console.log("layout?.height", layout?.height);
-
   return (
     <View style={{ height: layout?.height }}>
       {layout?.height && (
@@ -61,10 +59,7 @@ const ItemsList = ({
               </View>
             );
           }}
-          onEndReached={() => {
-            console.log("ehyyyy");
-            fetchMore();
-          }}
+          onEndReached={fetchMore}
           ListEmptyComponent={
             <View className="space-y-[8px]">
               {[...Array(6)].map((_, index) => {
