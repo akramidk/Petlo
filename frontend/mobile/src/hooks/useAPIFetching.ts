@@ -110,8 +110,8 @@ const useAPIFetching = <Request, Response>({
   const fetchMore = () => {
     if (
       options?.withPagination &&
-      savedResponse.current.isFetching === false &&
-      (savedResponse.current.body as { has_more: boolean }).has_more
+      savedResponse.current?.isFetching === false &&
+      (savedResponse.current?.body as { has_more: boolean })?.has_more
     ) {
       setPaginationRound(paginationRound + 1);
     }
