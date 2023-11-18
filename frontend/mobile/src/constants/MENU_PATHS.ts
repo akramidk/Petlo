@@ -1,8 +1,1 @@
-export const MENU_PATHS = [
-  "/",
-  "/orders",
-  "/autoships",
-  "/more",
-  "/shop",
-  "/brands",
-];
+export const MENU_PATHS = ["/", "/orders", "/autoships", "/more", "/shop"];

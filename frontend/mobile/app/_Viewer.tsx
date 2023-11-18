@@ -1,7 +1,7 @@
 import { usePathname } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Header, Menu } from "../src/components/molecules";
-import { HEDER_PATHS, MENU_PATHS } from "../src/constants";
+import { HEDER_ICONS_PATHS, HEDER_PATHS, MENU_PATHS } from "../src/constants";
 import { useCustomerContext } from "../src/hooks";
 
 interface ViewerProps {
@@ -25,13 +25,17 @@ const Viewer = ({ children }: ViewerProps) => {
     return <SafeAreaView className="h-full">{children}</SafeAreaView>;
   }
 
+  const showHeaderIcons = !!HEDER_ICONS_PATHS.find((path) =>
+    pathname.includes(path)
+  );
+
   return (
     <SafeAreaView className="h-full flex flex-col">
       {!hideHeder && (
         <Header
           activePath={pathname}
-          showSearchIcon={showMenuAndIcons}
-          showCartIcon={customer && (showMenuAndIcons || pathname === "/item")}
+          showSearchIcon={showHeaderIcons}
+          showCartIcon={customer && showHeaderIcons}
         />
       )}
       {children}
