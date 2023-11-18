@@ -128,40 +128,49 @@ const SearchAndSelectItems = ({
 
     if (page.type === "pet") {
       return (
-        <CategoryPage
-          publicId={page.data.public_id}
-          name={page.data.name}
-          backButton={() => {
-            setPage(undefined);
-          }}
-          onItemClick={(item) => setOpendItemPublicId(item.public_id)}
-        />
+        <>
+          <CategoryPage
+            publicId={page.data.public_id}
+            name={page.data.name}
+            backButton={() => {
+              setPage(undefined);
+            }}
+            onItemClick={(item) => setOpendItemPublicId(item.public_id)}
+          />
+          <View className="mb-[32px]" />
+        </>
       );
     }
 
     if (page.type === "brands") {
       return (
-        <BrandsPage
-          backButton={() => {
-            setPage(undefined);
-          }}
-          onBrandClick={(brand) => {
-            setPage({ type: "brand", data: brand });
-          }}
-        />
+        <>
+          <BrandsPage
+            backButton={() => {
+              setPage(undefined);
+            }}
+            onBrandClick={(brand) => {
+              setPage({ type: "brand", data: brand });
+            }}
+          />
+          <View className="mb-[32px]" />
+        </>
       );
     }
 
     if (page.type === "brand") {
       return (
-        <BrandPage
-          publicId={page.data.public_id}
-          name={page.data.name}
-          backButton={() => {
-            setPage(undefined);
-          }}
-          onItemClick={(item) => setOpendItemPublicId(item.public_id)}
-        />
+        <>
+          <BrandPage
+            publicId={page.data.public_id}
+            name={page.data.name}
+            backButton={() => {
+              setPage(undefined);
+            }}
+            onItemClick={(item) => setOpendItemPublicId(item.public_id)}
+          />
+          <View className="mb-[32px]" />
+        </>
       );
     }
   }, [page]);
