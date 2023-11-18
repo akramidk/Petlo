@@ -114,6 +114,7 @@ const useAPIFetching = <Request, Response>({
       (savedResponse.current?.body as { has_more: boolean })?.has_more
     ) {
       setPaginationRound(paginationRound + 1);
+      onlyValidating.current = false;
     }
   };
 
