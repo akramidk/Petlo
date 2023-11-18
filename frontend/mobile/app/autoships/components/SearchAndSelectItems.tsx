@@ -77,7 +77,7 @@ const SearchAndSelectItems = ({
                   brandsList={{
                     limit: 6,
                     fetchMore: false,
-                    title: t("BRANDS_AND_PETS_LIST__SHOP_BY_BRAND"),
+                    title: t("BRANDS_AND_PETS_LIST__ITEMS_BY_BRAND"),
                     showAllButton: true,
                     onShowAllButtonClick: () => {
                       setPage({ type: "brands" });
@@ -87,7 +87,7 @@ const SearchAndSelectItems = ({
                     },
                   }}
                   petsList={{
-                    title: t("BRANDS_AND_PETS_LIST__SHOP_BY_PET"),
+                    title: t("BRANDS_AND_PETS_LIST__ITEMS_BY_PET"),
                     onPetClick: (pet) => {
                       setPage({ type: "pet", data: pet });
                     },
@@ -174,7 +174,7 @@ const SearchAndSelectItems = ({
       isVisible
     >
       <BottomSheet
-        snapPoints={["80%"]}
+        snapPoints={["90%"]}
         onClose={onClose}
         animateOnMount
         enablePanDownToClose
