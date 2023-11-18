@@ -1,10 +1,11 @@
 import { FlashList } from "@shopify/flash-list";
 import { useRouter } from "expo-router";
 import { Skeleton as MotiSkeleton } from "moti/skeleton";
-import { useEffect, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import { View } from "react-native";
 import { usePageStructureLayout, useTranslationsContext } from "../../hooks";
 import { BriefItem } from "../../interfaces";
+import { MoreButton } from "../atoms";
 import Item from "../molecules/Item";
 import Warning from "../molecules/Warning";
 
@@ -41,6 +42,26 @@ const ItemsList = ({
     }
   }, [data]);
 
+  const renderFooterComponent = useMemo(() => {
+    if (!data) return undefined;
+    if (isFetching) return Skeleton;
+    if (has_more) {
+      return <MoreButton onClick={fetchMore} value="Load More" cn="mb-[8px]" />;
+    }
+    if (!has_more) {
+      return (
+        <Warning
+          firstText={t("HOME__WARNING_1_FIRST_TEXT")}
+          secondText={t("HOME__WARNING_1_SECOND_TEXT")}
+          onClick={() => router.push("/request-a-product")}
+          containerCN="mb-[8px]"
+        />
+      );
+    }
+
+    return undefined;
+  }, [data, isFetching, has_more, router, t, fetchMore]);
+
   return (
     <View style={{ height: layout?.height }}>
       {layout?.height && (
@@ -71,20 +92,7 @@ const ItemsList = ({
               })}
             </View>
           }
-          ListFooterComponent={
-            data ? (
-              isFetching ? (
-                Skeleton
-              ) : !has_more ? (
-                <Warning
-                  firstText={t("HOME__WARNING_1_FIRST_TEXT")}
-                  secondText={t("HOME__WARNING_1_SECOND_TEXT")}
-                  onClick={() => router.push("/request-a-product")}
-                  containerCN="mb-[8px]"
-                />
-              ) : undefined
-            ) : undefined
-          }
+          ListFooterComponent={renderFooterComponent}
           onEndReachedThreshold={0.5}
         />
       )}
