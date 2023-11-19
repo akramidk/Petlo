@@ -1,7 +1,6 @@
 import { View } from "react-native";
 import { Text, Link, MoreButton } from "../atoms";
 import { FlashList } from "@shopify/flash-list";
-import { useWindowDimensions } from "react-native";
 import {
   useAPIFetching,
   usePageStructureLayout,
@@ -12,7 +11,8 @@ import { BrandsListProps, BrandsResponse } from "../../interfaces";
 import { BrandsRequest } from "../../interfaces/Endpoints/Brands";
 import { BaseButton } from "../bases";
 import { Skeleton as MotiSkeleton } from "moti/skeleton";
-import { useMemo } from "react";
+import { Fragment, useMemo } from "react";
+import { Image } from "expo-image";
 
 const ITEM_SIZE = 99;
 const NUM_COLUMNS = 2;
@@ -91,12 +91,23 @@ const BrandsList = ({
             estimatedItemSize={ITEM_SIZE}
             renderItem={(item) => {
               return (
-                <BaseButton
-                  className="border-[#f6f6f6] border-[1px] min-w-[50%] h-[92px] flex-auto m-[4px] rounded-[4px]"
-                  onClick={() => onBrandClick(item.item)}
-                >
-                  <Text>{item.item.name}</Text>
-                </BaseButton>
+                <Fragment key={item.index}>
+                  <BaseButton
+                    className="border-[#f6f6f6] bg-[#fff] border-[1px] min-w-[50%] h-[92px] flex-auto m-[4px] rounded-[4px] justify-center items-center"
+                    onClick={() => onBrandClick(item.item)}
+                  >
+                    <Image
+                      style={{
+                        height: "55%",
+                        width: "55%",
+                      }}
+                      source={{
+                        uri: item.item.logo,
+                      }}
+                      contentFit="contain"
+                    />
+                  </BaseButton>
+                </Fragment>
               );
             }}
             numColumns={NUM_COLUMNS}
@@ -123,6 +134,7 @@ const BrandsList = ({
         <MoreButton
           onClick={onShowAllButtonClick}
           value={t("BRANDS_LIST__SHOW_ALL_BRANDS")}
+          cn="mt-[6px]"
         />
       )}
     </View>

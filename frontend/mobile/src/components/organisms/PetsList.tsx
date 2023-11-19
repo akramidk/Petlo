@@ -7,6 +7,7 @@ import { useRef } from "react";
 import clsx from "clsx";
 import { Skeleton } from "moti/skeleton";
 import BaseButton from "../bases/BaseButton";
+import { Image } from "expo-image";
 
 const PetsList = ({ title, onPetClick }: PetsListProps) => {
   const { direction } = useInternationalizationContext();
@@ -44,12 +45,22 @@ const PetsList = ({ title, onPetClick }: PetsListProps) => {
               <BaseButton
                 key={index}
                 className={clsx(
-                  "bg-[#fff] border-[1px] border-[#f6f6f6] w-[200px] h-[312px] rounded-[4px]",
-                  direction === "ltr" ? "mr-[8px]" : "ml-[8px]"
+                  "w-[216px] h-[384px] rounded-[4px]",
+                  direction === "ltr" ? "mr-[4px]" : "ml-[4px]"
                 )}
                 onClick={() => onPetClick(pet)}
               >
-                <Text>{pet.name ?? index}</Text>
+                <Image
+                  style={{
+                    height: "100%",
+                    width: "100%",
+                  }}
+                  source={{
+                    uri: pet.image,
+                  }}
+                  contentFit="cover"
+                  className="rounded-[4px]"
+                />
               </BaseButton>
             );
           })}
