@@ -1,6 +1,5 @@
 import clsx from "clsx";
-import { useRouter } from "expo-router";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { View } from "react-native";
 import { Text } from "../atoms";
 import { BaseButton } from "../bases";
@@ -11,6 +10,7 @@ import {
 import { BriefItem } from "../../interfaces";
 import reactStringReplace from "react-string-replace";
 import { Image } from "expo-image";
+import { Skeleton } from "moti/skeleton";
 
 interface ItemProps {
   variant: "small" | "large";
@@ -19,7 +19,6 @@ interface ItemProps {
 }
 
 const Item = ({ variant, data, onClick }: ItemProps) => {
-  const router = useRouter();
   const { t } = useTranslationsContext();
   const { languageWithoutGender, direction } = useInternationalizationContext();
 
@@ -84,6 +83,8 @@ const Item = ({ variant, data, onClick }: ItemProps) => {
     );
   }, [data.name, data.brand]);
 
+  const [loadingImage, setLoadingImage] = useState(true);
+
   return (
     <BaseButton
       className={clsx(
@@ -93,15 +94,29 @@ const Item = ({ variant, data, onClick }: ItemProps) => {
       onClick={onClick}
     >
       <View className={clsx("bg-[#f9f9f9]", variantsStyles.imageMeasurements)}>
-        <Image
-          style={{
-            flex: 1,
+        <Skeleton
+          show={loadingImage}
+          height={216}
+          width="100%"
+          colorMode="light"
+          radius={4}
+          transition={{
+            type: "timing",
+            duration: 3000,
           }}
-          source={{
-            uri: data.image,
-          }}
-          contentFit="contain"
-        />
+          backgroundColor="#f9f9f9"
+        >
+          <Image
+            style={{
+              flex: 1,
+            }}
+            source={{
+              uri: data.image,
+            }}
+            contentFit="contain"
+            onLoad={() => setLoadingImage(false)}
+          />
+        </Skeleton>
         {data.variants.number > 1 && (
           <View
             className={clsx(
