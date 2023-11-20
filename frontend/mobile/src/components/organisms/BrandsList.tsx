@@ -11,7 +11,7 @@ import { BrandsListProps, BrandsResponse } from "../../interfaces";
 import { BrandsRequest } from "../../interfaces/Endpoints/Brands";
 import { BaseButton } from "../bases";
 import { Skeleton as MotiSkeleton } from "moti/skeleton";
-import { Fragment, useMemo } from "react";
+import { Fragment, useMemo, useState } from "react";
 import { Image } from "expo-image";
 
 const ITEM_SIZE = 99;
@@ -92,21 +92,10 @@ const BrandsList = ({
             renderItem={(item) => {
               return (
                 <Fragment key={item.index}>
-                  <BaseButton
-                    className="border-[#f6f6f6] bg-[#fff] border-[1px] min-w-[50%] h-[92px] flex-auto m-[4px] rounded-[4px] justify-center items-center"
+                  <Logo
                     onClick={() => onBrandClick(item.item)}
-                  >
-                    <Image
-                      style={{
-                        height: "55%",
-                        width: "55%",
-                      }}
-                      source={{
-                        uri: item.item.logo,
-                      }}
-                      contentFit="contain"
-                    />
-                  </BaseButton>
+                    uri={item.item.logo}
+                  />
                 </Fragment>
               );
             }}
@@ -118,7 +107,7 @@ const BrandsList = ({
                 {[...Array(limit / NUM_COLUMNS)].map((_, index) => {
                   return (
                     <View key={index}>
-                      <Skeleton />
+                      <RowSkeleton />
                     </View>
                   );
                 })}
@@ -143,37 +132,62 @@ const BrandsList = ({
 
 const Skeleton = () => {
   return (
+    <MotiSkeleton
+      show
+      height={92}
+      colorMode="light"
+      radius={4}
+      transition={{
+        type: "timing",
+        duration: 3000,
+      }}
+      backgroundColor="#f9f9f9"
+      width="100%"
+    />
+  );
+};
+
+const RowSkeleton = () => {
+  return (
     <View className="flex flex-row justify-between">
       <View className="w-[49%]">
-        <MotiSkeleton
-          show
-          height={92}
-          colorMode="light"
-          radius={4}
-          transition={{
-            type: "timing",
-            duration: 3000,
-          }}
-          backgroundColor="#f9f9f9"
-          width="100%"
-        />
+        <Skeleton />
       </View>
 
       <View className="w-[49%]">
-        <MotiSkeleton
-          show
-          height={92}
-          colorMode="light"
-          radius={4}
-          transition={{
-            type: "timing",
-            duration: 3000,
-          }}
-          backgroundColor="#f9f9f9"
-          width="100%"
-        />
+        <Skeleton />
       </View>
     </View>
+  );
+};
+
+interface Logo {
+  onClick: () => void;
+  uri: string;
+}
+
+const Logo = ({ onClick, uri }: Logo) => {
+  const [loading, setLoading] = useState(true);
+  const size = loading ? 1 : "55%";
+
+  return (
+    <BaseButton
+      className="border-[#f6f6f6] bg-[#fff] border-[1px] min-w-[50%] h-[92px] flex-auto m-[4px] rounded-[4px] justify-center items-center"
+      onClick={onClick}
+    >
+      {loading && <Skeleton />}
+      <Image
+        style={{
+          height: size,
+          width: size,
+        }}
+        source={{
+          uri: uri,
+        }}
+        contentFit="contain"
+        onLoad={() => setLoading(false)}
+      />
+    </BaseButton>
   );
 };
 
