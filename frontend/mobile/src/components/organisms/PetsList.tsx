@@ -3,11 +3,11 @@ import { Text } from "../atoms";
 import { useAPIFetching, useInternationalizationContext } from "../../hooks";
 import { Endpoints } from "../../enums";
 import { CategoriesResponse, PetsListProps } from "../../interfaces";
-import { useRef } from "react";
+import React, { Fragment, useRef, useState } from "react";
 import clsx from "clsx";
-import { Skeleton } from "moti/skeleton";
+import { Skeleton as MotiSkeleton } from "moti/skeleton";
 import BaseButton from "../bases/BaseButton";
-import { Image } from "expo-image";
+import { Image as ExpoImage } from "expo-image";
 
 const PetsList = ({ title, onPetClick }: PetsListProps) => {
   const { direction } = useInternationalizationContext();
@@ -42,26 +42,13 @@ const PetsList = ({ title, onPetClick }: PetsListProps) => {
           ?.filter((pet) => pet.parent_public_id === null)
           ?.map((pet, index) => {
             return (
-              <BaseButton
-                key={index}
-                className={clsx(
-                  "w-[216px] h-[384px] rounded-[4px]",
-                  direction === "ltr" ? "mr-[4px]" : "ml-[4px]"
-                )}
-                onClick={() => onPetClick(pet)}
-              >
+              <Fragment key={index}>
                 <Image
-                  style={{
-                    height: "100%",
-                    width: "100%",
-                  }}
-                  source={{
-                    uri: pet.image,
-                  }}
-                  contentFit="cover"
-                  className="rounded-[4px]"
+                  onClick={() => onPetClick(pet)}
+                  uri={pet.image}
+                  direction={direction}
                 />
-              </BaseButton>
+              </Fragment>
             );
           })}
 
@@ -69,29 +56,73 @@ const PetsList = ({ title, onPetClick }: PetsListProps) => {
           [...Array(2)].map((_, index) => {
             return (
               <View
-                className={clsx(
-                  "w-[200px] h-[312px] rounded-[4px]",
-                  direction === "ltr" ? "mr-[8px]" : "ml-[8px]"
-                )}
                 key={index}
+                className={direction === "ltr" ? "mr-[4px]" : "ml-[4px]"}
               >
-                <Skeleton
-                  show={true}
-                  height="100%"
-                  colorMode="light"
-                  radius={4}
-                  transition={{
-                    type: "timing",
-                    duration: 3000,
-                  }}
-                  backgroundColor="#f9f9f9"
-                  width="100%"
-                />
+                <Skeleton />
               </View>
             );
           })}
       </ScrollView>
     </View>
+  );
+};
+
+interface Skeleton {
+  children?: React.ReactElement;
+  show?: boolean;
+}
+
+const Skeleton = ({ children, show = true }: Skeleton) => {
+  return (
+    <MotiSkeleton
+      show={show}
+      height={384}
+      width={216}
+      colorMode="light"
+      radius={4}
+      transition={{
+        type: "timing",
+        duration: 3000,
+      }}
+      backgroundColor="#f9f9f9"
+    >
+      {children}
+    </MotiSkeleton>
+  );
+};
+
+interface Image {
+  onClick: () => void;
+  uri: string;
+  direction: string;
+}
+const Image = ({ onClick, uri, direction }: Image) => {
+  const [loading, setLoading] = useState(true);
+
+  return (
+    <BaseButton
+      className={clsx(
+        "w-[216px] h-[384px] rounded-[4px]",
+        direction === "ltr" ? "mr-[4px]" : "ml-[4px]"
+      )}
+      onClick={onClick}
+    >
+      <Skeleton show={loading}>
+        <ExpoImage
+          style={{
+            height: "100%",
+            width: "100%",
+          }}
+          source={{
+            uri: uri,
+          }}
+          contentFit="cover"
+          className="rounded-[4px]"
+          onLoad={() => setLoading(false)}
+        />
+      </Skeleton>
+    </BaseButton>
   );
 };
 
