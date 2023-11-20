@@ -30,10 +30,10 @@ module Dashboard
       pets = order.pets
       items = []
       order.items.each do |order_item|
-        item = Item.find_by(id: order_item[:id])
-        brand = BrandName.find_by(id: item[:id], language: "en")
+        item = Item.find_by(id: order_item[:item_id])
+        brand = BrandName.find_by(brand_id: item.brand.id, language: "en")
         options = Variant.find_by(id: order_item[:variant_id]).options.map{|option| 
-          OptionValue.find_by(id: option[:id], language: "en").slice("value", "unit")
+          OptionValue.find_by(option_id: option.id, language: "en").slice("value", "unit")
         }
 
         items << {
@@ -52,7 +52,7 @@ module Dashboard
         order: order.as_json.except("id"),
         payment: payment.slice("method"),
         address: address.slice("latitude", "longitude", "details"),
-        pets: pets.map{|pet| pet.as_json.except("id")},
+        pets: pets.map{|pet_order| pet_order.pet.as_json.slice("name", "kind", "breed", "gender")},
         items: items
       }, status: 200
     end
