@@ -6,6 +6,8 @@ import { SWRConfiguration } from "swr";
 import { Endpoints } from "../enums";
 import { ErrorResponse } from "../interfaces";
 
+// TODO should do it again after a lot of changes it looks baaaad
+
 interface useAPIFetchingProps<Request> {
   endpoint: Endpoints | null | string;
   body?: Partial<Request>;
@@ -16,6 +18,7 @@ interface useAPIFetchingProps<Request> {
     overwriteSessionToken?: string;
     withPagination?: boolean;
     isFunction?: boolean;
+    ignoreValidation?: boolean;
   };
 }
 
@@ -139,7 +142,8 @@ const useAPIFetching = <Request, Response>({
       }
 
       newResponse = _response;
-      onlyValidating.current = isValidating && !isLoading;
+      onlyValidating.current =
+        isValidating && !isLoading && options?.ignoreValidation;
     } else if (swrResponse) {
       const common = {
         isFetching: false,

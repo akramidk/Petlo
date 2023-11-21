@@ -51,6 +51,7 @@ const CategoryPage = ({
     options: {
       wait: !selectedCategory,
       withPagination: true,
+      ignoreValidation: true,
     },
     body: {
       limit: 6,
