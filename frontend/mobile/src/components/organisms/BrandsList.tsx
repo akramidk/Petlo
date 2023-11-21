@@ -41,7 +41,6 @@ const BrandsList = ({
     endpoint: Endpoints.BRANDS,
     options: {
       withPagination: true,
-      ignoreValidation: true,
     },
     body: {
       limit: limit,

@@ -58,7 +58,6 @@ const BrandPage = ({ publicId, name, backButton, onItemClick }) => {
     },
     options: {
       withPagination: true,
-      ignoreValidation: true,
     },
   });
 

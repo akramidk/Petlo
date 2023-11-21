@@ -18,7 +18,6 @@ interface useAPIFetchingProps<Request> {
     overwriteSessionToken?: string;
     withPagination?: boolean;
     isFunction?: boolean;
-    ignoreValidation?: boolean;
   };
 }
 
@@ -38,8 +37,8 @@ const useAPIFetching = <Request, Response>({
 }: useAPIFetchingProps<Request>) => {
   const [wait, setWait] = useState<boolean>(options?.wait);
   const [paginationRound, setPaginationRound] = useState(1);
-  const savedResponse = useRef({} as useAPIFetchingResponse<Response>);
-  const onlyValidating = useRef(false);
+  const lastResponse = useRef({} as useAPIFetchingResponse<Response>);
+  const savedData: { current: unknown[][] } = useRef();
 
   const SWREndpoint = useMemo(() => {
     if ((wait && options?.wait === true) || endpoint === null) {
@@ -97,8 +96,8 @@ const useAPIFetching = <Request, Response>({
   };
 
   const reset = () => {
-    savedResponse.current = {};
-    onlyValidating.current = false;
+    lastResponse.current = {};
+    savedData.current = undefined;
     setPaginationRound(1);
   };
 
@@ -113,73 +112,53 @@ const useAPIFetching = <Request, Response>({
   const fetchMore = () => {
     if (
       options?.withPagination &&
-      savedResponse.current?.isFetching === false &&
-      (savedResponse.current?.body as { has_more: boolean })?.has_more
+      (
+        lastResponse.current as {
+          has_more: boolean;
+        }
+      )?.has_more
     ) {
       setPaginationRound(paginationRound + 1);
-      onlyValidating.current = false;
     }
   };
 
   const response = useMemo(() => {
-    let newResponse;
-    let previousResponseBody = (
-      options?.withPagination ? savedResponse.current?.body : undefined
-    ) as {
-      data: unknown[];
+    const getData = () => {
+      return savedData.current?.flatMap?.((data) => data);
     };
 
     if (isLoading || isValidating) {
-      const _response = {
-        isFetching: true,
-      };
+      const body = options?.withPagination
+        ? { body: { ...lastResponse.current, data: getData() } }
+        : {};
 
-      if (previousResponseBody) {
-        _response["body"] = {
-          ...previousResponseBody,
-          data: previousResponseBody?.data,
-        };
+      return { isFetching: true, ...body };
+    }
+
+    if (swrResponse) {
+      if (options?.withPagination) {
+        if (!savedData.current) savedData.current = [];
+
+        savedData.current[paginationRound - 1] = swrResponse.data.data;
+        lastResponse.current = swrResponse.data;
       }
 
-      newResponse = _response;
-      onlyValidating.current =
-        isValidating && !isLoading && options?.ignoreValidation;
-    } else if (swrResponse) {
-      const common = {
+      return {
         isFetching: false,
         statusCode: swrResponse.status,
-      };
-
-      newResponse = {
-        ...common,
-        body: previousResponseBody
-          ? {
-              ...swrResponse.data,
-              data: [...previousResponseBody?.data, ...swrResponse.data?.data],
-            }
+        body: options?.withPagination
+          ? { ...swrResponse.data, data: getData() }
           : swrResponse.data,
       };
-    } else if (error) {
-      newResponse = {
+    }
+
+    if (error) {
+      return {
         isFetching: false,
         statusCode: error.response.status,
         error: error.response.data,
       };
     }
-
-    savedResponse.current = onlyValidating.current
-      ? savedResponse.current
-      : newResponse;
-
-    if (
-      isLoading === false &&
-      isValidating === false &&
-      onlyValidating.current
-    ) {
-      onlyValidating.current = false;
-    }
-
-    return savedResponse.current;
   }, [isLoading, isValidating, swrResponse, error]);
 
   return {
