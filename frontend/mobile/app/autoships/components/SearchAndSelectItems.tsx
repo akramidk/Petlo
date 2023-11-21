@@ -173,7 +173,7 @@ const SearchAndSelectItems = ({
         </>
       );
     }
-  }, [page]);
+  }, [page, searchValue, response]);
 
   return (
     <Modal
