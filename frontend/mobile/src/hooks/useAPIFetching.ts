@@ -122,7 +122,7 @@ const useAPIFetching = <Request, Response>({
     }
   };
 
-  const response = useMemo(() => {
+  const response: useAPIFetchingResponse<Response> = useMemo(() => {
     const getData = () => {
       return savedData.current?.flatMap?.((data) => data);
     };
@@ -132,7 +132,7 @@ const useAPIFetching = <Request, Response>({
         ? { body: { ...lastResponse.current, data: getData() } }
         : {};
 
-      return { isFetching: true, ...body };
+      return { isFetching: true, ...body } as Response;
     }
 
     if (swrResponse) {
