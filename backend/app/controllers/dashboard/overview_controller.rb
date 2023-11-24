@@ -7,7 +7,7 @@ module Dashboard
 
       customers = Customer.all.length
       orders = get_orders.length
-      autoships = Autoship.all.length
+      autoships = get_autoships.length
 
       render json: { customers: customers, orders: orders, autoships: autoships }, status: 200
     end
@@ -58,12 +58,16 @@ module Dashboard
     end
 
     def autoships
-      render json: { data: Autoship.all.map{|autoship| autoship.as_json.except("id")} }
+      render json: { data: get_autoships.map{|autoship| autoship.as_json.except("id")} }
     end
 
     private
     def get_orders
       Order.where.not(status: "delivered")
+    end
+
+    def get_autoships
+      Autoship.where(status: "active")
     end
   end
 end
