@@ -2,6 +2,8 @@ module Dashboard
   class OverviewController < ApplicationController
     PASSKEY = "oweeMOr05GkBEHieCM8ZUNTUDzV4e9dWo"
 
+    include AutoshipsHelper
+
     def index
       raise("1000000") if params[:passkey] != PASSKEY
 
@@ -71,7 +73,31 @@ module Dashboard
     end
 
     def autoships
-      render json: { data: get_autoships.map{|autoship| autoship.as_json.except("id")} }
+      raise("1000000") if params[:passkey] != PASSKEY
+
+      render json: { data: get_autoships.map{|autoship| autoship.as_json.except("id")} }, status: 200
+    end
+
+    def autoship
+      raise("1000000") if params[:passkey] != PASSKEY
+
+      autoship = Autoship.find_by(public_id: params[:public_id])
+      customer = autoship.customer
+      address = autoship.address.slice("latitude", "longitude", "details")
+      pets = autoship.pets.map{|pet_order| pet_order.pet.as_json.slice("name", "kind", "breed", "gender")}
+      items = get_autoship_items(autoship: autoship)
+
+      render json: {
+        autoship: autoship.slice("public_id", "name", "status", "payment_method", "recurring_interval", "recurring_interval_count", "next_shipment_on", "next_shipment_collect_payment_attempts"),
+        customer: customer.slice("public_id", "name", "country", "phone_number"),
+        address: address,
+        pets: pets,
+        calculation: AutoshipsHelper.items_calculation(
+          customer: customer,
+          data: items,
+          language: "en"
+        )
+      }, status: 200
     end
 
     private
@@ -81,6 +107,23 @@ module Dashboard
 
     def get_autoships
       Autoship.where(status: "active")
+    end
+
+    def get_autoship_items(autoship:)
+      items = []
+  
+      autoship.items.each do |autoship_item|
+        item_public_id = Item.find_by(id: autoship_item.item_id).public_id
+        variant_public_id = Variant.find_by(id: autoship_item.variant_id, item_id: autoship_item.item_id).public_id
+  
+        items << {
+          item_id: item_public_id,
+          variant_id: variant_public_id,
+          quantity: autoship_item.quantity
+        }
+      end
+  
+      items
     end
   end
 end
