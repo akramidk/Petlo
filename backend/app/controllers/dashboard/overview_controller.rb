@@ -11,17 +11,18 @@ module Dashboard
       autoships_for_the_next_10_days = []
       
       10.times.each do |i|
-        time = Time.now + i.days
-        number_of_autoships = Autoship.where(status: "active", next_shipment_on: time)
+        time = Time.now + (i + 1).days
+        autoships = Autoship.where(status: "active", next_shipment_on: time)
 
         autoships_for_the_next_10_days << {
           date: "#{time.day}/#{time.month}/#{time.year}",
-          number_of_autoships: number_of_autoships
+          number_of_autoships: autoships.length,
+          autoship_public_ids: autoships.map{|autoship| autoship.public_id}
         }
       end
 
 
-      render json: { customers: customers, orders: orders, autoships: autoships, autoships_for_the_next_10_days: autoships_for_the_next_10_days }, status: 200
+      render json: { customers: customers, orders: orders, active_autoships: active_autoships, autoships_for_the_next_10_days: autoships_for_the_next_10_days }, status: 200
     end
 
     def orders
