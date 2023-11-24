@@ -7,9 +7,21 @@ module Dashboard
 
       customers = Customer.all.length
       orders = get_orders.length
-      autoships = get_autoships.length
+      active_autoships = get_autoships.length
+      autoships_for_the_next_10_days = []
+      
+      10.times.each do |i|
+        time = Time.now + i.days
+        number_of_autoships = Autoship.where(status: "active", next_shipment_on: time)
 
-      render json: { customers: customers, orders: orders, autoships: autoships }, status: 200
+        autoships_for_the_next_10_days << {
+          date: "#{time.day}/#{time.month}/#{time.year}",
+          number_of_autoships: number_of_autoships
+        }
+      end
+
+
+      render json: { customers: customers, orders: orders, autoships: autoships, autoships_for_the_next_10_days: autoships_for_the_next_10_days }, status: 200
     end
 
     def orders
