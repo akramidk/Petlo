@@ -46,6 +46,7 @@ module Dashboard
       items = []
       order.items.each do |order_item|
         item = Item.find_by(id: order_item[:item_id])
+        name = ItemDetail.find_by(item_id: item.id, language: "en")
         brand = BrandName.find_by(brand_id: item.brand.id, language: "en")
         options = Variant.find_by(id: order_item[:variant_id]).options.map{|option| 
           OptionValue.find_by(option_id: option.option_id, language: "en").slice("value", "unit")
@@ -53,6 +54,7 @@ module Dashboard
 
         items << {
           public_id: item[:public_id],
+          name: name,
           brand: brand,
           categories: item.categories,
           price: order_item[:price],
