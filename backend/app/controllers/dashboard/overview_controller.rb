@@ -48,7 +48,7 @@ module Dashboard
         item = Item.find_by(id: order_item[:item_id])
         brand = BrandName.find_by(brand_id: item.brand.id, language: "en")
         options = Variant.find_by(id: order_item[:variant_id]).options.map{|option| 
-          OptionValue.find_by(option_id: option.id, language: "en").slice("value", "unit")
+          OptionValue.find_by(option_id: option.option_id, language: "en").slice("value", "unit")
         }
 
         items << {
