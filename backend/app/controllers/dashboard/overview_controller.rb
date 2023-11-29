@@ -23,7 +23,6 @@ module Dashboard
         }
       end
 
-
       render json: { customers: customers, orders: orders, active_autoships: active_autoships, autoships_for_the_next_10_days: autoships_for_the_next_10_days }, status: 200
     end
 
@@ -104,7 +103,7 @@ module Dashboard
 
     private
     def get_orders
-      Order.where.not(status: "delivered")
+      Order.where.not(status: ["delivered", "canceled"])
     end
 
     def get_autoships
