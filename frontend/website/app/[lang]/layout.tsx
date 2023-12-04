@@ -46,7 +46,7 @@ export default function RootLayout({
         <SnackbarProvider>
           <Link
             href="https://wa.me/message/5GNHRB37TEZ3K1"
-            className="bg-[#edf9fe] p-[16px] font-medium text-[14px] text-[#444] underline block"
+            className="bg-[#fff] p-[16px] border-b-[1px] border-[#f2f2f2] font-medium text-[14px] text-[#444] underline block"
             target="_blank"
           >
             <div className="flex items-center place-content-center">
