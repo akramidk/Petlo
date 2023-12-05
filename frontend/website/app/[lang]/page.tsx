@@ -1,3 +1,4 @@
+import { Hero } from "../components/Hero";
 import { getTranslation } from "../utils/getTranslation";
 
 const Home = async ({
@@ -9,7 +10,7 @@ const Home = async ({
 
   return (
     <div>
-      <div className="h-[52px] w-[100%]"></div>
+      <Hero t={t} lang={lang} />
     </div>
   );
 };
