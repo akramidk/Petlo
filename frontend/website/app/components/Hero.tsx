@@ -20,20 +20,20 @@ export const Hero = ({ t, lang }: { t: any; lang: "en" | "ar" }) => {
     <div className="bg-[#fff] w-[100%] py-[20px] md:py-[36px] space-y-[36px]">
       <div
         dir="ltr"
-        className="flex justify-between items-center px-[20px] md:px-[48px] lg:px-[72px]"
+        className="flex justify-between items-center px-[20px] md:px-[48px] lg:px-[72px] xl:px-[92px]"
       >
         <Logo />
         <ChangeLangButton lang={lang} value={t["HOME.CHANGE_LANG"]} />
       </div>
 
-      <div className="px-[20px] md:px-[48px] lg:px-[72px]">
+      <div className="px-[20px] md:px-[48px] lg:px-[72px] xl:px-[92px]">
         <div className="text-center lg:text-start space-y-[16px] md:space-y-[24px]">
           <div className="space-y-[12px]">
             <div className="text-[24px] md:text-[36px] text-[#222] font-extrabold content-['\n'] whitespace-pre">
               {t["HOME.HERO.BIG_TEXT"]}
             </div>
 
-            <div className="font-medium text-[14px] md:text-[16px] text-[#777] leading-[22px] md:leading-[26px] px-[12px] lg:px-[0px] lg:w-[50%]">
+            <div className="font-medium text-[14px] md:text-[16px] text-[#777] leading-[22px] md:leading-[26px] px-[12px] lg:px-[0px] lg:w-[50%] xl:w-[40%]">
               {t["HOME.HERO.TEXT"]}
             </div>
           </div>

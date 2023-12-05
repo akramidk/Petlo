@@ -11,7 +11,7 @@ export const AutoshipFeatures = ({
   lang: "en" | "ar";
 }) => {
   return (
-    <div className="bg-[#f9f9f9] p-[20px] md:p-[48px] lg:p-[72px] space-y-[20px] md-space-y-[0px] md:grid md:grid-cols-2 md:gap-y-[20px] md:gap-x-[72px] lg:gap-x-[172px]">
+    <div className="bg-[#f9f9f9] p-[20px] md:p-[48px] lg:p-[72px] space-y-[20px] md-space-y-[0px] md:grid md:grid-cols-2 md:gap-y-[20px] md:gap-x-[72px] lg:gap-x-[172px] xl:gap-x-[396px]">
       {AUTOSHIP_FEATURES.map((feature, index) => {
         const { title, description, Icon } = feature;
 
