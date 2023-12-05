@@ -16,7 +16,7 @@ export const Hero = ({ t, lang }: { t: any; lang: "en" | "ar" }) => {
     : ["ios", "android"];
 
   return (
-    <div className="bg-[#fff] w-[100%] pt-[20px] space-y-[36px]">
+    <div className="bg-[#fff] w-[100%] py-[20px] space-y-[36px]">
       <div dir="ltr" className="flex justify-between items-center px-[20px]">
         <Logo />
         <ChangeLangButton lang={lang} value={t["HOME.CHANGE_LANG"]} />
@@ -57,30 +57,32 @@ export const Hero = ({ t, lang }: { t: any; lang: "en" | "ar" }) => {
         </div>
       </div>
 
-      <div className="relative h-[150px]">
-        <Image
-          src="/dog-cat-image.webp"
-          width={248}
-          height={112}
-          alt="Image of a Dog and Cat"
-          className="absolute right-[-36px] bottom-0"
-        />
+      {false && (
+        <div className="relative h-[150px] overflow-x-hidden overflow-y-visible">
+          <Image
+            src="/dog-cat-image.webp"
+            width={248}
+            height={112}
+            alt="Image of a Dog and Cat"
+            className="absolute right-[-36px] bottom-0"
+          />
 
-        <Image
-          src="/fish.webp"
-          width={78}
-          height={78}
-          alt="Image of a Fish"
-          className="absolute bottom-[-8px]"
-        />
-        <Image
-          src="/bird.webp"
-          width={78}
-          height={78}
-          alt="Image of a Bird"
-          className="absolute top-[-56px]"
-        />
-      </div>
+          <Image
+            src="/fish.webp"
+            width={78}
+            height={78}
+            alt="Image of a Fish"
+            className="absolute bottom-[-8px]"
+          />
+          <Image
+            src="/bird.webp"
+            width={78}
+            height={78}
+            alt="Image of a Bird"
+            className="absolute top-[-56px]"
+          />
+        </div>
+      )}
     </div>
   );
 };
