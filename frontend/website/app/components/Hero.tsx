@@ -2,7 +2,7 @@ import { ChangeLangButton } from "./ChangeLangButton";
 import { DownloadButton } from "./DownloadButton";
 import { Logo } from "./Logo";
 import { headers } from "next/headers";
-import { Fragment } from "react";
+import Image from "next/image";
 
 export const Hero = ({ t, lang }: { t: any; lang: "en" | "ar" }) => {
   const headersList = headers();
@@ -16,13 +16,13 @@ export const Hero = ({ t, lang }: { t: any; lang: "en" | "ar" }) => {
     : ["ios", "android"];
 
   return (
-    <div className="bg-[#fff] w-[100%] p-[20px] space-y-[36px]">
-      <div dir="ltr" className="flex justify-between items-center">
+    <div className="bg-[#fff] w-[100%] pt-[20px] space-y-[36px]">
+      <div dir="ltr" className="flex justify-between items-center px-[20px]">
         <Logo />
         <ChangeLangButton lang={lang} value={t["HOME.CHANGE_LANG"]} />
       </div>
 
-      <div>
+      <div className="px-[20px]">
         <div className="text-center space-y-[16px]">
           <div className="space-y-[12px]">
             <div className="text-[24px] text-[#222] font-extrabold content-['\n'] whitespace-pre">
@@ -55,6 +55,31 @@ export const Hero = ({ t, lang }: { t: any; lang: "en" | "ar" }) => {
             </div>
           </div>
         </div>
+      </div>
+
+      <div className="relative h-[150px]">
+        <Image
+          src="/dog-cat-image.webp"
+          width={248}
+          height={112}
+          alt="Image of a Dog and Cat"
+          className="absolute right-[-36px] bottom-0"
+        />
+
+        <Image
+          src="/fish.webp"
+          width={78}
+          height={78}
+          alt="Image of a Fish"
+          className="absolute bottom-[-8px]"
+        />
+        <Image
+          src="/bird.webp"
+          width={78}
+          height={78}
+          alt="Image of a Bird"
+          className="absolute top-[-56px]"
+        />
       </div>
     </div>
   );
