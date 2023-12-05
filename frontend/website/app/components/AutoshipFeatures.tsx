@@ -11,12 +11,12 @@ export const AutoshipFeatures = ({
   lang: "en" | "ar";
 }) => {
   return (
-    <div className="bg-[#f9f9f9] p-[20px] space-y-[20px]">
+    <div className="bg-[#f9f9f9] p-[20px] md:p-[36px] space-y-[20px] md-space-y-[0px] md:grid md:grid-cols-2 md:gap-[36px]">
       {AUTOSHIP_FEATURES.map((feature, index) => {
         const { title, description, Icon } = feature;
 
         return (
-          <div className="space-y-[12px]" key={index}>
+          <div className="space-y-[12px] md:px-[52px]" key={index}>
             <div className="h-[56px] w-[56px] bg-[#f9f2f2] rounded-[4px] flex items-center justify-center">
               <Icon width={24} height={24} color="#222" strokeWidth={2} />
             </div>
