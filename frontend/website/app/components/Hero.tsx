@@ -3,6 +3,7 @@ import { DownloadButton } from "./DownloadButton";
 import { Logo } from "./Logo";
 import { headers } from "next/headers";
 import Image from "next/image";
+import clsx from "clsx";
 
 export const Hero = ({ t, lang }: { t: any; lang: "en" | "ar" }) => {
   const headersList = headers();
@@ -26,13 +27,13 @@ export const Hero = ({ t, lang }: { t: any; lang: "en" | "ar" }) => {
       </div>
 
       <div className="px-[20px] md:px-[48px]">
-        <div className="text-center space-y-[16px] md:space-y-[24px]">
+        <div className="text-center lg:text-start space-y-[16px] md:space-y-[24px]">
           <div className="space-y-[12px]">
             <div className="text-[24px] md:text-[36px] text-[#222] font-extrabold content-['\n'] whitespace-pre">
               {t["HOME.HERO.BIG_TEXT"]}
             </div>
 
-            <div className="font-medium text-[14px] md:text-[16px] text-[#777] leading-[22px] px-[12px]">
+            <div className="font-medium text-[14px] md:text-[16px] text-[#777] leading-[22px] md:leading-[26px] px-[12px] lg:px-[0px] lg:w-[60%]">
               {t["HOME.HERO.TEXT"]}
             </div>
           </div>
@@ -41,7 +42,12 @@ export const Hero = ({ t, lang }: { t: any; lang: "en" | "ar" }) => {
             <div className="space-y-[4px] md:space-y-[0px] md:flex">
               {downloadButtons.map((os, index) => {
                 return (
-                  <div key={index} className="md:ml-[4px]">
+                  <div
+                    key={index}
+                    className={clsx({
+                      ["md:mr-[4px]"]: index + 1 !== downloadButtons.length,
+                    })}
+                  >
                     <DownloadButton
                       type={os}
                       lang={lang}
