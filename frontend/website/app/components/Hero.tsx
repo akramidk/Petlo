@@ -18,10 +18,7 @@ export const Hero = ({ t, lang }: { t: any; lang: "en" | "ar" }) => {
 
   return (
     <div className="bg-[#fff] w-[100%] py-[20px] md:py-[36px] space-y-[36px]">
-      <div
-        dir="ltr"
-        className="flex justify-between items-center px-[20px] md:px-[48px] lg:px-[72px] xl:px-[92px]"
-      >
+      <div className="flex justify-between items-center px-[20px] md:px-[48px] lg:px-[72px] xl:px-[92px]">
         <Logo />
         <ChangeLangButton lang={lang} value={t["HOME.CHANGE_LANG"]} />
       </div>
