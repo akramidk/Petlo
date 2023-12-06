@@ -50,7 +50,13 @@ export function middleware(request) {
     pathname.startsWith(`/fish.webp/`) ||
     pathname === `/fish.webp` ||
     pathname.startsWith(`/bird.webp/`) ||
-    pathname === `/bird.webp`
+    pathname === `/bird.webp` ||
+    pathname.startsWith(`/testimonial_1.webp/`) ||
+    pathname === `/testimonial_1.webp` ||
+    pathname.startsWith(`/testimonial_2.webp/`) ||
+    pathname === `/testimonial_2.webp` ||
+    pathname.startsWith(`/testimonial_3.webp/`) ||
+    pathname === `/testimonial_3.webp`
   )
     return;
 
