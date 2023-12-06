@@ -7,10 +7,10 @@ export const Testimonials = ({ t, lang }: { t: any; lang: "en" | "ar" }) => {
         What Petloers Said about Us
       </div>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-[20px]">
+      <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-[20px]">
         {Array.apply(null, Array(3)).map((testimonial, index) => {
           return (
-            <div key={index} className="bg-[#fff] h-[650px] w-[100%] relative">
+            <div key={index} className="bg-[#fff] h-[700px] w-[100%] relative">
               <Image
                 src={`/testimonial_${index + 1}.webp`}
                 alt="Petloer Testimonial"
@@ -22,7 +22,7 @@ export const Testimonials = ({ t, lang }: { t: any; lang: "en" | "ar" }) => {
           );
         })}
 
-        <div className="bg-[#EBE3D5] rounded-[16px] h-[650px] w-[100%] flex items-center justify-center">
+        <div className="bg-[#EBE3D5] rounded-[16px] h-[700px] w-[100%] flex items-center justify-center">
           <div className="text-[#222] font-bold text-[20px] w-[65%] text-center">
             Download The App and Be The Next Petloer!
           </div>
