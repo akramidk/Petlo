@@ -1,5 +1,6 @@
 import { AutoshipFeatures } from "../components/AutoshipFeatures";
 import { Hero } from "../components/Hero";
+import { HowItWorks } from "../components/HowItWorks";
 import { Testimonials } from "../components/Testimonials";
 import { getTranslation } from "../utils/getTranslation";
 
@@ -15,7 +16,7 @@ const Home = async ({
       <Hero t={t} lang={lang} />
       <AutoshipFeatures t={t} lang={lang} />
       <Testimonials t={t} lang={lang} />
-      <div className="h-[52px] bg-[#ddd]">how autoship works</div>
+      <HowItWorks t={t} lang={lang} />
       <div className="h-[52px] bg-[#fff]">what you can do more</div>
       <div className="h-[52px] bg-[#ddd]">eloi</div>
       <div className="h-[52px] bg-[#fff]">qa</div>

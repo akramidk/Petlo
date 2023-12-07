@@ -56,7 +56,9 @@ export function middleware(request) {
     pathname.startsWith(`/testimonial_2.webp/`) ||
     pathname === `/testimonial_2.webp` ||
     pathname.startsWith(`/testimonial_3.webp/`) ||
-    pathname === `/testimonial_3.webp`
+    pathname === `/testimonial_3.webp` ||
+    pathname.startsWith(`/ar_autoship_1.webp/`) ||
+    pathname === `/ar_autoship_1.webp`
   )
     return;
 
