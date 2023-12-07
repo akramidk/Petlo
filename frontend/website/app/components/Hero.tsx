@@ -1,21 +1,9 @@
 import { ChangeLangButton } from "./ChangeLangButton";
-import { DownloadButton } from "./DownloadButton";
 import { Logo } from "./Logo";
-import { headers } from "next/headers";
 import Image from "next/image";
-import clsx from "clsx";
+import { DownloadButtons } from "./DownloadButtons";
 
 export const Hero = ({ t, lang }: { t: any; lang: "en" | "ar" }) => {
-  const headersList = headers();
-  const userAgent = headersList.get("user-agent");
-  const isAndroid = userAgent?.includes("Android");
-  const isiPhone = userAgent?.includes("iPhone");
-  const downloadButtons: ("android" | "ios")[] = isAndroid
-    ? ["android"]
-    : isiPhone
-    ? ["ios"]
-    : ["ios", "android"];
-
   return (
     <div className="bg-[#fff] w-[100%] py-[20px] md:py-[36px] space-y-[36px]">
       <div className="flex justify-between items-center px-[20px] md:px-[48px] lg:px-[72px] xl:px-[92px]">
@@ -35,34 +23,7 @@ export const Hero = ({ t, lang }: { t: any; lang: "en" | "ar" }) => {
             </div>
           </div>
 
-          <div className="inline-block ">
-            <div className="space-y-[4px] md:space-y-[0px] md:flex">
-              {downloadButtons.map((os, index) => {
-                return (
-                  <div
-                    key={index}
-                    className={clsx({
-                      ["md:mr-[4px]"]:
-                        index + 1 !== downloadButtons.length && lang === "en",
-                      ["md:ml-[4px]"]:
-                        index + 1 !== downloadButtons.length && lang === "ar",
-                    })}
-                  >
-                    <DownloadButton
-                      type={os}
-                      lang={lang}
-                      firstText={
-                        t[`HOME.DOWNLOAD.${os.toUpperCase()}_FIRST_TEXT`]
-                      }
-                      secondText={
-                        t[`HOME.DOWNLOAD.${os.toUpperCase()}_SECOND_TEXT`]
-                      }
-                    />
-                  </div>
-                );
-              })}
-            </div>
-          </div>
+          <DownloadButtons t={t} lang={lang} borderColor="#eeeeee" />
         </div>
       </div>
 

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { DownloadButtons } from "./DownloadButtons";
 
 export const Testimonials = ({ t, lang }: { t: any; lang: "en" | "ar" }) => {
   return (
@@ -22,10 +23,12 @@ export const Testimonials = ({ t, lang }: { t: any; lang: "en" | "ar" }) => {
           );
         })}
 
-        <div className="bg-[#EBE3D5] rounded-[16px] h-[700px] w-[100%] flex items-center justify-center">
-          <div className="text-[#222] font-bold text-[20px] w-[65%] text-center">
+        <div className="bg-[#EBE3D5] rounded-[16px] p-[52px] md:h-[700px] w-[100%] flex items-center justify-center flex-col space-y-[16px]">
+          <div className="text-[#222] font-bold text-[20px] text-center">
             Download The App and Be The Next Petloer!
           </div>
+
+          <DownloadButtons ignoreFlex t={t} lang={lang} borderColor="#e2d6c1" />
         </div>
       </div>
     </div>

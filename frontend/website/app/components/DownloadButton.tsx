@@ -9,11 +9,13 @@ export const DownloadButton = ({
   firstText,
   secondText,
   lang,
+  borderColor,
 }: {
   type: "ios" | "android";
   firstText: string;
   secondText: string;
   lang: "en" | "ar";
+  borderColor: string;
 }) => {
   return (
     <Link
@@ -34,9 +36,10 @@ export const DownloadButton = ({
         vercelTrack("DownloadButtonClick");
       }}
       className={clsx(
-        "flex border-[2px] border-[#eee] rounded-[4px] w-[196px] h-[62px] items-center",
+        "flex border-[2px] rounded-[4px] w-[196px] h-[62px] items-center",
         lang === "en" ? "justify-start pl-[24px]" : "justify-start pr-[24px]"
       )}
+      style={{ borderColor }}
     >
       <div>{type === "ios" ? <IOSIcon /> : <AndroidIcon />}</div>
       <div
