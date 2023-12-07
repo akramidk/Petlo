@@ -15,7 +15,10 @@ const Home = async ({
       <Hero t={t} lang={lang} />
       <AutoshipFeatures t={t} lang={lang} />
       <Testimonials t={t} lang={lang} />
-      <div className="h-[52px] bg-[#ddd]"></div>
+      <div className="h-[52px] bg-[#ddd]">how autoship works</div>
+      <div className="h-[52px] bg-[#fff]">what you can do more</div>
+      <div className="h-[52px] bg-[#ddd]">eloi</div>
+      <div className="h-[52px] bg-[#fff]">qa</div>
     </div>
   );
 };
