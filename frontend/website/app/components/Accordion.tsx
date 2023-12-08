@@ -25,7 +25,7 @@ export const Accordion = ({
       {sections.map((section, section_index) => {
         return (
           <div key={section_index}>
-            <div className="text-[#444] text-[16px] font-bold mb-[12px]">
+            <div className="text-[#444] text-[16px] font-bold mb-[4px]">
               {section.title}
             </div>
 
@@ -38,12 +38,14 @@ export const Accordion = ({
                 <div
                   key={item_index}
                   className={clsx(
-                    "py-[20px] border-b border-b-[#ddd] cursor-pointer lg:w-[800px]",
+                    "py-[20px] border-b border-b-[#ddd] lg:w-[800px]",
                     lang === "en" ? "text-left" : "text-right"
                   )}
-                  onClick={() => setOpenedIndex(opened ? undefined : index)}
                 >
-                  <div className="flex justify-between">
+                  <div
+                    className="flex justify-between select-none cursor-pointer"
+                    onClick={() => setOpenedIndex(opened ? undefined : index)}
+                  >
                     <div className="w-[75%] text-[#444] font-semibold text-[14px] lg:text-[15px]">
                       {item.question}
                     </div>

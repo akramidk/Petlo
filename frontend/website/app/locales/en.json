@@ -20,18 +20,27 @@
   "HOME.MORE_THINGS.DESCRIPTION_1": "Want something in an hour or the next day, without scheduling? You can visit 'Petlo Shop' page and you can order traditionally.",
   "HOME.MORE_THINGS.TITLE_2": "Personalize Your Journey",
   "HOME.MORE_THINGS.DESCRIPTION_2": "Add your pets to your account, so you can customize Orders or Autoships, to get some surprises for the included pets 😉.",
+  "HOME.LAST.TITLE": "Common Questions",
   "HOME.COMMON_QUESTIONS": [
     {
-      "title": "G COMMON_QUESTIONS",
+      "title": "General Questions",
       "items": [
         {
-          "question": "How do I create an Autoship so that I can receive recurring shipments?",
-          "answer": "1. Click on the 'Create an Autoship' button.{{br}}2. Add the name of the Autoship so that you can distinguish it, choose the products that you want to schedule, then choose your preferred payment method, and then you have to choose the date of the first shipment and when it should recur after that, and you can also add the names of the pets for which this Autoship is created if you wish.{{br}}3. After filling out the information, you can create your first Autoship, and wait for your shipments to arrive."
+          "question": "I did not find the items I was looking for, can they be provided?",
+          "answer": "Yes, absolutely. Just send the items you want to our WhatsApp +962790174799, and Petlo will offer them in less than 24 hours."
+        },
+        {
+          "question": "I'm not sure what kind of items are suitable for my pet, can you help me decide?",
+          "answer": "Yes, absolutely. Just send a message to us on our WhatsApp +962790174799, and our team will help you."
+        },
+        {
+          "question": "I have a question, problem, or feedback, how I can send it?",
+          "answer": "You can always message us on our WhatsApp +962790174799, and our team will be there to hear you and help."
         }
       ]
     },
     {
-      "title": "Autoship COMMON_QUESTIONS",
+      "title": "Autoship Questions",
       "items": [
         {
           "question": "What is Autoship?",

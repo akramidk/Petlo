@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { Accordion } from "./Accordion";
 
 export const Last = ({ t, lang }: { t: any; lang: "en" | "ar" }) => {
@@ -6,12 +5,12 @@ export const Last = ({ t, lang }: { t: any; lang: "en" | "ar" }) => {
     <div className="bg-[#f9f9f9] p-[20px] md:p-[48px] lg:p-[72px] flex flex-col items-center justify-center space-y-[20px]">
       <div>
         <div className="text-center text-[#222] text-[24px] font-extrabold mb-[56px]">
-          Common Questions
+          {t["HOME.LAST.TITLE"]}
         </div>
 
         <Accordion
           sections={
-            t["HOME.COMMON_QUESTIONS"] as {
+            t["HOME.LAST.COMMON_QUESTIONS"] as {
               title: string;
               items: {
                 question: string;
