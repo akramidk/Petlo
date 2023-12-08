@@ -17,7 +17,7 @@ export const HowItWorks = ({ t, lang }: { t: any; lang: "en" | "ar" }) => {
               <div className="h-[600px] relative">
                 <Image
                   src={`/${lang}_autoship_${index + 1}.webp`}
-                  alt="Petloer Testimonial"
+                  alt="How It Work Image"
                   objectFit="contain"
                   layout="fill"
                 />

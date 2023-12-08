@@ -22,7 +22,7 @@ export const MoreThings = ({ t, lang }: { t: any; lang: "en" | "ar" }) => {
                   layout="fill"
                 />
               </div>
-              <div className="space-y-[2px]">
+              <div className="space-y-[2px] text-center">
                 <div className="font-extrabold text-[20px] leading-[36px] sm:text-[24px] sm:leading-[40px] text-[#222] sm:px-[12px]">
                   {t[`HOME.MORE_THINGS.TITLE_${index + 1}`]}
                 </div>

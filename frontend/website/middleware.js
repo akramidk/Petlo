@@ -88,7 +88,9 @@ export function middleware(request) {
     pathname.startsWith(`/ar_other_1.webp/`) ||
     pathname === `/ar_other_1.webp` ||
     pathname.startsWith(`/ar_other_2.webp/`) ||
-    pathname === `/ar_other_2.webp`
+    pathname === `/ar_other_2.webp` ||
+    pathname.startsWith(`/eloi.webp/`) ||
+    pathname === `/eloi.webp`
   )
     return;
 
