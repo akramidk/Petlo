@@ -19,7 +19,7 @@ export const MoreThings = ({ t, lang }: { t: any; lang: "en" | "ar" }) => {
                   src={`/${lang}_other_${index + 1}.webp`}
                   alt="Petloer Testimonial"
                   objectFit="contain"
-                  layout="fill"
+                  fill
                 />
               </div>
               <div className="space-y-[2px] text-center">

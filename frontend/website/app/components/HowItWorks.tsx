@@ -19,7 +19,7 @@ export const HowItWorks = ({ t, lang }: { t: any; lang: "en" | "ar" }) => {
                   src={`/${lang}_autoship_${index + 1}.webp`}
                   alt="How It Work Image"
                   objectFit="contain"
-                  layout="fill"
+                  fill
                 />
               </div>
               <div className="font-medium text-[14px] leading-[26px] sm:text-[15.5px] sm:leading-[28px] text-[#777] sm:px-[12px]">

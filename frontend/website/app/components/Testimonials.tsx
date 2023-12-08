@@ -16,7 +16,7 @@ export const Testimonials = ({ t, lang }: { t: any; lang: "en" | "ar" }) => {
                 src={`/testimonial_${index + 1}.webp`}
                 alt="Petloer Testimonial"
                 objectFit="cover"
-                layout="fill"
+                fill
                 className="rounded-[16px]"
               />
             </div>

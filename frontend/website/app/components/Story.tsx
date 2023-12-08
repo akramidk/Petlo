@@ -8,7 +8,7 @@ export const Story = ({ t, lang }: { t: any; lang: "en" | "ar" }) => {
           src={`/eloi.webp`}
           alt="Eloi"
           objectFit="cover"
-          layout="fill"
+          fill
           className="rounded-[16px]"
         />
       </div>
