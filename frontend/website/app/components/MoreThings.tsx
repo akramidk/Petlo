@@ -22,8 +22,14 @@ export const MoreThings = ({ t, lang }: { t: any; lang: "en" | "ar" }) => {
                   layout="fill"
                 />
               </div>
-              <div className="font-medium text-[14px] leading-[26px] sm:text-[15.5px] sm:leading-[28px] text-[#777] sm:px-[12px]">
-                {t[`HOME.HOW_IT_WORKS.${index + 1}`]}
+              <div className="space-y-[2px]">
+                <div className="font-extrabold text-[20px] leading-[36px] sm:text-[24px] sm:leading-[40px] text-[#222] sm:px-[12px]">
+                  {t[`HOME.MORE_THINGS.TITLE_${index + 1}`]}
+                </div>
+
+                <div className="font-medium text-[14px] leading-[26px] sm:text-[15.5px] sm:leading-[28px] text-[#777] sm:px-[12px]">
+                  {t[`HOME.MORE_THINGS.DESCRIPTION_${index + 1}`]}
+                </div>
               </div>
             </div>
           );
