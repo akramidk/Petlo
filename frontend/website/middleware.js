@@ -67,6 +67,8 @@ export function middleware(request) {
     pathname === `/ar_autoship_4.webp` ||
     pathname.startsWith(`/ar_autoship_5.webp/`) ||
     pathname === `/ar_autoship_5.webp` ||
+    pathname.startsWith(`/ar_autoship_6.webp/`) ||
+    pathname === `/ar_autoship_6.webp` ||
     pathname.startsWith(`/en_autoship_1.webp/`) ||
     pathname === `/en_autoship_1.webp` ||
     pathname.startsWith(`/en_autoship_2.webp/`) ||
@@ -76,7 +78,9 @@ export function middleware(request) {
     pathname.startsWith(`/en_autoship_4.webp/`) ||
     pathname === `/en_autoship_4.webp` ||
     pathname.startsWith(`/en_autoship_5.webp/`) ||
-    pathname === `/en_autoship_5.webp`
+    pathname === `/en_autoship_5.webp` ||
+    pathname.startsWith(`/en_autoship_6.webp/`) ||
+    pathname === `/en_autoship_6.webp`
   )
     return;
 
