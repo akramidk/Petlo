@@ -1,5 +1,9 @@
+import { AutoshipFeatures } from "../components/AutoshipFeatures";
 import { Hero } from "../components/Hero";
-import { Sections } from "../components/Sections";
+import { HowItWorks } from "../components/HowItWorks";
+import { Last } from "../components/Last";
+import { MoreThings } from "../components/MoreThings";
+import { Testimonials } from "../components/Testimonials";
 import { getTranslation } from "../utils/getTranslation";
 
 const Home = async ({
@@ -11,33 +15,14 @@ const Home = async ({
 
   return (
     <div>
-      <Hero lang={lang} t={t} heroTextKey="HOME.HERO_TEXT" img="screenshot" />
-      <Sections data={sections} lang={lang} t={t} />
+      <Hero t={t} lang={lang} />
+      <AutoshipFeatures t={t} lang={lang} />
+      <Testimonials t={t} lang={lang} />
+      <HowItWorks t={t} lang={lang} />
+      <MoreThings t={t} lang={lang} />
+      <Last t={t} lang={lang} />
     </div>
   );
 };
 
 export default Home;
-
-const sections = [
-  {
-    title: "HOME.SECTION_1_TITLE",
-    description: "HOME.SECTION_1_DESCRIPTION",
-    link: "autoship",
-    linkText: "HOME.SECTION_1_LINK",
-    bgColor: "#fff",
-    titleColor: "#222",
-    descriptionColor: "#666",
-    imgBgColor: "#f8f8f8",
-    img: "autoship",
-  },
-  {
-    title: "HOME.SECTION_2_TITLE",
-    description: "HOME.SECTION_2_DESCRIPTION",
-    bgColor: "#000",
-    titleColor: "#fff",
-    descriptionColor: "#888",
-    imgBgColor: "#0c0c0c",
-    img: "item",
-  },
-];

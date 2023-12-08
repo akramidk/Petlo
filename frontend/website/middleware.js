@@ -44,7 +44,53 @@ export function middleware(request) {
     pathname === `/ar-item.png` ||
     pathname.startsWith(`/favicon.ico/`) ||
     pathname === `/favicon.ico` ||
-    pathname.startsWith("/api/")
+    pathname.startsWith("/api/") ||
+    pathname.startsWith(`/dog-cat-image.webp/`) ||
+    pathname === `/dog-cat-image.webp` ||
+    pathname.startsWith(`/fish.webp/`) ||
+    pathname === `/fish.webp` ||
+    pathname.startsWith(`/bird.webp/`) ||
+    pathname === `/bird.webp` ||
+    pathname.startsWith(`/testimonial_1.webp/`) ||
+    pathname === `/testimonial_1.webp` ||
+    pathname.startsWith(`/testimonial_2.webp/`) ||
+    pathname === `/testimonial_2.webp` ||
+    pathname.startsWith(`/testimonial_3.webp/`) ||
+    pathname === `/testimonial_3.webp` ||
+    pathname.startsWith(`/ar_autoship_1.webp/`) ||
+    pathname === `/ar_autoship_1.webp` ||
+    pathname.startsWith(`/ar_autoship_2.webp/`) ||
+    pathname === `/ar_autoship_2.webp` ||
+    pathname.startsWith(`/ar_autoship_3.webp/`) ||
+    pathname === `/ar_autoship_3.webp` ||
+    pathname.startsWith(`/ar_autoship_4.webp/`) ||
+    pathname === `/ar_autoship_4.webp` ||
+    pathname.startsWith(`/ar_autoship_5.webp/`) ||
+    pathname === `/ar_autoship_5.webp` ||
+    pathname.startsWith(`/ar_autoship_6.webp/`) ||
+    pathname === `/ar_autoship_6.webp` ||
+    pathname.startsWith(`/en_autoship_1.webp/`) ||
+    pathname === `/en_autoship_1.webp` ||
+    pathname.startsWith(`/en_autoship_2.webp/`) ||
+    pathname === `/en_autoship_2.webp` ||
+    pathname.startsWith(`/en_autoship_3.webp/`) ||
+    pathname === `/en_autoship_3.webp` ||
+    pathname.startsWith(`/en_autoship_4.webp/`) ||
+    pathname === `/en_autoship_4.webp` ||
+    pathname.startsWith(`/en_autoship_5.webp/`) ||
+    pathname === `/en_autoship_5.webp` ||
+    pathname.startsWith(`/en_autoship_6.webp/`) ||
+    pathname === `/en_autoship_6.webp` ||
+    pathname.startsWith(`/en_other_1.webp/`) ||
+    pathname === `/en_other_1.webp` ||
+    pathname.startsWith(`/en_other_2.webp/`) ||
+    pathname === `/en_other_2.webp` ||
+    pathname.startsWith(`/ar_other_1.webp/`) ||
+    pathname === `/ar_other_1.webp` ||
+    pathname.startsWith(`/ar_other_2.webp/`) ||
+    pathname === `/ar_other_2.webp` ||
+    pathname.startsWith(`/eloi.webp/`) ||
+    pathname === `/eloi.webp`
   )
     return;
 

@@ -1,87 +1,58 @@
-import { Logo } from "./Logo";
-import { DownloadButton } from "./DownloadButton";
-import { headers } from "next/headers";
-import Image from "next/image";
-import reactStringReplace from "react-string-replace";
 import { ChangeLangButton } from "./ChangeLangButton";
-import Link from "next/link";
+import { Logo } from "./Logo";
+import Image from "next/image";
+import { DownloadButtons } from "./DownloadButtons";
 
-export const Hero = ({
-  t,
-  lang,
-  heroTextKey,
-  img,
-}: {
-  t: any;
-  lang: "en" | "ar";
-  heroTextKey: string;
-  img: string;
-}) => {
-  const headersList = headers();
-  const userAgent = headersList.get("user-agent");
-  const isAndroid = userAgent?.includes("Android");
-  const isiPhone = userAgent?.includes("iPhone");
-
+export const Hero = ({ t, lang }: { t: any; lang: "en" | "ar" }) => {
   return (
-    <div
-      dir="ltr"
-      className="bg-[#E7E3D8] p-[20px] md:p-[32px] lg:px-[52px] pb-[0px] md:pb-[0px] text-center"
-    >
-      <div className="flex flex-row justify-between items-center">
+    <div className="bg-[#fff] w-[100%] py-[20px] md:py-[36px] space-y-[36px]">
+      <div className="flex justify-between items-center px-[20px] md:px-[48px] lg:px-[72px] xl:px-[92px]">
         <Logo />
-        <ChangeLangButton lang={lang} t={t} />
+        <ChangeLangButton lang={lang} value={t["HOME.CHANGE_LANG"]} />
       </div>
 
-      <div className="bg-[#edf9fe] py-[10px] px-[18px] mt-[36px] rounded-full inline-block font-bold lg:font-extrabold text-[12px] text-[#444] mb-[8px]">
-        {t["COMMON.JORDAN_ONLY"]}
-      </div>
+      <div className="px-[20px] md:px-[48px] lg:px-[72px] xl:px-[92px]">
+        <div className="text-center lg:text-start space-y-[16px] md:space-y-[24px]">
+          <div className="space-y-[12px]">
+            <div className="text-[24px] md:text-[36px] text-[#222] font-extrabold content-['\n'] whitespace-pre">
+              {t["HOME.HERO.BIG_TEXT"]}
+            </div>
 
-      <div className="text-[#0E333C] text-[30px] md:text-[36px] font-extrabold text-center justify-center mb-[32px]">
-        {reactStringReplace(t[heroTextKey], "{{br}}", (_, i) => (
-          <br key={i} />
-        ))}
-      </div>
-
-      <div className="inline-block mb-[12px]">
-        {isAndroid || isiPhone ? (
-          <DownloadButton
-            type={isAndroid ? "android" : "ios"}
-            text={t["COMMON.DOWNLOAD_NOW"]}
-            lang={lang}
-          />
-        ) : (
-          <div className="space-y-[8px] md:flex md:space-x-[8px] md:space-y-[0px] place-content-center">
-            <DownloadButton
-              type="ios"
-              text={t["COMMON.DOWNLOAD_NOW"]}
-              lang={lang}
-            />
-            <DownloadButton
-              type="android"
-              text={t["COMMON.DOWNLOAD_NOW"]}
-              lang={lang}
-            />
+            <div className="font-medium text-[14px] md:text-[16px] text-[#777] leading-[22px] md:leading-[26px] px-[12px] lg:px-[0px] lg:w-[50%] xl:w-[40%]">
+              {t["HOME.HERO.TEXT"]}
+            </div>
           </div>
-        )}
+
+          <DownloadButtons t={t} lang={lang} borderColor="#eeeeee" />
+        </div>
       </div>
 
-      <div className="mb-[36px]">
-        <Link
-          href={`${lang}/order-instantly`}
-          className="underline font-semibold text-[15px] text-[#444]"
-        >
-          {t["COMMON.ORDER_INSTANTLY_BUTTON"]}
-        </Link>
-      </div>
+      {false && (
+        <div className="relative h-[150px] overflow-x-hidden overflow-y-visible">
+          <Image
+            src="/dog-cat-image.webp"
+            width={248}
+            height={112}
+            alt="Image of a Dog and Cat"
+            className="absolute right-[-36px] bottom-0"
+          />
 
-      <div className="h-[400px] overflow-hidden grid justify-center">
-        <Image
-          src={`/${lang}-${img}.png`}
-          width={250}
-          height={505}
-          alt="Screenshot of Petlo"
-        />
-      </div>
+          <Image
+            src="/fish.webp"
+            width={78}
+            height={78}
+            alt="Image of a Fish"
+            className="absolute bottom-[-8px]"
+          />
+          <Image
+            src="/bird.webp"
+            width={78}
+            height={78}
+            alt="Image of a Bird"
+            className="absolute top-[-56px]"
+          />
+        </div>
+      )}
     </div>
   );
 };

@@ -5,10 +5,10 @@ import { usePathname } from "next/navigation";
 
 export const ChangeLangButton = ({
   lang,
-  t,
+  value,
 }: {
   lang: "en" | "ar";
-  t: any;
+  value: string;
 }) => {
   const pathname = usePathname();
   const newPathname = pathname.includes("/en")
@@ -22,7 +22,7 @@ export const ChangeLangButton = ({
       replace
       locale={lang === "en" ? "ar" : "en"}
     >
-      {t["HOME.CHANGE_LANG"]}
+      {value}
     </Link>
   );
 };
