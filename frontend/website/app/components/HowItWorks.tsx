@@ -12,17 +12,14 @@ export const HowItWorks = ({ t, lang }: { t: any; lang: "en" | "ar" }) => {
             >
               <div className="h-[600px] relative">
                 <Image
-                  src={`/ar_autoship_1.webp`}
+                  src={`/${lang}_autoship_${index + 1}.webp`}
                   alt="Petloer Testimonial"
                   objectFit="contain"
                   layout="fill"
                 />
               </div>
               <div className="bg-[#fff] font-medium text-[15.5px] leading-[28px] text-[#777] px-[12px]">
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the standard dummy text ever
-                since the 1500s, when an unknown printer took a galley of type
-                and scrambled it to make a type specimen book.
+                {STEPS[index]}
               </div>
             </div>
           );
@@ -32,4 +29,10 @@ export const HowItWorks = ({ t, lang }: { t: any; lang: "en" | "ar" }) => {
   );
 };
 
-const STEPS = [];
+const STEPS = [
+  "After downloading & opening the app, go to the 'Autoship' tab, and click 'Create an Autoship'.",
+  "Fill in the Autoship information. name, items, delivery address, payment method, for whom this Autoship from your pets to make it unique and to get some surprises for the included pets 😜, and then add when the Autoship should arrive.",
+  "On the page 'When should it arrive?', you need to set when the first shipment should arrive. Then you need to set when should it recur.",
+  "Before creation, you can check all the Autoship information like when should it arrive and the amount. When you're done you can click the 'Create' button.",
+  "Now on the Autoship page, you will see all the Autoships that you have, or you can create new ones.",
+];
