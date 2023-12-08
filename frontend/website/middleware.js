@@ -80,7 +80,15 @@ export function middleware(request) {
     pathname.startsWith(`/en_autoship_5.webp/`) ||
     pathname === `/en_autoship_5.webp` ||
     pathname.startsWith(`/en_autoship_6.webp/`) ||
-    pathname === `/en_autoship_6.webp`
+    pathname === `/en_autoship_6.webp` ||
+    pathname.startsWith(`/en_other_1.webp/`) ||
+    pathname === `/en_other_1.webp` ||
+    pathname.startsWith(`/en_other_2.webp/`) ||
+    pathname === `/en_other_2.webp` ||
+    pathname.startsWith(`/ar_other_1.webp/`) ||
+    pathname === `/ar_other_1.webp` ||
+    pathname.startsWith(`/ar_other_2.webp/`) ||
+    pathname === `/ar_other_2.webp`
   )
     return;
 

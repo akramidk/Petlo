@@ -16,7 +16,7 @@ export const MoreThings = ({ t, lang }: { t: any; lang: "en" | "ar" }) => {
             >
               <div className="h-[600px] relative">
                 <Image
-                  src={`/${lang}_autoship_${index + 1}.webp`}
+                  src={`/${lang}_other_${index + 1}.webp`}
                   alt="Petloer Testimonial"
                   objectFit="contain"
                   layout="fill"
