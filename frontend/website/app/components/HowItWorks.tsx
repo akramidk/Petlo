@@ -7,12 +7,12 @@ export const HowItWorks = ({ t, lang }: { t: any; lang: "en" | "ar" }) => {
         {t["HOME.HOW_IT_WORKS.TITLE"]}
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-[20px]">
+      <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-[20px]">
         {Array.apply(null, Array(6)).map((_, index) => {
           return (
             <div
               key={index}
-              className="#fff bg-[#fff] rounded-[16px] relative text-center p-[52px] space-y-[36px]"
+              className="#fff bg-[#fff] rounded-[16px] relative text-center p-[32px] sm:p-[52px] sm:space-y-[36px]"
             >
               <div className="h-[600px] relative">
                 <Image
@@ -22,7 +22,7 @@ export const HowItWorks = ({ t, lang }: { t: any; lang: "en" | "ar" }) => {
                   layout="fill"
                 />
               </div>
-              <div className="bg-[#fff] font-medium text-[15.5px] leading-[28px] text-[#777] px-[12px]">
+              <div className="bg-[#fff] font-medium text-[14px] leading-[26px] sm:text-[15.5px] sm:leading-[28px] text-[#777] sm:px-[12px]">
                 {t[`HOME.HOW_IT_WORKS.${index + 1}`]}
               </div>
             </div>
