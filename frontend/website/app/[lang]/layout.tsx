@@ -8,6 +8,7 @@ import { Logo } from "../components/Logo";
 import Link from "next/link";
 import { TrackingProvider } from "./TrackingProvider";
 import { HotjarProvider } from "../HotjarProvider";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const manrope = Manrope({ subsets: ["latin"] });
 const ibm = IBM_Plex_Sans_Arabic({
@@ -88,6 +89,7 @@ export default function RootLayout({
           <HotjarProvider />
           <TrackingProvider />
           <Analytics />
+          <SpeedInsights />
         </SnackbarProvider>
       </body>
     </html>
