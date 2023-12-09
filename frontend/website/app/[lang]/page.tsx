@@ -17,7 +17,9 @@ const Home = async ({
     <div>
       <Hero t={t} lang={lang} />
       <AutoshipFeatures t={t} lang={lang} />
-      <Testimonials t={t} lang={lang} />
+      {
+        //<Testimonials t={t} lang={lang} />
+      }
       <HowItWorks t={t} lang={lang} />
       <MoreThings t={t} lang={lang} />
       <Last t={t} lang={lang} />
