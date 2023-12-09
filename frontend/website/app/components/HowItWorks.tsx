@@ -12,7 +12,7 @@ export const HowItWorks = ({ t, lang }: { t: any; lang: "en" | "ar" }) => {
           return (
             <div
               key={index}
-              className="#fff bg-[#fff] rounded-[16px] relative text-center p-[32px] sm:p-[52px] sm:space-y-[36px]"
+              className="#fff bg-[#fff] rounded-[16px] relative text-center p-[32px] sm:p-[52px] space-y-[12px] sm:space-y-[36px]"
             >
               <div className="h-[600px] relative">
                 <Image
@@ -22,7 +22,7 @@ export const HowItWorks = ({ t, lang }: { t: any; lang: "en" | "ar" }) => {
                   fill
                 />
               </div>
-              <div className="font-medium text-[14px] leading-[26px] sm:text-[15.5px] sm:leading-[28px] text-[#777] sm:px-[12px]">
+              <div className="font-medium text-[14.5px] leading-[26px] sm:text-[15.5px] sm:leading-[28px] text-[#777] sm:px-[12px]">
                 {t[`HOME.HOW_IT_WORKS.${index + 1}`]}
               </div>
             </div>
