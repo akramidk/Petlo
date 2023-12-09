@@ -60,7 +60,7 @@ export const Accordion = ({
                   {opened && (
                     <div className="mt-[20px] text-[14px] leading-[24px] lg:text-[15px] lg:leading-[28px] font-medium  text-[#666]">
                       {reactStringReplace(item.answer, "{{br}}", (_, i) => (
-                        <Fragment key={item_index}>
+                        <Fragment key={i}>
                           <br />
                           <br />
                         </Fragment>

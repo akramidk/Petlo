@@ -9,7 +9,7 @@ export const Testimonials = ({ t, lang }: { t: any; lang: "en" | "ar" }) => {
       </div>
 
       <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-[20px]">
-        {Array.apply(null, Array(3)).map((testimonial, index) => {
+        {Array.apply(null, Array(3)).map((_, index) => {
           return (
             <div key={index} className="bg-[#fff] h-[700px] w-[100%] relative">
               <Image
