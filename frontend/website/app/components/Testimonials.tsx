@@ -23,12 +23,12 @@ export const Testimonials = ({ t, lang }: { t: any; lang: "en" | "ar" }) => {
           );
         })}
 
-        <div className="bg-[#EBE3D5] rounded-[16px] p-[52px] md:h-[700px] w-[100%] flex items-center justify-center flex-col space-y-[16px]">
+        <div className="bg-[#f9f9f9] rounded-[16px] p-[52px] md:h-[700px] w-[100%] flex items-center justify-center flex-col space-y-[16px]">
           <div className="text-[#222] font-bold text-[20px] text-center">
             {t["HOME.TESTIMONIALS.TEXT"]}
           </div>
 
-          <DownloadButtons ignoreFlex t={t} lang={lang} borderColor="#e2d6c1" />
+          <DownloadButtons ignoreFlex t={t} lang={lang} borderColor="#e4e4e4" />
         </div>
       </div>
     </div>
