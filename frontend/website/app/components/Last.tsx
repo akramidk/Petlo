@@ -2,9 +2,9 @@ import { Accordion } from "./Accordion";
 
 export const Last = ({ t, lang }: { t: any; lang: "en" | "ar" }) => {
   return (
-    <div className="bg-[#f9f9f9] p-[20px] md:p-[48px] lg:p-[72px] flex flex-col items-center justify-center space-y-[72px]">
+    <div className="bg-[#f9f9f9] px-[20px] py-[56px] lg:py-[72px] md:px-[48px] lg:px-[72px] flex flex-col items-center justify-center space-y-[72px]">
       <div>
-        <div className="text-center text-[#222] text-[24px] font-extrabold mb-[56px]">
+        <div className="text-center text-[#222] text-[24px] font-extrabold pb-[56px] lg:pb-[72px]">
           {t["HOME.LAST.TITLE"]}
         </div>
 

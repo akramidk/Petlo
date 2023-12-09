@@ -3,7 +3,7 @@ import Image from "next/image";
 export const HowItWorks = ({ t, lang }: { t: any; lang: "en" | "ar" }) => {
   return (
     <div className="bg-[#f9f9f9] p-[20px] md:p-[48px] lg:p-[72px]">
-      <div className="text-center text-[#222] text-[24px] font-extrabold mb-[36px] px-[20%]">
+      <div className="text-center text-[#222] text-[24px] font-extrabold mb-[20px] md:mb-[48px] lg:mb-[52px] px-[12%]">
         {t["HOME.HOW_IT_WORKS.TITLE"]}
       </div>
 
