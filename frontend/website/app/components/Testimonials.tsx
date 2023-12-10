@@ -15,9 +15,8 @@ export const Testimonials = ({ t, lang }: { t: any; lang: "en" | "ar" }) => {
               <Image
                 src={`/testimonial_${index + 1}.webp`}
                 alt="Petloer Testimonial"
-                objectFit="cover"
                 fill
-                className="rounded-[16px]"
+                className="rounded-[16px] object-cover"
               />
             </div>
           );

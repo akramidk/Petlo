@@ -18,7 +18,7 @@ export const MoreThings = ({ t, lang }: { t: any; lang: "en" | "ar" }) => {
                 <Image
                   src={`/${lang}_other_${index + 1}.webp`}
                   alt="More Petlo Feather"
-                  objectFit="contain"
+                  className="object-contain"
                   fill
                 />
               </div>

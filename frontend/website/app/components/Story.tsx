@@ -7,9 +7,8 @@ export const Story = ({ t, lang }: { t: any; lang: "en" | "ar" }) => {
         <Image
           src={`/eloi.webp`}
           alt="Eloi"
-          objectFit="cover"
           fill
-          className="rounded-[16px]"
+          className="rounded-[16px] object-cover"
         />
       </div>
 

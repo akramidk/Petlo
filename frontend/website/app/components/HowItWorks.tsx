@@ -18,7 +18,7 @@ export const HowItWorks = ({ t, lang }: { t: any; lang: "en" | "ar" }) => {
                 <Image
                   src={`/${lang}_autoship_${index + 1}.webp`}
                   alt="How It Work Image"
-                  objectFit="contain"
+                  className="object-contain"
                   fill
                 />
               </div>
