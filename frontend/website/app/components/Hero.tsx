@@ -14,8 +14,13 @@ export const Hero = ({ t, lang }: { t: any; lang: "en" | "ar" }) => {
       <div className="px-[20px] md:px-[48px] lg:px-[72px] xl:px-[92px]">
         <div className="text-center lg:text-start space-y-[16px] md:space-y-[24px]">
           <div className="space-y-[12px]">
-            <div className="text-[24px] md:text-[36px] text-[#222] font-extrabold content-['\n'] whitespace-pre">
-              {t["HOME.HERO.BIG_TEXT"]}
+            <div>
+              <div className="bg-[#F8DFD4] font-semibold text-[#333] text-[13px] inline-block rounded-full py-[6px] px-[14px] mb-[12px]">
+                {t["HOME.HERO.FOR_WHOM"]}
+              </div>
+              <div className="text-[24px] md:text-[36px] text-[#222] font-extrabold content-['\n'] whitespace-pre">
+                {t["HOME.HERO.BIG_TEXT"]}
+              </div>
             </div>
 
             <div className="font-medium text-[14px] md:text-[16px] text-[#777] leading-[22px] md:leading-[26px] px-[12px] lg:px-[0px] lg:w-[50%] xl:w-[40%]">
