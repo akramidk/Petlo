@@ -1,4 +1,5 @@
 import { Accordion } from "./Accordion";
+import { DownloadButtons } from "./DownloadButtons";
 
 export const Last = ({ t, lang }: { t: any; lang: "en" | "ar" }) => {
   return (
@@ -22,9 +23,13 @@ export const Last = ({ t, lang }: { t: any; lang: "en" | "ar" }) => {
         />
       </div>
 
-      {false && (
-        <div className="bg-[#fff] h-[52px] w-[100%] rounded-[16px]">dd</div>
-      )}
+      <div className="bg-[#F8DFD4] rounded-[16px] px-[52px] py-[92px] w-[100%] lg:w-[800px] flex items-center justify-center flex-col space-y-[24px]">
+        <div className="text-[#222] font-bold text-[20px] text-center">
+          {t["HOME.LAST.CTA"]}
+        </div>
+
+        <DownloadButtons t={t} lang={lang} borderColor="#edd2c6" />
+      </div>
     </div>
   );
 };
