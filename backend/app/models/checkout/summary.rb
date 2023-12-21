@@ -30,7 +30,7 @@ module Checkout::Summary
             I18n.t!("delivery_estimation.tomorrow")
         elsif local_time >= 24 && local_time < 10
             I18n.t!("delivery_estimation.today_1")
-        elsif local_time >= 10 && local_time < 20
+        elsif local_time >= 10 && local_time < 19
             I18n.t!("delivery_estimation.today_2")
         end
     end

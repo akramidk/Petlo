@@ -1,7 +1,7 @@
 en:
   delivery_estimation:
     today_1: "Today (After 10 am)"
-    today_2: "Today (in 1 to 2 hours)"
+    today_2: "Today (we will contact you to determine the appropriate time)"
     tomorrow: "Tomorrow (After 10 am)"
 
   #The first number define the error type (common: 1, models: 2, helpers: 3, controllers: 4)
