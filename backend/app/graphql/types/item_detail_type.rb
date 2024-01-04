@@ -1,7 +1,7 @@
 module Types
     class ItemDetailType < Types::BaseObject
-        field :id, ID, null: false
-        field :item_id, ID, null: false
+        field :id, Int, null: false
+        field :item_id, String, null: false
         field :name, String, null: false
         field :language, String, null: false
     end
