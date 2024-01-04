@@ -23,7 +23,7 @@ module Types
       order = order || "asc"
       filter = filter || ""
 
-      entity.joins(:details).where(filter).order(id: order).limit(limit).offset((page * limit) - limit).distinct
+      entity.joins(:details, :availabilities).where(filter).order(id: order).limit(limit).offset((page * limit) - limit).distinct
     end
   end
 end
