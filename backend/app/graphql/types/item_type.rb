@@ -6,5 +6,6 @@ module Types
     field :availabilities, [Types::ItemAvailabilityType], null: false
     field :options, [Types::OptionType], null: false
     field :variants, [Types::VariantType], null: false
+    field :relations, [Types::RelationType], null: false
   end
 end
