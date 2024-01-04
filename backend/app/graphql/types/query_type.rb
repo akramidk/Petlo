@@ -5,11 +5,20 @@ module Types
 
     #items
     field :items, [Types::ItemType], null: false do
-      argument :limit, Int, required: true
-      argument :offset, Int, required: true
+      argument :page, Int, required: false
+      argument :limit, Int, required: false
     end
-    def items(limit:, offset:)
-      Item.all.limit(limit).offset(offset)
+    def items(page: nil, limit: nil)
+      query(Item, page, limit)
+    end
+
+
+    private
+    def query(entity, page, limit)
+      page = page || 1
+      limit = limit || 100
+
+      entity.all.limit(limit).offset((page * limit) - limit)
     end
   end
 end
