@@ -11,7 +11,7 @@ module Types
       argument :order, String, required: false
     end
     def items(page: nil, limit: nil, filter: nil, order: nil)
-      query(Item, [:details, :availabilities, :options, :variants, :relations], page, limit, filter, order)
+      query(Item, [:details, :availabilities, :options, :variants, :relations, :brand], page, limit, filter, order)
     end
 
     #categories
