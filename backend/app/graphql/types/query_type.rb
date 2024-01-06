@@ -11,7 +11,7 @@ module Types
       argument :order, String, required: false
     end
     def items(page: nil, limit: nil, filter: nil, order: nil)
-      query(Item, page, limit, filter, order)
+      query(Item, [:details, :availabilities, :options, :variants, :relations], page, limit, filter, order)
     end
 
     #categories
@@ -22,17 +22,28 @@ module Types
       argument :order, String, required: false
     end
     def categories(page: nil, limit: nil, filter: nil, order: nil)
-      query(Category, page, limit, filter, order)
+      query(Category, nil, page, limit, filter, order)
+    end
+
+    #brands
+    field :brands, [Types::BrandType], null: false do
+      argument :page, Int, required: false
+      argument :limit, Int, required: false
+      argument :filter, GraphQL::Types::JSON, required: false
+      argument :order, String, required: false
+    end
+    def brands(page: nil, limit: nil, filter: nil, order: nil)
+      query(Brand, nil, page, limit, filter, order)
     end
 
     private
-    def query(entity, page, limit, filter, order)
+    def query(entity, joins, page, limit, filter, order)
       page = page || 1
       limit = limit || 100
       order = order || "asc"
       filter = filter || ""
 
-      entity.where(filter).order(id: order).limit(limit).offset((page * limit) - limit).distinct
+      entity.joins(joins).where(filter).order(id: order).limit(limit).offset((page * limit) - limit).distinct
     end
   end
 end
