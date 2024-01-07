@@ -91,6 +91,8 @@ module OrdersHelper::Create
         cart.used!
         checkout.used!
 
+        #Job
+        Order::MessageJob.perform_async()
         Tracking::TrackingJob.perform_async(
             "Purchase",
             request.user_agent,
